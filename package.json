@@ -1,0 +1,55 @@
+{
+  "name": "react-leaflet",
+  "version": "0.0.0",
+  "description": "React components for Leaflet maps",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PaulLeCam/react-leaflet.git"
+  },
+  "keywords": [
+    "react",
+    "leaflet",
+    "map"
+  ],
+  "author": "Paul Le Cam <paul@ulem.net>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PaulLeCam/react-leaflet/issues"
+  },
+  "homepage": "https://github.com/PaulLeCam/react-leaflet",
+  "devDependencies": {
+    "coffee-script": "^1.7.1",
+    "gulp": "^3.8.7",
+    "gulp-coffee": "^2.1.1",
+    "gulp-load-plugins": "^0.5.3",
+    "gulp-util": "^3.0.0",
+    "gulp-webserver": "^0.5.0",
+    "jest-cli": "^0.1.17",
+    "rimraf": "^2.2.8"
+  },
+  "dependencies": {
+    "leaflet": "^0.7.3",
+    "lodash-node": "^2.4.1",
+    "react": "^0.11.1"
+  },
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/preprocessor.js",
+    "testFileExtensions": [
+      "coffee"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "coffee"
+    ],
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react",
+      "<rootDir>/node_modules/leaflet",
+      "<rootDir>/node_modules/lodash-node"
+    ]
+  }
+}
