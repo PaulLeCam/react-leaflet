@@ -1,4 +1,4 @@
-react = require "react"
+react = require "react/addons"
 leaflet = require "leaflet"
 uniqueId = require "lodash-node/modern/utilities/uniqueId"
 
@@ -30,11 +30,7 @@ Map = react.createClass
     @setState {map}
 
   render: ->
-    children = {}
-    react.Children.forEach @props.children, (child) =>
-      child.props.map = @state.map
-      children[ uniqueId "child" ] = child
-
-    div id: @state.id, children
+    div id: @state.id, react.Children.map @props.children, (child) =>
+      react.addons.cloneWithProps child, map: @state.map
 
 module.exports = Map
