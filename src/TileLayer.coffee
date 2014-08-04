@@ -3,6 +3,8 @@ leaflet = require "leaflet"
 
 Type = react.PropTypes
 
+{noscript} = react.DOM
+
 module.exports = react.createClass
   displayName: "TileLayer"
 
@@ -10,8 +12,11 @@ module.exports = react.createClass
     url: Type.string.isRequired
 
   getInitialState: ->
-    tile: leaflet.tileLayer @props.url, @props
+    tileLayer: leaflet.tileLayer @props.url, @props
 
   render: ->
-    @state.tile.addTo @props.map if @props.map
-    null
+    @state.tileLayer.addTo @props.map if @props.map
+    noscript null, react.Children.map @props.children, (child) =>
+      react.addons.cloneWithProps child,
+        map: @props.map
+        layer: @state.tileLayer

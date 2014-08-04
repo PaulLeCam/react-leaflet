@@ -9,4 +9,5 @@ module.exports =
   setIconDefaultImagePath: setIconDefaultImagePath
   Marker: require "./Marker"
   Map: require "./Map"
+  Popup: require "./Popup"
   TileLayer: require "./TileLayer"

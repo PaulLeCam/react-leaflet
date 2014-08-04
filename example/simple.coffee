@@ -1,6 +1,8 @@
 react = require "react"
 L = require "../src"
 
+{p, strong, em} = react.DOM
+
 SimpleExample = react.createClass
   displayName: "SimpleExample"
   render: ->
@@ -12,5 +14,9 @@ SimpleExample = react.createClass
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
       L.Marker
         position: [51.505, -0.09]
+        L.Popup null,
+          p null,
+            strong null, "Hello"
+            em null, " World"
 
 react.renderComponent SimpleExample(), document.getElementById "content"

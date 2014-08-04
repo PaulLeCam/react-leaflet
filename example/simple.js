@@ -1,9 +1,11 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-var L, SimpleExample, react;
+var L, SimpleExample, em, p, react, strong, _ref;
 
 react = require("react");
 
 L = require("../src");
+
+_ref = react.DOM, p = _ref.p, strong = _ref.strong, em = _ref.em;
 
 SimpleExample = react.createClass({
   displayName: "SimpleExample",
@@ -14,9 +16,9 @@ SimpleExample = react.createClass({
     }, L.TileLayer({
       url: "http://{s}.tile.osm.org/{z}/{x}/{y}.png",
       attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-    }), L.Marker({
+    }, L.Marker({
       position: [51.505, -0.09]
-    }));
+    }, L.Popup(null, p(null, strong(null, "Hello"), em(null, " World"))))));
   }
 });
 
@@ -24,7 +26,7 @@ react.renderComponent(SimpleExample(), document.getElementById("content"));
 
 
 
-},{"../src":168,"react":164}],2:[function(require,module,exports){
+},{"../src":169,"react":164}],2:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -29737,8 +29739,8 @@ module.exports = Map;
 
 
 
-},{"./types/latlng":169,"./types/latlngBounds":170,"leaflet":3,"lodash-node/modern/utilities/uniqueId":4,"react/addons":5}],166:[function(require,module,exports){
-var Type, latlngType, leaflet, react;
+},{"./types/latlng":170,"./types/latlngBounds":171,"leaflet":3,"lodash-node/modern/utilities/uniqueId":4,"react/addons":5}],166:[function(require,module,exports){
+var Type, latlngType, leaflet, noscript, react;
 
 react = require("react");
 
@@ -29747,6 +29749,8 @@ leaflet = require("leaflet");
 Type = react.PropTypes;
 
 latlngType = require("./types/latlng");
+
+noscript = react.DOM.noscript;
 
 module.exports = react.createClass({
   displayName: "Marker",
@@ -29762,34 +29766,49 @@ module.exports = react.createClass({
     if (this.props.map) {
       this.state.marker.addTo(this.props.map);
     }
-    return null;
+    return noscript(null, react.Children.map(this.props.children, (function(_this) {
+      return function(child) {
+        return react.addons.cloneWithProps(child, {
+          map: _this.props.map,
+          layer: _this.props.layer,
+          marker: _this.state.marker
+        });
+      };
+    })(this)));
   }
 });
 
 
 
-},{"./types/latlng":169,"leaflet":3,"react":164}],167:[function(require,module,exports){
-var Type, leaflet, react;
+},{"./types/latlng":170,"leaflet":3,"react":164}],167:[function(require,module,exports){
+var leaflet, react;
 
 react = require("react");
 
 leaflet = require("leaflet");
 
-Type = react.PropTypes;
-
 module.exports = react.createClass({
-  displayName: "TileLayer",
-  propTypes: {
-    url: Type.string.isRequired
-  },
+  displayName: "Popup",
   getInitialState: function() {
     return {
-      tile: leaflet.tileLayer(this.props.url, this.props)
+      popup: leaflet.popup(this.props, this.props.layer)
     };
   },
   render: function() {
-    if (this.props.map) {
-      this.state.tile.addTo(this.props.map);
+    var content;
+    if (this.props.children) {
+      content = react.renderComponentToString(this.props.children);
+      if (this.props.marker) {
+        this.props.marker.bindPopup(content);
+      } else {
+        this.state.popup.setContent(content);
+        if (this.props.position) {
+          this.state.popup.setLatLng(this.props.position);
+        }
+        if (this.props.map) {
+          this.state.popup.openOn(this.props.map);
+        }
+      }
     }
     return null;
   }
@@ -29798,6 +29817,44 @@ module.exports = react.createClass({
 
 
 },{"leaflet":3,"react":164}],168:[function(require,module,exports){
+var Type, leaflet, noscript, react;
+
+react = require("react");
+
+leaflet = require("leaflet");
+
+Type = react.PropTypes;
+
+noscript = react.DOM.noscript;
+
+module.exports = react.createClass({
+  displayName: "TileLayer",
+  propTypes: {
+    url: Type.string.isRequired
+  },
+  getInitialState: function() {
+    return {
+      tileLayer: leaflet.tileLayer(this.props.url, this.props)
+    };
+  },
+  render: function() {
+    if (this.props.map) {
+      this.state.tileLayer.addTo(this.props.map);
+    }
+    return noscript(null, react.Children.map(this.props.children, (function(_this) {
+      return function(child) {
+        return react.addons.cloneWithProps(child, {
+          map: _this.props.map,
+          layer: _this.state.tileLayer
+        });
+      };
+    })(this)));
+  }
+});
+
+
+
+},{"leaflet":3,"react":164}],169:[function(require,module,exports){
 var leaflet, setIconDefaultImagePath;
 
 leaflet = require("leaflet");
@@ -29812,12 +29869,13 @@ module.exports = {
   setIconDefaultImagePath: setIconDefaultImagePath,
   Marker: require("./Marker"),
   Map: require("./Map"),
+  Popup: require("./Popup"),
   TileLayer: require("./TileLayer")
 };
 
 
 
-},{"./Map":165,"./Marker":166,"./TileLayer":167,"leaflet":3}],169:[function(require,module,exports){
+},{"./Map":165,"./Marker":166,"./Popup":167,"./TileLayer":168,"leaflet":3}],170:[function(require,module,exports){
 var Type, react;
 
 react = require("react");
@@ -29836,7 +29894,7 @@ module.exports = Type.oneOfType([
 
 
 
-},{"react":164}],170:[function(require,module,exports){
+},{"react":164}],171:[function(require,module,exports){
 var Type, latlng, react;
 
 react = require("react");
@@ -29849,4 +29907,4 @@ module.exports = Type.arrayOf(latlng);
 
 
 
-},{"./latlng":169,"react":164}]},{},[1]);
+},{"./latlng":170,"react":164}]},{},[1]);
