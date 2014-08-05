@@ -1,20 +1,19 @@
 react = require "react"
-L = require "../src"
-
 {p, strong, em} = react.DOM
+{Map, TileLayer, Marker, Popup} = require "react-leaflet"
 
 SimpleExample = react.createClass
   displayName: "SimpleExample"
   render: ->
-    L.Map
+    Map
       center: [51.505, -0.09]
       zoom: 13
-      L.TileLayer
+      TileLayer
         url: "http://{s}.tile.osm.org/{z}/{x}/{y}.png"
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-      L.Marker
+      Marker
         position: [51.505, -0.09]
-        L.Popup null,
+        Popup null,
           p null,
             strong null, "Hello"
             em null, " World"

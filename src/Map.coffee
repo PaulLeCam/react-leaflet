@@ -1,19 +1,18 @@
 react = require "react/addons"
 leaflet = require "leaflet"
-uniqueId = require "lodash-node/modern/utilities/uniqueId"
 
 Type = react.PropTypes
 latlngType = require "./types/latlng"
 latlngBoundsType = require "./types/latlngBounds"
 
 {div} = react.DOM
+currentId = 0
 
 Map = react.createClass
   displayName: "Map"
 
   statics:
-    uid: ->
-      uniqueId "map"
+    uid: -> "map#{ ++currentId }"
 
   propTypes:
     center: latlngType
