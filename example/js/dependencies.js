@@ -59,7 +59,7 @@ module.exports = Map;
 },{"./types/latlng":5,"./types/latlngBounds":6,"leaflet":undefined,"react/addons":undefined}],2:[function(require,module,exports){
 var Type, latlngType, leaflet, noscript, react;
 
-react = require("react");
+react = require("react/addons");
 
 leaflet = require("leaflet");
 
@@ -95,7 +95,7 @@ module.exports = react.createClass({
   }
 });
 
-},{"./types/latlng":5,"leaflet":undefined,"react":undefined}],3:[function(require,module,exports){
+},{"./types/latlng":5,"leaflet":undefined,"react/addons":undefined}],3:[function(require,module,exports){
 var leaflet, react;
 
 react = require("react");
@@ -132,7 +132,7 @@ module.exports = react.createClass({
 },{"leaflet":undefined,"react":undefined}],4:[function(require,module,exports){
 var Type, leaflet, noscript, react;
 
-react = require("react");
+react = require("react/addons");
 
 leaflet = require("leaflet");
 
@@ -165,7 +165,7 @@ module.exports = react.createClass({
   }
 });
 
-},{"leaflet":undefined,"react":undefined}],5:[function(require,module,exports){
+},{"leaflet":undefined,"react/addons":undefined}],5:[function(require,module,exports){
 var Type, react;
 
 react = require("react");
