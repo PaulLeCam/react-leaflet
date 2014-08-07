@@ -15,8 +15,8 @@ describe "Map", ->
   it "should set center and zoom props", ->
     react = require "react"
     Map = require "../src/Map.coffee"
-    center = [51.505, -0.09]
-    zoom = 13
+    center = [1.2, 3.4]
+    zoom = 10
 
     document.body.innerHTML = '<div id="test"></div>'
     mapComponent = Map {center, zoom}
