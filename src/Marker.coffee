@@ -4,10 +4,14 @@ leaflet = require "leaflet"
 Type = react.PropTypes
 latlngType = require "./types/latlng"
 
+eventsMixins = require "./mixins/events"
+
 {noscript} = react.DOM
 
 module.exports = react.createClass
   displayName: "Marker"
+
+  mixins: [eventsMixins "marker"]
 
   propTypes:
     position: latlngType.isRequired

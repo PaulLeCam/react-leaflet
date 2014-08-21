@@ -5,11 +5,15 @@ Type = react.PropTypes
 latlngType = require "./types/latlng"
 latlngBoundsType = require "./types/latlngBounds"
 
+eventsMixins = require "./mixins/events"
+
 {div} = react.DOM
 currentId = 0
 
 Map = react.createClass
   displayName: "Map"
+
+  mixins: [eventsMixins "map"]
 
   statics:
     uid: -> "map#{ ++currentId }"

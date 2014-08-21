@@ -1,8 +1,12 @@
 react = require "react"
 leaflet = require "leaflet"
 
+eventsMixins = require "./mixins/events"
+
 module.exports = react.createClass
   displayName: "Popup"
+
+  mixins: [eventsMixins "popup"]
 
   getInitialState: ->
     popup: leaflet.popup @props, @props.layer
