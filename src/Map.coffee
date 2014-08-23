@@ -30,10 +30,12 @@ Map = react.createClass
 
   componentDidMount: ->
     map = leaflet.map @state.id, @props
+    @bindEvents @state._events
     @setState {map}
 
   render: ->
-    div id: @state.id, react.Children.map @props.children, (child) =>
+    if @state.map? then children = react.Children.map @props.children, (child) =>
       react.addons.cloneWithProps child, map: @state.map
+    div id: @state.id, children
 
 module.exports = Map
