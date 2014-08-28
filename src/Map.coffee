@@ -3,7 +3,7 @@ leaflet = require "leaflet"
 
 Type = react.PropTypes
 latlngType = require "./types/latlng"
-latlngBoundsType = require "./types/latlngBounds"
+latlngListType = require "./types/latlngList"
 
 eventsMixins = require "./mixins/events"
 
@@ -23,7 +23,7 @@ Map = react.createClass
     zoom: Type.number
     minZoom: Type.number
     maxZoom: Type.number
-    maxBounds: latlngBoundsType
+    maxBounds: latlngListType
 
   getInitialState: ->
     id: Map.uid()

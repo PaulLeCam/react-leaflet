@@ -3,6 +3,12 @@ leaflet = require "leaflet"
 
 eventsMixins = require "./mixins/events"
 
+bindTo = [
+  "marker"
+  "multiPolyline"
+  "multiPolygon"
+]
+
 module.exports = react.createClass
   displayName: "Popup"
 
@@ -14,11 +20,12 @@ module.exports = react.createClass
   render: ->
     if @props.children
       content = react.renderComponentToString @props.children
-      # Attach to a Marker
-      if @props.marker then @props.marker.bindPopup content
+      # Attach to parent component
+      for component in bindTo when el = @props[ component ]
+        el.bindPopup content
+        return null
       # Attach to a Map
-      else
-        @state.popup.setContent content
-        @state.popup.setLatLng @props.position if @props.position
-        @state.popup.openOn @props.map if @props.map
+      @state.popup.setContent content
+      @state.popup.setLatLng @props.position if @props.position
+      @state.popup.openOn @props.map if @props.map
     null

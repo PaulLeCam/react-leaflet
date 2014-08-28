@@ -23,16 +23,17 @@
   "homepage": "https://github.com/PaulLeCam/react-leaflet",
   "devDependencies": {
     "browserify": "^5.10.1",
-    "coffee-script": "^1.7.1",
+    "coffee-script": "^1.8.0",
     "coffeeify": "^0.7.0",
     "gulp": "^3.8.7",
-    "gulp-coffee": "^2.1.1",
-    "gulp-load-plugins": "^0.5.3",
+    "gulp-coffee": "^2.1.2",
+    "gulp-load-plugins": "^0.6.0",
     "gulp-util": "^3.0.0",
-    "gulp-webserver": "^0.6.0",
+    "gulp-webserver": "^0.7.0",
     "jest-cli": "^0.1.18",
     "rimraf": "^2.2.8",
-    "vinyl-source-stream2": "^0.1.1"
+    "vinyl-source-stream2": "^0.1.1",
+    "watchify": "^1.0.2"
   },
   "dependencies": {
     "leaflet": "^0.7.3",
