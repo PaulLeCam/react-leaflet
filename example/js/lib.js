@@ -34,7 +34,166 @@ module.exports = react.createClass({
   }
 });
 
-},{"./mixins/events":10,"leaflet":"leaflet","react/addons":"react/addons"}],2:[function(require,module,exports){
+},{"./mixins/events":18,"leaflet":"leaflet","react/addons":"react/addons"}],2:[function(require,module,exports){
+var Type, eventsMixins, latlngType, leaflet, noscript, react;
+
+react = require("react/addons");
+
+leaflet = require("leaflet");
+
+Type = react.PropTypes;
+
+latlngType = require("./types/latlng");
+
+eventsMixins = require("./mixins/events");
+
+noscript = react.DOM.noscript;
+
+module.exports = react.createClass({
+  displayName: "Circle",
+  mixins: [eventsMixins("circle")],
+  propTypes: {
+    center: latlngType.isRequired,
+    radius: Type.number.isRequired
+  },
+  getInitialState: function() {
+    return {
+      circle: leaflet.circle(this.props.center, this.props.radius, this.props)
+    };
+  },
+  render: function() {
+    if (this.props.map) {
+      this.state.circle.addTo(this.props.map);
+    }
+    return noscript(null, react.Children.map(this.props.children, (function(_this) {
+      return function(child) {
+        return react.addons.cloneWithProps(child, {
+          map: _this.props.map,
+          layer: _this.props.layer
+        });
+      };
+    })(this)));
+  }
+});
+
+},{"./mixins/events":18,"./types/latlng":19,"leaflet":"leaflet","react/addons":"react/addons"}],3:[function(require,module,exports){
+var eventsMixins, latlngType, leaflet, noscript, react;
+
+react = require("react/addons");
+
+leaflet = require("leaflet");
+
+latlngType = require("./types/latlng");
+
+eventsMixins = require("./mixins/events");
+
+noscript = react.DOM.noscript;
+
+module.exports = react.createClass({
+  displayName: "CircleMarker",
+  mixins: [eventsMixins("circleMarker")],
+  propTypes: {
+    center: latlngType.isRequired
+  },
+  getInitialState: function() {
+    return {
+      circleMarker: leaflet.circleMarker(this.props.center, this.props)
+    };
+  },
+  render: function() {
+    if (this.props.map) {
+      this.state.circleMarker.addTo(this.props.map);
+    }
+    return noscript(null, react.Children.map(this.props.children, (function(_this) {
+      return function(child) {
+        return react.addons.cloneWithProps(child, {
+          map: _this.props.map,
+          layer: _this.props.layer
+        });
+      };
+    })(this)));
+  }
+});
+
+},{"./mixins/events":18,"./types/latlng":19,"leaflet":"leaflet","react/addons":"react/addons"}],4:[function(require,module,exports){
+var Type, eventsMixins, leaflet, noscript, react;
+
+react = require("react/addons");
+
+leaflet = require("leaflet");
+
+Type = react.PropTypes;
+
+eventsMixins = require("./mixins/events");
+
+noscript = react.DOM.noscript;
+
+module.exports = react.createClass({
+  displayName: "FeatureGroup",
+  mixins: [eventsMixins("featureGroup")],
+  propTypes: {
+    layers: Type.array.isRequired
+  },
+  getInitialState: function() {
+    return {
+      featureGroup: leaflet.featureGroup(this.props.layers)
+    };
+  },
+  render: function() {
+    if (this.props.map) {
+      this.state.featureGroup.addTo(this.props.map);
+    }
+    return noscript(null, react.Children.map(this.props.children, (function(_this) {
+      return function(child) {
+        return react.addons.cloneWithProps(child, {
+          map: _this.props.map,
+          layer: _this.props.layer
+        });
+      };
+    })(this)));
+  }
+});
+
+},{"./mixins/events":18,"leaflet":"leaflet","react/addons":"react/addons"}],5:[function(require,module,exports){
+var Type, eventsMixins, leaflet, noscript, react;
+
+react = require("react/addons");
+
+leaflet = require("leaflet");
+
+Type = react.PropTypes;
+
+eventsMixins = require("./mixins/events");
+
+noscript = react.DOM.noscript;
+
+module.exports = react.createClass({
+  displayName: "GeoJson",
+  mixins: [eventsMixins("geoJson")],
+  propTypes: {
+    data: Type.object.isRequired
+  },
+  getInitialState: function() {
+    return {
+      geoJson: leaflet.geoJson(this.props.data, this.props)
+    };
+  },
+  render: function() {
+    if (this.props.map) {
+      this.state.geoJson.addTo(this.props.map);
+    }
+    return noscript(null, react.Children.map(this.props.children, (function(_this) {
+      return function(child) {
+        return react.addons.cloneWithProps(child, {
+          map: _this.props.map,
+          layer: _this.props.layer
+        });
+      };
+    })(this)));
+  }
+});
+
+},{"./mixins/events":18,"leaflet":"leaflet","react/addons":"react/addons"}],6:[function(require,module,exports){
 var Type, eventsMixins, latlngListType, leaflet, noscript, react;
 
 react = require("react/addons");
@@ -75,7 +234,46 @@ module.exports = react.createClass({
   }
 });
 
-},{"./mixins/events":10,"./types/latlngList":12,"leaflet":"leaflet","react/addons":"react/addons"}],3:[function(require,module,exports){
+},{"./mixins/events":18,"./types/latlngList":20,"leaflet":"leaflet","react/addons":"react/addons"}],7:[function(require,module,exports){
+var Type, eventsMixins, leaflet, noscript, react;
+
+react = require("react/addons");
+
+leaflet = require("leaflet");
+
+Type = react.PropTypes;
+
+eventsMixins = require("./mixins/events");
+
+noscript = react.DOM.noscript;
+
+module.exports = react.createClass({
+  displayName: "LayerGroup",
+  mixins: [eventsMixins("layerGroup")],
+  propTypes: {
+    layers: Type.array.isRequired
+  },
+  getInitialState: function() {
+    return {
+      layerGroup: leaflet.layerGroup(this.props.layers)
+    };
+  },
+  render: function() {
+    if (this.props.map) {
+      this.state.layerGroup.addTo(this.props.map);
+    }
+    return noscript(null, react.Children.map(this.props.children, (function(_this) {
+      return function(child) {
+        return react.addons.cloneWithProps(child, {
+          map: _this.props.map,
+          layer: _this.props.layer
+        });
+      };
+    })(this)));
+  }
+});
+
+},{"./mixins/events":18,"leaflet":"leaflet","react/addons":"react/addons"}],8:[function(require,module,exports){
 var Map, Type, currentId, div, eventsMixins, latlngListType, latlngType, leaflet, react;
 
 react = require("react/addons");
@@ -141,7 +339,7 @@ Map = react.createClass({
 
 module.exports = Map;
 
-},{"./mixins/events":10,"./types/latlng":11,"./types/latlngList":12,"leaflet":"leaflet","react/addons":"react/addons"}],4:[function(require,module,exports){
+},{"./mixins/events":18,"./types/latlng":19,"./types/latlngList":20,"leaflet":"leaflet","react/addons":"react/addons"}],9:[function(require,module,exports){
 var Type, eventsMixins, latlngType, leaflet, noscript, react;
 
 react = require("react/addons");
@@ -183,7 +381,49 @@ module.exports = react.createClass({
   }
 });
 
-},{"./mixins/events":10,"./types/latlng":11,"leaflet":"leaflet","react/addons":"react/addons"}],5:[function(require,module,exports){
+},{"./mixins/events":18,"./types/latlng":19,"leaflet":"leaflet","react/addons":"react/addons"}],10:[function(require,module,exports){
+var Type, eventsMixins, latlngListType, leaflet, noscript, react;
+
+react = require("react/addons");
+
+leaflet = require("leaflet");
+
+Type = react.PropTypes;
+
+latlngListType = require("./types/latlngList");
+
+eventsMixins = require("./mixins/events");
+
+noscript = react.DOM.noscript;
+
+module.exports = react.createClass({
+  displayName: "MultiPolygon",
+  mixins: [eventsMixins("multiPolygon")],
+  propTypes: {
+    polygons: Type.arrayOf(latlngListType).isRequired
+  },
+  getInitialState: function() {
+    return {
+      multiPolygon: leaflet.multiPolyline(this.props.polygons, this.props)
+    };
+  },
+  render: function() {
+    if (this.props.map) {
+      this.state.multiPolygon.addTo(this.props.map);
+    }
+    return noscript(null, react.Children.map(this.props.children, (function(_this) {
+      return function(child) {
+        return react.addons.cloneWithProps(child, {
+          map: _this.props.map,
+          layer: _this.props.layer,
+          multiPolygon: _this.state.multiPolygon
+        });
+      };
+    })(this)));
+  }
+});
+
+},{"./mixins/events":18,"./types/latlngList":20,"leaflet":"leaflet","react/addons":"react/addons"}],11:[function(require,module,exports){
 var Type, eventsMixins, latlngListType, leaflet, noscript, react;
 
 react = require("react/addons");
@@ -225,7 +465,46 @@ module.exports = react.createClass({
   }
 });
 
-},{"./mixins/events":10,"./types/latlngList":12,"leaflet":"leaflet","react/addons":"react/addons"}],6:[function(require,module,exports){
+},{"./mixins/events":18,"./types/latlngList":20,"leaflet":"leaflet","react/addons":"react/addons"}],12:[function(require,module,exports){
+var eventsMixins, latlngListType, leaflet, noscript, react;
+
+react = require("react/addons");
+
+leaflet = require("leaflet");
+
+latlngListType = require("./types/latlngList");
+
+eventsMixins = require("./mixins/events");
+
+noscript = react.DOM.noscript;
+
+module.exports = react.createClass({
+  displayName: "Polygon",
+  mixins: [eventsMixins("polygon")],
+  propTypes: {
+    positions: latlngListType.isRequired
+  },
+  getInitialState: function() {
+    return {
+      polygon: leaflet.polygon(this.props.positions, this.props)
+    };
+  },
+  render: function() {
+    if (this.props.map) {
+      this.state.polygon.addTo(this.props.map);
+    }
+    return noscript(null, react.Children.map(this.props.children, (function(_this) {
+      return function(child) {
+        return react.addons.cloneWithProps(child, {
+          map: _this.props.map,
+          layer: _this.props.layer
+        });
+      };
+    })(this)));
+  }
+});
+
+},{"./mixins/events":18,"./types/latlngList":20,"leaflet":"leaflet","react/addons":"react/addons"}],13:[function(require,module,exports){
 var eventsMixins, latlngListType, leaflet, noscript, react;
 
 react = require("react/addons");
@@ -264,7 +543,7 @@ module.exports = react.createClass({
   }
 });
 
-},{"./mixins/events":10,"./types/latlngList":12,"leaflet":"leaflet","react/addons":"react/addons"}],7:[function(require,module,exports){
+},{"./mixins/events":18,"./types/latlngList":20,"leaflet":"leaflet","react/addons":"react/addons"}],14:[function(require,module,exports){
 var bindTo, eventsMixins, leaflet, react;
 
 react = require("react");
@@ -307,7 +586,46 @@ module.exports = react.createClass({
   }
 });
 
-},{"./mixins/events":10,"leaflet":"leaflet","react":"react"}],8:[function(require,module,exports){
+},{"./mixins/events":18,"leaflet":"leaflet","react":"react"}],15:[function(require,module,exports){
+var eventsMixins, latlngListType, leaflet, noscript, react;
+
+react = require("react/addons");
+
+leaflet = require("leaflet");
+
+latlngListType = require("./types/latlngList");
+
+eventsMixins = require("./mixins/events");
+
+noscript = react.DOM.noscript;
+
+module.exports = react.createClass({
+  displayName: "Rectangle",
+  mixins: [eventsMixins("rectangle")],
+  propTypes: {
+    bounds: latlngListType.isRequired
+  },
+  getInitialState: function() {
+    return {
+      rectangle: leaflet.rectangle(this.props.bounds, this.props)
+    };
+  },
+  render: function() {
+    if (this.props.map) {
+      this.state.rectangle.addTo(this.props.map);
+    }
+    return noscript(null, react.Children.map(this.props.children, (function(_this) {
+      return function(child) {
+        return react.addons.cloneWithProps(child, {
+          map: _this.props.map,
+          layer: _this.props.layer
+        });
+      };
+    })(this)));
+  }
+});
+
+},{"./mixins/events":18,"./types/latlngList":20,"leaflet":"leaflet","react/addons":"react/addons"}],16:[function(require,module,exports){
 var Type, eventsMixins, leaflet, noscript, react;
 
 react = require("react/addons");
@@ -346,7 +664,7 @@ module.exports = react.createClass({
   }
 });
 
-},{"./mixins/events":10,"leaflet":"leaflet","react/addons":"react/addons"}],9:[function(require,module,exports){
+},{"./mixins/events":18,"leaflet":"leaflet","react/addons":"react/addons"}],17:[function(require,module,exports){
 var Type, eventsMixins, leaflet, noscript, react;
 
 react = require("react/addons");
@@ -385,7 +703,7 @@ module.exports = react.createClass({
   }
 });
 
-},{"./mixins/events":10,"leaflet":"leaflet","react/addons":"react/addons"}],10:[function(require,module,exports){
+},{"./mixins/events":18,"leaflet":"leaflet","react/addons":"react/addons"}],18:[function(require,module,exports){
 var clone;
 
 clone = require("lodash-node/modern/objects/clone");
@@ -480,7 +798,7 @@ module.exports = function(elName) {
   };
 };
 
-},{"lodash-node/modern/objects/clone":31}],11:[function(require,module,exports){
+},{"lodash-node/modern/objects/clone":39}],19:[function(require,module,exports){
 var Type, react;
 
 react = require("react");
@@ -497,7 +815,7 @@ module.exports = Type.oneOfType([
   })
 ]);
 
-},{"react":"react"}],12:[function(require,module,exports){
+},{"react":"react"}],20:[function(require,module,exports){
 var Type, latlng, react;
 
 react = require("react");
@@ -508,7 +826,7 @@ latlng = require("./latlng");
 
 module.exports = Type.arrayOf(latlng);
 
-},{"./latlng":11,"react":"react"}],13:[function(require,module,exports){
+},{"./latlng":19,"react":"react"}],21:[function(require,module,exports){
 /**
  * Lo-Dash 2.4.1 (Custom Build) <http://lodash.com/>
  * Build: `lodash modularize modern exports="node" -o ./modern/`
@@ -565,7 +883,7 @@ function forEach(collection, callback, thisArg) {
 
 module.exports = forEach;
 
-},{"../internals/baseCreateCallback":19,"../objects/forOwn":32}],14:[function(require,module,exports){
+},{"../internals/baseCreateCallback":27,"../objects/forOwn":40}],22:[function(require,module,exports){
 /**
  * Lo-Dash 2.4.1 (Custom Build) <http://lodash.com/>
  * Build: `lodash modularize modern exports="node" -o ./modern/`
@@ -607,7 +925,7 @@ function bind(func, thisArg) {
 
 module.exports = bind;
 
-},{"../internals/createWrapper":21,"../internals/slice":29}],15:[function(require,module,exports){
+},{"../internals/createWrapper":29,"../internals/slice":37}],23:[function(require,module,exports){
 /**
  * Lo-Dash 2.4.1 (Custom Build) <http://lodash.com/>
  * Build: `lodash modularize modern exports="node" -o ./modern/`
@@ -622,7 +940,7 @@ var arrayPool = [];
 
 module.exports = arrayPool;
 
-},{}],16:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 /**
  * Lo-Dash 2.4.1 (Custom Build) <http://lodash.com/>
  * Build: `lodash modularize modern exports="node" -o ./modern/`
@@ -686,7 +1004,7 @@ function baseBind(bindData) {
 
 module.exports = baseBind;
 
-},{"../objects/isObject":35,"./baseCreate":18,"./setBindData":27,"./slice":29}],17:[function(require,module,exports){
+},{"../objects/isObject":43,"./baseCreate":26,"./setBindData":35,"./slice":37}],25:[function(require,module,exports){
 /**
  * Lo-Dash 2.4.1 (Custom Build) <http://lodash.com/>
  * Build: `lodash modularize modern exports="node" -o ./modern/`
@@ -840,7 +1158,7 @@ function baseClone(value, isDeep, callback, stackA, stackB) {
 
 module.exports = baseClone;
 
-},{"../collections/forEach":13,"../objects/assign":30,"../objects/forOwn":32,"../objects/isArray":33,"../objects/isObject":35,"./getArray":22,"./releaseArray":26,"./slice":29}],18:[function(require,module,exports){
+},{"../collections/forEach":21,"../objects/assign":38,"../objects/forOwn":40,"../objects/isArray":41,"../objects/isObject":43,"./getArray":30,"./releaseArray":34,"./slice":37}],26:[function(require,module,exports){
 (function (global){
 /**
  * Lo-Dash 2.4.1 (Custom Build) <http://lodash.com/>
@@ -886,7 +1204,7 @@ if (!nativeCreate) {
 module.exports = baseCreate;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../objects/isObject":35,"../utilities/noop":39,"./isNative":23}],19:[function(require,module,exports){
+},{"../objects/isObject":43,"../utilities/noop":47,"./isNative":31}],27:[function(require,module,exports){
 /**
  * Lo-Dash 2.4.1 (Custom Build) <http://lodash.com/>
  * Build: `lodash modularize modern exports="node" -o ./modern/`
@@ -968,7 +1286,7 @@ function baseCreateCallback(func, thisArg, argCount) {
 
 module.exports = baseCreateCallback;
 
-},{"../functions/bind":14,"../support":37,"../utilities/identity":38,"./setBindData":27}],20:[function(require,module,exports){
+},{"../functions/bind":22,"../support":45,"../utilities/identity":46,"./setBindData":35}],28:[function(require,module,exports){
 /**
  * Lo-Dash 2.4.1 (Custom Build) <http://lodash.com/>
  * Build: `lodash modularize modern exports="node" -o ./modern/`
@@ -1048,7 +1366,7 @@ function baseCreateWrapper(bindData) {
 
 module.exports = baseCreateWrapper;
 
-},{"../objects/isObject":35,"./baseCreate":18,"./setBindData":27,"./slice":29}],21:[function(require,module,exports){
+},{"../objects/isObject":43,"./baseCreate":26,"./setBindData":35,"./slice":37}],29:[function(require,module,exports){
 /**
  * Lo-Dash 2.4.1 (Custom Build) <http://lodash.com/>
  * Build: `lodash modularize modern exports="node" -o ./modern/`
@@ -1156,7 +1474,7 @@ function createWrapper(func, bitmask, partialArgs, partialRightArgs, thisArg, ar
 
 module.exports = createWrapper;
 
-},{"../objects/isFunction":34,"./baseBind":16,"./baseCreateWrapper":20,"./slice":29}],22:[function(require,module,exports){
+},{"../objects/isFunction":42,"./baseBind":24,"./baseCreateWrapper":28,"./slice":37}],30:[function(require,module,exports){
 /**
  * Lo-Dash 2.4.1 (Custom Build) <http://lodash.com/>
  * Build: `lodash modularize modern exports="node" -o ./modern/`
@@ -1179,7 +1497,7 @@ function getArray() {
 
 module.exports = getArray;
 
-},{"./arrayPool":15}],23:[function(require,module,exports){
+},{"./arrayPool":23}],31:[function(require,module,exports){
 /**
  * Lo-Dash 2.4.1 (Custom Build) <http://lodash.com/>
  * Build: `lodash modularize modern exports="node" -o ./modern/`
@@ -1215,7 +1533,7 @@ function isNative(value) {
 
 module.exports = isNative;
 
-},{}],24:[function(require,module,exports){
+},{}],32:[function(require,module,exports){
 /**
  * Lo-Dash 2.4.1 (Custom Build) <http://lodash.com/>
  * Build: `lodash modularize modern exports="node" -o ./modern/`
@@ -1230,7 +1548,7 @@ var maxPoolSize = 40;
 
 module.exports = maxPoolSize;
 
-},{}],25:[function(require,module,exports){
+},{}],33:[function(require,module,exports){
 /**
  * Lo-Dash 2.4.1 (Custom Build) <http://lodash.com/>
  * Build: `lodash modularize modern exports="node" -o ./modern/`
@@ -1252,7 +1570,7 @@ var objectTypes = {
 
 module.exports = objectTypes;
 
-},{}],26:[function(require,module,exports){
+},{}],34:[function(require,module,exports){
 /**
  * Lo-Dash 2.4.1 (Custom Build) <http://lodash.com/>
  * Build: `lodash modularize modern exports="node" -o ./modern/`
@@ -1279,7 +1597,7 @@ function releaseArray(array) {
 
 module.exports = releaseArray;
 
-},{"./arrayPool":15,"./maxPoolSize":24}],27:[function(require,module,exports){
+},{"./arrayPool":23,"./maxPoolSize":32}],35:[function(require,module,exports){
 /**
  * Lo-Dash 2.4.1 (Custom Build) <http://lodash.com/>
  * Build: `lodash modularize modern exports="node" -o ./modern/`
@@ -1324,7 +1642,7 @@ var setBindData = !defineProperty ? noop : function(func, value) {
 
 module.exports = setBindData;
 
-},{"../utilities/noop":39,"./isNative":23}],28:[function(require,module,exports){
+},{"../utilities/noop":47,"./isNative":31}],36:[function(require,module,exports){
 /**
  * Lo-Dash 2.4.1 (Custom Build) <http://lodash.com/>
  * Build: `lodash modularize modern exports="node" -o ./modern/`
@@ -1364,7 +1682,7 @@ var shimKeys = function(object) {
 
 module.exports = shimKeys;
 
-},{"./objectTypes":25}],29:[function(require,module,exports){
+},{"./objectTypes":33}],37:[function(require,module,exports){
 /**
  * Lo-Dash 2.4.1 (Custom Build) <http://lodash.com/>
  * Build: `lodash modularize modern exports="node" -o ./modern/`
@@ -1404,7 +1722,7 @@ function slice(array, start, end) {
 
 module.exports = slice;
 
-},{}],30:[function(require,module,exports){
+},{}],38:[function(require,module,exports){
 /**
  * Lo-Dash 2.4.1 (Custom Build) <http://lodash.com/>
  * Build: `lodash modularize modern exports="node" -o ./modern/`
@@ -1476,7 +1794,7 @@ var assign = function(object, source, guard) {
 
 module.exports = assign;
 
-},{"../internals/baseCreateCallback":19,"../internals/objectTypes":25,"./keys":36}],31:[function(require,module,exports){
+},{"../internals/baseCreateCallback":27,"../internals/objectTypes":33,"./keys":44}],39:[function(require,module,exports){
 /**
  * Lo-Dash 2.4.1 (Custom Build) <http://lodash.com/>
  * Build: `lodash modularize modern exports="node" -o ./modern/`
@@ -1541,7 +1859,7 @@ function clone(value, isDeep, callback, thisArg) {
 
 module.exports = clone;
 
-},{"../internals/baseClone":17,"../internals/baseCreateCallback":19}],32:[function(require,module,exports){
+},{"../internals/baseClone":25,"../internals/baseCreateCallback":27}],40:[function(require,module,exports){
 /**
  * Lo-Dash 2.4.1 (Custom Build) <http://lodash.com/>
  * Build: `lodash modularize modern exports="node" -o ./modern/`
@@ -1593,7 +1911,7 @@ var forOwn = function(collection, callback, thisArg) {
 
 module.exports = forOwn;
 
-},{"../internals/baseCreateCallback":19,"../internals/objectTypes":25,"./keys":36}],33:[function(require,module,exports){
+},{"../internals/baseCreateCallback":27,"../internals/objectTypes":33,"./keys":44}],41:[function(require,module,exports){
 /**
  * Lo-Dash 2.4.1 (Custom Build) <http://lodash.com/>
  * Build: `lodash modularize modern exports="node" -o ./modern/`
@@ -1640,7 +1958,7 @@ var isArray = nativeIsArray || function(value) {
 
 module.exports = isArray;
 
-},{"../internals/isNative":23}],34:[function(require,module,exports){
+},{"../internals/isNative":31}],42:[function(require,module,exports){
 /**
  * Lo-Dash 2.4.1 (Custom Build) <http://lodash.com/>
  * Build: `lodash modularize modern exports="node" -o ./modern/`
@@ -1669,7 +1987,7 @@ function isFunction(value) {
 
 module.exports = isFunction;
 
-},{}],35:[function(require,module,exports){
+},{}],43:[function(require,module,exports){
 /**
  * Lo-Dash 2.4.1 (Custom Build) <http://lodash.com/>
  * Build: `lodash modularize modern exports="node" -o ./modern/`
@@ -1710,7 +2028,7 @@ function isObject(value) {
 
 module.exports = isObject;
 
-},{"../internals/objectTypes":25}],36:[function(require,module,exports){
+},{"../internals/objectTypes":33}],44:[function(require,module,exports){
 /**
  * Lo-Dash 2.4.1 (Custom Build) <http://lodash.com/>
  * Build: `lodash modularize modern exports="node" -o ./modern/`
@@ -1748,7 +2066,7 @@ var keys = !nativeKeys ? shimKeys : function(object) {
 
 module.exports = keys;
 
-},{"../internals/isNative":23,"../internals/shimKeys":28,"./isObject":35}],37:[function(require,module,exports){
+},{"../internals/isNative":31,"../internals/shimKeys":36,"./isObject":43}],45:[function(require,module,exports){
 (function (global){
 /**
  * Lo-Dash 2.4.1 (Custom Build) <http://lodash.com/>
@@ -1792,7 +2110,7 @@ support.funcNames = typeof Function.name == 'string';
 module.exports = support;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./internals/isNative":23}],38:[function(require,module,exports){
+},{"./internals/isNative":31}],46:[function(require,module,exports){
 /**
  * Lo-Dash 2.4.1 (Custom Build) <http://lodash.com/>
  * Build: `lodash modularize modern exports="node" -o ./modern/`
@@ -1822,7 +2140,7 @@ function identity(value) {
 
 module.exports = identity;
 
-},{}],39:[function(require,module,exports){
+},{}],47:[function(require,module,exports){
 /**
  * Lo-Dash 2.4.1 (Custom Build) <http://lodash.com/>
  * Build: `lodash modularize modern exports="node" -o ./modern/`
@@ -1864,14 +2182,22 @@ setIconDefaultImagePath("//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/images")
 module.exports = {
   setIconDefaultImagePath: setIconDefaultImagePath,
   CanvasTileLayer: require("./CanvasTileLayer"),
+  Circle: require("./Circle"),
+  CircleMarker: require("./CircleMarker"),
+  FeatureGroup: require("./FeatureGroup"),
+  GeoJson: require("./GeoJson"),
   ImageOverlay: require("./ImageOverlay"),
-  Marker: require("./Marker"),
+  LayerGroup: require("./LayerGroup"),
   Map: require("./Map"),
+  Marker: require("./Marker"),
+  MultiPolygon: require("./MultiPolygon"),
   MultiPolyline: require("./MultiPolyline"),
+  Polygon: require("./Polygon"),
   Polyline: require("./Polyline"),
   Popup: require("./Popup"),
+  Rectangle: require("./Rectangle"),
   TileLayer: require("./TileLayer"),
   WMSTileLayer: require("./WMSTileLayer")
 };
 
-},{"./CanvasTileLayer":1,"./ImageOverlay":2,"./Map":3,"./Marker":4,"./MultiPolyline":5,"./Polyline":6,"./Popup":7,"./TileLayer":8,"./WMSTileLayer":9,"leaflet":"leaflet"}]},{},[]);
+},{"./CanvasTileLayer":1,"./Circle":2,"./CircleMarker":3,"./FeatureGroup":4,"./GeoJson":5,"./ImageOverlay":6,"./LayerGroup":7,"./Map":8,"./Marker":9,"./MultiPolygon":10,"./MultiPolyline":11,"./Polygon":12,"./Polyline":13,"./Popup":14,"./Rectangle":15,"./TileLayer":16,"./WMSTileLayer":17,"leaflet":"leaflet"}]},{},[]);
