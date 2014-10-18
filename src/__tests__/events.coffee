@@ -1,5 +1,5 @@
-jest.dontMock "../src/Map.coffee"
-jest.dontMock "../src/mixins/events.coffee"
+jest.dontMock "../Map.coffee"
+jest.dontMock "../mixins/events.coffee"
 
 describe "Events", ->
 
@@ -8,16 +8,15 @@ describe "Events", ->
 
   # it.only "should bind the event", ->
   #   react = require "react"
-  #   Map = require "../src/Map.coffee"
+  #   Map = require "../Map.coffee"
   #
   #   document.body.innerHTML = '<div id="test"></div>'
   #
-  #   isTriggered = no
+  #   callback = jest.genMockFn()
   #   mapComponent = Map
-  #     onLeafletClick: ->
-  #       isTriggered = yes
+  #     onLeafletClick: callback
   #
   #   mapInstance = react.renderComponent mapComponent, document.getElementById "test"
   #   mapInstance.fireEvent "click"
   #
-  #   expect(isTriggered).toBe yes
+  #   expect(callback.mock.calls.length).toBe 1

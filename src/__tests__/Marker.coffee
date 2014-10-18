@@ -1,6 +1,6 @@
-jest.dontMock "../src/Map.coffee"
-jest.dontMock "../src/TileLayer.coffee"
-jest.dontMock "../src/Marker.coffee"
+jest.dontMock "../Map.coffee"
+jest.dontMock "../TileLayer.coffee"
+jest.dontMock "../Marker.coffee"
 
 describe "Marker", ->
 
@@ -8,7 +8,7 @@ describe "Marker", ->
     react = require "react/addons"
     utils = react.addons.TestUtils
 
-    {Map, Marker, TileLayer} = require "../src"
+    {Map, Marker, TileLayer} = require "../"
 
     document.body.innerHTML = '<div id="test"></div>'
     mapComponent = Map

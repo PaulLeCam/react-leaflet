@@ -1,11 +1,14 @@
-jest.dontMock "../src/Map.coffee"
+jest.dontMock "../Map.coffee"
 
 describe "Map", ->
+  react = null
+  Map = null
+
+  beforeEach ->
+    react = require "react"
+    Map = require "../Map.coffee"
 
   it "should initialize the map in the rendered container", ->
-    react = require "react"
-    Map = require "../src/Map.coffee"
-
     document.body.innerHTML = '<div id="test"></div>'
     mapInstance = react.renderComponent Map(), document.getElementById "test"
     mapNode = mapInstance.getDOMNode()
@@ -13,8 +16,6 @@ describe "Map", ->
     expect(mapNode._leaflet).toBe on
 
   it "should set center and zoom props", ->
-    react = require "react"
-    Map = require "../src/Map.coffee"
     center = [1.2, 3.4]
     zoom = 10
 

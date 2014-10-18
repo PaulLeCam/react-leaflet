@@ -7,6 +7,12 @@ browserify = require "browserify"
 coffeeify = require "coffeeify"
 watchify = require "watchify"
 
+src = [
+  "./src/**/*"
+  "!./src/__tests__"
+  "!./src/__tests__/**"
+]
+
 logTime = (fileName) ->
   name = $.util.colors.cyan fileName
   (ms) ->
@@ -46,7 +52,7 @@ gulp.task "clean", (cb) ->
   del "./lib", cb
 
 gulp.task "compile", ["clean"], ->
-  gulp.src "./src/**/*"
+  gulp.src src
   .pipe $.coffee(bare: yes).on "error", $.util.log
   .pipe gulp.dest "./lib"
 
@@ -95,6 +101,6 @@ gulp.task "watch", [
   "example:server"
   "watch:example"
 ], ->
-  gulp.watch "./src/**/*", ["compile"]
+  gulp.watch src, ["compile"]
 
 gulp.task "default", ["compile"]
