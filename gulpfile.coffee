@@ -1,11 +1,11 @@
 gulp = require "gulp"
 $ = require("gulp-load-plugins")()
+del = require "del"
 source = require "vinyl-source-stream2"
+
 browserify = require "browserify"
 coffeeify = require "coffeeify"
 watchify = require "watchify"
-rimraf = require "rimraf"
-react = require "react"
 
 logTime = (fileName) ->
   name = $.util.colors.cyan fileName
@@ -40,15 +40,12 @@ simpleBundler = browserify simpleOpts
   .external "react/addons"
   .external "leaflet"
   .external "react-leaflet"
-  # .require "./", expose: "react-leaflet"
   .transform coffeeify
 
-libBundler =
-
 gulp.task "clean", (cb) ->
-  rimraf "./lib", cb
+  del "./lib", cb
 
-gulp.task "compile", ->
+gulp.task "compile", ["clean"], ->
   gulp.src "./src/**/*"
   .pipe $.coffee(bare: yes).on "error", $.util.log
   .pipe gulp.dest "./lib"
