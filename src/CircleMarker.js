@@ -13,8 +13,8 @@ module.exports = React.createClass({
     center: latlngType.isRequired
   },
 
-  componentWillMount:function() {
-    var $__0=    this.props,center=$__0.center,map=$__0.map,props=(function(source, exclusion) {var rest = {};var hasOwn = Object.prototype.hasOwnProperty;if (source == null) {throw new TypeError();}for (var key in source) {if (hasOwn.call(source, key) && !hasOwn.call(exclusion, key)) {rest[key] = source[key];}}return rest;})($__0,{center:1,map:1});
+  componentWillMount() {
+    var {center, map, ...props} = this.props;
     this._leafletElement = Leaflet.circleMarker(center, props);
   }
 });

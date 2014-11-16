@@ -14,16 +14,16 @@ module.exports = React.createClass({
     position: latlngType
   },
 
-  componentWillMount:function() {
-    var $__0=    this.props,children=$__0.children,map=$__0.map,props=(function(source, exclusion) {var rest = {};var hasOwn = Object.prototype.hasOwnProperty;if (source == null) {throw new TypeError();}for (var key in source) {if (hasOwn.call(source, key) && !hasOwn.call(exclusion, key)) {rest[key] = source[key];}}return rest;})($__0,{children:1,map:1});
+  componentWillMount() {
+    var {children, map, ...props} = this.props;
     this._leafletElement = Leaflet.popup(props);
   },
 
-  componentDidUpdate:function(prevProps) {
-    var $__0=     this.props,children=$__0.children,map=$__0.map,popupContainer=$__0.popupContainer,position=$__0.position;
+  componentDidUpdate(prevProps) {
+    var {children, map, popupContainer, position} = this.props;
     if (children !== prevProps.children) {
       if (React.Children.count(children) > 1) {
-        children = React.createElement("span", null, children);
+        children = <span>{children}</span>;
       }
       var content = React.renderToStaticMarkup(children);
       if (popupContainer) {
@@ -37,15 +37,15 @@ module.exports = React.createClass({
     }
   },
 
-  componentWillUnmount:function() {
+  componentWillUnmount() {
     this.props.map.removeLayer(this.getLeafletElement());
   },
 
-  render:function() {
-    var $__0=     this.props,children=$__0.children,map=$__0.map,popupContainer=$__0.popupContainer,position=$__0.position;
+  render() {
+    var {children, map, popupContainer, position} = this.props;
     if (children) {
       if (React.Children.count(children) > 1) {
-        children = React.createElement("span", null, children);
+        children = <span>{children}</span>;
       }
       var content = React.renderToStaticMarkup(children);
       // Attach to container component

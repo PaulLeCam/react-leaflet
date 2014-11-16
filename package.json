@@ -1,6 +1,6 @@
 {
   "name": "react-leaflet",
-  "version": "0.1.0-dev",
+  "version": "0.2.0-dev",
   "description": "React components for Leaflet maps",
   "main": "lib/index.js",
   "scripts": {
@@ -22,38 +22,30 @@
   },
   "homepage": "https://github.com/PaulLeCam/react-leaflet",
   "devDependencies": {
-    "browserify": "^6.1.0",
-    "coffee-script": "^1.8.0",
-    "coffeeify": "^0.7.0",
+    "browserify": "^6.3.2",
     "del": "^0.1.3",
-    "gulp": "^3.8.7",
-    "gulp-coffee": "^2.2.0",
-    "gulp-load-plugins": "^0.7.0",
+    "gulp": "^3.8.10",
+    "gulp-load-plugins": "^0.7.1",
+    "gulp-react": "^2.0.0",
     "gulp-util": "^3.0.1",
-    "gulp-webserver": "^0.8.3",
+    "gulp-webserver": "^0.8.7",
     "jest-cli": "^0.1.18",
+    "react-tools": "^0.12.0",
+    "reactify": "^0.16.0",
     "vinyl-source-stream2": "^0.1.1",
-    "watchify": "^2.0.0"
+    "watchify": "^2.1.1"
   },
   "dependencies": {
     "leaflet": "^0.7.3",
     "lodash-node": "^2.4.1",
-    "react": "^0.11.2"
+    "react": "^0.12.0"
   },
   "jest": {
     "scriptPreprocessor": "<rootDir>/preprocessor.js",
-    "testFileExtensions": [
-      "coffee"
-    ],
-    "moduleFileExtensions": [
-      "js",
-      "json",
-      "coffee"
-    ],
     "unmockedModulePathPatterns": [
-      "<rootDir>/node_modules/react",
       "<rootDir>/node_modules/leaflet",
-      "<rootDir>/node_modules/lodash-node"
+      "<rootDir>/node_modules/lodash-node",
+      "<rootDir>/node_modules/react"
     ]
   }
 }

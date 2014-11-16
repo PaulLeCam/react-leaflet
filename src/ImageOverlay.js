@@ -14,12 +14,12 @@ module.exports = React.createClass({
     bounds: latlngListType.isRequired
   },
 
-  componentWillMount:function() {
-    var $__0=     this.props,bounds=$__0.bounds,map=$__0.map,url=$__0.url,props=(function(source, exclusion) {var rest = {};var hasOwn = Object.prototype.hasOwnProperty;if (source == null) {throw new TypeError();}for (var key in source) {if (hasOwn.call(source, key) && !hasOwn.call(exclusion, key)) {rest[key] = source[key];}}return rest;})($__0,{bounds:1,map:1,url:1});
+  componentWillMount() {
+    var {bounds, map, url, ...props} = this.props;
     this._leafletElement =  Leaflet.imageOverlay(url, bounds, props);
   },
 
-  render:function() {
+  render() {
     return null;
   }
 });

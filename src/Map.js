@@ -13,7 +13,7 @@ var Map = React.createClass({
   mixins: [elementMixin],
 
   statics: {
-    uid:function() {
+    uid() {
       return "map" + ++currentId;
     }
   },
@@ -27,20 +27,20 @@ var Map = React.createClass({
     zoom: React.PropTypes.number
   },
 
-  getInitialState:function() {
+  getInitialState() {
     return {
       id: this.props.id || Map.uid()
     };
   },
 
-  componentDidMount:function() {
+  componentDidMount() {
     this._leafletElement = Leaflet.map(this.state.id, this.props);
     this.bindEvents(this._leafletEvents);
     this.setState({map: this._leafletElement});
   },
 
-  componentDidUpdate:function(prevProps) {
-    var $__0=   this.props,center=$__0.center,zoom=$__0.zoom;
+  componentDidUpdate(prevProps) {
+    var {center, zoom} = this.props;
     if (center && center !== prevProps.center) {
       this.getLeafletElement().setView(center, zoom);
     }
@@ -49,17 +49,17 @@ var Map = React.createClass({
     }
   },
 
-  componentWillUnmount:function() {
+  componentWillUnmount() {
     this.getLeafletElement().remove();
   },
 
-  render:function() {
+  render() {
     var map = this.getLeafletElement();
-    var children = map ? React.Children.map(this.props.children, function(child)  {
-      return child ? React.addons.cloneWithProps(child, {map:map}) : null;
+    var children = map ? React.Children.map(this.props.children, child => {
+      return child ? React.addons.cloneWithProps(child, {map}) : null;
     }) : null;
 
-    return React.createElement("div", {id: this.state.id}, children);
+    return <div id={this.state.id}>{children}</div>;
   }
 });
 

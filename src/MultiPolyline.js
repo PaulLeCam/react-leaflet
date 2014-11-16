@@ -13,8 +13,8 @@ module.exports = React.createClass({
     polylines: React.PropTypes.arrayOf(latlngListType).isRequired
   },
 
-  componentWillMount:function() {
-    var $__0=    this.props,map=$__0.map,polylines=$__0.polylines,props=(function(source, exclusion) {var rest = {};var hasOwn = Object.prototype.hasOwnProperty;if (source == null) {throw new TypeError();}for (var key in source) {if (hasOwn.call(source, key) && !hasOwn.call(exclusion, key)) {rest[key] = source[key];}}return rest;})($__0,{map:1,polylines:1});
+  componentWillMount() {
+    var {map, polylines, ...props} = this.props;
     this._leafletElement = Leaflet.multiPolyline(polylines, props);
   }
 });

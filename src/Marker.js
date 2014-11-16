@@ -13,12 +13,12 @@ module.exports = React.createClass({
     position: latlngType.isRequired
   },
 
-  componentWillMount:function() {
-    var $__0=    this.props,map=$__0.map,position=$__0.position,props=(function(source, exclusion) {var rest = {};var hasOwn = Object.prototype.hasOwnProperty;if (source == null) {throw new TypeError();}for (var key in source) {if (hasOwn.call(source, key) && !hasOwn.call(exclusion, key)) {rest[key] = source[key];}}return rest;})($__0,{map:1,position:1});
+  componentWillMount() {
+    var {map, position, ...props} = this.props;
     this._leafletElement = Leaflet.marker(position, props);
   },
 
-  componentDidUpdate:function(prevProps) {
+  componentDidUpdate(prevProps) {
     if (this.props.position !== prevProps.position) {
       this.getLeafletElement().setLatLng(this.props.position);
     }
