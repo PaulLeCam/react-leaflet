@@ -36,7 +36,7 @@ L.marker(position).addTo(map)
 **React-Leaflet**
 ```js
 var React = require("react");
-var {Map, Marker, Popup} = require("react-leaflet");
+var {Map, Marker, Popup, TileLayer} = require("react-leaflet");
 
 var position = [51.505, -0.09];
 var map = (
