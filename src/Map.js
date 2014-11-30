@@ -59,7 +59,7 @@ var Map = React.createClass({
       return child ? React.addons.cloneWithProps(child, {map}) : null;
     }) : null;
 
-    return <div id={this.state.id}>{children}</div>;
+    return <div className={this.props.className} id={this.state.id}>{children}</div>;
   }
 });
 

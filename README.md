@@ -23,14 +23,14 @@ All components are React wrappers for Leaflet elements and layers, they need a m
 var L = require("leaflet");
 
 var position = [51.505, -0.09];
-var map = L.map('map').setView(position, 13);
+var map = L.map("map").setView(position, 13);
 
-L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png", {
   attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
 L.marker(position).addTo(map)
-  .bindPopup('A pretty CSS3 popup. <br> Easily customizable.');
+  .bindPopup("A pretty CSS3 popup. <br> Easily customizable.");
 ```
 
 **React-Leaflet**
@@ -92,39 +92,70 @@ This is the top-level component that must be mounted for children ones to be ren
 - `minZoom` (optional Number)
 - `zoom` (optional Number, dynamic)
 
-#### TileLayer
+#### UI Layers
 
-**Properties**
+##### Marker
+
+- `position` (required LatLng, dynamic)
+
+##### Popup
+
+The Popup children will be rendered as its content using `React.renderToStaticMarkup()`, they must be valid React elements.
+
+- `position` (optional LatLng, dynamic)
+
+#### Raster Layers
+
+##### TileLayer
+
 - `url` (required String, dynamic)
 - `opacity` (optional Number, dynamic)
 - `zIndex` (optional Number, dynamic)
 
-#### Marker
-
-**Properties**
-- `position` (required LatLng, dynamic)
-
-#### Popup
-
-The Popup children will be rendered as its content using `React.renderToStaticMarkup()`.
-
-**Properties**
-- `position` (optional LatLng, dynamic)
-
-#### Implemented but needing testing and documentation
+##### Implemented but needing testing and documentation
 
 - CanvasTileLayer
-- Circle
-- CircleMarker
+- WMSTileLayer
+- ImageOverlay
+
+#### Vector Layers
+
+##### Circle
+
+- `center` (required LatLng, dynamic)
+- `radius` (required Number, dynamic)
+
+##### CircleMarker
+
+- `center` (required LatLng, dynamic)
+- `radius` (optional Number, dynamic)
+
+##### Polyline
+
+- `positions` (required LatLngList, dynamic)
+
+##### MultiPolyline
+
+- `polylines` (required Array of LatLngList, dynamic)
+
+##### Polygon
+
+- `positions` (required LatLngList, dynamic)
+
+##### MultiPolygon
+
+- `polygons` (required Array of LatLngList, dynamic)
+
+##### Rectangle
+
+- `bounds` (required LatLngList, dynamic)
+
+#### Other Layers
+
+##### Implemented but needing testing and documentation
+
 - FeatureGroup
 - GeoJson
-- ImageOverlay
-- MultiPolygon
-- MultiPolyline
-- Polygon
-- Polyline
-- Rectangle
-- WMSTileLayer
 
 ## License
 

@@ -35,6 +35,15 @@ module.exports = React.createClass({
   componentWillMount:function() {
     var $__0=     this.props,center=$__0.center,map=$__0.map,radius=$__0.radius,props=(function(source, exclusion) {var rest = {};var hasOwn = Object.prototype.hasOwnProperty;if (source == null) {throw new TypeError();}for (var key in source) {if (hasOwn.call(source, key) && !hasOwn.call(exclusion, key)) {rest[key] = source[key];}}return rest;})($__0,{center:1,map:1,radius:1});
     this._leafletElement = Leaflet.circle(center, radius, props);
+  },
+
+  componentDidUpdate:function(prevProps) {
+    if (this.props.center !== prevProps.center) {
+      this.getLeafletElement().setLatLng(this.props.center);
+    }
+    if (this.props.radius !== prevProps.radius) {
+      this.getLeafletElement().setRadius(this.props.radius);
+    }
   }
 });
 
@@ -51,12 +60,22 @@ module.exports = React.createClass({
   mixins: [popupContainerMixin],
 
   propTypes: {
-    center: latlngType.isRequired
+    center: latlngType.isRequired,
+    radius: React.PropTypes.number
   },
 
   componentWillMount:function() {
     var $__0=    this.props,center=$__0.center,map=$__0.map,props=(function(source, exclusion) {var rest = {};var hasOwn = Object.prototype.hasOwnProperty;if (source == null) {throw new TypeError();}for (var key in source) {if (hasOwn.call(source, key) && !hasOwn.call(exclusion, key)) {rest[key] = source[key];}}return rest;})($__0,{center:1,map:1});
     this._leafletElement = Leaflet.circleMarker(center, props);
+  },
+
+  componentDidUpdate:function(prevProps) {
+    if (this.props.center !== prevProps.center) {
+      this.getLeafletElement().setLatLng(this.props.center);
+    }
+    if (this.props.radius !== prevProps.radius) {
+      this.getLeafletElement().setRadius(this.props.radius);
+    }
   }
 });
 
@@ -195,7 +214,7 @@ var Map = React.createClass({
       return child ? React.addons.cloneWithProps(child, {map:map}) : null;
     }) : null;
 
-    return React.createElement("div", {id: this.state.id}, children);
+    return React.createElement("div", {className: this.props.className, id: this.state.id}, children);
   }
 });
 
@@ -248,6 +267,12 @@ module.exports = React.createClass({
   componentWillMount:function() {
     var $__0=    this.props,map=$__0.map,polygons=$__0.polygons,props=(function(source, exclusion) {var rest = {};var hasOwn = Object.prototype.hasOwnProperty;if (source == null) {throw new TypeError();}for (var key in source) {if (hasOwn.call(source, key) && !hasOwn.call(exclusion, key)) {rest[key] = source[key];}}return rest;})($__0,{map:1,polygons:1});
     this._leafletElement = Leaflet.multiPolygon(polygons, props);
+  },
+
+  componentDidUpdate:function(prevProps) {
+    if (this.props.polygons !== prevProps.polygons) {
+      this.getLeafletElement().setLatLngs(this.props.polygons);
+    }
   }
 });
 
@@ -270,6 +295,12 @@ module.exports = React.createClass({
   componentWillMount:function() {
     var $__0=    this.props,map=$__0.map,polylines=$__0.polylines,props=(function(source, exclusion) {var rest = {};var hasOwn = Object.prototype.hasOwnProperty;if (source == null) {throw new TypeError();}for (var key in source) {if (hasOwn.call(source, key) && !hasOwn.call(exclusion, key)) {rest[key] = source[key];}}return rest;})($__0,{map:1,polylines:1});
     this._leafletElement = Leaflet.multiPolyline(polylines, props);
+  },
+
+  componentDidUpdate:function(prevProps) {
+    if (this.props.polylines !== prevProps.polylines) {
+      this.getLeafletElement().setLatLngs(this.props.polylines);
+    }
   }
 });
 
@@ -292,6 +323,12 @@ module.exports = React.createClass({
   componentWillMount:function() {
     var $__0=    this.props,map=$__0.map,positions=$__0.positions,props=(function(source, exclusion) {var rest = {};var hasOwn = Object.prototype.hasOwnProperty;if (source == null) {throw new TypeError();}for (var key in source) {if (hasOwn.call(source, key) && !hasOwn.call(exclusion, key)) {rest[key] = source[key];}}return rest;})($__0,{map:1,positions:1});
     this._leafletElement = Leaflet.polygon(positions, props);
+  },
+
+  componentDidUpdate:function(prevProps) {
+    if (this.props.positions !== prevProps.positions) {
+      this.getLeafletElement().setLatLngs(this.props.positions);
+    }
   }
 });
 
@@ -314,6 +351,12 @@ module.exports = React.createClass({
   componentWillMount:function() {
     var $__0=    this.props,map=$__0.map,positions=$__0.positions,props=(function(source, exclusion) {var rest = {};var hasOwn = Object.prototype.hasOwnProperty;if (source == null) {throw new TypeError();}for (var key in source) {if (hasOwn.call(source, key) && !hasOwn.call(exclusion, key)) {rest[key] = source[key];}}return rest;})($__0,{map:1,positions:1});
     this._leafletElement = Leaflet.polyline(positions, props);
+  },
+
+  componentDidUpdate:function(prevProps) {
+    if (this.props.positions !== prevProps.positions) {
+      this.getLeafletElement().setLatLngs(this.props.positions);
+    }
   }
 });
 
@@ -342,10 +385,7 @@ module.exports = React.createClass({
   componentDidUpdate:function(prevProps) {
     var $__0=     this.props,children=$__0.children,map=$__0.map,popupContainer=$__0.popupContainer,position=$__0.position;
     if (children !== prevProps.children) {
-      if (React.Children.count(children) > 1) {
-        children = React.createElement("span", null, children);
-      }
-      var content = React.renderToString(children);
+      var content = React.renderToStaticMarkup(children);
       if (popupContainer) {
         popupContainer.bindPopup(content);
       }
@@ -367,7 +407,7 @@ module.exports = React.createClass({
       if (React.Children.count(children) > 1) {
         children = React.createElement("span", null, children);
       }
-      var content = React.renderToString(children);
+      var content = React.renderToStaticMarkup(children);
       // Attach to container component
       if (popupContainer) {
         popupContainer.bindPopup(content);
@@ -402,6 +442,12 @@ module.exports = React.createClass({
   componentWillMount:function() {
     var $__0=    this.props,bounds=$__0.bounds,map=$__0.map,props=(function(source, exclusion) {var rest = {};var hasOwn = Object.prototype.hasOwnProperty;if (source == null) {throw new TypeError();}for (var key in source) {if (hasOwn.call(source, key) && !hasOwn.call(exclusion, key)) {rest[key] = source[key];}}return rest;})($__0,{bounds:1,map:1});
     this._leafletElement = Leaflet.rectangle(bounds, props);
+  },
+
+  componentDidUpdate:function(prevProps) {
+    if (this.props.bounds !== prevProps.bounds) {
+      this.getLeafletElement().setBounds(this.props.bounds);
+    }
   }
 });
 
@@ -2446,8 +2492,6 @@ module.exports = {
   FeatureGroup: require("./FeatureGroup"),
   GeoJson: require("./GeoJson"),
   ImageOverlay: require("./ImageOverlay"),
-  // TODO: implement using children?
-  // LayerGroup: require("./LayerGroup"),
   Map: require("./Map"),
   Marker: require("./Marker"),
   MultiPolygon: require("./MultiPolygon"),

@@ -16,5 +16,11 @@ module.exports = React.createClass({
   componentWillMount() {
     var {map, polylines, ...props} = this.props;
     this._leafletElement = Leaflet.multiPolyline(polylines, props);
+  },
+
+  componentDidUpdate(prevProps) {
+    if (this.props.polylines !== prevProps.polylines) {
+      this.getLeafletElement().setLatLngs(this.props.polylines);
+    }
   }
 });

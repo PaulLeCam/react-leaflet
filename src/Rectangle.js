@@ -16,5 +16,11 @@ module.exports = React.createClass({
   componentWillMount() {
     var {bounds, map, ...props} = this.props;
     this._leafletElement = Leaflet.rectangle(bounds, props);
+  },
+
+  componentDidUpdate(prevProps) {
+    if (this.props.bounds !== prevProps.bounds) {
+      this.getLeafletElement().setBounds(this.props.bounds);
+    }
   }
 });

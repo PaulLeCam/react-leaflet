@@ -16,5 +16,11 @@ module.exports = React.createClass({
   componentWillMount() {
     var {map, polygons, ...props} = this.props;
     this._leafletElement = Leaflet.multiPolygon(polygons, props);
+  },
+
+  componentDidUpdate(prevProps) {
+    if (this.props.polygons !== prevProps.polygons) {
+      this.getLeafletElement().setLatLngs(this.props.polygons);
+    }
   }
 });

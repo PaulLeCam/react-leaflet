@@ -17,5 +17,14 @@ module.exports = React.createClass({
   componentWillMount() {
     var {center, map, radius, ...props} = this.props;
     this._leafletElement = Leaflet.circle(center, radius, props);
+  },
+
+  componentDidUpdate(prevProps) {
+    if (this.props.center !== prevProps.center) {
+      this.getLeafletElement().setLatLng(this.props.center);
+    }
+    if (this.props.radius !== prevProps.radius) {
+      this.getLeafletElement().setRadius(this.props.radius);
+    }
   }
 });

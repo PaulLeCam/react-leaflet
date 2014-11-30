@@ -22,9 +22,6 @@ module.exports = React.createClass({
   componentDidUpdate(prevProps) {
     var {children, map, popupContainer, position} = this.props;
     if (children !== prevProps.children) {
-      if (React.Children.count(children) > 1) {
-        children = <span>{children}</span>;
-      }
       var content = React.renderToStaticMarkup(children);
       if (popupContainer) {
         popupContainer.bindPopup(content);

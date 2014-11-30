@@ -1,10 +1,11 @@
 {
   "name": "react-leaflet",
-  "version": "0.2.0-dev",
+  "version": "0.2.0",
   "description": "React components for Leaflet maps",
   "main": "lib/index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "prepublish": "npm ls && npm test"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,13 @@
     "url": "https://github.com/PaulLeCam/react-leaflet/issues"
   },
   "homepage": "https://github.com/PaulLeCam/react-leaflet",
+  "dependencies": {
+    "leaflet": "^0.7.3",
+    "lodash-node": "^2.4.1"
+  },
+  "peerDependencies": {
+    "react": "^0.12.1"
+  },
   "devDependencies": {
     "browserify": "^6.3.2",
     "del": "^0.1.3",
@@ -30,15 +38,10 @@
     "gulp-util": "^3.0.1",
     "gulp-webserver": "^0.8.7",
     "jest-cli": "^0.1.18",
-    "react-tools": "^0.12.0",
-    "reactify": "^0.16.0",
+    "react-tools": "^0.12.1",
+    "reactify": "^0.17.1",
     "vinyl-source-stream2": "^0.1.1",
     "watchify": "^2.1.1"
-  },
-  "dependencies": {
-    "leaflet": "^0.7.3",
-    "lodash-node": "^2.4.1",
-    "react": "^0.12.0"
   },
   "jest": {
     "scriptPreprocessor": "<rootDir>/preprocessor.js",

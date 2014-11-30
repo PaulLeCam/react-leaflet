@@ -21,7 +21,9 @@ module.exports = React.createClass({
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
         <Marker position={position}>
-          <Popup>A pretty CSS3 popup. <br/> Easily customizable.</Popup>
+          <Popup>
+            <span>A pretty CSS3 popup. <br/> Easily customizable.</span>
+          </Popup>
         </Marker>
       </Map>
     );
