@@ -38,6 +38,7 @@
     "gulp-util": "^3.0.1",
     "gulp-webserver": "^0.8.7",
     "jest-cli": "^0.1.18",
+    "react": "^0.12.1",
     "react-tools": "^0.12.1",
     "reactify": "^0.17.1",
     "vinyl-source-stream2": "^0.1.1",
