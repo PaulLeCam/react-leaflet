@@ -8,6 +8,16 @@ setIconDefaultImagePath("//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/images")
 
 module.exports = {
   setIconDefaultImagePath: setIconDefaultImagePath,
+  mixins: {
+    element: require("./mixins/element"),
+    mapLayer: require("./mixins/mapLayer"),
+    popupContainer: require("./mixins/popupContainer"),
+    tileLayer: require("./mixins/tileLayer")
+  },
+  PropTypes: {
+    latlng: require("./types/latlng"),
+    latlngList: require("./types/latlngList")
+  },
   CanvasTileLayer: require("./CanvasTileLayer"),
   Circle: require("./Circle"),
   CircleMarker: require("./CircleMarker"),

@@ -1,3 +1,5 @@
+var isArray = require("lodash-node/modern/objects/isArray");
+
 var React = require("react/addons");
 var Leaflet = require("leaflet");
 
@@ -6,6 +8,10 @@ var latlngListType = require("./types/latlngList");
 
 var elementMixin = require("./mixins/element");
 var currentId = 0;
+
+var normalizeCenter = function(pos) {
+  return isArray(pos) ? pos : [pos.lat, pos.lng || pos.lon];
+};
 
 var Map = React.createClass({
   displayName: "Map",
@@ -39,10 +45,17 @@ var Map = React.createClass({
     this.setState({map: this._leafletElement});
   },
 
+  shouldUpdateCenter(next, prev) {
+    if (!prev) return true;
+    next = normalizeCenter(next);
+    prev = normalizeCenter(prev);
+    return next[0] !== prev[0] || next[1] !== prev[1];
+  },
+
   componentDidUpdate(prevProps) {
     var {center, zoom} = this.props;
-    if (center && center !== prevProps.center) {
-      this.getLeafletElement().setView(center, zoom);
+    if (center && this.shouldUpdateCenter(center, prevProps.center)) {
+      this.getLeafletElement().setView(center, zoom, {animate: false});
     }
     else if (zoom && zoom !== prevProps.zoom) {
       this.getLeafletElement().setZoom(zoom);

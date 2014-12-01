@@ -153,6 +153,8 @@ module.exports = React.createClass({
 });
 
 },{"./mixins/mapLayer":18,"./types/latlngList":22,"leaflet":"leaflet","react":"react"}],7:[function(require,module,exports){
+var isArray = require("lodash-node/modern/objects/isArray");
+
 var React = require("react/addons");
 var Leaflet = require("leaflet");
 
@@ -161,6 +163,10 @@ var latlngListType = require("./types/latlngList");
 
 var elementMixin = require("./mixins/element");
 var currentId = 0;
+
+var normalizeCenter = function(pos) {
+  return isArray(pos) ? pos : [pos.lat, pos.lng || pos.lon];
+};
 
 var Map = React.createClass({
   displayName: "Map",
@@ -194,10 +200,17 @@ var Map = React.createClass({
     this.setState({map: this._leafletElement});
   },
 
+  shouldUpdateCenter:function(next, prev) {
+    if (!prev) return true;
+    next = normalizeCenter(next);
+    prev = normalizeCenter(prev);
+    return next[0] !== prev[0] || next[1] !== prev[1];
+  },
+
   componentDidUpdate:function(prevProps) {
     var $__0=   this.props,center=$__0.center,zoom=$__0.zoom;
-    if (center && center !== prevProps.center) {
-      this.getLeafletElement().setView(center, zoom);
+    if (center && this.shouldUpdateCenter(center, prevProps.center)) {
+      this.getLeafletElement().setView(center, zoom, {animate: false});
     }
     else if (zoom && zoom !== prevProps.zoom) {
       this.getLeafletElement().setZoom(zoom);
@@ -220,7 +233,7 @@ var Map = React.createClass({
 
 module.exports = Map;
 
-},{"./mixins/element":17,"./types/latlng":21,"./types/latlngList":22,"leaflet":"leaflet","react/addons":"react/addons"}],8:[function(require,module,exports){
+},{"./mixins/element":17,"./types/latlng":21,"./types/latlngList":22,"leaflet":"leaflet","lodash-node/modern/objects/isArray":47,"react/addons":"react/addons"}],8:[function(require,module,exports){
 var React = require("react");
 var Leaflet = require("leaflet");
 
@@ -2486,6 +2499,16 @@ setIconDefaultImagePath("//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/images")
 
 module.exports = {
   setIconDefaultImagePath: setIconDefaultImagePath,
+  mixins: {
+    element: require("./mixins/element"),
+    mapLayer: require("./mixins/mapLayer"),
+    popupContainer: require("./mixins/popupContainer"),
+    tileLayer: require("./mixins/tileLayer")
+  },
+  PropTypes: {
+    latlng: require("./types/latlng"),
+    latlngList: require("./types/latlngList")
+  },
   CanvasTileLayer: require("./CanvasTileLayer"),
   Circle: require("./Circle"),
   CircleMarker: require("./CircleMarker"),
@@ -2504,4 +2527,4 @@ module.exports = {
   WMSTileLayer: require("./WMSTileLayer")
 };
 
-},{"./CanvasTileLayer":1,"./Circle":2,"./CircleMarker":3,"./FeatureGroup":4,"./GeoJson":5,"./ImageOverlay":6,"./Map":7,"./Marker":8,"./MultiPolygon":9,"./MultiPolyline":10,"./Polygon":11,"./Polyline":12,"./Popup":13,"./Rectangle":14,"./TileLayer":15,"./WMSTileLayer":16,"leaflet":"leaflet"}]},{},[]);
+},{"./CanvasTileLayer":1,"./Circle":2,"./CircleMarker":3,"./FeatureGroup":4,"./GeoJson":5,"./ImageOverlay":6,"./Map":7,"./Marker":8,"./MultiPolygon":9,"./MultiPolyline":10,"./Polygon":11,"./Polyline":12,"./Popup":13,"./Rectangle":14,"./TileLayer":15,"./WMSTileLayer":16,"./mixins/element":17,"./mixins/mapLayer":18,"./mixins/popupContainer":19,"./mixins/tileLayer":20,"./types/latlng":21,"./types/latlngList":22,"leaflet":"leaflet"}]},{},[]);
