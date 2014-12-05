@@ -64,4 +64,17 @@ describe("Map", function() {
     expect(mapLeaflet.getCenter().lng).toBe(4.5);
     expect(mapLeaflet.getZoom()).toBe(12);
   });
+
+  it("only renders the container div server-side", function() {
+    document.body.innerHTML = '<div id="test"></div>';
+    var Component = React.createClass({
+      render() {
+        return <span>test</span>;
+      }
+    });
+    var component = <Map><Component /></Map>;
+    var html = React.renderToStaticMarkup(<Map />, document.getElementById("test"));
+
+    expect(html).toBe('<div id="map1"></div>');
+  });
 });
