@@ -20,11 +20,11 @@ module.exports = React.createClass({
   },
 
   componentDidUpdate(prevProps) {
-    var {children, map, popupContainer, position} = this.props;
+    var {children, map, popupContainer, position, ...props} = this.props;
     if (children !== prevProps.children) {
       var content = React.renderToStaticMarkup(children);
       if (popupContainer) {
-        popupContainer.bindPopup(content);
+        popupContainer.bindPopup(content, props);
       }
       else {
         var el = this.getLeafletElement();
@@ -39,7 +39,7 @@ module.exports = React.createClass({
   },
 
   render() {
-    var {children, map, popupContainer, position} = this.props;
+    var {children, map, popupContainer, position, ...props} = this.props;
     if (children) {
       if (React.Children.count(children) > 1) {
         children = <span>{children}</span>;
@@ -47,7 +47,7 @@ module.exports = React.createClass({
       var content = React.renderToStaticMarkup(children);
       // Attach to container component
       if (popupContainer) {
-        popupContainer.bindPopup(content);
+        popupContainer.bindPopup(content, props);
         return null;
       }
       // Attach to a Map
