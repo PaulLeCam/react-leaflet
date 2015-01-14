@@ -19,7 +19,7 @@ var examples = (
 
 React.render(examples, document.getElementById("app"));
 
-},{"./events":"/Users/paul/Dev/PaulLeCam/react-leaflet/example/events.js","./simple":"/Users/paul/Dev/PaulLeCam/react-leaflet/example/simple.js","./vector-layers":"/Users/paul/Dev/PaulLeCam/react-leaflet/example/vector-layers.js","react":"react"}],"/Users/paul/Dev/PaulLeCam/react-leaflet/example/events.js":[function(require,module,exports){
+},{"./events":"/Users/paul/dev/PaulLeCam/react-leaflet/example/events.js","./simple":"/Users/paul/dev/PaulLeCam/react-leaflet/example/simple.js","./vector-layers":"/Users/paul/dev/PaulLeCam/react-leaflet/example/vector-layers.js","react":"react"}],"/Users/paul/dev/PaulLeCam/react-leaflet/example/events.js":[function(require,module,exports){
 var React = require("react");
 var $__0=     require("react-leaflet"),Map=$__0.Map,TileLayer=$__0.TileLayer,Marker=$__0.Marker,Popup=$__0.Popup;
 
@@ -75,7 +75,7 @@ module.exports = React.createClass({
   }
 });
 
-},{"react":"react","react-leaflet":"react-leaflet"}],"/Users/paul/Dev/PaulLeCam/react-leaflet/example/simple.js":[function(require,module,exports){
+},{"react":"react","react-leaflet":"react-leaflet"}],"/Users/paul/dev/PaulLeCam/react-leaflet/example/simple.js":[function(require,module,exports){
 var React = require("react");
 var $__0=     require("react-leaflet"),Map=$__0.Map,TileLayer=$__0.TileLayer,Marker=$__0.Marker,Popup=$__0.Popup;
 
@@ -108,7 +108,7 @@ module.exports = React.createClass({
   }
 });
 
-},{"react":"react","react-leaflet":"react-leaflet"}],"/Users/paul/Dev/PaulLeCam/react-leaflet/example/vector-layers.js":[function(require,module,exports){
+},{"react":"react","react-leaflet":"react-leaflet"}],"/Users/paul/dev/PaulLeCam/react-leaflet/example/vector-layers.js":[function(require,module,exports){
 var React = require("react");
 var $__0=    
         require("react-leaflet"),Circle=$__0.Circle,CircleMarker=$__0.CircleMarker,Map=$__0.Map,MultiPolygon=$__0.MultiPolygon,MultiPolyline=$__0.MultiPolyline,Polygon=$__0.Polygon,Polyline=$__0.Polyline,Popup=$__0.Popup,Rectangle=$__0.Rectangle,TileLayer=$__0.TileLayer;
