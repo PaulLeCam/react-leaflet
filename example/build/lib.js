@@ -396,11 +396,11 @@ module.exports = React.createClass({
   },
 
   componentDidUpdate:function(prevProps) {
-    var $__0=     this.props,children=$__0.children,map=$__0.map,popupContainer=$__0.popupContainer,position=$__0.position;
+    var $__0=      this.props,children=$__0.children,map=$__0.map,popupContainer=$__0.popupContainer,position=$__0.position,props=(function(source, exclusion) {var rest = {};var hasOwn = Object.prototype.hasOwnProperty;if (source == null) {throw new TypeError();}for (var key in source) {if (hasOwn.call(source, key) && !hasOwn.call(exclusion, key)) {rest[key] = source[key];}}return rest;})($__0,{children:1,map:1,popupContainer:1,position:1});
     if (children !== prevProps.children) {
       var content = React.renderToStaticMarkup(children);
       if (popupContainer) {
-        popupContainer.bindPopup(content);
+        popupContainer.bindPopup(content, props);
       }
       else {
         var el = this.getLeafletElement();
@@ -415,7 +415,7 @@ module.exports = React.createClass({
   },
 
   render:function() {
-    var $__0=     this.props,children=$__0.children,map=$__0.map,popupContainer=$__0.popupContainer,position=$__0.position;
+    var $__0=      this.props,children=$__0.children,map=$__0.map,popupContainer=$__0.popupContainer,position=$__0.position,props=(function(source, exclusion) {var rest = {};var hasOwn = Object.prototype.hasOwnProperty;if (source == null) {throw new TypeError();}for (var key in source) {if (hasOwn.call(source, key) && !hasOwn.call(exclusion, key)) {rest[key] = source[key];}}return rest;})($__0,{children:1,map:1,popupContainer:1,position:1});
     if (children) {
       if (React.Children.count(children) > 1) {
         children = React.createElement("span", null, children);
@@ -423,7 +423,7 @@ module.exports = React.createClass({
       var content = React.renderToStaticMarkup(children);
       // Attach to container component
       if (popupContainer) {
-        popupContainer.bindPopup(content);
+        popupContainer.bindPopup(content, props);
         return null;
       }
       // Attach to a Map
