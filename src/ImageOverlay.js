@@ -14,12 +14,17 @@ module.exports = React.createClass({
     bounds: boundsType.isRequired
   },
 
-  componentWillMount() {
+  render() {
     var {bounds, map, url, ...props} = this.props;
-    this._leafletElement =  Leaflet.imageOverlay(url, bounds, props);
+
+    if(this._leafletElement){
+      this.props.map.removeLayer(this._leafletElement);
+      this._leafletElement = Leaflet.imageOverlay(url, bounds, props);
+      this.props.map.addLayer(this._leafletElement);
+    }else{
+      this._leafletElement = Leaflet.imageOverlay(url, bounds, props);
+    }
+    return null;
   },
 
-  render() {
-    return null;
-  }
 });
