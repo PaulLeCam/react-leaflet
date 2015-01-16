@@ -72,7 +72,7 @@ Note that the `<Map>` component creates its own `<div>` container for the map, i
 
 ### Events
 
-Leaflet exposes its own events, different from React. You can listen to them using React-Leaflet by adding a callback to a property prefixed by `onLeaflet`. Ex: `<Map onLeafletMovend={this.handleMoved}>...</Map>`.  
+Leaflet exposes its own events, different from React. You can listen to them using React-Leaflet by adding a callback to a property prefixed by `onLeaflet`. Ex: `<Map onLeafletMoveend={this.handleMoveend}>...</Map>`.  
 Check Leaflet documentation for the events associated to each component.
 
 ### Components
