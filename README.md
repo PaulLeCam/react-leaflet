@@ -14,6 +14,12 @@ Tests and documentation still being worked on.
 npm install react-leaflet
 ```
 
+React and Leaflet are peer dependencies, if you haven't already installed them use:
+
+```bash
+npm install leaflet react react-leaflet
+```
+
 ## Getting started
 
 All components are React wrappers for Leaflet elements and layers, they need a map instance and therefore must be included in a top-level `<Map>` component.
@@ -70,6 +76,8 @@ Note that the `<Map>` component creates its own `<div>` container for the map, i
 
 **LatLngList**: An Array of *LatLng*.
 
+**Bounds**: An instance of *Leaflet.LatLngBounds* or a *LatLngList*.
+
 ### Events
 
 Leaflet exposes its own events, different from React. You can listen to them using React-Leaflet by adding a callback to a property prefixed by `onLeaflet`. Ex: `<Map onLeafletMoveend={this.handleMoveend}>...</Map>`.  
@@ -89,7 +97,7 @@ This is the top-level component that must be mounted for children ones to be ren
 **Properties**
 - `center` (optional LatLng, dynamic): Center of the map. This property is dynamic, if you change it it will be reflected in the map.
 - `id` (optional String): The ID of the `<div>` container for the map. If you don't provide it, a unique one will be created.
-- `maxBounds` (optional LatlngList)
+- `maxBounds` (optional Bounds)
 - `maxZoom` (optional Number)
 - `minZoom` (optional Number)
 - `zoom` (optional Number, dynamic)
@@ -114,11 +122,16 @@ The Popup children will be rendered as its content using `React.renderToStaticMa
 - `opacity` (optional Number, dynamic)
 - `zIndex` (optional Number, dynamic)
 
+##### ImageOverlay
+
+- `url` (required String, dynamic)
+- `opacity` (optional Number, dynamic)
+- `attribution` (optional String)
+
 ##### Implemented but needing testing and documentation
 
 - CanvasTileLayer
 - WMSTileLayer
-- ImageOverlay
 
 #### Vector Layers
 
@@ -150,7 +163,7 @@ The Popup children will be rendered as its content using `React.renderToStaticMa
 
 ##### Rectangle
 
-- `bounds` (required LatLngList, dynamic)
+- `bounds` (required Bounds, dynamic)
 
 #### Other Layers
 

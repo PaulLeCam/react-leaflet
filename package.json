@@ -12,6 +12,7 @@
     "url": "https://github.com/PaulLeCam/react-leaflet.git"
   },
   "keywords": [
+    "react-component",
     "react",
     "leaflet",
     "map"
@@ -23,21 +24,21 @@
   },
   "homepage": "https://github.com/PaulLeCam/react-leaflet",
   "dependencies": {
-    "leaflet": "^0.7.3",
     "lodash-node": "^2.4.1"
   },
   "peerDependencies": {
+    "leaflet": "^0.7.0",
     "react": "^0.12.0"
   },
   "devDependencies": {
-    "browserify": "^8.1.0",
+    "browserify": "^8.1.1",
     "del": "^1.1.1",
     "gulp": "^3.8.10",
-    "gulp-load-plugins": "^0.7.1",
+    "gulp-load-plugins": "^0.8.0",
     "gulp-react": "^2.0.0",
     "gulp-util": "^3.0.1",
     "gulp-webserver": "^0.9.0",
-    "jest-cli": "^0.1.18",
+    "jest-cli": "^0.2.1",
     "react": "^0.12.2",
     "react-tools": "^0.12.2",
     "reactify": "^0.17.1",
