@@ -1,5 +1,5 @@
 example
 src
+__tests__
 .travis.yml
 gulpfile.js
-preprocessor.js

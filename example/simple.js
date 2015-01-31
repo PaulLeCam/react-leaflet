@@ -1,7 +1,7 @@
-var React = require("react");
-var {Map, TileLayer, Marker, Popup} = require("react-leaflet");
+import React from "react";
+import {Map, TileLayer, Marker, Popup} from "react-leaflet";
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: "SimpleExample",
 
   getInitialState() {
@@ -13,7 +13,7 @@ module.exports = React.createClass({
   },
 
   render() {
-    var position = [this.state.lat, this.state.lng];
+    let position = [this.state.lat, this.state.lng];
     return (
       <Map center={position} zoom={this.state.zoom}>
         <TileLayer

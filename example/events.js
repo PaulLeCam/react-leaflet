@@ -1,7 +1,7 @@
-var React = require("react");
-var {Map, TileLayer, Marker, Popup} = require("react-leaflet");
+import React from "react";
+import {Map, TileLayer, Marker, Popup} from "react-leaflet";
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: "EventsExample",
 
   getInitialState() {
@@ -26,7 +26,7 @@ module.exports = React.createClass({
   },
 
   render() {
-    var marker = null;
+    let marker = null;
     if (this.state.hasLocation) {
       marker = (
         <Marker position={this.state.latlng}>

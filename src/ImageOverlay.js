@@ -1,10 +1,10 @@
-var React = require("react");
-var Leaflet = require("leaflet");
+import React from "react";
+import Leaflet from "leaflet";
 
-var boundsType = require("./types/bounds");
-var mapLayerMixin = require("./mixins/mapLayer");
+import boundsType from "./types/bounds";
+import mapLayerMixin from "./mixins/mapLayer";
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: "ImageOverlay",
 
   mixins: [mapLayerMixin],
@@ -17,7 +17,7 @@ module.exports = React.createClass({
   },
 
   componentWillMount() {
-    var {bounds, map, url, ...props} = this.props;
+    let {bounds, map, url, ...props} = this.props;
     this._leafletElement =  Leaflet.imageOverlay(url, bounds, props);
   },
 

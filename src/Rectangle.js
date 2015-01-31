@@ -1,10 +1,10 @@
-var React = require("react");
-var Leaflet = require("leaflet");
+import React from "react";
+import Leaflet from "leaflet";
 
-var boundsType = require("./types/bounds");
-var popupContainerMixin = require("./mixins/popupContainer");
+import boundsType from "./types/bounds";
+import popupContainerMixin from "./mixins/popupContainer";
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: "Rectangle",
 
   mixins: [popupContainerMixin],
@@ -14,7 +14,7 @@ module.exports = React.createClass({
   },
 
   componentWillMount() {
-    var {bounds, map, ...props} = this.props;
+    let {bounds, map, ...props} = this.props;
     this._leafletElement = Leaflet.rectangle(bounds, props);
   },
 

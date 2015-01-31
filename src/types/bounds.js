@@ -1,9 +1,9 @@
-var React = require("react");
-var Leaflet = require("leaflet");
+import React from "react";
+import Leaflet from "leaflet";
 
-var latlngList = require("./latlngList");
+import latlngList from "./latlngList";
 
-module.exports = React.PropTypes.oneOfType([
+export default React.PropTypes.oneOfType([
   React.PropTypes.instanceOf(Leaflet.LatLngBounds),
   latlngList
 ]);

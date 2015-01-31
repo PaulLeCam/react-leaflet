@@ -1,11 +1,11 @@
-var React = require("react");
-var mapLayerMixin = require("./mapLayer");
+import React from "react";
+import mapLayerMixin from "./mapLayer";
 
-module.exports = {
+export default {
   mixins: [mapLayerMixin],
 
   render() {
-    var children = this.getClonedChildrenWithMap({
+    let children = this.getClonedChildrenWithMap({
       popupContainer: this.getLeafletElement()
     });
     return <noscript>{children}</noscript>;

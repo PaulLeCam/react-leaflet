@@ -1,10 +1,10 @@
-var React = require("react");
-var Leaflet = require("leaflet");
+import React from "react";
+import Leaflet from "leaflet";
 
-var latlngListType = require("./types/latlngList");
-var popupContainerMixin = require("./mixins/popupContainer");
+import latlngListType from "./types/latlngList";
+import popupContainerMixin from "./mixins/popupContainer";
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: "Polyline",
 
   mixins: [popupContainerMixin],
@@ -14,7 +14,7 @@ module.exports = React.createClass({
   },
 
   componentWillMount() {
-    var {map, positions, ...props} = this.props;
+    let {map, positions, ...props} = this.props;
     this._leafletElement = Leaflet.polyline(positions, props);
   },
 

@@ -1,9 +1,9 @@
-var React = require("react");
-var Leaflet = require("leaflet");
+import React from "react";
+import Leaflet from "leaflet";
 
-var tileLayerMixin = require("./mixins/tileLayer");
+import tileLayerMixin from "./mixins/tileLayer";
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: "WMSTileLayer",
 
   mixins: [tileLayerMixin],
@@ -13,7 +13,7 @@ module.exports = React.createClass({
   },
 
   componentWillMount() {
-    var {map, url, ...props} = this.props;
+    let {map, url, ...props} = this.props;
     this._leafletElement =  Leaflet.tileLayer.wms(url, props);
   }
 });

@@ -1,31 +1,28 @@
-var clone = require("lodash-node/modern/objects/clone");
-var forEach = require("lodash-node/modern/collections/forEach");
-var reduce = require("lodash-node/modern/collections/reduce");
+import clone from "lodash/lang/clone";
+import forEach from "lodash/collection/forEach";
+import reduce from "lodash/collection/reduce";
 
-module.exports = {
+export default {
   getLeafletElement() {
     return this._leafletElement;
   },
 
   extractEvents(props) {
-    var re = /onLeaflet(.+)/i;
+    let re = /on(?:Leaflet)?(.+)/i;
     return reduce(props, (res, cb, ev) => {
       if (re.test(ev)) {
-        var key = ev.replace(re, (match, p) => p.toLowerCase());
+        let key = ev.replace(re, (match, p) => p.toLowerCase());
         res[ key ] = cb;
       }
       return res;
     }, {});
   },
 
-  bindEvents(next, prev) {
-    var el = this.getLeafletElement();
+  bindEvents(next = {}, prev = {}) {
+    let el = this.getLeafletElement();
     if (!el) return;
 
-    next = next || {};
-    prev = prev || {};
-    var diff = clone(prev);
-
+    let diff = clone(prev);
     forEach(prev, (cb, ev) => {
       if (!next[ ev ] || cb !== next[ ev ]) {
         delete diff[ ev ];
@@ -44,7 +41,7 @@ module.exports = {
   },
 
   fireEvent(type, data) {
-    var el = this.getLeafletElement();
+    let el = this.getLeafletElement();
     if (el) el.fire(type, data);
   },
 
@@ -57,12 +54,12 @@ module.exports = {
   },
 
   componentWillReceiveProps(nextProps) {
-    var next = this.extractEvents(nextProps);
+    let next = this.extractEvents(nextProps);
     this._leafletEvents = this.bindEvents(next, this._leafletEvents);
   },
 
   componentWillUnmount() {
-    var el = this.getLeafletElement();
+    let el = this.getLeafletElement();
     if (!el) return;
 
     forEach(this._leafletEvents, (cb, ev) => {

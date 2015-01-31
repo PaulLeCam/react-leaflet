@@ -1,26 +1,24 @@
-var isArray = require("lodash-node/modern/objects/isArray");
+import isArray from "lodash/lang/isArray";
+import uniqueId from "lodash/utility/uniqueId";
 
-var React = require("react/addons");
-var Leaflet = require("leaflet");
+import React from "react/addons";
+import Leaflet from "leaflet";
 
-var boundsType = require("./types/bounds");
-var latlngType = require("./types/latlng");
+import boundsType from "./types/bounds";
+import latlngType from "./types/latlng";
 
-var elementMixin = require("./mixins/element");
-var currentId = 0;
+import elementMixin from "./mixins/element";
 
-var normalizeCenter = function(pos) {
-  return isArray(pos) ? pos : [pos.lat, pos.lng || pos.lon];
-};
+let normalizeCenter = pos => isArray(pos) ? pos : [pos.lat, pos.lng || pos.lon];
 
-var Map = React.createClass({
+let Map = React.createClass({
   displayName: "Map",
 
   mixins: [elementMixin],
 
   statics: {
     uid() {
-      return "map" + ++currentId;
+      return uniqueId("map");
     }
   },
 
@@ -53,7 +51,7 @@ var Map = React.createClass({
   },
 
   componentDidUpdate(prevProps) {
-    var {center, zoom} = this.props;
+    let {center, zoom} = this.props;
     if (center && this.shouldUpdateCenter(center, prevProps.center)) {
       this.getLeafletElement().setView(center, zoom, {animate: false});
     }
@@ -67,8 +65,8 @@ var Map = React.createClass({
   },
 
   render() {
-    var map = this.getLeafletElement();
-    var children = map ? React.Children.map(this.props.children, child => {
+    let map = this.getLeafletElement();
+    let children = map ? React.Children.map(this.props.children, child => {
       return child ? React.addons.cloneWithProps(child, {map}) : null;
     }) : null;
 
@@ -76,4 +74,4 @@ var Map = React.createClass({
   }
 });
 
-module.exports = Map;
+export default Map;

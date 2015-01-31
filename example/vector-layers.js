@@ -1,36 +1,36 @@
-var React = require("react");
-var {Circle, CircleMarker, Map, MultiPolygon, MultiPolyline,
-  Polygon, Polyline, Popup, Rectangle, TileLayer} = require("react-leaflet");
+import React from "react";
+import {Circle, CircleMarker, Map, MultiPolygon, MultiPolyline,
+  Polygon, Polyline, Popup, Rectangle, TileLayer} from "react-leaflet";
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: "VectorLayersExample",
 
   render() {
-    var center = [51.505, -0.09];
+    let center = [51.505, -0.09];
 
-    var polyline = [
+    let polyline = [
       [51.505, -0.09],
       [51.51, -0.1],
       [51.51, -0.12]
     ];
 
-    var multiPolyline = [
+    let multiPolyline = [
       [[51.5, -0.1], [51.5, -0.12], [51.52, -0.12]],
       [[51.5, -0.05], [51.5, -0.06], [51.52, -0.06]]
     ];
 
-    var polygon = [
+    let polygon = [
       [51.515, -0.09],
       [51.52, -0.1],
       [51.52, -0.12]
     ];
 
-    var multiPolygon = [
+    let multiPolygon = [
       [[51.51, -0.12], [51.51, -0.13], [51.53, -0.13]],
       [[51.51, -0.05], [51.51, -0.07], [51.53, -0.07]]
     ];
 
-    var rectangle = [
+    let rectangle = [
       [51.49, -0.08],
       [51.5, -0.06]
     ];

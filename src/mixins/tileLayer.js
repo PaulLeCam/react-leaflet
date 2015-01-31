@@ -1,7 +1,7 @@
-var React = require("react");
-var mapLayerMixin = require("./mapLayer");
+import React from "react";
+import mapLayerMixin from "./mapLayer";
 
-module.exports = {
+export default {
   mixins: [mapLayerMixin],
 
   propTypes: {
@@ -10,7 +10,7 @@ module.exports = {
   },
 
   componentDidUpdate(prevProps) {
-    var {opacity, zIndex} = this.props;
+    let {opacity, zIndex} = this.props;
     if (opacity && opacity !== prevProps.opacity) {
       this.getLeafletElement().setOpacity(opacity);
     }

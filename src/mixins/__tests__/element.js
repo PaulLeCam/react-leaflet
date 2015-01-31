@@ -1,11 +1,12 @@
 jest.dontMock("../element");
 
-describe("elementMixin", function() {
-  var Leaflet = require("leaflet");
-  var React = require("react");
+import Leaflet from "leaflet";
+import React from "react";
 
-  var elementMixin = require("../element");
-  var Component = React.createClass({
+import elementMixin from "../element";
+
+describe("elementMixin", () => {
+  let Component = React.createClass({
     mixins: [elementMixin],
     componentWillMount() {
       this._leafletElement = Leaflet.map("test");
@@ -15,31 +16,42 @@ describe("elementMixin", function() {
     }
   });
 
-  it("exposes a `getLeafletElement()` method", function() {
+  it("exposes a `getLeafletElement()` method", () => {
     document.body.innerHTML = '<div id="test"></div>';
 
-    var component = <Component />;
-    var instance = React.render(component, document.getElementById("test"));
+    let component = <Component />;
+    let instance = React.render(component, document.getElementById("test"));
 
     expect(instance.getLeafletElement()._container).toBeDefined();
   });
 
-  it("binds the event", function() {
+  it("binds the event", () => {
     document.body.innerHTML = '<div id="test"></div>';
 
-    var callback = jest.genMockFn();
-    var component = <Component onLeafletClick={callback} />;
-    var instance = React.render(component, document.getElementById("test"));
+    let callback = jest.genMockFn();
+    let component = <Component onLeafletClick={callback} />;
+    let instance = React.render(component, document.getElementById("test"));
 
     instance.fireEvent("click");
     expect(callback.mock.calls.length).toBe(1);
   });
 
-  it("unbinds the event", function() {
+  it("binds events as Leaflet events", () => {
     document.body.innerHTML = '<div id="test"></div>';
 
-    var callback = jest.genMockFn();
-    var TestComponent = React.createClass({
+    let callback = jest.genMockFn();
+    let component = <Component onClick={callback} />;
+    let instance = React.render(component, document.getElementById("test"));
+
+    instance.fireEvent("click");
+    expect(callback.mock.calls.length).toBe(1);
+  });
+
+  it("unbinds the event", () => {
+    document.body.innerHTML = '<div id="test"></div>';
+
+    let callback = jest.genMockFn();
+    let TestComponent = React.createClass({
       getInitialState() {
         return {bindEvent: true};
       },
@@ -55,8 +67,8 @@ describe("elementMixin", function() {
           : <Component ref="c" />;
       }
     });
-    var component = <TestComponent />;
-    var instance = React.render(component, document.getElementById("test"));
+    let component = <TestComponent />;
+    let instance = React.render(component, document.getElementById("test"));
 
     instance.fire();
     expect(callback.mock.calls.length).toBe(1);
@@ -66,12 +78,12 @@ describe("elementMixin", function() {
     expect(callback.mock.calls.length).toBe(1);
   });
 
-  it("replaces the event", function() {
+  it("replaces the event", () => {
     document.body.innerHTML = '<div id="test"></div>';
 
-    var callback1 = jest.genMockFn();
-    var callback2 = jest.genMockFn();
-    var TestComponent = React.createClass({
+    let callback1 = jest.genMockFn();
+    let callback2 = jest.genMockFn();
+    let TestComponent = React.createClass({
       getInitialState() {
         return {cb: callback1};
       },
@@ -85,8 +97,8 @@ describe("elementMixin", function() {
         return <Component ref="c" onLeafletClick={this.state.cb} />;
       }
     });
-    var component = <TestComponent />;
-    var instance = React.render(component, document.getElementById("test"));
+    let component = <TestComponent />;
+    let instance = React.render(component, document.getElementById("test"));
 
     instance.fire();
     expect(callback1.mock.calls.length).toBe(1);

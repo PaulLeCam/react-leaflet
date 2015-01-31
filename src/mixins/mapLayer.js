@@ -1,9 +1,9 @@
-var assign = require("lodash-node/modern/objects/assign");
-var React = require("react/addons");
+import assign from "lodash/object/assign";
+import React from "react/addons";
 
-var elementMixin = require("./element");
+import elementMixin from "./element";
 
-module.exports = {
+export default {
   mixins: [elementMixin],
 
   propTypes: {
@@ -19,8 +19,8 @@ module.exports = {
   },
 
   getClonedChildrenWithMap(extra) {
-    var {children, map} = this.props;
-    var props = assign({map}, extra);
+    let {children, map} = this.props;
+    let props = assign({map}, extra);
 
     return React.Children.map(children, child => {
       return child ? React.addons.cloneWithProps(child, props) : null;

@@ -1,9 +1,9 @@
-var React = require("react");
-var Leaflet = require("leaflet");
+import React from "react";
+import Leaflet from "leaflet";
 
-var popupContainerMixin = require("./mixins/popupContainer");
+import popupContainerMixin from "./mixins/popupContainer";
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: "GeoJson",
 
   mixins: [popupContainerMixin],
@@ -17,7 +17,7 @@ module.exports = React.createClass({
   },
 
   componentWillMount() {
-    var {data, map, ...props} = this.props;
+    let {data, map, ...props} = this.props;
     this._leafletElement = Leaflet.geoJson(data, props);
   }
 });

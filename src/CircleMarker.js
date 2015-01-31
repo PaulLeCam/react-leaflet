@@ -1,10 +1,10 @@
-var React = require("react");
-var Leaflet = require("leaflet");
+import React from "react";
+import Leaflet from "leaflet";
 
-var latlngType = require("./types/latlng");
-var popupContainerMixin = require("./mixins/popupContainer");
+import latlngType from "./types/latlng";
+import popupContainerMixin from "./mixins/popupContainer";
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: "CircleMarker",
 
   mixins: [popupContainerMixin],
@@ -15,7 +15,7 @@ module.exports = React.createClass({
   },
 
   componentWillMount() {
-    var {center, map, ...props} = this.props;
+    let {center, map, ...props} = this.props;
     this._leafletElement = Leaflet.circleMarker(center, props);
   },
 

@@ -1,10 +1,10 @@
-var React = require("react");
-var Leaflet = require("leaflet");
+import React from "react";
+import Leaflet from "leaflet";
 
-var latlngType = require("./types/latlng");
-var elementMixin = require("./mixins/element");
+import latlngType from "./types/latlng";
+import elementMixin from "./mixins/element";
 
-module.exports = React.createClass({
+export default React.createClass({
   displayName: "Popup",
 
   mixins: [elementMixin],
@@ -15,19 +15,19 @@ module.exports = React.createClass({
   },
 
   componentWillMount() {
-    var {children, map, ...props} = this.props;
+    let {children, map, ...props} = this.props;
     this._leafletElement = Leaflet.popup(props);
   },
 
   componentDidUpdate(prevProps) {
-    var {children, map, popupContainer, position, ...props} = this.props;
+    let {children, map, popupContainer, position, ...props} = this.props;
     if (children !== prevProps.children) {
-      var content = React.renderToStaticMarkup(children);
+      let content = React.renderToStaticMarkup(children);
       if (popupContainer) {
         popupContainer.bindPopup(content, props);
       }
       else {
-        var el = this.getLeafletElement();
+        let el = this.getLeafletElement();
         el.setContent(content);
         if (position !== prevProps.position) el.setLatLng(position);
       }
@@ -39,19 +39,16 @@ module.exports = React.createClass({
   },
 
   render() {
-    var {children, map, popupContainer, position, ...props} = this.props;
+    let {children, map, popupContainer, position, ...props} = this.props;
     if (children) {
-      if (React.Children.count(children) > 1) {
-        children = <span>{children}</span>;
-      }
-      var content = React.renderToStaticMarkup(children);
+      let content = React.renderToStaticMarkup(children);
       // Attach to container component
       if (popupContainer) {
         popupContainer.bindPopup(content, props);
         return null;
       }
       // Attach to a Map
-      var el = this.getLeafletElement();
+      let el = this.getLeafletElement();
       el.setContent(content);
       if (position) el.setLatLng(position);
       el.openOn(map);
