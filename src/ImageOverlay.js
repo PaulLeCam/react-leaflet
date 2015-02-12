@@ -16,6 +16,11 @@ module.exports = React.createClass({
     attribution: React.PropTypes.string
   },
 
+  componentWillMount() {
+    var {bounds, map, url, ...props} = this.props;
+    this._leafletElement =  Leaflet.imageOverlay(url, bounds, props);
+  },
+
   componentDidUpdate(prevProps) {
     if (this.props.url !== prevProps.url) {
       this.getLeafletElement().setUrl(this.props.url);
