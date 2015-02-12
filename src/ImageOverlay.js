@@ -11,19 +11,21 @@ module.exports = React.createClass({
 
   propTypes: {
     url: React.PropTypes.string.isRequired,
-    bounds: boundsType.isRequired
+    bounds: boundsType.isRequired,
+    opacity: React.PropTypes.number,
+    attribution: React.PropTypes.string
+  },
+
+  componentDidUpdate(prevProps) {
+    if (this.props.url !== prevProps.url) {
+      this.getLeafletElement().setUrl(this.props.url);
+    }
+    if (this.props.opacity !== prevProps.opacity) {
+      this.getLeafletElement().setOpacity(this.props.opacity);
+    }
   },
 
   render() {
-    var {bounds, map, url, ...props} = this.props;
-
-    if(this._leafletElement){
-      this.props.map.removeLayer(this._leafletElement);
-      this._leafletElement = Leaflet.imageOverlay(url, bounds, props);
-      this.props.map.addLayer(this._leafletElement);
-    }else{
-      this._leafletElement = Leaflet.imageOverlay(url, bounds, props);
-    }
     return null;
   },
 
