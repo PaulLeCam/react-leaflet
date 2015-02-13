@@ -66,13 +66,29 @@ var Map = React.createClass({
     this.getLeafletElement().remove();
   },
 
+  getEventHandlers() {
+    var handlers = {};
+
+    for (var propKey in this.props) {
+      if (!this.props.hasOwnProperty(propKey)) continue;
+
+      if (propKey.match(/^on/)) {
+        handlers[propKey] = this.props[propKey];
+      }
+    }
+
+    return handlers;
+  },
+
   render() {
     var map = this.getLeafletElement();
+    var handlers = this.getEventHandlers();
+
     var children = map ? React.Children.map(this.props.children, child => {
       return child ? React.addons.cloneWithProps(child, {map}) : null;
     }) : null;
 
-    return <div className={this.props.className} id={this.state.id}>{children}</div>;
+    return <div className={this.props.className} id={this.state.id} {...handlers}>{children}</div>;
   }
 });
 
