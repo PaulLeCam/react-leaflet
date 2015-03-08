@@ -2,25 +2,22 @@ import React from "react";
 import Leaflet from "leaflet";
 
 import latlngListType from "./types/latlngList";
-import popupContainerMixin from "./mixins/popupContainer";
+import PopupContainer from "./PopupContainer";
 
-export default React.createClass({
-  displayName: "MultiPolyline",
-
-  mixins: [popupContainerMixin],
-
-  propTypes: {
-    polylines: React.PropTypes.arrayOf(latlngListType).isRequired
-  },
-
+export default class MultiPolyline extends PopupContainer {
   componentWillMount() {
-    let {map, polylines, ...props} = this.props;
-    this._leafletElement = Leaflet.multiPolyline(polylines, props);
-  },
+    super.componentWillMount();
+    const {map, polylines, ...props} = this.props;
+    this.leafletElement = Leaflet.multiPolyline(polylines, props);
+  }
 
   componentDidUpdate(prevProps) {
     if (this.props.polylines !== prevProps.polylines) {
-      this.getLeafletElement().setLatLngs(this.props.polylines);
+      this.leafletElement.setLatLngs(this.props.polylines);
     }
   }
-});
+}
+
+MultiPolyline.propTypes = {
+  polylines: React.PropTypes.arrayOf(latlngListType).isRequired
+};

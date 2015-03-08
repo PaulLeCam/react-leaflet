@@ -1,26 +1,22 @@
-import React from "react";
 import Leaflet from "leaflet";
 
 import boundsType from "./types/bounds";
-import popupContainerMixin from "./mixins/popupContainer";
+import PopupContainer from "./PopupContainer";
 
-export default React.createClass({
-  displayName: "Rectangle",
-
-  mixins: [popupContainerMixin],
-
-  propTypes: {
-    bounds: boundsType.isRequired
-  },
-
+export default class Rectangle extends PopupContainer {
   componentWillMount() {
-    let {bounds, map, ...props} = this.props;
-    this._leafletElement = Leaflet.rectangle(bounds, props);
-  },
+    super.componentWillMount();
+    const {bounds, map, ...props} = this.props;
+    this.leafletElement = Leaflet.rectangle(bounds, props);
+  }
 
   componentDidUpdate(prevProps) {
     if (this.props.bounds !== prevProps.bounds) {
-      this.getLeafletElement().setBounds(this.props.bounds);
+      this.leafletElement.setBounds(this.props.bounds);
     }
   }
-});
+}
+
+Rectangle.propTypes = {
+  bounds: boundsType.isRequired
+};

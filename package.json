@@ -1,6 +1,6 @@
 {
   "name": "react-leaflet",
-  "version": "0.3.0",
+  "version": "0.4.0-beta.1",
   "description": "React components for Leaflet maps",
   "main": "lib/index.js",
   "scripts": {
@@ -30,30 +30,31 @@
   },
   "homepage": "https://github.com/PaulLeCam/react-leaflet",
   "dependencies": {
-    "lodash": "^3.3.0"
+    "lodash": "^3.4.0"
   },
   "peerDependencies": {
     "leaflet": "^0.7.0",
-    "react": "^0.12.0"
+    "react": "^0.13.0-rc2"
   },
   "devDependencies": {
-    "babel": "^4.4.3",
+    "babel": "^4.7.3",
     "babelify": "^5.0.3",
     "browserify": "^9.0.3",
     "gulp": "^3.8.10",
-    "gulp-load-plugins": "^0.8.0",
-    "gulp-util": "^3.0.1",
+    "gulp-load-plugins": "^0.8.1",
+    "gulp-util": "^3.0.4",
     "gulp-webserver": "^0.9.0",
     "jest-cli": "^0.4.0",
     "leaflet": "^0.7.3",
     "onchange": "^1.0.0",
-    "react": "^0.12.2",
+    "react": "^0.13.0-rc2",
     "vinyl-source-stream2": "^0.1.1",
     "watchify": "^2.4.0"
   },
   "jest": {
     "unmockedModulePathPatterns": [
       "<rootDir>/node_modules/babel",
+      "<rootDir>/node_modules/jest-cli",
       "<rootDir>/node_modules/leaflet",
       "<rootDir>/node_modules/lodash",
       "<rootDir>/node_modules/react"

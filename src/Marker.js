@@ -1,26 +1,22 @@
-import React from "react";
 import Leaflet from "leaflet";
 
 import latlngType from "./types/latlng";
-import popupContainerMixin from "./mixins/popupContainer";
+import PopupContainer from "./PopupContainer";
 
-export default React.createClass({
-  displayName: "Marker",
-
-  mixins: [popupContainerMixin],
-
-  propTypes: {
-    position: latlngType.isRequired
-  },
-
+export default class Marker extends PopupContainer {
   componentWillMount() {
-    let {map, position, ...props} = this.props;
-    this._leafletElement = Leaflet.marker(position, props);
-  },
+    super.componentWillMount();
+    const {map, position, ...props} = this.props;
+    this.leafletElement = Leaflet.marker(position, props);
+  }
 
   componentDidUpdate(prevProps) {
     if (this.props.position !== prevProps.position) {
-      this.getLeafletElement().setLatLng(this.props.position);
+      this.leafletElement.setLatLng(this.props.position);
     }
   }
-});
+}
+
+Marker.propTypes = {
+  position: latlngType.isRequired
+};

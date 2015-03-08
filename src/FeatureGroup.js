@@ -1,19 +1,15 @@
 import React from "react";
 import Leaflet from "leaflet";
 
-import popupContainerMixin from "./mixins/popupContainer";
+import PopupContainer from "./PopupContainer";
 
-export default React.createClass({
-  displayName: "FeatureGroup",
-
-  mixins: [popupContainerMixin],
-
-  propTypes: {
-    layers: React.PropTypes.array.isRequired
-  },
-
+export default class FeatureGroup extends PopupContainer {
   componentWillMount() {
-    let {layers, map, ...props} = this.props;
-    this._leafletElement = Leaflet.featureGroup(layers);
+    const {layers, map, ...props} = this.props;
+    this.leafletElement = Leaflet.featureGroup(layers);
   }
-});
+}
+
+FeatureGroup.propTypes = {
+  layers: React.PropTypes.array.isRequired
+};

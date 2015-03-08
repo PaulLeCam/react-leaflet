@@ -1,15 +1,10 @@
-import React from "react";
 import Leaflet from "leaflet";
+import BaseTileLayer from "./BaseTileLayer";
 
-import tileLayerMixin from "./mixins/tileLayer";
-
-export default React.createClass({
-  displayName: "CanvasTileLayer",
-
-  mixins: [tileLayerMixin],
-
+export default class CanvasTileLayer extends BaseTileLayer {
   componentWillMount() {
-    let {map, ...props} = this.props;
-    this._leafletElement =  Leaflet.tileLayer.canvas(props);
+    super.componentWillMount();
+    const {map, ...props} = this.props;
+    this.leafletElement = Leaflet.tileLayer.canvas(props);
   }
-});
+}

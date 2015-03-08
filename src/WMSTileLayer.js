@@ -1,19 +1,16 @@
 import React from "react";
 import Leaflet from "leaflet";
 
-import tileLayerMixin from "./mixins/tileLayer";
+import BaseTileLayer from "./BaseTileLayer";
 
-export default React.createClass({
-  displayName: "WMSTileLayer",
-
-  mixins: [tileLayerMixin],
-
-  propTypes: {
-    url: React.PropTypes.string.isRequired
-  },
-
+export default class WMSTileLayer extends BaseTileLayer {
   componentWillMount() {
-    let {map, url, ...props} = this.props;
-    this._leafletElement =  Leaflet.tileLayer.wms(url, props);
+    super.componentWillMount();
+    const {map, url, ...props} = this.props;
+    this.leafletElement = Leaflet.tileLayer.wms(url, props);
   }
-});
+}
+
+WMSTileLayer.propTypes = {
+  url: React.PropTypes.string.isRequired
+};

@@ -1,38 +1,41 @@
 jest.dontMock("../Map");
-jest.dontMock("../mixins/element");
+jest.dontMock("../MapComponent");
 
 import React from "react";
 import Map from "../Map";
 
 describe("Map", () => {
-  it("only renders the container div server-side", () => {
+  beforeEach(() => {
     document.body.innerHTML = '<div id="test"></div>';
-    let Component = React.createClass({
+  });
+
+  it("only renders the container div server-side", () => {
+    class Component extends React.Component {
       render() {
         return <span>test</span>;
       }
-    });
-    let component = <Map><Component /></Map>;
-    let html = React.renderToStaticMarkup(<Map />, document.getElementById("test"));
+    }
+    const component = <Map><Component /></Map>;
+    const html = React.renderToStaticMarkup(component, document.getElementById("test"));
 
     expect(html).toBe('<div id="map1"></div>');
   });
 
   it("initializes the map in the rendered container", () => {
-    document.body.innerHTML = '<div id="test"></div>';
-    let instance = React.render(<Map />, document.getElementById("test"));
+    const component = <Map />;
+    const instance = React.render(component, document.getElementById("test"));
+    const node = React.findDOMNode(instance);
 
-    expect(instance.getDOMNode()._leaflet).toBe(true);
+    expect(node._leaflet).toBe(true);
   });
 
   it("sets center and zoom props", () => {
-    let center = [1.2, 3.4];
-    let zoom = 10;
+    const center = [1.2, 3.4];
+    const zoom = 10;
 
-    document.body.innerHTML = '<div id="test"></div>';
-    let component = <Map center={center} zoom={zoom} />;
-    let instance = React.render(component, document.getElementById("test"));
-    let mapLeaflet = instance.getLeafletElement();
+    const component = <Map center={center} zoom={zoom} />;
+    const instance = React.render(component, document.getElementById("test"));
+    const mapLeaflet = instance.leafletElement;
 
     expect(mapLeaflet.getCenter().lat).toBe(center[0]);
     expect(mapLeaflet.getCenter().lng).toBe(center[1]);
@@ -40,29 +43,28 @@ describe("Map", () => {
   });
 
   it("updates center and zoom props", () => {
-    document.body.innerHTML = '<div id="test"></div>';
-    let Component = React.createClass({
-      getInitialState() {
-        return {
+    class Component extends React.Component {
+      constructor() {
+        this.state = {
           center: [1.2, 3.4],
           zoom: 10
         };
-      },
+      }
       getLeafletMap() {
-        return this.refs.map.getLeafletElement();
-      },
+        return this.refs.map.leafletElement;
+      }
       updatePosition() {
         this.setState({
           center: [2.3, 4.5],
           zoom: 12
         });
-      },
+      }
       render() {
         return <Map ref="map" center={this.state.center} zoom={this.state.zoom} />;
       }
-    });
-    let instance = React.render(<Component />, document.getElementById("test"));
-    let mapLeaflet = instance.getLeafletMap();
+    }
+    const instance = React.render(<Component />, document.getElementById("test"));
+    const mapLeaflet = instance.getLeafletMap();
 
     expect(mapLeaflet.getCenter().lat).toBe(1.2);
     expect(mapLeaflet.getCenter().lng).toBe(3.4);

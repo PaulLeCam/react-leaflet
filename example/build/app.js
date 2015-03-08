@@ -22,13 +22,18 @@ var examples = React.createElement(
   React.createElement(
     "h2",
     null,
-    "Simple"
+    "Popup with Marker"
   ),
   React.createElement(SimpleExample, null),
   React.createElement(
     "h2",
     null,
     "Events"
+  ),
+  React.createElement(
+    "p",
+    null,
+    "Click the map to show a marker at your detected location"
   ),
   React.createElement(EventsExample, null),
   React.createElement(
@@ -46,6 +51,12 @@ React.render(examples, document.getElementById("app"));
 
 var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
 
+var _prototypeProperties = function (child, staticProps, instanceProps) { if (staticProps) Object.defineProperties(child, staticProps); if (instanceProps) Object.defineProperties(child.prototype, instanceProps); };
+
+var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
+
+var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
+
 var React = _interopRequire(require("react"));
 
 var _reactLeaflet = require("react-leaflet");
@@ -54,68 +65,90 @@ var Map = _reactLeaflet.Map;
 var TileLayer = _reactLeaflet.TileLayer;
 var Marker = _reactLeaflet.Marker;
 var Popup = _reactLeaflet.Popup;
-module.exports = React.createClass({
-  displayName: "EventsExample",
 
-  getInitialState: function getInitialState() {
-    return {
+var EventsExample = (function (_React$Component) {
+  function EventsExample() {
+    _classCallCheck(this, EventsExample);
+
+    this.state = {
       hasLocation: false,
       latlng: {
         lat: 51.505,
         lng: -0.09
       }
     };
-  },
-
-  handleClick: function handleClick() {
-    this.refs.map.getLeafletElement().locate();
-  },
-
-  handleLocationFound: function handleLocationFound(e) {
-    this.setState({
-      hasLocation: true,
-      latlng: e.latlng
-    });
-  },
-
-  render: function render() {
-    var marker = null;
-    if (this.state.hasLocation) {
-      marker = React.createElement(
-        Marker,
-        { position: this.state.latlng },
-        React.createElement(
-          Popup,
-          null,
-          React.createElement(
-            "span",
-            null,
-            "You are here"
-          )
-        )
-      );
-    }
-
-    return React.createElement(
-      Map,
-      { ref: "map",
-        center: this.state.latlng,
-        zoom: 13,
-        onLeafletClick: this.handleClick,
-        onLeafletLocationfound: this.handleLocationFound },
-      React.createElement(TileLayer, {
-        url: "http://{s}.tile.osm.org/{z}/{x}/{y}.png",
-        attribution: "© <a href=\"http://osm.org/copyright\">OpenStreetMap</a> contributors"
-      }),
-      marker
-    );
   }
-});
+
+  _inherits(EventsExample, _React$Component);
+
+  _prototypeProperties(EventsExample, null, {
+    handleClick: {
+      value: function handleClick() {
+        this.refs.map.leafletElement.locate();
+      },
+      writable: true,
+      configurable: true
+    },
+    handleLocationFound: {
+      value: function handleLocationFound(e) {
+        this.setState({
+          hasLocation: true,
+          latlng: e.latlng
+        });
+      },
+      writable: true,
+      configurable: true
+    },
+    render: {
+      value: function render() {
+        var marker = this.state.hasLocation ? React.createElement(
+          Marker,
+          { position: this.state.latlng },
+          React.createElement(
+            Popup,
+            null,
+            React.createElement(
+              "span",
+              null,
+              "You are here"
+            )
+          )
+        ) : null;
+
+        return React.createElement(
+          Map,
+          { ref: "map",
+            center: this.state.latlng,
+            zoom: 13,
+            onClick: this.handleClick.bind(this),
+            onLocationfound: this.handleLocationFound.bind(this) },
+          React.createElement(TileLayer, {
+            url: "http://{s}.tile.osm.org/{z}/{x}/{y}.png",
+            attribution: "© <a href=\"http://osm.org/copyright\">OpenStreetMap</a> contributors"
+          }),
+          marker
+        );
+      },
+      writable: true,
+      configurable: true
+    }
+  });
+
+  return EventsExample;
+})(React.Component);
+
+module.exports = EventsExample;
 
 },{"react":"react","react-leaflet":"react-leaflet"}],"/Users/paul/dev/PaulLeCam/react-leaflet/example/simple.js":[function(require,module,exports){
 "use strict";
 
 var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
+
+var _prototypeProperties = function (child, staticProps, instanceProps) { if (staticProps) Object.defineProperties(child, staticProps); if (instanceProps) Object.defineProperties(child.prototype, instanceProps); };
+
+var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
+
+var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
 
 var React = _interopRequire(require("react"));
 
@@ -125,49 +158,68 @@ var Map = _reactLeaflet.Map;
 var TileLayer = _reactLeaflet.TileLayer;
 var Marker = _reactLeaflet.Marker;
 var Popup = _reactLeaflet.Popup;
-module.exports = React.createClass({
-  displayName: "SimpleExample",
 
-  getInitialState: function getInitialState() {
-    return {
+var SimpleExample = (function (_React$Component) {
+  function SimpleExample() {
+    _classCallCheck(this, SimpleExample);
+
+    this.state = {
       lat: 51.505,
       lng: -0.09,
       zoom: 13
     };
-  },
-
-  render: function render() {
-    var position = [this.state.lat, this.state.lng];
-    return React.createElement(
-      Map,
-      { center: position, zoom: this.state.zoom },
-      React.createElement(TileLayer, {
-        url: "http://{s}.tile.osm.org/{z}/{x}/{y}.png",
-        attribution: "© <a href=\"http://osm.org/copyright\">OpenStreetMap</a> contributors"
-      }),
-      React.createElement(
-        Marker,
-        { position: position },
-        React.createElement(
-          Popup,
-          null,
-          React.createElement(
-            "span",
-            null,
-            "A pretty CSS3 popup. ",
-            React.createElement("br", null),
-            " Easily customizable."
-          )
-        )
-      )
-    );
   }
-});
+
+  _inherits(SimpleExample, _React$Component);
+
+  _prototypeProperties(SimpleExample, null, {
+    render: {
+      value: function render() {
+        var position = [this.state.lat, this.state.lng];
+        return React.createElement(
+          Map,
+          { center: position, zoom: this.state.zoom },
+          React.createElement(TileLayer, {
+            url: "http://{s}.tile.osm.org/{z}/{x}/{y}.png",
+            attribution: "© <a href=\"http://osm.org/copyright\">OpenStreetMap</a> contributors"
+          }),
+          React.createElement(
+            Marker,
+            { position: position },
+            React.createElement(
+              Popup,
+              null,
+              React.createElement(
+                "span",
+                null,
+                "A pretty CSS3 popup. ",
+                React.createElement("br", null),
+                " Easily customizable."
+              )
+            )
+          )
+        );
+      },
+      writable: true,
+      configurable: true
+    }
+  });
+
+  return SimpleExample;
+})(React.Component);
+
+module.exports = SimpleExample;
 
 },{"react":"react","react-leaflet":"react-leaflet"}],"/Users/paul/dev/PaulLeCam/react-leaflet/example/vector-layers.js":[function(require,module,exports){
 "use strict";
 
 var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
+
+var _prototypeProperties = function (child, staticProps, instanceProps) { if (staticProps) Object.defineProperties(child, staticProps); if (instanceProps) Object.defineProperties(child.prototype, instanceProps); };
+
+var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
+
+var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
 
 var React = _interopRequire(require("react"));
 
@@ -183,50 +235,69 @@ var Polyline = _reactLeaflet.Polyline;
 var Popup = _reactLeaflet.Popup;
 var Rectangle = _reactLeaflet.Rectangle;
 var TileLayer = _reactLeaflet.TileLayer;
-module.exports = React.createClass({
-  displayName: "VectorLayersExample",
 
-  render: function render() {
-    var center = [51.505, -0.09];
+var VectorLayersExample = (function (_React$Component) {
+  function VectorLayersExample() {
+    _classCallCheck(this, VectorLayersExample);
 
-    var polyline = [[51.505, -0.09], [51.51, -0.1], [51.51, -0.12]];
-
-    var multiPolyline = [[[51.5, -0.1], [51.5, -0.12], [51.52, -0.12]], [[51.5, -0.05], [51.5, -0.06], [51.52, -0.06]]];
-
-    var polygon = [[51.515, -0.09], [51.52, -0.1], [51.52, -0.12]];
-
-    var multiPolygon = [[[51.51, -0.12], [51.51, -0.13], [51.53, -0.13]], [[51.51, -0.05], [51.51, -0.07], [51.53, -0.07]]];
-
-    var rectangle = [[51.49, -0.08], [51.5, -0.06]];
-
-    return React.createElement(
-      Map,
-      { center: center, zoom: 13 },
-      React.createElement(TileLayer, {
-        url: "http://{s}.tile.osm.org/{z}/{x}/{y}.png",
-        attribution: "© <a href=\"http://osm.org/copyright\">OpenStreetMap</a> contributors"
-      }),
-      React.createElement(Circle, { center: center, radius: 200, fillColor: "blue" }),
-      React.createElement(
-        CircleMarker,
-        { center: [51.51, -0.12], radius: 20, color: "red" },
-        React.createElement(
-          Popup,
-          null,
-          React.createElement(
-            "span",
-            null,
-            "Popup in CircleMarker"
-          )
-        )
-      ),
-      React.createElement(Polyline, { positions: polyline, color: "lime" }),
-      React.createElement(MultiPolyline, { polylines: multiPolyline, color: "lime" }),
-      React.createElement(Polygon, { positions: polygon, color: "purple" }),
-      React.createElement(MultiPolygon, { polygons: multiPolygon, color: "purple" }),
-      React.createElement(Rectangle, { bounds: rectangle, color: "black" })
-    );
+    if (_React$Component != null) {
+      _React$Component.apply(this, arguments);
+    }
   }
-});
+
+  _inherits(VectorLayersExample, _React$Component);
+
+  _prototypeProperties(VectorLayersExample, null, {
+    render: {
+      value: function render() {
+        var center = [51.505, -0.09];
+
+        var polyline = [[51.505, -0.09], [51.51, -0.1], [51.51, -0.12]];
+
+        var multiPolyline = [[[51.5, -0.1], [51.5, -0.12], [51.52, -0.12]], [[51.5, -0.05], [51.5, -0.06], [51.52, -0.06]]];
+
+        var polygon = [[51.515, -0.09], [51.52, -0.1], [51.52, -0.12]];
+
+        var multiPolygon = [[[51.51, -0.12], [51.51, -0.13], [51.53, -0.13]], [[51.51, -0.05], [51.51, -0.07], [51.53, -0.07]]];
+
+        var rectangle = [[51.49, -0.08], [51.5, -0.06]];
+
+        return React.createElement(
+          Map,
+          { center: center, zoom: 13 },
+          React.createElement(TileLayer, {
+            url: "http://{s}.tile.osm.org/{z}/{x}/{y}.png",
+            attribution: "© <a href=\"http://osm.org/copyright\">OpenStreetMap</a> contributors"
+          }),
+          React.createElement(Circle, { center: center, radius: 200, fillColor: "blue" }),
+          React.createElement(
+            CircleMarker,
+            { center: [51.51, -0.12], radius: 20, color: "red" },
+            React.createElement(
+              Popup,
+              null,
+              React.createElement(
+                "span",
+                null,
+                "Popup in CircleMarker"
+              )
+            )
+          ),
+          React.createElement(Polyline, { positions: polyline, color: "lime" }),
+          React.createElement(MultiPolyline, { polylines: multiPolyline, color: "lime" }),
+          React.createElement(Polygon, { positions: polygon, color: "purple" }),
+          React.createElement(MultiPolygon, { polygons: multiPolygon, color: "purple" }),
+          React.createElement(Rectangle, { bounds: rectangle, color: "black" })
+        );
+      },
+      writable: true,
+      configurable: true
+    }
+  });
+
+  return VectorLayersExample;
+})(React.Component);
+
+module.exports = VectorLayersExample;
 
 },{"react":"react","react-leaflet":"react-leaflet"}]},{},["./example/app.js"]);

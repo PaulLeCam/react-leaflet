@@ -1,45 +1,46 @@
-jest.dontMock("../element");
-jest.dontMock("../mapLayer");
-jest.dontMock("../../Map");
+jest.dontMock("../MapComponent");
+jest.dontMock("../MapLayer");
+jest.dontMock("../Map");
 
 import Leaflet from "leaflet";
 import React from "react";
 
-import mapLayerMixin from "../mapLayer";
-import Map from "../../Map";
+import MapLayer from "../MapLayer";
+import Map from "../Map";
 
-describe("mapLayerMixin", () => {
+describe("MapLayer", () => {
   it("passes its `map` prop to its children", () => {
     document.body.innerHTML = '<div id="test"></div>';
 
-    let Component = React.createClass({
-      mixins: [mapLayerMixin],
+    class Component extends MapLayer {
       componentWillMount() {
+        super.componentWillMount();
         expect(this.props.map).toBeDefined();
-        this._leafletElement = Leaflet.marker([0, 0]);
-      },
+        this.leafletElement = Leaflet.marker([0, 0]);
+      }
       render() {
-        let children = this.getClonedChildrenWithMap({parent: true});
+        const children = this.getClonedChildrenWithMap({parent: true});
         return <div>{children}</div>;
       }
-    });
-    let ChildComponent = React.createClass({
+    }
+
+    class ChildComponent extends React.Component {
       componentWillMount() {
         expect(this.props.map).toBeDefined();
         expect(this.props.parent).toBe(true);
-      },
+      }
       render() {
         return null;
       }
-    });
+    }
 
-    let component = (
+    const component = (
       <Map>
         <Component>
           <ChildComponent />
         </Component>
       </Map>
     );
-    let instance = React.render(component, document.getElementById("test"));
+    const instance = React.render(component, document.getElementById("test"));
   });
 });

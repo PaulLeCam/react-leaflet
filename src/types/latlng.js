@@ -1,5 +1,5 @@
 import React from "react";
-let Type = React.PropTypes;
+const Type = React.PropTypes;
 
 export default Type.oneOfType([
   // [Number, Number]

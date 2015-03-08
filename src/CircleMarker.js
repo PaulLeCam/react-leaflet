@@ -2,29 +2,26 @@ import React from "react";
 import Leaflet from "leaflet";
 
 import latlngType from "./types/latlng";
-import popupContainerMixin from "./mixins/popupContainer";
+import PopupContainer from "./PopupContainer";
 
-export default React.createClass({
-  displayName: "CircleMarker",
-
-  mixins: [popupContainerMixin],
-
-  propTypes: {
-    center: latlngType.isRequired,
-    radius: React.PropTypes.number
-  },
-
+export default class CircleMarker extends PopupContainer {
   componentWillMount() {
-    let {center, map, ...props} = this.props;
-    this._leafletElement = Leaflet.circleMarker(center, props);
-  },
+    super.componentWillMount();
+    const {center, map, ...props} = this.props;
+    this.leafletElement = Leaflet.circleMarker(center, props);
+  }
 
   componentDidUpdate(prevProps) {
     if (this.props.center !== prevProps.center) {
-      this.getLeafletElement().setLatLng(this.props.center);
+      this.leafletElement.setLatLng(this.props.center);
     }
     if (this.props.radius !== prevProps.radius) {
-      this.getLeafletElement().setRadius(this.props.radius);
+      this.leafletElement.setRadius(this.props.radius);
     }
   }
-});
+}
+
+CircleMarker.propTypes = {
+  center: latlngType.isRequired,
+  radius: React.PropTypes.number
+};

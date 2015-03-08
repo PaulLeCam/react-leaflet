@@ -3,34 +3,120 @@ require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof requ
 
 var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
 
-var _objectWithoutProperties = function (obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; };
+var _createClass = (function () { function defineProperties(target, props) { for (var key in props) { var prop = props[key]; prop.configurable = true; if (prop.value) prop.writable = true; } Object.defineProperties(target, props); } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
+
+var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
 
 var React = _interopRequire(require("react"));
 
-var Leaflet = _interopRequire(require("leaflet"));
+var MapLayer = _interopRequire(require("./MapLayer"));
 
-var tileLayerMixin = _interopRequire(require("./mixins/tileLayer"));
+var BaseTileLayer = (function (_MapLayer) {
+  function BaseTileLayer() {
+    _classCallCheck(this, BaseTileLayer);
 
-module.exports = React.createClass({
-  displayName: "CanvasTileLayer",
-
-  mixins: [tileLayerMixin],
-
-  componentWillMount: function componentWillMount() {
-    var _props = this.props;
-    var map = _props.map;
-
-    var props = _objectWithoutProperties(_props, ["map"]);
-
-    this._leafletElement = Leaflet.tileLayer.canvas(props);
+    if (_MapLayer != null) {
+      _MapLayer.apply(this, arguments);
+    }
   }
-});
-},{"./mixins/tileLayer":21,"leaflet":"leaflet","react":"react"}],2:[function(require,module,exports){
+
+  _inherits(BaseTileLayer, _MapLayer);
+
+  _createClass(BaseTileLayer, {
+    componentDidUpdate: {
+      value: function componentDidUpdate(prevProps) {
+        var _props = this.props;
+        var opacity = _props.opacity;
+        var zIndex = _props.zIndex;
+
+        if (opacity && opacity !== prevProps.opacity) {
+          this.leafletElement.setOpacity(opacity);
+        }
+        if (zIndex && zIndex !== prevProps.zIndex) {
+          this.leafletElement.setZIndex(zIndex);
+        }
+      }
+    },
+    render: {
+      value: function render() {
+        return null;
+      }
+    }
+  });
+
+  return BaseTileLayer;
+})(MapLayer);
+
+module.exports = BaseTileLayer;
+
+BaseTileLayer.propTypes = {
+  opacity: React.PropTypes.number,
+  zIndex: React.PropTypes.number
+};
+},{"./MapLayer":10,"react":"react"}],2:[function(require,module,exports){
 "use strict";
 
 var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
 
 var _objectWithoutProperties = function (obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; };
+
+var _createClass = (function () { function defineProperties(target, props) { for (var key in props) { var prop = props[key]; prop.configurable = true; if (prop.value) prop.writable = true; } Object.defineProperties(target, props); } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc && desc.writable) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
+
+var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
+
+var Leaflet = _interopRequire(require("leaflet"));
+
+var BaseTileLayer = _interopRequire(require("./BaseTileLayer"));
+
+var CanvasTileLayer = (function (_BaseTileLayer) {
+  function CanvasTileLayer() {
+    _classCallCheck(this, CanvasTileLayer);
+
+    if (_BaseTileLayer != null) {
+      _BaseTileLayer.apply(this, arguments);
+    }
+  }
+
+  _inherits(CanvasTileLayer, _BaseTileLayer);
+
+  _createClass(CanvasTileLayer, {
+    componentWillMount: {
+      value: function componentWillMount() {
+        _get(Object.getPrototypeOf(CanvasTileLayer.prototype), "componentWillMount", this).call(this);
+        var _props = this.props;
+        var map = _props.map;
+
+        var props = _objectWithoutProperties(_props, ["map"]);
+
+        this.leafletElement = Leaflet.tileLayer.canvas(props);
+      }
+    }
+  });
+
+  return CanvasTileLayer;
+})(BaseTileLayer);
+
+module.exports = CanvasTileLayer;
+},{"./BaseTileLayer":1,"leaflet":"leaflet"}],3:[function(require,module,exports){
+"use strict";
+
+var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
+
+var _objectWithoutProperties = function (obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; };
+
+var _createClass = (function () { function defineProperties(target, props) { for (var key in props) { var prop = props[key]; prop.configurable = true; if (prop.value) prop.writable = true; } Object.defineProperties(target, props); } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc && desc.writable) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
+
+var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
 
 var React = _interopRequire(require("react"));
 
@@ -38,44 +124,68 @@ var Leaflet = _interopRequire(require("leaflet"));
 
 var latlngType = _interopRequire(require("./types/latlng"));
 
-var popupContainerMixin = _interopRequire(require("./mixins/popupContainer"));
+var PopupContainer = _interopRequire(require("./PopupContainer"));
 
-module.exports = React.createClass({
-  displayName: "Circle",
+var Circle = (function (_PopupContainer) {
+  function Circle() {
+    _classCallCheck(this, Circle);
 
-  mixins: [popupContainerMixin],
-
-  propTypes: {
-    center: latlngType.isRequired,
-    radius: React.PropTypes.number.isRequired
-  },
-
-  componentWillMount: function componentWillMount() {
-    var _props = this.props;
-    var center = _props.center;
-    var map = _props.map;
-    var radius = _props.radius;
-
-    var props = _objectWithoutProperties(_props, ["center", "map", "radius"]);
-
-    this._leafletElement = Leaflet.circle(center, radius, props);
-  },
-
-  componentDidUpdate: function componentDidUpdate(prevProps) {
-    if (this.props.center !== prevProps.center) {
-      this.getLeafletElement().setLatLng(this.props.center);
-    }
-    if (this.props.radius !== prevProps.radius) {
-      this.getLeafletElement().setRadius(this.props.radius);
+    if (_PopupContainer != null) {
+      _PopupContainer.apply(this, arguments);
     }
   }
-});
-},{"./mixins/popupContainer":20,"./types/latlng":24,"leaflet":"leaflet","react":"react"}],3:[function(require,module,exports){
+
+  _inherits(Circle, _PopupContainer);
+
+  _createClass(Circle, {
+    componentWillMount: {
+      value: function componentWillMount() {
+        _get(Object.getPrototypeOf(Circle.prototype), "componentWillMount", this).call(this);
+        var _props = this.props;
+        var center = _props.center;
+        var map = _props.map;
+        var radius = _props.radius;
+
+        var props = _objectWithoutProperties(_props, ["center", "map", "radius"]);
+
+        this.leafletElement = Leaflet.circle(center, radius, props);
+      }
+    },
+    componentDidUpdate: {
+      value: function componentDidUpdate(prevProps) {
+        if (this.props.center !== prevProps.center) {
+          this.leafletElement.setLatLng(this.props.center);
+        }
+        if (this.props.radius !== prevProps.radius) {
+          this.leafletElement.setRadius(this.props.radius);
+        }
+      }
+    }
+  });
+
+  return Circle;
+})(PopupContainer);
+
+module.exports = Circle;
+
+Circle.propTypes = {
+  center: latlngType.isRequired,
+  radius: React.PropTypes.number.isRequired
+};
+},{"./PopupContainer":17,"./types/latlng":23,"leaflet":"leaflet","react":"react"}],4:[function(require,module,exports){
 "use strict";
 
 var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
 
 var _objectWithoutProperties = function (obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; };
+
+var _createClass = (function () { function defineProperties(target, props) { for (var key in props) { var prop = props[key]; prop.configurable = true; if (prop.value) prop.writable = true; } Object.defineProperties(target, props); } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc && desc.writable) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
+
+var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
 
 var React = _interopRequire(require("react"));
 
@@ -83,111 +193,174 @@ var Leaflet = _interopRequire(require("leaflet"));
 
 var latlngType = _interopRequire(require("./types/latlng"));
 
-var popupContainerMixin = _interopRequire(require("./mixins/popupContainer"));
+var PopupContainer = _interopRequire(require("./PopupContainer"));
 
-module.exports = React.createClass({
-  displayName: "CircleMarker",
+var CircleMarker = (function (_PopupContainer) {
+  function CircleMarker() {
+    _classCallCheck(this, CircleMarker);
 
-  mixins: [popupContainerMixin],
-
-  propTypes: {
-    center: latlngType.isRequired,
-    radius: React.PropTypes.number
-  },
-
-  componentWillMount: function componentWillMount() {
-    var _props = this.props;
-    var center = _props.center;
-    var map = _props.map;
-
-    var props = _objectWithoutProperties(_props, ["center", "map"]);
-
-    this._leafletElement = Leaflet.circleMarker(center, props);
-  },
-
-  componentDidUpdate: function componentDidUpdate(prevProps) {
-    if (this.props.center !== prevProps.center) {
-      this.getLeafletElement().setLatLng(this.props.center);
-    }
-    if (this.props.radius !== prevProps.radius) {
-      this.getLeafletElement().setRadius(this.props.radius);
+    if (_PopupContainer != null) {
+      _PopupContainer.apply(this, arguments);
     }
   }
-});
-},{"./mixins/popupContainer":20,"./types/latlng":24,"leaflet":"leaflet","react":"react"}],4:[function(require,module,exports){
+
+  _inherits(CircleMarker, _PopupContainer);
+
+  _createClass(CircleMarker, {
+    componentWillMount: {
+      value: function componentWillMount() {
+        _get(Object.getPrototypeOf(CircleMarker.prototype), "componentWillMount", this).call(this);
+        var _props = this.props;
+        var center = _props.center;
+        var map = _props.map;
+
+        var props = _objectWithoutProperties(_props, ["center", "map"]);
+
+        this.leafletElement = Leaflet.circleMarker(center, props);
+      }
+    },
+    componentDidUpdate: {
+      value: function componentDidUpdate(prevProps) {
+        if (this.props.center !== prevProps.center) {
+          this.leafletElement.setLatLng(this.props.center);
+        }
+        if (this.props.radius !== prevProps.radius) {
+          this.leafletElement.setRadius(this.props.radius);
+        }
+      }
+    }
+  });
+
+  return CircleMarker;
+})(PopupContainer);
+
+module.exports = CircleMarker;
+
+CircleMarker.propTypes = {
+  center: latlngType.isRequired,
+  radius: React.PropTypes.number
+};
+},{"./PopupContainer":17,"./types/latlng":23,"leaflet":"leaflet","react":"react"}],5:[function(require,module,exports){
 "use strict";
 
 var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
 
 var _objectWithoutProperties = function (obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; };
+
+var _createClass = (function () { function defineProperties(target, props) { for (var key in props) { var prop = props[key]; prop.configurable = true; if (prop.value) prop.writable = true; } Object.defineProperties(target, props); } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
+
+var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
 
 var React = _interopRequire(require("react"));
 
 var Leaflet = _interopRequire(require("leaflet"));
 
-var popupContainerMixin = _interopRequire(require("./mixins/popupContainer"));
+var PopupContainer = _interopRequire(require("./PopupContainer"));
 
-module.exports = React.createClass({
-  displayName: "FeatureGroup",
+var FeatureGroup = (function (_PopupContainer) {
+  function FeatureGroup() {
+    _classCallCheck(this, FeatureGroup);
 
-  mixins: [popupContainerMixin],
-
-  propTypes: {
-    layers: React.PropTypes.array.isRequired
-  },
-
-  componentWillMount: function componentWillMount() {
-    var _props = this.props;
-    var layers = _props.layers;
-    var map = _props.map;
-
-    var props = _objectWithoutProperties(_props, ["layers", "map"]);
-
-    this._leafletElement = Leaflet.featureGroup(layers);
+    if (_PopupContainer != null) {
+      _PopupContainer.apply(this, arguments);
+    }
   }
-});
-},{"./mixins/popupContainer":20,"leaflet":"leaflet","react":"react"}],5:[function(require,module,exports){
+
+  _inherits(FeatureGroup, _PopupContainer);
+
+  _createClass(FeatureGroup, {
+    componentWillMount: {
+      value: function componentWillMount() {
+        var _props = this.props;
+        var layers = _props.layers;
+        var map = _props.map;
+
+        var props = _objectWithoutProperties(_props, ["layers", "map"]);
+
+        this.leafletElement = Leaflet.featureGroup(layers);
+      }
+    }
+  });
+
+  return FeatureGroup;
+})(PopupContainer);
+
+module.exports = FeatureGroup;
+
+FeatureGroup.propTypes = {
+  layers: React.PropTypes.array.isRequired
+};
+},{"./PopupContainer":17,"leaflet":"leaflet","react":"react"}],6:[function(require,module,exports){
 "use strict";
 
 var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
 
 var _objectWithoutProperties = function (obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; };
+
+var _createClass = (function () { function defineProperties(target, props) { for (var key in props) { var prop = props[key]; prop.configurable = true; if (prop.value) prop.writable = true; } Object.defineProperties(target, props); } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc && desc.writable) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
+
+var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
 
 var React = _interopRequire(require("react"));
 
 var Leaflet = _interopRequire(require("leaflet"));
 
-var popupContainerMixin = _interopRequire(require("./mixins/popupContainer"));
+var PopupContainer = _interopRequire(require("./PopupContainer"));
 
-module.exports = React.createClass({
-  displayName: "GeoJson",
+var GeoJson = (function (_PopupContainer) {
+  function GeoJson() {
+    _classCallCheck(this, GeoJson);
 
-  mixins: [popupContainerMixin],
-
-  propTypes: {
-    data: React.PropTypes.object.isRequired
-  },
-
-  getInitialState: function getInitialState() {
-    return { geoJson: Leaflet.geoJson(this.props.data, this.props) };
-  },
-
-  componentWillMount: function componentWillMount() {
-    var _props = this.props;
-    var data = _props.data;
-    var map = _props.map;
-
-    var props = _objectWithoutProperties(_props, ["data", "map"]);
-
-    this._leafletElement = Leaflet.geoJson(data, props);
+    if (_PopupContainer != null) {
+      _PopupContainer.apply(this, arguments);
+    }
   }
-});
-},{"./mixins/popupContainer":20,"leaflet":"leaflet","react":"react"}],6:[function(require,module,exports){
+
+  _inherits(GeoJson, _PopupContainer);
+
+  _createClass(GeoJson, {
+    componentWillMount: {
+      value: function componentWillMount() {
+        _get(Object.getPrototypeOf(GeoJson.prototype), "componentWillMount", this).call(this);
+        var _props = this.props;
+        var data = _props.data;
+        var map = _props.map;
+
+        var props = _objectWithoutProperties(_props, ["data", "map"]);
+
+        this.leafletElement = Leaflet.geoJson(data, props);
+      }
+    }
+  });
+
+  return GeoJson;
+})(PopupContainer);
+
+module.exports = GeoJson;
+
+GeoJson.propTypes = {
+  data: React.PropTypes.object.isRequired
+};
+},{"./PopupContainer":17,"leaflet":"leaflet","react":"react"}],7:[function(require,module,exports){
 "use strict";
 
 var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
 
 var _objectWithoutProperties = function (obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; };
+
+var _createClass = (function () { function defineProperties(target, props) { for (var key in props) { var prop = props[key]; prop.configurable = true; if (prop.value) prop.writable = true; } Object.defineProperties(target, props); } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc && desc.writable) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
+
+var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
 
 var React = _interopRequire(require("react"));
 
@@ -195,54 +368,79 @@ var Leaflet = _interopRequire(require("leaflet"));
 
 var boundsType = _interopRequire(require("./types/bounds"));
 
-var mapLayerMixin = _interopRequire(require("./mixins/mapLayer"));
+var MapLayer = _interopRequire(require("./MapLayer"));
 
-module.exports = React.createClass({
-  displayName: "ImageOverlay",
+var ImageOverlay = (function (_MapLayer) {
+  function ImageOverlay() {
+    _classCallCheck(this, ImageOverlay);
 
-  mixins: [mapLayerMixin],
-
-  propTypes: {
-    url: React.PropTypes.string.isRequired,
-    bounds: boundsType.isRequired,
-    opacity: React.PropTypes.number,
-    attribution: React.PropTypes.string
-  },
-
-  componentWillMount: function componentWillMount() {
-    var _props = this.props;
-    var bounds = _props.bounds;
-    var map = _props.map;
-    var url = _props.url;
-
-    var props = _objectWithoutProperties(_props, ["bounds", "map", "url"]);
-
-    this._leafletElement = Leaflet.imageOverlay(url, bounds, props);
-  },
-
-  componentDidUpdate: function componentDidUpdate(prevProps) {
-    if (this.props.url !== prevProps.url) {
-      this.getLeafletElement().setUrl(this.props.url);
+    if (_MapLayer != null) {
+      _MapLayer.apply(this, arguments);
     }
-    if (this.props.opacity !== prevProps.opacity) {
-      this.getLeafletElement().setOpacity(this.props.opacity);
-    }
-  },
-
-  render: function render() {
-    return null;
   }
-});
-},{"./mixins/mapLayer":19,"./types/bounds":22,"leaflet":"leaflet","react":"react"}],7:[function(require,module,exports){
+
+  _inherits(ImageOverlay, _MapLayer);
+
+  _createClass(ImageOverlay, {
+    componentWillMount: {
+      value: function componentWillMount() {
+        _get(Object.getPrototypeOf(ImageOverlay.prototype), "componentWillMount", this).call(this);
+        var _props = this.props;
+        var bounds = _props.bounds;
+        var map = _props.map;
+        var url = _props.url;
+
+        var props = _objectWithoutProperties(_props, ["bounds", "map", "url"]);
+
+        this.leafletElement = Leaflet.imageOverlay(url, bounds, props);
+      }
+    },
+    componentDidUpdate: {
+      value: function componentDidUpdate(prevProps) {
+        if (this.props.url !== prevProps.url) {
+          this.leafletElement.setUrl(this.props.url);
+        }
+        if (this.props.opacity !== prevProps.opacity) {
+          this.leafletElement.setOpacity(this.props.opacity);
+        }
+      }
+    },
+    render: {
+      value: function render() {
+        return null;
+      }
+    }
+  });
+
+  return ImageOverlay;
+})(MapLayer);
+
+module.exports = ImageOverlay;
+
+ImageOverlay.propTypes = {
+  attribution: React.PropTypes.string,
+  bounds: boundsType.isRequired,
+  opacity: React.PropTypes.number,
+  url: React.PropTypes.string.isRequired
+};
+},{"./MapLayer":10,"./types/bounds":21,"leaflet":"leaflet","react":"react"}],8:[function(require,module,exports){
 "use strict";
 
 var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
+
+var _createClass = (function () { function defineProperties(target, props) { for (var key in props) { var prop = props[key]; prop.configurable = true; if (prop.value) prop.writable = true; } Object.defineProperties(target, props); } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc && desc.writable) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
+
+var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
 
 var isArray = _interopRequire(require("lodash/lang/isArray"));
 
 var uniqueId = _interopRequire(require("lodash/utility/uniqueId"));
 
-var React = _interopRequire(require("react/addons"));
+var React = _interopRequire(require("react"));
 
 var Leaflet = _interopRequire(require("leaflet"));
 
@@ -250,484 +448,99 @@ var boundsType = _interopRequire(require("./types/bounds"));
 
 var latlngType = _interopRequire(require("./types/latlng"));
 
-var elementMixin = _interopRequire(require("./mixins/element"));
+var MapComponent = _interopRequire(require("./MapComponent"));
 
 var normalizeCenter = function (pos) {
   return isArray(pos) ? pos : [pos.lat, pos.lng || pos.lon];
 };
 
-var Map = React.createClass({
-  displayName: "Map",
+var Map = (function (_MapComponent) {
+  function Map(props) {
+    _classCallCheck(this, Map);
 
-  mixins: [elementMixin],
-
-  statics: {
-    uid: function uid() {
-      return uniqueId("map");
-    }
-  },
-
-  propTypes: {
-    center: latlngType,
-    id: React.PropTypes.string,
-    maxBounds: boundsType,
-    maxZoom: React.PropTypes.number,
-    minZoom: React.PropTypes.number,
-    zoom: React.PropTypes.number
-  },
-
-  getInitialState: function getInitialState() {
-    return {
-      id: this.props.id || Map.uid()
+    _get(Object.getPrototypeOf(Map.prototype), "constructor", this).call(this, props);
+    this.state = {
+      id: props.id || uniqueId("map")
     };
-  },
-
-  componentDidMount: function componentDidMount() {
-    this._leafletElement = Leaflet.map(this.state.id, this.props);
-    this.bindEvents(this._leafletEvents);
-    this.setState({ map: this._leafletElement });
-  },
-
-  shouldUpdateCenter: function shouldUpdateCenter(next, prev) {
-    if (!prev) {
-      return true;
-    }next = normalizeCenter(next);
-    prev = normalizeCenter(prev);
-    return next[0] !== prev[0] || next[1] !== prev[1];
-  },
-
-  componentDidUpdate: function componentDidUpdate(prevProps) {
-    var _props = this.props;
-    var center = _props.center;
-    var zoom = _props.zoom;
-
-    if (center && this.shouldUpdateCenter(center, prevProps.center)) {
-      this.getLeafletElement().setView(center, zoom, { animate: false });
-    } else if (zoom && zoom !== prevProps.zoom) {
-      this.getLeafletElement().setZoom(zoom);
-    }
-  },
-
-  componentWillUnmount: function componentWillUnmount() {
-    this.getLeafletElement().remove();
-  },
-
-  render: function render() {
-    var map = this.getLeafletElement();
-    var children = map ? React.Children.map(this.props.children, function (child) {
-      return child ? React.addons.cloneWithProps(child, { map: map }) : null;
-    }) : null;
-
-    return React.createElement(
-      "div",
-      { className: this.props.className, id: this.state.id },
-      children
-    );
   }
-});
+
+  _inherits(Map, _MapComponent);
+
+  _createClass(Map, {
+    componentDidMount: {
+      value: function componentDidMount() {
+        this.leafletElement = Leaflet.map(this.state.id, this.props);
+        _get(Object.getPrototypeOf(Map.prototype), "componentDidMount", this).call(this);
+        this.setState({ map: this.leafletElement });
+      }
+    },
+    shouldUpdateCenter: {
+      value: function shouldUpdateCenter(next, prev) {
+        if (!prev) {
+          return true;
+        }next = normalizeCenter(next);
+        prev = normalizeCenter(prev);
+        return next[0] !== prev[0] || next[1] !== prev[1];
+      }
+    },
+    componentDidUpdate: {
+      value: function componentDidUpdate(prevProps) {
+        var _props = this.props;
+        var center = _props.center;
+        var zoom = _props.zoom;
+
+        if (center && this.shouldUpdateCenter(center, prevProps.center)) {
+          this.leafletElement.setView(center, zoom, { animate: false });
+        } else if (zoom && zoom !== prevProps.zoom) {
+          this.leafletElement.setZoom(zoom);
+        }
+      }
+    },
+    componentWillUnmount: {
+      value: function componentWillUnmount() {
+        _get(Object.getPrototypeOf(Map.prototype), "componentWillUnmount", this).call(this);
+        this.leafletElement.remove();
+      }
+    },
+    render: {
+      value: function render() {
+        var map = this.leafletElement;
+        var children = map ? React.Children.map(this.props.children, function (child) {
+          return child ? React.cloneElement(child, { map: map }) : null;
+        }) : null;
+
+        return React.createElement(
+          "div",
+          { className: this.props.className, id: this.state.id },
+          children
+        );
+      }
+    }
+  });
+
+  return Map;
+})(MapComponent);
 
 module.exports = Map;
-},{"./mixins/element":17,"./types/bounds":22,"./types/latlng":24,"leaflet":"leaflet","lodash/lang/isArray":67,"lodash/utility/uniqueId":78,"react/addons":"react/addons"}],8:[function(require,module,exports){
+
+Map.propTypes = {
+  center: latlngType,
+  id: React.PropTypes.string,
+  maxBounds: boundsType,
+  maxZoom: React.PropTypes.number,
+  minZoom: React.PropTypes.number,
+  zoom: React.PropTypes.number
+};
+},{"./MapComponent":9,"./types/bounds":21,"./types/latlng":23,"leaflet":"leaflet","lodash/lang/isArray":66,"lodash/utility/uniqueId":77,"react":"react"}],9:[function(require,module,exports){
 "use strict";
 
 var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
 
-var _objectWithoutProperties = function (obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; };
+var _createClass = (function () { function defineProperties(target, props) { for (var key in props) { var prop = props[key]; prop.configurable = true; if (prop.value) prop.writable = true; } Object.defineProperties(target, props); } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-var React = _interopRequire(require("react"));
+var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
 
-var Leaflet = _interopRequire(require("leaflet"));
-
-var latlngType = _interopRequire(require("./types/latlng"));
-
-var popupContainerMixin = _interopRequire(require("./mixins/popupContainer"));
-
-module.exports = React.createClass({
-  displayName: "Marker",
-
-  mixins: [popupContainerMixin],
-
-  propTypes: {
-    position: latlngType.isRequired
-  },
-
-  componentWillMount: function componentWillMount() {
-    var _props = this.props;
-    var map = _props.map;
-    var position = _props.position;
-
-    var props = _objectWithoutProperties(_props, ["map", "position"]);
-
-    this._leafletElement = Leaflet.marker(position, props);
-  },
-
-  componentDidUpdate: function componentDidUpdate(prevProps) {
-    if (this.props.position !== prevProps.position) {
-      this.getLeafletElement().setLatLng(this.props.position);
-    }
-  }
-});
-},{"./mixins/popupContainer":20,"./types/latlng":24,"leaflet":"leaflet","react":"react"}],9:[function(require,module,exports){
-"use strict";
-
-var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
-
-var _objectWithoutProperties = function (obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; };
-
-var React = _interopRequire(require("react"));
-
-var Leaflet = _interopRequire(require("leaflet"));
-
-var latlngListType = _interopRequire(require("./types/latlngList"));
-
-var popupContainerMixin = _interopRequire(require("./mixins/popupContainer"));
-
-module.exports = React.createClass({
-  displayName: "MultiPolygon",
-
-  mixins: [popupContainerMixin],
-
-  propTypes: {
-    polygons: React.PropTypes.arrayOf(latlngListType).isRequired
-  },
-
-  componentWillMount: function componentWillMount() {
-    var _props = this.props;
-    var map = _props.map;
-    var polygons = _props.polygons;
-
-    var props = _objectWithoutProperties(_props, ["map", "polygons"]);
-
-    this._leafletElement = Leaflet.multiPolygon(polygons, props);
-  },
-
-  componentDidUpdate: function componentDidUpdate(prevProps) {
-    if (this.props.polygons !== prevProps.polygons) {
-      this.getLeafletElement().setLatLngs(this.props.polygons);
-    }
-  }
-});
-},{"./mixins/popupContainer":20,"./types/latlngList":25,"leaflet":"leaflet","react":"react"}],10:[function(require,module,exports){
-"use strict";
-
-var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
-
-var _objectWithoutProperties = function (obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; };
-
-var React = _interopRequire(require("react"));
-
-var Leaflet = _interopRequire(require("leaflet"));
-
-var latlngListType = _interopRequire(require("./types/latlngList"));
-
-var popupContainerMixin = _interopRequire(require("./mixins/popupContainer"));
-
-module.exports = React.createClass({
-  displayName: "MultiPolyline",
-
-  mixins: [popupContainerMixin],
-
-  propTypes: {
-    polylines: React.PropTypes.arrayOf(latlngListType).isRequired
-  },
-
-  componentWillMount: function componentWillMount() {
-    var _props = this.props;
-    var map = _props.map;
-    var polylines = _props.polylines;
-
-    var props = _objectWithoutProperties(_props, ["map", "polylines"]);
-
-    this._leafletElement = Leaflet.multiPolyline(polylines, props);
-  },
-
-  componentDidUpdate: function componentDidUpdate(prevProps) {
-    if (this.props.polylines !== prevProps.polylines) {
-      this.getLeafletElement().setLatLngs(this.props.polylines);
-    }
-  }
-});
-},{"./mixins/popupContainer":20,"./types/latlngList":25,"leaflet":"leaflet","react":"react"}],11:[function(require,module,exports){
-"use strict";
-
-var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
-
-var _objectWithoutProperties = function (obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; };
-
-var React = _interopRequire(require("react"));
-
-var Leaflet = _interopRequire(require("leaflet"));
-
-var latlngListType = _interopRequire(require("./types/latlngList"));
-
-var popupContainerMixin = _interopRequire(require("./mixins/popupContainer"));
-
-module.exports = React.createClass({
-  displayName: "Polygon",
-
-  mixins: [popupContainerMixin],
-
-  propTypes: {
-    positions: latlngListType.isRequired
-  },
-
-  componentWillMount: function componentWillMount() {
-    var _props = this.props;
-    var map = _props.map;
-    var positions = _props.positions;
-
-    var props = _objectWithoutProperties(_props, ["map", "positions"]);
-
-    this._leafletElement = Leaflet.polygon(positions, props);
-  },
-
-  componentDidUpdate: function componentDidUpdate(prevProps) {
-    if (this.props.positions !== prevProps.positions) {
-      this.getLeafletElement().setLatLngs(this.props.positions);
-    }
-  }
-});
-},{"./mixins/popupContainer":20,"./types/latlngList":25,"leaflet":"leaflet","react":"react"}],12:[function(require,module,exports){
-"use strict";
-
-var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
-
-var _objectWithoutProperties = function (obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; };
-
-var React = _interopRequire(require("react"));
-
-var Leaflet = _interopRequire(require("leaflet"));
-
-var latlngListType = _interopRequire(require("./types/latlngList"));
-
-var popupContainerMixin = _interopRequire(require("./mixins/popupContainer"));
-
-module.exports = React.createClass({
-  displayName: "Polyline",
-
-  mixins: [popupContainerMixin],
-
-  propTypes: {
-    positions: latlngListType.isRequired
-  },
-
-  componentWillMount: function componentWillMount() {
-    var _props = this.props;
-    var map = _props.map;
-    var positions = _props.positions;
-
-    var props = _objectWithoutProperties(_props, ["map", "positions"]);
-
-    this._leafletElement = Leaflet.polyline(positions, props);
-  },
-
-  componentDidUpdate: function componentDidUpdate(prevProps) {
-    if (this.props.positions !== prevProps.positions) {
-      this.getLeafletElement().setLatLngs(this.props.positions);
-    }
-  }
-});
-},{"./mixins/popupContainer":20,"./types/latlngList":25,"leaflet":"leaflet","react":"react"}],13:[function(require,module,exports){
-"use strict";
-
-var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
-
-var _objectWithoutProperties = function (obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; };
-
-var React = _interopRequire(require("react"));
-
-var Leaflet = _interopRequire(require("leaflet"));
-
-var latlngType = _interopRequire(require("./types/latlng"));
-
-var elementMixin = _interopRequire(require("./mixins/element"));
-
-module.exports = React.createClass({
-  displayName: "Popup",
-
-  mixins: [elementMixin],
-
-  propTypes: {
-    map: React.PropTypes.object.isRequired,
-    position: latlngType
-  },
-
-  componentWillMount: function componentWillMount() {
-    var _props = this.props;
-    var children = _props.children;
-    var map = _props.map;
-
-    var props = _objectWithoutProperties(_props, ["children", "map"]);
-
-    this._leafletElement = Leaflet.popup(props);
-  },
-
-  componentDidUpdate: function componentDidUpdate(prevProps) {
-    var _props = this.props;
-    var children = _props.children;
-    var map = _props.map;
-    var popupContainer = _props.popupContainer;
-    var position = _props.position;
-
-    var props = _objectWithoutProperties(_props, ["children", "map", "popupContainer", "position"]);
-
-    if (children !== prevProps.children) {
-      var content = React.renderToStaticMarkup(children);
-      if (popupContainer) {
-        popupContainer.bindPopup(content, props);
-      } else {
-        var el = this.getLeafletElement();
-        el.setContent(content);
-        if (position !== prevProps.position) el.setLatLng(position);
-      }
-    }
-  },
-
-  componentWillUnmount: function componentWillUnmount() {
-    this.props.map.removeLayer(this.getLeafletElement());
-  },
-
-  render: function render() {
-    var _props = this.props;
-    var children = _props.children;
-    var map = _props.map;
-    var popupContainer = _props.popupContainer;
-    var position = _props.position;
-
-    var props = _objectWithoutProperties(_props, ["children", "map", "popupContainer", "position"]);
-
-    if (children) {
-      var content = React.renderToStaticMarkup(children);
-      // Attach to container component
-      if (popupContainer) {
-        popupContainer.bindPopup(content, props);
-        return null;
-      }
-      // Attach to a Map
-      var el = this.getLeafletElement();
-      el.setContent(content);
-      if (position) el.setLatLng(position);
-      el.openOn(map);
-    }
-    return null;
-  }
-});
-},{"./mixins/element":17,"./types/latlng":24,"leaflet":"leaflet","react":"react"}],14:[function(require,module,exports){
-"use strict";
-
-var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
-
-var _objectWithoutProperties = function (obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; };
-
-var React = _interopRequire(require("react"));
-
-var Leaflet = _interopRequire(require("leaflet"));
-
-var boundsType = _interopRequire(require("./types/bounds"));
-
-var popupContainerMixin = _interopRequire(require("./mixins/popupContainer"));
-
-module.exports = React.createClass({
-  displayName: "Rectangle",
-
-  mixins: [popupContainerMixin],
-
-  propTypes: {
-    bounds: boundsType.isRequired
-  },
-
-  componentWillMount: function componentWillMount() {
-    var _props = this.props;
-    var bounds = _props.bounds;
-    var map = _props.map;
-
-    var props = _objectWithoutProperties(_props, ["bounds", "map"]);
-
-    this._leafletElement = Leaflet.rectangle(bounds, props);
-  },
-
-  componentDidUpdate: function componentDidUpdate(prevProps) {
-    if (this.props.bounds !== prevProps.bounds) {
-      this.getLeafletElement().setBounds(this.props.bounds);
-    }
-  }
-});
-},{"./mixins/popupContainer":20,"./types/bounds":22,"leaflet":"leaflet","react":"react"}],15:[function(require,module,exports){
-"use strict";
-
-var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
-
-var _objectWithoutProperties = function (obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; };
-
-var React = _interopRequire(require("react"));
-
-var Leaflet = _interopRequire(require("leaflet"));
-
-var tileLayerMixin = _interopRequire(require("./mixins/tileLayer"));
-
-module.exports = React.createClass({
-  displayName: "TileLayer",
-
-  mixins: [tileLayerMixin],
-
-  propTypes: {
-    url: React.PropTypes.string.isRequired
-  },
-
-  componentWillMount: function componentWillMount() {
-    var _props = this.props;
-    var map = _props.map;
-    var url = _props.url;
-
-    var props = _objectWithoutProperties(_props, ["map", "url"]);
-
-    this._leafletElement = Leaflet.tileLayer(url, props);
-  },
-
-  componentDidUpdate: function componentDidUpdate(prevProps) {
-    var url = this.props.url;
-
-    if (url && url !== prevProps.url) {
-      this.getLeafletElement().setUrl(url);
-    }
-  }
-});
-},{"./mixins/tileLayer":21,"leaflet":"leaflet","react":"react"}],16:[function(require,module,exports){
-"use strict";
-
-var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
-
-var _objectWithoutProperties = function (obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; };
-
-var React = _interopRequire(require("react"));
-
-var Leaflet = _interopRequire(require("leaflet"));
-
-var tileLayerMixin = _interopRequire(require("./mixins/tileLayer"));
-
-module.exports = React.createClass({
-  displayName: "WMSTileLayer",
-
-  mixins: [tileLayerMixin],
-
-  propTypes: {
-    url: React.PropTypes.string.isRequired
-  },
-
-  componentWillMount: function componentWillMount() {
-    var _props = this.props;
-    var map = _props.map;
-    var url = _props.url;
-
-    var props = _objectWithoutProperties(_props, ["map", "url"]);
-
-    this._leafletElement = Leaflet.tileLayer.wms(url, props);
-  }
-});
-},{"./mixins/tileLayer":21,"leaflet":"leaflet","react":"react"}],17:[function(require,module,exports){
-"use strict";
-
-var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
+var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
 
 var clone = _interopRequire(require("lodash/lang/clone"));
 
@@ -735,186 +548,819 @@ var forEach = _interopRequire(require("lodash/collection/forEach"));
 
 var reduce = _interopRequire(require("lodash/collection/reduce"));
 
-module.exports = {
-  getLeafletElement: function getLeafletElement() {
-    return this._leafletElement;
-  },
+var Component = require("react").Component;
 
-  extractEvents: function extractEvents(props) {
-    var re = /on(?:Leaflet)?(.+)/i;
-    return reduce(props, function (res, cb, ev) {
-      if (re.test(ev)) {
-        var key = ev.replace(re, function (match, p) {
-          return p.toLowerCase();
-        });
-        res[key] = cb;
-      }
-      return res;
-    }, {});
-  },
+var EVENTS_RE = /on(?:Leaflet)?(.+)/i;
 
-  bindEvents: function bindEvents() {
-    var next = arguments[0] === undefined ? {} : arguments[0];
-    var prev = arguments[1] === undefined ? {} : arguments[1];
+var MapComponent = (function (_Component) {
+  function MapComponent() {
+    _classCallCheck(this, MapComponent);
 
-    var el = this.getLeafletElement();
-    if (!el) {
-      return;
-    }var diff = clone(prev);
-    forEach(prev, function (cb, ev) {
-      if (!next[ev] || cb !== next[ev]) {
-        delete diff[ev];
-        el.off(ev, cb);
-      }
-    });
-
-    forEach(next, function (cb, ev) {
-      if (!prev[ev] || cb !== prev[ev]) {
-        diff[ev] = cb;
-        el.on(ev, cb);
-      }
-    });
-
-    return diff;
-  },
-
-  fireEvent: function fireEvent(type, data) {
-    var el = this.getLeafletElement();
-    if (el) el.fire(type, data);
-  },
-
-  componentWillMount: function componentWillMount() {
-    this._leafletEvents = this.extractEvents(this.props);
-  },
-
-  componentDidMount: function componentDidMount() {
-    this.bindEvents(this._leafletEvents);
-  },
-
-  componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
-    var next = this.extractEvents(nextProps);
-    this._leafletEvents = this.bindEvents(next, this._leafletEvents);
-  },
-
-  componentWillUnmount: function componentWillUnmount() {
-    var el = this.getLeafletElement();
-    if (!el) {
-      return;
-    }forEach(this._leafletEvents, function (cb, ev) {
-      el.off(ev, cb);
-    });
+    if (_Component != null) {
+      _Component.apply(this, arguments);
+    }
   }
-};
-},{"lodash/collection/forEach":26,"lodash/collection/reduce":27,"lodash/lang/clone":65}],18:[function(require,module,exports){
+
+  _inherits(MapComponent, _Component);
+
+  _createClass(MapComponent, {
+    getLeafletElement: {
+      value: function getLeafletElement() {
+        console && console.warn && console.warn("`getLeafletElement()` is deprecated, use `leafletElement` instead");
+        return this.leafletElement;
+      }
+    },
+    extractLeafletEvents: {
+      value: function extractLeafletEvents(props) {
+        return reduce(props, function (res, cb, ev) {
+          if (EVENTS_RE.test(ev)) {
+            var key = ev.replace(EVENTS_RE, function (match, p) {
+              return p.toLowerCase();
+            });
+            res[key] = cb;
+          }
+          return res;
+        }, {});
+      }
+    },
+    bindLeafletEvents: {
+      value: function bindLeafletEvents() {
+        var next = arguments[0] === undefined ? {} : arguments[0];
+        var prev = arguments[1] === undefined ? {} : arguments[1];
+
+        var el = this.leafletElement;
+        if (!el) {
+          return;
+        }var diff = clone(prev);
+        forEach(prev, function (cb, ev) {
+          if (!next[ev] || cb !== next[ev]) {
+            delete diff[ev];
+            el.off(ev, cb);
+          }
+        });
+
+        forEach(next, function (cb, ev) {
+          if (!prev[ev] || cb !== prev[ev]) {
+            diff[ev] = cb;
+            el.on(ev, cb);
+          }
+        });
+
+        return diff;
+      }
+    },
+    fireLeafletEvent: {
+      value: function fireLeafletEvent(type, data) {
+        var el = this.leafletElement;
+        if (el) el.fire(type, data);
+      }
+    },
+    componentWillMount: {
+      value: function componentWillMount() {
+        this._leafletEvents = this.extractLeafletEvents(this.props);
+      }
+    },
+    componentDidMount: {
+      value: function componentDidMount() {
+        this.bindLeafletEvents(this._leafletEvents);
+      }
+    },
+    componentWillReceiveProps: {
+      value: function componentWillReceiveProps(nextProps) {
+        var next = this.extractLeafletEvents(nextProps);
+        this._leafletEvents = this.bindLeafletEvents(next, this._leafletEvents);
+      }
+    },
+    componentWillUnmount: {
+      value: function componentWillUnmount() {
+        var el = this.leafletElement;
+        if (!el) {
+          return;
+        }forEach(this._leafletEvents, function (cb, ev) {
+          el.off(ev, cb);
+        });
+      }
+    }
+  });
+
+  return MapComponent;
+})(Component);
+
+module.exports = MapComponent;
+},{"lodash/collection/forEach":25,"lodash/collection/reduce":26,"lodash/lang/clone":64,"react":"react"}],10:[function(require,module,exports){
 "use strict";
 
 var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
 
-var element = _interopRequire(require("./element"));
+var _createClass = (function () { function defineProperties(target, props) { for (var key in props) { var prop = props[key]; prop.configurable = true; if (prop.value) prop.writable = true; } Object.defineProperties(target, props); } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-var mapLayer = _interopRequire(require("./mapLayer"));
+var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc && desc.writable) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-var popupContainer = _interopRequire(require("./popupContainer"));
+var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
 
-var tileLayer = _interopRequire(require("./tileLayer"));
-
-module.exports = { element: element, mapLayer: mapLayer, popupContainer: popupContainer, tileLayer: tileLayer };
-},{"./element":17,"./mapLayer":19,"./popupContainer":20,"./tileLayer":21}],19:[function(require,module,exports){
-"use strict";
-
-var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
+var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
 
 var assign = _interopRequire(require("lodash/object/assign"));
 
-var React = _interopRequire(require("react/addons"));
+var React = _interopRequire(require("react"));
 
-var elementMixin = _interopRequire(require("./element"));
+var MapComponent = _interopRequire(require("./MapComponent"));
 
-module.exports = {
-  mixins: [elementMixin],
+var MapLayer = (function (_MapComponent) {
+  function MapLayer() {
+    _classCallCheck(this, MapLayer);
 
-  propTypes: {
-    map: React.PropTypes.object.isRequired
-  },
-
-  componentDidMount: function componentDidMount() {
-    this.props.map.addLayer(this.getLeafletElement());
-  },
-
-  componentWillUnmount: function componentWillUnmount() {
-    this.props.map.removeLayer(this.getLeafletElement());
-  },
-
-  getClonedChildrenWithMap: function getClonedChildrenWithMap(extra) {
-    var _props = this.props;
-    var children = _props.children;
-    var map = _props.map;
-
-    var props = assign({ map: map }, extra);
-
-    return React.Children.map(children, function (child) {
-      return child ? React.addons.cloneWithProps(child, props) : null;
-    });
+    if (_MapComponent != null) {
+      _MapComponent.apply(this, arguments);
+    }
   }
-};
-},{"./element":17,"lodash/object/assign":71,"react/addons":"react/addons"}],20:[function(require,module,exports){
+
+  _inherits(MapLayer, _MapComponent);
+
+  _createClass(MapLayer, {
+    componentDidMount: {
+      value: function componentDidMount() {
+        _get(Object.getPrototypeOf(MapLayer.prototype), "componentDidMount", this).call(this);
+        this.props.map.addLayer(this.leafletElement);
+      }
+    },
+    componentWillUnmount: {
+      value: function componentWillUnmount() {
+        _get(Object.getPrototypeOf(MapLayer.prototype), "componentWillUnmount", this).call(this);
+        this.props.map.removeLayer(this.leafletElement);
+      }
+    },
+    getClonedChildrenWithMap: {
+      value: function getClonedChildrenWithMap(extra) {
+        var _props = this.props;
+        var children = _props.children;
+        var map = _props.map;
+
+        var props = assign({ map: map }, extra);
+
+        return React.Children.map(children, function (child) {
+          return child ? React.cloneElement(child, props) : null;
+        });
+      }
+    }
+  });
+
+  return MapLayer;
+})(MapComponent);
+
+module.exports = MapLayer;
+},{"./MapComponent":9,"lodash/object/assign":70,"react":"react"}],11:[function(require,module,exports){
 "use strict";
 
 var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
 
-var React = _interopRequire(require("react"));
+var _objectWithoutProperties = function (obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; };
 
-var mapLayerMixin = _interopRequire(require("./mapLayer"));
+var _createClass = (function () { function defineProperties(target, props) { for (var key in props) { var prop = props[key]; prop.configurable = true; if (prop.value) prop.writable = true; } Object.defineProperties(target, props); } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-module.exports = {
-  mixins: [mapLayerMixin],
+var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc && desc.writable) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-  render: function render() {
-    var children = this.getClonedChildrenWithMap({
-      popupContainer: this.getLeafletElement()
-    });
-    return React.createElement(
-      "noscript",
-      null,
-      children
-    );
+var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
+
+var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
+
+var Leaflet = _interopRequire(require("leaflet"));
+
+var latlngType = _interopRequire(require("./types/latlng"));
+
+var PopupContainer = _interopRequire(require("./PopupContainer"));
+
+var Marker = (function (_PopupContainer) {
+  function Marker() {
+    _classCallCheck(this, Marker);
+
+    if (_PopupContainer != null) {
+      _PopupContainer.apply(this, arguments);
+    }
   }
+
+  _inherits(Marker, _PopupContainer);
+
+  _createClass(Marker, {
+    componentWillMount: {
+      value: function componentWillMount() {
+        _get(Object.getPrototypeOf(Marker.prototype), "componentWillMount", this).call(this);
+        var _props = this.props;
+        var map = _props.map;
+        var position = _props.position;
+
+        var props = _objectWithoutProperties(_props, ["map", "position"]);
+
+        this.leafletElement = Leaflet.marker(position, props);
+      }
+    },
+    componentDidUpdate: {
+      value: function componentDidUpdate(prevProps) {
+        if (this.props.position !== prevProps.position) {
+          this.leafletElement.setLatLng(this.props.position);
+        }
+      }
+    }
+  });
+
+  return Marker;
+})(PopupContainer);
+
+module.exports = Marker;
+
+Marker.propTypes = {
+  position: latlngType.isRequired
 };
-},{"./mapLayer":19,"react":"react"}],21:[function(require,module,exports){
+},{"./PopupContainer":17,"./types/latlng":23,"leaflet":"leaflet"}],12:[function(require,module,exports){
 "use strict";
 
 var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
 
+var _objectWithoutProperties = function (obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; };
+
+var _createClass = (function () { function defineProperties(target, props) { for (var key in props) { var prop = props[key]; prop.configurable = true; if (prop.value) prop.writable = true; } Object.defineProperties(target, props); } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc && desc.writable) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
+
+var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
+
 var React = _interopRequire(require("react"));
 
-var mapLayerMixin = _interopRequire(require("./mapLayer"));
+var Leaflet = _interopRequire(require("leaflet"));
 
-module.exports = {
-  mixins: [mapLayerMixin],
+var latlngListType = _interopRequire(require("./types/latlngList"));
 
-  propTypes: {
-    opacity: React.PropTypes.number,
-    zIndex: React.PropTypes.number
-  },
+var PopupContainer = _interopRequire(require("./PopupContainer"));
 
-  componentDidUpdate: function componentDidUpdate(prevProps) {
-    var _props = this.props;
-    var opacity = _props.opacity;
-    var zIndex = _props.zIndex;
+var MultiPolygon = (function (_PopupContainer) {
+  function MultiPolygon() {
+    _classCallCheck(this, MultiPolygon);
 
-    if (opacity && opacity !== prevProps.opacity) {
-      this.getLeafletElement().setOpacity(opacity);
+    if (_PopupContainer != null) {
+      _PopupContainer.apply(this, arguments);
     }
-    if (zIndex && zIndex !== prevProps.zIndex) {
-      this.getLeafletElement().setZIndex(zIndex);
-    }
-  },
-
-  render: function render() {
-    return null;
   }
+
+  _inherits(MultiPolygon, _PopupContainer);
+
+  _createClass(MultiPolygon, {
+    componentWillMount: {
+      value: function componentWillMount() {
+        _get(Object.getPrototypeOf(MultiPolygon.prototype), "componentWillMount", this).call(this);
+        var _props = this.props;
+        var map = _props.map;
+        var polygons = _props.polygons;
+
+        var props = _objectWithoutProperties(_props, ["map", "polygons"]);
+
+        this.leafletElement = Leaflet.multiPolygon(polygons, props);
+      }
+    },
+    componentDidUpdate: {
+      value: function componentDidUpdate(prevProps) {
+        if (this.props.polygons !== prevProps.polygons) {
+          this.leafletElement.setLatLngs(this.props.polygons);
+        }
+      }
+    }
+  });
+
+  return MultiPolygon;
+})(PopupContainer);
+
+module.exports = MultiPolygon;
+
+MultiPolygon.propTypes = {
+  polygons: React.PropTypes.arrayOf(latlngListType).isRequired
 };
-},{"./mapLayer":19,"react":"react"}],22:[function(require,module,exports){
+},{"./PopupContainer":17,"./types/latlngList":24,"leaflet":"leaflet","react":"react"}],13:[function(require,module,exports){
+"use strict";
+
+var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
+
+var _objectWithoutProperties = function (obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; };
+
+var _createClass = (function () { function defineProperties(target, props) { for (var key in props) { var prop = props[key]; prop.configurable = true; if (prop.value) prop.writable = true; } Object.defineProperties(target, props); } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc && desc.writable) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
+
+var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
+
+var React = _interopRequire(require("react"));
+
+var Leaflet = _interopRequire(require("leaflet"));
+
+var latlngListType = _interopRequire(require("./types/latlngList"));
+
+var PopupContainer = _interopRequire(require("./PopupContainer"));
+
+var MultiPolyline = (function (_PopupContainer) {
+  function MultiPolyline() {
+    _classCallCheck(this, MultiPolyline);
+
+    if (_PopupContainer != null) {
+      _PopupContainer.apply(this, arguments);
+    }
+  }
+
+  _inherits(MultiPolyline, _PopupContainer);
+
+  _createClass(MultiPolyline, {
+    componentWillMount: {
+      value: function componentWillMount() {
+        _get(Object.getPrototypeOf(MultiPolyline.prototype), "componentWillMount", this).call(this);
+        var _props = this.props;
+        var map = _props.map;
+        var polylines = _props.polylines;
+
+        var props = _objectWithoutProperties(_props, ["map", "polylines"]);
+
+        this.leafletElement = Leaflet.multiPolyline(polylines, props);
+      }
+    },
+    componentDidUpdate: {
+      value: function componentDidUpdate(prevProps) {
+        if (this.props.polylines !== prevProps.polylines) {
+          this.leafletElement.setLatLngs(this.props.polylines);
+        }
+      }
+    }
+  });
+
+  return MultiPolyline;
+})(PopupContainer);
+
+module.exports = MultiPolyline;
+
+MultiPolyline.propTypes = {
+  polylines: React.PropTypes.arrayOf(latlngListType).isRequired
+};
+},{"./PopupContainer":17,"./types/latlngList":24,"leaflet":"leaflet","react":"react"}],14:[function(require,module,exports){
+"use strict";
+
+var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
+
+var _objectWithoutProperties = function (obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; };
+
+var _createClass = (function () { function defineProperties(target, props) { for (var key in props) { var prop = props[key]; prop.configurable = true; if (prop.value) prop.writable = true; } Object.defineProperties(target, props); } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc && desc.writable) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
+
+var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
+
+var Leaflet = _interopRequire(require("leaflet"));
+
+var latlngListType = _interopRequire(require("./types/latlngList"));
+
+var PopupContainer = _interopRequire(require("./PopupContainer"));
+
+var Polygon = (function (_PopupContainer) {
+  function Polygon() {
+    _classCallCheck(this, Polygon);
+
+    if (_PopupContainer != null) {
+      _PopupContainer.apply(this, arguments);
+    }
+  }
+
+  _inherits(Polygon, _PopupContainer);
+
+  _createClass(Polygon, {
+    componentWillMount: {
+      value: function componentWillMount() {
+        _get(Object.getPrototypeOf(Polygon.prototype), "componentWillMount", this).call(this);
+        var _props = this.props;
+        var map = _props.map;
+        var positions = _props.positions;
+
+        var props = _objectWithoutProperties(_props, ["map", "positions"]);
+
+        this.leafletElement = Leaflet.polygon(positions, props);
+      }
+    },
+    componentDidUpdate: {
+      value: function componentDidUpdate(prevProps) {
+        if (this.props.positions !== prevProps.positions) {
+          this.leafletElement.setLatLngs(this.props.positions);
+        }
+      }
+    }
+  });
+
+  return Polygon;
+})(PopupContainer);
+
+module.exports = Polygon;
+
+Polygon.propTypes = {
+  positions: latlngListType.isRequired
+};
+},{"./PopupContainer":17,"./types/latlngList":24,"leaflet":"leaflet"}],15:[function(require,module,exports){
+"use strict";
+
+var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
+
+var _objectWithoutProperties = function (obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; };
+
+var _createClass = (function () { function defineProperties(target, props) { for (var key in props) { var prop = props[key]; prop.configurable = true; if (prop.value) prop.writable = true; } Object.defineProperties(target, props); } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc && desc.writable) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
+
+var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
+
+var Leaflet = _interopRequire(require("leaflet"));
+
+var latlngListType = _interopRequire(require("./types/latlngList"));
+
+var PopupContainer = _interopRequire(require("./PopupContainer"));
+
+var Polyline = (function (_PopupContainer) {
+  function Polyline() {
+    _classCallCheck(this, Polyline);
+
+    if (_PopupContainer != null) {
+      _PopupContainer.apply(this, arguments);
+    }
+  }
+
+  _inherits(Polyline, _PopupContainer);
+
+  _createClass(Polyline, {
+    componentWillMount: {
+      value: function componentWillMount() {
+        _get(Object.getPrototypeOf(Polyline.prototype), "componentWillMount", this).call(this);
+        var _props = this.props;
+        var map = _props.map;
+        var positions = _props.positions;
+
+        var props = _objectWithoutProperties(_props, ["map", "positions"]);
+
+        this.leafletElement = Leaflet.polyline(positions, props);
+      }
+    },
+    componentDidUpdate: {
+      value: function componentDidUpdate(prevProps) {
+        if (this.props.positions !== prevProps.positions) {
+          this.leafletElement.setLatLngs(this.props.positions);
+        }
+      }
+    }
+  });
+
+  return Polyline;
+})(PopupContainer);
+
+module.exports = Polyline;
+
+Polyline.propTypes = {
+  positions: latlngListType.isRequired
+};
+},{"./PopupContainer":17,"./types/latlngList":24,"leaflet":"leaflet"}],16:[function(require,module,exports){
+"use strict";
+
+var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
+
+var _objectWithoutProperties = function (obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; };
+
+var _createClass = (function () { function defineProperties(target, props) { for (var key in props) { var prop = props[key]; prop.configurable = true; if (prop.value) prop.writable = true; } Object.defineProperties(target, props); } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc && desc.writable) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
+
+var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
+
+var React = _interopRequire(require("react"));
+
+var Leaflet = _interopRequire(require("leaflet"));
+
+var latlngType = _interopRequire(require("./types/latlng"));
+
+var MapComponent = _interopRequire(require("./MapComponent"));
+
+var Popup = (function (_MapComponent) {
+  function Popup() {
+    _classCallCheck(this, Popup);
+
+    if (_MapComponent != null) {
+      _MapComponent.apply(this, arguments);
+    }
+  }
+
+  _inherits(Popup, _MapComponent);
+
+  _createClass(Popup, {
+    componentWillMount: {
+      value: function componentWillMount() {
+        _get(Object.getPrototypeOf(Popup.prototype), "componentWillMount", this).call(this);
+        var _props = this.props;
+        var children = _props.children;
+        var map = _props.map;
+
+        var props = _objectWithoutProperties(_props, ["children", "map"]);
+
+        this.leafletElement = Leaflet.popup(props);
+      }
+    },
+    componentDidUpdate: {
+      value: function componentDidUpdate(prevProps) {
+        var _props = this.props;
+        var children = _props.children;
+        var map = _props.map;
+        var popupContainer = _props.popupContainer;
+        var position = _props.position;
+
+        var props = _objectWithoutProperties(_props, ["children", "map", "popupContainer", "position"]);
+
+        if (children !== prevProps.children) {
+          var content = React.renderToStaticMarkup(children);
+          if (popupContainer) {
+            popupContainer.bindPopup(content, props);
+          } else {
+            var el = this.leafletElement;
+            el.setContent(content);
+            if (position !== prevProps.position) el.setLatLng(position);
+          }
+        }
+      }
+    },
+    componentWillUnmount: {
+      value: function componentWillUnmount() {
+        _get(Object.getPrototypeOf(Popup.prototype), "componentWillUnmount", this).call(this);
+        this.props.map.removeLayer(this.leafletElement);
+      }
+    },
+    render: {
+      value: function render() {
+        var _props = this.props;
+        var children = _props.children;
+        var map = _props.map;
+        var popupContainer = _props.popupContainer;
+        var position = _props.position;
+
+        var props = _objectWithoutProperties(_props, ["children", "map", "popupContainer", "position"]);
+
+        if (children) {
+          var content = React.renderToStaticMarkup(children);
+          // Attach to container component
+          if (popupContainer) {
+            popupContainer.bindPopup(content, props);
+            return null;
+          }
+          // Attach to a Map
+          var el = this.leafletElement;
+          el.setContent(content);
+          if (position) el.setLatLng(position);
+          el.openOn(map);
+        }
+        return null;
+      }
+    }
+  });
+
+  return Popup;
+})(MapComponent);
+
+module.exports = Popup;
+
+Popup.propTypes = {
+  position: latlngType
+};
+},{"./MapComponent":9,"./types/latlng":23,"leaflet":"leaflet","react":"react"}],17:[function(require,module,exports){
+"use strict";
+
+var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
+
+var _createClass = (function () { function defineProperties(target, props) { for (var key in props) { var prop = props[key]; prop.configurable = true; if (prop.value) prop.writable = true; } Object.defineProperties(target, props); } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
+
+var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
+
+var React = _interopRequire(require("react"));
+
+var MapLayer = _interopRequire(require("./MapLayer"));
+
+var PopupContainer = (function (_MapLayer) {
+  function PopupContainer() {
+    _classCallCheck(this, PopupContainer);
+
+    if (_MapLayer != null) {
+      _MapLayer.apply(this, arguments);
+    }
+  }
+
+  _inherits(PopupContainer, _MapLayer);
+
+  _createClass(PopupContainer, {
+    render: {
+      value: function render() {
+        var children = this.getClonedChildrenWithMap({
+          popupContainer: this.leafletElement
+        });
+        return React.createElement(
+          "noscript",
+          null,
+          children
+        );
+      }
+    }
+  });
+
+  return PopupContainer;
+})(MapLayer);
+
+module.exports = PopupContainer;
+},{"./MapLayer":10,"react":"react"}],18:[function(require,module,exports){
+"use strict";
+
+var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
+
+var _objectWithoutProperties = function (obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; };
+
+var _createClass = (function () { function defineProperties(target, props) { for (var key in props) { var prop = props[key]; prop.configurable = true; if (prop.value) prop.writable = true; } Object.defineProperties(target, props); } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc && desc.writable) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
+
+var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
+
+var Leaflet = _interopRequire(require("leaflet"));
+
+var boundsType = _interopRequire(require("./types/bounds"));
+
+var PopupContainer = _interopRequire(require("./PopupContainer"));
+
+var Rectangle = (function (_PopupContainer) {
+  function Rectangle() {
+    _classCallCheck(this, Rectangle);
+
+    if (_PopupContainer != null) {
+      _PopupContainer.apply(this, arguments);
+    }
+  }
+
+  _inherits(Rectangle, _PopupContainer);
+
+  _createClass(Rectangle, {
+    componentWillMount: {
+      value: function componentWillMount() {
+        _get(Object.getPrototypeOf(Rectangle.prototype), "componentWillMount", this).call(this);
+        var _props = this.props;
+        var bounds = _props.bounds;
+        var map = _props.map;
+
+        var props = _objectWithoutProperties(_props, ["bounds", "map"]);
+
+        this.leafletElement = Leaflet.rectangle(bounds, props);
+      }
+    },
+    componentDidUpdate: {
+      value: function componentDidUpdate(prevProps) {
+        if (this.props.bounds !== prevProps.bounds) {
+          this.leafletElement.setBounds(this.props.bounds);
+        }
+      }
+    }
+  });
+
+  return Rectangle;
+})(PopupContainer);
+
+module.exports = Rectangle;
+
+Rectangle.propTypes = {
+  bounds: boundsType.isRequired
+};
+},{"./PopupContainer":17,"./types/bounds":21,"leaflet":"leaflet"}],19:[function(require,module,exports){
+"use strict";
+
+var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
+
+var _objectWithoutProperties = function (obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; };
+
+var _createClass = (function () { function defineProperties(target, props) { for (var key in props) { var prop = props[key]; prop.configurable = true; if (prop.value) prop.writable = true; } Object.defineProperties(target, props); } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc && desc.writable) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
+
+var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
+
+var React = _interopRequire(require("react"));
+
+var Leaflet = _interopRequire(require("leaflet"));
+
+var BaseTileLayer = _interopRequire(require("./BaseTileLayer"));
+
+var TileLayer = (function (_BaseTileLayer) {
+  function TileLayer() {
+    _classCallCheck(this, TileLayer);
+
+    if (_BaseTileLayer != null) {
+      _BaseTileLayer.apply(this, arguments);
+    }
+  }
+
+  _inherits(TileLayer, _BaseTileLayer);
+
+  _createClass(TileLayer, {
+    componentWillMount: {
+      value: function componentWillMount() {
+        _get(Object.getPrototypeOf(TileLayer.prototype), "componentWillMount", this).call(this);
+        var _props = this.props;
+        var map = _props.map;
+        var url = _props.url;
+
+        var props = _objectWithoutProperties(_props, ["map", "url"]);
+
+        this.leafletElement = Leaflet.tileLayer(url, props);
+      }
+    },
+    componentDidUpdate: {
+      value: function componentDidUpdate(prevProps) {
+        var url = this.props.url;
+
+        if (url && url !== prevProps.url) {
+          this.leafletElement.setUrl(url);
+        }
+      }
+    }
+  });
+
+  return TileLayer;
+})(BaseTileLayer);
+
+module.exports = TileLayer;
+
+TileLayer.propTypes = {
+  url: React.PropTypes.string.isRequired
+};
+},{"./BaseTileLayer":1,"leaflet":"leaflet","react":"react"}],20:[function(require,module,exports){
+"use strict";
+
+var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
+
+var _objectWithoutProperties = function (obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; };
+
+var _createClass = (function () { function defineProperties(target, props) { for (var key in props) { var prop = props[key]; prop.configurable = true; if (prop.value) prop.writable = true; } Object.defineProperties(target, props); } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc && desc.writable) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
+
+var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
+
+var React = _interopRequire(require("react"));
+
+var Leaflet = _interopRequire(require("leaflet"));
+
+var BaseTileLayer = _interopRequire(require("./BaseTileLayer"));
+
+var WMSTileLayer = (function (_BaseTileLayer) {
+  function WMSTileLayer() {
+    _classCallCheck(this, WMSTileLayer);
+
+    if (_BaseTileLayer != null) {
+      _BaseTileLayer.apply(this, arguments);
+    }
+  }
+
+  _inherits(WMSTileLayer, _BaseTileLayer);
+
+  _createClass(WMSTileLayer, {
+    componentWillMount: {
+      value: function componentWillMount() {
+        _get(Object.getPrototypeOf(WMSTileLayer.prototype), "componentWillMount", this).call(this);
+        var _props = this.props;
+        var map = _props.map;
+        var url = _props.url;
+
+        var props = _objectWithoutProperties(_props, ["map", "url"]);
+
+        this.leafletElement = Leaflet.tileLayer.wms(url, props);
+      }
+    }
+  });
+
+  return WMSTileLayer;
+})(BaseTileLayer);
+
+module.exports = WMSTileLayer;
+
+WMSTileLayer.propTypes = {
+  url: React.PropTypes.string.isRequired
+};
+},{"./BaseTileLayer":1,"leaflet":"leaflet","react":"react"}],21:[function(require,module,exports){
 "use strict";
 
 var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
@@ -926,7 +1372,7 @@ var Leaflet = _interopRequire(require("leaflet"));
 var latlngList = _interopRequire(require("./latlngList"));
 
 module.exports = React.PropTypes.oneOfType([React.PropTypes.instanceOf(Leaflet.LatLngBounds), latlngList]);
-},{"./latlngList":25,"leaflet":"leaflet","react":"react"}],23:[function(require,module,exports){
+},{"./latlngList":24,"leaflet":"leaflet","react":"react"}],22:[function(require,module,exports){
 "use strict";
 
 var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
@@ -938,7 +1384,7 @@ var latlng = _interopRequire(require("./latlng"));
 var latlngList = _interopRequire(require("./latlngList"));
 
 module.exports = { bounds: bounds, latlng: latlng, latlngList: latlngList };
-},{"./bounds":22,"./latlng":24,"./latlngList":25}],24:[function(require,module,exports){
+},{"./bounds":21,"./latlng":23,"./latlngList":24}],23:[function(require,module,exports){
 "use strict";
 
 var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
@@ -960,7 +1406,7 @@ Type.shape({
   lat: Type.number,
   lon: Type.number
 })]);
-},{"react":"react"}],25:[function(require,module,exports){
+},{"react":"react"}],24:[function(require,module,exports){
 "use strict";
 
 var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
@@ -970,7 +1416,7 @@ var React = _interopRequire(require("react"));
 var latlng = _interopRequire(require("./latlng"));
 
 module.exports = React.PropTypes.arrayOf(latlng);
-},{"./latlng":24,"react":"react"}],26:[function(require,module,exports){
+},{"./latlng":23,"react":"react"}],25:[function(require,module,exports){
 var arrayEach = require('../internal/arrayEach'),
     baseEach = require('../internal/baseEach'),
     bindCallback = require('../internal/bindCallback'),
@@ -1014,7 +1460,7 @@ function forEach(collection, iteratee, thisArg) {
 
 module.exports = forEach;
 
-},{"../internal/arrayEach":29,"../internal/baseEach":35,"../internal/bindCallback":47,"../lang/isArray":67}],27:[function(require,module,exports){
+},{"../internal/arrayEach":28,"../internal/baseEach":34,"../internal/bindCallback":46,"../lang/isArray":66}],26:[function(require,module,exports){
 var arrayReduce = require('../internal/arrayReduce'),
     baseCallback = require('../internal/baseCallback'),
     baseEach = require('../internal/baseEach'),
@@ -1064,7 +1510,7 @@ function reduce(collection, iteratee, accumulator, thisArg) {
 
 module.exports = reduce;
 
-},{"../internal/arrayReduce":30,"../internal/baseCallback":32,"../internal/baseEach":35,"../internal/baseReduce":44,"../lang/isArray":67}],28:[function(require,module,exports){
+},{"../internal/arrayReduce":29,"../internal/baseCallback":31,"../internal/baseEach":34,"../internal/baseReduce":43,"../lang/isArray":66}],27:[function(require,module,exports){
 /**
  * Copies the values of `source` to `array`.
  *
@@ -1086,7 +1532,7 @@ function arrayCopy(source, array) {
 
 module.exports = arrayCopy;
 
-},{}],29:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
 /**
  * A specialized version of `_.forEach` for arrays without support for callback
  * shorthands or `this` binding.
@@ -1110,7 +1556,7 @@ function arrayEach(array, iteratee) {
 
 module.exports = arrayEach;
 
-},{}],30:[function(require,module,exports){
+},{}],29:[function(require,module,exports){
 /**
  * A specialized version of `_.reduce` for arrays without support for callback
  * shorthands or `this` binding.
@@ -1138,7 +1584,7 @@ function arrayReduce(array, iteratee, accumulator, initFromArray) {
 
 module.exports = arrayReduce;
 
-},{}],31:[function(require,module,exports){
+},{}],30:[function(require,module,exports){
 var baseCopy = require('./baseCopy'),
     keys = require('../object/keys');
 
@@ -1175,7 +1621,7 @@ function baseAssign(object, source, customizer) {
 
 module.exports = baseAssign;
 
-},{"../object/keys":72,"./baseCopy":34}],32:[function(require,module,exports){
+},{"../object/keys":71,"./baseCopy":33}],31:[function(require,module,exports){
 var baseMatches = require('./baseMatches'),
     baseMatchesProperty = require('./baseMatchesProperty'),
     baseProperty = require('./baseProperty'),
@@ -1213,7 +1659,7 @@ function baseCallback(func, thisArg, argCount) {
 
 module.exports = baseCallback;
 
-},{"../utility/identity":77,"./baseMatches":41,"./baseMatchesProperty":42,"./baseProperty":43,"./bindCallback":47,"./isBindable":56}],33:[function(require,module,exports){
+},{"../utility/identity":76,"./baseMatches":40,"./baseMatchesProperty":41,"./baseProperty":42,"./bindCallback":46,"./isBindable":55}],32:[function(require,module,exports){
 var arrayCopy = require('./arrayCopy'),
     arrayEach = require('./arrayEach'),
     baseCopy = require('./baseCopy'),
@@ -1345,7 +1791,7 @@ function baseClone(value, isDeep, customizer, key, object, stackA, stackB) {
 
 module.exports = baseClone;
 
-},{"../lang/isArray":67,"../lang/isObject":69,"../object/keys":72,"./arrayCopy":28,"./arrayEach":29,"./baseCopy":34,"./baseForOwn":37,"./initCloneArray":53,"./initCloneByTag":54,"./initCloneObject":55}],34:[function(require,module,exports){
+},{"../lang/isArray":66,"../lang/isObject":68,"../object/keys":71,"./arrayCopy":27,"./arrayEach":28,"./baseCopy":33,"./baseForOwn":36,"./initCloneArray":52,"./initCloneByTag":53,"./initCloneObject":54}],33:[function(require,module,exports){
 /**
  * Copies the properties of `source` to `object`.
  *
@@ -1372,7 +1818,7 @@ function baseCopy(source, object, props) {
 
 module.exports = baseCopy;
 
-},{}],35:[function(require,module,exports){
+},{}],34:[function(require,module,exports){
 var baseForOwn = require('./baseForOwn'),
     isLength = require('./isLength'),
     toObject = require('./toObject');
@@ -1404,7 +1850,7 @@ function baseEach(collection, iteratee) {
 
 module.exports = baseEach;
 
-},{"./baseForOwn":37,"./isLength":59,"./toObject":64}],36:[function(require,module,exports){
+},{"./baseForOwn":36,"./isLength":58,"./toObject":63}],35:[function(require,module,exports){
 var toObject = require('./toObject');
 
 /**
@@ -1436,7 +1882,7 @@ function baseFor(object, iteratee, keysFunc) {
 
 module.exports = baseFor;
 
-},{"./toObject":64}],37:[function(require,module,exports){
+},{"./toObject":63}],36:[function(require,module,exports){
 var baseFor = require('./baseFor'),
     keys = require('../object/keys');
 
@@ -1455,7 +1901,7 @@ function baseForOwn(object, iteratee) {
 
 module.exports = baseForOwn;
 
-},{"../object/keys":72,"./baseFor":36}],38:[function(require,module,exports){
+},{"../object/keys":71,"./baseFor":35}],37:[function(require,module,exports){
 var baseIsEqualDeep = require('./baseIsEqualDeep');
 
 /**
@@ -1491,7 +1937,7 @@ function baseIsEqual(value, other, customizer, isWhere, stackA, stackB) {
 
 module.exports = baseIsEqual;
 
-},{"./baseIsEqualDeep":39}],39:[function(require,module,exports){
+},{"./baseIsEqualDeep":38}],38:[function(require,module,exports){
 var equalArrays = require('./equalArrays'),
     equalByTag = require('./equalByTag'),
     equalObjects = require('./equalObjects'),
@@ -1594,7 +2040,7 @@ function baseIsEqualDeep(object, other, equalFunc, customizer, isWhere, stackA, 
 
 module.exports = baseIsEqualDeep;
 
-},{"../lang/isArray":67,"../lang/isTypedArray":70,"./equalArrays":50,"./equalByTag":51,"./equalObjects":52}],40:[function(require,module,exports){
+},{"../lang/isArray":66,"../lang/isTypedArray":69,"./equalArrays":49,"./equalByTag":50,"./equalObjects":51}],39:[function(require,module,exports){
 var baseIsEqual = require('./baseIsEqual');
 
 /** Used for native method references. */
@@ -1654,7 +2100,7 @@ function baseIsMatch(object, props, values, strictCompareFlags, customizer) {
 
 module.exports = baseIsMatch;
 
-},{"./baseIsEqual":38}],41:[function(require,module,exports){
+},{"./baseIsEqual":37}],40:[function(require,module,exports){
 var baseIsMatch = require('./baseIsMatch'),
     isStrictComparable = require('./isStrictComparable'),
     keys = require('../object/keys');
@@ -1701,7 +2147,7 @@ function baseMatches(source) {
 
 module.exports = baseMatches;
 
-},{"../object/keys":72,"./baseIsMatch":40,"./isStrictComparable":61}],42:[function(require,module,exports){
+},{"../object/keys":71,"./baseIsMatch":39,"./isStrictComparable":60}],41:[function(require,module,exports){
 var baseIsEqual = require('./baseIsEqual'),
     isStrictComparable = require('./isStrictComparable');
 
@@ -1727,7 +2173,7 @@ function baseMatchesProperty(key, value) {
 
 module.exports = baseMatchesProperty;
 
-},{"./baseIsEqual":38,"./isStrictComparable":61}],43:[function(require,module,exports){
+},{"./baseIsEqual":37,"./isStrictComparable":60}],42:[function(require,module,exports){
 /**
  * The base implementation of `_.property` which does not coerce `key` to a string.
  *
@@ -1743,7 +2189,7 @@ function baseProperty(key) {
 
 module.exports = baseProperty;
 
-},{}],44:[function(require,module,exports){
+},{}],43:[function(require,module,exports){
 /**
  * The base implementation of `_.reduce` and `_.reduceRight` without support
  * for callback shorthands or `this` binding, which iterates over `collection`
@@ -1769,7 +2215,7 @@ function baseReduce(collection, iteratee, accumulator, initFromCollection, eachF
 
 module.exports = baseReduce;
 
-},{}],45:[function(require,module,exports){
+},{}],44:[function(require,module,exports){
 var identity = require('../utility/identity'),
     metaMap = require('./metaMap');
 
@@ -1788,7 +2234,7 @@ var baseSetData = !metaMap ? identity : function(func, data) {
 
 module.exports = baseSetData;
 
-},{"../utility/identity":77,"./metaMap":62}],46:[function(require,module,exports){
+},{"../utility/identity":76,"./metaMap":61}],45:[function(require,module,exports){
 /**
  * Converts `value` to a string if it is not one. An empty string is returned
  * for `null` or `undefined` values.
@@ -1806,7 +2252,7 @@ function baseToString(value) {
 
 module.exports = baseToString;
 
-},{}],47:[function(require,module,exports){
+},{}],46:[function(require,module,exports){
 var identity = require('../utility/identity');
 
 /**
@@ -1847,7 +2293,7 @@ function bindCallback(func, thisArg, argCount) {
 
 module.exports = bindCallback;
 
-},{"../utility/identity":77}],48:[function(require,module,exports){
+},{"../utility/identity":76}],47:[function(require,module,exports){
 (function (global){
 var constant = require('../utility/constant'),
     isNative = require('../lang/isNative');
@@ -1906,7 +2352,7 @@ if (!bufferSlice) {
 module.exports = bufferClone;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../lang/isNative":68,"../utility/constant":76}],49:[function(require,module,exports){
+},{"../lang/isNative":67,"../utility/constant":75}],48:[function(require,module,exports){
 var bindCallback = require('./bindCallback'),
     isIterateeCall = require('./isIterateeCall');
 
@@ -1920,24 +2366,31 @@ var bindCallback = require('./bindCallback'),
  */
 function createAssigner(assigner) {
   return function() {
-    var length = arguments.length,
-        object = arguments[0];
+    var args = arguments,
+        length = args.length,
+        object = args[0];
 
     if (length < 2 || object == null) {
       return object;
     }
-    if (length > 3 && isIterateeCall(arguments[1], arguments[2], arguments[3])) {
-      length = 2;
+    var customizer = args[length - 2],
+        thisArg = args[length - 1],
+        guard = args[3];
+
+    if (length > 3 && typeof customizer == 'function') {
+      customizer = bindCallback(customizer, thisArg, 5);
+      length -= 2;
+    } else {
+      customizer = (length > 2 && typeof thisArg == 'function') ? thisArg : null;
+      length -= (customizer ? 1 : 0);
     }
-    // Juggle arguments.
-    if (length > 3 && typeof arguments[length - 2] == 'function') {
-      var customizer = bindCallback(arguments[--length - 1], arguments[length--], 5);
-    } else if (length > 2 && typeof arguments[length - 1] == 'function') {
-      customizer = arguments[--length];
+    if (guard && isIterateeCall(args[1], args[2], guard)) {
+      customizer = length == 3 ? null : customizer;
+      length = 2;
     }
     var index = 0;
     while (++index < length) {
-      var source = arguments[index];
+      var source = args[index];
       if (source) {
         assigner(object, source, customizer);
       }
@@ -1948,7 +2401,7 @@ function createAssigner(assigner) {
 
 module.exports = createAssigner;
 
-},{"./bindCallback":47,"./isIterateeCall":58}],50:[function(require,module,exports){
+},{"./bindCallback":46,"./isIterateeCall":57}],49:[function(require,module,exports){
 /**
  * A specialized version of `baseIsEqualDeep` for arrays with support for
  * partial deep comparisons.
@@ -2004,7 +2457,7 @@ function equalArrays(array, other, equalFunc, customizer, isWhere, stackA, stack
 
 module.exports = equalArrays;
 
-},{}],51:[function(require,module,exports){
+},{}],50:[function(require,module,exports){
 /** `Object#toString` result references. */
 var boolTag = '[object Boolean]',
     dateTag = '[object Date]',
@@ -2055,7 +2508,7 @@ function equalByTag(object, other, tag) {
 
 module.exports = equalByTag;
 
-},{}],52:[function(require,module,exports){
+},{}],51:[function(require,module,exports){
 var keys = require('../object/keys');
 
 /** Used for native method references. */
@@ -2129,7 +2582,7 @@ function equalObjects(object, other, equalFunc, customizer, isWhere, stackA, sta
 
 module.exports = equalObjects;
 
-},{"../object/keys":72}],53:[function(require,module,exports){
+},{"../object/keys":71}],52:[function(require,module,exports){
 /** Used for native method references. */
 var objectProto = Object.prototype;
 
@@ -2157,7 +2610,7 @@ function initCloneArray(array) {
 
 module.exports = initCloneArray;
 
-},{}],54:[function(require,module,exports){
+},{}],53:[function(require,module,exports){
 var bufferClone = require('./bufferClone');
 
 /** `Object#toString` result references. */
@@ -2223,7 +2676,7 @@ function initCloneByTag(object, tag, isDeep) {
 
 module.exports = initCloneByTag;
 
-},{"./bufferClone":48}],55:[function(require,module,exports){
+},{"./bufferClone":47}],54:[function(require,module,exports){
 /**
  * Initializes an object clone.
  *
@@ -2241,7 +2694,7 @@ function initCloneObject(object) {
 
 module.exports = initCloneObject;
 
-},{}],56:[function(require,module,exports){
+},{}],55:[function(require,module,exports){
 var baseSetData = require('./baseSetData'),
     isNative = require('../lang/isNative'),
     support = require('../support');
@@ -2281,7 +2734,7 @@ function isBindable(func) {
 
 module.exports = isBindable;
 
-},{"../lang/isNative":68,"../support":75,"./baseSetData":45}],57:[function(require,module,exports){
+},{"../lang/isNative":67,"../support":74,"./baseSetData":44}],56:[function(require,module,exports){
 /**
  * Used as the maximum length of an array-like value.
  * See the [ES spec](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-number.max_safe_integer)
@@ -2305,7 +2758,7 @@ function isIndex(value, length) {
 
 module.exports = isIndex;
 
-},{}],58:[function(require,module,exports){
+},{}],57:[function(require,module,exports){
 var isIndex = require('./isIndex'),
     isLength = require('./isLength'),
     isObject = require('../lang/isObject');
@@ -2330,13 +2783,16 @@ function isIterateeCall(value, index, object) {
   } else {
     prereq = type == 'string' && index in object;
   }
-  var other = object[index];
-  return prereq && (value === value ? value === other : other !== other);
+  if (prereq) {
+    var other = object[index];
+    return value === value ? value === other : other !== other;
+  }
+  return false;
 }
 
 module.exports = isIterateeCall;
 
-},{"../lang/isObject":69,"./isIndex":57,"./isLength":59}],59:[function(require,module,exports){
+},{"../lang/isObject":68,"./isIndex":56,"./isLength":58}],58:[function(require,module,exports){
 /**
  * Used as the maximum length of an array-like value.
  * See the [ES spec](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-number.max_safe_integer)
@@ -2361,7 +2817,7 @@ function isLength(value) {
 
 module.exports = isLength;
 
-},{}],60:[function(require,module,exports){
+},{}],59:[function(require,module,exports){
 /**
  * Checks if `value` is object-like.
  *
@@ -2375,7 +2831,7 @@ function isObjectLike(value) {
 
 module.exports = isObjectLike;
 
-},{}],61:[function(require,module,exports){
+},{}],60:[function(require,module,exports){
 var isObject = require('../lang/isObject');
 
 /**
@@ -2392,7 +2848,7 @@ function isStrictComparable(value) {
 
 module.exports = isStrictComparable;
 
-},{"../lang/isObject":69}],62:[function(require,module,exports){
+},{"../lang/isObject":68}],61:[function(require,module,exports){
 (function (global){
 var isNative = require('../lang/isNative');
 
@@ -2405,7 +2861,7 @@ var metaMap = WeakMap && new WeakMap;
 module.exports = metaMap;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../lang/isNative":68}],63:[function(require,module,exports){
+},{"../lang/isNative":67}],62:[function(require,module,exports){
 var isArguments = require('../lang/isArguments'),
     isArray = require('../lang/isArray'),
     isIndex = require('./isIndex'),
@@ -2449,7 +2905,7 @@ function shimKeys(object) {
 
 module.exports = shimKeys;
 
-},{"../lang/isArguments":66,"../lang/isArray":67,"../object/keysIn":73,"../support":75,"./isIndex":57,"./isLength":59}],64:[function(require,module,exports){
+},{"../lang/isArguments":65,"../lang/isArray":66,"../object/keysIn":72,"../support":74,"./isIndex":56,"./isLength":58}],63:[function(require,module,exports){
 var isObject = require('../lang/isObject');
 
 /**
@@ -2465,7 +2921,7 @@ function toObject(value) {
 
 module.exports = toObject;
 
-},{"../lang/isObject":69}],65:[function(require,module,exports){
+},{"../lang/isObject":68}],64:[function(require,module,exports){
 var baseClone = require('../internal/baseClone'),
     bindCallback = require('../internal/bindCallback'),
     isIterateeCall = require('../internal/isIterateeCall');
@@ -2536,7 +2992,7 @@ function clone(value, isDeep, customizer, thisArg) {
 
 module.exports = clone;
 
-},{"../internal/baseClone":33,"../internal/bindCallback":47,"../internal/isIterateeCall":58}],66:[function(require,module,exports){
+},{"../internal/baseClone":32,"../internal/bindCallback":46,"../internal/isIterateeCall":57}],65:[function(require,module,exports){
 var isLength = require('../internal/isLength'),
     isObjectLike = require('../internal/isObjectLike');
 
@@ -2576,7 +3032,7 @@ function isArguments(value) {
 
 module.exports = isArguments;
 
-},{"../internal/isLength":59,"../internal/isObjectLike":60}],67:[function(require,module,exports){
+},{"../internal/isLength":58,"../internal/isObjectLike":59}],66:[function(require,module,exports){
 var isLength = require('../internal/isLength'),
     isNative = require('./isNative'),
     isObjectLike = require('../internal/isObjectLike');
@@ -2619,7 +3075,7 @@ var isArray = nativeIsArray || function(value) {
 
 module.exports = isArray;
 
-},{"../internal/isLength":59,"../internal/isObjectLike":60,"./isNative":68}],68:[function(require,module,exports){
+},{"../internal/isLength":58,"../internal/isObjectLike":59,"./isNative":67}],67:[function(require,module,exports){
 var escapeRegExp = require('../string/escapeRegExp'),
     isObjectLike = require('../internal/isObjectLike');
 
@@ -2676,7 +3132,7 @@ function isNative(value) {
 
 module.exports = isNative;
 
-},{"../internal/isObjectLike":60,"../string/escapeRegExp":74}],69:[function(require,module,exports){
+},{"../internal/isObjectLike":59,"../string/escapeRegExp":73}],68:[function(require,module,exports){
 /**
  * Checks if `value` is the language type of `Object`.
  * (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
@@ -2708,7 +3164,7 @@ function isObject(value) {
 
 module.exports = isObject;
 
-},{}],70:[function(require,module,exports){
+},{}],69:[function(require,module,exports){
 var isLength = require('../internal/isLength'),
     isObjectLike = require('../internal/isObjectLike');
 
@@ -2785,7 +3241,7 @@ function isTypedArray(value) {
 
 module.exports = isTypedArray;
 
-},{"../internal/isLength":59,"../internal/isObjectLike":60}],71:[function(require,module,exports){
+},{"../internal/isLength":58,"../internal/isObjectLike":59}],70:[function(require,module,exports){
 var baseAssign = require('../internal/baseAssign'),
     createAssigner = require('../internal/createAssigner');
 
@@ -2822,7 +3278,7 @@ var assign = createAssigner(baseAssign);
 
 module.exports = assign;
 
-},{"../internal/baseAssign":31,"../internal/createAssigner":49}],72:[function(require,module,exports){
+},{"../internal/baseAssign":30,"../internal/createAssigner":48}],71:[function(require,module,exports){
 var isLength = require('../internal/isLength'),
     isNative = require('../lang/isNative'),
     isObject = require('../lang/isObject'),
@@ -2872,7 +3328,7 @@ var keys = !nativeKeys ? shimKeys : function(object) {
 
 module.exports = keys;
 
-},{"../internal/isLength":59,"../internal/shimKeys":63,"../lang/isNative":68,"../lang/isObject":69}],73:[function(require,module,exports){
+},{"../internal/isLength":58,"../internal/shimKeys":62,"../lang/isNative":67,"../lang/isObject":68}],72:[function(require,module,exports){
 var isArguments = require('../lang/isArguments'),
     isArray = require('../lang/isArray'),
     isIndex = require('../internal/isIndex'),
@@ -2939,7 +3395,7 @@ function keysIn(object) {
 
 module.exports = keysIn;
 
-},{"../internal/isIndex":57,"../internal/isLength":59,"../lang/isArguments":66,"../lang/isArray":67,"../lang/isObject":69,"../support":75}],74:[function(require,module,exports){
+},{"../internal/isIndex":56,"../internal/isLength":58,"../lang/isArguments":65,"../lang/isArray":66,"../lang/isObject":68,"../support":74}],73:[function(require,module,exports){
 var baseToString = require('../internal/baseToString');
 
 /**
@@ -2973,7 +3429,7 @@ function escapeRegExp(string) {
 
 module.exports = escapeRegExp;
 
-},{"../internal/baseToString":46}],75:[function(require,module,exports){
+},{"../internal/baseToString":45}],74:[function(require,module,exports){
 (function (global){
 var isNative = require('./lang/isNative');
 
@@ -3052,7 +3508,7 @@ var support = {};
 module.exports = support;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./lang/isNative":68}],76:[function(require,module,exports){
+},{"./lang/isNative":67}],75:[function(require,module,exports){
 /**
  * Creates a function that returns `value`.
  *
@@ -3077,7 +3533,7 @@ function constant(value) {
 
 module.exports = constant;
 
-},{}],77:[function(require,module,exports){
+},{}],76:[function(require,module,exports){
 /**
  * This method returns the first argument provided to it.
  *
@@ -3099,7 +3555,7 @@ function identity(value) {
 
 module.exports = identity;
 
-},{}],78:[function(require,module,exports){
+},{}],77:[function(require,module,exports){
 var baseToString = require('../internal/baseToString');
 
 /** Used to generate unique IDs. */
@@ -3128,16 +3584,16 @@ function uniqueId(prefix) {
 
 module.exports = uniqueId;
 
-},{"../internal/baseToString":46}],"react-leaflet":[function(require,module,exports){
+},{"../internal/baseToString":45}],"react-leaflet":[function(require,module,exports){
 "use strict";
 
 var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
 
 var Leaflet = _interopRequire(require("leaflet"));
 
-var mixins = _interopRequire(require("./mixins"));
-
 var PropTypes = _interopRequire(require("./types"));
+
+var BaseTileLayer = _interopRequire(require("./BaseTileLayer"));
 
 var CanvasTileLayer = _interopRequire(require("./CanvasTileLayer"));
 
@@ -3153,6 +3609,10 @@ var ImageOverlay = _interopRequire(require("./ImageOverlay"));
 
 var Map = _interopRequire(require("./Map"));
 
+var MapComponent = _interopRequire(require("./MapComponent"));
+
+var MapLayer = _interopRequire(require("./MapLayer"));
+
 var Marker = _interopRequire(require("./Marker"));
 
 var MultiPolygon = _interopRequire(require("./MultiPolygon"));
@@ -3163,7 +3623,11 @@ var Polygon = _interopRequire(require("./Polygon"));
 
 var Polyline = _interopRequire(require("./Polyline"));
 
-var Popup = _interopRequire(require("./Popup"));
+var _Popup = require("./Popup");
+
+var Popup = _interopRequire(_Popup);
+
+var PopupContainer = _interopRequire(_Popup);
 
 var Rectangle = _interopRequire(require("./Rectangle"));
 
@@ -3179,8 +3643,8 @@ setIconDefaultImagePath("//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/images")
 
 module.exports = {
   setIconDefaultImagePath: setIconDefaultImagePath,
-  mixins: mixins,
   PropTypes: PropTypes,
+  BaseTileLayer: BaseTileLayer,
   CanvasTileLayer: CanvasTileLayer,
   Circle: Circle,
   CircleMarker: CircleMarker,
@@ -3188,14 +3652,17 @@ module.exports = {
   GeoJson: GeoJson,
   ImageOverlay: ImageOverlay,
   Map: Map,
+  MapComponent: MapComponent,
+  MapLayer: MapLayer,
   Marker: Marker,
   MultiPolygon: MultiPolygon,
   MultiPolyline: MultiPolyline,
   Polygon: Polygon,
   Polyline: Polyline,
   Popup: Popup,
+  PopupContainer: PopupContainer,
   Rectangle: Rectangle,
   TileLayer: TileLayer,
   WMSTileLayer: WMSTileLayer
 };
-},{"./CanvasTileLayer":1,"./Circle":2,"./CircleMarker":3,"./FeatureGroup":4,"./GeoJson":5,"./ImageOverlay":6,"./Map":7,"./Marker":8,"./MultiPolygon":9,"./MultiPolyline":10,"./Polygon":11,"./Polyline":12,"./Popup":13,"./Rectangle":14,"./TileLayer":15,"./WMSTileLayer":16,"./mixins":18,"./types":23,"leaflet":"leaflet"}]},{},[]);
+},{"./BaseTileLayer":1,"./CanvasTileLayer":2,"./Circle":3,"./CircleMarker":4,"./FeatureGroup":5,"./GeoJson":6,"./ImageOverlay":7,"./Map":8,"./MapComponent":9,"./MapLayer":10,"./Marker":11,"./MultiPolygon":12,"./MultiPolyline":13,"./Polygon":14,"./Polyline":15,"./Popup":16,"./Rectangle":18,"./TileLayer":19,"./WMSTileLayer":20,"./types":22,"leaflet":"leaflet"}]},{},[]);

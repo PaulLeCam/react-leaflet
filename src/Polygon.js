@@ -1,26 +1,22 @@
-import React from "react";
 import Leaflet from "leaflet";
 
 import latlngListType from "./types/latlngList";
-import popupContainerMixin from "./mixins/popupContainer";
+import PopupContainer from "./PopupContainer";
 
-export default React.createClass({
-  displayName: "Polygon",
-
-  mixins: [popupContainerMixin],
-
-  propTypes: {
-    positions: latlngListType.isRequired
-  },
-
+export default class Polygon extends PopupContainer {
   componentWillMount() {
-    let {map, positions, ...props} = this.props;
-    this._leafletElement = Leaflet.polygon(positions, props);
-  },
+    super.componentWillMount();
+    const {map, positions, ...props} = this.props;
+    this.leafletElement = Leaflet.polygon(positions, props);
+  }
 
   componentDidUpdate(prevProps) {
     if (this.props.positions !== prevProps.positions) {
-      this.getLeafletElement().setLatLngs(this.props.positions);
+      this.leafletElement.setLatLngs(this.props.positions);
     }
   }
-});
+}
+
+Polygon.propTypes = {
+  positions: latlngListType.isRequired
+};
