@@ -51,7 +51,7 @@ React.render(examples, document.getElementById("app"));
 
 var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
 
-var _prototypeProperties = function (child, staticProps, instanceProps) { if (staticProps) Object.defineProperties(child, staticProps); if (instanceProps) Object.defineProperties(child.prototype, instanceProps); };
+var _createClass = (function () { function defineProperties(target, props) { for (var key in props) { var prop = props[key]; prop.configurable = true; if (prop.value) prop.writable = true; } Object.defineProperties(target, props); } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
 
@@ -81,13 +81,11 @@ var EventsExample = (function (_React$Component) {
 
   _inherits(EventsExample, _React$Component);
 
-  _prototypeProperties(EventsExample, null, {
+  _createClass(EventsExample, {
     handleClick: {
       value: function handleClick() {
         this.refs.map.leafletElement.locate();
-      },
-      writable: true,
-      configurable: true
+      }
     },
     handleLocationFound: {
       value: function handleLocationFound(e) {
@@ -95,9 +93,7 @@ var EventsExample = (function (_React$Component) {
           hasLocation: true,
           latlng: e.latlng
         });
-      },
-      writable: true,
-      configurable: true
+      }
     },
     render: {
       value: function render() {
@@ -128,9 +124,7 @@ var EventsExample = (function (_React$Component) {
           }),
           marker
         );
-      },
-      writable: true,
-      configurable: true
+      }
     }
   });
 
@@ -144,7 +138,7 @@ module.exports = EventsExample;
 
 var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
 
-var _prototypeProperties = function (child, staticProps, instanceProps) { if (staticProps) Object.defineProperties(child, staticProps); if (instanceProps) Object.defineProperties(child.prototype, instanceProps); };
+var _createClass = (function () { function defineProperties(target, props) { for (var key in props) { var prop = props[key]; prop.configurable = true; if (prop.value) prop.writable = true; } Object.defineProperties(target, props); } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
 
@@ -172,7 +166,7 @@ var SimpleExample = (function (_React$Component) {
 
   _inherits(SimpleExample, _React$Component);
 
-  _prototypeProperties(SimpleExample, null, {
+  _createClass(SimpleExample, {
     render: {
       value: function render() {
         var position = [this.state.lat, this.state.lng];
@@ -199,9 +193,7 @@ var SimpleExample = (function (_React$Component) {
             )
           )
         );
-      },
-      writable: true,
-      configurable: true
+      }
     }
   });
 
@@ -215,7 +207,7 @@ module.exports = SimpleExample;
 
 var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
 
-var _prototypeProperties = function (child, staticProps, instanceProps) { if (staticProps) Object.defineProperties(child, staticProps); if (instanceProps) Object.defineProperties(child.prototype, instanceProps); };
+var _createClass = (function () { function defineProperties(target, props) { for (var key in props) { var prop = props[key]; prop.configurable = true; if (prop.value) prop.writable = true; } Object.defineProperties(target, props); } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
 
@@ -247,7 +239,7 @@ var VectorLayersExample = (function (_React$Component) {
 
   _inherits(VectorLayersExample, _React$Component);
 
-  _prototypeProperties(VectorLayersExample, null, {
+  _createClass(VectorLayersExample, {
     render: {
       value: function render() {
         var center = [51.505, -0.09];
@@ -289,9 +281,7 @@ var VectorLayersExample = (function (_React$Component) {
           React.createElement(MultiPolygon, { polygons: multiPolygon, color: "purple" }),
           React.createElement(Rectangle, { bounds: rectangle, color: "black" })
         );
-      },
-      writable: true,
-      configurable: true
+      }
     }
   });
 
