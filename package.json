@@ -1,6 +1,6 @@
 {
   "name": "react-leaflet",
-  "version": "0.4.0-rc.1",
+  "version": "0.4.0",
   "description": "React components for Leaflet maps",
   "main": "lib/index.js",
   "scripts": {
@@ -37,11 +37,11 @@
     "react": "^0.13.0"
   },
   "devDependencies": {
-    "babel": "^4.7.8",
+    "babel": "^4.7.16",
     "babelify": "^5.0.3",
     "browserify": "^9.0.3",
     "gulp": "^3.8.10",
-    "gulp-load-plugins": "^0.8.1",
+    "gulp-load-plugins": "^0.9.0",
     "gulp-util": "^3.0.4",
     "gulp-webserver": "^0.9.0",
     "jest-cli": "^0.4.0",
@@ -49,7 +49,7 @@
     "onchange": "^1.0.0",
     "react": "^0.13.0",
     "vinyl-source-stream2": "^0.1.1",
-    "watchify": "^2.4.0"
+    "watchify": "^2.6.2"
   },
   "jest": {
     "unmockedModulePathPatterns": [
