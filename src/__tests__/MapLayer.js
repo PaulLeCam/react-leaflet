@@ -1,12 +1,12 @@
+import Leaflet from "leaflet";
+import React from "react";
+
 jest.dontMock("../MapComponent");
 jest.dontMock("../MapLayer");
 jest.dontMock("../Map");
 
-import Leaflet from "leaflet";
-import React from "react";
-
-import MapLayer from "../MapLayer";
-import Map from "../Map";
+const MapLayer = require("../MapLayer");
+const Map = require("../Map");
 
 describe("MapLayer", () => {
   it("passes its `map` prop to its children", () => {

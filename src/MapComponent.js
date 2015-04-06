@@ -7,7 +7,6 @@ const EVENTS_RE = /on(?:Leaflet)?(.+)/i;
 
 export default class MapComponent extends Component {
   getLeafletElement() {
-    console && console.warn && console.warn('`getLeafletElement()` is deprecated, use `leafletElement` instead');
     return this.leafletElement;
   }
 

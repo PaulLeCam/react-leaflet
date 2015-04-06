@@ -3,6 +3,7 @@ import {Map, TileLayer, Marker, Popup} from "react-leaflet";
 
 export default class EventsExample extends React.Component {
   constructor() {
+    super();
     this.state = {
       hasLocation: false,
       latlng: {

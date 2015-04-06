@@ -1,3 +1,5 @@
+import React from "react";
+
 jest.dontMock("../BaseTileLayer");
 jest.dontMock("../MapComponent");
 jest.dontMock("../MapLayer");
@@ -7,8 +9,7 @@ jest.dontMock("../TileLayer");
 jest.dontMock("../Marker");
 jest.dontMock("../index");
 
-import React from "react";
-import {Map, Marker, TileLayer} from "../";
+const {Map, Marker, TileLayer} = require("../");
 
 describe("Marker", () => {
   it("adds the marker to the map", () => {

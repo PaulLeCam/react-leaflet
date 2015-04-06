@@ -1,8 +1,9 @@
+import React from "react";
+
 jest.dontMock("../Map");
 jest.dontMock("../MapComponent");
 
-import React from "react";
-import Map from "../Map";
+const Map = require("../Map");
 
 describe("Map", () => {
   beforeEach(() => {
@@ -45,6 +46,7 @@ describe("Map", () => {
   it("updates center and zoom props", () => {
     class Component extends React.Component {
       constructor() {
+        super();
         this.state = {
           center: [1.2, 3.4],
           zoom: 10

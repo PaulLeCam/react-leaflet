@@ -1,9 +1,9 @@
-jest.dontMock("../MapComponent");
-
 import Leaflet from "leaflet";
 import React from "react";
 
-import MapComponent from "../MapComponent";
+jest.dontMock("../MapComponent");
+
+const MapComponent = require("../MapComponent");
 
 describe("MapComponent", () => {
   class Component extends MapComponent {
@@ -16,7 +16,7 @@ describe("MapComponent", () => {
     }
   }
 
-  it("exposes a `leafletElement` method", () => {
+  it("exposes a `leafletElement` getter", () => {
     document.body.innerHTML = '<div id="test"></div>';
 
     const component = <Component />;

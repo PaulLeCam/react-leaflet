@@ -95,7 +95,7 @@ These components are base classes used by other components. They can be extended
 ##### MapComponent
 
 Base class extending `React.Component` and handling events binding and unbind.  
-It exposes a `leafletElement` property to access the `Leaflet` object created for the component.
+It exposes a `getLeafletElement()` method to access the `Leaflet` object created for the component.
 
 ##### MapLayer
 
@@ -192,6 +192,15 @@ The Popup children will be rendered as its content using `React.renderToStaticMa
 - GeoJson
 
 ## Changelog
+
+### v0.4.1 (06/04/15)
+
+- Removed `getLeafletElement()` deprecation.
+- Updated Babel to v5.
+
+### v0.4.0 (28/03/15)
+
+Released v0.4.
 
 ### v0.4.0-rc.1 (11/03/15)
 

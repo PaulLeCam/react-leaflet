@@ -1,75 +1,87 @@
-(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({"./example/app.js":[function(require,module,exports){
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 "use strict";
 
-var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
+var _interopRequireWildcard = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
 
-var React = _interopRequire(require("react"));
+var _React = require("react");
 
-var SimpleExample = _interopRequire(require("./simple"));
+var _React2 = _interopRequireWildcard(_React);
 
-var EventsExample = _interopRequire(require("./events"));
+var _SimpleExample = require("./simple");
 
-var VectorLayersExample = _interopRequire(require("./vector-layers"));
+var _SimpleExample2 = _interopRequireWildcard(_SimpleExample);
 
-var examples = React.createElement(
+var _EventsExample = require("./events");
+
+var _EventsExample2 = _interopRequireWildcard(_EventsExample);
+
+var _VectorLayersExample = require("./vector-layers");
+
+var _VectorLayersExample2 = _interopRequireWildcard(_VectorLayersExample);
+
+var examples = _React2["default"].createElement(
   "div",
   null,
-  React.createElement(
+  _React2["default"].createElement(
     "h1",
     null,
     "React-Leaflet examples"
   ),
-  React.createElement(
+  _React2["default"].createElement(
     "h2",
     null,
     "Popup with Marker"
   ),
-  React.createElement(SimpleExample, null),
-  React.createElement(
+  _React2["default"].createElement(_SimpleExample2["default"], null),
+  _React2["default"].createElement(
     "h2",
     null,
     "Events"
   ),
-  React.createElement(
+  _React2["default"].createElement(
     "p",
     null,
     "Click the map to show a marker at your detected location"
   ),
-  React.createElement(EventsExample, null),
-  React.createElement(
+  _React2["default"].createElement(_EventsExample2["default"], null),
+  _React2["default"].createElement(
     "h2",
     null,
     "Vector layers"
   ),
-  React.createElement(VectorLayersExample, null)
+  _React2["default"].createElement(_VectorLayersExample2["default"], null)
 );
 
-React.render(examples, document.getElementById("app"));
+_React2["default"].render(examples, document.getElementById("app"));
 
-},{"./events":"/Users/paul/dev/PaulLeCam/react-leaflet/example/events.js","./simple":"/Users/paul/dev/PaulLeCam/react-leaflet/example/simple.js","./vector-layers":"/Users/paul/dev/PaulLeCam/react-leaflet/example/vector-layers.js","react":"react"}],"/Users/paul/dev/PaulLeCam/react-leaflet/example/events.js":[function(require,module,exports){
+},{"./events":2,"./simple":3,"./vector-layers":4,"react":"react"}],2:[function(require,module,exports){
 "use strict";
 
-var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
-
-var _createClass = (function () { function defineProperties(target, props) { for (var key in props) { var prop = props[key]; prop.configurable = true; if (prop.value) prop.writable = true; } Object.defineProperties(target, props); } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
+var _interopRequireWildcard = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
 
 var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
 
-var React = _interopRequire(require("react"));
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-var _reactLeaflet = require("react-leaflet");
+var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-var Map = _reactLeaflet.Map;
-var TileLayer = _reactLeaflet.TileLayer;
-var Marker = _reactLeaflet.Marker;
-var Popup = _reactLeaflet.Popup;
+var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _React = require("react");
+
+var _React2 = _interopRequireWildcard(_React);
+
+var _Map$TileLayer$Marker$Popup = require("react-leaflet");
 
 var EventsExample = (function (_React$Component) {
   function EventsExample() {
     _classCallCheck(this, EventsExample);
 
+    _get(Object.getPrototypeOf(EventsExample.prototype), "constructor", this).call(this);
     this.state = {
       hasLocation: false,
       latlng: {
@@ -81,82 +93,86 @@ var EventsExample = (function (_React$Component) {
 
   _inherits(EventsExample, _React$Component);
 
-  _createClass(EventsExample, {
-    handleClick: {
-      value: function handleClick() {
-        this.refs.map.leafletElement.locate();
-      }
-    },
-    handleLocationFound: {
-      value: function handleLocationFound(e) {
-        this.setState({
-          hasLocation: true,
-          latlng: e.latlng
-        });
-      }
-    },
-    render: {
-      value: function render() {
-        var marker = this.state.hasLocation ? React.createElement(
-          Marker,
-          { position: this.state.latlng },
-          React.createElement(
-            Popup,
-            null,
-            React.createElement(
-              "span",
-              null,
-              "You are here"
-            )
-          )
-        ) : null;
-
-        return React.createElement(
-          Map,
-          { ref: "map",
-            center: this.state.latlng,
-            zoom: 13,
-            onClick: this.handleClick.bind(this),
-            onLocationfound: this.handleLocationFound.bind(this) },
-          React.createElement(TileLayer, {
-            url: "http://{s}.tile.osm.org/{z}/{x}/{y}.png",
-            attribution: "© <a href=\"http://osm.org/copyright\">OpenStreetMap</a> contributors"
-          }),
-          marker
-        );
-      }
+  _createClass(EventsExample, [{
+    key: "handleClick",
+    value: function handleClick() {
+      this.refs.map.leafletElement.locate();
     }
-  });
+  }, {
+    key: "handleLocationFound",
+    value: function handleLocationFound(e) {
+      this.setState({
+        hasLocation: true,
+        latlng: e.latlng
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var marker = this.state.hasLocation ? _React2["default"].createElement(
+        _Map$TileLayer$Marker$Popup.Marker,
+        { position: this.state.latlng },
+        _React2["default"].createElement(
+          _Map$TileLayer$Marker$Popup.Popup,
+          null,
+          _React2["default"].createElement(
+            "span",
+            null,
+            "You are here"
+          )
+        )
+      ) : null;
+
+      return _React2["default"].createElement(
+        _Map$TileLayer$Marker$Popup.Map,
+        { ref: "map",
+          center: this.state.latlng,
+          zoom: 13,
+          onClick: this.handleClick.bind(this),
+          onLocationfound: this.handleLocationFound.bind(this) },
+        _React2["default"].createElement(_Map$TileLayer$Marker$Popup.TileLayer, {
+          url: "http://{s}.tile.osm.org/{z}/{x}/{y}.png",
+          attribution: "© <a href=\"http://osm.org/copyright\">OpenStreetMap</a> contributors"
+        }),
+        marker
+      );
+    }
+  }]);
 
   return EventsExample;
-})(React.Component);
+})(_React2["default"].Component);
 
-module.exports = EventsExample;
+exports["default"] = EventsExample;
+module.exports = exports["default"];
 
-},{"react":"react","react-leaflet":"react-leaflet"}],"/Users/paul/dev/PaulLeCam/react-leaflet/example/simple.js":[function(require,module,exports){
+},{"react":"react","react-leaflet":"react-leaflet"}],3:[function(require,module,exports){
 "use strict";
 
-var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
-
-var _createClass = (function () { function defineProperties(target, props) { for (var key in props) { var prop = props[key]; prop.configurable = true; if (prop.value) prop.writable = true; } Object.defineProperties(target, props); } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
+var _interopRequireWildcard = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
 
 var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
 
-var React = _interopRequire(require("react"));
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-var _reactLeaflet = require("react-leaflet");
+var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-var Map = _reactLeaflet.Map;
-var TileLayer = _reactLeaflet.TileLayer;
-var Marker = _reactLeaflet.Marker;
-var Popup = _reactLeaflet.Popup;
+var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _React = require("react");
+
+var _React2 = _interopRequireWildcard(_React);
+
+var _Map$TileLayer$Marker$Popup = require("react-leaflet");
 
 var SimpleExample = (function (_React$Component) {
   function SimpleExample() {
     _classCallCheck(this, SimpleExample);
 
+    _get(Object.getPrototypeOf(SimpleExample.prototype), "constructor", this).call(this);
     this.state = {
       lat: 51.505,
       lng: -0.09,
@@ -166,67 +182,62 @@ var SimpleExample = (function (_React$Component) {
 
   _inherits(SimpleExample, _React$Component);
 
-  _createClass(SimpleExample, {
-    render: {
-      value: function render() {
-        var position = [this.state.lat, this.state.lng];
-        return React.createElement(
-          Map,
-          { center: position, zoom: this.state.zoom },
-          React.createElement(TileLayer, {
-            url: "http://{s}.tile.osm.org/{z}/{x}/{y}.png",
-            attribution: "© <a href=\"http://osm.org/copyright\">OpenStreetMap</a> contributors"
-          }),
-          React.createElement(
-            Marker,
-            { position: position },
-            React.createElement(
-              Popup,
+  _createClass(SimpleExample, [{
+    key: "render",
+    value: function render() {
+      var position = [this.state.lat, this.state.lng];
+      return _React2["default"].createElement(
+        _Map$TileLayer$Marker$Popup.Map,
+        { center: position, zoom: this.state.zoom },
+        _React2["default"].createElement(_Map$TileLayer$Marker$Popup.TileLayer, {
+          url: "http://{s}.tile.osm.org/{z}/{x}/{y}.png",
+          attribution: "© <a href=\"http://osm.org/copyright\">OpenStreetMap</a> contributors"
+        }),
+        _React2["default"].createElement(
+          _Map$TileLayer$Marker$Popup.Marker,
+          { position: position },
+          _React2["default"].createElement(
+            _Map$TileLayer$Marker$Popup.Popup,
+            null,
+            _React2["default"].createElement(
+              "span",
               null,
-              React.createElement(
-                "span",
-                null,
-                "A pretty CSS3 popup. ",
-                React.createElement("br", null),
-                " Easily customizable."
-              )
+              "A pretty CSS3 popup. ",
+              _React2["default"].createElement("br", null),
+              " Easily customizable."
             )
           )
-        );
-      }
+        )
+      );
     }
-  });
+  }]);
 
   return SimpleExample;
-})(React.Component);
+})(_React2["default"].Component);
 
-module.exports = SimpleExample;
+exports["default"] = SimpleExample;
+module.exports = exports["default"];
 
-},{"react":"react","react-leaflet":"react-leaflet"}],"/Users/paul/dev/PaulLeCam/react-leaflet/example/vector-layers.js":[function(require,module,exports){
+},{"react":"react","react-leaflet":"react-leaflet"}],4:[function(require,module,exports){
 "use strict";
 
-var _interopRequire = function (obj) { return obj && obj.__esModule ? obj["default"] : obj; };
-
-var _createClass = (function () { function defineProperties(target, props) { for (var key in props) { var prop = props[key]; prop.configurable = true; if (prop.value) prop.writable = true; } Object.defineProperties(target, props); } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
+var _interopRequireWildcard = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
 
 var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
 
-var React = _interopRequire(require("react"));
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-var _reactLeaflet = require("react-leaflet");
+var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
 
-var Circle = _reactLeaflet.Circle;
-var CircleMarker = _reactLeaflet.CircleMarker;
-var Map = _reactLeaflet.Map;
-var MultiPolygon = _reactLeaflet.MultiPolygon;
-var MultiPolyline = _reactLeaflet.MultiPolyline;
-var Polygon = _reactLeaflet.Polygon;
-var Polyline = _reactLeaflet.Polyline;
-var Popup = _reactLeaflet.Popup;
-var Rectangle = _reactLeaflet.Rectangle;
-var TileLayer = _reactLeaflet.TileLayer;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _React = require("react");
+
+var _React2 = _interopRequireWildcard(_React);
+
+var _Circle$CircleMarker$Map$MultiPolygon$MultiPolyline$Polygon$Polyline$Popup$Rectangle$TileLayer = require("react-leaflet");
 
 var VectorLayersExample = (function (_React$Component) {
   function VectorLayersExample() {
@@ -239,55 +250,55 @@ var VectorLayersExample = (function (_React$Component) {
 
   _inherits(VectorLayersExample, _React$Component);
 
-  _createClass(VectorLayersExample, {
-    render: {
-      value: function render() {
-        var center = [51.505, -0.09];
+  _createClass(VectorLayersExample, [{
+    key: "render",
+    value: function render() {
+      var center = [51.505, -0.09];
 
-        var polyline = [[51.505, -0.09], [51.51, -0.1], [51.51, -0.12]];
+      var polyline = [[51.505, -0.09], [51.51, -0.1], [51.51, -0.12]];
 
-        var multiPolyline = [[[51.5, -0.1], [51.5, -0.12], [51.52, -0.12]], [[51.5, -0.05], [51.5, -0.06], [51.52, -0.06]]];
+      var multiPolyline = [[[51.5, -0.1], [51.5, -0.12], [51.52, -0.12]], [[51.5, -0.05], [51.5, -0.06], [51.52, -0.06]]];
 
-        var polygon = [[51.515, -0.09], [51.52, -0.1], [51.52, -0.12]];
+      var polygon = [[51.515, -0.09], [51.52, -0.1], [51.52, -0.12]];
 
-        var multiPolygon = [[[51.51, -0.12], [51.51, -0.13], [51.53, -0.13]], [[51.51, -0.05], [51.51, -0.07], [51.53, -0.07]]];
+      var multiPolygon = [[[51.51, -0.12], [51.51, -0.13], [51.53, -0.13]], [[51.51, -0.05], [51.51, -0.07], [51.53, -0.07]]];
 
-        var rectangle = [[51.49, -0.08], [51.5, -0.06]];
+      var rectangle = [[51.49, -0.08], [51.5, -0.06]];
 
-        return React.createElement(
-          Map,
-          { center: center, zoom: 13 },
-          React.createElement(TileLayer, {
-            url: "http://{s}.tile.osm.org/{z}/{x}/{y}.png",
-            attribution: "© <a href=\"http://osm.org/copyright\">OpenStreetMap</a> contributors"
-          }),
-          React.createElement(Circle, { center: center, radius: 200, fillColor: "blue" }),
-          React.createElement(
-            CircleMarker,
-            { center: [51.51, -0.12], radius: 20, color: "red" },
-            React.createElement(
-              Popup,
+      return _React2["default"].createElement(
+        _Circle$CircleMarker$Map$MultiPolygon$MultiPolyline$Polygon$Polyline$Popup$Rectangle$TileLayer.Map,
+        { center: center, zoom: 13 },
+        _React2["default"].createElement(_Circle$CircleMarker$Map$MultiPolygon$MultiPolyline$Polygon$Polyline$Popup$Rectangle$TileLayer.TileLayer, {
+          url: "http://{s}.tile.osm.org/{z}/{x}/{y}.png",
+          attribution: "© <a href=\"http://osm.org/copyright\">OpenStreetMap</a> contributors"
+        }),
+        _React2["default"].createElement(_Circle$CircleMarker$Map$MultiPolygon$MultiPolyline$Polygon$Polyline$Popup$Rectangle$TileLayer.Circle, { center: center, radius: 200, fillColor: "blue" }),
+        _React2["default"].createElement(
+          _Circle$CircleMarker$Map$MultiPolygon$MultiPolyline$Polygon$Polyline$Popup$Rectangle$TileLayer.CircleMarker,
+          { center: [51.51, -0.12], radius: 20, color: "red" },
+          _React2["default"].createElement(
+            _Circle$CircleMarker$Map$MultiPolygon$MultiPolyline$Polygon$Polyline$Popup$Rectangle$TileLayer.Popup,
+            null,
+            _React2["default"].createElement(
+              "span",
               null,
-              React.createElement(
-                "span",
-                null,
-                "Popup in CircleMarker"
-              )
+              "Popup in CircleMarker"
             )
-          ),
-          React.createElement(Polyline, { positions: polyline, color: "lime" }),
-          React.createElement(MultiPolyline, { polylines: multiPolyline, color: "lime" }),
-          React.createElement(Polygon, { positions: polygon, color: "purple" }),
-          React.createElement(MultiPolygon, { polygons: multiPolygon, color: "purple" }),
-          React.createElement(Rectangle, { bounds: rectangle, color: "black" })
-        );
-      }
+          )
+        ),
+        _React2["default"].createElement(_Circle$CircleMarker$Map$MultiPolygon$MultiPolyline$Polygon$Polyline$Popup$Rectangle$TileLayer.Polyline, { positions: polyline, color: "lime" }),
+        _React2["default"].createElement(_Circle$CircleMarker$Map$MultiPolygon$MultiPolyline$Polygon$Polyline$Popup$Rectangle$TileLayer.MultiPolyline, { polylines: multiPolyline, color: "lime" }),
+        _React2["default"].createElement(_Circle$CircleMarker$Map$MultiPolygon$MultiPolyline$Polygon$Polyline$Popup$Rectangle$TileLayer.Polygon, { positions: polygon, color: "purple" }),
+        _React2["default"].createElement(_Circle$CircleMarker$Map$MultiPolygon$MultiPolyline$Polygon$Polyline$Popup$Rectangle$TileLayer.MultiPolygon, { polygons: multiPolygon, color: "purple" }),
+        _React2["default"].createElement(_Circle$CircleMarker$Map$MultiPolygon$MultiPolyline$Polygon$Polyline$Popup$Rectangle$TileLayer.Rectangle, { bounds: rectangle, color: "black" })
+      );
     }
-  });
+  }]);
 
   return VectorLayersExample;
-})(React.Component);
+})(_React2["default"].Component);
 
-module.exports = VectorLayersExample;
+exports["default"] = VectorLayersExample;
+module.exports = exports["default"];
 
-},{"react":"react","react-leaflet":"react-leaflet"}]},{},["./example/app.js"]);
+},{"react":"react","react-leaflet":"react-leaflet"}]},{},[1]);
