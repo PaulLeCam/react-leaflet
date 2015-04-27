@@ -1,5 +1,5 @@
 import React from "react";
-import Leaflet from "leaflet";
+import Leaflet from "leaflet-headless";
 
 import boundsType from "./types/bounds";
 import MapLayer from "./MapLayer";

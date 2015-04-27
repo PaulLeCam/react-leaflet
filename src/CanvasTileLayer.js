@@ -1,4 +1,4 @@
-import Leaflet from "leaflet";
+import Leaflet from "leaflet-headless";
 import BaseTileLayer from "./BaseTileLayer";
 
 export default class CanvasTileLayer extends BaseTileLayer {

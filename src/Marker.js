@@ -1,4 +1,4 @@
-import Leaflet from "leaflet";
+import Leaflet from "leaflet-headless";
 
 import latlngType from "./types/latlng";
 import PopupContainer from "./PopupContainer";

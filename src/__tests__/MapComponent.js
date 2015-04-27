@@ -1,4 +1,4 @@
-import Leaflet from "leaflet";
+import Leaflet from "leaflet-headless";
 import React from "react";
 
 jest.dontMock("../MapComponent");

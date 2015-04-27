@@ -1,5 +1,5 @@
 import React from "react";
-import Leaflet from "leaflet";
+import Leaflet from "leaflet-headless";
 
 import latlngListType from "./types/latlngList";
 import PopupContainer from "./PopupContainer";

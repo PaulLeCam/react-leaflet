@@ -2,7 +2,7 @@ import isArray from "lodash/lang/isArray";
 import uniqueId from "lodash/utility/uniqueId";
 
 import React from "react";
-import Leaflet from "leaflet";
+import Leaflet from "leaflet-headless";
 
 import boundsType from "./types/bounds";
 import latlngType from "./types/latlng";
