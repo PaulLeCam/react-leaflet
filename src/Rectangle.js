@@ -1,4 +1,4 @@
-import Leaflet from "leaflet";
+import Leaflet from "leaflet-headless";
 
 import boundsType from "./types/bounds";
 import PopupContainer from "./PopupContainer";

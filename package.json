@@ -30,10 +30,10 @@
   },
   "homepage": "https://github.com/PaulLeCam/react-leaflet",
   "dependencies": {
-    "lodash": "^3.0.0"
+    "lodash": "^3.0.0",
+    "leaflet-headless": "0.0.5"
   },
   "peerDependencies": {
-    "leaflet": "^0.7.0",
     "react": "^0.13.0"
   },
   "devDependencies": {
