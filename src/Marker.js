@@ -14,6 +14,10 @@ export default class Marker extends PopupContainer {
     if (this.props.position !== prevProps.position) {
       this.leafletElement.setLatLng(this.props.position);
     }
+
+    if (this.props.icon !== prevProps.icon) {
+      this.getLeafletElement().setIcon(this.props.icon);
+    }
   }
 }
 
