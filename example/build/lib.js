@@ -1,7 +1,11 @@
 require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 "use strict";
 
-var _interopRequireWildcard = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
 
 var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
 
@@ -9,17 +13,13 @@ var _createClass = (function () { function defineProperties(target, props) { for
 
 var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
 var _React = require("react");
 
-var _React2 = _interopRequireWildcard(_React);
+var _React2 = _interopRequireDefault(_React);
 
 var _MapLayer2 = require("./MapLayer");
 
-var _MapLayer3 = _interopRequireWildcard(_MapLayer2);
+var _MapLayer3 = _interopRequireDefault(_MapLayer2);
 
 var BaseTileLayer = (function (_MapLayer) {
   function BaseTileLayer() {
@@ -66,7 +66,11 @@ module.exports = exports["default"];
 },{"./MapLayer":10,"react":"react"}],2:[function(require,module,exports){
 "use strict";
 
-var _interopRequireWildcard = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
 
 var _objectWithoutProperties = function (obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; };
 
@@ -74,21 +78,19 @@ var _classCallCheck = function (instance, Constructor) { if (!(instance instance
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { desc = parent = getter = undefined; _again = false; var object = _x,
+    property = _x2,
+    receiver = _x3; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
 var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
 var _Leaflet = require("leaflet");
 
-var _Leaflet2 = _interopRequireWildcard(_Leaflet);
+var _Leaflet2 = _interopRequireDefault(_Leaflet);
 
 var _BaseTileLayer2 = require("./BaseTileLayer");
 
-var _BaseTileLayer3 = _interopRequireWildcard(_BaseTileLayer2);
+var _BaseTileLayer3 = _interopRequireDefault(_BaseTileLayer2);
 
 var CanvasTileLayer = (function (_BaseTileLayer) {
   function CanvasTileLayer() {
@@ -122,7 +124,11 @@ module.exports = exports["default"];
 },{"./BaseTileLayer":1,"leaflet":"leaflet"}],3:[function(require,module,exports){
 "use strict";
 
-var _interopRequireWildcard = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
 
 var _objectWithoutProperties = function (obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; };
 
@@ -130,29 +136,27 @@ var _classCallCheck = function (instance, Constructor) { if (!(instance instance
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { desc = parent = getter = undefined; _again = false; var object = _x,
+    property = _x2,
+    receiver = _x3; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
 var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
 var _React = require("react");
 
-var _React2 = _interopRequireWildcard(_React);
+var _React2 = _interopRequireDefault(_React);
 
 var _Leaflet = require("leaflet");
 
-var _Leaflet2 = _interopRequireWildcard(_Leaflet);
+var _Leaflet2 = _interopRequireDefault(_Leaflet);
 
 var _latlngType = require("./types/latlng");
 
-var _latlngType2 = _interopRequireWildcard(_latlngType);
+var _latlngType2 = _interopRequireDefault(_latlngType);
 
 var _PopupContainer2 = require("./PopupContainer");
 
-var _PopupContainer3 = _interopRequireWildcard(_PopupContainer2);
+var _PopupContainer3 = _interopRequireDefault(_PopupContainer2);
 
 var Circle = (function (_PopupContainer) {
   function Circle() {
@@ -203,7 +207,11 @@ module.exports = exports["default"];
 },{"./PopupContainer":17,"./types/latlng":23,"leaflet":"leaflet","react":"react"}],4:[function(require,module,exports){
 "use strict";
 
-var _interopRequireWildcard = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
 
 var _objectWithoutProperties = function (obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; };
 
@@ -211,29 +219,27 @@ var _classCallCheck = function (instance, Constructor) { if (!(instance instance
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { desc = parent = getter = undefined; _again = false; var object = _x,
+    property = _x2,
+    receiver = _x3; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
 var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
 var _React = require("react");
 
-var _React2 = _interopRequireWildcard(_React);
+var _React2 = _interopRequireDefault(_React);
 
 var _Leaflet = require("leaflet");
 
-var _Leaflet2 = _interopRequireWildcard(_Leaflet);
+var _Leaflet2 = _interopRequireDefault(_Leaflet);
 
 var _latlngType = require("./types/latlng");
 
-var _latlngType2 = _interopRequireWildcard(_latlngType);
+var _latlngType2 = _interopRequireDefault(_latlngType);
 
 var _PopupContainer2 = require("./PopupContainer");
 
-var _PopupContainer3 = _interopRequireWildcard(_PopupContainer2);
+var _PopupContainer3 = _interopRequireDefault(_PopupContainer2);
 
 var CircleMarker = (function (_PopupContainer) {
   function CircleMarker() {
@@ -283,7 +289,11 @@ module.exports = exports["default"];
 },{"./PopupContainer":17,"./types/latlng":23,"leaflet":"leaflet","react":"react"}],5:[function(require,module,exports){
 "use strict";
 
-var _interopRequireWildcard = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
 
 var _objectWithoutProperties = function (obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; };
 
@@ -293,21 +303,17 @@ var _createClass = (function () { function defineProperties(target, props) { for
 
 var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
 var _React = require("react");
 
-var _React2 = _interopRequireWildcard(_React);
+var _React2 = _interopRequireDefault(_React);
 
 var _Leaflet = require("leaflet");
 
-var _Leaflet2 = _interopRequireWildcard(_Leaflet);
+var _Leaflet2 = _interopRequireDefault(_Leaflet);
 
 var _PopupContainer2 = require("./PopupContainer");
 
-var _PopupContainer3 = _interopRequireWildcard(_PopupContainer2);
+var _PopupContainer3 = _interopRequireDefault(_PopupContainer2);
 
 var FeatureGroup = (function (_PopupContainer) {
   function FeatureGroup() {
@@ -345,7 +351,11 @@ module.exports = exports["default"];
 },{"./PopupContainer":17,"leaflet":"leaflet","react":"react"}],6:[function(require,module,exports){
 "use strict";
 
-var _interopRequireWildcard = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
 
 var _objectWithoutProperties = function (obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; };
 
@@ -353,25 +363,23 @@ var _classCallCheck = function (instance, Constructor) { if (!(instance instance
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { desc = parent = getter = undefined; _again = false; var object = _x,
+    property = _x2,
+    receiver = _x3; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
 var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
 var _React = require("react");
 
-var _React2 = _interopRequireWildcard(_React);
+var _React2 = _interopRequireDefault(_React);
 
 var _Leaflet = require("leaflet");
 
-var _Leaflet2 = _interopRequireWildcard(_Leaflet);
+var _Leaflet2 = _interopRequireDefault(_Leaflet);
 
 var _PopupContainer2 = require("./PopupContainer");
 
-var _PopupContainer3 = _interopRequireWildcard(_PopupContainer2);
+var _PopupContainer3 = _interopRequireDefault(_PopupContainer2);
 
 var GeoJson = (function (_PopupContainer) {
   function GeoJson() {
@@ -410,7 +418,11 @@ module.exports = exports["default"];
 },{"./PopupContainer":17,"leaflet":"leaflet","react":"react"}],7:[function(require,module,exports){
 "use strict";
 
-var _interopRequireWildcard = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
 
 var _objectWithoutProperties = function (obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; };
 
@@ -418,29 +430,27 @@ var _classCallCheck = function (instance, Constructor) { if (!(instance instance
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { desc = parent = getter = undefined; _again = false; var object = _x,
+    property = _x2,
+    receiver = _x3; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
 var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
 var _React = require("react");
 
-var _React2 = _interopRequireWildcard(_React);
+var _React2 = _interopRequireDefault(_React);
 
 var _Leaflet = require("leaflet");
 
-var _Leaflet2 = _interopRequireWildcard(_Leaflet);
+var _Leaflet2 = _interopRequireDefault(_Leaflet);
 
 var _boundsType = require("./types/bounds");
 
-var _boundsType2 = _interopRequireWildcard(_boundsType);
+var _boundsType2 = _interopRequireDefault(_boundsType);
 
 var _MapLayer2 = require("./MapLayer");
 
-var _MapLayer3 = _interopRequireWildcard(_MapLayer2);
+var _MapLayer3 = _interopRequireDefault(_MapLayer2);
 
 var ImageOverlay = (function (_MapLayer) {
   function ImageOverlay() {
@@ -498,47 +508,49 @@ module.exports = exports["default"];
 },{"./MapLayer":10,"./types/bounds":21,"leaflet":"leaflet","react":"react"}],8:[function(require,module,exports){
 "use strict";
 
-var _interopRequireWildcard = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
 
 var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { desc = parent = getter = undefined; _again = false; var object = _x,
+    property = _x2,
+    receiver = _x3; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
 var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
 var _isArray = require("lodash/lang/isArray");
 
-var _isArray2 = _interopRequireWildcard(_isArray);
+var _isArray2 = _interopRequireDefault(_isArray);
 
 var _uniqueId = require("lodash/utility/uniqueId");
 
-var _uniqueId2 = _interopRequireWildcard(_uniqueId);
+var _uniqueId2 = _interopRequireDefault(_uniqueId);
 
 var _React = require("react");
 
-var _React2 = _interopRequireWildcard(_React);
+var _React2 = _interopRequireDefault(_React);
 
 var _Leaflet = require("leaflet");
 
-var _Leaflet2 = _interopRequireWildcard(_Leaflet);
+var _Leaflet2 = _interopRequireDefault(_Leaflet);
 
 var _boundsType = require("./types/bounds");
 
-var _boundsType2 = _interopRequireWildcard(_boundsType);
+var _boundsType2 = _interopRequireDefault(_boundsType);
 
 var _latlngType = require("./types/latlng");
 
-var _latlngType2 = _interopRequireWildcard(_latlngType);
+var _latlngType2 = _interopRequireDefault(_latlngType);
 
 var _MapComponent2 = require("./MapComponent");
 
-var _MapComponent3 = _interopRequireWildcard(_MapComponent2);
+var _MapComponent3 = _interopRequireDefault(_MapComponent2);
 
 var normalizeCenter = function normalizeCenter(pos) {
   return _isArray2["default"](pos) ? pos : [pos.lat, pos.lng || pos.lon];
@@ -621,10 +633,14 @@ Map.propTypes = {
   zoom: _React2["default"].PropTypes.number
 };
 module.exports = exports["default"];
-},{"./MapComponent":9,"./types/bounds":21,"./types/latlng":23,"leaflet":"leaflet","lodash/lang/isArray":67,"lodash/utility/uniqueId":78,"react":"react"}],9:[function(require,module,exports){
+},{"./MapComponent":9,"./types/bounds":21,"./types/latlng":23,"leaflet":"leaflet","lodash/lang/isArray":78,"lodash/utility/uniqueId":90,"react":"react"}],9:[function(require,module,exports){
 "use strict";
 
-var _interopRequireWildcard = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
 
 var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
 
@@ -632,21 +648,17 @@ var _createClass = (function () { function defineProperties(target, props) { for
 
 var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
 var _clone = require("lodash/lang/clone");
 
-var _clone2 = _interopRequireWildcard(_clone);
+var _clone2 = _interopRequireDefault(_clone);
 
 var _forEach = require("lodash/collection/forEach");
 
-var _forEach2 = _interopRequireWildcard(_forEach);
+var _forEach2 = _interopRequireDefault(_forEach);
 
 var _reduce = require("lodash/collection/reduce");
 
-var _reduce2 = _interopRequireWildcard(_reduce);
+var _reduce2 = _interopRequireDefault(_reduce);
 
 var _Component2 = require("react");
 
@@ -746,34 +758,36 @@ var MapComponent = (function (_Component) {
 
 exports["default"] = MapComponent;
 module.exports = exports["default"];
-},{"lodash/collection/forEach":25,"lodash/collection/reduce":26,"lodash/lang/clone":65,"react":"react"}],10:[function(require,module,exports){
+},{"lodash/collection/forEach":26,"lodash/collection/reduce":27,"lodash/lang/clone":76,"react":"react"}],10:[function(require,module,exports){
 "use strict";
-
-var _interopRequireWildcard = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
-
-var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
-
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
-
-var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
+
+var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
+
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { desc = parent = getter = undefined; _again = false; var object = _x,
+    property = _x2,
+    receiver = _x3; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
+
 var _assign = require("lodash/object/assign");
 
-var _assign2 = _interopRequireWildcard(_assign);
+var _assign2 = _interopRequireDefault(_assign);
 
 var _React = require("react");
 
-var _React2 = _interopRequireWildcard(_React);
+var _React2 = _interopRequireDefault(_React);
 
 var _MapComponent2 = require("./MapComponent");
 
-var _MapComponent3 = _interopRequireWildcard(_MapComponent2);
+var _MapComponent3 = _interopRequireDefault(_MapComponent2);
 
 var MapLayer = (function (_MapComponent) {
   function MapLayer() {
@@ -818,10 +832,14 @@ var MapLayer = (function (_MapComponent) {
 
 exports["default"] = MapLayer;
 module.exports = exports["default"];
-},{"./MapComponent":9,"lodash/object/assign":71,"react":"react"}],11:[function(require,module,exports){
+},{"./MapComponent":9,"lodash/object/assign":82,"react":"react"}],11:[function(require,module,exports){
 "use strict";
 
-var _interopRequireWildcard = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
 
 var _objectWithoutProperties = function (obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; };
 
@@ -829,25 +847,23 @@ var _classCallCheck = function (instance, Constructor) { if (!(instance instance
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { desc = parent = getter = undefined; _again = false; var object = _x,
+    property = _x2,
+    receiver = _x3; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
 var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
 var _Leaflet = require("leaflet");
 
-var _Leaflet2 = _interopRequireWildcard(_Leaflet);
+var _Leaflet2 = _interopRequireDefault(_Leaflet);
 
 var _latlngType = require("./types/latlng");
 
-var _latlngType2 = _interopRequireWildcard(_latlngType);
+var _latlngType2 = _interopRequireDefault(_latlngType);
 
 var _PopupContainer2 = require("./PopupContainer");
 
-var _PopupContainer3 = _interopRequireWildcard(_PopupContainer2);
+var _PopupContainer3 = _interopRequireDefault(_PopupContainer2);
 
 var Marker = (function (_PopupContainer) {
   function Marker() {
@@ -893,7 +909,11 @@ module.exports = exports["default"];
 },{"./PopupContainer":17,"./types/latlng":23,"leaflet":"leaflet"}],12:[function(require,module,exports){
 "use strict";
 
-var _interopRequireWildcard = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
 
 var _objectWithoutProperties = function (obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; };
 
@@ -901,29 +921,27 @@ var _classCallCheck = function (instance, Constructor) { if (!(instance instance
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { desc = parent = getter = undefined; _again = false; var object = _x,
+    property = _x2,
+    receiver = _x3; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
 var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
 var _React = require("react");
 
-var _React2 = _interopRequireWildcard(_React);
+var _React2 = _interopRequireDefault(_React);
 
 var _Leaflet = require("leaflet");
 
-var _Leaflet2 = _interopRequireWildcard(_Leaflet);
+var _Leaflet2 = _interopRequireDefault(_Leaflet);
 
 var _latlngListType = require("./types/latlngList");
 
-var _latlngListType2 = _interopRequireWildcard(_latlngListType);
+var _latlngListType2 = _interopRequireDefault(_latlngListType);
 
 var _PopupContainer2 = require("./PopupContainer");
 
-var _PopupContainer3 = _interopRequireWildcard(_PopupContainer2);
+var _PopupContainer3 = _interopRequireDefault(_PopupContainer2);
 
 var MultiPolygon = (function (_PopupContainer) {
   function MultiPolygon() {
@@ -969,7 +987,11 @@ module.exports = exports["default"];
 },{"./PopupContainer":17,"./types/latlngList":24,"leaflet":"leaflet","react":"react"}],13:[function(require,module,exports){
 "use strict";
 
-var _interopRequireWildcard = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
 
 var _objectWithoutProperties = function (obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; };
 
@@ -977,29 +999,27 @@ var _classCallCheck = function (instance, Constructor) { if (!(instance instance
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { desc = parent = getter = undefined; _again = false; var object = _x,
+    property = _x2,
+    receiver = _x3; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
 var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
 var _React = require("react");
 
-var _React2 = _interopRequireWildcard(_React);
+var _React2 = _interopRequireDefault(_React);
 
 var _Leaflet = require("leaflet");
 
-var _Leaflet2 = _interopRequireWildcard(_Leaflet);
+var _Leaflet2 = _interopRequireDefault(_Leaflet);
 
 var _latlngListType = require("./types/latlngList");
 
-var _latlngListType2 = _interopRequireWildcard(_latlngListType);
+var _latlngListType2 = _interopRequireDefault(_latlngListType);
 
 var _PopupContainer2 = require("./PopupContainer");
 
-var _PopupContainer3 = _interopRequireWildcard(_PopupContainer2);
+var _PopupContainer3 = _interopRequireDefault(_PopupContainer2);
 
 var MultiPolyline = (function (_PopupContainer) {
   function MultiPolyline() {
@@ -1045,7 +1065,11 @@ module.exports = exports["default"];
 },{"./PopupContainer":17,"./types/latlngList":24,"leaflet":"leaflet","react":"react"}],14:[function(require,module,exports){
 "use strict";
 
-var _interopRequireWildcard = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
 
 var _objectWithoutProperties = function (obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; };
 
@@ -1053,25 +1077,23 @@ var _classCallCheck = function (instance, Constructor) { if (!(instance instance
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { desc = parent = getter = undefined; _again = false; var object = _x,
+    property = _x2,
+    receiver = _x3; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
 var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
 var _Leaflet = require("leaflet");
 
-var _Leaflet2 = _interopRequireWildcard(_Leaflet);
+var _Leaflet2 = _interopRequireDefault(_Leaflet);
 
 var _latlngListType = require("./types/latlngList");
 
-var _latlngListType2 = _interopRequireWildcard(_latlngListType);
+var _latlngListType2 = _interopRequireDefault(_latlngListType);
 
 var _PopupContainer2 = require("./PopupContainer");
 
-var _PopupContainer3 = _interopRequireWildcard(_PopupContainer2);
+var _PopupContainer3 = _interopRequireDefault(_PopupContainer2);
 
 var Polygon = (function (_PopupContainer) {
   function Polygon() {
@@ -1117,7 +1139,11 @@ module.exports = exports["default"];
 },{"./PopupContainer":17,"./types/latlngList":24,"leaflet":"leaflet"}],15:[function(require,module,exports){
 "use strict";
 
-var _interopRequireWildcard = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
 
 var _objectWithoutProperties = function (obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; };
 
@@ -1125,25 +1151,23 @@ var _classCallCheck = function (instance, Constructor) { if (!(instance instance
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { desc = parent = getter = undefined; _again = false; var object = _x,
+    property = _x2,
+    receiver = _x3; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
 var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
 var _Leaflet = require("leaflet");
 
-var _Leaflet2 = _interopRequireWildcard(_Leaflet);
+var _Leaflet2 = _interopRequireDefault(_Leaflet);
 
 var _latlngListType = require("./types/latlngList");
 
-var _latlngListType2 = _interopRequireWildcard(_latlngListType);
+var _latlngListType2 = _interopRequireDefault(_latlngListType);
 
 var _PopupContainer2 = require("./PopupContainer");
 
-var _PopupContainer3 = _interopRequireWildcard(_PopupContainer2);
+var _PopupContainer3 = _interopRequireDefault(_PopupContainer2);
 
 var Polyline = (function (_PopupContainer) {
   function Polyline() {
@@ -1189,7 +1213,11 @@ module.exports = exports["default"];
 },{"./PopupContainer":17,"./types/latlngList":24,"leaflet":"leaflet"}],16:[function(require,module,exports){
 "use strict";
 
-var _interopRequireWildcard = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
 
 var _objectWithoutProperties = function (obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; };
 
@@ -1197,29 +1225,27 @@ var _classCallCheck = function (instance, Constructor) { if (!(instance instance
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { desc = parent = getter = undefined; _again = false; var object = _x,
+    property = _x2,
+    receiver = _x3; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
 var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
 var _React = require("react");
 
-var _React2 = _interopRequireWildcard(_React);
+var _React2 = _interopRequireDefault(_React);
 
 var _Leaflet = require("leaflet");
 
-var _Leaflet2 = _interopRequireWildcard(_Leaflet);
+var _Leaflet2 = _interopRequireDefault(_Leaflet);
 
 var _latlngType = require("./types/latlng");
 
-var _latlngType2 = _interopRequireWildcard(_latlngType);
+var _latlngType2 = _interopRequireDefault(_latlngType);
 
 var _MapComponent2 = require("./MapComponent");
 
-var _MapComponent3 = _interopRequireWildcard(_MapComponent2);
+var _MapComponent3 = _interopRequireDefault(_MapComponent2);
 
 var Popup = (function (_MapComponent) {
   function Popup() {
@@ -1312,7 +1338,11 @@ module.exports = exports["default"];
 },{"./MapComponent":9,"./types/latlng":23,"leaflet":"leaflet","react":"react"}],17:[function(require,module,exports){
 "use strict";
 
-var _interopRequireWildcard = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
 
 var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
 
@@ -1320,17 +1350,13 @@ var _createClass = (function () { function defineProperties(target, props) { for
 
 var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
 var _React = require("react");
 
-var _React2 = _interopRequireWildcard(_React);
+var _React2 = _interopRequireDefault(_React);
 
 var _MapLayer2 = require("./MapLayer");
 
-var _MapLayer3 = _interopRequireWildcard(_MapLayer2);
+var _MapLayer3 = _interopRequireDefault(_MapLayer2);
 
 var PopupContainer = (function (_MapLayer) {
   function PopupContainer() {
@@ -1365,7 +1391,11 @@ module.exports = exports["default"];
 },{"./MapLayer":10,"react":"react"}],18:[function(require,module,exports){
 "use strict";
 
-var _interopRequireWildcard = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
 
 var _objectWithoutProperties = function (obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; };
 
@@ -1373,25 +1403,23 @@ var _classCallCheck = function (instance, Constructor) { if (!(instance instance
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { desc = parent = getter = undefined; _again = false; var object = _x,
+    property = _x2,
+    receiver = _x3; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
 var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
 var _Leaflet = require("leaflet");
 
-var _Leaflet2 = _interopRequireWildcard(_Leaflet);
+var _Leaflet2 = _interopRequireDefault(_Leaflet);
 
 var _boundsType = require("./types/bounds");
 
-var _boundsType2 = _interopRequireWildcard(_boundsType);
+var _boundsType2 = _interopRequireDefault(_boundsType);
 
 var _PopupContainer2 = require("./PopupContainer");
 
-var _PopupContainer3 = _interopRequireWildcard(_PopupContainer2);
+var _PopupContainer3 = _interopRequireDefault(_PopupContainer2);
 
 var Rectangle = (function (_PopupContainer) {
   function Rectangle() {
@@ -1437,7 +1465,11 @@ module.exports = exports["default"];
 },{"./PopupContainer":17,"./types/bounds":21,"leaflet":"leaflet"}],19:[function(require,module,exports){
 "use strict";
 
-var _interopRequireWildcard = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
 
 var _objectWithoutProperties = function (obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; };
 
@@ -1445,25 +1477,23 @@ var _classCallCheck = function (instance, Constructor) { if (!(instance instance
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { desc = parent = getter = undefined; _again = false; var object = _x,
+    property = _x2,
+    receiver = _x3; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
 var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
 var _React = require("react");
 
-var _React2 = _interopRequireWildcard(_React);
+var _React2 = _interopRequireDefault(_React);
 
 var _Leaflet = require("leaflet");
 
-var _Leaflet2 = _interopRequireWildcard(_Leaflet);
+var _Leaflet2 = _interopRequireDefault(_Leaflet);
 
 var _BaseTileLayer2 = require("./BaseTileLayer");
 
-var _BaseTileLayer3 = _interopRequireWildcard(_BaseTileLayer2);
+var _BaseTileLayer3 = _interopRequireDefault(_BaseTileLayer2);
 
 var TileLayer = (function (_BaseTileLayer) {
   function TileLayer() {
@@ -1511,7 +1541,11 @@ module.exports = exports["default"];
 },{"./BaseTileLayer":1,"leaflet":"leaflet","react":"react"}],20:[function(require,module,exports){
 "use strict";
 
-var _interopRequireWildcard = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
 
 var _objectWithoutProperties = function (obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; };
 
@@ -1519,25 +1553,23 @@ var _classCallCheck = function (instance, Constructor) { if (!(instance instance
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-var _get = function get(object, property, receiver) { var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { desc = parent = getter = undefined; _again = false; var object = _x,
+    property = _x2,
+    receiver = _x3; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 
 var _inherits = function (subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; };
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
 var _React = require("react");
 
-var _React2 = _interopRequireWildcard(_React);
+var _React2 = _interopRequireDefault(_React);
 
 var _Leaflet = require("leaflet");
 
-var _Leaflet2 = _interopRequireWildcard(_Leaflet);
+var _Leaflet2 = _interopRequireDefault(_Leaflet);
 
 var _BaseTileLayer2 = require("./BaseTileLayer");
 
-var _BaseTileLayer3 = _interopRequireWildcard(_BaseTileLayer2);
+var _BaseTileLayer3 = _interopRequireDefault(_BaseTileLayer2);
 
 var WMSTileLayer = (function (_BaseTileLayer) {
   function WMSTileLayer() {
@@ -1576,61 +1608,61 @@ module.exports = exports["default"];
 },{"./BaseTileLayer":1,"leaflet":"leaflet","react":"react"}],21:[function(require,module,exports){
 "use strict";
 
-var _interopRequireWildcard = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
+
 var _React = require("react");
 
-var _React2 = _interopRequireWildcard(_React);
+var _React2 = _interopRequireDefault(_React);
 
 var _Leaflet = require("leaflet");
 
-var _Leaflet2 = _interopRequireWildcard(_Leaflet);
+var _Leaflet2 = _interopRequireDefault(_Leaflet);
 
 var _latlngList = require("./latlngList");
 
-var _latlngList2 = _interopRequireWildcard(_latlngList);
+var _latlngList2 = _interopRequireDefault(_latlngList);
 
 exports["default"] = _React2["default"].PropTypes.oneOfType([_React2["default"].PropTypes.instanceOf(_Leaflet2["default"].LatLngBounds), _latlngList2["default"]]);
 module.exports = exports["default"];
 },{"./latlngList":24,"leaflet":"leaflet","react":"react"}],22:[function(require,module,exports){
 "use strict";
 
-var _interopRequireWildcard = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
+
 var _bounds = require("./bounds");
 
-var _bounds2 = _interopRequireWildcard(_bounds);
+var _bounds2 = _interopRequireDefault(_bounds);
 
 var _latlng = require("./latlng");
 
-var _latlng2 = _interopRequireWildcard(_latlng);
+var _latlng2 = _interopRequireDefault(_latlng);
 
 var _latlngList = require("./latlngList");
 
-var _latlngList2 = _interopRequireWildcard(_latlngList);
+var _latlngList2 = _interopRequireDefault(_latlngList);
 
 exports["default"] = { bounds: _bounds2["default"], latlng: _latlng2["default"], latlngList: _latlngList2["default"] };
 module.exports = exports["default"];
 },{"./bounds":21,"./latlng":23,"./latlngList":24}],23:[function(require,module,exports){
 "use strict";
 
-var _interopRequireWildcard = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
+
 var _React = require("react");
 
-var _React2 = _interopRequireWildcard(_React);
+var _React2 = _interopRequireDefault(_React);
 
 var Type = _React2["default"].PropTypes;
 
@@ -1651,23 +1683,44 @@ module.exports = exports["default"];
 },{"react":"react"}],24:[function(require,module,exports){
 "use strict";
 
-var _interopRequireWildcard = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
+
 var _React = require("react");
 
-var _React2 = _interopRequireWildcard(_React);
+var _React2 = _interopRequireDefault(_React);
 
 var _latlng = require("./latlng");
 
-var _latlng2 = _interopRequireWildcard(_latlng);
+var _latlng2 = _interopRequireDefault(_latlng);
 
 exports["default"] = _React2["default"].PropTypes.arrayOf(_latlng2["default"]);
 module.exports = exports["default"];
 },{"./latlng":23,"react":"react"}],25:[function(require,module,exports){
+/**
+ * Gets the last element of `array`.
+ *
+ * @static
+ * @memberOf _
+ * @category Array
+ * @param {Array} array The array to query.
+ * @returns {*} Returns the last element of `array`.
+ * @example
+ *
+ * _.last([1, 2, 3]);
+ * // => 3
+ */
+function last(array) {
+  var length = array ? array.length : 0;
+  return length ? array[length - 1] : undefined;
+}
+
+module.exports = last;
+
+},{}],26:[function(require,module,exports){
 var arrayEach = require('../internal/arrayEach'),
     baseEach = require('../internal/baseEach'),
     createForEach = require('../internal/createForEach');
@@ -1675,10 +1728,10 @@ var arrayEach = require('../internal/arrayEach'),
 /**
  * Iterates over elements of `collection` invoking `iteratee` for each element.
  * The `iteratee` is bound to `thisArg` and invoked with three arguments:
- * (value, index|key, collection). Iterator functions may exit iteration early
+ * (value, index|key, collection). Iteratee functions may exit iteration early
  * by explicitly returning `false`.
  *
- * **Note:** As with other "Collections" methods, objects with a `length` property
+ * **Note:** As with other "Collections" methods, objects with a "length" property
  * are iterated like arrays. To avoid this behavior `_.forIn` or `_.forOwn`
  * may be used for object iteration.
  *
@@ -1706,7 +1759,7 @@ var forEach = createForEach(arrayEach, baseEach);
 
 module.exports = forEach;
 
-},{"../internal/arrayEach":28,"../internal/baseEach":34,"../internal/createForEach":50}],26:[function(require,module,exports){
+},{"../internal/arrayEach":30,"../internal/baseEach":37,"../internal/createForEach":56}],27:[function(require,module,exports){
 var arrayReduce = require('../internal/arrayReduce'),
     baseEach = require('../internal/baseEach'),
     createReduce = require('../internal/createReduce');
@@ -1736,8 +1789,8 @@ var arrayReduce = require('../internal/arrayReduce'),
  * @returns {*} Returns the accumulated value.
  * @example
  *
- * _.reduce([1, 2], function(sum, n) {
- *   return sum + n;
+ * _.reduce([1, 2], function(total, n) {
+ *   return total + n;
  * });
  * // => 3
  *
@@ -1751,7 +1804,67 @@ var reduce = createReduce(arrayReduce, baseEach);
 
 module.exports = reduce;
 
-},{"../internal/arrayReduce":29,"../internal/baseEach":34,"../internal/createReduce":51}],27:[function(require,module,exports){
+},{"../internal/arrayReduce":31,"../internal/baseEach":37,"../internal/createReduce":57}],28:[function(require,module,exports){
+/** Used as the `TypeError` message for "Functions" methods. */
+var FUNC_ERROR_TEXT = 'Expected a function';
+
+/* Native method references for those with the same name as other `lodash` methods. */
+var nativeMax = Math.max;
+
+/**
+ * Creates a function that invokes `func` with the `this` binding of the
+ * created function and arguments from `start` and beyond provided as an array.
+ *
+ * **Note:** This method is based on the [rest parameter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters).
+ *
+ * @static
+ * @memberOf _
+ * @category Function
+ * @param {Function} func The function to apply a rest parameter to.
+ * @param {number} [start=func.length-1] The start position of the rest parameter.
+ * @returns {Function} Returns the new function.
+ * @example
+ *
+ * var say = _.restParam(function(what, names) {
+ *   return what + ' ' + _.initial(names).join(', ') +
+ *     (_.size(names) > 1 ? ', & ' : '') + _.last(names);
+ * });
+ *
+ * say('hello', 'fred', 'barney', 'pebbles');
+ * // => 'hello fred, barney, & pebbles'
+ */
+function restParam(func, start) {
+  if (typeof func != 'function') {
+    throw new TypeError(FUNC_ERROR_TEXT);
+  }
+  start = nativeMax(start === undefined ? (func.length - 1) : (+start || 0), 0);
+  return function() {
+    var args = arguments,
+        index = -1,
+        length = nativeMax(args.length - start, 0),
+        rest = Array(length);
+
+    while (++index < length) {
+      rest[index] = args[start + index];
+    }
+    switch (start) {
+      case 0: return func.call(this, rest);
+      case 1: return func.call(this, args[0], rest);
+      case 2: return func.call(this, args[0], args[1], rest);
+    }
+    var otherArgs = Array(start + 1);
+    index = -1;
+    while (++index < start) {
+      otherArgs[index] = args[index];
+    }
+    otherArgs[start] = rest;
+    return func.apply(this, otherArgs);
+  };
+}
+
+module.exports = restParam;
+
+},{}],29:[function(require,module,exports){
 /**
  * Copies the values of `source` to `array`.
  *
@@ -1773,7 +1886,7 @@ function arrayCopy(source, array) {
 
 module.exports = arrayCopy;
 
-},{}],28:[function(require,module,exports){
+},{}],30:[function(require,module,exports){
 /**
  * A specialized version of `_.forEach` for arrays without support for callback
  * shorthands and `this` binding.
@@ -1797,7 +1910,7 @@ function arrayEach(array, iteratee) {
 
 module.exports = arrayEach;
 
-},{}],29:[function(require,module,exports){
+},{}],31:[function(require,module,exports){
 /**
  * A specialized version of `_.reduce` for arrays without support for callback
  * shorthands and `this` binding.
@@ -1825,25 +1938,31 @@ function arrayReduce(array, iteratee, accumulator, initFromArray) {
 
 module.exports = arrayReduce;
 
-},{}],30:[function(require,module,exports){
-var baseCopy = require('./baseCopy'),
+},{}],32:[function(require,module,exports){
+var getSymbols = require('./getSymbols'),
     keys = require('../object/keys');
 
+/** Used for native method references. */
+var arrayProto = Array.prototype;
+
+/** Native method references. */
+var push = arrayProto.push;
+
 /**
- * The base implementation of `_.assign` without support for argument juggling,
- * multiple sources, and `this` binding `customizer` functions.
+ * A specialized version of `_.assign` for customizing assigned values without
+ * support for argument juggling, multiple sources, and `this` binding `customizer`
+ * functions.
  *
  * @private
  * @param {Object} object The destination object.
  * @param {Object} source The source object.
- * @param {Function} [customizer] The function to customize assigning values.
- * @returns {Object} Returns the destination object.
+ * @param {Function} customizer The function to customize assigned values.
+ * @returns {Object} Returns `object`.
  */
-function baseAssign(object, source, customizer) {
+function assignWith(object, source, customizer) {
   var props = keys(source);
-  if (!customizer) {
-    return baseCopy(source, object, props);
-  }
+  push.apply(props, getSymbols(source));
+
   var index = -1,
       length = props.length;
 
@@ -1853,21 +1972,70 @@ function baseAssign(object, source, customizer) {
         result = customizer(value, source[key], key, object, source);
 
     if ((result === result ? (result !== value) : (value === value)) ||
-        (typeof value == 'undefined' && !(key in object))) {
+        (value === undefined && !(key in object))) {
       object[key] = result;
     }
   }
   return object;
 }
 
+module.exports = assignWith;
+
+},{"../object/keys":83,"./getSymbols":62}],33:[function(require,module,exports){
+var baseCopy = require('./baseCopy'),
+    getSymbols = require('./getSymbols'),
+    isNative = require('../lang/isNative'),
+    keys = require('../object/keys');
+
+/** Native method references. */
+var preventExtensions = isNative(preventExtensions = Object.preventExtensions) && preventExtensions;
+
+/** Used as `baseAssign`. */
+var nativeAssign = (function() {
+  // Avoid `Object.assign` in Firefox 34-37 which have an early implementation
+  // with a now defunct try/catch behavior. See https://bugzilla.mozilla.org/show_bug.cgi?id=1103344
+  // for more details.
+  //
+  // Use `Object.preventExtensions` on a plain object instead of simply using
+  // `Object('x')` because Chrome and IE fail to throw an error when attempting
+  // to assign values to readonly indexes of strings.
+  var func = preventExtensions && isNative(func = Object.assign) && func;
+  try {
+    if (func) {
+      var object = preventExtensions({ '1': 0 });
+      object[0] = 1;
+    }
+  } catch(e) {
+    // Only attempt in strict mode.
+    try { func(object, 'xo'); } catch(e) {}
+    return !object[1] && func;
+  }
+  return false;
+}());
+
+/**
+ * The base implementation of `_.assign` without support for argument juggling,
+ * multiple sources, and `customizer` functions.
+ *
+ * @private
+ * @param {Object} object The destination object.
+ * @param {Object} source The source object.
+ * @returns {Object} Returns `object`.
+ */
+var baseAssign = nativeAssign || function(object, source) {
+  return source == null
+    ? object
+    : baseCopy(source, getSymbols(source), baseCopy(source, keys(source), object));
+};
+
 module.exports = baseAssign;
 
-},{"../object/keys":72,"./baseCopy":33}],31:[function(require,module,exports){
+},{"../lang/isNative":79,"../object/keys":83,"./baseCopy":36,"./getSymbols":62}],34:[function(require,module,exports){
 var baseMatches = require('./baseMatches'),
     baseMatchesProperty = require('./baseMatchesProperty'),
-    baseProperty = require('./baseProperty'),
     bindCallback = require('./bindCallback'),
-    identity = require('../utility/identity');
+    identity = require('../utility/identity'),
+    property = require('../utility/property');
 
 /**
  * The base implementation of `_.callback` which supports specifying the
@@ -1882,7 +2050,7 @@ var baseMatches = require('./baseMatches'),
 function baseCallback(func, thisArg, argCount) {
   var type = typeof func;
   if (type == 'function') {
-    return typeof thisArg == 'undefined'
+    return thisArg === undefined
       ? func
       : bindCallback(func, thisArg, argCount);
   }
@@ -1892,24 +2060,23 @@ function baseCallback(func, thisArg, argCount) {
   if (type == 'object') {
     return baseMatches(func);
   }
-  return typeof thisArg == 'undefined'
-    ? baseProperty(func + '')
-    : baseMatchesProperty(func + '', thisArg);
+  return thisArg === undefined
+    ? property(func)
+    : baseMatchesProperty(func, thisArg);
 }
 
 module.exports = baseCallback;
 
-},{"../utility/identity":77,"./baseMatches":40,"./baseMatchesProperty":41,"./baseProperty":42,"./bindCallback":45}],32:[function(require,module,exports){
+},{"../utility/identity":88,"../utility/property":89,"./baseMatches":44,"./baseMatchesProperty":45,"./bindCallback":51}],35:[function(require,module,exports){
 var arrayCopy = require('./arrayCopy'),
     arrayEach = require('./arrayEach'),
-    baseCopy = require('./baseCopy'),
+    baseAssign = require('./baseAssign'),
     baseForOwn = require('./baseForOwn'),
     initCloneArray = require('./initCloneArray'),
     initCloneByTag = require('./initCloneByTag'),
     initCloneObject = require('./initCloneObject'),
     isArray = require('../lang/isArray'),
-    isObject = require('../lang/isObject'),
-    keys = require('../object/keys');
+    isObject = require('../lang/isObject');
 
 /** `Object#toString` result references. */
 var argsTag = '[object Arguments]',
@@ -1980,7 +2147,7 @@ function baseClone(value, isDeep, customizer, key, object, stackA, stackB) {
   if (customizer) {
     result = object ? customizer(value, key, object) : customizer(value);
   }
-  if (typeof result != 'undefined') {
+  if (result !== undefined) {
     return result;
   }
   if (!isObject(value)) {
@@ -1999,7 +2166,7 @@ function baseClone(value, isDeep, customizer, key, object, stackA, stackB) {
     if (tag == objectTag || tag == argsTag || (isFunc && !object)) {
       result = initCloneObject(isFunc ? {} : value);
       if (!isDeep) {
-        return baseCopy(value, result, keys(value));
+        return baseAssign(result, value);
       }
     } else {
       return cloneableTags[tag]
@@ -2030,21 +2197,19 @@ function baseClone(value, isDeep, customizer, key, object, stackA, stackB) {
 
 module.exports = baseClone;
 
-},{"../lang/isArray":67,"../lang/isObject":69,"../object/keys":72,"./arrayCopy":27,"./arrayEach":28,"./baseCopy":33,"./baseForOwn":36,"./initCloneArray":55,"./initCloneByTag":56,"./initCloneObject":57}],33:[function(require,module,exports){
+},{"../lang/isArray":78,"../lang/isObject":80,"./arrayCopy":29,"./arrayEach":30,"./baseAssign":33,"./baseForOwn":39,"./initCloneArray":63,"./initCloneByTag":64,"./initCloneObject":65}],36:[function(require,module,exports){
 /**
- * Copies the properties of `source` to `object`.
+ * Copies properties of `source` to `object`.
  *
  * @private
  * @param {Object} source The object to copy properties from.
- * @param {Object} [object={}] The object to copy properties to.
  * @param {Array} props The property names to copy.
+ * @param {Object} [object={}] The object to copy properties to.
  * @returns {Object} Returns `object`.
  */
-function baseCopy(source, object, props) {
-  if (!props) {
-    props = object;
-    object = {};
-  }
+function baseCopy(source, props, object) {
+  object || (object = {});
+
   var index = -1,
       length = props.length;
 
@@ -2057,7 +2222,7 @@ function baseCopy(source, object, props) {
 
 module.exports = baseCopy;
 
-},{}],34:[function(require,module,exports){
+},{}],37:[function(require,module,exports){
 var baseForOwn = require('./baseForOwn'),
     createBaseEach = require('./createBaseEach');
 
@@ -2074,13 +2239,13 @@ var baseEach = createBaseEach(baseForOwn);
 
 module.exports = baseEach;
 
-},{"./baseForOwn":36,"./createBaseEach":48}],35:[function(require,module,exports){
+},{"./baseForOwn":39,"./createBaseEach":54}],38:[function(require,module,exports){
 var createBaseFor = require('./createBaseFor');
 
 /**
  * The base implementation of `baseForIn` and `baseForOwn` which iterates
  * over `object` properties returned by `keysFunc` invoking `iteratee` for
- * each property. Iterator functions may exit iteration early by explicitly
+ * each property. Iteratee functions may exit iteration early by explicitly
  * returning `false`.
  *
  * @private
@@ -2093,7 +2258,7 @@ var baseFor = createBaseFor();
 
 module.exports = baseFor;
 
-},{"./createBaseFor":49}],36:[function(require,module,exports){
+},{"./createBaseFor":55}],39:[function(require,module,exports){
 var baseFor = require('./baseFor'),
     keys = require('../object/keys');
 
@@ -2112,7 +2277,38 @@ function baseForOwn(object, iteratee) {
 
 module.exports = baseForOwn;
 
-},{"../object/keys":72,"./baseFor":35}],37:[function(require,module,exports){
+},{"../object/keys":83,"./baseFor":38}],40:[function(require,module,exports){
+var toObject = require('./toObject');
+
+/**
+ * The base implementation of `get` without support for string paths
+ * and default values.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @param {Array} path The path of the property to get.
+ * @param {string} [pathKey] The key representation of path.
+ * @returns {*} Returns the resolved value.
+ */
+function baseGet(object, path, pathKey) {
+  if (object == null) {
+    return;
+  }
+  if (pathKey !== undefined && pathKey in toObject(object)) {
+    path = [pathKey];
+  }
+  var index = -1,
+      length = path.length;
+
+  while (object != null && ++index < length) {
+    object = object[path[index]];
+  }
+  return (index && index == length) ? object : undefined;
+}
+
+module.exports = baseGet;
+
+},{"./toObject":74}],41:[function(require,module,exports){
 var baseIsEqualDeep = require('./baseIsEqualDeep');
 
 /**
@@ -2131,8 +2327,7 @@ var baseIsEqualDeep = require('./baseIsEqualDeep');
 function baseIsEqual(value, other, customizer, isLoose, stackA, stackB) {
   // Exit early for identical values.
   if (value === other) {
-    // Treat `+0` vs. `-0` as not equal.
-    return value !== 0 || (1 / value == 1 / other);
+    return true;
   }
   var valType = typeof value,
       othType = typeof other;
@@ -2148,7 +2343,7 @@ function baseIsEqual(value, other, customizer, isLoose, stackA, stackB) {
 
 module.exports = baseIsEqual;
 
-},{"./baseIsEqualDeep":38}],38:[function(require,module,exports){
+},{"./baseIsEqualDeep":42}],42:[function(require,module,exports){
 var equalArrays = require('./equalArrays'),
     equalByTag = require('./equalByTag'),
     equalObjects = require('./equalObjects'),
@@ -2158,7 +2353,6 @@ var equalArrays = require('./equalArrays'),
 /** `Object#toString` result references. */
 var argsTag = '[object Arguments]',
     arrayTag = '[object Array]',
-    funcTag = '[object Function]',
     objectTag = '[object Object]';
 
 /** Used for native method references. */
@@ -2210,27 +2404,23 @@ function baseIsEqualDeep(object, other, equalFunc, customizer, isLoose, stackA, 
       othIsArr = isTypedArray(other);
     }
   }
-  var objIsObj = (objTag == objectTag || (isLoose && objTag == funcTag)),
-      othIsObj = (othTag == objectTag || (isLoose && othTag == funcTag)),
+  var objIsObj = objTag == objectTag,
+      othIsObj = othTag == objectTag,
       isSameTag = objTag == othTag;
 
   if (isSameTag && !(objIsArr || objIsObj)) {
     return equalByTag(object, other, objTag);
   }
-  if (isLoose) {
-    if (!isSameTag && !(objIsObj && othIsObj)) {
-      return false;
-    }
-  } else {
+  if (!isLoose) {
     var valWrapped = objIsObj && hasOwnProperty.call(object, '__wrapped__'),
         othWrapped = othIsObj && hasOwnProperty.call(other, '__wrapped__');
 
     if (valWrapped || othWrapped) {
       return equalFunc(valWrapped ? object.value() : object, othWrapped ? other.value() : other, customizer, isLoose, stackA, stackB);
     }
-    if (!isSameTag) {
-      return false;
-    }
+  }
+  if (!isSameTag) {
+    return false;
   }
   // Assume cyclic values are equal.
   // For more information on detecting circular references see https://es5.github.io/#JO.
@@ -2257,7 +2447,7 @@ function baseIsEqualDeep(object, other, equalFunc, customizer, isLoose, stackA, 
 
 module.exports = baseIsEqualDeep;
 
-},{"../lang/isArray":67,"../lang/isTypedArray":70,"./equalArrays":52,"./equalByTag":53,"./equalObjects":54}],39:[function(require,module,exports){
+},{"../lang/isArray":78,"../lang/isTypedArray":81,"./equalArrays":58,"./equalByTag":59,"./equalObjects":60}],43:[function(require,module,exports){
 var baseIsEqual = require('./baseIsEqual');
 
 /**
@@ -2292,10 +2482,10 @@ function baseIsMatch(object, props, values, strictCompareFlags, customizer) {
         srcValue = values[index];
 
     if (noCustomizer && strictCompareFlags[index]) {
-      var result = typeof objValue != 'undefined' || (key in object);
+      var result = objValue !== undefined || (key in object);
     } else {
       result = customizer ? customizer(objValue, srcValue, key) : undefined;
-      if (typeof result == 'undefined') {
+      if (result === undefined) {
         result = baseIsEqual(srcValue, objValue, customizer, true);
       }
     }
@@ -2308,7 +2498,7 @@ function baseIsMatch(object, props, values, strictCompareFlags, customizer) {
 
 module.exports = baseIsMatch;
 
-},{"./baseIsEqual":37}],40:[function(require,module,exports){
+},{"./baseIsEqual":41}],44:[function(require,module,exports){
 var baseIsMatch = require('./baseIsMatch'),
     constant = require('../utility/constant'),
     isStrictComparable = require('./isStrictComparable'),
@@ -2335,8 +2525,10 @@ function baseMatches(source) {
 
     if (isStrictComparable(value)) {
       return function(object) {
-        return object != null && object[key] === value &&
-          (typeof value != 'undefined' || (key in toObject(object)));
+        if (object == null) {
+          return false;
+        }
+        return object[key] === value && (value !== undefined || (key in toObject(object)));
       };
     }
   }
@@ -2355,37 +2547,57 @@ function baseMatches(source) {
 
 module.exports = baseMatches;
 
-},{"../object/keys":72,"../utility/constant":76,"./baseIsMatch":39,"./isStrictComparable":62,"./toObject":64}],41:[function(require,module,exports){
-var baseIsEqual = require('./baseIsEqual'),
+},{"../object/keys":83,"../utility/constant":87,"./baseIsMatch":43,"./isStrictComparable":72,"./toObject":74}],45:[function(require,module,exports){
+var baseGet = require('./baseGet'),
+    baseIsEqual = require('./baseIsEqual'),
+    baseSlice = require('./baseSlice'),
+    isArray = require('../lang/isArray'),
+    isKey = require('./isKey'),
     isStrictComparable = require('./isStrictComparable'),
-    toObject = require('./toObject');
+    last = require('../array/last'),
+    toObject = require('./toObject'),
+    toPath = require('./toPath');
 
 /**
- * The base implementation of `_.matchesProperty` which does not coerce `key`
- * to a string.
+ * The base implementation of `_.matchesProperty` which does not which does
+ * not clone `value`.
  *
  * @private
- * @param {string} key The key of the property to get.
+ * @param {string} path The path of the property to get.
  * @param {*} value The value to compare.
  * @returns {Function} Returns the new function.
  */
-function baseMatchesProperty(key, value) {
-  if (isStrictComparable(value)) {
-    return function(object) {
-      return object != null && object[key] === value &&
-        (typeof value != 'undefined' || (key in toObject(object)));
-    };
-  }
+function baseMatchesProperty(path, value) {
+  var isArr = isArray(path),
+      isCommon = isKey(path) && isStrictComparable(value),
+      pathKey = (path + '');
+
+  path = toPath(path);
   return function(object) {
-    return object != null && baseIsEqual(value, object[key], null, true);
+    if (object == null) {
+      return false;
+    }
+    var key = pathKey;
+    object = toObject(object);
+    if ((isArr || !isCommon) && !(key in object)) {
+      object = path.length == 1 ? object : baseGet(object, baseSlice(path, 0, -1));
+      if (object == null) {
+        return false;
+      }
+      key = last(path);
+      object = toObject(object);
+    }
+    return object[key] === value
+      ? (value !== undefined || (key in object))
+      : baseIsEqual(value, object[key], null, true);
   };
 }
 
 module.exports = baseMatchesProperty;
 
-},{"./baseIsEqual":37,"./isStrictComparable":62,"./toObject":64}],42:[function(require,module,exports){
+},{"../array/last":25,"../lang/isArray":78,"./baseGet":40,"./baseIsEqual":41,"./baseSlice":49,"./isKey":69,"./isStrictComparable":72,"./toObject":74,"./toPath":75}],46:[function(require,module,exports){
 /**
- * The base implementation of `_.property` which does not coerce `key` to a string.
+ * The base implementation of `_.property` without support for deep paths.
  *
  * @private
  * @param {string} key The key of the property to get.
@@ -2399,7 +2611,28 @@ function baseProperty(key) {
 
 module.exports = baseProperty;
 
-},{}],43:[function(require,module,exports){
+},{}],47:[function(require,module,exports){
+var baseGet = require('./baseGet'),
+    toPath = require('./toPath');
+
+/**
+ * A specialized version of `baseProperty` which supports deep paths.
+ *
+ * @private
+ * @param {Array|string} path The path of the property to get.
+ * @returns {Function} Returns the new function.
+ */
+function basePropertyDeep(path) {
+  var pathKey = (path + '');
+  path = toPath(path);
+  return function(object) {
+    return baseGet(object, path, pathKey);
+  };
+}
+
+module.exports = basePropertyDeep;
+
+},{"./baseGet":40,"./toPath":75}],48:[function(require,module,exports){
 /**
  * The base implementation of `_.reduce` and `_.reduceRight` without support
  * for callback shorthands and `this` binding, which iterates over `collection`
@@ -2425,7 +2658,41 @@ function baseReduce(collection, iteratee, accumulator, initFromCollection, eachF
 
 module.exports = baseReduce;
 
-},{}],44:[function(require,module,exports){
+},{}],49:[function(require,module,exports){
+/**
+ * The base implementation of `_.slice` without an iteratee call guard.
+ *
+ * @private
+ * @param {Array} array The array to slice.
+ * @param {number} [start=0] The start position.
+ * @param {number} [end=array.length] The end position.
+ * @returns {Array} Returns the slice of `array`.
+ */
+function baseSlice(array, start, end) {
+  var index = -1,
+      length = array.length;
+
+  start = start == null ? 0 : (+start || 0);
+  if (start < 0) {
+    start = -start > length ? 0 : (length + start);
+  }
+  end = (end === undefined || end > length) ? length : (+end || 0);
+  if (end < 0) {
+    end += length;
+  }
+  length = start > end ? 0 : ((end - start) >>> 0);
+  start >>>= 0;
+
+  var result = Array(length);
+  while (++index < length) {
+    result[index] = array[index + start];
+  }
+  return result;
+}
+
+module.exports = baseSlice;
+
+},{}],50:[function(require,module,exports){
 /**
  * Converts `value` to a string if it is not one. An empty string is returned
  * for `null` or `undefined` values.
@@ -2443,7 +2710,7 @@ function baseToString(value) {
 
 module.exports = baseToString;
 
-},{}],45:[function(require,module,exports){
+},{}],51:[function(require,module,exports){
 var identity = require('../utility/identity');
 
 /**
@@ -2460,7 +2727,7 @@ function bindCallback(func, thisArg, argCount) {
   if (typeof func != 'function') {
     return identity;
   }
-  if (typeof thisArg == 'undefined') {
+  if (thisArg === undefined) {
     return func;
   }
   switch (argCount) {
@@ -2484,7 +2751,7 @@ function bindCallback(func, thisArg, argCount) {
 
 module.exports = bindCallback;
 
-},{"../utility/identity":77}],46:[function(require,module,exports){
+},{"../utility/identity":88}],52:[function(require,module,exports){
 (function (global){
 var constant = require('../utility/constant'),
     isNative = require('../lang/isNative');
@@ -2543,9 +2810,10 @@ if (!bufferSlice) {
 module.exports = bufferClone;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../lang/isNative":68,"../utility/constant":76}],47:[function(require,module,exports){
+},{"../lang/isNative":79,"../utility/constant":87}],53:[function(require,module,exports){
 var bindCallback = require('./bindCallback'),
-    isIterateeCall = require('./isIterateeCall');
+    isIterateeCall = require('./isIterateeCall'),
+    restParam = require('../function/restParam');
 
 /**
  * Creates a function that assigns properties of source object(s) to a given
@@ -2558,44 +2826,39 @@ var bindCallback = require('./bindCallback'),
  * @returns {Function} Returns the new assigner function.
  */
 function createAssigner(assigner) {
-  return function() {
-    var args = arguments,
-        length = args.length,
-        object = args[0];
+  return restParam(function(object, sources) {
+    var index = -1,
+        length = object == null ? 0 : sources.length,
+        customizer = length > 2 && sources[length - 2],
+        guard = length > 2 && sources[2],
+        thisArg = length > 1 && sources[length - 1];
 
-    if (length < 2 || object == null) {
-      return object;
-    }
-    var customizer = args[length - 2],
-        thisArg = args[length - 1],
-        guard = args[3];
-
-    if (length > 3 && typeof customizer == 'function') {
+    if (typeof customizer == 'function') {
       customizer = bindCallback(customizer, thisArg, 5);
       length -= 2;
     } else {
-      customizer = (length > 2 && typeof thisArg == 'function') ? thisArg : null;
+      customizer = typeof thisArg == 'function' ? thisArg : null;
       length -= (customizer ? 1 : 0);
     }
-    if (guard && isIterateeCall(args[1], args[2], guard)) {
-      customizer = length == 3 ? null : customizer;
-      length = 2;
+    if (guard && isIterateeCall(sources[0], sources[1], guard)) {
+      customizer = length < 3 ? null : customizer;
+      length = 1;
     }
-    var index = 0;
     while (++index < length) {
-      var source = args[index];
+      var source = sources[index];
       if (source) {
         assigner(object, source, customizer);
       }
     }
     return object;
-  };
+  });
 }
 
 module.exports = createAssigner;
 
-},{"./bindCallback":45,"./isIterateeCall":59}],48:[function(require,module,exports){
-var isLength = require('./isLength'),
+},{"../function/restParam":28,"./bindCallback":51,"./isIterateeCall":68}],54:[function(require,module,exports){
+var getLength = require('./getLength'),
+    isLength = require('./isLength'),
     toObject = require('./toObject');
 
 /**
@@ -2608,7 +2871,7 @@ var isLength = require('./isLength'),
  */
 function createBaseEach(eachFunc, fromRight) {
   return function(collection, iteratee) {
-    var length = collection ? collection.length : 0;
+    var length = collection ? getLength(collection) : 0;
     if (!isLength(length)) {
       return eachFunc(collection, iteratee);
     }
@@ -2626,7 +2889,7 @@ function createBaseEach(eachFunc, fromRight) {
 
 module.exports = createBaseEach;
 
-},{"./isLength":60,"./toObject":64}],49:[function(require,module,exports){
+},{"./getLength":61,"./isLength":70,"./toObject":74}],55:[function(require,module,exports){
 var toObject = require('./toObject');
 
 /**
@@ -2655,7 +2918,7 @@ function createBaseFor(fromRight) {
 
 module.exports = createBaseFor;
 
-},{"./toObject":64}],50:[function(require,module,exports){
+},{"./toObject":74}],56:[function(require,module,exports){
 var bindCallback = require('./bindCallback'),
     isArray = require('../lang/isArray');
 
@@ -2669,7 +2932,7 @@ var bindCallback = require('./bindCallback'),
  */
 function createForEach(arrayFunc, eachFunc) {
   return function(collection, iteratee, thisArg) {
-    return (typeof iteratee == 'function' && typeof thisArg == 'undefined' && isArray(collection))
+    return (typeof iteratee == 'function' && thisArg === undefined && isArray(collection))
       ? arrayFunc(collection, iteratee)
       : eachFunc(collection, bindCallback(iteratee, thisArg, 3));
   };
@@ -2677,7 +2940,7 @@ function createForEach(arrayFunc, eachFunc) {
 
 module.exports = createForEach;
 
-},{"../lang/isArray":67,"./bindCallback":45}],51:[function(require,module,exports){
+},{"../lang/isArray":78,"./bindCallback":51}],57:[function(require,module,exports){
 var baseCallback = require('./baseCallback'),
     baseReduce = require('./baseReduce'),
     isArray = require('../lang/isArray');
@@ -2693,7 +2956,7 @@ var baseCallback = require('./baseCallback'),
 function createReduce(arrayFunc, eachFunc) {
   return function(collection, iteratee, accumulator, thisArg) {
     var initFromArray = arguments.length < 3;
-    return (typeof iteratee == 'function' && typeof thisArg == 'undefined' && isArray(collection))
+    return (typeof iteratee == 'function' && thisArg === undefined && isArray(collection))
       ? arrayFunc(collection, iteratee, accumulator, initFromArray)
       : baseReduce(collection, baseCallback(iteratee, thisArg, 4), accumulator, initFromArray, eachFunc);
   };
@@ -2701,7 +2964,7 @@ function createReduce(arrayFunc, eachFunc) {
 
 module.exports = createReduce;
 
-},{"../lang/isArray":67,"./baseCallback":31,"./baseReduce":43}],52:[function(require,module,exports){
+},{"../lang/isArray":78,"./baseCallback":34,"./baseReduce":48}],58:[function(require,module,exports){
 /**
  * A specialized version of `baseIsEqualDeep` for arrays with support for
  * partial deep comparisons.
@@ -2736,7 +2999,7 @@ function equalArrays(array, other, equalFunc, customizer, isLoose, stackA, stack
         ? customizer(othValue, arrValue, index)
         : customizer(arrValue, othValue, index);
     }
-    if (typeof result == 'undefined') {
+    if (result === undefined) {
       // Recursively compare arrays (susceptible to call stack limits).
       if (isLoose) {
         var othIndex = othLength;
@@ -2757,7 +3020,7 @@ function equalArrays(array, other, equalFunc, customizer, isLoose, stackA, stack
 
 module.exports = equalArrays;
 
-},{}],53:[function(require,module,exports){
+},{}],59:[function(require,module,exports){
 /** `Object#toString` result references. */
 var boolTag = '[object Boolean]',
     dateTag = '[object Date]',
@@ -2794,8 +3057,7 @@ function equalByTag(object, other, tag) {
       // Treat `NaN` vs. `NaN` as equal.
       return (object != +object)
         ? other != +other
-        // But, treat `-0` vs. `+0` as not equal.
-        : (object == 0 ? ((1 / object) == (1 / other)) : object == +other);
+        : object == +other;
 
     case regexpTag:
     case stringTag:
@@ -2808,7 +3070,7 @@ function equalByTag(object, other, tag) {
 
 module.exports = equalByTag;
 
-},{}],54:[function(require,module,exports){
+},{}],60:[function(require,module,exports){
 var keys = require('../object/keys');
 
 /** Used for native method references. */
@@ -2857,7 +3119,7 @@ function equalObjects(object, other, equalFunc, customizer, isLoose, stackA, sta
           ? customizer(othValue, objValue, key)
           : customizer(objValue, othValue, key);
       }
-      if (typeof result == 'undefined') {
+      if (result === undefined) {
         // Recursively compare objects (susceptible to call stack limits).
         result = (objValue && objValue === othValue) || equalFunc(objValue, othValue, customizer, isLoose, stackA, stackB);
       }
@@ -2884,7 +3146,45 @@ function equalObjects(object, other, equalFunc, customizer, isLoose, stackA, sta
 
 module.exports = equalObjects;
 
-},{"../object/keys":72}],55:[function(require,module,exports){
+},{"../object/keys":83}],61:[function(require,module,exports){
+var baseProperty = require('./baseProperty');
+
+/**
+ * Gets the "length" property value of `object`.
+ *
+ * **Note:** This function is used to avoid a [JIT bug](https://bugs.webkit.org/show_bug.cgi?id=142792)
+ * that affects Safari on at least iOS 8.1-8.3 ARM64.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @returns {*} Returns the "length" value.
+ */
+var getLength = baseProperty('length');
+
+module.exports = getLength;
+
+},{"./baseProperty":46}],62:[function(require,module,exports){
+var constant = require('../utility/constant'),
+    isNative = require('../lang/isNative'),
+    toObject = require('./toObject');
+
+/** Native method references. */
+var getOwnPropertySymbols = isNative(getOwnPropertySymbols = Object.getOwnPropertySymbols) && getOwnPropertySymbols;
+
+/**
+ * Creates an array of the own symbols of `object`.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @returns {Array} Returns the array of symbols.
+ */
+var getSymbols = !getOwnPropertySymbols ? constant([]) : function(object) {
+  return getOwnPropertySymbols(toObject(object));
+};
+
+module.exports = getSymbols;
+
+},{"../lang/isNative":79,"../utility/constant":87,"./toObject":74}],63:[function(require,module,exports){
 /** Used for native method references. */
 var objectProto = Object.prototype;
 
@@ -2912,7 +3212,7 @@ function initCloneArray(array) {
 
 module.exports = initCloneArray;
 
-},{}],56:[function(require,module,exports){
+},{}],64:[function(require,module,exports){
 var bufferClone = require('./bufferClone');
 
 /** `Object#toString` result references. */
@@ -2941,7 +3241,6 @@ var reFlags = /\w*$/;
  *
  * **Note:** This function only supports cloning values with tags of
  * `Boolean`, `Date`, `Error`, `Number`, `RegExp`, or `String`.
- *
  *
  * @private
  * @param {Object} object The object to clone.
@@ -2978,7 +3277,7 @@ function initCloneByTag(object, tag, isDeep) {
 
 module.exports = initCloneByTag;
 
-},{"./bufferClone":46}],57:[function(require,module,exports){
+},{"./bufferClone":52}],65:[function(require,module,exports){
 /**
  * Initializes an object clone.
  *
@@ -2996,7 +3295,24 @@ function initCloneObject(object) {
 
 module.exports = initCloneObject;
 
-},{}],58:[function(require,module,exports){
+},{}],66:[function(require,module,exports){
+var getLength = require('./getLength'),
+    isLength = require('./isLength');
+
+/**
+ * Checks if `value` is array-like.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is array-like, else `false`.
+ */
+function isArrayLike(value) {
+  return value != null && isLength(getLength(value));
+}
+
+module.exports = isArrayLike;
+
+},{"./getLength":61,"./isLength":70}],67:[function(require,module,exports){
 /**
  * Used as the [maximum length](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-number.max_safe_integer)
  * of an array-like value.
@@ -3019,9 +3335,9 @@ function isIndex(value, length) {
 
 module.exports = isIndex;
 
-},{}],59:[function(require,module,exports){
-var isIndex = require('./isIndex'),
-    isLength = require('./isLength'),
+},{}],68:[function(require,module,exports){
+var isArrayLike = require('./isArrayLike'),
+    isIndex = require('./isIndex'),
     isObject = require('../lang/isObject');
 
 /**
@@ -3038,13 +3354,9 @@ function isIterateeCall(value, index, object) {
     return false;
   }
   var type = typeof index;
-  if (type == 'number') {
-    var length = object.length,
-        prereq = isLength(length) && isIndex(index, length);
-  } else {
-    prereq = type == 'string' && index in object;
-  }
-  if (prereq) {
+  if (type == 'number'
+      ? (isArrayLike(object) && isIndex(index, object.length))
+      : (type == 'string' && index in object)) {
     var other = object[index];
     return value === value ? (value === other) : (other !== other);
   }
@@ -3053,7 +3365,37 @@ function isIterateeCall(value, index, object) {
 
 module.exports = isIterateeCall;
 
-},{"../lang/isObject":69,"./isIndex":58,"./isLength":60}],60:[function(require,module,exports){
+},{"../lang/isObject":80,"./isArrayLike":66,"./isIndex":67}],69:[function(require,module,exports){
+var isArray = require('../lang/isArray'),
+    toObject = require('./toObject');
+
+/** Used to match property names within property paths. */
+var reIsDeepProp = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\n\\]|\\.)*?\1)\]/,
+    reIsPlainProp = /^\w*$/;
+
+/**
+ * Checks if `value` is a property name and not a property path.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @param {Object} [object] The object to query keys on.
+ * @returns {boolean} Returns `true` if `value` is a property name, else `false`.
+ */
+function isKey(value, object) {
+  var type = typeof value;
+  if ((type == 'string' && reIsPlainProp.test(value)) || type == 'number') {
+    return true;
+  }
+  if (isArray(value)) {
+    return false;
+  }
+  var result = !reIsDeepProp.test(value);
+  return result || (object != null && value in toObject(object));
+}
+
+module.exports = isKey;
+
+},{"../lang/isArray":78,"./toObject":74}],70:[function(require,module,exports){
 /**
  * Used as the [maximum length](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-number.max_safe_integer)
  * of an array-like value.
@@ -3075,7 +3417,7 @@ function isLength(value) {
 
 module.exports = isLength;
 
-},{}],61:[function(require,module,exports){
+},{}],71:[function(require,module,exports){
 /**
  * Checks if `value` is object-like.
  *
@@ -3089,7 +3431,7 @@ function isObjectLike(value) {
 
 module.exports = isObjectLike;
 
-},{}],62:[function(require,module,exports){
+},{}],72:[function(require,module,exports){
 var isObject = require('../lang/isObject');
 
 /**
@@ -3101,12 +3443,12 @@ var isObject = require('../lang/isObject');
  *  equality comparisons, else `false`.
  */
 function isStrictComparable(value) {
-  return value === value && (value === 0 ? ((1 / value) > 0) : !isObject(value));
+  return value === value && !isObject(value);
 }
 
 module.exports = isStrictComparable;
 
-},{"../lang/isObject":69}],63:[function(require,module,exports){
+},{"../lang/isObject":80}],73:[function(require,module,exports){
 var isArguments = require('../lang/isArguments'),
     isArray = require('../lang/isArray'),
     isIndex = require('./isIndex'),
@@ -3125,7 +3467,7 @@ var hasOwnProperty = objectProto.hasOwnProperty;
  * own enumerable property names of `object`.
  *
  * @private
- * @param {Object} object The object to inspect.
+ * @param {Object} object The object to query.
  * @returns {Array} Returns the array of property names.
  */
 function shimKeys(object) {
@@ -3150,7 +3492,7 @@ function shimKeys(object) {
 
 module.exports = shimKeys;
 
-},{"../lang/isArguments":66,"../lang/isArray":67,"../object/keysIn":73,"../support":75,"./isIndex":58,"./isLength":60}],64:[function(require,module,exports){
+},{"../lang/isArguments":77,"../lang/isArray":78,"../object/keysIn":84,"../support":86,"./isIndex":67,"./isLength":70}],74:[function(require,module,exports){
 var isObject = require('../lang/isObject');
 
 /**
@@ -3166,7 +3508,37 @@ function toObject(value) {
 
 module.exports = toObject;
 
-},{"../lang/isObject":69}],65:[function(require,module,exports){
+},{"../lang/isObject":80}],75:[function(require,module,exports){
+var baseToString = require('./baseToString'),
+    isArray = require('../lang/isArray');
+
+/** Used to match property names within property paths. */
+var rePropName = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\n\\]|\\.)*?)\2)\]/g;
+
+/** Used to match backslashes in property paths. */
+var reEscapeChar = /\\(\\)?/g;
+
+/**
+ * Converts `value` to property path array if it is not one.
+ *
+ * @private
+ * @param {*} value The value to process.
+ * @returns {Array} Returns the property path array.
+ */
+function toPath(value) {
+  if (isArray(value)) {
+    return value;
+  }
+  var result = [];
+  baseToString(value).replace(rePropName, function(match, number, quote, string) {
+    result.push(quote ? string.replace(reEscapeChar, '$1') : (number || match));
+  });
+  return result;
+}
+
+module.exports = toPath;
+
+},{"../lang/isArray":78,"./baseToString":50}],76:[function(require,module,exports){
 var baseClone = require('../internal/baseClone'),
     bindCallback = require('../internal/bindCallback'),
     isIterateeCall = require('../internal/isIterateeCall');
@@ -3237,8 +3609,8 @@ function clone(value, isDeep, customizer, thisArg) {
 
 module.exports = clone;
 
-},{"../internal/baseClone":32,"../internal/bindCallback":45,"../internal/isIterateeCall":59}],66:[function(require,module,exports){
-var isLength = require('../internal/isLength'),
+},{"../internal/baseClone":35,"../internal/bindCallback":51,"../internal/isIterateeCall":68}],77:[function(require,module,exports){
+var isArrayLike = require('../internal/isArrayLike'),
     isObjectLike = require('../internal/isObjectLike');
 
 /** `Object#toString` result references. */
@@ -3270,13 +3642,12 @@ var objToString = objectProto.toString;
  * // => false
  */
 function isArguments(value) {
-  var length = isObjectLike(value) ? value.length : undefined;
-  return isLength(length) && objToString.call(value) == argsTag;
+  return isObjectLike(value) && isArrayLike(value) && objToString.call(value) == argsTag;
 }
 
 module.exports = isArguments;
 
-},{"../internal/isLength":60,"../internal/isObjectLike":61}],67:[function(require,module,exports){
+},{"../internal/isArrayLike":66,"../internal/isObjectLike":71}],78:[function(require,module,exports){
 var isLength = require('../internal/isLength'),
     isNative = require('./isNative'),
     isObjectLike = require('../internal/isObjectLike');
@@ -3318,7 +3689,7 @@ var isArray = nativeIsArray || function(value) {
 
 module.exports = isArray;
 
-},{"../internal/isLength":60,"../internal/isObjectLike":61,"./isNative":68}],68:[function(require,module,exports){
+},{"../internal/isLength":70,"../internal/isObjectLike":71,"./isNative":79}],79:[function(require,module,exports){
 var escapeRegExp = require('../string/escapeRegExp'),
     isObjectLike = require('../internal/isObjectLike');
 
@@ -3326,7 +3697,7 @@ var escapeRegExp = require('../string/escapeRegExp'),
 var funcTag = '[object Function]';
 
 /** Used to detect host constructors (Safari > 5). */
-var reHostCtor = /^\[object .+?Constructor\]$/;
+var reIsHostCtor = /^\[object .+?Constructor\]$/;
 
 /** Used for native method references. */
 var objectProto = Object.prototype;
@@ -3341,7 +3712,7 @@ var fnToString = Function.prototype.toString;
 var objToString = objectProto.toString;
 
 /** Used to detect if a method is native. */
-var reNative = RegExp('^' +
+var reIsNative = RegExp('^' +
   escapeRegExp(objToString)
   .replace(/toString|(function).*?(?=\\\()| for .+?(?=\\\])/g, '$1.*?') + '$'
 );
@@ -3367,14 +3738,14 @@ function isNative(value) {
     return false;
   }
   if (objToString.call(value) == funcTag) {
-    return reNative.test(fnToString.call(value));
+    return reIsNative.test(fnToString.call(value));
   }
-  return isObjectLike(value) && reHostCtor.test(value);
+  return isObjectLike(value) && reIsHostCtor.test(value);
 }
 
 module.exports = isNative;
 
-},{"../internal/isObjectLike":61,"../string/escapeRegExp":74}],69:[function(require,module,exports){
+},{"../internal/isObjectLike":71,"../string/escapeRegExp":85}],80:[function(require,module,exports){
 /**
  * Checks if `value` is the [language type](https://es5.github.io/#x8) of `Object`.
  * (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
@@ -3404,7 +3775,7 @@ function isObject(value) {
 
 module.exports = isObject;
 
-},{}],70:[function(require,module,exports){
+},{}],81:[function(require,module,exports){
 var isLength = require('../internal/isLength'),
     isObjectLike = require('../internal/isObjectLike');
 
@@ -3480,8 +3851,9 @@ function isTypedArray(value) {
 
 module.exports = isTypedArray;
 
-},{"../internal/isLength":60,"../internal/isObjectLike":61}],71:[function(require,module,exports){
-var baseAssign = require('../internal/baseAssign'),
+},{"../internal/isLength":70,"../internal/isObjectLike":71}],82:[function(require,module,exports){
+var assignWith = require('../internal/assignWith'),
+    baseAssign = require('../internal/baseAssign'),
     createAssigner = require('../internal/createAssigner');
 
 /**
@@ -3491,13 +3863,16 @@ var baseAssign = require('../internal/baseAssign'),
  * The `customizer` is bound to `thisArg` and invoked with five arguments:
  * (objectValue, sourceValue, key, object, source).
  *
+ * **Note:** This method mutates `object` and is based on
+ * [`Object.assign`](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-object.assign).
+ *
  * @static
  * @memberOf _
  * @alias extend
  * @category Object
  * @param {Object} object The destination object.
  * @param {...Object} [sources] The source objects.
- * @param {Function} [customizer] The function to customize assigning values.
+ * @param {Function} [customizer] The function to customize assigned values.
  * @param {*} [thisArg] The `this` binding of `customizer`.
  * @returns {Object} Returns `object`.
  * @example
@@ -3507,18 +3882,22 @@ var baseAssign = require('../internal/baseAssign'),
  *
  * // using a customizer callback
  * var defaults = _.partialRight(_.assign, function(value, other) {
- *   return typeof value == 'undefined' ? other : value;
+ *   return _.isUndefined(value) ? other : value;
  * });
  *
  * defaults({ 'user': 'barney' }, { 'age': 36 }, { 'user': 'fred' });
  * // => { 'user': 'barney', 'age': 36 }
  */
-var assign = createAssigner(baseAssign);
+var assign = createAssigner(function(object, source, customizer) {
+  return customizer
+    ? assignWith(object, source, customizer)
+    : baseAssign(object, source);
+});
 
 module.exports = assign;
 
-},{"../internal/baseAssign":30,"../internal/createAssigner":47}],72:[function(require,module,exports){
-var isLength = require('../internal/isLength'),
+},{"../internal/assignWith":32,"../internal/baseAssign":33,"../internal/createAssigner":53}],83:[function(require,module,exports){
+var isArrayLike = require('../internal/isArrayLike'),
     isNative = require('../lang/isNative'),
     isObject = require('../lang/isObject'),
     shimKeys = require('../internal/shimKeys');
@@ -3536,7 +3915,7 @@ var nativeKeys = isNative(nativeKeys = Object.keys) && nativeKeys;
  * @static
  * @memberOf _
  * @category Object
- * @param {Object} object The object to inspect.
+ * @param {Object} object The object to query.
  * @returns {Array} Returns the array of property names.
  * @example
  *
@@ -3554,12 +3933,9 @@ var nativeKeys = isNative(nativeKeys = Object.keys) && nativeKeys;
  * // => ['0', '1']
  */
 var keys = !nativeKeys ? shimKeys : function(object) {
-  if (object) {
-    var Ctor = object.constructor,
-        length = object.length;
-  }
+  var Ctor = object != null && object.constructor;
   if ((typeof Ctor == 'function' && Ctor.prototype === object) ||
-      (typeof object != 'function' && (length && isLength(length)))) {
+      (typeof object != 'function' && isArrayLike(object))) {
     return shimKeys(object);
   }
   return isObject(object) ? nativeKeys(object) : [];
@@ -3567,7 +3943,7 @@ var keys = !nativeKeys ? shimKeys : function(object) {
 
 module.exports = keys;
 
-},{"../internal/isLength":60,"../internal/shimKeys":63,"../lang/isNative":68,"../lang/isObject":69}],73:[function(require,module,exports){
+},{"../internal/isArrayLike":66,"../internal/shimKeys":73,"../lang/isNative":79,"../lang/isObject":80}],84:[function(require,module,exports){
 var isArguments = require('../lang/isArguments'),
     isArray = require('../lang/isArray'),
     isIndex = require('../internal/isIndex'),
@@ -3589,7 +3965,7 @@ var hasOwnProperty = objectProto.hasOwnProperty;
  * @static
  * @memberOf _
  * @category Object
- * @param {Object} object The object to inspect.
+ * @param {Object} object The object to query.
  * @returns {Array} Returns the array of property names.
  * @example
  *
@@ -3634,7 +4010,7 @@ function keysIn(object) {
 
 module.exports = keysIn;
 
-},{"../internal/isIndex":58,"../internal/isLength":60,"../lang/isArguments":66,"../lang/isArray":67,"../lang/isObject":69,"../support":75}],74:[function(require,module,exports){
+},{"../internal/isIndex":67,"../internal/isLength":70,"../lang/isArguments":77,"../lang/isArray":78,"../lang/isObject":80,"../support":86}],85:[function(require,module,exports){
 var baseToString = require('../internal/baseToString');
 
 /**
@@ -3668,7 +4044,7 @@ function escapeRegExp(string) {
 
 module.exports = escapeRegExp;
 
-},{"../internal/baseToString":44}],75:[function(require,module,exports){
+},{"../internal/baseToString":50}],86:[function(require,module,exports){
 (function (global){
 /** Used for native method references. */
 var objectProto = Object.prototype;
@@ -3689,6 +4065,13 @@ var propertyIsEnumerable = objectProto.propertyIsEnumerable;
 var support = {};
 
 (function(x) {
+  var Ctor = function() { this.x = x; },
+      args = arguments,
+      object = { '0': x, 'length': x },
+      props = [];
+
+  Ctor.prototype = { 'valueOf': x, 'y': x };
+  for (var key in new Ctor) { props.push(key); }
 
   /**
    * Detect if functions can be decompiled by `Function#toString`
@@ -3726,23 +4109,23 @@ var support = {};
    * In Firefox < 4, IE < 9, PhantomJS, and Safari < 5.1 `arguments` object
    * indexes are non-enumerable. Chrome < 25 and Node.js < 0.11.0 treat
    * `arguments` object indexes as non-enumerable and fail `hasOwnProperty`
-   * checks for indexes that exceed their function's formal parameters with
-   * associated values of `0`.
+   * checks for indexes that exceed the number of function parameters and
+   * whose associated argument values are `0`.
    *
    * @memberOf _.support
    * @type boolean
    */
   try {
-    support.nonEnumArgs = !propertyIsEnumerable.call(arguments, 1);
+    support.nonEnumArgs = !propertyIsEnumerable.call(args, 1);
   } catch(e) {
     support.nonEnumArgs = true;
   }
-}(0, 0));
+}(1, 0));
 
 module.exports = support;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],76:[function(require,module,exports){
+},{}],87:[function(require,module,exports){
 /**
  * Creates a function that returns `value`.
  *
@@ -3767,7 +4150,7 @@ function constant(value) {
 
 module.exports = constant;
 
-},{}],77:[function(require,module,exports){
+},{}],88:[function(require,module,exports){
 /**
  * This method returns the first argument provided to it.
  *
@@ -3789,7 +4172,40 @@ function identity(value) {
 
 module.exports = identity;
 
-},{}],78:[function(require,module,exports){
+},{}],89:[function(require,module,exports){
+var baseProperty = require('../internal/baseProperty'),
+    basePropertyDeep = require('../internal/basePropertyDeep'),
+    isKey = require('../internal/isKey');
+
+/**
+ * Creates a function which returns the property value at `path` on a
+ * given object.
+ *
+ * @static
+ * @memberOf _
+ * @category Utility
+ * @param {Array|string} path The path of the property to get.
+ * @returns {Function} Returns the new function.
+ * @example
+ *
+ * var objects = [
+ *   { 'a': { 'b': { 'c': 2 } } },
+ *   { 'a': { 'b': { 'c': 1 } } }
+ * ];
+ *
+ * _.map(objects, _.property('a.b.c'));
+ * // => [2, 1]
+ *
+ * _.pluck(_.sortBy(objects, _.property(['a', 'b', 'c'])), 'a.b.c');
+ * // => [1, 2]
+ */
+function property(path) {
+  return isKey(path) ? baseProperty(path) : basePropertyDeep(path);
+}
+
+module.exports = property;
+
+},{"../internal/baseProperty":46,"../internal/basePropertyDeep":47,"../internal/isKey":69}],90:[function(require,module,exports){
 var baseToString = require('../internal/baseToString');
 
 /** Used to generate unique IDs. */
@@ -3818,100 +4234,100 @@ function uniqueId(prefix) {
 
 module.exports = uniqueId;
 
-},{"../internal/baseToString":44}],"react-leaflet":[function(require,module,exports){
+},{"../internal/baseToString":50}],"react-leaflet":[function(require,module,exports){
 "use strict";
-
-var _interopRequireWildcard = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
+
 var _Leaflet = require("leaflet");
 
-var _Leaflet2 = _interopRequireWildcard(_Leaflet);
+var _Leaflet2 = _interopRequireDefault(_Leaflet);
 
 var _PropTypes = require("./types");
 
-var _PropTypes2 = _interopRequireWildcard(_PropTypes);
+var _PropTypes2 = _interopRequireDefault(_PropTypes);
 
 var _BaseTileLayer = require("./BaseTileLayer");
 
-var _BaseTileLayer2 = _interopRequireWildcard(_BaseTileLayer);
+var _BaseTileLayer2 = _interopRequireDefault(_BaseTileLayer);
 
 var _CanvasTileLayer = require("./CanvasTileLayer");
 
-var _CanvasTileLayer2 = _interopRequireWildcard(_CanvasTileLayer);
+var _CanvasTileLayer2 = _interopRequireDefault(_CanvasTileLayer);
 
 var _Circle = require("./Circle");
 
-var _Circle2 = _interopRequireWildcard(_Circle);
+var _Circle2 = _interopRequireDefault(_Circle);
 
 var _CircleMarker = require("./CircleMarker");
 
-var _CircleMarker2 = _interopRequireWildcard(_CircleMarker);
+var _CircleMarker2 = _interopRequireDefault(_CircleMarker);
 
 var _FeatureGroup = require("./FeatureGroup");
 
-var _FeatureGroup2 = _interopRequireWildcard(_FeatureGroup);
+var _FeatureGroup2 = _interopRequireDefault(_FeatureGroup);
 
 var _GeoJson = require("./GeoJson");
 
-var _GeoJson2 = _interopRequireWildcard(_GeoJson);
+var _GeoJson2 = _interopRequireDefault(_GeoJson);
 
 var _ImageOverlay = require("./ImageOverlay");
 
-var _ImageOverlay2 = _interopRequireWildcard(_ImageOverlay);
+var _ImageOverlay2 = _interopRequireDefault(_ImageOverlay);
 
 var _Map = require("./Map");
 
-var _Map2 = _interopRequireWildcard(_Map);
+var _Map2 = _interopRequireDefault(_Map);
 
 var _MapComponent = require("./MapComponent");
 
-var _MapComponent2 = _interopRequireWildcard(_MapComponent);
+var _MapComponent2 = _interopRequireDefault(_MapComponent);
 
 var _MapLayer = require("./MapLayer");
 
-var _MapLayer2 = _interopRequireWildcard(_MapLayer);
+var _MapLayer2 = _interopRequireDefault(_MapLayer);
 
 var _Marker = require("./Marker");
 
-var _Marker2 = _interopRequireWildcard(_Marker);
+var _Marker2 = _interopRequireDefault(_Marker);
 
 var _MultiPolygon = require("./MultiPolygon");
 
-var _MultiPolygon2 = _interopRequireWildcard(_MultiPolygon);
+var _MultiPolygon2 = _interopRequireDefault(_MultiPolygon);
 
 var _MultiPolyline = require("./MultiPolyline");
 
-var _MultiPolyline2 = _interopRequireWildcard(_MultiPolyline);
+var _MultiPolyline2 = _interopRequireDefault(_MultiPolyline);
 
 var _Polygon = require("./Polygon");
 
-var _Polygon2 = _interopRequireWildcard(_Polygon);
+var _Polygon2 = _interopRequireDefault(_Polygon);
 
 var _Polyline = require("./Polyline");
 
-var _Polyline2 = _interopRequireWildcard(_Polyline);
+var _Polyline2 = _interopRequireDefault(_Polyline);
 
 var _Popup = require("./Popup");
 
-var _Popup2 = _interopRequireWildcard(_Popup);
+var _Popup2 = _interopRequireDefault(_Popup);
 
-var _PopupContainer = _interopRequireWildcard(_Popup);
+var _PopupContainer = _interopRequireDefault(_Popup);
 
 var _Rectangle = require("./Rectangle");
 
-var _Rectangle2 = _interopRequireWildcard(_Rectangle);
+var _Rectangle2 = _interopRequireDefault(_Rectangle);
 
 var _TileLayer = require("./TileLayer");
 
-var _TileLayer2 = _interopRequireWildcard(_TileLayer);
+var _TileLayer2 = _interopRequireDefault(_TileLayer);
 
 var _WMSTileLayer = require("./WMSTileLayer");
 
-var _WMSTileLayer2 = _interopRequireWildcard(_WMSTileLayer);
+var _WMSTileLayer2 = _interopRequireDefault(_WMSTileLayer);
 
 var setIconDefaultImagePath = function setIconDefaultImagePath(path) {
   _Leaflet2["default"].Icon.Default.imagePath = path;

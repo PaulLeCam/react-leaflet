@@ -39,9 +39,9 @@
   "devDependencies": {
     "babel": "^5.0.8",
     "babelify": "^6.0.1",
-    "browserify": "^9.0.7",
+    "browserify": "^10.0.0",
     "gulp": "^3.8.10",
-    "gulp-load-plugins": "^0.9.0",
+    "gulp-load-plugins": "^0.10.0",
     "gulp-util": "^3.0.4",
     "gulp-webserver": "^0.9.0",
     "jest-cli": "^0.4.0",
