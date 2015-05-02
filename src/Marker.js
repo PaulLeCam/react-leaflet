@@ -1,3 +1,4 @@
+import React from "react";
 import Leaflet from "leaflet";
 
 import latlngType from "./types/latlng";
@@ -14,13 +15,21 @@ export default class Marker extends PopupContainer {
     if (this.props.position !== prevProps.position) {
       this.leafletElement.setLatLng(this.props.position);
     }
-
     if (this.props.icon !== prevProps.icon) {
-      this.getLeafletElement().setIcon(this.props.icon);
+      this.leafletElement.setIcon(this.props.icon);
+    }
+    if (this.props.zIndexOffset !== prevProps.zIndexOffset) {
+      this.leafletElement.setZIndexOffset(this.props.zIndexOffset);
+    }
+    if (this.props.opacity !== prevProps.opacity) {
+      this.leafletElement.setOpacity(this.props.opacity);
     }
   }
 }
 
 Marker.propTypes = {
-  position: latlngType.isRequired
+  position: latlngType.isRequired,
+  icon: React.PropTypes.instanceOf(Leaflet.Icon),
+  zIndexOffset: React.PropTypes.number,
+  opacity: React.PropTypes.number
 };

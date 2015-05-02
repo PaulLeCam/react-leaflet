@@ -65,6 +65,7 @@ Note that the `<Map>` component creates its own `<div>` container for the map, i
 
 - At this point, not all layers are implemented and even less tested.
 - Properties on most components are static: they are set during the first render but not updated when the component updates. Check the documentation and source code to know what properties are dynamic.
+- Leaflet makes direct calls to the DOM, and therefore cannot be used for server-side rendering.
 
 ## API
 
@@ -86,7 +87,7 @@ Check Leaflet documentation for the events associated to each component.
 The properties documented for each component are the ones aimed to be supported (tested and made dynamic when possible) by React-Leaflet.  
 All other properties are passed as the `options` argument to their corresponding Leaflet element and should work fine for static maps, it is however unlikely that they would updated if you change them afterwards.
 
-You can directly access the Leaflet element created by a component using the `leafletElement` property on this component. This leaflet element is usually created in `componentWillMount()`, except for the `Map` component where it can only be created after the `<div>` container is rendered.
+You can directly access the Leaflet element created by a component using the `getLeafletElement()` method on this component. This leaflet element is usually created in `componentWillMount()`, except for the `Map` component where it can only be created after the `<div>` container is rendered.
 
 #### Base components
 
@@ -114,38 +115,41 @@ Base class extending `MapLayer` with a `render()` method passing its `leafletEle
 This is the top-level component that must be mounted for children ones to be rendered. Refer to Leaflet documentation for more information about the properties.
 
 **Properties**
-- `center` (optional LatLng, dynamic): Center of the map. This property is dynamic, if you change it it will be reflected in the map.
-- `id` (optional String): The ID of the `<div>` container for the map. If you don't provide it, a unique one will be created.
-- `maxBounds` (optional Bounds)
-- `maxZoom` (optional Number)
-- `minZoom` (optional Number)
-- `zoom` (optional Number, dynamic)
+- `center: LatLng` (optional, dynamic): Center of the map. This property is dynamic, if you change it it will be reflected in the map.
+- `id: String` (optional): The ID of the `<div>` container for the map. If you don't provide it, a unique one will be created.
+- `maxBounds: Bounds` (optional)
+- `maxZoom: Number` (optional)
+- `minZoom: Number` (optional)
+- `zoom: Number` (optional, dynamic)
 
 #### UI Layers
 
 ##### Marker
 
-- `position` (required LatLng, dynamic)
+- `position: LatLng` (required, dynamic)
+- `icon: Leaflet.Icon` (optional, dynamic)
+- `zIndexOffset: Number` (optional, dynamic)
+- `opacity: Number` (optional, dynamic)
 
 ##### Popup
 
 The Popup children will be rendered as its content using `React.renderToStaticMarkup()`, they must be valid React elements.
 
-- `position` (optional LatLng, dynamic)
+- `position: LatLng` (optional, dynamic)
 
 #### Raster Layers
 
 ##### TileLayer
 
-- `url` (required String, dynamic)
-- `opacity` (optional Number, dynamic)
-- `zIndex` (optional Number, dynamic)
+- `url: String` (required, dynamic)
+- `opacity: Number` (optional, dynamic)
+- `zIndex: Number` (optional, dynamic)
 
 ##### ImageOverlay
 
-- `url` (required String, dynamic)
-- `opacity` (optional Number, dynamic)
-- `attribution` (optional String)
+- `url: String` (required, dynamic)
+- `opacity: Number` (optional, dynamic)
+- `attribution: String` (optional)
 
 ##### Implemented but needing testing and documentation
 
@@ -156,33 +160,33 @@ The Popup children will be rendered as its content using `React.renderToStaticMa
 
 ##### Circle
 
-- `center` (required LatLng, dynamic)
-- `radius` (required Number, dynamic)
+- `center: LatLng` (required, dynamic)
+- `radius: Number` (required, dynamic)
 
 ##### CircleMarker
 
-- `center` (required LatLng, dynamic)
-- `radius` (optional Number, dynamic)
+- `center: LatLng` (required, dynamic)
+- `radius: Number` (optional, dynamic)
 
 ##### Polyline
 
-- `positions` (required LatLngList, dynamic)
+- `positions: LatLngList` (required, dynamic)
 
 ##### MultiPolyline
 
-- `polylines` (required Array of LatLngList, dynamic)
+- `polylines: Array<LatLngList>` (required, dynamic)
 
 ##### Polygon
 
-- `positions` (required LatLngList, dynamic)
+- `positions: LatLngList` (required, dynamic)
 
 ##### MultiPolygon
 
-- `polygons` (required Array of LatLngList, dynamic)
+- `polygons: Array<LatLngList>` (required, dynamic)
 
 ##### Rectangle
 
-- `bounds` (required Bounds, dynamic)
+- `bounds: Bounds` (required, dynamic)
 
 #### Other Layers
 
@@ -192,6 +196,10 @@ The Popup children will be rendered as its content using `React.renderToStaticMa
 - GeoJson
 
 ## Changelog
+
+### v0.5.0 (02/05/15)
+
+Set `icon`, `zIndexOffset` and `opacity` properties as dynamic on `Marker`.
 
 ### v0.4.1 (06/04/15)
 
