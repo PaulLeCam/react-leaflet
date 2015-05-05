@@ -3,11 +3,6 @@ React-Leaflet
 
 React components for Leaflet maps.
 
-### Work in progress
-
-In development, use at your own risks.  
-Tests and documentation still being worked on.
-
 ## Install
 
 ```bash
@@ -61,11 +56,14 @@ React.render(map, document.getElementById("map-container"));
 ```
 Note that the `<Map>` component creates its own `<div>` container for the map, it does not get attached to an existing node.
 
-## Known limitations
+## Technical considerations
 
-- At this point, not all layers are implemented and even less tested.
-- Properties on most components are static: they are set during the first render but not updated when the component updates. Check the documentation and source code to know what properties are dynamic.
-- Leaflet makes direct calls to the DOM, and therefore cannot be used for server-side rendering.
+This library uses React components as an interface, but not the virtual DOM, as all the DOM manipulations are managed by Leaflet, so there are a few things to keep in mind when using it:
+
+- Leaflet makes direct calls to the DOM when it is loaded, therefore this library is not compatible with server-side rendering.
+- The components exposed are abstractions for Leaflet layers, not DOM elements. Some of them have properties that can be updated directly by calling the setters exposed by Leaflet while others should be completely replaced, by setting an unique value on their `ref` property so that they are properly handled by React's algorithm.
+- `<Popup>` contents are rendered by Leaflet calling `React.renderToStaticMarkup()`, therefore the rendered components have a different context from their owner.
+- Not all layers are implemented and even less tested.
 
 ## API
 
