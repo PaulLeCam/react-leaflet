@@ -53,15 +53,25 @@ export default class Map extends MapComponent {
       return child ? React.cloneElement(child, {map}) : null;
     }) : null;
 
-    return <div className={this.props.className} id={this.state.id}>{children}</div>;
+    return (
+      <div
+        className={this.props.className}
+        id={this.state.id}
+        style={this.props.style}
+      >
+        {children}
+      </div>
+    );
   }
 }
 
 Map.propTypes = {
   center: latlngType,
+  className: React.PropTypes.string,
   id: React.PropTypes.string,
   maxBounds: boundsType,
   maxZoom: React.PropTypes.number,
   minZoom: React.PropTypes.number,
+  style: React.PropTypes.object,
   zoom: React.PropTypes.number
 };
