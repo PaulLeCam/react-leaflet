@@ -67,6 +67,10 @@ This library uses React components as an interface, but not the virtual DOM, as 
 
 ## API
 
+### Helpers
+
+**setIconDefaultImagePath(path: string)**: Setter for `Leaflet.Icon.Default.imagePath`, set to `//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/images` by default.
+
 ### PropTypes
 
 **LatLng**: One of `[Number, Number]`, `{lat: Number, lng: Number}` or `{lat: Number, lon: Number}`.

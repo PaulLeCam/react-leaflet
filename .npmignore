@@ -1,5 +1,6 @@
 example
 src
 __tests__
+.editorconfig
 .travis.yml
 gulpfile.js

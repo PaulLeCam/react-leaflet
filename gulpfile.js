@@ -39,7 +39,7 @@ simpleBundler = browserify(exampleSrc + "/app.js", watchify.args)
   .external("react/addons")
   .external("leaflet")
   .external("react-leaflet")
-  .transform(babelify, {stage: 1});
+  .transform(babelify, {optional: ["es7.objectRestSpread"]});
 
 gulp.task("example:deps", function() {
   var bundler = browserify()

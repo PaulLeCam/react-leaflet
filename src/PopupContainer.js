@@ -7,6 +7,6 @@ export default class PopupContainer extends MapLayer {
     const children = this.getClonedChildrenWithMap({
       popupContainer: this.leafletElement
     });
-    return <noscript>{children}</noscript>;
+    return <div style={{display: "none"}}>{children}</div>;
   }
 }

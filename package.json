@@ -5,8 +5,8 @@
   "main": "lib/index.js",
   "scripts": {
     "clean": "rm -Rf ./lib",
-    "compile": "npm run clean && babel --stage 1 src --out-dir lib",
-    "watch": "babel --stage 1 src --watch --out-dir lib",
+    "compile": "npm run clean && babel --optional es7.objectRestSpread src --out-dir lib",
+    "watch": "babel --optional es7.objectRestSpread src --watch --out-dir lib",
     "test": "jest --coverage ./lib",
     "start": "npm run compile && npm test",
     "onchange": "onchange 'lib/*.js' 'lib/**/*.js' -- jest ./lib",
@@ -37,19 +37,19 @@
     "react": "^0.13.0"
   },
   "devDependencies": {
-    "babel": "^5.0.8",
-    "babelify": "^6.0.1",
-    "browserify": "^10.0.0",
-    "gulp": "^3.8.10",
+    "babel": "^5.2.17",
+    "babelify": "^6.1.0",
+    "browserify": "^10.1.3",
+    "gulp": "^3.8.11",
     "gulp-load-plugins": "^0.10.0",
     "gulp-util": "^3.0.4",
-    "gulp-webserver": "^0.9.0",
-    "jest-cli": "^0.4.0",
+    "gulp-webserver": "^0.9.1",
+    "jest-cli": "^0.4.3",
     "leaflet": "^0.7.3",
-    "onchange": "^1.0.0",
-    "react": "^0.13.0",
+    "onchange": "^1.1.0",
+    "react": "^0.13.3",
     "vinyl-source-stream2": "^0.1.1",
-    "watchify": "^3.1.0"
+    "watchify": "^3.2.1"
   },
   "jest": {
     "unmockedModulePathPatterns": [
