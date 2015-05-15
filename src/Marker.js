@@ -1,26 +1,35 @@
-var React = require("react");
-var Leaflet = require("leaflet");
+import React from "react";
+import Leaflet from "leaflet";
 
-var latlngType = require("./types/latlng");
-var popupContainerMixin = require("./mixins/popupContainer");
+import latlngType from "./types/latlng";
+import PopupContainer from "./PopupContainer";
 
-module.exports = React.createClass({
-  displayName: "Marker",
-
-  mixins: [popupContainerMixin],
-
-  propTypes: {
-    position: latlngType.isRequired
-  },
-
+export default class Marker extends PopupContainer {
   componentWillMount() {
-    var {map, position, ...props} = this.props;
-    this._leafletElement = Leaflet.marker(position, props);
-  },
+    super.componentWillMount();
+    const {map, position, ...props} = this.props;
+    this.leafletElement = Leaflet.marker(position, props);
+  }
 
   componentDidUpdate(prevProps) {
     if (this.props.position !== prevProps.position) {
-      this.getLeafletElement().setLatLng(this.props.position);
+      this.leafletElement.setLatLng(this.props.position);
+    }
+    if (this.props.icon !== prevProps.icon) {
+      this.leafletElement.setIcon(this.props.icon);
+    }
+    if (this.props.zIndexOffset !== prevProps.zIndexOffset) {
+      this.leafletElement.setZIndexOffset(this.props.zIndexOffset);
+    }
+    if (this.props.opacity !== prevProps.opacity) {
+      this.leafletElement.setOpacity(this.props.opacity);
     }
   }
-});
+}
+
+Marker.propTypes = {
+  position: latlngType.isRequired,
+  icon: React.PropTypes.instanceOf(Leaflet.Icon),
+  zIndexOffset: React.PropTypes.number,
+  opacity: React.PropTypes.number
+};

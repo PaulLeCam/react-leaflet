@@ -1,37 +1,55 @@
-var Leaflet = require("leaflet");
+import Leaflet from "leaflet";
 
-var setIconDefaultImagePath = function(path) {
+import PropTypes from "./types";
+
+import BaseTileLayer from "./BaseTileLayer";
+import CanvasTileLayer from "./CanvasTileLayer";
+import Circle from "./Circle";
+import CircleMarker from "./CircleMarker";
+import FeatureGroup from "./FeatureGroup";
+import GeoJson from "./GeoJson";
+import ImageOverlay from "./ImageOverlay";
+import Map from "./Map";
+import MapComponent from "./MapComponent";
+import MapLayer from "./MapLayer";
+import Marker from "./Marker";
+import MultiPolygon from "./MultiPolygon";
+import MultiPolyline from "./MultiPolyline";
+import Polygon from "./Polygon";
+import Polyline from "./Polyline";
+import Popup from "./Popup";
+import PopupContainer from "./Popup";
+import Rectangle from "./Rectangle";
+import TileLayer from "./TileLayer";
+import WMSTileLayer from "./WMSTileLayer";
+
+const setIconDefaultImagePath = path => {
   Leaflet.Icon.Default.imagePath = path;
 };
 
 setIconDefaultImagePath("//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/images");
 
-module.exports = {
-  setIconDefaultImagePath: setIconDefaultImagePath,
-  mixins: {
-    element: require("./mixins/element"),
-    mapLayer: require("./mixins/mapLayer"),
-    popupContainer: require("./mixins/popupContainer"),
-    tileLayer: require("./mixins/tileLayer")
-  },
-  PropTypes: {
-    latlng: require("./types/latlng"),
-    latlngList: require("./types/latlngList")
-  },
-  CanvasTileLayer: require("./CanvasTileLayer"),
-  Circle: require("./Circle"),
-  CircleMarker: require("./CircleMarker"),
-  FeatureGroup: require("./FeatureGroup"),
-  GeoJson: require("./GeoJson"),
-  ImageOverlay: require("./ImageOverlay"),
-  Map: require("./Map"),
-  Marker: require("./Marker"),
-  MultiPolygon: require("./MultiPolygon"),
-  MultiPolyline: require("./MultiPolyline"),
-  Polygon: require("./Polygon"),
-  Polyline: require("./Polyline"),
-  Popup: require("./Popup"),
-  Rectangle: require("./Rectangle"),
-  TileLayer: require("./TileLayer"),
-  WMSTileLayer: require("./WMSTileLayer")
+export default {
+  setIconDefaultImagePath,
+  PropTypes,
+  BaseTileLayer,
+  CanvasTileLayer,
+  Circle,
+  CircleMarker,
+  FeatureGroup,
+  GeoJson,
+  ImageOverlay,
+  Map,
+  MapComponent,
+  MapLayer,
+  Marker,
+  MultiPolygon,
+  MultiPolyline,
+  Polygon,
+  Polyline,
+  Popup,
+  PopupContainer,
+  Rectangle,
+  TileLayer,
+  WMSTileLayer
 };

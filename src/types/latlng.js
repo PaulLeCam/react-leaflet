@@ -1,7 +1,7 @@
-var React = require("react");
-var Type = React.PropTypes;
+import React from "react";
+const Type = React.PropTypes;
 
-module.exports = Type.oneOfType([
+export default Type.oneOfType([
   // [Number, Number]
   Type.arrayOf(Type.number),
   // {lat: Number, lng: Number}

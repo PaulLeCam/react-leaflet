@@ -1,30 +1,27 @@
-var React = require("react");
-var Leaflet = require("leaflet");
+import React from "react";
+import Leaflet from "leaflet";
 
-var latlngType = require("./types/latlng");
-var popupContainerMixin = require("./mixins/popupContainer");
+import latlngType from "./types/latlng";
+import PopupContainer from "./PopupContainer";
 
-module.exports = React.createClass({
-  displayName: "Circle",
-
-  mixins: [popupContainerMixin],
-
-  propTypes: {
-    center: latlngType.isRequired,
-    radius: React.PropTypes.number.isRequired
-  },
-
+export default class Circle extends PopupContainer {
   componentWillMount() {
-    var {center, map, radius, ...props} = this.props;
-    this._leafletElement = Leaflet.circle(center, radius, props);
-  },
+    super.componentWillMount();
+    const {center, map, radius, ...props} = this.props;
+    this.leafletElement = Leaflet.circle(center, radius, props);
+  }
 
   componentDidUpdate(prevProps) {
     if (this.props.center !== prevProps.center) {
-      this.getLeafletElement().setLatLng(this.props.center);
+      this.leafletElement.setLatLng(this.props.center);
     }
     if (this.props.radius !== prevProps.radius) {
-      this.getLeafletElement().setRadius(this.props.radius);
+      this.leafletElement.setRadius(this.props.radius);
     }
   }
-});
+}
+
+Circle.propTypes = {
+  center: latlngType.isRequired,
+  radius: React.PropTypes.number.isRequired
+};

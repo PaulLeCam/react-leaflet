@@ -1,26 +1,23 @@
-var React = require("react");
-var Leaflet = require("leaflet");
+import React from "react";
+import Leaflet from "leaflet";
 
-var latlngListType = require("./types/latlngList");
-var popupContainerMixin = require("./mixins/popupContainer");
+import latlngListType from "./types/latlngList";
+import PopupContainer from "./PopupContainer";
 
-module.exports = React.createClass({
-  displayName: "MultiPolygon",
-
-  mixins: [popupContainerMixin],
-
-  propTypes: {
-    polygons: React.PropTypes.arrayOf(latlngListType).isRequired
-  },
-
+export default class MultiPolygon extends PopupContainer {
   componentWillMount() {
-    var {map, polygons, ...props} = this.props;
-    this._leafletElement = Leaflet.multiPolygon(polygons, props);
-  },
+    super.componentWillMount();
+    const {map, polygons, ...props} = this.props;
+    this.leafletElement = Leaflet.multiPolygon(polygons, props);
+  }
 
   componentDidUpdate(prevProps) {
     if (this.props.polygons !== prevProps.polygons) {
-      this.getLeafletElement().setLatLngs(this.props.polygons);
+      this.leafletElement.setLatLngs(this.props.polygons);
     }
   }
-});
+}
+
+MultiPolygon.propTypes = {
+  polygons: React.PropTypes.arrayOf(latlngListType).isRequired
+};

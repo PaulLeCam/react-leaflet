@@ -1,4 +1,4 @@
-var React = require("react");
-var latlng = require("./latlng");
+import React from "react";
+import latlng from "./latlng";
 
-module.exports = React.PropTypes.arrayOf(latlng);
+export default React.PropTypes.arrayOf(latlng);

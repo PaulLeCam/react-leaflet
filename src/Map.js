@@ -1,79 +1,77 @@
-var isArray = require("lodash-node/modern/objects/isArray");
+import isArray from "lodash/lang/isArray";
+import uniqueId from "lodash/utility/uniqueId";
 
-var React = require("react/addons");
-var Leaflet = require("leaflet");
+import React from "react";
+import Leaflet from "leaflet";
 
-var boundsType = require("./types/bounds");
-var latlngType = require("./types/latlng");
+import boundsType from "./types/bounds";
+import latlngType from "./types/latlng";
 
-var elementMixin = require("./mixins/element");
-var currentId = 0;
+import MapComponent from "./MapComponent";
 
-var normalizeCenter = function(pos) {
-  return isArray(pos) ? pos : [pos.lat, pos.lng || pos.lon];
-};
+const normalizeCenter = pos => isArray(pos) ? pos : [pos.lat, pos.lng || pos.lon];
 
-var Map = React.createClass({
-  displayName: "Map",
-
-  mixins: [elementMixin],
-
-  statics: {
-    uid() {
-      return "map" + ++currentId;
-    }
-  },
-
-  propTypes: {
-    center: latlngType,
-    id: React.PropTypes.string,
-    maxBounds: boundsType,
-    maxZoom: React.PropTypes.number,
-    minZoom: React.PropTypes.number,
-    zoom: React.PropTypes.number
-  },
-
-  getInitialState() {
-    return {
-      id: this.props.id || Map.uid()
+export default class Map extends MapComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      id: props.id || uniqueId("map")
     };
-  },
+  }
 
   componentDidMount() {
-    this._leafletElement = Leaflet.map(this.state.id, this.props);
-    this.bindEvents(this._leafletEvents);
-    this.setState({map: this._leafletElement});
-  },
+    this.leafletElement = Leaflet.map(this.state.id, this.props);
+    super.componentDidMount();
+    this.setState({map: this.leafletElement});
+  }
 
   shouldUpdateCenter(next, prev) {
     if (!prev) return true;
     next = normalizeCenter(next);
     prev = normalizeCenter(prev);
     return next[0] !== prev[0] || next[1] !== prev[1];
-  },
+  }
 
   componentDidUpdate(prevProps) {
-    var {center, zoom} = this.props;
+    const {center, zoom} = this.props;
     if (center && this.shouldUpdateCenter(center, prevProps.center)) {
-      this.getLeafletElement().setView(center, zoom, {animate: false});
+      this.leafletElement.setView(center, zoom, {animate: false});
     }
     else if (zoom && zoom !== prevProps.zoom) {
-      this.getLeafletElement().setZoom(zoom);
+      this.leafletElement.setZoom(zoom);
     }
-  },
+  }
 
   componentWillUnmount() {
-    this.getLeafletElement().remove();
-  },
+    super.componentWillUnmount();
+    this.leafletElement.remove();
+  }
 
   render() {
-    var map = this.getLeafletElement();
-    var children = map ? React.Children.map(this.props.children, child => {
-      return child ? React.addons.cloneWithProps(child, {map}) : null;
+    const map = this.leafletElement;
+    const children = map ? React.Children.map(this.props.children, child => {
+      return child ? React.cloneElement(child, {map}) : null;
     }) : null;
 
-    return <div className={this.props.className} id={this.state.id}>{children}</div>;
+    return (
+      <div
+        className={this.props.className}
+        id={this.state.id}
+        style={this.props.style}
+      >
+        {children}
+      </div>
+    );
   }
-});
+}
 
-module.exports = Map;
+Map.propTypes = {
+  center: latlngType,
+  className: React.PropTypes.string,
+  id: React.PropTypes.string,
+  maxBounds: boundsType,
+  maxZoom: React.PropTypes.number,
+  minZoom: React.PropTypes.number,
+  style: React.PropTypes.object,
+  zoom: React.PropTypes.number
+};

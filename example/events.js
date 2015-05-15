@@ -1,54 +1,48 @@
-var React = require("react");
-var {Map, TileLayer, Marker, Popup} = require("react-leaflet");
+import React from "react";
+import {Map, TileLayer, Marker, Popup} from "react-leaflet";
 
-module.exports = React.createClass({
-  displayName: "EventsExample",
-
-  getInitialState() {
-    return {
+export default class EventsExample extends React.Component {
+  constructor() {
+    super();
+    this.state = {
       hasLocation: false,
       latlng: {
         lat: 51.505,
         lng: -0.09
       }
     };
-  },
+  }
 
   handleClick() {
-    this.refs.map.getLeafletElement().locate();
-  },
+    this.refs.map.leafletElement.locate();
+  }
 
   handleLocationFound(e) {
     this.setState({
       hasLocation: true,
       latlng: e.latlng
     });
-  },
+  }
 
   render() {
-    var marker = null;
-    if (this.state.hasLocation) {
-      marker = (
-        <Marker position={this.state.latlng}>
+    const marker = this.state.hasLocation
+      ? <Marker position={this.state.latlng}>
           <Popup>
             <span>You are here</span>
           </Popup>
         </Marker>
-      );
-    }
+      : null;
 
-    return (
-      <Map ref="map"
-        center={this.state.latlng}
-        zoom={13}
-        onLeafletClick={this.handleClick}
-        onLeafletLocationfound={this.handleLocationFound}>
-        <TileLayer
-          url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
-          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        />
-        {marker}
-      </Map>
-    );
+    return <Map ref="map"
+      center={this.state.latlng}
+      zoom={13}
+      onClick={this.handleClick.bind(this)}
+      onLocationfound={this.handleLocationFound.bind(this)}>
+      <TileLayer
+        url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
+        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+      />
+      {marker}
+    </Map>;
   }
-});
+}
