@@ -600,11 +600,7 @@ var Map = (function (_MapComponent) {
 
       return _react2["default"].createElement(
         "div",
-        {
-          className: this.props.className,
-          id: this.state.id,
-          style: this.props.style
-        },
+        { className: this.props.className, id: this.state.id, style: this.props.style },
         children
       );
     }

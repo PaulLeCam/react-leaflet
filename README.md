@@ -118,10 +118,12 @@ This is the top-level component that must be mounted for children ones to be ren
 
 **Properties**
 - `center: LatLng` (optional, dynamic): Center of the map. This property is dynamic, if you change it it will be reflected in the map.
+- `className: String` (optional, dynamic): className property of the `<div>` container for the map.
 - `id: String` (optional): The ID of the `<div>` container for the map. If you don't provide it, a unique one will be created.
 - `maxBounds: Bounds` (optional)
 - `maxZoom: Number` (optional)
 - `minZoom: Number` (optional)
+- `style: Object` (optional, dynamic): style property of the `<div>` container for the map.
 - `zoom: Number` (optional, dynamic)
 
 #### UI Layers
@@ -199,32 +201,7 @@ The Popup children will be rendered as its content using `React.renderToStaticMa
 
 ## Changelog
 
-### v0.5.0 (02/05/15)
-
-Set `icon`, `zIndexOffset` and `opacity` properties as dynamic on `Marker`.
-
-### v0.4.1 (06/04/15)
-
-- Removed `getLeafletElement()` deprecation.
-- Updated Babel to v5.
-
-### v0.4.0 (28/03/15)
-
-Released v0.4.
-
-### v0.4.0-rc.1 (11/03/15)
-
-React 0.13.0.
-
-### v0.4.0-beta.1 (08/03/15)
-
-- Updated React dependency to 0.13.0-rc2:
-  - Components are defined as ES6 classes.
-  - Mixins are replaced by the base components `MapComponent`, `MapLayer`, `BaseTileLayer` and `PopupContainer`. All components extend from these.
-  - The new [`React.cloneElement()`](https://facebook.github.io/react/blog/2015/03/03/react-v0.13-rc2.html#react.cloneelement) API is used instead of the deprecated `React.addons.cloneWithProps()` to pass the `map` property to the components.
-  - The `map` property has been removed from the components `propTypes` definition as it is dynamically injected to its children by the `Map` component, React would [now warn it is not set](https://facebook.github.io/react/blog/2015/02/24/streamlining-react-elements.html#solution-early-proptype-warnings). It is still required by components to have access to the Leaflet object.
-- Events can now be set as `on{Event}` rather than `onLeaflet{Event}`, ex `onClick` instead of `onLeafletClick`, as all events are proxied to Leaflet.
-- Deprecated `getLeafletElement()` method, simply use the `leafletElement` property instead to access the Leaflet object created for a component.
+See CHANGELOG file.
 
 ## License
 
