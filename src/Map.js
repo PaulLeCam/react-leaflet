@@ -54,11 +54,7 @@ export default class Map extends MapComponent {
     }) : null;
 
     return (
-      <div
-        className={this.props.className}
-        id={this.state.id}
-        style={this.props.style}
-      >
+      <div className={this.props.className} id={this.state.id} style={this.props.style}>
         {children}
       </div>
     );
