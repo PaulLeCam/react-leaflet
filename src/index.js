@@ -18,7 +18,7 @@ import MultiPolyline from "./MultiPolyline";
 import Polygon from "./Polygon";
 import Polyline from "./Polyline";
 import Popup from "./Popup";
-import PopupContainer from "./Popup";
+import PopupContainer from "./PopupContainer";
 import Rectangle from "./Rectangle";
 import TileLayer from "./TileLayer";
 import WMSTileLayer from "./WMSTileLayer";
