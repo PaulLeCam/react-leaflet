@@ -1,3 +1,7 @@
+## v0.6.1 (22/05/15)
+
+Fix `PopupContainer` export.
+
 ## v0.6.0 (18/05/15)
 
 - Added `style` property on the `Map` component.
