@@ -1,6 +1,6 @@
-import assign from "lodash/object/assign";
-import React from "react";
-import MapComponent from "./MapComponent"
+import assign from 'lodash/object/assign';
+import React from 'react';
+import MapComponent from './MapComponent'
 
 export default class MapLayer extends MapComponent {
   componentDidMount() {
@@ -14,7 +14,7 @@ export default class MapLayer extends MapComponent {
   }
 
   getClonedChildrenWithMap(extra) {
-    const {children, map} = this.props;
+    const { children, map } = this.props;
     const props = assign({map}, extra);
 
     return React.Children.map(children, child => {

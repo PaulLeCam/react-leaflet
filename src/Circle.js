@@ -1,14 +1,19 @@
-import React from "react";
-import Leaflet from "leaflet";
+import { PropTypes } from 'react';
+import { circle } from 'leaflet';
 
-import latlngType from "./types/latlng";
-import PopupContainer from "./PopupContainer";
+import latlngType from './types/latlng';
+import PopupContainer from './PopupContainer';
 
 export default class Circle extends PopupContainer {
+  static propTypes = {
+    center: latlngType.isRequired,
+    radius: PropTypes.number.isRequired
+  };
+
   componentWillMount() {
     super.componentWillMount();
-    const {center, map, radius, ...props} = this.props;
-    this.leafletElement = Leaflet.circle(center, radius, props);
+    const { center, map, radius, ...props } = this.props;
+    this.leafletElement = circle(center, radius, props);
   }
 
   componentDidUpdate(prevProps) {
@@ -20,8 +25,3 @@ export default class Circle extends PopupContainer {
     }
   }
 }
-
-Circle.propTypes = {
-  center: latlngType.isRequired,
-  radius: React.PropTypes.number.isRequired
-};

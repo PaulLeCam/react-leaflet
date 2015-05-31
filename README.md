@@ -21,28 +21,28 @@ All components are React wrappers for Leaflet elements and layers, they need a m
 
 **Leaflet example**
 ```js
-import L from "leaflet";
+import L from 'leaflet';
 
 const position = [51.505, -0.09];
-const map = L.map("map").setView(position, 13);
+const map = L.map('map').setView(position, 13);
 
-L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png", {
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
   attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
 L.marker(position).addTo(map)
-  .bindPopup("A pretty CSS3 popup. <br> Easily customizable.");
+  .bindPopup('A pretty CSS3 popup. <br> Easily customizable.');
 ```
 
 **React-Leaflet**
 ```js
-import React from "react";
-import {Map, Marker, Popup, TileLayer} from "react-leaflet";
+import React from 'react';
+import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 
 const position = [51.505, -0.09];
 const map = <Map center={position} zoom={13}>
   <TileLayer
-    url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
+    url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
   />
   <Marker position={position}>
@@ -52,7 +52,7 @@ const map = <Map center={position} zoom={13}>
   </Marker>
 </Map>;
 
-React.render(map, document.getElementById("map-container"));
+React.render(map, document.getElementById('map-container'));
 ```
 Note that the `<Map>` component creates its own `<div>` container for the map, it does not get attached to an existing node.
 

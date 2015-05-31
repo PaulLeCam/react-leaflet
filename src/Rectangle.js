@@ -1,13 +1,17 @@
-import Leaflet from "leaflet";
+import { rectangle } from 'leaflet';
 
-import boundsType from "./types/bounds";
-import PopupContainer from "./PopupContainer";
+import boundsType from './types/bounds';
+import PopupContainer from './PopupContainer';
 
 export default class Rectangle extends PopupContainer {
+  static propTypes = {
+    bounds: boundsType.isRequired
+  };
+
   componentWillMount() {
     super.componentWillMount();
-    const {bounds, map, ...props} = this.props;
-    this.leafletElement = Leaflet.rectangle(bounds, props);
+    const { bounds, map, ...props } = this.props;
+    this.leafletElement = rectangle(bounds, props);
   }
 
   componentDidUpdate(prevProps) {
@@ -16,7 +20,3 @@ export default class Rectangle extends PopupContainer {
     }
   }
 }
-
-Rectangle.propTypes = {
-  bounds: boundsType.isRequired
-};

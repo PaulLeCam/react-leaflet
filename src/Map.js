@@ -1,21 +1,32 @@
-import isArray from "lodash/lang/isArray";
-import uniqueId from "lodash/utility/uniqueId";
+import isArray from 'lodash/lang/isArray';
+import uniqueId from 'lodash/utility/uniqueId';
 
-import React from "react";
-import Leaflet from "leaflet";
+import React, { PropTypes } from 'react';
+import Leaflet from 'leaflet';
 
-import boundsType from "./types/bounds";
-import latlngType from "./types/latlng";
+import boundsType from './types/bounds';
+import latlngType from './types/latlng';
 
-import MapComponent from "./MapComponent";
+import MapComponent from './MapComponent';
 
 const normalizeCenter = pos => isArray(pos) ? pos : [pos.lat, pos.lng || pos.lon];
 
 export default class Map extends MapComponent {
+  static propTypes = {
+    center: latlngType,
+    className: PropTypes.string,
+    id: PropTypes.string,
+    maxBounds: boundsType,
+    maxZoom: PropTypes.number,
+    minZoom: PropTypes.number,
+    style: PropTypes.object,
+    zoom: PropTypes.number
+  };
+
   constructor(props) {
     super(props);
     this.state = {
-      id: props.id || uniqueId("map")
+      id: props.id || uniqueId('map')
     };
   }
 
@@ -33,7 +44,7 @@ export default class Map extends MapComponent {
   }
 
   componentDidUpdate(prevProps) {
-    const {center, zoom} = this.props;
+    const { center, zoom } = this.props;
     if (center && this.shouldUpdateCenter(center, prevProps.center)) {
       this.leafletElement.setView(center, zoom, {animate: false});
     }
@@ -60,14 +71,3 @@ export default class Map extends MapComponent {
     );
   }
 }
-
-Map.propTypes = {
-  center: latlngType,
-  className: React.PropTypes.string,
-  id: React.PropTypes.string,
-  maxBounds: boundsType,
-  maxZoom: React.PropTypes.number,
-  minZoom: React.PropTypes.number,
-  style: React.PropTypes.object,
-  zoom: React.PropTypes.number
-};

@@ -1,12 +1,12 @@
-import Leaflet from "leaflet";
+import Leaflet from 'leaflet';
 
-import latlngListType from "./types/latlngList";
-import PopupContainer from "./PopupContainer";
+import latlngListType from './types/latlngList';
+import PopupContainer from './PopupContainer';
 
 export default class Polygon extends PopupContainer {
   componentWillMount() {
     super.componentWillMount();
-    const {map, positions, ...props} = this.props;
+    const { map, positions, ...props } = this.props;
     this.leafletElement = Leaflet.polygon(positions, props);
   }
 

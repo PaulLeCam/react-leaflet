@@ -1,4 +1,5 @@
-import React from "react";
-import latlng from "./latlng";
+import { PropTypes } from 'react';
 
-export default React.PropTypes.arrayOf(latlng);
+import latlng from './latlng';
+
+export default PropTypes.arrayOf(latlng);

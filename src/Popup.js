@@ -1,18 +1,22 @@
-import React from "react";
-import Leaflet from "leaflet";
+import React from 'react';
+import { popup } from 'leaflet';
 
-import latlngType from "./types/latlng";
-import MapComponent from "./MapComponent";
+import latlngType from './types/latlng';
+import MapComponent from './MapComponent';
 
 export default class Popup extends MapComponent {
+  static propTypes = {
+    position: latlngType
+  };
+
   componentWillMount() {
     super.componentWillMount();
-    const {children, map, ...props} = this.props;
-    this.leafletElement = Leaflet.popup(props);
+    const { children, map, ...props } = this.props;
+    this.leafletElement = popup(props);
   }
 
   componentDidUpdate(prevProps) {
-    const {children, map, popupContainer, position, ...props} = this.props;
+    const { children, map, popupContainer, position, ...props } = this.props;
     if (children !== prevProps.children) {
       const content = React.renderToStaticMarkup(children);
       if (popupContainer) {
@@ -32,7 +36,7 @@ export default class Popup extends MapComponent {
   }
 
   render() {
-    const {children, map, popupContainer, position, ...props} = this.props;
+    const { children, map, popupContainer, position, ...props } = this.props;
     if (children) {
       const content = React.renderToStaticMarkup(children);
       // Attach to container component
@@ -49,7 +53,3 @@ export default class Popup extends MapComponent {
     return null;
   }
 }
-
-Popup.propTypes = {
-  position: latlngType
-};

@@ -1,14 +1,18 @@
-import React from "react";
-import Leaflet from "leaflet";
+import { PropTypes } from 'react';
+import { multiPolygon } from 'leaflet';
 
-import latlngListType from "./types/latlngList";
-import PopupContainer from "./PopupContainer";
+import latlngListType from './types/latlngList';
+import PopupContainer from './PopupContainer';
 
 export default class MultiPolygon extends PopupContainer {
+  static propTypes = {
+    polygons: PropTypes.arrayOf(latlngListType).isRequired
+  };
+
   componentWillMount() {
     super.componentWillMount();
-    const {map, polygons, ...props} = this.props;
-    this.leafletElement = Leaflet.multiPolygon(polygons, props);
+    const { map, polygons, ...props } = this.props;
+    this.leafletElement = multiPolygon(polygons, props);
   }
 
   componentDidUpdate(prevProps) {
@@ -17,7 +21,3 @@ export default class MultiPolygon extends PopupContainer {
     }
   }
 }
-
-MultiPolygon.propTypes = {
-  polygons: React.PropTypes.arrayOf(latlngListType).isRequired
-};

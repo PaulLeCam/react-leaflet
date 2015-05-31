@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import SimpleExample from "./simple";
-import EventsExample from "./events";
-import VectorLayersExample from "./vector-layers";
+import SimpleExample from './simple';
+import EventsExample from './events';
+import VectorLayersExample from './vector-layers';
 
 const examples = <div>
   <h1>React-Leaflet examples</h1>
@@ -15,4 +15,4 @@ const examples = <div>
   <VectorLayersExample />
 </div>;
 
-React.render(examples, document.getElementById("app"));
+React.render(examples, document.getElementById('app'));

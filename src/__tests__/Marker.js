@@ -1,27 +1,27 @@
-import React from "react";
+import React from 'react';
 
-jest.dontMock("../BaseTileLayer");
-jest.dontMock("../MapComponent");
-jest.dontMock("../MapLayer");
-jest.dontMock("../PopupContainer");
-jest.dontMock("../Map");
-jest.dontMock("../TileLayer");
-jest.dontMock("../Marker");
-jest.dontMock("../index");
+jest.dontMock('../BaseTileLayer');
+jest.dontMock('../MapComponent');
+jest.dontMock('../MapLayer');
+jest.dontMock('../PopupContainer');
+jest.dontMock('../Map');
+jest.dontMock('../TileLayer');
+jest.dontMock('../Marker');
+jest.dontMock('../index');
 
-const {Map, Marker, TileLayer} = require("../");
+const {Map, Marker, TileLayer} = require('../');
 
-describe("Marker", () => {
-  it("adds the marker to the map", () => {
+describe('Marker', () => {
+  it('adds the marker to the map', () => {
     const position = [0, 0];
     const component = <Map center={position} zoom={10}>
-      <TileLayer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png" />
+      <TileLayer url='http://{s}.tile.osm.org/{z}/{x}/{y}.png' />
       <Marker position={position} />
     </Map>;
 
     document.body.innerHTML = '<div id="test"></div>';
-    React.render(component, document.getElementById("test"));
+    React.render(component, document.getElementById('test'));
 
-    expect(document.querySelector("#test .leaflet-marker-pane img")).toBeDefined();
+    expect(document.querySelector('#test .leaflet-marker-pane img')).toBeDefined();
   });
 });
