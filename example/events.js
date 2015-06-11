@@ -37,10 +37,11 @@ export default class EventsExample extends Component {
       center={this.state.latlng}
       zoom={13}
       onClick={this.handleClick.bind(this)}
-      onLocationfound={this.handleLocationFound.bind(this)}>
+      onLocationfound={this.handleLocationFound.bind(this)}
+      length={4}>
       <TileLayer
         url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
-        attribution='&copy; <a href='http://osm.org/copyright'>OpenStreetMap</a> contributors'
+        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
       />
       {marker}
     </Map>;
