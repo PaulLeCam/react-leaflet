@@ -1,5 +1,4 @@
-import React from "react";
-const Type = React.PropTypes;
+import { PropTypes as Type } from 'react';
 
 export default Type.oneOfType([
   // [Number, Number]

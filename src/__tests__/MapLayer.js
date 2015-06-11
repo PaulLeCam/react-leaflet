@@ -1,15 +1,15 @@
-import Leaflet from "leaflet";
-import React from "react";
+import Leaflet from 'leaflet';
+import React from 'react';
 
-jest.dontMock("../MapComponent");
-jest.dontMock("../MapLayer");
-jest.dontMock("../Map");
+jest.dontMock('../MapComponent');
+jest.dontMock('../MapLayer');
+jest.dontMock('../Map');
 
-const MapLayer = require("../MapLayer");
-const Map = require("../Map");
+const MapLayer = require('../MapLayer');
+const Map = require('../Map');
 
-describe("MapLayer", () => {
-  it("passes its `map` prop to its children", () => {
+describe('MapLayer', () => {
+  it('passes its `map` prop to its children', () => {
     document.body.innerHTML = '<div id="test"></div>';
 
     class Component extends MapLayer {
@@ -41,6 +41,6 @@ describe("MapLayer", () => {
         </Component>
       </Map>
     );
-    const instance = React.render(component, document.getElementById("test"));
+    const instance = React.render(component, document.getElementById('test'));
   });
 });

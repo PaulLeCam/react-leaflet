@@ -1,7 +1,7 @@
-import React from "react";
-import {Map, TileLayer, Marker, Popup} from "react-leaflet";
+import React, { Component } from 'react';
+import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 
-export default class EventsExample extends React.Component {
+export default class EventsExample extends Component {
   constructor() {
     super();
     this.state = {
@@ -33,14 +33,14 @@ export default class EventsExample extends React.Component {
         </Marker>
       : null;
 
-    return <Map ref="map"
+    return <Map ref='map'
       center={this.state.latlng}
       zoom={13}
       onClick={this.handleClick.bind(this)}
       onLocationfound={this.handleLocationFound.bind(this)}>
       <TileLayer
-        url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
-        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+        attribution='&copy; <a href='http://osm.org/copyright'>OpenStreetMap</a> contributors'
       />
       {marker}
     </Map>;

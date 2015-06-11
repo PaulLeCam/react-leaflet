@@ -1,41 +1,41 @@
-import React from "react";
+import React from 'react';
 
-jest.dontMock("../Map");
-jest.dontMock("../MapComponent");
+jest.dontMock('../Map');
+jest.dontMock('../MapComponent');
 
-const Map = require("../Map");
+const Map = require('../Map');
 
-describe("Map", () => {
+describe('Map', () => {
   beforeEach(() => {
     document.body.innerHTML = '<div id="test"></div>';
   });
 
-  it("only renders the container div server-side", () => {
+  it('only renders the container div server-side', () => {
     class Component extends React.Component {
       render() {
         return <span>test</span>;
       }
     }
     const component = <Map><Component /></Map>;
-    const html = React.renderToStaticMarkup(component, document.getElementById("test"));
+    const html = React.renderToStaticMarkup(component, document.getElementById('test'));
 
     expect(html).toBe('<div id="map1"></div>');
   });
 
-  it("initializes the map in the rendered container", () => {
+  it('initializes the map in the rendered container', () => {
     const component = <Map />;
-    const instance = React.render(component, document.getElementById("test"));
+    const instance = React.render(component, document.getElementById('test'));
     const node = React.findDOMNode(instance);
 
     expect(node._leaflet).toBe(true);
   });
 
-  it("sets center and zoom props", () => {
+  it('sets center and zoom props', () => {
     const center = [1.2, 3.4];
     const zoom = 10;
 
     const component = <Map center={center} zoom={zoom} />;
-    const instance = React.render(component, document.getElementById("test"));
+    const instance = React.render(component, document.getElementById('test'));
     const mapLeaflet = instance.leafletElement;
 
     expect(mapLeaflet.getCenter().lat).toBe(center[0]);
@@ -43,7 +43,7 @@ describe("Map", () => {
     expect(mapLeaflet.getZoom()).toBe(zoom);
   });
 
-  it("updates center and zoom props", () => {
+  it('updates center and zoom props', () => {
     class Component extends React.Component {
       constructor() {
         super();
@@ -62,10 +62,10 @@ describe("Map", () => {
         });
       }
       render() {
-        return <Map ref="map" center={this.state.center} zoom={this.state.zoom} />;
+        return <Map ref='map' center={this.state.center} zoom={this.state.zoom} />;
       }
     }
-    const instance = React.render(<Component />, document.getElementById("test"));
+    const instance = React.render(<Component />, document.getElementById('test'));
     const mapLeaflet = instance.getLeafletMap();
 
     expect(mapLeaflet.getCenter().lat).toBe(1.2);

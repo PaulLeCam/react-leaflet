@@ -1,14 +1,21 @@
-import React from "react";
-import Leaflet from "leaflet";
+import { PropTypes } from 'react';
+import { Icon, marker } from 'leaflet';
 
-import latlngType from "./types/latlng";
-import PopupContainer from "./PopupContainer";
+import latlngType from './types/latlng';
+import PopupContainer from './PopupContainer';
 
 export default class Marker extends PopupContainer {
+  static propTypes = {
+    position: latlngType.isRequired,
+    icon: PropTypes.instanceOf(Icon),
+    zIndexOffset: PropTypes.number,
+    opacity: PropTypes.number
+  };
+
   componentWillMount() {
     super.componentWillMount();
-    const {map, position, ...props} = this.props;
-    this.leafletElement = Leaflet.marker(position, props);
+    const { map, position, ...props } = this.props;
+    this.leafletElement = marker(position, props);
   }
 
   componentDidUpdate(prevProps) {
@@ -26,10 +33,3 @@ export default class Marker extends PopupContainer {
     }
   }
 }
-
-Marker.propTypes = {
-  position: latlngType.isRequired,
-  icon: React.PropTypes.instanceOf(Leaflet.Icon),
-  zIndexOffset: React.PropTypes.number,
-  opacity: React.PropTypes.number
-};
