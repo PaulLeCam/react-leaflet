@@ -15,7 +15,7 @@ var logTime = function(fileName) {
     var time = ms < 1000
       ? $.util.colors.magenta(ms + ' ms')
       : $.util.colors.magenta(ms / 1000 + ' s');
-    $.util.log('Browserified '' +  name + '' in ' + time);
+    $.util.log('Browserified "' +  name + '" in ' + time);
   };
 };
 

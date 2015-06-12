@@ -1,6 +1,7 @@
 import clone from 'lodash/lang/clone';
 import forEach from 'lodash/collection/forEach';
 import reduce from 'lodash/collection/reduce';
+import keys from 'lodash/object/keys';
 import { Component } from 'react';
 
 const EVENTS_RE = /on(?:Leaflet)?(.+)/i;
@@ -11,10 +12,10 @@ export default class MapComponent extends Component {
   }
 
   extractLeafletEvents(props) {
-    return reduce(props, (res, cb, ev) => {
+    return reduce(keys(props), (res, ev) => {
       if (EVENTS_RE.test(ev)) {
         const key = ev.replace(EVENTS_RE, (match, p) => p.toLowerCase());
-        res[ key ] = cb;
+        res[ key ] = props[ev];
       }
       return res;
     }, {});
