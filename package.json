@@ -11,7 +11,9 @@
     "start": "npm run compile && npm test",
     "onchange": "onchange 'lib/*.js' 'lib/**/*.js' -- jest ./lib",
     "dev": "npm run watch & npm run onchange",
-    "prepublish": "npm ls && npm test"
+    "prepublish": "npm ls && npm test",
+    "example:compile": "gulp",
+    "example:watch": "gulp watch:example"
   },
   "repository": {
     "type": "git",
