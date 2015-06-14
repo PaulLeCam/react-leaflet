@@ -1,12 +1,12 @@
 {
   "name": "react-leaflet",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "React components for Leaflet maps",
   "main": "lib/index.js",
   "scripts": {
     "clean": "rm -Rf ./lib",
-    "compile": "npm run clean && babel --optional es7.objectRestSpread,es7.classProperties src --out-dir lib",
-    "watch": "babel --optional es7.objectRestSpread,es7.classProperties src --watch --out-dir lib",
+    "compile": "npm run clean && babel src --out-dir lib",
+    "watch": "babel src --watch --out-dir lib",
     "test": "jest --coverage ./lib",
     "start": "npm run compile && npm test",
     "onchange": "onchange 'lib/*.js' 'lib/**/*.js' -- jest ./lib",
@@ -37,19 +37,19 @@
     "react": "^0.13.0"
   },
   "devDependencies": {
-    "babel": "^5.4.7",
+    "babel": "^5.5.8",
     "babelify": "^6.1.2",
-    "browserify": "^10.2.3",
-    "gulp": "^3.8.11",
+    "browserify": "^10.2.4",
+    "gulp": "^3.9.0",
     "gulp-load-plugins": "^0.10.0",
     "gulp-util": "^3.0.5",
     "gulp-webserver": "^0.9.1",
-    "jest-cli": "^0.4.5",
+    "jest-cli": "^0.4.12",
     "leaflet": "^0.7.3",
     "onchange": "^1.1.0",
     "react": "^0.13.3",
-    "vinyl-source-stream2": "^0.1.1",
-    "watchify": "^3.2.1"
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.2.2"
   },
   "jest": {
     "unmockedModulePathPatterns": [

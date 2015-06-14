@@ -1,3 +1,7 @@
+## v0.6.2 (14/06/15)
+
+Fix ignored events in `MapComponent` ([#41](https://github.com/PaulLeCam/react-leaflet/pull/41)).
+
 ## v0.6.1 (22/05/15)
 
 Fix `PopupContainer` export.

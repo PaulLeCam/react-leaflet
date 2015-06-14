@@ -36,8 +36,8 @@ export default class EventsExample extends Component {
     return <Map ref='map'
       center={this.state.latlng}
       zoom={13}
-      onClick={this.handleClick.bind(this)}
-      onLocationfound={this.handleLocationFound.bind(this)}
+      onClick={::this.handleClick}
+      onLocationfound={::this.handleLocationFound}
       length={4}>
       <TileLayer
         url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
