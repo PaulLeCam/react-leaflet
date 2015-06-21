@@ -39,14 +39,14 @@
     "react": "^0.13.0"
   },
   "devDependencies": {
-    "babel": "^5.5.8",
+    "babel": "^5.6.1",
     "babelify": "^6.1.2",
     "browserify": "^10.2.4",
     "gulp": "^3.9.0",
     "gulp-load-plugins": "^0.10.0",
     "gulp-util": "^3.0.5",
     "gulp-webserver": "^0.9.1",
-    "jest-cli": "^0.4.12",
+    "jest-cli": "^0.4.13",
     "leaflet": "^0.7.3",
     "onchange": "^1.1.0",
     "react": "^0.13.3",

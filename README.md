@@ -199,11 +199,16 @@ The Popup children will be rendered as its content using `React.renderToStaticMa
 - FeatureGroup
 - GeoJson
 
+## Creating custom components
+
+If you want to create custom components, for example Leaflet plugins, you could extend one of the [base components](https://github.com/PaulLeCam/react-leaflet#base-components) depending on the type of component you want to implement.  
+The created Leaflet map instance is injected by the `Map` component to all its children as the `map` property. Make sure to inject it in your component's children as well.
+
 ## Changelog
 
-See CHANGELOG file.
+See [CHANGELOG](https://github.com/PaulLeCam/react-leaflet/blob/master/CHANGELOG.md) file.
 
 ## License
 
 MIT  
-See LICENSE file.
+See [LICENSE](https://github.com/PaulLeCam/react-leaflet/blob/master/LICENSE) file.
