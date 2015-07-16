@@ -36,7 +36,6 @@ const watchExample = (b, fileName) => {
 
 const simpleBundler = browserify(exampleSrc + '/app.js', watchify.args)
   .external('react')
-  .external('react/addons')
   .external('leaflet')
   .external('react-leaflet')
   .transform(babelify);
@@ -44,7 +43,6 @@ const simpleBundler = browserify(exampleSrc + '/app.js', watchify.args)
 gulp.task('example:deps', () => {
   const bundler = browserify()
     .require('react')
-    .require('react/addons')
     .require('leaflet');
   return bundleExample(bundler, 'dependencies.js');
 });
@@ -52,7 +50,6 @@ gulp.task('example:deps', () => {
 gulp.task('example:lib', () => {
   const bundler = browserify()
     .external('react')
-    .external('react/addons')
     .external('leaflet')
     .require('./', {expose: 'react-leaflet'})
   return bundleExample(bundler, 'lib.js');

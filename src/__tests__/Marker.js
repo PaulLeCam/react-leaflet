@@ -1,4 +1,5 @@
 import React from 'react';
+import { render } from 'react-dom';
 
 jest.dontMock('../BaseTileLayer');
 jest.dontMock('../MapComponent');
@@ -9,7 +10,7 @@ jest.dontMock('../TileLayer');
 jest.dontMock('../Marker');
 jest.dontMock('../index');
 
-const {Map, Marker, TileLayer} = require('../');
+const { Map, Marker, TileLayer } = require('../');
 
 describe('Marker', () => {
   it('adds the marker to the map', () => {
@@ -20,7 +21,7 @@ describe('Marker', () => {
     </Map>;
 
     document.body.innerHTML = '<div id="test"></div>';
-    React.render(component, document.getElementById('test'));
+    render(component, document.getElementById('test'));
 
     expect(document.querySelector('#test .leaflet-marker-pane img')).toBeDefined();
   });

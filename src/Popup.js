@@ -1,4 +1,5 @@
 import React from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
 import { popup } from 'leaflet';
 
 import latlngType from './types/latlng';
@@ -18,7 +19,7 @@ export default class Popup extends MapComponent {
   componentDidUpdate(prevProps) {
     const { children, map, popupContainer, position, ...props } = this.props;
     if (children !== prevProps.children) {
-      const content = React.renderToStaticMarkup(children);
+      const content = renderToStaticMarkup(children);
       if (popupContainer) {
         popupContainer.bindPopup(content, props);
       }
@@ -38,7 +39,7 @@ export default class Popup extends MapComponent {
   render() {
     const { children, map, popupContainer, position, ...props } = this.props;
     if (children) {
-      const content = React.renderToStaticMarkup(children);
+      const content = renderToStaticMarkup(children);
       // Attach to container component
       if (popupContainer) {
         popupContainer.bindPopup(content, props);
