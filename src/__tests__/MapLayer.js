@@ -1,5 +1,6 @@
 import Leaflet from 'leaflet';
 import React from 'react';
+import { render } from 'react-dom';
 
 jest.dontMock('../MapComponent');
 jest.dontMock('../MapLayer');
@@ -41,6 +42,6 @@ describe('MapLayer', () => {
         </Component>
       </Map>
     );
-    const instance = React.render(component, document.getElementById('test'));
+    const instance = render(component, document.getElementById('test'));
   });
 });

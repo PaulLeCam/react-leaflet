@@ -27369,7 +27369,10 @@ L.Map.include({
 
 
 }(window, document));
-},{}],"react":[function(require,module,exports){
+},{}],"react-dom":[function(require,module,exports){
+module.exports = require('react/lib/ReactDOMClient');
+
+},{"react/lib/ReactDOMClient":40}],"react":[function(require,module,exports){
 (function (process){
 'use strict';
 
