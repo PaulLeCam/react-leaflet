@@ -15,6 +15,19 @@ React and Leaflet are peer dependencies, if you haven't already installed them u
 npm install leaflet react react-leaflet
 ```
 
+### build into a single source file
+requires window.React and window.L to be present in the global scope
+
+```bash
+npm run -s build_single > destination.js
+```
+
+or
+
+```bash
+node single_build_globals.js > destination.js
+```
+
 ## Getting started
 
 All components are React wrappers for Leaflet elements and layers, they need a map instance and therefore must be included in a top-level `<Map>` component.

@@ -1,0 +1,12 @@
+{
+  "asi": true,
+  "unused": true,
+  "undef": true,
+  "browser": true,
+  "jquery": true,
+  "nonstandard": true,
+  "devel": true,
+  "es6",
+  "predef": {
+  }
+},
