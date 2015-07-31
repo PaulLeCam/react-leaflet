@@ -29,9 +29,6 @@ export default class Marker extends PopupContainer {
       }
     }
     if (this.props.icon !== prevProps.icon) {
-      this.leafletElement.setIcon(this.props.icon)
-    }
-    if (this.props.icon !== prevProps.icon) {
       this.leafletElement.setIcon(this.props.icon);
     }
     if (this.props.zIndexOffset !== prevProps.zIndexOffset) {
