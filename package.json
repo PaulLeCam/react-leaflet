@@ -36,7 +36,8 @@
   },
   "peerDependencies": {
     "leaflet": "^0.7.0",
-    "react": "^0.13.0"
+    "react": "^0.13.0",
+    "leaflet.markercluster": "^0.4.0"
   },
   "devDependencies": {
     "babel": "^5.6.1",
