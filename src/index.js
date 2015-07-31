@@ -7,6 +7,7 @@ import CanvasTileLayer from './CanvasTileLayer';
 import Circle from './Circle';
 import CircleMarker from './CircleMarker';
 import FeatureGroup from './FeatureGroup';
+import LayerGroup from './LayerGroup';
 import GeoJson from './GeoJson';
 import ImageOverlay from './ImageOverlay';
 import Map from './Map';
@@ -37,6 +38,7 @@ export default {
   Circle,
   CircleMarker,
   FeatureGroup,
+  LayerGroup,
   GeoJson,
   ImageOverlay,
   Map,
