@@ -16,7 +16,7 @@ export default class MarkerClusterGroup extends MapLayer {
 
   render() {
     const layerGroup = this.leafletElement;
-    const map = this.props.map
+    const map = this.props.map;
     const children = React.Children.map(this.props.children, child => {
       return child ? React.cloneElement(child, {map, layerGroup}) : null;
     });
