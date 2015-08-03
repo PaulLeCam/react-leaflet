@@ -15,14 +15,14 @@ export default class Polygon extends PopupContainer {
 
   componentDidUpdate(prevProps) {
     if (this.props.positions !== prevProps.positions) {
-      if(!isEqual(this.props.positions, prevProps.positions)){
+      if (!isEqual(this.props.positions, prevProps.positions)) {
         this.leafletElement.setLatLngs(this.props.positions);
       }
     }
     const styleProperties = ['stroke','color','weight','opacity','fill','fillColor',
                               'fillOpacity','dashArray','lineCap','className']
-    if(find(styleProperties, (prop)=> this.props[prop] !== prevProps[prop], this) ) {
-      this.leafletElement.setStyle(this.props)
+    if ( find(styleProperties, (prop)=> this.props[prop] !== prevProps[prop], this) ) {
+      this.leafletElement.setStyle(this.props);
     }
   }
 }

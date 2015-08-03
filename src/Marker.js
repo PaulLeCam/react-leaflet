@@ -22,7 +22,7 @@ export default class Marker extends PopupContainer {
     if (this.props.position !== prevProps.position) {
       if (!Leaflet.latLng(this.props.position).equals(this.leafletElement.getLatLng())) {
         this.leafletElement.setLatLng(this.props.position);
-        if(this.props.layerGroup && this.props.layerGroup.constructor === L.MarkerClusterGroup) {
+        if (this.props.layerGroup && this.props.layerGroup.constructor === L.MarkerClusterGroup) {
           this.props.layerGroup.removeLayer(this.leafletElement);
           this.props.layerGroup.addLayer(this.leafletElement);
         }
