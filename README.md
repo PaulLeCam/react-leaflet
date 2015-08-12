@@ -61,7 +61,7 @@ Note that the `<Map>` component creates its own `<div>` container for the map, i
 This library uses React components as an interface, but not the virtual DOM, as all the DOM manipulations are managed by Leaflet, so there are a few things to keep in mind when using it:
 
 - Leaflet makes direct calls to the DOM when it is loaded, therefore this library is not compatible with server-side rendering.
-- The components exposed are abstractions for Leaflet layers, not DOM elements. Some of them have properties that can be updated directly by calling the setters exposed by Leaflet while others should be completely replaced, by setting an unique value on their `ref` property so that they are properly handled by React's algorithm.
+- The components exposed are abstractions for Leaflet layers, not DOM elements. Some of them have properties that can be updated directly by calling the setters exposed by Leaflet while others should be completely replaced, by setting an unique value on their `key` property so that they are properly handled by React's algorithm.
 - `<Popup>` contents are rendered by Leaflet calling `React.renderToStaticMarkup()`, therefore the rendered components have a different context from their owner.
 - Not all layers are implemented and even less tested.
 
