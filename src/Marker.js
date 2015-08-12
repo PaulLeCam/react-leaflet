@@ -1,5 +1,5 @@
 import { PropTypes } from 'react';
-import { Icon, marker } from 'leaflet';
+import { Icon, divIcon, marker } from 'leaflet';
 
 import latlngType from './types/latlng';
 import PopupContainer from './PopupContainer';
@@ -7,7 +7,7 @@ import PopupContainer from './PopupContainer';
 export default class Marker extends PopupContainer {
   static propTypes = {
     position: latlngType.isRequired,
-    icon: PropTypes.instanceOf(Icon),
+    icon: PropTypes.instanceOf(Icon) || PropTypes.instanceOf(divIcon),
     zIndexOffset: PropTypes.number,
     opacity: PropTypes.number
   };
