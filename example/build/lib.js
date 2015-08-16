@@ -13,7 +13,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'd
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var _react = require('react');
 
@@ -22,13 +22,13 @@ var _MapLayer2 = require('./MapLayer');
 var _MapLayer3 = _interopRequireDefault(_MapLayer2);
 
 var BaseTileLayer = (function (_MapLayer) {
+  _inherits(BaseTileLayer, _MapLayer);
+
   function BaseTileLayer() {
     _classCallCheck(this, BaseTileLayer);
 
     _get(Object.getPrototypeOf(BaseTileLayer.prototype), 'constructor', this).apply(this, arguments);
   }
-
-  _inherits(BaseTileLayer, _MapLayer);
 
   _createClass(BaseTileLayer, [{
     key: 'componentDidUpdate',
@@ -80,7 +80,7 @@ function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in ob
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var _leaflet = require('leaflet');
 
@@ -89,13 +89,13 @@ var _BaseTileLayer2 = require('./BaseTileLayer');
 var _BaseTileLayer3 = _interopRequireDefault(_BaseTileLayer2);
 
 var CanvasTileLayer = (function (_BaseTileLayer) {
+  _inherits(CanvasTileLayer, _BaseTileLayer);
+
   function CanvasTileLayer() {
     _classCallCheck(this, CanvasTileLayer);
 
     _get(Object.getPrototypeOf(CanvasTileLayer.prototype), 'constructor', this).apply(this, arguments);
   }
-
-  _inherits(CanvasTileLayer, _BaseTileLayer);
 
   _createClass(CanvasTileLayer, [{
     key: 'componentWillMount',
@@ -132,7 +132,7 @@ function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in ob
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var _react = require('react');
 
@@ -147,13 +147,13 @@ var _PopupContainer2 = require('./PopupContainer');
 var _PopupContainer3 = _interopRequireDefault(_PopupContainer2);
 
 var Circle = (function (_PopupContainer) {
+  _inherits(Circle, _PopupContainer);
+
   function Circle() {
     _classCallCheck(this, Circle);
 
     _get(Object.getPrototypeOf(Circle.prototype), 'constructor', this).apply(this, arguments);
   }
-
-  _inherits(Circle, _PopupContainer);
 
   _createClass(Circle, [{
     key: 'componentWillMount',
@@ -209,7 +209,7 @@ function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in ob
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var _react = require('react');
 
@@ -224,13 +224,13 @@ var _PopupContainer2 = require('./PopupContainer');
 var _PopupContainer3 = _interopRequireDefault(_PopupContainer2);
 
 var CircleMarker = (function (_PopupContainer) {
+  _inherits(CircleMarker, _PopupContainer);
+
   function CircleMarker() {
     _classCallCheck(this, CircleMarker);
 
     _get(Object.getPrototypeOf(CircleMarker.prototype), 'constructor', this).apply(this, arguments);
   }
-
-  _inherits(CircleMarker, _PopupContainer);
 
   _createClass(CircleMarker, [{
     key: 'componentWillMount',
@@ -285,7 +285,7 @@ function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in ob
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var _react = require('react');
 
@@ -296,13 +296,13 @@ var _PopupContainer2 = require('./PopupContainer');
 var _PopupContainer3 = _interopRequireDefault(_PopupContainer2);
 
 var FeatureGroup = (function (_PopupContainer) {
+  _inherits(FeatureGroup, _PopupContainer);
+
   function FeatureGroup() {
     _classCallCheck(this, FeatureGroup);
 
     _get(Object.getPrototypeOf(FeatureGroup.prototype), 'constructor', this).apply(this, arguments);
   }
-
-  _inherits(FeatureGroup, _PopupContainer);
 
   _createClass(FeatureGroup, [{
     key: 'componentWillMount',
@@ -345,7 +345,7 @@ function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in ob
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var _react = require('react');
 
@@ -356,13 +356,13 @@ var _PopupContainer2 = require('./PopupContainer');
 var _PopupContainer3 = _interopRequireDefault(_PopupContainer2);
 
 var GeoJson = (function (_PopupContainer) {
+  _inherits(GeoJson, _PopupContainer);
+
   function GeoJson() {
     _classCallCheck(this, GeoJson);
 
     _get(Object.getPrototypeOf(GeoJson.prototype), 'constructor', this).apply(this, arguments);
   }
-
-  _inherits(GeoJson, _PopupContainer);
 
   _createClass(GeoJson, [{
     key: 'componentWillMount',
@@ -406,7 +406,7 @@ function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in ob
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var _react = require('react');
 
@@ -421,13 +421,13 @@ var _MapLayer2 = require('./MapLayer');
 var _MapLayer3 = _interopRequireDefault(_MapLayer2);
 
 var ImageOverlay = (function (_MapLayer) {
+  _inherits(ImageOverlay, _MapLayer);
+
   function ImageOverlay() {
     _classCallCheck(this, ImageOverlay);
 
     _get(Object.getPrototypeOf(ImageOverlay.prototype), 'constructor', this).apply(this, arguments);
   }
-
-  _inherits(ImageOverlay, _MapLayer);
 
   _createClass(ImageOverlay, [{
     key: 'componentWillMount',
@@ -488,7 +488,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'd
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var _lodashLangIsArray = require('lodash/lang/isArray');
 
@@ -523,6 +523,23 @@ var normalizeCenter = function normalizeCenter(pos) {
 };
 
 var Map = (function (_MapComponent) {
+  _inherits(Map, _MapComponent);
+
+  _createClass(Map, null, [{
+    key: 'propTypes',
+    value: {
+      center: _typesLatlng2['default'],
+      className: _react.PropTypes.string,
+      id: _react.PropTypes.string,
+      maxBounds: _typesBounds2['default'],
+      maxZoom: _react.PropTypes.number,
+      minZoom: _react.PropTypes.number,
+      style: _react.PropTypes.object,
+      zoom: _react.PropTypes.number
+    },
+    enumerable: true
+  }]);
+
   function Map(props) {
     _classCallCheck(this, Map);
 
@@ -531,8 +548,6 @@ var Map = (function (_MapComponent) {
       id: props.id || (0, _lodashUtilityUniqueId2['default'])('map')
     };
   }
-
-  _inherits(Map, _MapComponent);
 
   _createClass(Map, [{
     key: 'componentDidMount',
@@ -582,19 +597,6 @@ var Map = (function (_MapComponent) {
         children
       );
     }
-  }], [{
-    key: 'propTypes',
-    value: {
-      center: _typesLatlng2['default'],
-      className: _react.PropTypes.string,
-      id: _react.PropTypes.string,
-      maxBounds: _typesBounds2['default'],
-      maxZoom: _react.PropTypes.number,
-      minZoom: _react.PropTypes.number,
-      style: _react.PropTypes.object,
-      zoom: _react.PropTypes.number
-    },
-    enumerable: true
   }]);
 
   return Map;
@@ -602,7 +604,7 @@ var Map = (function (_MapComponent) {
 
 exports['default'] = Map;
 module.exports = exports['default'];
-},{"./MapComponent":9,"./types/bounds":21,"./types/latlng":23,"leaflet":"leaflet","lodash/lang/isArray":80,"lodash/utility/uniqueId":92,"react":"react"}],9:[function(require,module,exports){
+},{"./MapComponent":9,"./types/bounds":21,"./types/latlng":23,"leaflet":"leaflet","lodash/lang/isArray":80,"lodash/utility/uniqueId":91,"react":"react"}],9:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -617,7 +619,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'd
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var _lodashLangClone = require('lodash/lang/clone');
 
@@ -640,13 +642,13 @@ var _react = require('react');
 var EVENTS_RE = /on(?:Leaflet)?(.+)/i;
 
 var MapComponent = (function (_Component) {
+  _inherits(MapComponent, _Component);
+
   function MapComponent() {
     _classCallCheck(this, MapComponent);
 
     _get(Object.getPrototypeOf(MapComponent.prototype), 'constructor', this).apply(this, arguments);
   }
-
-  _inherits(MapComponent, _Component);
 
   _createClass(MapComponent, [{
     key: 'getLeafletElement',
@@ -669,8 +671,8 @@ var MapComponent = (function (_Component) {
   }, {
     key: 'bindLeafletEvents',
     value: function bindLeafletEvents() {
-      var next = arguments[0] === undefined ? {} : arguments[0];
-      var prev = arguments[1] === undefined ? {} : arguments[1];
+      var next = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+      var prev = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
 
       var el = this.leafletElement;
       if (!el) return;
@@ -731,7 +733,7 @@ var MapComponent = (function (_Component) {
 
 exports['default'] = MapComponent;
 module.exports = exports['default'];
-},{"lodash/collection/forEach":26,"lodash/collection/reduce":27,"lodash/lang/clone":78,"lodash/object/keys":85,"react":"react"}],10:[function(require,module,exports){
+},{"lodash/collection/forEach":26,"lodash/collection/reduce":27,"lodash/lang/clone":78,"lodash/object/keys":86,"react":"react"}],10:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -746,7 +748,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'd
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var _lodashObjectAssign = require('lodash/object/assign');
 
@@ -761,13 +763,13 @@ var _MapComponent2 = require('./MapComponent');
 var _MapComponent3 = _interopRequireDefault(_MapComponent2);
 
 var MapLayer = (function (_MapComponent) {
+  _inherits(MapLayer, _MapComponent);
+
   function MapLayer() {
     _classCallCheck(this, MapLayer);
 
     _get(Object.getPrototypeOf(MapLayer.prototype), 'constructor', this).apply(this, arguments);
   }
-
-  _inherits(MapLayer, _MapComponent);
 
   _createClass(MapLayer, [{
     key: 'componentDidMount',
@@ -801,7 +803,7 @@ var MapLayer = (function (_MapComponent) {
 
 exports['default'] = MapLayer;
 module.exports = exports['default'];
-},{"./MapComponent":9,"lodash/object/assign":84,"react":"react"}],11:[function(require,module,exports){
+},{"./MapComponent":9,"lodash/object/assign":85,"react":"react"}],11:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -818,7 +820,7 @@ function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in ob
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var _react = require('react');
 
@@ -833,13 +835,13 @@ var _PopupContainer2 = require('./PopupContainer');
 var _PopupContainer3 = _interopRequireDefault(_PopupContainer2);
 
 var Marker = (function (_PopupContainer) {
+  _inherits(Marker, _PopupContainer);
+
   function Marker() {
     _classCallCheck(this, Marker);
 
     _get(Object.getPrototypeOf(Marker.prototype), 'constructor', this).apply(this, arguments);
   }
-
-  _inherits(Marker, _PopupContainer);
 
   _createClass(Marker, [{
     key: 'componentWillMount',
@@ -902,7 +904,7 @@ function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in ob
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var _react = require('react');
 
@@ -917,13 +919,13 @@ var _PopupContainer2 = require('./PopupContainer');
 var _PopupContainer3 = _interopRequireDefault(_PopupContainer2);
 
 var MultiPolygon = (function (_PopupContainer) {
+  _inherits(MultiPolygon, _PopupContainer);
+
   function MultiPolygon() {
     _classCallCheck(this, MultiPolygon);
 
     _get(Object.getPrototypeOf(MultiPolygon.prototype), 'constructor', this).apply(this, arguments);
   }
-
-  _inherits(MultiPolygon, _PopupContainer);
 
   _createClass(MultiPolygon, [{
     key: 'componentWillMount',
@@ -974,7 +976,7 @@ function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in ob
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var _react = require('react');
 
@@ -989,13 +991,13 @@ var _PopupContainer2 = require('./PopupContainer');
 var _PopupContainer3 = _interopRequireDefault(_PopupContainer2);
 
 var MultiPolyline = (function (_PopupContainer) {
+  _inherits(MultiPolyline, _PopupContainer);
+
   function MultiPolyline() {
     _classCallCheck(this, MultiPolyline);
 
     _get(Object.getPrototypeOf(MultiPolyline.prototype), 'constructor', this).apply(this, arguments);
   }
-
-  _inherits(MultiPolyline, _PopupContainer);
 
   _createClass(MultiPolyline, [{
     key: 'componentWillMount',
@@ -1046,7 +1048,9 @@ function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in ob
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _react = require('react');
 
 var _leaflet = require('leaflet');
 
@@ -1061,13 +1065,13 @@ var _PopupContainer2 = require('./PopupContainer');
 var _PopupContainer3 = _interopRequireDefault(_PopupContainer2);
 
 var Polygon = (function (_PopupContainer) {
+  _inherits(Polygon, _PopupContainer);
+
   function Polygon() {
     _classCallCheck(this, Polygon);
 
     _get(Object.getPrototypeOf(Polygon.prototype), 'constructor', this).apply(this, arguments);
   }
-
-  _inherits(Polygon, _PopupContainer);
 
   _createClass(Polygon, [{
     key: 'componentWillMount',
@@ -1088,18 +1092,20 @@ var Polygon = (function (_PopupContainer) {
         this.leafletElement.setLatLngs(this.props.positions);
       }
     }
+  }], [{
+    key: 'propTypes',
+    value: {
+      positions: _react.PropTypes.oneOfType([_typesLatlngList2['default'], _react.PropTypes.arrayOf(_typesLatlngList2['default'])]).isRequired
+    },
+    enumerable: true
   }]);
 
   return Polygon;
 })(_PopupContainer3['default']);
 
 exports['default'] = Polygon;
-
-Polygon.propTypes = {
-  positions: _typesLatlngList2['default'].isRequired
-};
 module.exports = exports['default'];
-},{"./PopupContainer":17,"./types/latlngList":24,"leaflet":"leaflet"}],15:[function(require,module,exports){
+},{"./PopupContainer":17,"./types/latlngList":24,"leaflet":"leaflet","react":"react"}],15:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -1116,7 +1122,7 @@ function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in ob
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var _leaflet = require('leaflet');
 
@@ -1129,13 +1135,13 @@ var _PopupContainer2 = require('./PopupContainer');
 var _PopupContainer3 = _interopRequireDefault(_PopupContainer2);
 
 var Polyline = (function (_PopupContainer) {
+  _inherits(Polyline, _PopupContainer);
+
   function Polyline() {
     _classCallCheck(this, Polyline);
 
     _get(Object.getPrototypeOf(Polyline.prototype), 'constructor', this).apply(this, arguments);
   }
-
-  _inherits(Polyline, _PopupContainer);
 
   _createClass(Polyline, [{
     key: 'componentWillMount',
@@ -1186,7 +1192,7 @@ function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in ob
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var _react = require('react');
 
@@ -1203,13 +1209,13 @@ var _MapComponent2 = require('./MapComponent');
 var _MapComponent3 = _interopRequireDefault(_MapComponent2);
 
 var Popup = (function (_MapComponent) {
+  _inherits(Popup, _MapComponent);
+
   function Popup() {
     _classCallCheck(this, Popup);
 
     _get(Object.getPrototypeOf(Popup.prototype), 'constructor', this).apply(this, arguments);
   }
-
-  _inherits(Popup, _MapComponent);
 
   _createClass(Popup, [{
     key: 'componentWillMount',
@@ -1305,7 +1311,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'd
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var _react = require('react');
 
@@ -1316,13 +1322,13 @@ var _MapLayer2 = require('./MapLayer');
 var _MapLayer3 = _interopRequireDefault(_MapLayer2);
 
 var PopupContainer = (function (_MapLayer) {
+  _inherits(PopupContainer, _MapLayer);
+
   function PopupContainer() {
     _classCallCheck(this, PopupContainer);
 
     _get(Object.getPrototypeOf(PopupContainer.prototype), 'constructor', this).apply(this, arguments);
   }
-
-  _inherits(PopupContainer, _MapLayer);
 
   _createClass(PopupContainer, [{
     key: 'render',
@@ -1360,7 +1366,7 @@ function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in ob
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var _leaflet = require('leaflet');
 
@@ -1373,13 +1379,13 @@ var _PopupContainer2 = require('./PopupContainer');
 var _PopupContainer3 = _interopRequireDefault(_PopupContainer2);
 
 var Rectangle = (function (_PopupContainer) {
+  _inherits(Rectangle, _PopupContainer);
+
   function Rectangle() {
     _classCallCheck(this, Rectangle);
 
     _get(Object.getPrototypeOf(Rectangle.prototype), 'constructor', this).apply(this, arguments);
   }
-
-  _inherits(Rectangle, _PopupContainer);
 
   _createClass(Rectangle, [{
     key: 'componentWillMount',
@@ -1430,7 +1436,7 @@ function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in ob
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var _react = require('react');
 
@@ -1441,13 +1447,13 @@ var _BaseTileLayer2 = require('./BaseTileLayer');
 var _BaseTileLayer3 = _interopRequireDefault(_BaseTileLayer2);
 
 var TileLayer = (function (_BaseTileLayer) {
+  _inherits(TileLayer, _BaseTileLayer);
+
   function TileLayer() {
     _classCallCheck(this, TileLayer);
 
     _get(Object.getPrototypeOf(TileLayer.prototype), 'constructor', this).apply(this, arguments);
   }
-
-  _inherits(TileLayer, _BaseTileLayer);
 
   _createClass(TileLayer, [{
     key: 'componentWillMount',
@@ -1500,7 +1506,7 @@ function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in ob
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var _react = require('react');
 
@@ -1511,13 +1517,13 @@ var _BaseTileLayer2 = require('./BaseTileLayer');
 var _BaseTileLayer3 = _interopRequireDefault(_BaseTileLayer2);
 
 var WMSTileLayer = (function (_BaseTileLayer) {
+  _inherits(WMSTileLayer, _BaseTileLayer);
+
   function WMSTileLayer() {
     _classCallCheck(this, WMSTileLayer);
 
     _get(Object.getPrototypeOf(WMSTileLayer.prototype), 'constructor', this).apply(this, arguments);
   }
-
-  _inherits(WMSTileLayer, _BaseTileLayer);
 
   _createClass(WMSTileLayer, [{
     key: 'componentWillMount',
@@ -1707,7 +1713,8 @@ var arrayReduce = require('../internal/arrayReduce'),
  * `_.reduce`, `_.reduceRight`, and `_.transform`.
  *
  * The guarded methods are:
- * `assign`, `defaults`, `includes`, `merge`, `sortByAll`, and `sortByOrder`
+ * `assign`, `defaults`, `defaultsDeep`, `includes`, `merge`, `sortByAll`,
+ * and `sortByOrder`
  *
  * @static
  * @memberOf _
@@ -1746,7 +1753,7 @@ var nativeMax = Math.max;
  * Creates a function that invokes `func` with the `this` binding of the
  * created function and arguments from `start` and beyond provided as an array.
  *
- * **Note:** This method is based on the [rest parameter](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters).
+ * **Note:** This method is based on the [rest parameter](https://developer.mozilla.org/Web/JavaScript/Reference/Functions/rest_parameters).
  *
  * @static
  * @memberOf _
@@ -1928,7 +1935,7 @@ function assignWith(object, source, customizer) {
 
 module.exports = assignWith;
 
-},{"../object/keys":85}],34:[function(require,module,exports){
+},{"../object/keys":86}],34:[function(require,module,exports){
 var baseCopy = require('./baseCopy'),
     keys = require('../object/keys');
 
@@ -1949,7 +1956,7 @@ function baseAssign(object, source) {
 
 module.exports = baseAssign;
 
-},{"../object/keys":85,"./baseCopy":37}],35:[function(require,module,exports){
+},{"../object/keys":86,"./baseCopy":37}],35:[function(require,module,exports){
 var baseMatches = require('./baseMatches'),
     baseMatchesProperty = require('./baseMatchesProperty'),
     bindCallback = require('./bindCallback'),
@@ -1986,7 +1993,7 @@ function baseCallback(func, thisArg, argCount) {
 
 module.exports = baseCallback;
 
-},{"../utility/identity":90,"../utility/property":91,"./baseMatches":45,"./baseMatchesProperty":46,"./bindCallback":52}],36:[function(require,module,exports){
+},{"../utility/identity":89,"../utility/property":90,"./baseMatches":45,"./baseMatchesProperty":46,"./bindCallback":52}],36:[function(require,module,exports){
 var arrayCopy = require('./arrayCopy'),
     arrayEach = require('./arrayEach'),
     baseAssign = require('./baseAssign'),
@@ -2042,7 +2049,7 @@ cloneableTags[weakMapTag] = false;
 var objectProto = Object.prototype;
 
 /**
- * Used to resolve the [`toStringTag`](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-object.prototype.tostring)
+ * Used to resolve the [`toStringTag`](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
  * of values.
  */
 var objToString = objectProto.toString;
@@ -2093,7 +2100,7 @@ function baseClone(value, isDeep, customizer, key, object, stackA, stackB) {
         : (object ? value : {});
     }
   }
-  // Check for circular references and return corresponding clone.
+  // Check for circular references and return its corresponding clone.
   stackA || (stackA = []);
   stackB || (stackB = []);
 
@@ -2116,7 +2123,7 @@ function baseClone(value, isDeep, customizer, key, object, stackA, stackB) {
 
 module.exports = baseClone;
 
-},{"../lang/isArray":80,"../lang/isObject":82,"./arrayCopy":29,"./arrayEach":30,"./baseAssign":34,"./baseForOwn":40,"./initCloneArray":65,"./initCloneByTag":66,"./initCloneObject":67}],37:[function(require,module,exports){
+},{"../lang/isArray":80,"../lang/isObject":83,"./arrayCopy":29,"./arrayEach":30,"./baseAssign":34,"./baseForOwn":40,"./initCloneArray":65,"./initCloneByTag":66,"./initCloneObject":67}],37:[function(require,module,exports){
 /**
  * Copies properties of `source` to `object`.
  *
@@ -2196,7 +2203,7 @@ function baseForOwn(object, iteratee) {
 
 module.exports = baseForOwn;
 
-},{"../object/keys":85,"./baseFor":39}],41:[function(require,module,exports){
+},{"../object/keys":86,"./baseFor":39}],41:[function(require,module,exports){
 var toObject = require('./toObject');
 
 /**
@@ -2257,7 +2264,7 @@ function baseIsEqual(value, other, customizer, isLoose, stackA, stackB) {
 
 module.exports = baseIsEqual;
 
-},{"../lang/isObject":82,"./baseIsEqualDeep":43,"./isObjectLike":73}],43:[function(require,module,exports){
+},{"../lang/isObject":83,"./baseIsEqualDeep":43,"./isObjectLike":73}],43:[function(require,module,exports){
 var equalArrays = require('./equalArrays'),
     equalByTag = require('./equalByTag'),
     equalObjects = require('./equalObjects'),
@@ -2276,7 +2283,7 @@ var objectProto = Object.prototype;
 var hasOwnProperty = objectProto.hasOwnProperty;
 
 /**
- * Used to resolve the [`toStringTag`](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-object.prototype.tostring)
+ * Used to resolve the [`toStringTag`](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
  * of values.
  */
 var objToString = objectProto.toString;
@@ -2361,7 +2368,7 @@ function baseIsEqualDeep(object, other, equalFunc, customizer, isLoose, stackA, 
 
 module.exports = baseIsEqualDeep;
 
-},{"../lang/isArray":80,"../lang/isTypedArray":83,"./equalArrays":59,"./equalByTag":60,"./equalObjects":61}],44:[function(require,module,exports){
+},{"../lang/isArray":80,"../lang/isTypedArray":84,"./equalArrays":59,"./equalByTag":60,"./equalObjects":61}],44:[function(require,module,exports){
 var baseIsEqual = require('./baseIsEqual'),
     toObject = require('./toObject');
 
@@ -2601,9 +2608,6 @@ module.exports = baseSlice;
  * @returns {string} Returns the string.
  */
 function baseToString(value) {
-  if (typeof value == 'string') {
-    return value;
-  }
   return value == null ? '' : (value + '');
 }
 
@@ -2650,31 +2654,11 @@ function bindCallback(func, thisArg, argCount) {
 
 module.exports = bindCallback;
 
-},{"../utility/identity":90}],53:[function(require,module,exports){
+},{"../utility/identity":89}],53:[function(require,module,exports){
 (function (global){
-var constant = require('../utility/constant'),
-    getNative = require('./getNative');
-
 /** Native method references. */
-var ArrayBuffer = getNative(global, 'ArrayBuffer'),
-    bufferSlice = getNative(ArrayBuffer && new ArrayBuffer(0), 'slice'),
-    floor = Math.floor,
-    Uint8Array = getNative(global, 'Uint8Array');
-
-/** Used to clone array buffers. */
-var Float64Array = (function() {
-  // Safari 5 errors when using an array buffer to initialize a typed array
-  // where the array buffer's `byteLength` is not a multiple of the typed
-  // array's `BYTES_PER_ELEMENT`.
-  try {
-    var func = getNative(global, 'Float64Array'),
-        result = new func(new ArrayBuffer(10), 0, 1) && func;
-  } catch(e) {}
-  return result || null;
-}());
-
-/** Used as the size, in bytes, of each `Float64Array` element. */
-var FLOAT64_BYTES_PER_ELEMENT = Float64Array ? Float64Array.BYTES_PER_ELEMENT : 0;
+var ArrayBuffer = global.ArrayBuffer,
+    Uint8Array = global.Uint8Array;
 
 /**
  * Creates a clone of the given array buffer.
@@ -2684,41 +2668,23 @@ var FLOAT64_BYTES_PER_ELEMENT = Float64Array ? Float64Array.BYTES_PER_ELEMENT : 
  * @returns {ArrayBuffer} Returns the cloned array buffer.
  */
 function bufferClone(buffer) {
-  return bufferSlice.call(buffer, 0);
-}
-if (!bufferSlice) {
-  // PhantomJS has `ArrayBuffer` and `Uint8Array` but not `Float64Array`.
-  bufferClone = !(ArrayBuffer && Uint8Array) ? constant(null) : function(buffer) {
-    var byteLength = buffer.byteLength,
-        floatLength = Float64Array ? floor(byteLength / FLOAT64_BYTES_PER_ELEMENT) : 0,
-        offset = floatLength * FLOAT64_BYTES_PER_ELEMENT,
-        result = new ArrayBuffer(byteLength);
+  var result = new ArrayBuffer(buffer.byteLength),
+      view = new Uint8Array(result);
 
-    if (floatLength) {
-      var view = new Float64Array(result, 0, floatLength);
-      view.set(new Float64Array(buffer, 0, floatLength));
-    }
-    if (byteLength != offset) {
-      view = new Uint8Array(result, offset);
-      view.set(new Uint8Array(buffer, offset));
-    }
-    return result;
-  };
+  view.set(new Uint8Array(buffer));
+  return result;
 }
 
 module.exports = bufferClone;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"../utility/constant":89,"./getNative":64}],54:[function(require,module,exports){
+},{}],54:[function(require,module,exports){
 var bindCallback = require('./bindCallback'),
     isIterateeCall = require('./isIterateeCall'),
     restParam = require('../function/restParam');
 
 /**
- * Creates a function that assigns properties of source object(s) to a given
- * destination object.
- *
- * **Note:** This function is used to create `_.assign`, `_.defaults`, and `_.merge`.
+ * Creates a `_.assign`, `_.defaults`, or `_.merge` function.
  *
  * @private
  * @param {Function} assigner The function to assign values.
@@ -2933,7 +2899,7 @@ var boolTag = '[object Boolean]',
  * `Boolean`, `Date`, `Error`, `Number`, `RegExp`, or `String`.
  *
  * @private
- * @param {Object} value The object to compare.
+ * @param {Object} object The object to compare.
  * @param {Object} other The other object to compare.
  * @param {string} tag The `toStringTag` of the objects to compare.
  * @returns {boolean} Returns `true` if the objects are equivalent, else `false`.
@@ -3035,7 +3001,7 @@ function equalObjects(object, other, equalFunc, customizer, isLoose, stackA, sta
 
 module.exports = equalObjects;
 
-},{"../object/keys":85}],62:[function(require,module,exports){
+},{"../object/keys":86}],62:[function(require,module,exports){
 var baseProperty = require('./baseProperty');
 
 /**
@@ -3075,7 +3041,7 @@ function getMatchData(object) {
 
 module.exports = getMatchData;
 
-},{"../object/pairs":87,"./isStrictComparable":74}],64:[function(require,module,exports){
+},{"../object/pairs":88,"./isStrictComparable":74}],64:[function(require,module,exports){
 var isNative = require('../lang/isNative');
 
 /**
@@ -3093,7 +3059,7 @@ function getNative(object, key) {
 
 module.exports = getNative;
 
-},{"../lang/isNative":81}],65:[function(require,module,exports){
+},{"../lang/isNative":82}],65:[function(require,module,exports){
 /** Used for native method references. */
 var objectProto = Object.prototype;
 
@@ -3226,7 +3192,7 @@ module.exports = isArrayLike;
 var reIsUint = /^\d+$/;
 
 /**
- * Used as the [maximum length](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-number.max_safe_integer)
+ * Used as the [maximum length](http://ecma-international.org/ecma-262/6.0/#sec-number.max_safe_integer)
  * of an array-like value.
  */
 var MAX_SAFE_INTEGER = 9007199254740991;
@@ -3277,7 +3243,7 @@ function isIterateeCall(value, index, object) {
 
 module.exports = isIterateeCall;
 
-},{"../lang/isObject":82,"./isArrayLike":68,"./isIndex":69}],71:[function(require,module,exports){
+},{"../lang/isObject":83,"./isArrayLike":68,"./isIndex":69}],71:[function(require,module,exports){
 var isArray = require('../lang/isArray'),
     toObject = require('./toObject');
 
@@ -3309,7 +3275,7 @@ module.exports = isKey;
 
 },{"../lang/isArray":80,"./toObject":76}],72:[function(require,module,exports){
 /**
- * Used as the [maximum length](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-number.max_safe_integer)
+ * Used as the [maximum length](http://ecma-international.org/ecma-262/6.0/#sec-number.max_safe_integer)
  * of an array-like value.
  */
 var MAX_SAFE_INTEGER = 9007199254740991;
@@ -3317,7 +3283,7 @@ var MAX_SAFE_INTEGER = 9007199254740991;
 /**
  * Checks if `value` is a valid array-like length.
  *
- * **Note:** This function is based on [`ToLength`](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-tolength).
+ * **Note:** This function is based on [`ToLength`](http://ecma-international.org/ecma-262/6.0/#sec-tolength).
  *
  * @private
  * @param {*} value The value to check.
@@ -3360,7 +3326,7 @@ function isStrictComparable(value) {
 
 module.exports = isStrictComparable;
 
-},{"../lang/isObject":82}],75:[function(require,module,exports){
+},{"../lang/isObject":83}],75:[function(require,module,exports){
 var isArguments = require('../lang/isArguments'),
     isArray = require('../lang/isArray'),
     isIndex = require('./isIndex'),
@@ -3403,7 +3369,7 @@ function shimKeys(object) {
 
 module.exports = shimKeys;
 
-},{"../lang/isArguments":79,"../lang/isArray":80,"../object/keysIn":86,"./isIndex":69,"./isLength":72}],76:[function(require,module,exports){
+},{"../lang/isArguments":79,"../lang/isArray":80,"../object/keysIn":87,"./isIndex":69,"./isLength":72}],76:[function(require,module,exports){
 var isObject = require('../lang/isObject');
 
 /**
@@ -3419,7 +3385,7 @@ function toObject(value) {
 
 module.exports = toObject;
 
-},{"../lang/isObject":82}],77:[function(require,module,exports){
+},{"../lang/isObject":83}],77:[function(require,module,exports){
 var baseToString = require('./baseToString'),
     isArray = require('../lang/isArray');
 
@@ -3456,10 +3422,10 @@ var baseClone = require('../internal/baseClone'),
 
 /**
  * Creates a clone of `value`. If `isDeep` is `true` nested objects are cloned,
- * otherwise they are assigned by reference. If `customizer` is provided it is
+ * otherwise they are assigned by reference. If `customizer` is provided it's
  * invoked to produce the cloned values. If `customizer` returns `undefined`
  * cloning is handled by the method instead. The `customizer` is bound to
- * `thisArg` and invoked with two argument; (value [, index|key, object]).
+ * `thisArg` and invoked with up to three argument; (value [, index|key, object]).
  *
  * **Note:** This method is loosely based on the
  * [structured clone algorithm](http://www.w3.org/TR/html5/infrastructure.html#internal-structured-cloning-algorithm).
@@ -3515,7 +3481,7 @@ function clone(value, isDeep, customizer, thisArg) {
     isDeep = false;
   }
   return typeof customizer == 'function'
-    ? baseClone(value, isDeep, bindCallback(customizer, thisArg, 1))
+    ? baseClone(value, isDeep, bindCallback(customizer, thisArg, 3))
     : baseClone(value, isDeep);
 }
 
@@ -3525,17 +3491,14 @@ module.exports = clone;
 var isArrayLike = require('../internal/isArrayLike'),
     isObjectLike = require('../internal/isObjectLike');
 
-/** `Object#toString` result references. */
-var argsTag = '[object Arguments]';
-
 /** Used for native method references. */
 var objectProto = Object.prototype;
 
-/**
- * Used to resolve the [`toStringTag`](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-object.prototype.tostring)
- * of values.
- */
-var objToString = objectProto.toString;
+/** Used to check objects for own properties. */
+var hasOwnProperty = objectProto.hasOwnProperty;
+
+/** Native method references. */
+var propertyIsEnumerable = objectProto.propertyIsEnumerable;
 
 /**
  * Checks if `value` is classified as an `arguments` object.
@@ -3554,7 +3517,8 @@ var objToString = objectProto.toString;
  * // => false
  */
 function isArguments(value) {
-  return isObjectLike(value) && isArrayLike(value) && objToString.call(value) == argsTag;
+  return isObjectLike(value) && isArrayLike(value) &&
+    hasOwnProperty.call(value, 'callee') && !propertyIsEnumerable.call(value, 'callee');
 }
 
 module.exports = isArguments;
@@ -3571,7 +3535,7 @@ var arrayTag = '[object Array]';
 var objectProto = Object.prototype;
 
 /**
- * Used to resolve the [`toStringTag`](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-object.prototype.tostring)
+ * Used to resolve the [`toStringTag`](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
  * of values.
  */
 var objToString = objectProto.toString;
@@ -3602,11 +3566,48 @@ var isArray = nativeIsArray || function(value) {
 module.exports = isArray;
 
 },{"../internal/getNative":64,"../internal/isLength":72,"../internal/isObjectLike":73}],81:[function(require,module,exports){
-var escapeRegExp = require('../string/escapeRegExp'),
-    isObjectLike = require('../internal/isObjectLike');
+var isObject = require('./isObject');
 
 /** `Object#toString` result references. */
 var funcTag = '[object Function]';
+
+/** Used for native method references. */
+var objectProto = Object.prototype;
+
+/**
+ * Used to resolve the [`toStringTag`](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
+ * of values.
+ */
+var objToString = objectProto.toString;
+
+/**
+ * Checks if `value` is classified as a `Function` object.
+ *
+ * @static
+ * @memberOf _
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is correctly classified, else `false`.
+ * @example
+ *
+ * _.isFunction(_);
+ * // => true
+ *
+ * _.isFunction(/abc/);
+ * // => false
+ */
+function isFunction(value) {
+  // The use of `Object#toString` avoids issues with the `typeof` operator
+  // in older versions of Chrome and Safari which return 'function' for regexes
+  // and Safari 8 which returns 'object' for typed array constructors.
+  return isObject(value) && objToString.call(value) == funcTag;
+}
+
+module.exports = isFunction;
+
+},{"./isObject":83}],82:[function(require,module,exports){
+var isFunction = require('./isFunction'),
+    isObjectLike = require('../internal/isObjectLike');
 
 /** Used to detect host constructors (Safari > 5). */
 var reIsHostCtor = /^\[object .+?Constructor\]$/;
@@ -3620,15 +3621,9 @@ var fnToString = Function.prototype.toString;
 /** Used to check objects for own properties. */
 var hasOwnProperty = objectProto.hasOwnProperty;
 
-/**
- * Used to resolve the [`toStringTag`](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-object.prototype.tostring)
- * of values.
- */
-var objToString = objectProto.toString;
-
 /** Used to detect if a method is native. */
 var reIsNative = RegExp('^' +
-  escapeRegExp(fnToString.call(hasOwnProperty))
+  fnToString.call(hasOwnProperty).replace(/[\\^$.*+?()[\]{}|]/g, '\\$&')
   .replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, '$1.*?') + '$'
 );
 
@@ -3652,7 +3647,7 @@ function isNative(value) {
   if (value == null) {
     return false;
   }
-  if (objToString.call(value) == funcTag) {
+  if (isFunction(value)) {
     return reIsNative.test(fnToString.call(value));
   }
   return isObjectLike(value) && reIsHostCtor.test(value);
@@ -3660,7 +3655,7 @@ function isNative(value) {
 
 module.exports = isNative;
 
-},{"../internal/isObjectLike":73,"../string/escapeRegExp":88}],82:[function(require,module,exports){
+},{"../internal/isObjectLike":73,"./isFunction":81}],83:[function(require,module,exports){
 /**
  * Checks if `value` is the [language type](https://es5.github.io/#x8) of `Object`.
  * (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
@@ -3690,7 +3685,7 @@ function isObject(value) {
 
 module.exports = isObject;
 
-},{}],83:[function(require,module,exports){
+},{}],84:[function(require,module,exports){
 var isLength = require('../internal/isLength'),
     isObjectLike = require('../internal/isObjectLike');
 
@@ -3739,7 +3734,7 @@ typedArrayTags[stringTag] = typedArrayTags[weakMapTag] = false;
 var objectProto = Object.prototype;
 
 /**
- * Used to resolve the [`toStringTag`](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-object.prototype.tostring)
+ * Used to resolve the [`toStringTag`](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
  * of values.
  */
 var objToString = objectProto.toString;
@@ -3766,7 +3761,7 @@ function isTypedArray(value) {
 
 module.exports = isTypedArray;
 
-},{"../internal/isLength":72,"../internal/isObjectLike":73}],84:[function(require,module,exports){
+},{"../internal/isLength":72,"../internal/isObjectLike":73}],85:[function(require,module,exports){
 var assignWith = require('../internal/assignWith'),
     baseAssign = require('../internal/baseAssign'),
     createAssigner = require('../internal/createAssigner');
@@ -3774,12 +3769,12 @@ var assignWith = require('../internal/assignWith'),
 /**
  * Assigns own enumerable properties of source object(s) to the destination
  * object. Subsequent sources overwrite property assignments of previous sources.
- * If `customizer` is provided it is invoked to produce the assigned values.
+ * If `customizer` is provided it's invoked to produce the assigned values.
  * The `customizer` is bound to `thisArg` and invoked with five arguments:
  * (objectValue, sourceValue, key, object, source).
  *
  * **Note:** This method mutates `object` and is based on
- * [`Object.assign`](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-object.assign).
+ * [`Object.assign`](http://ecma-international.org/ecma-262/6.0/#sec-object.assign).
  *
  * @static
  * @memberOf _
@@ -3811,7 +3806,7 @@ var assign = createAssigner(function(object, source, customizer) {
 
 module.exports = assign;
 
-},{"../internal/assignWith":33,"../internal/baseAssign":34,"../internal/createAssigner":54}],85:[function(require,module,exports){
+},{"../internal/assignWith":33,"../internal/baseAssign":34,"../internal/createAssigner":54}],86:[function(require,module,exports){
 var getNative = require('../internal/getNative'),
     isArrayLike = require('../internal/isArrayLike'),
     isObject = require('../lang/isObject'),
@@ -3824,7 +3819,7 @@ var nativeKeys = getNative(Object, 'keys');
  * Creates an array of the own enumerable property names of `object`.
  *
  * **Note:** Non-object values are coerced to objects. See the
- * [ES spec](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-object.keys)
+ * [ES spec](http://ecma-international.org/ecma-262/6.0/#sec-object.keys)
  * for more details.
  *
  * @static
@@ -3848,7 +3843,7 @@ var nativeKeys = getNative(Object, 'keys');
  * // => ['0', '1']
  */
 var keys = !nativeKeys ? shimKeys : function(object) {
-  var Ctor = object == null ? null : object.constructor;
+  var Ctor = object == null ? undefined : object.constructor;
   if ((typeof Ctor == 'function' && Ctor.prototype === object) ||
       (typeof object != 'function' && isArrayLike(object))) {
     return shimKeys(object);
@@ -3858,7 +3853,7 @@ var keys = !nativeKeys ? shimKeys : function(object) {
 
 module.exports = keys;
 
-},{"../internal/getNative":64,"../internal/isArrayLike":68,"../internal/shimKeys":75,"../lang/isObject":82}],86:[function(require,module,exports){
+},{"../internal/getNative":64,"../internal/isArrayLike":68,"../internal/shimKeys":75,"../lang/isObject":83}],87:[function(require,module,exports){
 var isArguments = require('../lang/isArguments'),
     isArray = require('../lang/isArray'),
     isIndex = require('../internal/isIndex'),
@@ -3924,7 +3919,7 @@ function keysIn(object) {
 
 module.exports = keysIn;
 
-},{"../internal/isIndex":69,"../internal/isLength":72,"../lang/isArguments":79,"../lang/isArray":80,"../lang/isObject":82}],87:[function(require,module,exports){
+},{"../internal/isIndex":69,"../internal/isLength":72,"../lang/isArguments":79,"../lang/isArray":80,"../lang/isObject":83}],88:[function(require,module,exports){
 var keys = require('./keys'),
     toObject = require('../internal/toObject');
 
@@ -3959,66 +3954,7 @@ function pairs(object) {
 
 module.exports = pairs;
 
-},{"../internal/toObject":76,"./keys":85}],88:[function(require,module,exports){
-var baseToString = require('../internal/baseToString');
-
-/**
- * Used to match `RegExp` [special characters](http://www.regular-expressions.info/characters.html#special).
- * In addition to special characters the forward slash is escaped to allow for
- * easier `eval` use and `Function` compilation.
- */
-var reRegExpChars = /[.*+?^${}()|[\]\/\\]/g,
-    reHasRegExpChars = RegExp(reRegExpChars.source);
-
-/**
- * Escapes the `RegExp` special characters "\", "/", "^", "$", ".", "|", "?",
- * "*", "+", "(", ")", "[", "]", "{" and "}" in `string`.
- *
- * @static
- * @memberOf _
- * @category String
- * @param {string} [string=''] The string to escape.
- * @returns {string} Returns the escaped string.
- * @example
- *
- * _.escapeRegExp('[lodash](https://lodash.com/)');
- * // => '\[lodash\]\(https:\/\/lodash\.com\/\)'
- */
-function escapeRegExp(string) {
-  string = baseToString(string);
-  return (string && reHasRegExpChars.test(string))
-    ? string.replace(reRegExpChars, '\\$&')
-    : string;
-}
-
-module.exports = escapeRegExp;
-
-},{"../internal/baseToString":51}],89:[function(require,module,exports){
-/**
- * Creates a function that returns `value`.
- *
- * @static
- * @memberOf _
- * @category Utility
- * @param {*} value The value to return from the new function.
- * @returns {Function} Returns the new function.
- * @example
- *
- * var object = { 'user': 'fred' };
- * var getter = _.constant(object);
- *
- * getter() === object;
- * // => true
- */
-function constant(value) {
-  return function() {
-    return value;
-  };
-}
-
-module.exports = constant;
-
-},{}],90:[function(require,module,exports){
+},{"../internal/toObject":76,"./keys":86}],89:[function(require,module,exports){
 /**
  * This method returns the first argument provided to it.
  *
@@ -4040,7 +3976,7 @@ function identity(value) {
 
 module.exports = identity;
 
-},{}],91:[function(require,module,exports){
+},{}],90:[function(require,module,exports){
 var baseProperty = require('../internal/baseProperty'),
     basePropertyDeep = require('../internal/basePropertyDeep'),
     isKey = require('../internal/isKey');
@@ -4073,7 +4009,7 @@ function property(path) {
 
 module.exports = property;
 
-},{"../internal/baseProperty":47,"../internal/basePropertyDeep":48,"../internal/isKey":71}],92:[function(require,module,exports){
+},{"../internal/baseProperty":47,"../internal/basePropertyDeep":48,"../internal/isKey":71}],91:[function(require,module,exports){
 var baseToString = require('../internal/baseToString');
 
 /** Used to generate unique IDs. */
