@@ -182,7 +182,7 @@ The Popup children will be rendered as its content using `React.renderToStaticMa
 
 ##### Polygon
 
-- `positions: LatLngList` (required, dynamic)
+- `positions: LatLngList | Array<LatLngList>` (required, dynamic)
 
 ##### MultiPolygon
 
