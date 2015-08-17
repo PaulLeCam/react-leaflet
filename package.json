@@ -13,7 +13,8 @@
     "dev": "npm run watch & npm run onchange",
     "prepublish": "npm ls && npm test",
     "example:compile": "gulp",
-    "example:watch": "gulp watch:example"
+    "example:watch": "gulp watch:example",
+    "build_single": "node single_build_globals.js"
   },
   "repository": {
     "type": "git",
@@ -51,7 +52,8 @@
     "onchange": "^1.1.0",
     "react": "^0.13.3",
     "vinyl-source-stream": "^1.1.0",
-    "watchify": "^3.2.2"
+    "watchify": "^3.2.2",
+    "browserify-transform-tools": "^1.4.2"
   },
   "jest": {
     "unmockedModulePathPatterns": [
