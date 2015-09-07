@@ -7,7 +7,7 @@ import PopupContainer from './PopupContainer';
 export default class CircleMarker extends PopupContainer {
   static propTypes = {
     center: latlngType.isRequired,
-    radius: PropTypes.number
+    radius: PropTypes.number,
   };
 
   componentWillMount() {

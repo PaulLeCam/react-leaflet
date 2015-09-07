@@ -6,11 +6,11 @@ export default Type.oneOfType([
   // {lat: Number, lng: Number}
   Type.shape({
     lat: Type.number,
-    lng: Type.number
+    lng: Type.number,
   }),
   // {lat: Number, lon: Number}
   Type.shape({
     lat: Type.number,
-    lon: Type.number
-  })
+    lon: Type.number,
+  }),
 ]);

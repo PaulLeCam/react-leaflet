@@ -6,10 +6,10 @@ import PopupContainer from './PopupContainer';
 
 export default class Marker extends PopupContainer {
   static propTypes = {
-    position: latlngType.isRequired,
     icon: PropTypes.instanceOf(Icon),
+    opacity: PropTypes.number,
+    position: latlngType.isRequired,
     zIndexOffset: PropTypes.number,
-    opacity: PropTypes.number
   };
 
   componentWillMount() {

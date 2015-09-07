@@ -6,7 +6,7 @@ import PopupContainer from './PopupContainer';
 
 export default class MultiPolyline extends PopupContainer {
   static propTypes = {
-    polylines: PropTypes.arrayOf(latlngListType).isRequired
+    polylines: PropTypes.arrayOf(latlngListType).isRequired,
   };
 
   componentWillMount() {

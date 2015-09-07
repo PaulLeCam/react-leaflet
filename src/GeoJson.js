@@ -5,7 +5,7 @@ import PopupContainer from './PopupContainer';
 
 export default class GeoJson extends PopupContainer {
   static propTypes = {
-    data: PropTypes.object.isRequired
+    data: PropTypes.object.isRequired,
   };
 
   componentWillMount() {

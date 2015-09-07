@@ -5,7 +5,7 @@ import PopupContainer from './PopupContainer';
 
 export default class Polyline extends PopupContainer {
   static propTypes = {
-    positions: latlngListType.isRequired
+    positions: latlngListType.isRequired,
   };
 
   componentWillMount() {

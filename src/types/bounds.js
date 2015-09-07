@@ -5,5 +5,5 @@ import latlngList from './latlngList';
 
 export default React.PropTypes.oneOfType([
   React.PropTypes.instanceOf(Leaflet.LatLngBounds),
-  latlngList
+  latlngList,
 ]);

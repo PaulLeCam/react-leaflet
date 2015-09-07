@@ -9,15 +9,17 @@ jest.dontMock('../TileLayer');
 jest.dontMock('../Marker');
 jest.dontMock('../index');
 
-const {Map, Marker, TileLayer} = require('../');
+const { Map, Marker, TileLayer } = require('../');
 
 describe('Marker', () => {
   it('adds the marker to the map', () => {
     const position = [0, 0];
-    const component = <Map center={position} zoom={10}>
-      <TileLayer url='http://{s}.tile.osm.org/{z}/{x}/{y}.png' />
-      <Marker position={position} />
-    </Map>;
+    const component = (
+      <Map center={position} zoom={10}>
+        <TileLayer url='http://{s}.tile.osm.org/{z}/{x}/{y}.png' />
+        <Marker position={position} />
+      </Map>
+    );
 
     document.body.innerHTML = '<div id="test"></div>';
     React.render(component, document.getElementById('test'));

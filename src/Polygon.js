@@ -8,8 +8,8 @@ export default class Polygon extends PopupContainer {
   static propTypes = {
     positions: PropTypes.oneOfType([
       latlngListType,
-      PropTypes.arrayOf(latlngListType)
-    ]).isRequired
+      PropTypes.arrayOf(latlngListType),
+    ]).isRequired,
   };
 
   componentWillMount() {

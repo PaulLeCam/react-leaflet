@@ -51,22 +51,28 @@ describe('MapComponent', () => {
     document.body.innerHTML = '<div id="test"></div>';
 
     const callback = jest.genMockFn();
-    const TestComponent = React.createClass({
-      getInitialState() {
-        return {bindEvent: true};
-      },
+
+    class TestComponent extends React.Component {
+      constructor() {
+        super();
+        this.state = {bindEvent: true};
+      }
+
       dontBind() {
         this.setState({bindEvent: false});
-      },
+      }
+
       fire() {
         this.refs.c.fireLeafletEvent('click');
-      },
+      }
+
       render() {
         return this.state.bindEvent
-          ? <Component ref='c' onClick={callback} />
+          ? <Component onClick={callback} ref='c' />
           : <Component ref='c' />;
       }
-    });
+    }
+
     const component = <TestComponent />;
     const instance = React.render(component, document.getElementById('test'));
 
@@ -83,20 +89,26 @@ describe('MapComponent', () => {
 
     const callback1 = jest.genMockFn();
     const callback2 = jest.genMockFn();
-    const TestComponent = React.createClass({
-      getInitialState() {
-        return {cb: callback1};
-      },
+
+    class TestComponent extends React.Component {
+      constructor() {
+        super();
+        this.state = {cb: callback1};
+      }
+
       replaceCallback() {
         this.setState({cb: callback2});
-      },
+      }
+
       fire() {
         this.refs.c.fireLeafletEvent('click');
-      },
-      render() {
-        return <Component ref='c' onClick={this.state.cb} />;
       }
-    });
+
+      render() {
+        return <Component onClick={this.state.cb} ref='c' />;
+      }
+    }
+
     const component = <TestComponent />;
     const instance = React.render(component, document.getElementById('test'));
 

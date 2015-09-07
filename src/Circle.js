@@ -7,7 +7,7 @@ import PopupContainer from './PopupContainer';
 export default class Circle extends PopupContainer {
   static propTypes = {
     center: latlngType.isRequired,
-    radius: PropTypes.number.isRequired
+    radius: PropTypes.number.isRequired,
   };
 
   componentWillMount() {

@@ -1,12 +1,18 @@
-import React from 'react';
-import { popup } from 'leaflet';
+import React, { PropTypes } from 'react';
+import { Map, popup } from 'leaflet';
 
 import latlngType from './types/latlng';
 import MapComponent from './MapComponent';
 
 export default class Popup extends MapComponent {
   static propTypes = {
-    position: latlngType
+    children: PropTypes.oneOfType([
+      PropTypes.arrayOf(PropTypes.node),
+      PropTypes.node,
+    ]),
+    map: PropTypes.instanceOf(Map),
+    popupContainer: PropTypes.node,
+    position: latlngType,
   };
 
   componentWillMount() {

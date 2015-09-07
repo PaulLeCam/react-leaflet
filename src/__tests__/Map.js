@@ -49,7 +49,7 @@ describe('Map', () => {
         super();
         this.state = {
           center: [1.2, 3.4],
-          zoom: 10
+          zoom: 10,
         };
       }
       getLeafletMap() {
@@ -58,11 +58,11 @@ describe('Map', () => {
       updatePosition() {
         this.setState({
           center: [2.3, 4.5],
-          zoom: 12
+          zoom: 12,
         });
       }
       render() {
-        return <Map ref='map' center={this.state.center} zoom={this.state.zoom} />;
+        return <Map center={this.state.center} ref='map' zoom={this.state.zoom} />;
       }
     }
     const instance = React.render(<Component />, document.getElementById('test'));

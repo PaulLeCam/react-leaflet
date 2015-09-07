@@ -5,7 +5,7 @@ import PopupContainer from './PopupContainer';
 
 export default class FeatureGroup extends PopupContainer {
   static propTypes = {
-    layers: PropTypes.array.isRequired
+    layers: PropTypes.array.isRequired,
   };
 
   componentWillMount() {

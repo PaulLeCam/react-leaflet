@@ -51,5 +51,5 @@ export default {
   PopupContainer,
   Rectangle,
   TileLayer,
-  WMSTileLayer
+  WMSTileLayer,
 };

@@ -5,7 +5,7 @@ import MapLayer from './MapLayer';
 export default class PopupContainer extends MapLayer {
   render() {
     const children = this.getClonedChildrenWithMap({
-      popupContainer: this.leafletElement
+      popupContainer: this.leafletElement,
     });
     return <div style={{display: 'none'}}>{children}</div>;
   }

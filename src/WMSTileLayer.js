@@ -5,7 +5,7 @@ import BaseTileLayer from './BaseTileLayer';
 
 export default class WMSTileLayer extends BaseTileLayer {
   static propTypes = {
-    url: PropTypes.string.isRequired
+    url: PropTypes.string.isRequired,
   };
 
   componentWillMount() {

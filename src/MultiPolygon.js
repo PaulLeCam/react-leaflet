@@ -6,7 +6,7 @@ import PopupContainer from './PopupContainer';
 
 export default class MultiPolygon extends PopupContainer {
   static propTypes = {
-    polygons: PropTypes.arrayOf(latlngListType).isRequired
+    polygons: PropTypes.arrayOf(latlngListType).isRequired,
   };
 
   componentWillMount() {

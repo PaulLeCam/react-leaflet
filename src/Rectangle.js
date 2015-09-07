@@ -5,7 +5,7 @@ import PopupContainer from './PopupContainer';
 
 export default class Rectangle extends PopupContainer {
   static propTypes = {
-    bounds: boundsType.isRequired
+    bounds: boundsType.isRequired,
   };
 
   componentWillMount() {

@@ -10,17 +10,19 @@ jest.dontMock('../Popup');
 jest.dontMock('../TileLayer');
 jest.dontMock('../index');
 
-const {Map, Marker, Popup, TileLayer} = require('../');
+const { Map, Popup, TileLayer } = require('../');
 
 describe('Popup', () => {
   it('adds the popup to the map', () => {
     const position = [0, 0];
-    const component = <Map center={position} zoom={10}>
-      <TileLayer url='http://{s}.tile.osm.org/{z}/{x}/{y}.png' />
-      <Popup position={position}>
-        <span>Test Popup</span>
-      </Popup>
-    </Map>;
+    const component = (
+      <Map center={position} zoom={10}>
+        <TileLayer url='http://{s}.tile.osm.org/{z}/{x}/{y}.png' />
+        <Popup position={position}>
+          <span>Test Popup</span>
+        </Popup>
+      </Map>
+    );
 
     document.body.innerHTML = '<div id="test"></div>';
     React.render(component, document.getElementById('test'));
@@ -38,7 +40,7 @@ describe('Popup', () => {
         super();
         this.state = {
           show: false,
-          test: true
+          test: true,
         };
       }
 
@@ -52,7 +54,7 @@ describe('Popup', () => {
           expect(getNode()).toBeDefined();
           this.setState({
             show: false,
-            test: false
+            test: false,
           });
         }
         else {
@@ -69,7 +71,7 @@ describe('Popup', () => {
           : null;
 
         return (
-          <Map ref='map' center={position} zoom={10}>
+          <Map center={position} ref='map' zoom={10}>
             <TileLayer url='http://{s}.tile.osm.org/{z}/{x}/{y}.png' />
             {popup}
           </Map>
