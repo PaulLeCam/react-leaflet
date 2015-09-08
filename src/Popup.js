@@ -17,45 +17,54 @@ export default class Popup extends MapComponent {
 
   componentWillMount() {
     super.componentWillMount();
-    const { children, map, ...props } = this.props;
-    this.leafletElement = popup(props);
+    const { children, map, popupContainer, ...props } = this.props;
+    this.leafletElement = popup(props, popupContainer);
+    this.leafletElement.on('open', () => { //on popoup create new react root
+      const {children} = this.props;
+      this.contentComponent = React.render(React.DOM.div({children}), this.leafletElement._contentNode);
+      this.leafletElement._adjustPan();
+    })
+    this.leafletElement.on('close', () => { //remove react root
+      delete this.contentComponent;
+      React.unmountComponentAtNode(this.leafletElement._contentNode);
+    })
+  }
+
+  componentDidMount() {
+    const { popupContainer, map, position } = this.props;
+    super.componentDidMount();
+    //Attach to container component
+    if (popupContainer) {
+      popupContainer.bindPopup(this.leafletElement);
+    } else { //attach to map
+      if (position) this.leafletElement.setLatLng(position);
+      this.leafletElement.openOn(map);
+    }
   }
 
   componentDidUpdate(prevProps) {
-    const { children, map, popupContainer, position, ...props } = this.props;
-    if (children !== prevProps.children) {
-      const content = React.renderToStaticMarkup(children);
-      if (popupContainer) {
-        popupContainer.bindPopup(content, props);
-      }
-      else {
-        const el = this.leafletElement;
-        el.setContent(content);
-        if (position !== prevProps.position) el.setLatLng(position);
-      }
+    const { children, popupContainer, position } = this.props;
+    if (!popupContainer) {
+      if (position !== prevProps.position) this.leafletElement.setLatLng(position);
+    }
+    if (this.contentComponent) {
+      this.contentComponent = React.render(React.DOM.div({children}), this.leafletElement._contentNode);
     }
   }
 
   componentWillUnmount() {
+    const { map, popupContainer } = this.props;
     super.componentWillUnmount();
-    this.props.map.removeLayer(this.leafletElement);
-  }
-
-  render() {
-    const { children, map, popupContainer, position, ...props } = this.props;
-    if (children) {
-      const content = React.renderToStaticMarkup(children);
-      // Attach to container component
-      if (popupContainer) {
-        popupContainer.bindPopup(content, props);
-        return null;
-      }
-      // Attach to a Map
-      const el = this.leafletElement;
-      el.setContent(content);
-      if (position) el.setLatLng(position);
-      el.openOn(map);
+    if (this.leafletElement._contentNode) {
+      React.unmountComponentAtNode(this.leafletElement._contentNode);
     }
+    if (popupContainer) {
+      popupContainer.unbindPopup(this.leafletElement);
+    } else {
+      map.removeLayer(this.leafletElement);
+    }
+  }
+  render() {
     return null;
   }
 }
