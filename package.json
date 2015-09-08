@@ -1,6 +1,6 @@
 {
   "name": "react-leaflet",
-  "version": "0.6.2",
+  "version": "0.7.0",
   "description": "React components for Leaflet maps",
   "main": "lib/index.js",
   "scripts": {
@@ -51,7 +51,7 @@
     "gulp-load-plugins": "^0.10.0",
     "gulp-util": "^3.0.5",
     "gulp-webserver": "^0.9.1",
-    "jest-cli": "^0.5.1",
+    "jest-cli": "^0.5.2",
     "leaflet": "^0.7.5",
     "onchange": "^2.0.0",
     "react": "^0.13.3",
