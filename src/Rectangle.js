@@ -1,9 +1,9 @@
 import { rectangle } from 'leaflet';
 
 import boundsType from './types/bounds';
-import PopupContainer from './PopupContainer';
+import Path from './Path';
 
-export default class Rectangle extends PopupContainer {
+export default class Rectangle extends Path {
   static propTypes = {
     bounds: boundsType.isRequired,
   };
@@ -18,5 +18,6 @@ export default class Rectangle extends PopupContainer {
     if (this.props.bounds !== prevProps.bounds) {
       this.leafletElement.setBounds(this.props.bounds);
     }
+    this.setStyleIfChanged(prevProps, this.props);
   }
 }

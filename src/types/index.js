@@ -1,5 +1,3 @@
-import bounds from './bounds';
-import latlng from './latlng';
-import latlngList from './latlngList';
-
-export default { bounds, latlng, latlngList };
+export bounds from './bounds';
+export latlng from './latlng';
+export latlngList from './latlngList';

@@ -1,3 +1,12 @@
+## In development
+
+- Updated Leaflet to v0.7.5.
+- Added `Path` base component for vector layers, handling dynamic [Path options](http://leafletjs.com/reference.html#path-options) properties.
+- Support allowing holes in `Polygon`.
+- [internal] Updated Jest to v0.5.
+- [internal] Updated Gulpfile to use Babel.
+- [internal] Added ESLint validation.
+
 ## v0.6.2 (14/06/15)
 
 Fix ignored events in `MapComponent` ([#41](https://github.com/PaulLeCam/react-leaflet/pull/41)).

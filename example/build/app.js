@@ -125,15 +125,16 @@ var EventsExample = (function (_Component) {
 
       return _react2['default'].createElement(
         _reactLeaflet.Map,
-        { ref: 'map',
+        {
           center: this.state.latlng,
-          zoom: 13,
+          length: 4,
           onClick: this.handleClick.bind(this),
           onLocationfound: this.handleLocationFound.bind(this),
-          length: 4 },
+          ref: 'map',
+          zoom: 13 },
         _react2['default'].createElement(_reactLeaflet.TileLayer, {
-          url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
-          attribution: '© <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          attribution: '© <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+          url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png'
         }),
         marker
       );
@@ -191,8 +192,8 @@ var SimpleExample = (function (_Component) {
         _reactLeaflet.Map,
         { center: position, zoom: this.state.zoom },
         _react2['default'].createElement(_reactLeaflet.TileLayer, {
-          url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
-          attribution: '© <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          attribution: '© <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+          url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png'
         }),
         _react2['default'].createElement(
           _reactLeaflet.Marker,
@@ -270,13 +271,13 @@ var VectorLayersExample = (function (_Component) {
         _reactLeaflet.Map,
         { center: center, zoom: 13 },
         _react2['default'].createElement(_reactLeaflet.TileLayer, {
-          url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
-          attribution: '© <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          attribution: '© <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+          url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png'
         }),
-        _react2['default'].createElement(_reactLeaflet.Circle, { center: center, radius: 200, fillColor: 'blue' }),
+        _react2['default'].createElement(_reactLeaflet.Circle, { center: center, fillColor: 'blue', radius: 200 }),
         _react2['default'].createElement(
           _reactLeaflet.CircleMarker,
-          { center: [51.51, -0.12], radius: 20, color: 'red' },
+          { center: [51.51, -0.12], color: 'red', radius: 20 },
           _react2['default'].createElement(
             _reactLeaflet.Popup,
             null,
@@ -287,10 +288,10 @@ var VectorLayersExample = (function (_Component) {
             )
           )
         ),
-        _react2['default'].createElement(_reactLeaflet.Polyline, { positions: polyline, color: 'lime' }),
-        _react2['default'].createElement(_reactLeaflet.MultiPolyline, { polylines: multiPolyline, color: 'lime' }),
-        _react2['default'].createElement(_reactLeaflet.Polygon, { positions: polygon, color: 'purple' }),
-        _react2['default'].createElement(_reactLeaflet.MultiPolygon, { polygons: multiPolygon, color: 'purple' }),
+        _react2['default'].createElement(_reactLeaflet.Polyline, { color: 'lime', positions: polyline }),
+        _react2['default'].createElement(_reactLeaflet.MultiPolyline, { color: 'lime', polylines: multiPolyline }),
+        _react2['default'].createElement(_reactLeaflet.Polygon, { color: 'purple', positions: polygon }),
+        _react2['default'].createElement(_reactLeaflet.MultiPolygon, { color: 'purple', polygons: multiPolygon }),
         _react2['default'].createElement(_reactLeaflet.Rectangle, { bounds: rectangle, color: 'black' })
       );
     }

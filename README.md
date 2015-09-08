@@ -1,5 +1,4 @@
-React-Leaflet
-=============
+# React-Leaflet
 
 React components for Leaflet maps.
 
@@ -40,17 +39,19 @@ import React from 'react';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 
 const position = [51.505, -0.09];
-const map = <Map center={position} zoom={13}>
-  <TileLayer
-    url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
-    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-  />
-  <Marker position={position}>
-    <Popup>
-      <span>A pretty CSS3 popup.<br/>Easily customizable.</span>
-    </Popup>
-  </Marker>
-</Map>;
+const map = (
+  <Map center={position} zoom={13}>
+    <TileLayer
+      url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+      attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    />
+    <Marker position={position}>
+      <Popup>
+        <span>A pretty CSS3 popup.<br/>Easily customizable.</span>
+      </Popup>
+    </Marker>
+  </Map>
+);
 
 React.render(map, document.getElementById('map-container'));
 ```
@@ -112,6 +113,13 @@ Base class extending `MapLayer` with a `render()` method and handling a TitleLay
 
 Base class extending `MapLayer` with a `render()` method passing its `leafletElement` to its children as the `popupContainer` prop.
 
+##### Path
+
+Base class extending `PopupContainer` with the following methods:
+- `getPathOptions(Object props): Object`: filters the input `props` and return a new object of [Path options](http://leafletjs.com/reference.html#path-options) properties.
+- `setStyle(Object options = {}): void`: alias to the Leaflet element [`setStyle()`](http://leafletjs.com/reference.html#path-setstyle).
+- `setStyleIfChanged(Object fromProps, Object toProps): void`: extracts the Path options of the two arguments, and calls `setStyle()` with the new options if different from the previous ones.
+
 #### Map
 
 This is the top-level component that must be mounted for children ones to be rendered. Refer to Leaflet documentation for more information about the properties.
@@ -161,6 +169,8 @@ The Popup children will be rendered as its content using `React.renderToStaticMa
 - WMSTileLayer
 
 #### Vector Layers
+
+All vector layers extend the **Path** component and therefore accept dynamic [Path options](http://leafletjs.com/reference.html#path-options) properties.
 
 ##### Circle
 
