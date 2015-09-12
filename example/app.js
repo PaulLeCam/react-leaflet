@@ -1,4 +1,5 @@
 import React from 'react';
+import { render } from 'react-dom';
 
 import SimpleExample from './simple';
 import EventsExample from './events';
@@ -17,4 +18,4 @@ const examples = (
   </div>
 );
 
-React.render(examples, document.getElementById('app'));
+render(examples, document.getElementById('app'));

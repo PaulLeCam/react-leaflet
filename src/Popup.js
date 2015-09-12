@@ -1,4 +1,5 @@
-import React, { Children, PropTypes } from 'react';
+import { Children, PropTypes } from 'react';
+import { render, unmountComponentAtNode } from 'react-dom';
 import { Map, popup } from 'leaflet';
 
 import latlngType from './types/latlng';
@@ -58,7 +59,7 @@ export default class Popup extends MapComponent {
 
   renderPopupContent() {
     if (this.props.children) {
-      React.render(
+      render(
         Children.only(this.props.children),
         this.leafletElement._contentNode
       );
@@ -73,7 +74,7 @@ export default class Popup extends MapComponent {
   }
 
   removePopupContent() {
-    React.unmountComponentAtNode(this.leafletElement._contentNode);
+    unmountComponentAtNode(this.leafletElement._contentNode);
   }
 
   render() {

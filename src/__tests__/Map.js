@@ -1,4 +1,6 @@
 import React from 'react';
+import { findDOMNode, render } from 'react-dom';
+import { renderToStaticMarkup } from 'react-dom/server';
 
 jest.dontMock('../Map');
 jest.dontMock('../MapComponent');
@@ -17,15 +19,15 @@ describe('Map', () => {
       }
     }
     const component = <Map><Component /></Map>;
-    const html = React.renderToStaticMarkup(component, document.getElementById('test'));
+    const html = renderToStaticMarkup(component, document.getElementById('test'));
 
     expect(html).toBe('<div id="map1"></div>');
   });
 
   it('initializes the map in the rendered container', () => {
     const component = <Map />;
-    const instance = React.render(component, document.getElementById('test'));
-    const node = React.findDOMNode(instance);
+    const instance = render(component, document.getElementById('test'));
+    const node = findDOMNode(instance);
 
     expect(node._leaflet).toBe(true);
   });
@@ -35,7 +37,7 @@ describe('Map', () => {
     const zoom = 10;
 
     const component = <Map center={center} zoom={zoom} />;
-    const instance = React.render(component, document.getElementById('test'));
+    const instance = render(component, document.getElementById('test'));
     const mapLeaflet = instance.leafletElement;
 
     expect(mapLeaflet.getCenter().lat).toBe(center[0]);
@@ -65,7 +67,7 @@ describe('Map', () => {
         return <Map center={this.state.center} ref='map' zoom={this.state.zoom} />;
       }
     }
-    const instance = React.render(<Component />, document.getElementById('test'));
+    const instance = render(<Component />, document.getElementById('test'));
     const mapLeaflet = instance.getLeafletMap();
 
     expect(mapLeaflet.getCenter().lat).toBe(1.2);

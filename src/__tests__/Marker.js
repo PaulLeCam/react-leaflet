@@ -1,4 +1,5 @@
 import React from 'react';
+import { render } from 'react-dom';
 
 jest.dontMock('../BaseTileLayer');
 jest.dontMock('../MapComponent');
@@ -22,7 +23,7 @@ describe('Marker', () => {
     );
 
     document.body.innerHTML = '<div id="test"></div>';
-    React.render(component, document.getElementById('test'));
+    render(component, document.getElementById('test'));
 
     expect(document.querySelector('#test .leaflet-marker-pane img')).toBeDefined();
   });

@@ -1,4 +1,5 @@
 import React from 'react';
+import { render } from 'react-dom';
 
 jest.dontMock('../BaseTileLayer');
 jest.dontMock('../MapComponent');
@@ -25,7 +26,7 @@ describe('Popup', () => {
     );
 
     document.body.innerHTML = '<div id="test"></div>';
-    React.render(component, document.getElementById('test'));
+    render(component, document.getElementById('test'));
 
     expect(document.querySelector('#test .leaflet-popup-content span').textContent).toBe('Test Popup');
   });
@@ -80,6 +81,6 @@ describe('Popup', () => {
     }
 
     document.body.innerHTML = '<div id="test"></div>';
-    React.render(<Component />, document.getElementById('test'));
+    render(<Component />, document.getElementById('test'));
   });
 });

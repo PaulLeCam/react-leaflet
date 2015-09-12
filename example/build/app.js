@@ -7,6 +7,8 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactDom = require('react-dom');
+
 var _simple = require('./simple');
 
 var _simple2 = _interopRequireDefault(_simple);
@@ -52,9 +54,9 @@ var examples = _react2['default'].createElement(
   _react2['default'].createElement(_vectorLayers2['default'], null)
 );
 
-_react2['default'].render(examples, document.getElementById('app'));
+(0, _reactDom.render)(examples, document.getElementById('app'));
 
-},{"./events":2,"./simple":3,"./vector-layers":4,"react":"react"}],2:[function(require,module,exports){
+},{"./events":2,"./simple":3,"./vector-layers":4,"react":"react","react-dom":"react-dom"}],2:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {

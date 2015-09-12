@@ -1282,7 +1282,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== 'function' 
 
 var _react = require('react');
 
-var _react2 = _interopRequireDefault(_react);
+var _reactDom = require('react-dom');
 
 var _leaflet = require('leaflet');
 
@@ -1362,7 +1362,7 @@ var Popup = (function (_MapComponent) {
     key: 'renderPopupContent',
     value: function renderPopupContent() {
       if (this.props.children) {
-        _react2['default'].render(_react.Children.only(this.props.children), this.leafletElement._contentNode);
+        (0, _reactDom.render)(_react.Children.only(this.props.children), this.leafletElement._contentNode);
 
         this.leafletElement._updateLayout();
         this.leafletElement._updatePosition();
@@ -1374,7 +1374,7 @@ var Popup = (function (_MapComponent) {
   }, {
     key: 'removePopupContent',
     value: function removePopupContent() {
-      _react2['default'].unmountComponentAtNode(this.leafletElement._contentNode);
+      (0, _reactDom.unmountComponentAtNode)(this.leafletElement._contentNode);
     }
   }, {
     key: 'render',
@@ -1397,7 +1397,7 @@ var Popup = (function (_MapComponent) {
 
 exports['default'] = Popup;
 module.exports = exports['default'];
-},{"./MapComponent":9,"./types/latlng":24,"leaflet":"leaflet","react":"react"}],18:[function(require,module,exports){
+},{"./MapComponent":9,"./types/latlng":24,"leaflet":"leaflet","react":"react","react-dom":"react-dom"}],18:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {

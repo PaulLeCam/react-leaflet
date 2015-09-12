@@ -1,5 +1,6 @@
 import Leaflet from 'leaflet';
 import React from 'react';
+import { render } from 'react-dom';
 
 jest.dontMock('../MapComponent');
 
@@ -20,7 +21,7 @@ describe('MapComponent', () => {
     document.body.innerHTML = '<div id="test"></div>';
 
     const component = <Component />;
-    const instance = React.render(component, document.getElementById('test'));
+    const instance = render(component, document.getElementById('test'));
 
     expect(instance.leafletElement._container).toBeDefined();
   });
@@ -30,7 +31,7 @@ describe('MapComponent', () => {
 
     const callback = jest.genMockFn();
     const component = <Component onLeafletClick={callback} />;
-    const instance = React.render(component, document.getElementById('test'));
+    const instance = render(component, document.getElementById('test'));
 
     instance.fireLeafletEvent('click');
     expect(callback.mock.calls.length).toBe(1);
@@ -41,7 +42,7 @@ describe('MapComponent', () => {
 
     const callback = jest.genMockFn();
     const component = <Component onClick={callback} />;
-    const instance = React.render(component, document.getElementById('test'));
+    const instance = render(component, document.getElementById('test'));
 
     instance.fireLeafletEvent('click');
     expect(callback.mock.calls.length).toBe(1);
@@ -74,7 +75,7 @@ describe('MapComponent', () => {
     }
 
     const component = <TestComponent />;
-    const instance = React.render(component, document.getElementById('test'));
+    const instance = render(component, document.getElementById('test'));
 
     instance.fire();
     expect(callback.mock.calls.length).toBe(1);
@@ -110,7 +111,7 @@ describe('MapComponent', () => {
     }
 
     const component = <TestComponent />;
-    const instance = React.render(component, document.getElementById('test'));
+    const instance = render(component, document.getElementById('test'));
 
     instance.fire();
     expect(callback1.mock.calls.length).toBe(1);
