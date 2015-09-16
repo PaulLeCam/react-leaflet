@@ -1,3 +1,9 @@
+## v0.8.0-rc.1 (16/09/15)
+
+- Updated React to v0.14.0-rc1.
+- Added ReactDOM v0.14.0-rc1 to peer dependencies.
+- `Popup` now renders its contents using `ReactDOM.render()` and therefore supports dynamic children.
+
 ## v0.7.0 (08/09/15)
 
 - Updated Leaflet to v0.7.5.
@@ -35,11 +41,11 @@ Released v0.4.
 
 ## v0.4.0-rc.1 (11/03/15)
 
-React 0.13.0.
+React v0.13.0.
 
 ## v0.4.0-beta.1 (08/03/15)
 
-- Updated React dependency to 0.13.0-rc2:
+- Updated React dependency to v0.13.0-rc2:
   - Components are defined as ES6 classes.
   - Mixins are replaced by the base components `MapComponent`, `MapLayer`, `BaseTileLayer` and `PopupContainer`. All components extend from these.
   - The new [`React.cloneElement()`](https://facebook.github.io/react/blog/2015/03/03/react-v0.13-rc2.html#react.cloneelement) API is used instead of the deprecated `React.addons.cloneWithProps()` to pass the `map` property to the components.

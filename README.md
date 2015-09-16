@@ -8,10 +8,10 @@ React components for Leaflet maps.
 npm install react-leaflet
 ```
 
-React and Leaflet are peer dependencies, if you haven't already installed them use:
+React, ReactDOM and Leaflet are peer dependencies, if you haven't already installed them use:
 
 ```bash
-npm install leaflet react react-leaflet
+npm install leaflet react react-dom react-leaflet
 ```
 
 ## Getting started
@@ -63,7 +63,6 @@ This library uses React components as an interface, but not the virtual DOM, as 
 
 - Leaflet makes direct calls to the DOM when it is loaded, therefore this library is not compatible with server-side rendering.
 - The components exposed are abstractions for Leaflet layers, not DOM elements. Some of them have properties that can be updated directly by calling the setters exposed by Leaflet while others should be completely replaced, by setting an unique value on their `key` property so that they are properly handled by React's algorithm.
-- `<Popup>` contents are rendered by Leaflet calling `React.renderToStaticMarkup()`, therefore the rendered components have a different context from their owner.
 - Not all layers are implemented and even less tested.
 
 ## API
@@ -145,7 +144,7 @@ This is the top-level component that must be mounted for children ones to be ren
 
 ##### Popup
 
-The Popup children will be rendered as its content using `React.renderToStaticMarkup()`, they must be valid React elements.
+The Popup children will be rendered using `ReactDOM.render()`, they must be valid React elements.
 
 - `position: LatLng` (optional, dynamic)
 
