@@ -4,6 +4,7 @@ import { render } from 'react-dom';
 import SimpleExample from './simple';
 import EventsExample from './events';
 import VectorLayersExample from './vector-layers';
+import BoundsExample from './bounds';
 
 const examples = (
   <div>
@@ -15,6 +16,9 @@ const examples = (
     <EventsExample />
     <h2>Vector layers</h2>
     <VectorLayersExample />
+    <h2>Map view by bounds</h2>
+    <p>Click a rectangle to fit the map to its bounds</p>
+    <BoundsExample />
   </div>
 );
 
