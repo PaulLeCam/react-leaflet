@@ -74,7 +74,9 @@ export default class Popup extends MapComponent {
   }
 
   removePopupContent() {
-    unmountComponentAtNode(this.leafletElement._contentNode);
+    if (this.leafletElement._contentNode) {
+      unmountComponentAtNode(this.leafletElement._contentNode);
+    }
   }
 
   render() {

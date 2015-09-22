@@ -1,3 +1,7 @@
+## v0.8.0-rc.2 (22/09/15)
+
+Check if `Popup` content node exists before trying to unmount.
+
 ## v0.8.0-rc.1 (16/09/15)
 
 - Updated React to v0.14.0-rc1.

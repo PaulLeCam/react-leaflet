@@ -36,6 +36,7 @@ L.marker(position).addTo(map)
 **React-Leaflet**
 ```js
 import React from 'react';
+import { render } from 'react-dom';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 
 const position = [51.505, -0.09];
@@ -53,7 +54,7 @@ const map = (
   </Map>
 );
 
-React.render(map, document.getElementById('map-container'));
+render(map, document.getElementById('map-container'));
 ```
 Note that the `<Map>` component creates its own `<div>` container for the map, it does not get attached to an existing node.
 
