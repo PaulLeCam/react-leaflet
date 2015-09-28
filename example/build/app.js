@@ -21,6 +21,10 @@ var _vectorLayers = require('./vector-layers');
 
 var _vectorLayers2 = _interopRequireDefault(_vectorLayers);
 
+var _bounds = require('./bounds');
+
+var _bounds2 = _interopRequireDefault(_bounds);
+
 var examples = _react2['default'].createElement(
   'div',
   null,
@@ -51,12 +55,106 @@ var examples = _react2['default'].createElement(
     null,
     'Vector layers'
   ),
-  _react2['default'].createElement(_vectorLayers2['default'], null)
+  _react2['default'].createElement(_vectorLayers2['default'], null),
+  _react2['default'].createElement(
+    'h2',
+    null,
+    'Map view by bounds'
+  ),
+  _react2['default'].createElement(
+    'p',
+    null,
+    'Click a rectangle to fit the map to its bounds'
+  ),
+  _react2['default'].createElement(_bounds2['default'], null)
 );
 
 (0, _reactDom.render)(examples, document.getElementById('app'));
 
-},{"./events":2,"./simple":3,"./vector-layers":4,"react":"react","react-dom":"react-dom"}],2:[function(require,module,exports){
+},{"./bounds":2,"./events":3,"./simple":4,"./vector-layers":5,"react":"react","react-dom":"react-dom"}],2:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactLeaflet = require('react-leaflet');
+
+var outer = [[50.505, -29.09], [52.505, 29.09]];
+var inner = [[49.505, -2.09], [53.505, 2.09]];
+
+var BoundsExample = (function (_Component) {
+  _inherits(BoundsExample, _Component);
+
+  function BoundsExample() {
+    _classCallCheck(this, BoundsExample);
+
+    _get(Object.getPrototypeOf(BoundsExample.prototype), 'constructor', this).call(this);
+    this.state = {
+      bounds: outer
+    };
+  }
+
+  _createClass(BoundsExample, [{
+    key: 'handleClick',
+    value: function handleClick() {
+      if (this.state.bounds === outer) {
+        this.setState({ bounds: inner });
+      } else {
+        this.setState({ bounds: outer });
+      }
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this = this;
+
+      return _react2['default'].createElement(
+        _reactLeaflet.Map,
+        { bounds: this.state.bounds },
+        _react2['default'].createElement(_reactLeaflet.TileLayer, {
+          attribution: '© <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+          url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+        }),
+        _react2['default'].createElement(_reactLeaflet.Rectangle, {
+          bounds: outer,
+          color: this.state.bounds === outer ? 'red' : 'white',
+          onClick: function () {
+            return _this.setState({ bounds: outer });
+          }
+        }),
+        _react2['default'].createElement(_reactLeaflet.Rectangle, {
+          bounds: inner,
+          color: this.state.bounds === inner ? 'red' : 'white',
+          onClick: function () {
+            return _this.setState({ bounds: inner });
+          }
+        })
+      );
+    }
+  }]);
+
+  return BoundsExample;
+})(_react.Component);
+
+exports['default'] = BoundsExample;
+module.exports = exports['default'];
+
+},{"react":"react","react-leaflet":"react-leaflet"}],3:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -149,7 +247,7 @@ var EventsExample = (function (_Component) {
 exports['default'] = EventsExample;
 module.exports = exports['default'];
 
-},{"react":"react","react-leaflet":"react-leaflet"}],3:[function(require,module,exports){
+},{"react":"react","react-leaflet":"react-leaflet"}],4:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -222,7 +320,7 @@ var SimpleExample = (function (_Component) {
 exports['default'] = SimpleExample;
 module.exports = exports['default'];
 
-},{"react":"react","react-leaflet":"react-leaflet"}],4:[function(require,module,exports){
+},{"react":"react","react-leaflet":"react-leaflet"}],5:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {

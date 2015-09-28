@@ -3,6 +3,7 @@ import Leaflet from 'leaflet';
 export PropTypes from './types';
 
 export BaseTileLayer from './BaseTileLayer';
+export BoundsMap from './BoundsMap';
 export CanvasTileLayer from './CanvasTileLayer';
 export Circle from './Circle';
 export CircleMarker from './CircleMarker';
