@@ -1,4 +1,5 @@
 import isArray from 'lodash/lang/isArray';
+import isUndefined from 'lodash/lang/isUndefined';
 import uniqueId from 'lodash/utility/uniqueId';
 
 import React, { PropTypes } from 'react';
@@ -13,6 +14,7 @@ const normalizeCenter = pos => isArray(pos) ? pos : [pos.lat, pos.lng || pos.lon
 
 export default class Map extends MapComponent {
   static propTypes = {
+    bounds: boundsType,
     center: latlngType,
     children: PropTypes.oneOfType([
       PropTypes.arrayOf(PropTypes.node),
@@ -38,15 +40,23 @@ export default class Map extends MapComponent {
     this.leafletElement = Leaflet.map(this.state.id, this.props);
     super.componentDidMount();
     this.setState({map: this.leafletElement});
+    if (!isUndefined(this.props.bounds)) {
+      this.leafletElement.fitBounds(this.props.bounds);
+    }
   }
 
   componentDidUpdate(prevProps) {
-    const { center, zoom } = this.props;
+    const { bounds, center, zoom } = this.props;
     if (center && this.shouldUpdateCenter(center, prevProps.center)) {
       this.leafletElement.setView(center, zoom, {animate: false});
     }
     else if (zoom && zoom !== prevProps.zoom) {
+      // This branch must be an else if because if the center updates, the zoom
+      // will already be updated with it
       this.leafletElement.setZoom(zoom);
+    }
+    if (bounds && this.shouldUpdateBounds(bounds, prevProps.bounds)) {
+      this.leafletElement.fitBounds(bounds);
     }
   }
 
@@ -60,6 +70,13 @@ export default class Map extends MapComponent {
     next = normalizeCenter(next);
     prev = normalizeCenter(prev);
     return next[0] !== prev[0] || next[1] !== prev[1];
+  }
+
+  shouldUpdateBounds(next, prev) {
+    if (!prev) return true;
+    next = Leaflet.latLngBounds(next);
+    prev = Leaflet.latLngBounds(prev);
+    return !next.equals(prev);
   }
 
   render() {
