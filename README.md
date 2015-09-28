@@ -16,6 +16,8 @@ npm install leaflet react react-dom react-leaflet
 
 ## Getting started
 
+If you are not familiar with Leaflet, make sure you read its [quick start guide](http://leafletjs.com/examples/quick-start.html) first. You will need to add its CSS to your page to render the components properly.
+
 All components are React wrappers for Leaflet elements and layers, they need a map instance and therefore must be included in a top-level `<Map>` component.
 
 **Leaflet example**
@@ -70,7 +72,7 @@ This library uses React components as an interface, but not the virtual DOM, as 
 
 ### Helpers
 
-**setIconDefaultImagePath(path: string)**: Setter for `Leaflet.Icon.Default.imagePath`, set to `//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/images` by default.
+**setIconDefaultImagePath(path: string)**: Setter for `Leaflet.Icon.Default.imagePath`, set to `//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/images` by default.
 
 ### PropTypes
 
