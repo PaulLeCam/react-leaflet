@@ -125,6 +125,7 @@ Base class extending `PopupContainer` with the following methods:
 This is the top-level component that must be mounted for children ones to be rendered. Refer to Leaflet documentation for more information about the properties.
 
 **Properties**
+- `bounds` (optional, dynamic): A rectangle for the map to contain. It will be centered, and the map will zoom in as close as it can while still showing the full bounds. This property is dynamic, if you change it it will be reflected on the map.
 - `center: LatLng` (optional, dynamic): Center of the map. This property is dynamic, if you change it it will be reflected in the map.
 - `className: String` (optional, dynamic): className property of the `<div>` container for the map.
 - `id: String` (optional): The ID of the `<div>` container for the map. If you don't provide it, a unique one will be created.
@@ -133,21 +134,6 @@ This is the top-level component that must be mounted for children ones to be ren
 - `minZoom: Number` (optional)
 - `style: Object` (optional, dynamic): style property of the `<div>` container for the map.
 - `zoom: Number` (optional, dynamic)
-
-#### BoundsMap
-
-This is an alternative top-level component that can be mounted for children ones to be rendered. As with `Map` above, refer to the Leaflet documentation for more information about the properties.
-
-The key difference with BoundsMap is that it accepts a single `bounds` prop instead of `center` and `zoom`. This allows setting the map to contain specific areas of interest (like a town or continent) based their bounding box.
-
-**Properties**
-- `bounds` (optional, dynamic): A rectangle for the map to contain. It will be centered, and the map will zoom in as close as it can while still showing the full bounds. This property is dynamic, if you change it, the map will set its view to the new bounds.
-- `className: String` (optional, dynamic): className property of the `<div>` container for the map.
-- `id: String` (optional): The ID of the `<div>` container for the map. If you don't provide it, a unique one will be created.
-- `maxBounds: Bounds` (optional)
-- `maxZoom: Number` (optional)
-- `minZoom: Number` (optional)
-- `style: Object` (optional, dynamic): style property of the `<div>` container for the map.
 
 #### UI Layers
 
