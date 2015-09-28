@@ -124,7 +124,7 @@ var BoundsExample = (function (_Component) {
       var _this = this;
 
       return _react2['default'].createElement(
-        _reactLeaflet.BoundsMap,
+        _reactLeaflet.Map,
         { bounds: this.state.bounds },
         _react2['default'].createElement(_reactLeaflet.TileLayer, {
           attribution: '© <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',

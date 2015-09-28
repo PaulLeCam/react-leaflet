@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BoundsMap, TileLayer, Rectangle } from 'react-leaflet';
+import { Map, TileLayer, Rectangle } from 'react-leaflet';
 
 const outer = [
   [50.505, -29.09],
@@ -28,7 +28,7 @@ export default class BoundsExample extends Component {
 
   render() {
     return (
-      <BoundsMap bounds={this.state.bounds}>
+      <Map bounds={this.state.bounds}>
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
@@ -43,7 +43,7 @@ export default class BoundsExample extends Component {
           color={this.state.bounds === inner ? 'red' : 'white'}
           onClick={() => this.setState({bounds: inner})}
         />
-      </BoundsMap>
+      </Map>
     );
   }
 }

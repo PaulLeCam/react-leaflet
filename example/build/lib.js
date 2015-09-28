@@ -599,6 +599,10 @@ var _lodashLangIsArray = require('lodash/lang/isArray');
 
 var _lodashLangIsArray2 = _interopRequireDefault(_lodashLangIsArray);
 
+var _lodashLangIsUndefined = require('lodash/lang/isUndefined');
+
+var _lodashLangIsUndefined2 = _interopRequireDefault(_lodashLangIsUndefined);
+
 var _lodashUtilityUniqueId = require('lodash/utility/uniqueId');
 
 var _lodashUtilityUniqueId2 = _interopRequireDefault(_lodashUtilityUniqueId);
@@ -633,6 +637,7 @@ var Map = (function (_MapComponent) {
   _createClass(Map, null, [{
     key: 'propTypes',
     value: {
+      bounds: _typesBounds2['default'],
       center: _typesLatlng2['default'],
       children: _react.PropTypes.oneOfType([_react.PropTypes.arrayOf(_react.PropTypes.node), _react.PropTypes.node]),
       className: _react.PropTypes.string,
@@ -661,18 +666,27 @@ var Map = (function (_MapComponent) {
       this.leafletElement = _leaflet2['default'].map(this.state.id, this.props);
       _get(Object.getPrototypeOf(Map.prototype), 'componentDidMount', this).call(this);
       this.setState({ map: this.leafletElement });
+      if (!(0, _lodashLangIsUndefined2['default'])(this.props.bounds)) {
+        this.leafletElement.fitBounds(this.props.bounds);
+      }
     }
   }, {
     key: 'componentDidUpdate',
     value: function componentDidUpdate(prevProps) {
       var _props = this.props;
+      var bounds = _props.bounds;
       var center = _props.center;
       var zoom = _props.zoom;
 
       if (center && this.shouldUpdateCenter(center, prevProps.center)) {
         this.leafletElement.setView(center, zoom, { animate: false });
       } else if (zoom && zoom !== prevProps.zoom) {
+        // This branch must be an else if because if the center updates, the zoom
+        // will already be updated with it
         this.leafletElement.setZoom(zoom);
+      }
+      if (bounds && this.shouldUpdateBounds(bounds, prevProps.bounds)) {
+        this.leafletElement.fitBounds(bounds);
       }
     }
   }, {
@@ -688,6 +702,14 @@ var Map = (function (_MapComponent) {
       next = normalizeCenter(next);
       prev = normalizeCenter(prev);
       return next[0] !== prev[0] || next[1] !== prev[1];
+    }
+  }, {
+    key: 'shouldUpdateBounds',
+    value: function shouldUpdateBounds(next, prev) {
+      if (!prev) return true;
+      next = _leaflet2['default'].latLngBounds(next);
+      prev = _leaflet2['default'].latLngBounds(prev);
+      return !next.equals(prev);
     }
   }, {
     key: 'render',
@@ -713,7 +735,7 @@ var Map = (function (_MapComponent) {
 
 exports['default'] = Map;
 module.exports = exports['default'];
-},{"./MapComponent":10,"./types/bounds":23,"./types/latlng":25,"leaflet":"leaflet","lodash/lang/isArray":87,"lodash/utility/uniqueId":101,"react":"react"}],10:[function(require,module,exports){
+},{"./MapComponent":10,"./types/bounds":23,"./types/latlng":25,"leaflet":"leaflet","lodash/lang/isArray":87,"lodash/lang/isUndefined":93,"lodash/utility/uniqueId":101,"react":"react"}],10:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
