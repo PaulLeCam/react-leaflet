@@ -127,11 +127,11 @@ Base class extending `PopupContainer` with the following methods:
 This is the top-level component that must be mounted for children ones to be rendered. Refer to Leaflet documentation for more information about the properties.
 
 **Properties**
-- `bounds` (optional, dynamic): A rectangle for the map to contain. It will be centered, and the map will zoom in as close as it can while still showing the full bounds. This property is dynamic, if you change it it will be reflected on the map.
+- `bounds: Bounds` (optional, dynamic): A rectangle for the map to contain. It will be centered, and the map will zoom in as close as it can while still showing the full bounds. This property is dynamic, if you change it it will be reflected on the map.
 - `center: LatLng` (optional, dynamic): Center of the map. This property is dynamic, if you change it it will be reflected in the map.
 - `className: String` (optional, dynamic): className property of the `<div>` container for the map.
 - `id: String` (optional): The ID of the `<div>` container for the map. If you don't provide it, a unique one will be created.
-- `maxBounds: Bounds` (optional)
+- `maxBounds: Bounds` (optional, dynamic)
 - `maxZoom: Number` (optional)
 - `minZoom: Number` (optional)
 - `style: Object` (optional, dynamic): style property of the `<div>` container for the map.
@@ -206,6 +206,10 @@ All vector layers extend the **Path** component and therefore accept dynamic [Pa
 - `bounds: Bounds` (required, dynamic)
 
 #### Other Layers
+
+##### LayerGroup
+
+Use the `LayerGroup` wrapper component to group children layers together.
 
 ##### Implemented but needing testing and documentation
 

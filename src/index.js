@@ -3,13 +3,13 @@ import Leaflet from 'leaflet';
 export PropTypes from './types';
 
 export BaseTileLayer from './BaseTileLayer';
-export BoundsMap from './BoundsMap';
 export CanvasTileLayer from './CanvasTileLayer';
 export Circle from './Circle';
 export CircleMarker from './CircleMarker';
 export FeatureGroup from './FeatureGroup';
 export GeoJson from './GeoJson';
 export ImageOverlay from './ImageOverlay';
+export LayerGroup from './LayerGroup';
 export Map from './Map';
 export MapComponent from './MapComponent';
 export MapLayer from './MapLayer';

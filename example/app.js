@@ -3,8 +3,9 @@ import { render } from 'react-dom';
 
 import SimpleExample from './simple';
 import EventsExample from './events';
-import VectorLayersExample from './vector-layers';
 import BoundsExample from './bounds';
+import VectorLayersExample from './vector-layers';
+import OtherLayersExample from './other-layers';
 
 const examples = (
   <div>
@@ -14,11 +15,13 @@ const examples = (
     <h2>Events</h2>
     <p>Click the map to show a marker at your detected location</p>
     <EventsExample />
-    <h2>Vector layers</h2>
-    <VectorLayersExample />
     <h2>Map view by bounds</h2>
     <p>Click a rectangle to fit the map to its bounds</p>
     <BoundsExample />
+    <h2>Vector layers</h2>
+    <VectorLayersExample />
+    <h2>Other layers</h2>
+    <OtherLayersExample />
   </div>
 );
 

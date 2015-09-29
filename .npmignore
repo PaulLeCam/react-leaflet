@@ -1,6 +1,8 @@
+coverage
 example
-src
 __tests__
 .editorconfig
+.eslintrc
 .travis.yml
-gulpfile.js
+bower.json
+gulpfile.babel.js

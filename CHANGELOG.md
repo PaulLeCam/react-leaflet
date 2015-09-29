@@ -1,3 +1,8 @@
+## v0.8.0-rc.3 (29/09/15)
+
+- Added `LayerGroup` component ([#58](https://github.com/PaulLeCam/react-leaflet/pull/58)).
+- `Map` now supports dynamic `bounds` and `maxBounds` properties ([#72](https://github.com/PaulLeCam/react-leaflet/pull/72)).
+
 ## v0.8.0-rc.2 (22/09/15)
 
 Check if `Popup` content node exists before trying to unmount.

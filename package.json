@@ -1,6 +1,6 @@
 {
   "name": "react-leaflet",
-  "version": "0.8.0-rc.2",
+  "version": "0.8.0-rc.3",
   "description": "React components for Leaflet maps",
   "main": "lib/index.js",
   "scripts": {
