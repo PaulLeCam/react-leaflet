@@ -2,9 +2,9 @@ import Leaflet from 'leaflet';
 import React from 'react';
 import { render } from 'react-dom';
 
-jest.dontMock('../MapComponent');
+jest.dontMock('../src/MapComponent');
 
-const MapComponent = require('../MapComponent');
+const MapComponent = require('../src/MapComponent');
 
 describe('MapComponent', () => {
   class Component extends MapComponent {

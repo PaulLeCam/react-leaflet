@@ -2,12 +2,12 @@ import Leaflet from 'leaflet';
 import React from 'react';
 import { render } from 'react-dom';
 
-jest.dontMock('../MapComponent');
-jest.dontMock('../MapLayer');
-jest.dontMock('../Map');
+jest.dontMock('../src/MapComponent');
+jest.dontMock('../src/MapLayer');
+jest.dontMock('../src/Map');
 
-const MapLayer = require('../MapLayer');
-const Map = require('../Map');
+const MapLayer = require('../src/MapLayer');
+const Map = require('../src/Map');
 
 describe('MapLayer', () => {
   it('passes its `map` prop to its children', () => {
