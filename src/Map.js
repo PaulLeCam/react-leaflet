@@ -1,3 +1,5 @@
+/* eslint-disable react/no-did-mount-set-state */
+
 import isArray from 'lodash/lang/isArray';
 import isUndefined from 'lodash/lang/isUndefined';
 import uniqueId from 'lodash/utility/uniqueId';

@@ -8,7 +8,7 @@
     "compile": "npm run clean && babel src --out-dir lib",
     "watch": "babel src --watch --out-dir lib",
     "test": "jest --coverage ./lib",
-    "start": "npm run compile && npm test",
+    "start": "npm run lint && npm run compile && npm test",
     "onchange": "onchange 'lib/*.js' 'lib/**/*.js' -- npm run lintAndTest",
     "dev": "npm run watch & npm run onchange",
     "prepublish": "npm ls && npm run lint && npm test",
