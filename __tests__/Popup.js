@@ -3,17 +3,17 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-jest.dontMock('../BaseTileLayer');
-jest.dontMock('../MapComponent');
-jest.dontMock('../MapLayer');
-jest.dontMock('../PopupContainer');
-jest.dontMock('../Map');
-jest.dontMock('../Marker');
-jest.dontMock('../Popup');
-jest.dontMock('../TileLayer');
-jest.dontMock('../index');
+jest.dontMock('../src/BaseTileLayer');
+jest.dontMock('../src/MapComponent');
+jest.dontMock('../src/MapLayer');
+jest.dontMock('../src/PopupContainer');
+jest.dontMock('../src/Map');
+jest.dontMock('../src/Marker');
+jest.dontMock('../src/Popup');
+jest.dontMock('../src/TileLayer');
+jest.dontMock('../src/index');
 
-const { Map, Popup, TileLayer } = require('../');
+const { Map, Popup, TileLayer } = require('../src/');
 
 describe('Popup', () => {
   it('adds the popup to the map', () => {

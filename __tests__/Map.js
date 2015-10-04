@@ -2,10 +2,10 @@ import React from 'react';
 import { findDOMNode, render } from 'react-dom';
 import { renderToStaticMarkup } from 'react-dom/server';
 
-jest.dontMock('../Map');
-jest.dontMock('../MapComponent');
+jest.dontMock('../src/Map');
+jest.dontMock('../src/MapComponent');
 
-const Map = require('../Map');
+const Map = require('../src/Map');
 
 describe('Map', () => {
   beforeEach(() => {
