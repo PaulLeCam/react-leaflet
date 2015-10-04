@@ -7,16 +7,26 @@ module.exports = {
   externals: [
     {
       leaflet: {
-        root: 'L',
-        commonjs2: 'leaflet',
+        amd: 'leaflet',
         commonjs: 'leaflet',
-        amd: 'leaflet'
-      },
+        commonjs2: 'leaflet',
+        root: 'L'
+      }
+    },
+    {
       react: {
-        root: 'React',
-        commonjs2: 'react',
+        amd: 'react',
         commonjs: 'react',
-        amd: 'react'
+        commonjs2: 'react',
+        root: 'React'
+      }
+    },
+    {
+      'react-dom': {
+        amd: 'react-dom',
+        commonjs: 'react-dom',
+        commonjs2: 'react-dom',
+        root: 'ReactDOM'
       }
     }
   ],
