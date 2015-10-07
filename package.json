@@ -1,6 +1,6 @@
 {
   "name": "react-leaflet",
-  "version": "0.8.0-rc.3",
+  "version": "0.8.0",
   "description": "React components for Leaflet maps",
   "main": "lib/index.js",
   "scripts": {
@@ -41,8 +41,8 @@
   },
   "peerDependencies": {
     "leaflet": "^0.7.0",
-    "react": "^0.14.0-rc1",
-    "react-dom": "^0.14.0-rc1"
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0"
   },
   "devDependencies": {
     "babel": "^5.8.23",
@@ -58,7 +58,7 @@
     "gulp-load-plugins": "^0.10.0",
     "gulp-util": "^3.0.6",
     "gulp-webserver": "^0.9.1",
-    "jest-cli": "^0.5.8",
+    "jest-cli": "^0.5.10",
     "leaflet": "^0.7.5",
     "onchange": "^2.0.0",
     "react": "^0.14.0-rc1",

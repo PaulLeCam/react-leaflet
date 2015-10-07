@@ -1,3 +1,13 @@
+## v0.8.0 (07/10/15)
+
+Changes from v0.7.0:
+
+- Updated React to v0.14.0.
+- Added ReactDOM v0.14.0 to peer dependencies.
+- `Popup` now renders its contents using `ReactDOM.render()` and therefore supports dynamic children.
+- `Map` now supports dynamic `bounds` and `maxBounds` properties ([#72](https://github.com/PaulLeCam/react-leaflet/pull/72)).
+- Added `LayerGroup` component ([#58](https://github.com/PaulLeCam/react-leaflet/pull/58)).
+
 ## v0.8.0-rc.3 (29/09/15)
 
 - Added `LayerGroup` component ([#58](https://github.com/PaulLeCam/react-leaflet/pull/58)).
