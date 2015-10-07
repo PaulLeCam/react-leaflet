@@ -4,6 +4,7 @@ export PropTypes from './types';
 
 export BaseTileLayer from './BaseTileLayer';
 export CanvasTileLayer from './CanvasTileLayer';
+export CartoDBTileLayer from './CartoDBTileLayer';
 export Circle from './Circle';
 export CircleMarker from './CircleMarker';
 export FeatureGroup from './FeatureGroup';
