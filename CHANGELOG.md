@@ -1,3 +1,7 @@
+## v0.8.1 (21/10/15)
+
+Fix `PropTypes` export.
+
 ## v0.8.0 (07/10/15)
 
 Changes from v0.7.0:

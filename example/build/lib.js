@@ -561,6 +561,8 @@ var LayerGroup = (function (_MapLayer) {
 exports['default'] = LayerGroup;
 module.exports = exports['default'];
 },{"./MapLayer":11,"leaflet":"leaflet","react":"react"}],9:[function(require,module,exports){
+/* eslint-disable react/no-did-mount-set-state */
+
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -766,6 +768,32 @@ var MapComponent = (function (_Component) {
   }
 
   _createClass(MapComponent, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      this._leafletEvents = this.extractLeafletEvents(this.props);
+    }
+  }, {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.bindLeafletEvents(this._leafletEvents);
+    }
+  }, {
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      var next = this.extractLeafletEvents(nextProps);
+      this._leafletEvents = this.bindLeafletEvents(next, this._leafletEvents);
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      var el = this.leafletElement;
+      if (!el) return;
+
+      (0, _lodashCollectionForEach2['default'])(this._leafletEvents, function (cb, ev) {
+        el.off(ev, cb);
+      });
+    }
+  }, {
     key: 'getLeafletElement',
     value: function getLeafletElement() {
       return this.leafletElement;
@@ -814,32 +842,6 @@ var MapComponent = (function (_Component) {
     value: function fireLeafletEvent(type, data) {
       var el = this.leafletElement;
       if (el) el.fire(type, data);
-    }
-  }, {
-    key: 'componentWillMount',
-    value: function componentWillMount() {
-      this._leafletEvents = this.extractLeafletEvents(this.props);
-    }
-  }, {
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      this.bindLeafletEvents(this._leafletEvents);
-    }
-  }, {
-    key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps(nextProps) {
-      var next = this.extractLeafletEvents(nextProps);
-      this._leafletEvents = this.bindLeafletEvents(next, this._leafletEvents);
-    }
-  }, {
-    key: 'componentWillUnmount',
-    value: function componentWillUnmount() {
-      var el = this.leafletElement;
-      if (!el) return;
-
-      (0, _lodashCollectionForEach2['default'])(this._leafletEvents, function (cb, ev) {
-        el.off(ev, cb);
-      });
     }
   }]);
 
@@ -4511,6 +4513,8 @@ Object.defineProperty(exports, '__esModule', {
   value: true
 });
 
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj['default'] = obj; return newObj; } }
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 var _leaflet = require('leaflet');
@@ -4519,9 +4523,9 @@ var _leaflet2 = _interopRequireDefault(_leaflet);
 
 var _types = require('./types');
 
-var _types2 = _interopRequireDefault(_types);
+var _PropTypes = _interopRequireWildcard(_types);
 
-exports.PropTypes = _types2['default'];
+exports.PropTypes = _PropTypes;
 
 var _BaseTileLayer2 = require('./BaseTileLayer');
 

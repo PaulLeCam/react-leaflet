@@ -60,6 +60,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj['default'] = obj; return newObj; } }
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 	var _leaflet = __webpack_require__(1);
@@ -68,9 +70,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _types = __webpack_require__(2);
 
-	var _types2 = _interopRequireDefault(_types);
+	var _PropTypes = _interopRequireWildcard(_types);
 
-	exports.PropTypes = _types2['default'];
+	exports.PropTypes = _PropTypes;
 
 	var _BaseTileLayer2 = __webpack_require__(7);
 
@@ -1421,6 +1423,32 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 
 	  _createClass(MapComponent, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      this._leafletEvents = this.extractLeafletEvents(this.props);
+	    }
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      this.bindLeafletEvents(this._leafletEvents);
+	    }
+	  }, {
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(nextProps) {
+	      var next = this.extractLeafletEvents(nextProps);
+	      this._leafletEvents = this.bindLeafletEvents(next, this._leafletEvents);
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      var el = this.leafletElement;
+	      if (!el) return;
+
+	      (0, _lodashCollectionForEach2['default'])(this._leafletEvents, function (cb, ev) {
+	        el.off(ev, cb);
+	      });
+	    }
+	  }, {
 	    key: 'getLeafletElement',
 	    value: function getLeafletElement() {
 	      return this.leafletElement;
@@ -1469,32 +1497,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function fireLeafletEvent(type, data) {
 	      var el = this.leafletElement;
 	      if (el) el.fire(type, data);
-	    }
-	  }, {
-	    key: 'componentWillMount',
-	    value: function componentWillMount() {
-	      this._leafletEvents = this.extractLeafletEvents(this.props);
-	    }
-	  }, {
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      this.bindLeafletEvents(this._leafletEvents);
-	    }
-	  }, {
-	    key: 'componentWillReceiveProps',
-	    value: function componentWillReceiveProps(nextProps) {
-	      var next = this.extractLeafletEvents(nextProps);
-	      this._leafletEvents = this.bindLeafletEvents(next, this._leafletEvents);
-	    }
-	  }, {
-	    key: 'componentWillUnmount',
-	    value: function componentWillUnmount() {
-	      var el = this.leafletElement;
-	      if (!el) return;
-
-	      (0, _lodashCollectionForEach2['default'])(this._leafletEvents, function (cb, ev) {
-	        el.off(ev, cb);
-	      });
 	    }
 	  }]);
 

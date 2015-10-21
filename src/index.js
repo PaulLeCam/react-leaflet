@@ -1,6 +1,6 @@
 import Leaflet from 'leaflet';
 
-export PropTypes from './types';
+export * as PropTypes from './types';
 
 export BaseTileLayer from './BaseTileLayer';
 export CanvasTileLayer from './CanvasTileLayer';
