@@ -1,6 +1,7 @@
 import Leaflet from 'leaflet';
 
-export PropTypes from './types';
+import * as Types from './types';
+export const PropTypes =  Types;
 
 export BaseTileLayer from './BaseTileLayer';
 export CanvasTileLayer from './CanvasTileLayer';
