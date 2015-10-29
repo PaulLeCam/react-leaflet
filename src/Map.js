@@ -17,6 +17,7 @@ const normalizeCenter = pos => isArray(pos) ? pos : [pos.lat, pos.lng || pos.lon
 export default class Map extends MapComponent {
   static propTypes = {
     bounds: boundsType,
+	boundsOptions: PropTypes.object,
     center: latlngType,
     children: PropTypes.oneOfType([
       PropTypes.arrayOf(PropTypes.node),
@@ -43,7 +44,7 @@ export default class Map extends MapComponent {
     super.componentDidMount();
     this.setState({map: this.leafletElement});
     if (!isUndefined(this.props.bounds)) {
-      this.leafletElement.fitBounds(this.props.bounds);
+      this.leafletElement.fitBounds(this.props.bounds, this.props.boundsOptions);
     }
   }
 
@@ -59,7 +60,7 @@ export default class Map extends MapComponent {
       this.leafletElement.setMaxBounds(maxBounds);
     }
     if (bounds && this.shouldUpdateBounds(bounds, prevProps.bounds)) {
-      this.leafletElement.fitBounds(bounds);
+      this.leafletElement.fitBounds(bounds, this.props.boundsOptions);
     }
   }
 
