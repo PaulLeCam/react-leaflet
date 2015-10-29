@@ -20,7 +20,6 @@ export Path from './Path';
 export Polygon from './Polygon';
 export Polyline from './Polyline';
 export Popup from './Popup';
-export PopupContainer from './PopupContainer';
 export Rectangle from './Rectangle';
 export TileLayer from './TileLayer';
 export WMSTileLayer from './WMSTileLayer';

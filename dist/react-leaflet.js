@@ -7,7 +7,7 @@
 		exports["ReactLeaflet"] = factory(require("leaflet"), require("react"), require("react-dom"));
 	else
 		root["ReactLeaflet"] = factory(root["L"], root["React"], root["ReactDOM"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_1__, __WEBPACK_EXTERNAL_MODULE_4__, __WEBPACK_EXTERNAL_MODULE_101__) {
+})(this, function(__WEBPACK_EXTERNAL_MODULE_1__, __WEBPACK_EXTERNAL_MODULE_4__, __WEBPACK_EXTERNAL_MODULE_100__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -92,37 +92,37 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	exports.Circle = _Circle3['default'];
 
-	var _CircleMarker2 = __webpack_require__(87);
+	var _CircleMarker2 = __webpack_require__(86);
 
 	var _CircleMarker3 = _interopRequireDefault(_CircleMarker2);
 
 	exports.CircleMarker = _CircleMarker3['default'];
 
-	var _FeatureGroup2 = __webpack_require__(88);
+	var _FeatureGroup2 = __webpack_require__(87);
 
 	var _FeatureGroup3 = _interopRequireDefault(_FeatureGroup2);
 
 	exports.FeatureGroup = _FeatureGroup3['default'];
 
-	var _GeoJson2 = __webpack_require__(89);
+	var _GeoJson2 = __webpack_require__(88);
 
 	var _GeoJson3 = _interopRequireDefault(_GeoJson2);
 
 	exports.GeoJson = _GeoJson3['default'];
 
-	var _ImageOverlay2 = __webpack_require__(90);
+	var _ImageOverlay2 = __webpack_require__(89);
 
 	var _ImageOverlay3 = _interopRequireDefault(_ImageOverlay2);
 
 	exports.ImageOverlay = _ImageOverlay3['default'];
 
-	var _LayerGroup2 = __webpack_require__(91);
+	var _LayerGroup2 = __webpack_require__(90);
 
 	var _LayerGroup3 = _interopRequireDefault(_LayerGroup2);
 
 	exports.LayerGroup = _LayerGroup3['default'];
 
-	var _Map2 = __webpack_require__(92);
+	var _Map2 = __webpack_require__(91);
 
 	var _Map3 = _interopRequireDefault(_Map2);
 
@@ -140,19 +140,19 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	exports.MapLayer = _MapLayer3['default'];
 
-	var _Marker2 = __webpack_require__(95);
+	var _Marker2 = __webpack_require__(94);
 
 	var _Marker3 = _interopRequireDefault(_Marker2);
 
 	exports.Marker = _Marker3['default'];
 
-	var _MultiPolygon2 = __webpack_require__(96);
+	var _MultiPolygon2 = __webpack_require__(95);
 
 	var _MultiPolygon3 = _interopRequireDefault(_MultiPolygon2);
 
 	exports.MultiPolygon = _MultiPolygon3['default'];
 
-	var _MultiPolyline2 = __webpack_require__(97);
+	var _MultiPolyline2 = __webpack_require__(96);
 
 	var _MultiPolyline3 = _interopRequireDefault(_MultiPolyline2);
 
@@ -164,43 +164,37 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	exports.Path = _Path3['default'];
 
-	var _Polygon2 = __webpack_require__(98);
+	var _Polygon2 = __webpack_require__(97);
 
 	var _Polygon3 = _interopRequireDefault(_Polygon2);
 
 	exports.Polygon = _Polygon3['default'];
 
-	var _Polyline2 = __webpack_require__(99);
+	var _Polyline2 = __webpack_require__(98);
 
 	var _Polyline3 = _interopRequireDefault(_Polyline2);
 
 	exports.Polyline = _Polyline3['default'];
 
-	var _Popup2 = __webpack_require__(100);
+	var _Popup2 = __webpack_require__(99);
 
 	var _Popup3 = _interopRequireDefault(_Popup2);
 
 	exports.Popup = _Popup3['default'];
 
-	var _PopupContainer2 = __webpack_require__(86);
-
-	var _PopupContainer3 = _interopRequireDefault(_PopupContainer2);
-
-	exports.PopupContainer = _PopupContainer3['default'];
-
-	var _Rectangle2 = __webpack_require__(102);
+	var _Rectangle2 = __webpack_require__(101);
 
 	var _Rectangle3 = _interopRequireDefault(_Rectangle2);
 
 	exports.Rectangle = _Rectangle3['default'];
 
-	var _TileLayer2 = __webpack_require__(103);
+	var _TileLayer2 = __webpack_require__(102);
 
 	var _TileLayer3 = _interopRequireDefault(_TileLayer2);
 
 	exports.TileLayer = _TileLayer3['default'];
 
-	var _WMSTileLayer2 = __webpack_require__(104);
+	var _WMSTileLayer2 = __webpack_require__(103);
 
 	var _WMSTileLayer3 = _interopRequireDefault(_WMSTileLayer2);
 
@@ -426,6 +420,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _leaflet = __webpack_require__(1);
+
 	var _MapComponent2 = __webpack_require__(33);
 
 	var _MapComponent3 = _interopRequireDefault(_MapComponent2);
@@ -464,6 +460,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return child ? _react2['default'].cloneElement(child, props) : null;
 	      });
 	    }
+	  }, {
+	    key: 'renderChildrenWithProps',
+	    value: function renderChildrenWithProps(props) {
+	      var children = this.getClonedChildrenWithMap(props);
+	      return _react2['default'].createElement(
+	        'div',
+	        { style: { display: 'none' } },
+	        children
+	      );
+	    }
+	  }], [{
+	    key: 'propTypes',
+	    value: {
+	      children: _react.PropTypes.oneOfType([_react.PropTypes.arrayOf(_react.PropTypes.node), _react.PropTypes.node]),
+	      map: _react.PropTypes.instanceOf(_leaflet.Map)
+	    },
+	    enumerable: true
 	  }]);
 
 	  return MapLayer;
@@ -3407,14 +3420,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _lodashObjectPick2 = _interopRequireDefault(_lodashObjectPick);
 
-	var _PopupContainer2 = __webpack_require__(86);
+	var _MapLayer2 = __webpack_require__(8);
 
-	var _PopupContainer3 = _interopRequireDefault(_PopupContainer2);
+	var _MapLayer3 = _interopRequireDefault(_MapLayer2);
 
 	var OPTIONS = ['stroke', 'color', 'weight', 'opacity', 'fill', 'fillColor', 'fillOpacity', 'fillRule', 'dashArray', 'lineCap', 'lineJoin', 'clickable', 'pointerEvents', 'className'];
 
-	var Path = (function (_PopupContainer) {
-	  _inherits(Path, _PopupContainer);
+	var Path = (function (_MapLayer) {
+	  _inherits(Path, _MapLayer);
 
 	  function Path() {
 	    _classCallCheck(this, Path);
@@ -3442,10 +3455,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.setStyle(nextStyle);
 	      }
 	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return this.renderChildrenWithProps({
+	        popupContainer: this.leafletElement
+	      });
+	    }
 	  }]);
 
 	  return Path;
-	})(_PopupContainer3['default']);
+	})(_MapLayer3['default']);
 
 	exports['default'] = Path;
 	module.exports = exports['default'];
@@ -3732,63 +3752,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var _react = __webpack_require__(4);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _MapLayer2 = __webpack_require__(8);
-
-	var _MapLayer3 = _interopRequireDefault(_MapLayer2);
-
-	var PopupContainer = (function (_MapLayer) {
-	  _inherits(PopupContainer, _MapLayer);
-
-	  function PopupContainer() {
-	    _classCallCheck(this, PopupContainer);
-
-	    _get(Object.getPrototypeOf(PopupContainer.prototype), 'constructor', this).apply(this, arguments);
-	  }
-
-	  _createClass(PopupContainer, [{
-	    key: 'render',
-	    value: function render() {
-	      var children = this.getClonedChildrenWithMap({
-	        popupContainer: this.leafletElement
-	      });
-	      return _react2['default'].createElement(
-	        'div',
-	        { style: { display: 'none' } },
-	        children
-	      );
-	    }
-	  }]);
-
-	  return PopupContainer;
-	})(_MapLayer3['default']);
-
-	exports['default'] = PopupContainer;
-	module.exports = exports['default'];
-
-/***/ },
-/* 87 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
@@ -3855,7 +3818,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 88 */
+/* 87 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3876,8 +3839,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var _react = __webpack_require__(4);
-
 	var _leaflet = __webpack_require__(1);
 
 	var _Path2 = __webpack_require__(78);
@@ -3897,24 +3858,31 @@ return /******/ (function(modules) { // webpackBootstrap
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
 	      var _props = this.props;
-	      var layers = _props.layers;
 	      var map = _props.map;
 
-	      var props = _objectWithoutProperties(_props, ['layers', 'map']);
+	      var props = _objectWithoutProperties(_props, ['map']);
 
-	      this.leafletElement = (0, _leaflet.featureGroup)(layers);
+	      this.leafletElement = (0, _leaflet.featureGroup)();
+	    }
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      _get(Object.getPrototypeOf(FeatureGroup.prototype), 'componentDidMount', this).call(this);
+	      this.setStyle(this.props);
 	    }
 	  }, {
 	    key: 'componentDidUpdate',
 	    value: function componentDidUpdate(prevProps) {
 	      this.setStyleIfChanged(prevProps, this.props);
 	    }
-	  }], [{
-	    key: 'propTypes',
-	    value: {
-	      layers: _react.PropTypes.array.isRequired
-	    },
-	    enumerable: true
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return this.renderChildrenWithProps({
+	        layerGroup: this.leafletElement,
+	        popupContainer: this.leafletElement
+	      });
+	    }
 	  }]);
 
 	  return FeatureGroup;
@@ -3924,7 +3892,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 89 */
+/* 88 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -3994,7 +3962,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 90 */
+/* 89 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4083,7 +4051,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 91 */
+/* 90 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4101,10 +4069,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var _react = __webpack_require__(4);
-
-	var _react2 = _interopRequireDefault(_react);
 
 	var _leaflet = __webpack_require__(1);
 
@@ -4130,28 +4094,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var _this = this;
-
-	      var children = _react2['default'].Children.map(this.props.children, function (child) {
-	        return child ? _react2['default'].cloneElement(child, {
-	          layerGroup: _this.leafletElement,
-	          map: _this.props.map
-	        }) : null;
+	      return this.renderChildrenWithProps({
+	        layerGroup: this.leafletElement
 	      });
-
-	      return _react2['default'].createElement(
-	        'div',
-	        { style: { display: 'none' } },
-	        children
-	      );
 	    }
-	  }], [{
-	    key: 'propTypes',
-	    value: {
-	      children: _react.PropTypes.oneOfType([_react.PropTypes.arrayOf(_react.PropTypes.node), _react.PropTypes.node]),
-	      map: _react.PropTypes.instanceOf(_leaflet.Map)
-	    },
-	    enumerable: true
 	  }]);
 
 	  return LayerGroup;
@@ -4161,7 +4107,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 92 */
+/* 91 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* eslint-disable react/no-did-mount-set-state */
@@ -4186,11 +4132,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _lodashLangIsArray2 = _interopRequireDefault(_lodashLangIsArray);
 
-	var _lodashLangIsUndefined = __webpack_require__(93);
+	var _lodashLangIsUndefined = __webpack_require__(92);
 
 	var _lodashLangIsUndefined2 = _interopRequireDefault(_lodashLangIsUndefined);
 
-	var _lodashUtilityUniqueId = __webpack_require__(94);
+	var _lodashUtilityUniqueId = __webpack_require__(93);
 
 	var _lodashUtilityUniqueId2 = _interopRequireDefault(_lodashUtilityUniqueId);
 
@@ -4326,7 +4272,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 93 */
+/* 92 */
 /***/ function(module, exports) {
 
 	/**
@@ -4353,7 +4299,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 94 */
+/* 93 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var baseToString = __webpack_require__(72);
@@ -4386,7 +4332,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 95 */
+/* 94 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4415,12 +4361,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _typesLatlng2 = _interopRequireDefault(_typesLatlng);
 
-	var _PopupContainer2 = __webpack_require__(86);
+	var _MapLayer2 = __webpack_require__(8);
 
-	var _PopupContainer3 = _interopRequireDefault(_PopupContainer2);
+	var _MapLayer3 = _interopRequireDefault(_MapLayer2);
 
-	var Marker = (function (_PopupContainer) {
-	  _inherits(Marker, _PopupContainer);
+	var Marker = (function (_MapLayer) {
+	  _inherits(Marker, _MapLayer);
 
 	  function Marker() {
 	    _classCallCheck(this, Marker);
@@ -4456,6 +4402,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.leafletElement.setOpacity(this.props.opacity);
 	      }
 	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return this.renderChildrenWithProps({
+	        popupContainer: this.leafletElement
+	      });
+	    }
 	  }], [{
 	    key: 'propTypes',
 	    value: {
@@ -4468,13 +4421,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }]);
 
 	  return Marker;
-	})(_PopupContainer3['default']);
+	})(_MapLayer3['default']);
 
 	exports['default'] = Marker;
 	module.exports = exports['default'];
 
 /***/ },
-/* 96 */
+/* 95 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4551,7 +4504,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 97 */
+/* 96 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4628,7 +4581,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 98 */
+/* 97 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4705,7 +4658,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 99 */
+/* 98 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4780,7 +4733,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 100 */
+/* 99 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -4803,7 +4756,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react = __webpack_require__(4);
 
-	var _reactDom = __webpack_require__(101);
+	var _reactDom = __webpack_require__(100);
 
 	var _leaflet = __webpack_require__(1);
 
@@ -4922,13 +4875,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 101 */
+/* 100 */
 /***/ function(module, exports) {
 
-	module.exports = __WEBPACK_EXTERNAL_MODULE_101__;
+	module.exports = __WEBPACK_EXTERNAL_MODULE_100__;
 
 /***/ },
-/* 102 */
+/* 101 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5003,7 +4956,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 103 */
+/* 102 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -5077,7 +5030,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 104 */
+/* 103 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

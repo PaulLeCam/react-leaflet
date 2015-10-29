@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import {
   Circle,
+  FeatureGroup,
   LayerGroup,
   Map,
+  Popup,
   Rectangle,
   TileLayer,
 } from 'react-leaflet';
@@ -29,9 +31,13 @@ export default class OtherLayersExample extends Component {
             <Circle center={[51.51, -0.08]} color='green' fillColor='green' radius={100} />
           </LayerGroup>
         </LayerGroup>
-        <LayerGroup>
-          <Rectangle bounds={rectangle} color='black' />
-        </LayerGroup>
+        <FeatureGroup color='purple'>
+          <Popup>
+            <span>Popup in FeatureGroup</span>
+          </Popup>
+          <Circle center={[51.51, -0.06]} radius={200} />
+          <Rectangle bounds={rectangle} />
+        </FeatureGroup>
       </Map>
     );
   }

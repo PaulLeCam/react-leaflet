@@ -6,7 +6,6 @@ import { render } from 'react-dom';
 jest.dontMock('../src/BaseTileLayer');
 jest.dontMock('../src/MapComponent');
 jest.dontMock('../src/MapLayer');
-jest.dontMock('../src/PopupContainer');
 jest.dontMock('../src/Map');
 jest.dontMock('../src/Marker');
 jest.dontMock('../src/Popup');

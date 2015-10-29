@@ -315,9 +315,19 @@ var OtherLayersExample = (function (_Component) {
           )
         ),
         _react2['default'].createElement(
-          _reactLeaflet.LayerGroup,
-          null,
-          _react2['default'].createElement(_reactLeaflet.Rectangle, { bounds: rectangle, color: 'black' })
+          _reactLeaflet.FeatureGroup,
+          { color: 'purple' },
+          _react2['default'].createElement(
+            _reactLeaflet.Popup,
+            null,
+            _react2['default'].createElement(
+              'span',
+              null,
+              'Popup in FeatureGroup'
+            )
+          ),
+          _react2['default'].createElement(_reactLeaflet.Circle, { center: [51.51, -0.06], radius: 200 }),
+          _react2['default'].createElement(_reactLeaflet.Rectangle, { bounds: rectangle })
         )
       );
     }
