@@ -17,7 +17,7 @@ const normalizeCenter = pos => isArray(pos) ? pos : [pos.lat, pos.lng || pos.lon
 export default class Map extends MapComponent {
   static propTypes = {
     bounds: boundsType,
-	boundsOptions: PropTypes.object,
+    boundsOptions: PropTypes.object,
     center: latlngType,
     children: PropTypes.oneOfType([
       PropTypes.arrayOf(PropTypes.node),
