@@ -12,6 +12,7 @@ export ImageOverlay from './ImageOverlay';
 export LayerGroup from './LayerGroup';
 export Map from './Map';
 export MapComponent from './MapComponent';
+export MapControl from './MapControl';
 export MapLayer from './MapLayer';
 export Marker from './Marker';
 export MultiPolygon from './MultiPolygon';
@@ -24,6 +25,7 @@ export PopupContainer from './PopupContainer';
 export Rectangle from './Rectangle';
 export TileLayer from './TileLayer';
 export WMSTileLayer from './WMSTileLayer';
+export ZoomControl from './ZoomControl';
 
 export const setIconDefaultImagePath = path => {
   Leaflet.Icon.Default.imagePath = path;

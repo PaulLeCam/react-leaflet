@@ -1,16 +1,16 @@
-import { PropTypes as Type } from 'react';
+import { PropTypes } from 'react';
 
-export default Type.oneOfType([
+export default PropTypes.oneOfType([
   // [Number, Number]
-  Type.arrayOf(Type.number),
+  PropTypes.arrayOf(PropTypes.number),
   // {lat: Number, lng: Number}
-  Type.shape({
-    lat: Type.number,
-    lng: Type.number,
+  PropTypes.shape({
+    lat: PropTypes.number,
+    lng: PropTypes.number,
   }),
   // {lat: Number, lon: Number}
-  Type.shape({
-    lat: Type.number,
-    lon: Type.number,
+  PropTypes.shape({
+    lat: PropTypes.number,
+    lon: PropTypes.number,
   }),
 ]);
