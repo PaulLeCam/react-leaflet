@@ -10,6 +10,7 @@ export default class Popup extends MapComponent {
     children: PropTypes.node,
     map: PropTypes.instanceOf(Map),
     popupContainer: PropTypes.object,
+    open: PropTypes.bool,
     position: latlngType,
   };
 
@@ -18,8 +19,8 @@ export default class Popup extends MapComponent {
     const { children, map, ...props } = this.props;
 
     this.leafletElement = popup(props);
-    this.leafletElement.on('open', ::this.renderPopupContent);
-    this.leafletElement.on('close', ::this.removePopupContent);
+    this.leafletElement.on('open', this.renderPopupContent(this, true));
+    this.leafletElement.on('close', this.removePopupContent(this, true));
   }
 
   componentDidMount() {
@@ -42,12 +43,20 @@ export default class Popup extends MapComponent {
   componentDidUpdate(prevProps) {
     const { position } = this.props;
 
+    if (this.props.open !== prevProps.open) {
+      if (this.props.open && !this.leafletElement._isOpen) {
+        this.leafletElement._source.openPopup();
+      } else if (!this.props.open && this.leafletElement._isOpen) {
+        this.leafletElement._source.closePopup();
+      }
+    }
+
     if (position !== prevProps.position) {
       this.leafletElement.setLatLng(position);
     }
 
     if (this.leafletElement._isOpen) {
-      this.renderPopupContent();
+      this.renderPopupContent(this.props.open !== prevProps.open);
     }
   }
 
@@ -57,7 +66,7 @@ export default class Popup extends MapComponent {
     this.props.map.removeLayer(this.leafletElement);
   }
 
-  renderPopupContent() {
+  renderPopupContent(adjustPan) {
     if (this.props.children) {
       render(
         Children.only(this.props.children),
@@ -66,7 +75,7 @@ export default class Popup extends MapComponent {
 
       this.leafletElement._updateLayout();
       this.leafletElement._updatePosition();
-      this.leafletElement._adjustPan();
+      if (adjustPan) { this.leafletElement._adjustPan(); }
     }
     else {
       this.removePopupContent();
