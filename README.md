@@ -76,7 +76,7 @@ This library uses React components as an interface, but not the virtual DOM, as 
 
 ### PropTypes
 
-**latLng**: One of `[Number, Number]`, `{lat: Number, lng: Number}` or `{lat: Number, lon: Number}`.
+**latLng**: One of `[number, number]`, `{lat: number, lng: number}` or `{lat: number, lon: number}`.
 
 **latLngList**: An Array of *LatLng*.
 
@@ -118,13 +118,9 @@ Base class extending `MapComponent` using the provided `map` prop to add its ele
 
 Base class extending `MapLayer` with a `render()` method and handling a TitleLayer `opacity` and `zIndex` props.
 
-##### PopupContainer
-
-Base class extending `MapLayer` with a `render()` method passing its `leafletElement` to its children as the `popupContainer` prop.
-
 ##### Path
 
-Base class extending `PopupContainer` with the following methods:
+Base class extending `MapLayer` with the following methods:
 - `getPathOptions(object props): object`: filters the input `props` and return a new object of [Path options](http://leafletjs.com/reference.html#path-options) properties.
 - `setStyle(object options = {}): void`: alias to the Leaflet element [`setStyle()`](http://leafletjs.com/reference.html#path-setstyle).
 - `setStyleIfChanged(object fromProps, object toProps): void`: extracts the Path options of the two arguments, and calls `setStyle()` with the new options if different from the previous ones.
@@ -219,10 +215,13 @@ All vector layers extend the **Path** component and therefore accept dynamic [Pa
 
 Use the `LayerGroup` wrapper component to group children layers together.
 
-##### Implemented but needing testing and documentation
+##### FeatureGroup
 
-- FeatureGroup
-- GeoJson
+Extended `LayerGroup` supporting a `Popup` child.
+
+##### GeoJson
+
+- `data: GeoJSON` (required)
 
 #### Controls
 
