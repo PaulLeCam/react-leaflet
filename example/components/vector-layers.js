@@ -10,7 +10,7 @@ import {
   Popup,
   Rectangle,
   TileLayer,
-} from 'react-leaflet';
+} from '../../src';
 
 export default class VectorLayersExample extends Component {
   render() {

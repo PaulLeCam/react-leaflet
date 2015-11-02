@@ -76,11 +76,13 @@ This library uses React components as an interface, but not the virtual DOM, as 
 
 ### PropTypes
 
-**LatLng**: One of `[Number, Number]`, `{lat: Number, lng: Number}` or `{lat: Number, lon: Number}`.
+**latLng**: One of `[Number, Number]`, `{lat: Number, lng: Number}` or `{lat: Number, lon: Number}`.
 
-**LatLngList**: An Array of *LatLng*.
+**latLngList**: An Array of *LatLng*.
 
-**Bounds**: An instance of *Leaflet.LatLngBounds* or a *LatLngList*.
+**bounds**: An instance of *Leaflet.LatLngBounds* or a *LatLngList*.
+
+**controlPosition**: One of `topleft`, `topright`, `bottomleft` or `bottomright`.
 
 ### Events
 
@@ -103,6 +105,11 @@ These components are base classes used by other components. They can be extended
 Base class extending `React.Component` and handling events binding and unbind.  
 It exposes a `getLeafletElement()` method to access the `Leaflet` object created for the component.
 
+##### MapControl
+
+Base class extending `React.Component` for controls.  
+It exposes a `getLeafletElement()` method to access the `Leaflet` object created for the control.
+
 ##### MapLayer
 
 Base class extending `MapComponent` using the provided `map` prop to add its element and passing it down to its children.
@@ -118,53 +125,54 @@ Base class extending `MapLayer` with a `render()` method passing its `leafletEle
 ##### Path
 
 Base class extending `PopupContainer` with the following methods:
-- `getPathOptions(Object props): Object`: filters the input `props` and return a new object of [Path options](http://leafletjs.com/reference.html#path-options) properties.
-- `setStyle(Object options = {}): void`: alias to the Leaflet element [`setStyle()`](http://leafletjs.com/reference.html#path-setstyle).
-- `setStyleIfChanged(Object fromProps, Object toProps): void`: extracts the Path options of the two arguments, and calls `setStyle()` with the new options if different from the previous ones.
+- `getPathOptions(object props): object`: filters the input `props` and return a new object of [Path options](http://leafletjs.com/reference.html#path-options) properties.
+- `setStyle(object options = {}): void`: alias to the Leaflet element [`setStyle()`](http://leafletjs.com/reference.html#path-setstyle).
+- `setStyleIfChanged(object fromProps, object toProps): void`: extracts the Path options of the two arguments, and calls `setStyle()` with the new options if different from the previous ones.
 
 #### Map
 
 This is the top-level component that must be mounted for children ones to be rendered. Refer to Leaflet documentation for more information about the properties.
 
 **Properties**
-- `bounds: Bounds` (optional, dynamic): A rectangle for the map to contain. It will be centered, and the map will zoom in as close as it can while still showing the full bounds. This property is dynamic, if you change it it will be reflected on the map.
-- `center: LatLng` (optional, dynamic): Center of the map. This property is dynamic, if you change it it will be reflected in the map.
-- `className: String` (optional, dynamic): className property of the `<div>` container for the map.
-- `id: String` (optional): The ID of the `<div>` container for the map. If you don't provide it, a unique one will be created.
-- `maxBounds: Bounds` (optional, dynamic)
-- `maxZoom: Number` (optional)
-- `minZoom: Number` (optional)
-- `style: Object` (optional, dynamic): style property of the `<div>` container for the map.
-- `zoom: Number` (optional, dynamic)
+- `bounds: bounds` (optional, dynamic): A rectangle for the map to contain. It will be centered, and the map will zoom in as close as it can while still showing the full bounds. This property is dynamic, if you change it it will be reflected on the map.
+- `boundsOptions: object` (optional, dynamic): Options passed to the `fitBounds()` method.
+- `center: latLng` (optional, dynamic): Center of the map. This property is dynamic, if you change it it will be reflected in the map.
+- `className: string` (optional, dynamic): className property of the `<div>` container for the map.
+- `id: string` (optional): The ID of the `<div>` container for the map. If you don't provide it, a unique one will be created.
+- `maxBounds: bounds` (optional, dynamic)
+- `maxZoom: number` (optional)
+- `minZoom: number` (optional)
+- `style: object` (optional, dynamic): style property of the `<div>` container for the map.
+- `zoom: number` (optional, dynamic)
 
 #### UI Layers
 
 ##### Marker
 
-- `position: LatLng` (required, dynamic)
+- `position: latLng` (required, dynamic)
 - `icon: Leaflet.Icon` (optional, dynamic)
-- `zIndexOffset: Number` (optional, dynamic)
-- `opacity: Number` (optional, dynamic)
+- `zIndexOffset: number` (optional, dynamic)
+- `opacity: number` (optional, dynamic)
 
 ##### Popup
 
 The Popup children will be rendered using `ReactDOM.render()`, they must be valid React elements.
 
-- `position: LatLng` (optional, dynamic)
+- `position: latLng` (optional, dynamic)
 
 #### Raster Layers
 
 ##### TileLayer
 
-- `url: String` (required, dynamic)
-- `opacity: Number` (optional, dynamic)
-- `zIndex: Number` (optional, dynamic)
+- `url: string` (required, dynamic)
+- `opacity: number` (optional, dynamic)
+- `zIndex: number` (optional, dynamic)
 
 ##### ImageOverlay
 
-- `url: String` (required, dynamic)
-- `opacity: Number` (optional, dynamic)
-- `attribution: String` (optional)
+- `url: string` (required, dynamic)
+- `opacity: number` (optional, dynamic)
+- `attribution: string` (optional)
 
 ##### Implemented but needing testing and documentation
 
@@ -177,33 +185,33 @@ All vector layers extend the **Path** component and therefore accept dynamic [Pa
 
 ##### Circle
 
-- `center: LatLng` (required, dynamic)
-- `radius: Number` (required, dynamic)
+- `center: latLng` (required, dynamic)
+- `radius: number` (required, dynamic)
 
 ##### CircleMarker
 
-- `center: LatLng` (required, dynamic)
-- `radius: Number` (optional, dynamic)
+- `center: latLng` (required, dynamic)
+- `radius: number` (optional, dynamic)
 
 ##### Polyline
 
-- `positions: LatLngList` (required, dynamic)
+- `positions: latLngList` (required, dynamic)
 
 ##### MultiPolyline
 
-- `polylines: Array<LatLngList>` (required, dynamic)
+- `polylines: array<latLngList>` (required, dynamic)
 
 ##### Polygon
 
-- `positions: LatLngList | Array<LatLngList>` (required, dynamic)
+- `positions: latLngList | Array<latLngList>` (required, dynamic)
 
 ##### MultiPolygon
 
-- `polygons: Array<LatLngList>` (required, dynamic)
+- `polygons: array<latLngList>` (required, dynamic)
 
 ##### Rectangle
 
-- `bounds: Bounds` (required, dynamic)
+- `bounds: bounds` (required, dynamic)
 
 #### Other Layers
 
@@ -215,6 +223,16 @@ Use the `LayerGroup` wrapper component to group children layers together.
 
 - FeatureGroup
 - GeoJson
+
+#### Controls
+
+##### ZoomControl
+
+- `position: controlPosition` (optional, dynamic)
+- `zoomInText: string` (optional)
+- `zoomInTitle: string` (optional)
+- `zoomOutText: string` (optional)
+- `zoomOutTitle: string` (optional)
 
 ## Creating custom components
 
