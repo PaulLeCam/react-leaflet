@@ -1,5 +1,5 @@
 import { Children, PropTypes } from 'react';
-import { render, unmountComponentAtNode } from 'react-dom';
+import { unstable_renderSubtreeIntoContainer, unmountComponentAtNode } from 'react-dom';
 import { Map, popup } from 'leaflet';
 
 import latlngType from './types/latlng';
@@ -59,7 +59,8 @@ export default class Popup extends MapComponent {
 
   renderPopupContent() {
     if (this.props.children) {
-      render(
+      unstable_renderSubtreeIntoContainer(
+        this,
         Children.only(this.props.children),
         this.leafletElement._contentNode
       );
