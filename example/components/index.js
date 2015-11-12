@@ -6,6 +6,7 @@ import EventsExample from './events';
 import BoundsExample from './bounds';
 import VectorLayersExample from './vector-layers';
 import OtherLayersExample from './other-layers';
+import ZoomControlExample from './zoom-control';
 
 const examples = (
   <div>
@@ -22,6 +23,8 @@ const examples = (
     <VectorLayersExample />
     <h2>Other layers</h2>
     <OtherLayersExample />
+    <h2>Zoom control</h2>
+    <ZoomControlExample />
   </div>
 );
 
