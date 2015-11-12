@@ -72,7 +72,7 @@ This library uses React components as an interface, but not the virtual DOM, as 
 
 ### Helpers
 
-**setIconDefaultImagePath(path: string)**: Setter for `Leaflet.Icon.Default.imagePath`, set to `//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/images` by default.
+**setIconDefaultImagePath(path: string)**: Setter for `Leaflet.Icon.Default.imagePath`, set to `//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images` by default.
 
 ### PropTypes
 
@@ -112,7 +112,10 @@ It exposes a `getLeafletElement()` method to access the `Leaflet` object created
 
 ##### MapLayer
 
-Base class extending `MapComponent` using the provided `map` prop to add its element and passing it down to its children.
+Base class extending `MapComponent` using the provided `map` prop to add its element and passing it down to its children.  
+It exposes the following methods:
+- `getClonedChildrenWithMap(object extra): object`: returns the cloned children of the component, adding the `map` and the `extra` props provided to them.
+- `renderChildrenWithProps(object props): object`: returns the cloned children of the component using `getClonedChildrenWithMap()`, wrapped in a `<div>` with `display: none` style.
 
 ##### BaseTileLayer
 

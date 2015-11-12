@@ -1,3 +1,11 @@
+## v0.9.0 (12/11/15)
+
+- Removed `PopupContainer` component, extended internally by other components.
+- `FeatureGroup` now expects its layers to be passed as children, like `LayerGroup`.
+- Added `renderChildrenWithProps()` to `MapLayer`, used internally by the library.
+- Added `MapControl` as base component for controls.
+- Added `ZoomControl`.
+
 ## v0.8.1 (21/10/15)
 
 Fix `PropTypes` export.
