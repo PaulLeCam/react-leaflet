@@ -1,7 +1,7 @@
 import isEqual from 'lodash/lang/isEqual';
 import pick from 'lodash/object/pick';
 
-import PopupContainer from './PopupContainer';
+import MapLayer from './MapLayer';
 
 const OPTIONS = [
   'stroke',
@@ -20,7 +20,7 @@ const OPTIONS = [
   'className',
 ];
 
-export default class Path extends PopupContainer {
+export default class Path extends MapLayer {
   getPathOptions(props) {
     return pick(props, OPTIONS);
   }
@@ -34,5 +34,11 @@ export default class Path extends PopupContainer {
     if (!isEqual(nextStyle, this.getPathOptions(fromProps))) {
       this.setStyle(nextStyle);
     }
+  }
+
+  render() {
+    return this.renderChildrenWithProps({
+      popupContainer: this.leafletElement,
+    });
   }
 }
