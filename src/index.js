@@ -11,6 +11,7 @@ export FeatureGroup from './FeatureGroup';
 export GeoJson from './GeoJson';
 export ImageOverlay from './ImageOverlay';
 export LayerGroup from './LayerGroup';
+export LayersControl from './LayersControl';
 export Map from './Map';
 export MapComponent from './MapComponent';
 export MapControl from './MapControl';
