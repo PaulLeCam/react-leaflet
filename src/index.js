@@ -2,6 +2,7 @@ import Leaflet from 'leaflet';
 
 export * as PropTypes from './types';
 
+export AttributionControl from './AttributionControl';
 export BaseTileLayer from './BaseTileLayer';
 export CanvasTileLayer from './CanvasTileLayer';
 export Circle from './Circle';
