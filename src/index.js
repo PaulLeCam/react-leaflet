@@ -23,6 +23,7 @@ export Polygon from './Polygon';
 export Polyline from './Polyline';
 export Popup from './Popup';
 export Rectangle from './Rectangle';
+export ScaleControl from './ScaleControl';
 export TileLayer from './TileLayer';
 export WMSTileLayer from './WMSTileLayer';
 export ZoomControl from './ZoomControl';
