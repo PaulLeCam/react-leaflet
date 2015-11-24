@@ -7,6 +7,7 @@ import BoundsExample from './bounds';
 import VectorLayersExample from './vector-layers';
 import OtherLayersExample from './other-layers';
 import ZoomControlExample from './zoom-control';
+import CustomComponentExample from './custom-component';
 
 const examples = (
   <div>
@@ -25,6 +26,8 @@ const examples = (
     <OtherLayersExample />
     <h2>Zoom control</h2>
     <ZoomControlExample />
+    <h2>List of markers (custom component)</h2>
+    <CustomComponentExample />
   </div>
 );
 
