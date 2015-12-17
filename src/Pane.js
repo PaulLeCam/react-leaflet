@@ -1,5 +1,5 @@
-import React, {Component} from 'react'
-import MapComponent from './MapComponent'
+import React, {Component, PropTypes} from 'react'
+import { Map } from 'leaflet';
 import assign from 'lodash/object/assign';
 import uniqueId from 'lodash/utility/uniqueId';
 import isEqual from 'lodash/lang/isEqual';
@@ -11,6 +11,13 @@ const STYLES = [
 ]
 
 export default class Pane extends Component {
+  static propTypes = {
+    paneId: PropTypes.string,
+    zIndex: PropTypes.number,
+    opacity: PropTypes.number,
+    map: PropTypes.instanceOf(Map),
+  };
+
   constructor(props) {
     super(props);
     this.paneId = props.paneId || uniqueId();
