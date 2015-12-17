@@ -13,6 +13,9 @@ export default class MapComponent extends Component {
 
   componentDidMount() {
     this.bindLeafletEvents(this._leafletEvents);
+    if (this.props.pane && this.leafletElement) {
+      this.leafletElement.options.pane = this.props.pane
+    }
   }
 
   componentWillReceiveProps(nextProps) {

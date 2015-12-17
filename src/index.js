@@ -28,6 +28,7 @@ export ScaleControl from './ScaleControl';
 export TileLayer from './TileLayer';
 export WMSTileLayer from './WMSTileLayer';
 export ZoomControl from './ZoomControl';
+export Pane from './Pane';
 
 export const setIconDefaultImagePath = path => {
   Leaflet.Icon.Default.imagePath = path;
