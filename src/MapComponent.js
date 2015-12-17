@@ -2,11 +2,14 @@ import clone from 'lodash/lang/clone';
 import forEach from 'lodash/collection/forEach';
 import reduce from 'lodash/collection/reduce';
 import keys from 'lodash/object/keys';
-import { Component } from 'react';
+import { Component, PropTypes } from 'react';
 
 const EVENTS_RE = /on(?:Leaflet)?(.+)/i;
 
 export default class MapComponent extends Component {
+  static propTypes = {
+    pane: PropTypes.string,
+  };
   componentWillMount() {
     this._leafletEvents = this.extractLeafletEvents(this.props);
   }
@@ -14,7 +17,7 @@ export default class MapComponent extends Component {
   componentDidMount() {
     this.bindLeafletEvents(this._leafletEvents);
     if (this.props.pane && this.leafletElement) {
-      this.leafletElement.options.pane = this.props.pane
+      this.leafletElement.options.pane = this.props.pane;
     }
   }
 

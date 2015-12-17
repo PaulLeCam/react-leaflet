@@ -7,15 +7,19 @@ import pick from 'lodash/object/pick';
 
 const STYLES = [
   'zIndex',
-  'opacity'
+  'opacity',
 ]
 
 export default class Pane extends Component {
   static propTypes = {
+    children: PropTypes.oneOfType([
+      PropTypes.arrayOf(PropTypes.node),
+      PropTypes.node,
+    ]),
+    map: PropTypes.instanceOf(Map),
+    opacity: PropTypes.number,
     paneId: PropTypes.string,
     zIndex: PropTypes.number,
-    opacity: PropTypes.number,
-    map: PropTypes.instanceOf(Map),
   };
 
   constructor(props) {
@@ -29,12 +33,12 @@ export default class Pane extends Component {
     this.setPaneStyle(this.getPaneStyle(this.props));
   }
 
-  componentWillUnMount() {
-    L.DomUtil.remove(this.leafletElement);
-  }
-
   componentDidUpdate(prevProps) {
     this.setPaneStyleIfChanged(prevProps, this.props);
+  }
+
+  componentWillUnMount() {
+    L.DomUtil.remove(this.leafletElement);
   }
 
   getPaneStyle(props) {
@@ -71,7 +75,7 @@ export default class Pane extends Component {
 
   render() {
     return this.renderChildrenWithProps({
-      pane: this.paneId
+      pane: this.paneId,
     });
   }
 }
