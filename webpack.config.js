@@ -14,6 +14,14 @@ module.exports = {
       }
     },
     {
+      'leaflet-draw': {
+        amd: 'leaflet-draw',
+        commonjs: 'leaflet-draw',
+        commonjs2: 'leaflet-draw',
+        root: 'L'
+      }
+    },
+    {
       react: {
         amd: 'react',
         commonjs: 'react',
