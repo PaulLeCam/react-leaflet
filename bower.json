@@ -10,6 +10,7 @@
   "dependencies": {
     "lodash": "~3.0.0",
     "leaflet": "~0.7.0",
+    "leaflet-draw": "^0.2.3",
     "react": "~0.14.0"
   },
   "keywords": [
