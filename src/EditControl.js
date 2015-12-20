@@ -1,20 +1,19 @@
-import { PropTypes, Component } from 'react';
-import { featureGroup } from 'leaflet';
-import Draw from "leaflet-draw";
+import { PropTypes } from 'react';
+import Draw from 'leaflet-draw'; // eslint-disable-line
 
 import MapControl from './MapControl';
 
 export default class EditControl extends MapControl {
   static propTypes = {
     onCreate: PropTypes.func,
-    onEdit: PropTypes.func
+    onEdit: PropTypes.func,
   };
 
   componentWillMount() {
     this.leafletElement = new L.Control.Draw(Object.assign({}, {
         edit: {
-            featureGroup: this.props.layerGroup
-        }
+            featureGroup: this.props.layerGroup,
+        },
     }, this.props));
 
     this.props.map.on('draw:created', (e) => {
