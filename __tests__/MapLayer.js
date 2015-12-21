@@ -5,9 +5,12 @@ import { render } from 'react-dom';
 jest.dontMock('../src/MapComponent');
 jest.dontMock('../src/MapLayer');
 jest.dontMock('../src/Map');
+jest.dontMock('../src/types/bounds');
+jest.dontMock('../src/types/index');
+jest.dontMock('../src/types/latlng');
 
-const MapLayer = require('../src/MapLayer');
-const Map = require('../src/Map');
+const MapLayer = require('../src/MapLayer').default;
+const Map = require('../src/Map').default;
 
 describe('MapLayer', () => {
   it('passes its `map` prop to its children', () => {

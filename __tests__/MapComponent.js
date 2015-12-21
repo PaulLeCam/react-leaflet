@@ -4,7 +4,7 @@ import { render } from 'react-dom';
 
 jest.dontMock('../src/MapComponent');
 
-const MapComponent = require('../src/MapComponent');
+const MapComponent = require('../src/MapComponent').default;
 
 describe('MapComponent', () => {
   class Component extends MapComponent {

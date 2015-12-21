@@ -5,12 +5,17 @@ import { render } from 'react-dom';
 
 jest.dontMock('../src/BaseTileLayer');
 jest.dontMock('../src/MapComponent');
+jest.dontMock('../src/MapControl');
 jest.dontMock('../src/MapLayer');
 jest.dontMock('../src/Map');
 jest.dontMock('../src/Marker');
 jest.dontMock('../src/Popup');
 jest.dontMock('../src/TileLayer');
 jest.dontMock('../src/index');
+jest.dontMock('../src/Path');
+jest.dontMock('../src/types/bounds');
+jest.dontMock('../src/types/index');
+jest.dontMock('../src/types/latlng');
 
 const { Map, Popup, TileLayer } = require('../src/');
 

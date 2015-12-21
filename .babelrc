@@ -1,8 +1,13 @@
 {
-  "optional": [
-    "es7.classProperties",
-    "es7.exportExtensions",
-    "es7.functionBind",
-    "es7.objectRestSpread"
+  "presets": ["es2015", "react"],
+  "plugins": [
+    "syntax-class-properties",
+    "syntax-export-extensions",
+    "syntax-function-bind",
+    "syntax-object-rest-spread",
+    "transform-class-properties",
+    "transform-export-extensions",
+    "transform-function-bind",
+    "transform-object-rest-spread"
   ]
 }
