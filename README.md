@@ -228,6 +228,19 @@ Extended `LayerGroup` supporting a `Popup` child.
 
 #### Controls
 
+##### AttributionControl
+
+- `position: controlPosition` (optional, dynamic)
+- `prefix: string` (optional)
+
+##### ScaleControl
+
+- `imperial: bool` (optional)
+- `position: controlPosition` (optional, dynamic)
+- `maxWidth: number` (optional)
+- `metric: bool` (optional)
+- `updateWhenIdle: bool` (optional)
+
 ##### ZoomControl
 
 - `position: controlPosition` (optional, dynamic)
