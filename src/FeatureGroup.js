@@ -4,7 +4,6 @@ import Path from './Path';
 
 export default class FeatureGroup extends Path {
   componentWillMount() {
-    const { map, ...props } = this.props;
     this.leafletElement = featureGroup();
   }
 

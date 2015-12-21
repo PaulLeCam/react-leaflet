@@ -4,8 +4,11 @@ import { renderToStaticMarkup } from 'react-dom/server';
 
 jest.dontMock('../src/Map');
 jest.dontMock('../src/MapComponent');
+jest.dontMock('../src/types/bounds');
+jest.dontMock('../src/types/index');
+jest.dontMock('../src/types/latlng');
 
-const Map = require('../src/Map');
+const Map = require('../src/Map').default;
 
 describe('Map', () => {
   beforeEach(() => {

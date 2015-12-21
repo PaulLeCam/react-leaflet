@@ -14,16 +14,15 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel',
         query: {
-          plugins: ['react-transform'],
-          extra: {
-            'react-transform': {
+          plugins: [
+            ['react-transform', {
               transforms: [{
                 transform: 'react-transform-hmr',
                 imports: ['react'],
                 locals: ['module']
               }]
-            }
-          }
+            }]
+          ]
         }
       },
     ]
