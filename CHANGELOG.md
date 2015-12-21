@@ -1,3 +1,9 @@
+## master (unreleased)
+
+- Added `AttributionControl`, `LayersControl` and `ScaleControl` ([PR #100](https://github.com/PaulLeCam/react-leaflet/pull/100) by *jonboiser*).
+- Added example to render a list of custom Markers ([PR #104](https://github.com/PaulLeCam/react-leaflet/pull/104) by *varya*).
+- [internal] Updated Babel to v6.
+
 ## v0.9.0 (12/11/15)
 
 - Removed `PopupContainer` component, extended internally by other components.
