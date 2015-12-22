@@ -1,8 +1,8 @@
+__tests__
 coverage
 example
-__tests__
 .editorconfig
 .eslintrc
 .travis.yml
 bower.json
-gulpfile.babel.js
+webpack.config.js
