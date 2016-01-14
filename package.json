@@ -36,7 +36,7 @@
   },
   "homepage": "https://github.com/PaulLeCam/react-leaflet",
   "dependencies": {
-    "lodash": "^3.0.0"
+    "lodash": "^4.0.0"
   },
   "peerDependencies": {
     "leaflet": "^0.7.0",
@@ -44,35 +44,36 @@
     "react-dom": "^0.14.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.3.17",
-    "babel-core": "^6.3.21",
+    "babel-cli": "^6.4.0",
+    "babel-core": "^6.4.0",
     "babel-eslint": "^5.0.0-beta6",
     "babel-jest": "^6.0.1",
-    "babel-loader": "^6.2.0",
-    "babel-plugin-react-transform": "^2.0.0-beta1",
+    "babel-loader": "^6.2.1",
+    "babel-plugin-react-transform": "^2.0.0",
     "babel-plugin-syntax-class-properties": "^6.3.13",
     "babel-plugin-syntax-export-extensions": "^6.3.13",
     "babel-plugin-syntax-function-bind": "^6.3.13",
     "babel-plugin-syntax-object-rest-spread": "^6.3.13",
-    "babel-plugin-transform-class-properties": "^6.3.13",
-    "babel-plugin-transform-export-extensions": "^6.3.13",
+    "babel-plugin-transform-class-properties": "^6.4.0",
+    "babel-plugin-transform-export-extensions": "^6.4.0",
     "babel-plugin-transform-function-bind": "^6.3.13",
     "babel-plugin-transform-object-rest-spread": "^6.3.13",
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.3.13",
     "eslint": "^1.10.3",
-    "eslint-plugin-react": "^3.12.0",
+    "eslint-plugin-react": "^3.15.0",
     "jest-cli": "^0.8.2",
     "leaflet": "^0.7.7",
     "onchange": "^2.0.0",
-    "react": "^0.14.3",
-    "react-dom": "^0.14.3",
+    "react": "^0.14.6",
+    "react-dom": "^0.14.6",
     "react-transform-hmr": "^1.0.1",
-    "webpack": "^1.12.9",
-    "webpack-dev-server": "^1.14.0"
+    "webpack": "^1.12.11",
+    "webpack-dev-server": "^1.14.1"
   },
   "jest": {
     "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
+    "testRunner": "<rootDir>/node_modules/jest-cli/src/testRunners/jasmine/jasmine2.js",
     "unmockedModulePathPatterns": [
       "<rootDir>/node_modules/fbjs",
       "<rootDir>/node_modules/jest-cli",

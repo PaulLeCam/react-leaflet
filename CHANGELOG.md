@@ -1,3 +1,7 @@
+## HEAD (unreleased)
+
+- [internal] Updated Lodash to v4.
+
 ## v0.10.0 (22/12/15)
 
 - Added `AttributionControl`, `LayersControl` and `ScaleControl` ([PR #100](https://github.com/PaulLeCam/react-leaflet/pull/100) by *jonboiser*).
