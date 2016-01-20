@@ -10,6 +10,13 @@ import {
 } from '../../src';
 
 export default class OtherLayersExample extends Component {
+  constructor(){
+    super();
+    this.state = {
+      circleClicks: 0,
+    };
+  }
+
   render() {
     const center = [51.505, -0.09];
 
@@ -24,6 +31,17 @@ export default class OtherLayersExample extends Component {
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
         />
+        <Circle
+          center={[51.51, -0.06]}
+          onpopupopen={() => {
+            this.setState({circleClicks: this.state.circleClicks + 1})}
+          }
+          radius={400}
+        >
+          <Popup>
+            <span>{`Popup in Circle, clicks: ${this.state.circleClicks}`}</span>
+          </Popup>
+        </Circle>
         <LayerGroup>
           <Circle center={center} fillColor='blue' radius={200} />
           <Circle center={center} fillColor='red' radius={100} stroke={false} />
@@ -31,7 +49,7 @@ export default class OtherLayersExample extends Component {
             <Circle center={[51.51, -0.08]} color='green' fillColor='green' radius={100} />
           </LayerGroup>
         </LayerGroup>
-        <FeatureGroup color='purple'>
+        <FeatureGroup color='purple' >
           <Popup>
             <span>Popup in FeatureGroup</span>
           </Popup>
