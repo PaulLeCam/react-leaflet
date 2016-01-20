@@ -6489,7 +6489,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	      var props = _objectWithoutProperties(_props, ['children', 'map']);
 
-	      this.leafletElement = (0, _leaflet.popup)(props);
+	      this.leafletElement = (0, _leaflet.popup)(props, this.props.popupContainer);
 	      this.leafletElement.on('open', this.renderPopupContent.bind(this));
 	      this.leafletElement.on('close', this.removePopupContent.bind(this));
 	    }
