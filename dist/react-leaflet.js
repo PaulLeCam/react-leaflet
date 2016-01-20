@@ -6490,8 +6490,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var props = _objectWithoutProperties(_props, ['children', 'map']);
 
 	      this.leafletElement = (0, _leaflet.popup)(props);
-	      this.leafletElement.on('open', this.renderPopupContent.bind(this));
-	      this.leafletElement.on('close', this.removePopupContent.bind(this));
+	      this.leafletElement.on('add', this.renderPopupContent.bind(this));
+	      this.leafletElement.on('remove', this.removePopupContent.bind(this));
 	    }
 	  }, {
 	    key: 'componentDidMount',
@@ -6523,7 +6523,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        this.leafletElement.setLatLng(position);
 	      }
 
-	      if (this.leafletElement._isOpen) {
+	      if (this.leafletElement.isOpen()) {
 	        this.renderPopupContent();
 	      }
 	    }
