@@ -44,8 +44,8 @@
     "react-dom": "^0.14.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.4.0",
-    "babel-core": "^6.4.0",
+    "babel-cli": "^6.4.5",
+    "babel-core": "^6.4.5",
     "babel-eslint": "^5.0.0-beta6",
     "babel-jest": "^6.0.1",
     "babel-loader": "^6.2.1",
@@ -61,14 +61,14 @@
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.3.13",
     "eslint": "^1.10.3",
-    "eslint-plugin-react": "^3.15.0",
+    "eslint-plugin-react": "^3.16.1",
     "jest-cli": "^0.8.2",
     "leaflet": "^0.7.7",
     "onchange": "^2.0.0",
     "react": "^0.14.6",
     "react-dom": "^0.14.6",
     "react-transform-hmr": "^1.0.1",
-    "webpack": "^1.12.11",
+    "webpack": "^1.12.12",
     "webpack-dev-server": "^1.14.1"
   },
   "jest": {

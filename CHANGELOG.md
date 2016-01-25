@@ -1,5 +1,6 @@
 ## HEAD (unreleased)
 
+- Added the popup container as source layer to `Popup` creation, fixes [#113](https://github.com/PaulLeCam/react-leaflet/issues/113) ([PR #112](https://github.com/PaulLeCam/react-leaflet/pull/112) by *amarant*).
 - [internal] Updated Lodash to v4.
 
 ## v0.10.0 (22/12/15)
