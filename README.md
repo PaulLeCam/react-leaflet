@@ -151,6 +151,7 @@ This is the top-level component that must be mounted for children ones to be ren
 - `minZoom: number` (optional)
 - `style: object` (optional, dynamic): style property of the `<div>` container for the map.
 - `zoom: number` (optional, dynamic)
+- `zoomControl: boolean` (optional): Whether the zoom control is added to the map (true by default). 
 
 #### UI Layers
 
