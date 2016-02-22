@@ -19,6 +19,12 @@ jest.dontMock('../src/types/latlng');
 
 const { Map, Popup, TileLayer } = require('../src/');
 
+// Stub out a map related function that doesn't work without a real DOM
+import Leaflet from 'leaflet';
+Leaflet.Map.prototype.getSize = () => {
+  return new L.Point(1024, 768);
+}
+
 describe('Popup', () => {
   it('adds the popup to the map', () => {
     const position = [0, 0];

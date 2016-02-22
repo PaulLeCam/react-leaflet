@@ -16,8 +16,16 @@ jest.dontMock('../src/types/latlng');
 
 const { Map, Marker, TileLayer } = require('../src/');
 
+// Stub out a map related function that doesn't work without a real DOM
+import Leaflet from 'leaflet';
+Leaflet.Map.prototype.getSize = () => {
+  return new L.Point(1024, 768);
+}
+
+
 describe('Marker', () => {
   it('adds the marker to the map', () => {
+
     const position = [0, 0];
     const component = (
       <Map center={position} zoom={10}>
