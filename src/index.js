@@ -1,55 +1,36 @@
 import Leaflet from 'leaflet';
 
-import PropTypes from './types';
+export * as PropTypes from './types';
 
-import BaseTileLayer from './BaseTileLayer';
-import CanvasTileLayer from './CanvasTileLayer';
-import Circle from './Circle';
-import CircleMarker from './CircleMarker';
-import FeatureGroup from './FeatureGroup';
-import GeoJson from './GeoJson';
-import ImageOverlay from './ImageOverlay';
-import Map from './Map';
-import MapComponent from './MapComponent';
-import MapLayer from './MapLayer';
-import Marker from './Marker';
-import MultiPolygon from './MultiPolygon';
-import MultiPolyline from './MultiPolyline';
-import Polygon from './Polygon';
-import Polyline from './Polyline';
-import Popup from './Popup';
-import PopupContainer from './PopupContainer';
-import Rectangle from './Rectangle';
-import TileLayer from './TileLayer';
-import WMSTileLayer from './WMSTileLayer';
+export AttributionControl from './AttributionControl';
+export BaseTileLayer from './BaseTileLayer';
+export CanvasTileLayer from './CanvasTileLayer';
+export Circle from './Circle';
+export CircleMarker from './CircleMarker';
+export FeatureGroup from './FeatureGroup';
+export GeoJson from './GeoJson';
+export ImageOverlay from './ImageOverlay';
+export LayerGroup from './LayerGroup';
+export LayersControl from './LayersControl';
+export Map from './Map';
+export MapComponent from './MapComponent';
+export MapControl from './MapControl';
+export MapLayer from './MapLayer';
+export Marker from './Marker';
+export MultiPolygon from './MultiPolygon';
+export MultiPolyline from './MultiPolyline';
+export Path from './Path';
+export Polygon from './Polygon';
+export Polyline from './Polyline';
+export Popup from './Popup';
+export Rectangle from './Rectangle';
+export ScaleControl from './ScaleControl';
+export TileLayer from './TileLayer';
+export WMSTileLayer from './WMSTileLayer';
+export ZoomControl from './ZoomControl';
 
-const setIconDefaultImagePath = path => {
+export const setIconDefaultImagePath = path => {
   Leaflet.Icon.Default.imagePath = path;
 };
 
-setIconDefaultImagePath('//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/images');
-
-export default {
-  setIconDefaultImagePath,
-  PropTypes,
-  BaseTileLayer,
-  CanvasTileLayer,
-  Circle,
-  CircleMarker,
-  FeatureGroup,
-  GeoJson,
-  ImageOverlay,
-  Map,
-  MapComponent,
-  MapLayer,
-  Marker,
-  MultiPolygon,
-  MultiPolyline,
-  Polygon,
-  Polyline,
-  Popup,
-  PopupContainer,
-  Rectangle,
-  TileLayer,
-  WMSTileLayer
-};
+setIconDefaultImagePath('//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images');

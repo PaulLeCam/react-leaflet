@@ -1,29 +1,44 @@
+/* eslint-disable react/no-did-mount-set-state, react/no-did-update-set-state */
+
 import React from 'react';
+import { render } from 'react-dom';
 
-jest.dontMock('../BaseTileLayer');
-jest.dontMock('../MapComponent');
-jest.dontMock('../MapLayer');
-jest.dontMock('../PopupContainer');
-jest.dontMock('../Map');
-jest.dontMock('../Marker');
-jest.dontMock('../Popup');
-jest.dontMock('../TileLayer');
-jest.dontMock('../index');
+jest.dontMock('../src/BaseTileLayer');
+jest.dontMock('../src/MapComponent');
+jest.dontMock('../src/MapControl');
+jest.dontMock('../src/MapLayer');
+jest.dontMock('../src/Map');
+jest.dontMock('../src/Marker');
+jest.dontMock('../src/Popup');
+jest.dontMock('../src/TileLayer');
+jest.dontMock('../src/index');
+jest.dontMock('../src/Path');
+jest.dontMock('../src/types/bounds');
+jest.dontMock('../src/types/index');
+jest.dontMock('../src/types/latlng');
 
-const {Map, Marker, Popup, TileLayer} = require('../');
+const { Map, Popup, TileLayer } = require('../src/');
+
+// Stub out a map related function that doesn't work without a real DOM
+import Leaflet from 'leaflet';
+Leaflet.Map.prototype.getSize = () => {
+  return new L.Point(1024, 768);
+}
 
 describe('Popup', () => {
   it('adds the popup to the map', () => {
     const position = [0, 0];
-    const component = <Map center={position} zoom={10}>
-      <TileLayer url='http://{s}.tile.osm.org/{z}/{x}/{y}.png' />
-      <Popup position={position}>
-        <span>Test Popup</span>
-      </Popup>
-    </Map>;
+    const component = (
+      <Map center={position} zoom={10}>
+        <TileLayer url='http://{s}.tile.osm.org/{z}/{x}/{y}.png' />
+        <Popup position={position}>
+          <span>Test Popup</span>
+        </Popup>
+      </Map>
+    );
 
     document.body.innerHTML = '<div id="test"></div>';
-    React.render(component, document.getElementById('test'));
+    render(component, document.getElementById('test'));
 
     expect(document.querySelector('#test .leaflet-popup-content span').textContent).toBe('Test Popup');
   });
@@ -38,7 +53,7 @@ describe('Popup', () => {
         super();
         this.state = {
           show: false,
-          test: true
+          test: true,
         };
       }
 
@@ -52,7 +67,7 @@ describe('Popup', () => {
           expect(getNode()).toBeDefined();
           this.setState({
             show: false,
-            test: false
+            test: false,
           });
         }
         else {
@@ -69,7 +84,7 @@ describe('Popup', () => {
           : null;
 
         return (
-          <Map ref='map' center={position} zoom={10}>
+          <Map center={position} ref='map' zoom={10}>
             <TileLayer url='http://{s}.tile.osm.org/{z}/{x}/{y}.png' />
             {popup}
           </Map>
@@ -78,6 +93,6 @@ describe('Popup', () => {
     }
 
     document.body.innerHTML = '<div id="test"></div>';
-    React.render(<Component />, document.getElementById('test'));
+    render(<Component />, document.getElementById('test'));
   });
 });

@@ -2,14 +2,14 @@ import { PropTypes } from 'react';
 import { Icon, marker } from 'leaflet';
 
 import latlngType from './types/latlng';
-import PopupContainer from './PopupContainer';
+import MapLayer from './MapLayer';
 
-export default class Marker extends PopupContainer {
+export default class Marker extends MapLayer {
   static propTypes = {
-    position: latlngType.isRequired,
     icon: PropTypes.instanceOf(Icon),
+    opacity: PropTypes.number,
+    position: latlngType.isRequired,
     zIndexOffset: PropTypes.number,
-    opacity: PropTypes.number
   };
 
   componentWillMount() {
@@ -31,5 +31,11 @@ export default class Marker extends PopupContainer {
     if (this.props.opacity !== prevProps.opacity) {
       this.leafletElement.setOpacity(this.props.opacity);
     }
+  }
+
+  render() {
+    return this.renderChildrenWithProps({
+      popupContainer: this.leafletElement,
+    });
   }
 }

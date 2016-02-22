@@ -1,6 +1,8 @@
-import isArray from 'lodash/lang/isArray';
-import uniqueId from 'lodash/utility/uniqueId';
+/* eslint-disable react/no-did-mount-set-state */
 
+import isArray from 'lodash/isArray';
+import isUndefined from 'lodash/isUndefined';
+import uniqueId from 'lodash/uniqueId';
 import React, { PropTypes } from 'react';
 import Leaflet from 'leaflet';
 
@@ -13,20 +15,26 @@ const normalizeCenter = pos => isArray(pos) ? pos : [pos.lat, pos.lng || pos.lon
 
 export default class Map extends MapComponent {
   static propTypes = {
+    bounds: boundsType,
+    boundsOptions: PropTypes.object,
     center: latlngType,
+    children: PropTypes.oneOfType([
+      PropTypes.arrayOf(PropTypes.node),
+      PropTypes.node,
+    ]),
     className: PropTypes.string,
     id: PropTypes.string,
     maxBounds: boundsType,
     maxZoom: PropTypes.number,
     minZoom: PropTypes.number,
     style: PropTypes.object,
-    zoom: PropTypes.number
+    zoom: PropTypes.number,
   };
 
   constructor(props) {
     super(props);
     this.state = {
-      id: props.id || uniqueId('map')
+      id: props.id || uniqueId('map'),
     };
   }
 
@@ -34,6 +42,30 @@ export default class Map extends MapComponent {
     this.leafletElement = Leaflet.map(this.state.id, this.props);
     super.componentDidMount();
     this.setState({map: this.leafletElement});
+    if (!isUndefined(this.props.bounds)) {
+      this.leafletElement.fitBounds(this.props.bounds, this.props.boundsOptions);
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    const { bounds, center, maxBounds, zoom } = this.props;
+    if (center && this.shouldUpdateCenter(center, prevProps.center)) {
+      this.leafletElement.setView(center, zoom, {animate: false});
+    }
+    else if (zoom && zoom !== prevProps.zoom) {
+      this.leafletElement.setZoom(zoom);
+    }
+    if (maxBounds && this.shouldUpdateBounds(maxBounds, prevProps.maxBounds)) {
+      this.leafletElement.setMaxBounds(maxBounds);
+    }
+    if (bounds && this.shouldUpdateBounds(bounds, prevProps.bounds)) {
+      this.leafletElement.fitBounds(bounds, this.props.boundsOptions);
+    }
+  }
+
+  componentWillUnmount() {
+    super.componentWillUnmount();
+    this.leafletElement.remove();
   }
 
   shouldUpdateCenter(next, prev) {
@@ -43,19 +75,11 @@ export default class Map extends MapComponent {
     return next[0] !== prev[0] || next[1] !== prev[1];
   }
 
-  componentDidUpdate(prevProps) {
-    const { center, zoom } = this.props;
-    if (center && this.shouldUpdateCenter(center, prevProps.center)) {
-      this.leafletElement.setView(center, zoom, {animate: false});
-    }
-    else if (zoom && zoom !== prevProps.zoom) {
-      this.leafletElement.setZoom(zoom);
-    }
-  }
-
-  componentWillUnmount() {
-    super.componentWillUnmount();
-    this.leafletElement.remove();
+  shouldUpdateBounds(next, prev) {
+    if (!prev) return true;
+    next = Leaflet.latLngBounds(next);
+    prev = Leaflet.latLngBounds(prev);
+    return !next.equals(prev);
   }
 
   render() {
@@ -65,7 +89,10 @@ export default class Map extends MapComponent {
     }) : null;
 
     return (
-      <div className={this.props.className} id={this.state.id} style={this.props.style}>
+      <div
+        className={this.props.className}
+        id={this.state.id}
+        style={this.props.style}>
         {children}
       </div>
     );

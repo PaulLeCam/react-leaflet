@@ -1,3 +1,59 @@
+## HEAD (unreleased)
+
+- [internal] Updated Lodash to v4.
+
+## v0.10.0 (22/12/15)
+
+- Added `AttributionControl`, `LayersControl` and `ScaleControl` ([PR #100](https://github.com/PaulLeCam/react-leaflet/pull/100) by *jonboiser*).
+- Added example to render a list of custom Markers ([PR #104](https://github.com/PaulLeCam/react-leaflet/pull/104) by *varya*).
+- [internal] Updated Babel to v6.
+
+## v0.9.0 (12/11/15)
+
+- Removed `PopupContainer` component, extended internally by other components.
+- `FeatureGroup` now expects its layers to be passed as children, like `LayerGroup`.
+- Added `renderChildrenWithProps()` to `MapLayer`, used internally by the library.
+- Added `MapControl` as base component for controls.
+- Added `ZoomControl`.
+
+## v0.8.1 (21/10/15)
+
+Fix `PropTypes` export.
+
+## v0.8.0 (07/10/15)
+
+Changes from v0.7.0:
+
+- Updated React to v0.14.0.
+- Added ReactDOM v0.14.0 to peer dependencies.
+- `Popup` now renders its contents using `ReactDOM.render()` and therefore supports dynamic children.
+- `Map` now supports dynamic `bounds` and `maxBounds` properties ([#72](https://github.com/PaulLeCam/react-leaflet/pull/72)).
+- Added `LayerGroup` component ([#58](https://github.com/PaulLeCam/react-leaflet/pull/58)).
+
+## v0.8.0-rc.3 (29/09/15)
+
+- Added `LayerGroup` component ([#58](https://github.com/PaulLeCam/react-leaflet/pull/58)).
+- `Map` now supports dynamic `bounds` and `maxBounds` properties ([#72](https://github.com/PaulLeCam/react-leaflet/pull/72)).
+
+## v0.8.0-rc.2 (22/09/15)
+
+Check if `Popup` content node exists before trying to unmount.
+
+## v0.8.0-rc.1 (16/09/15)
+
+- Updated React to v0.14.0-rc1.
+- Added ReactDOM v0.14.0-rc1 to peer dependencies.
+- `Popup` now renders its contents using `ReactDOM.render()` and therefore supports dynamic children.
+
+## v0.7.0 (08/09/15)
+
+- Updated Leaflet to v0.7.5.
+- Added `Path` base component for vector layers, handling dynamic [Path options](http://leafletjs.com/reference.html#path-options) properties.
+- Added support for holes in `Polygon`.
+- [internal] Updated Jest to v0.5.
+- [internal] Updated Gulpfile to use Babel.
+- [internal] Added ESLint validation.
+
 ## v0.6.2 (14/06/15)
 
 Fix ignored events in `MapComponent` ([#41](https://github.com/PaulLeCam/react-leaflet/pull/41)).
@@ -26,11 +82,11 @@ Released v0.4.
 
 ## v0.4.0-rc.1 (11/03/15)
 
-React 0.13.0.
+React v0.13.0.
 
 ## v0.4.0-beta.1 (08/03/15)
 
-- Updated React dependency to 0.13.0-rc2:
+- Updated React dependency to v0.13.0-rc2:
   - Components are defined as ES6 classes.
   - Mixins are replaced by the base components `MapComponent`, `MapLayer`, `BaseTileLayer` and `PopupContainer`. All components extend from these.
   - The new [`React.cloneElement()`](https://facebook.github.io/react/blog/2015/03/03/react-v0.13-rc2.html#react.cloneelement) API is used instead of the deprecated `React.addons.cloneWithProps()` to pass the `map` property to the components.

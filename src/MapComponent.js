@@ -1,12 +1,34 @@
-import clone from 'lodash/lang/clone';
-import forEach from 'lodash/collection/forEach';
-import reduce from 'lodash/collection/reduce';
-import keys from 'lodash/object/keys';
+import clone from 'lodash/clone';
+import forEach from 'lodash/forEach';
+import keys from 'lodash/keys';
+import reduce from 'lodash/reduce';
 import { Component } from 'react';
 
 const EVENTS_RE = /on(?:Leaflet)?(.+)/i;
 
 export default class MapComponent extends Component {
+  componentWillMount() {
+    this._leafletEvents = this.extractLeafletEvents(this.props);
+  }
+
+  componentDidMount() {
+    this.bindLeafletEvents(this._leafletEvents);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const next = this.extractLeafletEvents(nextProps);
+    this._leafletEvents = this.bindLeafletEvents(next, this._leafletEvents);
+  }
+
+  componentWillUnmount() {
+    const el = this.leafletElement;
+    if (!el) return;
+
+    forEach(this._leafletEvents, (cb, ev) => {
+      el.off(ev, cb);
+    });
+  }
+
   getLeafletElement() {
     return this.leafletElement;
   }
@@ -46,27 +68,5 @@ export default class MapComponent extends Component {
   fireLeafletEvent(type, data) {
     const el = this.leafletElement;
     if (el) el.fire(type, data);
-  }
-
-  componentWillMount() {
-    this._leafletEvents = this.extractLeafletEvents(this.props);
-  }
-
-  componentDidMount() {
-    this.bindLeafletEvents(this._leafletEvents);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const next = this.extractLeafletEvents(nextProps);
-    this._leafletEvents = this.bindLeafletEvents(next, this._leafletEvents);
-  }
-
-  componentWillUnmount() {
-    const el = this.leafletElement;
-    if (!el) return;
-
-    forEach(this._leafletEvents, (cb, ev) => {
-      el.off(ev, cb);
-    });
   }
 }

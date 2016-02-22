@@ -1,11 +1,11 @@
 import { polyline } from 'leaflet';
 
 import latlngListType from './types/latlngList';
-import PopupContainer from './PopupContainer';
+import Path from './Path';
 
-export default class Polyline extends PopupContainer {
+export default class Polyline extends Path {
   static propTypes = {
-    positions: latlngListType.isRequired
+    positions: latlngListType.isRequired,
   };
 
   componentWillMount() {
@@ -18,5 +18,6 @@ export default class Polyline extends PopupContainer {
     if (this.props.positions !== prevProps.positions) {
       this.leafletElement.setLatLngs(this.props.positions);
     }
+    this.setStyleIfChanged(prevProps, this.props);
   }
 }

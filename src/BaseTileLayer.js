@@ -5,7 +5,7 @@ import MapLayer from './MapLayer';
 export default class BaseTileLayer extends MapLayer {
   static propTypes = {
     opacity: PropTypes.number,
-    zIndex: PropTypes.number
+    zIndex: PropTypes.number,
   };
 
   componentDidUpdate(prevProps) {

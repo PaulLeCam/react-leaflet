@@ -1,6 +1,8 @@
-example
-src
 __tests__
+coverage
+example
 .editorconfig
+.eslintrc
 .travis.yml
-gulpfile.js
+bower.json
+webpack.config.js

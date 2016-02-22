@@ -2,12 +2,12 @@ import { PropTypes } from 'react';
 import { circle } from 'leaflet';
 
 import latlngType from './types/latlng';
-import PopupContainer from './PopupContainer';
+import Path from './Path';
 
-export default class Circle extends PopupContainer {
+export default class Circle extends Path {
   static propTypes = {
     center: latlngType.isRequired,
-    radius: PropTypes.number.isRequired
+    radius: PropTypes.number.isRequired,
   };
 
   componentWillMount() {
@@ -23,5 +23,6 @@ export default class Circle extends PopupContainer {
     if (this.props.radius !== prevProps.radius) {
       this.leafletElement.setRadius(this.props.radius);
     }
+    this.setStyleIfChanged(prevProps, this.props);
   }
 }
