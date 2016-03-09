@@ -8,6 +8,11 @@ React components for Leaflet maps.
 npm install react-leaflet
 ```
 
+You'll need to require the leaflet css the render correctly.
+````html
+<link rel="stylesheet" href="node_modules/leaflet/dist/leaflet.css"></link>
+````
+
 React, ReactDOM and Leaflet are peer dependencies, if you haven't already installed them use:
 
 ```bash
@@ -24,7 +29,7 @@ The library is injected as `window.ReactLeaflet`.
 
 ## Getting started
 
-If you are not familiar with Leaflet, make sure you read its [quick start guide](http://leafletjs.com/examples/quick-start.html) first. You will need to add its CSS to your page to render the components properly.
+If you are not familiar with Leaflet, make sure you read its [quick start guide](http://leafletjs.com/examples/quick-start.html) first.
 
 All components are React wrappers for Leaflet elements and layers, they need a map instance and therefore must be included in a top-level `<Map>` component.
 
