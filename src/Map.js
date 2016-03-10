@@ -29,6 +29,11 @@ export default class Map extends MapComponent {
     minZoom: PropTypes.number,
     style: PropTypes.object,
     zoom: PropTypes.number,
+    animate: PropTypes.bool,
+  };
+
+  static defaultProps = {
+    animate: false
   };
 
   constructor(props) {
@@ -48,9 +53,9 @@ export default class Map extends MapComponent {
   }
 
   componentDidUpdate(prevProps) {
-    const { bounds, center, maxBounds, zoom } = this.props;
+    const { bounds, center, maxBounds, zoom, animate } = this.props;
     if (center && this.shouldUpdateCenter(center, prevProps.center)) {
-      this.leafletElement.setView(center, zoom, {animate: false});
+      this.leafletElement.setView(center, zoom, {animate: animate});
     }
     else if (zoom && zoom !== prevProps.zoom) {
       this.leafletElement.setZoom(zoom);

@@ -151,6 +151,7 @@ This is the top-level component that must be mounted for children ones to be ren
 
 **Other properties**
 - `id: string` (optional): The ID of the `<div>` container for the map. If you don't provide it, a unique one will be created.
+- `animate: boolean` (optional): If `true`, panning will always be animated if possible. Defaults to `false`.
 
 #### UI Layers
 
