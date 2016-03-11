@@ -8,6 +8,7 @@ import VectorLayersExample from './vector-layers';
 import OtherLayersExample from './other-layers';
 import ZoomControlExample from './zoom-control';
 import CustomComponentExample from './custom-component';
+import AnimateExample from './animate';
 
 const examples = (
   <div>
@@ -28,6 +29,9 @@ const examples = (
     <ZoomControlExample />
     <h2>List of markers (custom component)</h2>
     <CustomComponentExample />
+    <h2>Animate</h2>
+    <p>Click the map to move to the location</p>
+    <AnimateExample />
   </div>
 );
 
