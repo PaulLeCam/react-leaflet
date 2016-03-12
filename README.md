@@ -141,6 +141,7 @@ Base class extending [`MapLayer`](#maplayer) with the following methods:
 This is the top-level component that must be mounted for children ones to be rendered. Refer to [Leaflet documentation](http://leafletjs.com/reference.html#map-options) for more information about the properties.
 
 **Dynamic properties**
+- `animate: boolean` (optional): If `true`, panning will always be animated if possible. Defaults to `false`.
 - `bounds: bounds` (optional): A rectangle for the map to contain. It will be centered, and the map will zoom in as close as it can while still showing the full bounds. This property is dynamic, if you change it it will be reflected on the map.
 - `boundsOptions: object` (optional): Options passed to the `fitBounds()` method.
 - `center: latLng` (optional): Center of the map. This property is dynamic, if you change it it will be reflected in the map.
@@ -151,7 +152,6 @@ This is the top-level component that must be mounted for children ones to be ren
 
 **Other properties**
 - `id: string` (optional): The ID of the `<div>` container for the map. If you don't provide it, a unique one will be created.
-- `animate: boolean` (optional): If `true`, panning will always be animated if possible. Defaults to `false`.
 
 #### UI Layers
 

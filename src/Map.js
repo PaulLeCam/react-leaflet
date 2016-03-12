@@ -15,6 +15,7 @@ const normalizeCenter = pos => isArray(pos) ? pos : [pos.lat, pos.lng || pos.lon
 
 export default class Map extends MapComponent {
   static propTypes = {
+    animate: PropTypes.bool,
     bounds: boundsType,
     boundsOptions: PropTypes.object,
     center: latlngType,
@@ -29,11 +30,10 @@ export default class Map extends MapComponent {
     minZoom: PropTypes.number,
     style: PropTypes.object,
     zoom: PropTypes.number,
-    animate: PropTypes.bool,
   };
 
   static defaultProps = {
-    animate: false
+    animate: false,
   };
 
   constructor(props) {
@@ -55,7 +55,7 @@ export default class Map extends MapComponent {
   componentDidUpdate(prevProps) {
     const { bounds, center, maxBounds, zoom, animate } = this.props;
     if (center && this.shouldUpdateCenter(center, prevProps.center)) {
-      this.leafletElement.setView(center, zoom, {animate: animate});
+      this.leafletElement.setView(center, zoom, {animate});
     }
     else if (zoom && zoom !== prevProps.zoom) {
       this.leafletElement.setZoom(zoom);

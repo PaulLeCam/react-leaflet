@@ -1,25 +1,17 @@
 {
   "env": {
-    "browser": true,
-    "es6": true,
-    "node": true
+    "es6": true
   },
+  "extends": "eslint:recommended",
   "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "jsx": true,
+    "sourceType": "module"
+  },
   "plugins": [
     "react"
   ],
-  "ecmaFeatures": {
-    "arrowFunctions": true,
-    "blockBindings": true,
-    "classes": true,
-    "defaultParams": true,
-    "destructuring": true,
-    "spread": true,
-    "superInFunctions": true,
-    "modules": true,
-    "jsx": true,
-    "experimentalObjectRestSpread": true
-  },
   "rules": {
     "comma-dangle": [1, "always-multiline"],
     "no-cond-assign": 2,
@@ -68,10 +60,6 @@
     "no-use-before-define": 1,
     "quotes": [2, "single", "avoid-escape"],
     "jsx-quotes": [1, "prefer-single"],
-    "constructor-super": 2,
-    "no-class-assign": 2,
-    "no-const-assign": 2,
-    "no-this-before-super": 2,
     "no-var": 2,
     "prefer-const": 1,
     "react/display-name": 0,

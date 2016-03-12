@@ -6203,6 +6203,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}(_MapComponent3.default);
 
 	Map.propTypes = {
+	  animate: _react.PropTypes.bool,
 	  bounds: _bounds2.default,
 	  boundsOptions: _react.PropTypes.object,
 	  center: _latlng2.default,
@@ -6213,8 +6214,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  maxZoom: _react.PropTypes.number,
 	  minZoom: _react.PropTypes.number,
 	  style: _react.PropTypes.object,
-	  zoom: _react.PropTypes.number,
-	  animate: _react.PropTypes.bool
+	  zoom: _react.PropTypes.number
 	};
 	Map.defaultProps = {
 	  animate: false
