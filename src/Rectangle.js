@@ -10,7 +10,7 @@ export default class Rectangle extends Path {
 
   componentWillMount() {
     super.componentWillMount();
-    const { bounds, map, ...props } = this.props;
+    const { bounds, map: _, ...props } = this.props;
     this.leafletElement = rectangle(bounds, props);
   }
 
