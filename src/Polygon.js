@@ -14,7 +14,7 @@ export default class Polygon extends Path {
 
   componentWillMount() {
     super.componentWillMount();
-    const { map, positions, ...props } = this.props;
+    const { map: _, positions, ...props } = this.props;
     this.leafletElement = polygon(positions, props);
   }
 
