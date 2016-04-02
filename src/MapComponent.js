@@ -1,7 +1,4 @@
-import clone from 'lodash/clone';
-import forEach from 'lodash/forEach';
-import keys from 'lodash/keys';
-import reduce from 'lodash/reduce';
+import { clone, forEach, keys, reduce } from 'lodash';
 import { Component } from 'react';
 
 const EVENTS_RE = /on(?:Leaflet)?(.+)/i;

@@ -1,7 +1,7 @@
 ## v0.10.2 (12/03/16)
 
 - Added `animate` optional property to `Map` ([PR #126](https://github.com/PaulLeCam/react-leaflet/pull/126) by *mariusandra*).
-- Added React v15.0.0-rc.1 support as peer dependencies.
+- Added React v15.0.0-rc.1 support as peer dependency.
 
 ## v0.10.1 (22/02/16)
 

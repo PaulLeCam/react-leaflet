@@ -1,8 +1,6 @@
 /* eslint-disable react/no-did-mount-set-state */
 
-import isArray from 'lodash/isArray';
-import isUndefined from 'lodash/isUndefined';
-import uniqueId from 'lodash/uniqueId';
+import { isArray, isUndefined, uniqueId } from 'lodash';
 import React, { PropTypes } from 'react';
 import Leaflet from 'leaflet';
 
