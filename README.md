@@ -98,7 +98,7 @@ This library uses React components as an interface, but not the virtual DOM, as 
 
 ### Events
 
-Leaflet exposes its own events, different from React. You can listen to them using React-Leaflet by adding a callback to a property prefixed by `onLeaflet` or simply `on`. Ex: `<Map onLeafletMoveend={this.handleMoveend}>...</Map>`.  
+Leaflet exposes its own events, different from React. You can listen to them using React-Leaflet by adding a callback to a property prefixed by `on`. Ex: `<Map onMoveend={this.handleMoveend}>...</Map>`.  
 Check Leaflet documentation for the events associated to each component.
 
 ### Components
