@@ -18,7 +18,7 @@ export default class FeatureGroup extends Path {
 
   render() {
     return this.renderChildrenWithProps({
-      layerGroup: this.leafletElement,
+      layerContainer: this.leafletElement,
       popupContainer: this.leafletElement,
     });
   }

@@ -42,7 +42,7 @@ export default class MapComponent extends Component {
 
   bindLeafletEvents(next = {}, prev = {}) {
     const el = this.leafletElement;
-    if (!el) return;
+    if (!el || !el.on) return;
 
     const diff = clone(prev);
     forEach(prev, (cb, ev) => {

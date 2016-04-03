@@ -84,6 +84,8 @@ This library uses React components as an interface, but not the virtual DOM, as 
 
 ### PropTypes
 
+**children**: One `PropTypes.node` or an Array of `PropTypes.node`.
+
 **latLng**: One of `[number, number]`, `{lat: number, lng: number}` or `{lat: number, lon: number}`.
 
 **latLngList**: An Array of *LatLng*.
@@ -91,6 +93,8 @@ This library uses React components as an interface, but not the virtual DOM, as 
 **bounds**: An instance of *Leaflet.LatLngBounds* or a *LatLngList*.
 
 **controlPosition**: One of `topleft`, `topright`, `bottomleft` or `bottomright`.
+
+**layerContainer**: An object containing `addLayer()` and `removeLayer()` functions.
 
 ### Events
 
@@ -281,14 +285,45 @@ Extended `LayerGroup` supporting a `Popup` child.
 
 ##### LayersControl
 
-[Leaflet reference](http://leafletjs.com/reference.html#control-layers)
+[Leaflet reference](http://leafletjs.com/reference.html#control-layers)  
 
 **Dynamic properties**
 - `position: controlPosition` (optional)
 
-**Other properties**
-- `baseLayers: object` (optional)
-- `overlays: object` (optional)
+This component exposes two children container components, `LayersControl.BaseLayer` and `LayersControl.Overlay`, each requiring a `name` property and an unique child layer to render. See the `layers-control` example for a more advanced usage.
+
+Example usage:
+```js
+<LayersControl position='topright'>
+  <BaseLayer name='OpenStreetMap.BlackAndWhite'>
+    <TileLayer
+      attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+      url='http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png'
+    />
+  </BaseLayer>
+  <BaseLayer name='OpenStreetMap.Mapnik'>
+    <TileLayer
+      attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+      url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+    />
+  </BaseLayer>
+  <Overlay name='Marker with popup'>
+    <Marker position={[51.51, -0.06]}>
+      <Popup>
+        <span>A pretty CSS3 popup. <br/> Easily customizable.</span>
+      </Popup>
+    </Marker>
+  </Overlay>
+  <Overlay name='Feature group'>
+    <FeatureGroup color='purple'>
+      <Popup>
+        <span>Popup in FeatureGroup</span>
+      </Popup>
+      <Circle center={[51.51, -0.06]} radius={200} />
+    </FeatureGroup>
+  </Overlay>
+</LayersControl>
+```
 
 ##### ScaleControl
 
@@ -307,7 +342,8 @@ Extended `LayerGroup` supporting a `Popup` child.
 ## Creating custom components
 
 If you want to create custom components, for example Leaflet plugins, you could extend one of the [base components](https://github.com/PaulLeCam/react-leaflet#base-components) depending on the type of component you want to implement.  
-The created Leaflet map instance is injected by the `Map` component to all its children as the `map` property. Make sure to inject it in your component's children as well.
+The created Leaflet map instance is injected by the `Map` component to all its children as the `map` property. Other layers may inject themselves to their children as the `layerContainer` property.  
+Make sure to inject **both** `layerContainer` and `map` in your component's children as well.
 
 ## Changelog
 
