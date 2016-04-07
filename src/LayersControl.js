@@ -4,7 +4,6 @@ import React, { cloneElement, Children, Component, PropTypes } from 'react';
 import warning from 'warning';
 
 import childrenType from './types/children';
-import layerContainerType from './types/layerContainer';
 
 import MapControl from './MapControl';
 
@@ -27,7 +26,7 @@ class ControlledLayer extends Component {
 
   render() {
     const { children, map } = this.props;
-    const child = cloneElement(Children.only(this.props.children), { map, layerContainer: this });
+    const child = cloneElement(Children.only(children), { map, layerContainer: this });
     return (
       <div style={{display:'none'}}>{child}</div>
     );
@@ -96,7 +95,7 @@ export default class LayersControl extends MapControl {
       this.controlProps = {
         addBaseLayer: this.addBaseLayer.bind(this),
         addOverlay: this.addOverlay.bind(this),
-        removeLayer: this.removeLayer.bind(this)
+        removeLayer: this.removeLayer.bind(this),
       };
     }
   }
