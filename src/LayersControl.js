@@ -12,6 +12,7 @@ const controlledLayerPropTypes = {
   addBaseLayer: PropTypes.func.isRequired,
   addOverlay: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
+  defaultAdded: PropTypes.bool,
   map: PropTypes.instanceOf(Map).isRequired,
   name: PropTypes.string.isRequired,
   removeLayer: PropTypes.func.isRequired,
