@@ -290,7 +290,8 @@ Extended `LayerGroup` supporting a `Popup` child.
 **Dynamic properties**
 - `position: controlPosition` (optional)
 
-This component exposes two children container components, `LayersControl.BaseLayer` and `LayersControl.Overlay`, each requiring a `name` property and an unique child layer to render. See the `layers-control` example for a more advanced usage.
+This component exposes two children container components, `LayersControl.BaseLayer` and `LayersControl.Overlay` documented below.  
+See the `layers-control` example for a more advanced usage.
 
 Example usage:
 ```jsx
@@ -324,6 +325,22 @@ Example usage:
   </LayersControl.Overlay>
 </LayersControl>
 ```
+
+##### LayersControl.BaseLayer
+
+**Properties**
+- `name: string` (required). The name of the layer as appearing in the `LayersControl`.
+
+**Dynamic properties**
+- `checked: boolean` (optional, defaults to `false`). Whether the radio button associated to the layer should be checked or not. The layer will be displayed in the map accordingly.
+
+##### LayersControl.Overlay
+
+**Properties**
+- `name: string` (required). The name of the layer as appearing in the `LayersControl`.
+
+**Dynamic properties**
+- `checked: boolean` (optional, defaults to `false`). Whether the checkbox associated to the layer should be checked or not. The layer will be displayed in the map accordingly.
 
 ##### ScaleControl
 

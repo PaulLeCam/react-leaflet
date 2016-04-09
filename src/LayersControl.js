@@ -11,25 +11,37 @@ import MapControl from './MapControl';
 const controlledLayerPropTypes = {
   addBaseLayer: PropTypes.func,
   addOverlay: PropTypes.func,
+  checked: PropTypes.bool,
   children: PropTypes.node.isRequired,
-  layerContainer: layerContainerType,
+  map: PropTypes.instanceOf(Map),
   name: PropTypes.string.isRequired,
   removeLayer: PropTypes.func,
 };
 
+// Abtract class for layer container, extended by BaseLayer and Overlay
 class ControlledLayer extends Component {
   static propTypes = controlledLayerPropTypes;
 
-  componentWillUnmount() {
-    this.props.removeLayer(this.layer);
+  componentWillReceiveProps({ checked, map }) {
+    // Handle dynamically (un)checking the layer => adding/removing from the map
+    if (checked && !this.props.checked) {
+      map.addLayer(this.layer);
+    }
+    else if (this.props.checked && !checked) {
+      map.removeLayer(this.layer);
+    }
+  }
+
+  removeLayer(layer) {
+    this.props.removeLayer(layer);
   }
 
   render() {
-    const { children, layerContainer } = this.props;
-    return cloneElement(Children.only(children), {
-      layerContainer,
-      ref: e => {
-        this.layer = e.leafletElement;
+    return cloneElement(Children.only(this.props.children), {
+      // Proxy layer container method calls to local methods
+      layerContainer: {
+        addLayer: ::this.addLayer,
+        removeLayer: ::this.removeLayer,
       },
     });
   }
@@ -38,18 +50,20 @@ class ControlledLayer extends Component {
 class BaseLayer extends ControlledLayer {
   static propTypes = controlledLayerPropTypes;
 
-  componentDidMount() {
-    const { addBaseLayer, name } = this.props;
-    addBaseLayer(this.layer, name);
+  addLayer(layer) {
+    this.layer = layer; // Keep layer reference to handle dynamic changes of props
+    const { addBaseLayer, checked, name } = this.props;
+    addBaseLayer(layer, name, checked);
   }
 }
 
 class Overlay extends ControlledLayer {
   static propTypes = controlledLayerPropTypes;
 
-  componentDidMount() {
-    const { addOverlay, name } = this.props;
-    addOverlay(this.layer, name);
+  addLayer(layer) {
+    this.layer = layer; // Keep layer reference to handle dynamic changes of props
+    const { addOverlay, checked, name } = this.props;
+    addOverlay(layer, name, checked);
   }
 }
 
@@ -72,6 +86,7 @@ export default class LayersControl extends MapControl {
       ...options,
     } = this.props;
 
+    // Pre-v0.11 behavior, warn in v0.11, remove in v0.12
     this.legacy = !!(baseLayers || overlays);
 
     if (this.legacy) {
@@ -81,16 +96,35 @@ export default class LayersControl extends MapControl {
     else {
       this.leafletElement = control.layers(undefined, undefined, options);
       this.controlProps = {
-        addBaseLayer: this.leafletElement.addBaseLayer.bind(this.leafletElement),
-        addOverlay: this.leafletElement.addOverlay.bind(this.leafletElement),
-        removeLayer: this.leafletElement.removeLayer.bind(this.leafletElement),
+        addBaseLayer: ::this.addBaseLayer,
+        addOverlay: ::this.addOverlay,
+        removeLayer: ::this.removeLayer,
       };
     }
   }
 
+  addBaseLayer(layer, name, checked = false) {
+    if (checked) {
+      this.props.map.addLayer(layer);
+    }
+    this.leafletElement.addBaseLayer(layer, name);
+  }
+
+  addOverlay(layer, name, checked = false) {
+    if (checked) {
+      this.props.map.addLayer(layer);
+    }
+    this.leafletElement.addOverlay(layer, name);
+  }
+
+  removeLayer(layer) {
+    this.leafletElement.removeLayer(layer);
+    this.props.map.removeLayer(layer);
+  }
+
   getClonedChildrenWithProps(extra) {
-    const { children, map, layerContainer } = this.props;
-    const props = assign({map, layerContainer}, extra);
+    const { children, layerContainer, map } = this.props;
+    const props = assign({layerContainer, map}, extra);
 
     return Children.map(children, child => {
       return child ? cloneElement(child, props) : null;

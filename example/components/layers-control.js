@@ -23,16 +23,16 @@ export default class LayersControlExample extends Component {
     return (
       <Map center={center} zoom={13}>
         <LayersControl position='topright'>
+          <BaseLayer checked name='OpenStreetMap.Mapnik'>
+            <TileLayer
+              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+              url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+            />
+          </BaseLayer>
           <BaseLayer name='OpenStreetMap.BlackAndWhite'>
             <TileLayer
               attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
               url='http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png'
-            />
-          </BaseLayer>
-          <BaseLayer name='OpenStreetMap.Mapnik'>
-            <TileLayer
-              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-              url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
             />
           </BaseLayer>
           <Overlay name='Marker with popup'>
@@ -42,7 +42,7 @@ export default class LayersControlExample extends Component {
               </Popup>
             </Marker>
           </Overlay>
-          <Overlay name='Layer group with circles'>
+          <Overlay checked name='Layer group with circles'>
             <LayerGroup>
               <Circle center={center} fillColor='blue' radius={200} />
               <Circle center={center} fillColor='red' radius={100} stroke={false} />
