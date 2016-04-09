@@ -44,7 +44,7 @@ L.marker(position).addTo(map)
 ```
 
 **React-Leaflet**
-```js
+```jsx
 import React from 'react';
 import { render } from 'react-dom';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
@@ -293,35 +293,35 @@ Extended `LayerGroup` supporting a `Popup` child.
 This component exposes two children container components, `LayersControl.BaseLayer` and `LayersControl.Overlay`, each requiring a `name` property and an unique child layer to render. See the `layers-control` example for a more advanced usage.
 
 Example usage:
-```js
+```jsx
 <LayersControl position='topright'>
-  <BaseLayer name='OpenStreetMap.BlackAndWhite'>
+  <LayersControl.BaseLayer name='OpenStreetMap.BlackAndWhite'>
     <TileLayer
       attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
       url='http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png'
     />
-  </BaseLayer>
-  <BaseLayer name='OpenStreetMap.Mapnik'>
+  </LayersControl.BaseLayer>
+  <LayersControl.BaseLayer name='OpenStreetMap.Mapnik'>
     <TileLayer
       attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
       url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
     />
-  </BaseLayer>
-  <Overlay name='Marker with popup'>
+  </LayersControl.BaseLayer>
+  <LayersControl.Overlay name='Marker with popup'>
     <Marker position={[51.51, -0.06]}>
       <Popup>
         <span>A pretty CSS3 popup. <br/> Easily customizable.</span>
       </Popup>
     </Marker>
-  </Overlay>
-  <Overlay name='Feature group'>
+  </LayersControl.Overlay>
+  <LayersControl.Overlay name='Feature group'>
     <FeatureGroup color='purple'>
       <Popup>
         <span>Popup in FeatureGroup</span>
       </Popup>
       <Circle center={[51.51, -0.06]} radius={200} />
     </FeatureGroup>
-  </Overlay>
+  </LayersControl.Overlay>
 </LayersControl>
 ```
 
