@@ -44,7 +44,7 @@ L.marker(position).addTo(map)
 ```
 
 **React-Leaflet**
-```js
+```jsx
 import React from 'react';
 import { render } from 'react-dom';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
@@ -84,6 +84,8 @@ This library uses React components as an interface, but not the virtual DOM, as 
 
 ### PropTypes
 
+**children**: One `PropTypes.node` or an Array of `PropTypes.node`.
+
 **latLng**: One of `[number, number]`, `{lat: number, lng: number}` or `{lat: number, lon: number}`.
 
 **latLngList**: An Array of *LatLng*.
@@ -92,9 +94,11 @@ This library uses React components as an interface, but not the virtual DOM, as 
 
 **controlPosition**: One of `topleft`, `topright`, `bottomleft` or `bottomright`.
 
+**layerContainer**: An object containing `addLayer()` and `removeLayer()` functions.
+
 ### Events
 
-Leaflet exposes its own events, different from React. You can listen to them using React-Leaflet by adding a callback to a property prefixed by `onLeaflet` or simply `on`. Ex: `<Map onLeafletMoveend={this.handleMoveend}>...</Map>`.  
+Leaflet exposes its own events, different from React. You can listen to them using React-Leaflet by adding a callback to a property prefixed by `on`. Ex: `<Map onMoveend={this.handleMoveend}>...</Map>`.  
 Check Leaflet documentation for the events associated to each component.
 
 ### Components
@@ -281,14 +285,62 @@ Extended `LayerGroup` supporting a `Popup` child.
 
 ##### LayersControl
 
-[Leaflet reference](http://leafletjs.com/reference.html#control-layers)
+[Leaflet reference](http://leafletjs.com/reference.html#control-layers)  
 
 **Dynamic properties**
 - `position: controlPosition` (optional)
 
-**Other properties**
-- `baseLayers: object` (optional)
-- `overlays: object` (optional)
+This component exposes two children container components, `LayersControl.BaseLayer` and `LayersControl.Overlay` documented below.  
+See the `layers-control` example for a more advanced usage.
+
+Example usage:
+```jsx
+<LayersControl position='topright'>
+  <LayersControl.BaseLayer name='OpenStreetMap.BlackAndWhite'>
+    <TileLayer
+      attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+      url='http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png'
+    />
+  </LayersControl.BaseLayer>
+  <LayersControl.BaseLayer name='OpenStreetMap.Mapnik'>
+    <TileLayer
+      attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+      url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+    />
+  </LayersControl.BaseLayer>
+  <LayersControl.Overlay name='Marker with popup'>
+    <Marker position={[51.51, -0.06]}>
+      <Popup>
+        <span>A pretty CSS3 popup. <br/> Easily customizable.</span>
+      </Popup>
+    </Marker>
+  </LayersControl.Overlay>
+  <LayersControl.Overlay name='Feature group'>
+    <FeatureGroup color='purple'>
+      <Popup>
+        <span>Popup in FeatureGroup</span>
+      </Popup>
+      <Circle center={[51.51, -0.06]} radius={200} />
+    </FeatureGroup>
+  </LayersControl.Overlay>
+</LayersControl>
+```
+
+##### LayersControl.BaseLayer
+
+**Properties**
+- `name: string` (required). The name of the layer as appearing in the `LayersControl`.
+
+**Dynamic properties**
+- `checked: boolean` (optional, defaults to `false`). Whether the radio button associated to the layer should be checked or not. The layer will be displayed in the map accordingly.
+
+##### LayersControl.Overlay
+
+**Properties**
+- `name: string` (required). The name of the layer as appearing in the `LayersControl`.
+
+**Dynamic properties**
+- `checked: boolean` (optional, defaults to `false`). Whether the checkbox associated to the layer should be checked or not. The layer will be displayed in the map accordingly.
 
 ##### ScaleControl
 
@@ -307,7 +359,8 @@ Extended `LayerGroup` supporting a `Popup` child.
 ## Creating custom components
 
 If you want to create custom components, for example Leaflet plugins, you could extend one of the [base components](https://github.com/PaulLeCam/react-leaflet#base-components) depending on the type of component you want to implement.  
-The created Leaflet map instance is injected by the `Map` component to all its children as the `map` property. Make sure to inject it in your component's children as well.
+The created Leaflet map instance is injected by the `Map` component to all its children as the `map` property. Other layers may inject themselves to their children as the `layerContainer` property.  
+Make sure to inject **both** `layerContainer` and `map` in your component's children as well.
 
 ## Changelog
 

@@ -1,3 +1,15 @@
+## v0.11.0 (09/04/16)
+
+- [BREAKING] Added `layerContainer` property as a consistent replacement for `map` or `layerGroup` ([PR #132](https://github.com/PaulLeCam/react-leaflet/pull/132) by *boromisp*). This is only breaking if you are creating custom components, as you will need to make sure to also inject the `layerContainer` property to children layers as you need to do with `map`.
+- Changed `LayersControl` to be based on components:
+  - Added `LayersControl.BaseLayer` container component to add a base layer to a `LayersControl`.
+  - Added `LayersControl.Overlay` container component to add an overlay to a `LayersControl`.
+  - `baseLayers` and `overlays` properties for `LayersControl` are still supported but deprecated. Using either of them will make the `LayersControl` behave the same way it does in versions < 0.11.
+- Deprecated `onLeaflet...` properties for events, simply use `on...`, ex `onClick` instead of `onLeafletClick`.
+- Added warnings for deprecated features, the same way React does. Make sure to address these warnings to ease the transition to future releases.
+- Added React v15.0.0 support as peer dependency.
+- [internal] Fixed `no-unused-vars` linting ([PR #131](https://github.com/PaulLeCam/react-leaflet/pull/131) by *boromisp*).
+
 ## v0.10.2 (12/03/16)
 
 - Added `animate` optional property to `Map` ([PR #126](https://github.com/PaulLeCam/react-leaflet/pull/126) by *mariusandra*).
