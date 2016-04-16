@@ -43,6 +43,7 @@ class ControlledLayer extends Component {
         addLayer: ::this.addLayer,
         removeLayer: ::this.removeLayer,
       },
+      map: this.props.map,
     });
   }
 }
