@@ -1,4 +1,8 @@
-## v0.11.0 (09/04/16)
+## v0.11.1 (2016-04-17)
+
+Fixed `map` property injection in `LayersControl` ([PR #142](https://github.com/PaulLeCam/react-leaflet/pull/142) by *Dahlgren*).
+
+## v0.11.0 (2016-04-09)
 
 - [BREAKING] Added `layerContainer` property as a consistent replacement for `map` or `layerGroup` ([PR #132](https://github.com/PaulLeCam/react-leaflet/pull/132) by *boromisp*). This is only breaking if you are creating custom components, as you will need to make sure to also inject the `layerContainer` property to children layers as you need to do with `map`.
 - Changed `LayersControl` to be based on components:
@@ -10,23 +14,23 @@
 - Added React v15.0.0 support as peer dependency.
 - [internal] Fixed `no-unused-vars` linting ([PR #131](https://github.com/PaulLeCam/react-leaflet/pull/131) by *boromisp*).
 
-## v0.10.2 (12/03/16)
+## v0.10.2 (2016-03-12)
 
 - Added `animate` optional property to `Map` ([PR #126](https://github.com/PaulLeCam/react-leaflet/pull/126) by *mariusandra*).
 - Added React v15.0.0-rc.1 support as peer dependency.
 
-## v0.10.1 (22/02/16)
+## v0.10.1 (2016-02-22)
 
 - Added the popup container as source layer to `Popup` creation, fixes [#113](https://github.com/PaulLeCam/react-leaflet/issues/113) ([PR #112](https://github.com/PaulLeCam/react-leaflet/pull/112) by *amarant*).
 - [internal] Updated Lodash to v4.
 
-## v0.10.0 (22/12/15)
+## v0.10.0 (2015-12-22)
 
 - Added `AttributionControl`, `LayersControl` and `ScaleControl` ([PR #100](https://github.com/PaulLeCam/react-leaflet/pull/100) by *jonboiser*).
 - Added example to render a list of custom Markers ([PR #104](https://github.com/PaulLeCam/react-leaflet/pull/104) by *varya*).
 - [internal] Updated Babel to v6.
 
-## v0.9.0 (12/11/15)
+## v0.9.0 (2015-11-12)
 
 - Removed `PopupContainer` component, extended internally by other components.
 - `FeatureGroup` now expects its layers to be passed as children, like `LayerGroup`.
@@ -34,11 +38,11 @@
 - Added `MapControl` as base component for controls.
 - Added `ZoomControl`.
 
-## v0.8.1 (21/10/15)
+## v0.8.1 (2015-10-21)
 
 Fix `PropTypes` export.
 
-## v0.8.0 (07/10/15)
+## v0.8.0 (2015-10-07)
 
 Changes from v0.7.0:
 
@@ -48,22 +52,22 @@ Changes from v0.7.0:
 - `Map` now supports dynamic `bounds` and `maxBounds` properties ([#72](https://github.com/PaulLeCam/react-leaflet/pull/72)).
 - Added `LayerGroup` component ([#58](https://github.com/PaulLeCam/react-leaflet/pull/58)).
 
-## v0.8.0-rc.3 (29/09/15)
+## v0.8.0-rc.3 (2015-09-29)
 
 - Added `LayerGroup` component ([#58](https://github.com/PaulLeCam/react-leaflet/pull/58)).
 - `Map` now supports dynamic `bounds` and `maxBounds` properties ([#72](https://github.com/PaulLeCam/react-leaflet/pull/72)).
 
-## v0.8.0-rc.2 (22/09/15)
+## v0.8.0-rc.2 (2015-09-22)
 
 Check if `Popup` content node exists before trying to unmount.
 
-## v0.8.0-rc.1 (16/09/15)
+## v0.8.0-rc.1 (2015-09-16)
 
 - Updated React to v0.14.0-rc1.
 - Added ReactDOM v0.14.0-rc1 to peer dependencies.
 - `Popup` now renders its contents using `ReactDOM.render()` and therefore supports dynamic children.
 
-## v0.7.0 (08/09/15)
+## v0.7.0 (2015-09-08)
 
 - Updated Leaflet to v0.7.5.
 - Added `Path` base component for vector layers, handling dynamic [Path options](http://leafletjs.com/reference.html#path-options) properties.
@@ -72,37 +76,37 @@ Check if `Popup` content node exists before trying to unmount.
 - [internal] Updated Gulpfile to use Babel.
 - [internal] Added ESLint validation.
 
-## v0.6.2 (14/06/15)
+## v0.6.2 (2015-06-14)
 
 Fix ignored events in `MapComponent` ([#41](https://github.com/PaulLeCam/react-leaflet/pull/41)).
 
-## v0.6.1 (22/05/15)
+## v0.6.1 (2015-05-22)
 
 Fix `PopupContainer` export.
 
-## v0.6.0 (18/05/15)
+## v0.6.0 (2015-05-18)
 
 - Added `style` property on the `Map` component.
 - Replaced the `<noscript>` element in `PopupContainer` by a `<div>` to be properly updated.
 
-## v0.5.0 (02/05/15)
+## v0.5.0 (2015-05-02)
 
 Set `icon`, `zIndexOffset` and `opacity` properties as dynamic on `Marker`.
 
-## v0.4.1 (06/04/15)
+## v0.4.1 (2015-04-06)
 
 - Removed `getLeafletElement()` deprecation.
 - Updated Babel to v5.
 
-## v0.4.0 (28/03/15)
+## v0.4.0 (2015-03-28)
 
 Released v0.4.
 
-## v0.4.0-rc.1 (11/03/15)
+## v0.4.0-rc.1 (2015-03-11)
 
 React v0.13.0.
 
-## v0.4.0-beta.1 (08/03/15)
+## v0.4.0-beta.1 (2015-03-08)
 
 - Updated React dependency to v0.13.0-rc2:
   - Components are defined as ES6 classes.
