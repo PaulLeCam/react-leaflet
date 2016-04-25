@@ -2,7 +2,19 @@
 
 React components for Leaflet maps.
 
-## Install
+- [Installation](#installation)
+- [Getting started](#getting-started)
+- [Technical considerations](#technical-considerations)
+- [API](#api)
+  - [Helpers](#helpers)
+  - [PropTypes](#proptypes)
+  - [Events](#events)
+  - [Components](#components)
+- [Creating custom components](#creating-custom-components)
+- [Changelog](#changelog)
+- [License](#license)
+
+## Installation
 
 ```bash
 npm install react-leaflet

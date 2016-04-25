@@ -119,7 +119,6 @@ export default class LayersControl extends MapControl {
   }
 
   removeLayer(layer) {
-    this.leafletElement.removeLayer(layer);
     this.props.map.removeLayer(layer);
   }
 

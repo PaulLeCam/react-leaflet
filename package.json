@@ -1,6 +1,6 @@
 {
   "name": "react-leaflet",
-  "version": "0.11.1",
+  "version": "0.11.2",
   "description": "React components for Leaflet maps",
   "main": "lib/index.js",
   "scripts": {
@@ -45,9 +45,9 @@
     "react-dom": "^0.14.0 || ^15.0.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.7.5",
-    "babel-core": "^6.7.6",
-    "babel-eslint": "^6.0.2",
+    "babel-cli": "^6.7.7",
+    "babel-core": "^6.7.7",
+    "babel-eslint": "^6.0.3",
     "babel-jest": "^11.0.1",
     "babel-loader": "^6.2.4",
     "babel-plugin-lodash": "^2.3.0",
@@ -56,8 +56,8 @@
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-0": "^6.5.0",
     "eslint": "^2.8.0",
-    "eslint-plugin-react": "^4.3.0",
-    "jest-cli": "^11.0.1",
+    "eslint-plugin-react": "^5.0.1",
+    "jest-cli": "^11.0.2",
     "leaflet": "^0.7.7",
     "onchange": "^2.4.0",
     "react": "^15.0.1",

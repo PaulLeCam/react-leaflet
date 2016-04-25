@@ -6720,7 +6720,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'removeLayer',
 	    value: function removeLayer(layer) {
-	      this.leafletElement.removeLayer(layer);
 	      this.props.map.removeLayer(layer);
 	    }
 	  }, {
