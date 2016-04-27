@@ -10,12 +10,15 @@ import ZoomControlExample from './zoom-control';
 import LayersControlExample from './layers-control';
 import CustomComponentExample from './custom-component';
 import AnimateExample from './animate';
+import DraggableExample from './draggable-marker';
 
 const examples = (
   <div>
     <h1>React-Leaflet examples</h1>
     <h2>Popup with Marker</h2>
     <SimpleExample />
+    <h2>Draggable Marker</h2>
+    <DraggableExample />
     <h2>Events</h2>
     <p>Click the map to show a marker at your detected location</p>
     <EventsExample />
