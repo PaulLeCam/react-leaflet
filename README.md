@@ -177,6 +177,7 @@ This is the top-level component that must be mounted for children ones to be ren
 
 **Dynamic properties**
 - `position: latLng` (required)
+- `draggable: boolean` (optional)
 - `icon: Leaflet.Icon` (optional)
 - `zIndexOffset: number` (optional)
 - `opacity: number` (optional)

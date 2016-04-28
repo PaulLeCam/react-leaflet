@@ -1,3 +1,7 @@
+## v0.11.3 (2016-04-28)
+
+Made the `draggable` property in `Marker` dynamic ([PR #148](https://github.com/PaulLeCam/react-leaflet/pull/148) by *riolowry*).
+
 ## v0.11.2 (2016-04-25)
 
 Fixed layer removal in `LayersControl`.

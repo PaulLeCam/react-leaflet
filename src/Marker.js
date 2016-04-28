@@ -32,9 +32,10 @@ export default class Marker extends MapLayer {
       this.leafletElement.setOpacity(this.props.opacity);
     }
     if (this.props.draggable !== prevProps.draggable) {
-      if(this.props.draggable) {
+      if (this.props.draggable) {
         this.leafletElement.dragging.enable();
-      } else {
+      }
+      else {
         this.leafletElement.dragging.disable();
       }
     }
