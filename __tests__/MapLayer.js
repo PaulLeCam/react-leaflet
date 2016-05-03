@@ -28,7 +28,7 @@ describe('MapLayer', () => {
       }
 
       render() {
-        const children = this.getClonedChildrenWithMap({parent: true});
+        const children = this.getClonedChildrenWithProps({parent: true});
         return <div>{children}</div>;
       }
     }

@@ -2,7 +2,19 @@
 
 React components for Leaflet maps.
 
-## Install
+- [Installation](#installation)
+- [Getting started](#getting-started)
+- [Technical considerations](#technical-considerations)
+- [API](#api)
+  - [Helpers](#helpers)
+  - [PropTypes](#proptypes)
+  - [Events](#events)
+  - [Components](#components)
+- [Creating custom components](#creating-custom-components)
+- [Changelog](#changelog)
+- [License](#license)
+
+## Installation
 
 ```bash
 npm install react-leaflet
@@ -44,7 +56,7 @@ L.marker(position).addTo(map)
 ```
 
 **React-Leaflet**
-```js
+```jsx
 import React from 'react';
 import { render } from 'react-dom';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
@@ -84,6 +96,8 @@ This library uses React components as an interface, but not the virtual DOM, as 
 
 ### PropTypes
 
+**children**: One `PropTypes.node` or an Array of `PropTypes.node`.
+
 **latLng**: One of `[number, number]`, `{lat: number, lng: number}` or `{lat: number, lon: number}`.
 
 **latLngList**: An Array of *LatLng*.
@@ -92,14 +106,16 @@ This library uses React components as an interface, but not the virtual DOM, as 
 
 **controlPosition**: One of `topleft`, `topright`, `bottomleft` or `bottomright`.
 
+**layerContainer**: An object containing `addLayer()` and `removeLayer()` functions.
+
 ### Events
 
-Leaflet exposes its own events, different from React. You can listen to them using React-Leaflet by adding a callback to a property prefixed by `onLeaflet` or simply `on`. Ex: `<Map onLeafletMoveend={this.handleMoveend}>...</Map>`.  
+Leaflet exposes its own events, different from React. You can listen to them using React-Leaflet by adding a callback to a property prefixed by `on`. Ex: `<Map onMoveend={this.handleMoveend}>...</Map>`.  
 Check Leaflet documentation for the events associated to each component.
 
 ### Components
 
-The properties documented for each component are the ones aimed to be supported (tested and made dynamic when possible) by React-Leaflet.  
+The properties documented as **dynamic properties** are updated using the relevant Leaflet setter, other properties will *not* update the component when they are changed after the component is mounted.  
 All other properties are passed as the `options` argument to their corresponding Leaflet element and should work fine for static maps, it is however unlikely that they would updated if you change them afterwards.
 
 You can directly access the Leaflet element created by a component using the `getLeafletElement()` method on this component. This leaflet element is usually created in `componentWillMount()`, except for the `Map` component where it can only be created after the `<div>` container is rendered.
@@ -120,66 +136,79 @@ It exposes a `getLeafletElement()` method to access the `Leaflet` object created
 
 ##### MapLayer
 
-Base class extending `MapComponent` using the provided `map` prop to add its element and passing it down to its children.  
+Base class extending [`MapComponent`](#mapcomponent) using the provided `map` prop to add its element and passing it down to its children.  
 It exposes the following methods:
 - `getClonedChildrenWithMap(object extra): object`: returns the cloned children of the component, adding the `map` and the `extra` props provided to them.
 - `renderChildrenWithProps(object props): object`: returns the cloned children of the component using `getClonedChildrenWithMap()`, wrapped in a `<div>` with `display: none` style.
 
 ##### BaseTileLayer
 
-Base class extending `MapLayer` with a `render()` method and handling a TitleLayer `opacity` and `zIndex` props.
+Base class extending [`MapLayer`](#maplayer) with a `render()` method and handling a TitleLayer `opacity` and `zIndex` props.
 
 ##### Path
 
-Base class extending `MapLayer` with the following methods:
+Base class extending [`MapLayer`](#maplayer) with the following methods:
 - `getPathOptions(object props): object`: filters the input `props` and return a new object of [Path options](http://leafletjs.com/reference.html#path-options) properties.
 - `setStyle(object options = {}): void`: alias to the Leaflet element [`setStyle()`](http://leafletjs.com/reference.html#path-setstyle).
 - `setStyleIfChanged(object fromProps, object toProps): void`: extracts the Path options of the two arguments, and calls `setStyle()` with the new options if different from the previous ones.
 
 #### Map
 
-This is the top-level component that must be mounted for children ones to be rendered. Refer to Leaflet documentation for more information about the properties.
+This is the top-level component that must be mounted for children ones to be rendered. Refer to [Leaflet documentation](http://leafletjs.com/reference.html#map-options) for more information about the properties.
 
-**Properties**
-- `bounds: bounds` (optional, dynamic): A rectangle for the map to contain. It will be centered, and the map will zoom in as close as it can while still showing the full bounds. This property is dynamic, if you change it it will be reflected on the map.
-- `boundsOptions: object` (optional, dynamic): Options passed to the `fitBounds()` method.
-- `center: latLng` (optional, dynamic): Center of the map. This property is dynamic, if you change it it will be reflected in the map.
-- `className: string` (optional, dynamic): className property of the `<div>` container for the map.
+**Dynamic properties**
+- `animate: boolean` (optional): If `true`, panning will always be animated if possible. Defaults to `false`.
+- `bounds: bounds` (optional): A rectangle for the map to contain. It will be centered, and the map will zoom in as close as it can while still showing the full bounds. This property is dynamic, if you change it it will be reflected on the map.
+- `boundsOptions: object` (optional): Options passed to the `fitBounds()` method.
+- `center: latLng` (optional): Center of the map. This property is dynamic, if you change it it will be reflected in the map.
+- `className: string` (optional): className property of the `<div>` container for the map.
+- `maxBounds: bounds` (optional)
+- `style: object` (optional): style property of the `<div>` container for the map.
+- `zoom: number` (optional)
+
+**Other properties**
 - `id: string` (optional): The ID of the `<div>` container for the map. If you don't provide it, a unique one will be created.
-- `maxBounds: bounds` (optional, dynamic)
-- `maxZoom: number` (optional)
-- `minZoom: number` (optional)
-- `style: object` (optional, dynamic): style property of the `<div>` container for the map.
-- `zoom: number` (optional, dynamic)
 
 #### UI Layers
 
 ##### Marker
 
-- `position: latLng` (required, dynamic)
-- `icon: Leaflet.Icon` (optional, dynamic)
-- `zIndexOffset: number` (optional, dynamic)
-- `opacity: number` (optional, dynamic)
+[Leaflet reference](http://leafletjs.com/reference.html#marker)
+
+**Dynamic properties**
+- `position: latLng` (required)
+- `draggable: boolean` (optional)
+- `icon: Leaflet.Icon` (optional)
+- `zIndexOffset: number` (optional)
+- `opacity: number` (optional)
 
 ##### Popup
 
+[Leaflet reference](http://leafletjs.com/reference.html#popup)
+
 The Popup children will be rendered using `ReactDOM.render()`, they must be valid React elements.
 
-- `position: latLng` (optional, dynamic)
+**Dynamic properties**
+- `position: latLng` (optional)
 
 #### Raster Layers
 
 ##### TileLayer
 
-- `url: string` (required, dynamic)
-- `opacity: number` (optional, dynamic)
-- `zIndex: number` (optional, dynamic)
+[Leaflet reference](http://leafletjs.com/reference.html#tilelayer)
+
+**Dynamic properties**
+- `url: string` (required)
+- `opacity: number` (optional)
+- `zIndex: number` (optional)
 
 ##### ImageOverlay
 
-- `url: string` (required, dynamic)
-- `opacity: number` (optional, dynamic)
-- `attribution: string` (optional)
+[Leaflet reference](http://leafletjs.com/reference.html#imageoverlay)
+
+**Dynamic properties**
+- `url: string` (required)
+- `opacity: number` (optional)
 
 ##### Implemented but needing testing and documentation
 
@@ -192,32 +221,53 @@ All vector layers extend the **Path** component and therefore accept dynamic [Pa
 
 ##### Circle
 
-- `center: latLng` (required, dynamic)
-- `radius: number` (required, dynamic)
+[Leaflet reference](http://leafletjs.com/reference.html#circle)
+
+**Dynamic properties**
+- `center: latLng` (required)
+- `radius: number` (required)
 
 ##### CircleMarker
 
-- `center: latLng` (required, dynamic)
-- `radius: number` (optional, dynamic)
+[Leaflet reference](http://leafletjs.com/reference.html#circlemarker)
+
+**Dynamic properties**
+- `center: latLng` (required)
+- `radius: number` (optional)
 
 ##### Polyline
 
-- `positions: latLngList` (required, dynamic)
+[Leaflet reference](http://leafletjs.com/reference.html#polyline)
+
+**Dynamic properties**
+- `positions: latLngList` (required)
 
 ##### MultiPolyline
 
-- `polylines: array<latLngList>` (required, dynamic)
+[Leaflet reference](http://leafletjs.com/reference.html#multipolyline)
+
+**Dynamic properties**
+- `polylines: array<latLngList>` (required)
 
 ##### Polygon
 
-- `positions: latLngList | Array<latLngList>` (required, dynamic)
+[Leaflet reference](http://leafletjs.com/reference.html#polygon)
+
+**Dynamic properties**
+- `positions: latLngList | Array<latLngList>` (required)
 
 ##### MultiPolygon
 
-- `polygons: array<latLngList>` (required, dynamic)
+[Leaflet reference](http://leafletjs.com/reference.html#multipolygon)
+
+**Dynamic properties**
+- `polygons: array<latLngList>` (required)
 
 ##### Rectangle
 
+[Leaflet reference](http://leafletjs.com/reference.html#rectangle)
+
+**Dynamic properties**
 - `bounds: bounds` (required, dynamic)
 
 #### Other Layers
@@ -232,35 +282,98 @@ Extended `LayerGroup` supporting a `Popup` child.
 
 ##### GeoJson
 
-- `data: GeoJSON` (required)
+[Leaflet reference](http://leafletjs.com/reference.html#geojson)
+
+**Properties**
+- `data: GeoJSON` (required). This property will *not* be updated if it is changed after the component is mounted.
 
 #### Controls
 
 ##### AttributionControl
 
-- `position: controlPosition` (optional, dynamic)
-- `prefix: string` (optional)
+[Leaflet reference](http://leafletjs.com/reference.html#control-attribution)
+
+**Dynamic properties**
+- `position: controlPosition` (optional)
+
+##### LayersControl
+
+[Leaflet reference](http://leafletjs.com/reference.html#control-layers)  
+
+**Dynamic properties**
+- `position: controlPosition` (optional)
+
+This component exposes two children container components, `LayersControl.BaseLayer` and `LayersControl.Overlay` documented below.  
+See the `layers-control` example for a more advanced usage.
+
+Example usage:
+```jsx
+<LayersControl position='topright'>
+  <LayersControl.BaseLayer name='OpenStreetMap.BlackAndWhite'>
+    <TileLayer
+      attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+      url='http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png'
+    />
+  </LayersControl.BaseLayer>
+  <LayersControl.BaseLayer name='OpenStreetMap.Mapnik'>
+    <TileLayer
+      attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+      url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+    />
+  </LayersControl.BaseLayer>
+  <LayersControl.Overlay name='Marker with popup'>
+    <Marker position={[51.51, -0.06]}>
+      <Popup>
+        <span>A pretty CSS3 popup. <br/> Easily customizable.</span>
+      </Popup>
+    </Marker>
+  </LayersControl.Overlay>
+  <LayersControl.Overlay name='Feature group'>
+    <FeatureGroup color='purple'>
+      <Popup>
+        <span>Popup in FeatureGroup</span>
+      </Popup>
+      <Circle center={[51.51, -0.06]} radius={200} />
+    </FeatureGroup>
+  </LayersControl.Overlay>
+</LayersControl>
+```
+
+##### LayersControl.BaseLayer
+
+**Properties**
+- `name: string` (required). The name of the layer as appearing in the `LayersControl`.
+
+**Dynamic properties**
+- `checked: boolean` (optional, defaults to `false`). Whether the radio button associated to the layer should be checked or not. The layer will be displayed in the map accordingly.
+
+##### LayersControl.Overlay
+
+**Properties**
+- `name: string` (required). The name of the layer as appearing in the `LayersControl`.
+
+**Dynamic properties**
+- `checked: boolean` (optional, defaults to `false`). Whether the checkbox associated to the layer should be checked or not. The layer will be displayed in the map accordingly.
 
 ##### ScaleControl
 
-- `imperial: bool` (optional)
-- `position: controlPosition` (optional, dynamic)
-- `maxWidth: number` (optional)
-- `metric: bool` (optional)
-- `updateWhenIdle: bool` (optional)
+[Leaflet reference](http://leafletjs.com/reference.html#control-scale)
+
+**Dynamic properties**
+- `position: controlPosition` (optional)
 
 ##### ZoomControl
 
-- `position: controlPosition` (optional, dynamic)
-- `zoomInText: string` (optional)
-- `zoomInTitle: string` (optional)
-- `zoomOutText: string` (optional)
-- `zoomOutTitle: string` (optional)
+[Leaflet reference](http://leafletjs.com/reference.html#control-zoom)
+
+**Dynamic properties**
+- `position: controlPosition` (optional)
 
 ## Creating custom components
 
 If you want to create custom components, for example Leaflet plugins, you could extend one of the [base components](https://github.com/PaulLeCam/react-leaflet#base-components) depending on the type of component you want to implement.  
-The created Leaflet map instance is injected by the `Map` component to all its children as the `map` property. Make sure to inject it in your component's children as well.
+The created Leaflet map instance is injected by the `Map` component to all its children as the `map` property. Other layers may inject themselves to their children as the `layerContainer` property.  
+Make sure to inject **both** `layerContainer` and `map` in your component's children as well.
 
 ## Changelog
 

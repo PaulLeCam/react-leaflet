@@ -30,7 +30,7 @@ describe('MapComponent', () => {
     document.body.innerHTML = '<div id="test"></div>';
 
     const callback = jest.genMockFn();
-    const component = <Component onLeafletClick={callback} />;
+    const component = <Component onClick={callback} />;
     const instance = render(component, document.getElementById('test'));
 
     instance.fireLeafletEvent('click');

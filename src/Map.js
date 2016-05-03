@@ -1,8 +1,6 @@
 /* eslint-disable react/no-did-mount-set-state */
 
-import isArray from 'lodash/isArray';
-import isUndefined from 'lodash/isUndefined';
-import uniqueId from 'lodash/uniqueId';
+import { isArray, isUndefined, uniqueId } from 'lodash';
 import React, { PropTypes } from 'react';
 import Leaflet from 'leaflet';
 
@@ -15,6 +13,7 @@ const normalizeCenter = pos => isArray(pos) ? pos : [pos.lat, pos.lng || pos.lon
 
 export default class Map extends MapComponent {
   static propTypes = {
+    animate: PropTypes.bool,
     bounds: boundsType,
     boundsOptions: PropTypes.object,
     center: latlngType,
@@ -29,6 +28,10 @@ export default class Map extends MapComponent {
     minZoom: PropTypes.number,
     style: PropTypes.object,
     zoom: PropTypes.number,
+  };
+
+  static defaultProps = {
+    animate: false,
   };
 
   constructor(props) {
@@ -48,9 +51,9 @@ export default class Map extends MapComponent {
   }
 
   componentDidUpdate(prevProps) {
-    const { bounds, center, maxBounds, zoom } = this.props;
+    const { bounds, center, maxBounds, zoom, animate } = this.props;
     if (center && this.shouldUpdateCenter(center, prevProps.center)) {
-      this.leafletElement.setView(center, zoom, {animate: false});
+      this.leafletElement.setView(center, zoom, {animate});
     }
     else if (zoom && zoom !== prevProps.zoom) {
       this.leafletElement.setZoom(zoom);
@@ -85,7 +88,7 @@ export default class Map extends MapComponent {
   render() {
     const map = this.leafletElement;
     const children = map ? React.Children.map(this.props.children, child => {
-      return child ? React.cloneElement(child, {map}) : null;
+      return child ? React.cloneElement(child, {map, layerContainer: map}) : null;
     }) : null;
 
     return (

@@ -10,7 +10,7 @@ export default class Polyline extends Path {
 
   componentWillMount() {
     super.componentWillMount();
-    const { map, positions, ...props } = this.props;
+    const { map: _map, layerContainer: _lc, positions, ...props } = this.props;
     this.leafletElement = polyline(positions, props);
   }
 

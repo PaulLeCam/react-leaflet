@@ -10,7 +10,7 @@ export default class LayerGroup extends MapLayer {
 
   render() {
     return this.renderChildrenWithProps({
-      layerGroup: this.leafletElement,
+      layerContainer: this.leafletElement,
     });
   }
 }

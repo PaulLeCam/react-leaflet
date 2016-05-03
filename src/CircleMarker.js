@@ -12,7 +12,7 @@ export default class CircleMarker extends Path {
 
   componentWillMount() {
     super.componentWillMount();
-    const { center, map, ...props } = this.props;
+    const { center, map: _map, layerContainer: _lc, ...props } = this.props;
     this.leafletElement = circleMarker(center, props);
   }
 
