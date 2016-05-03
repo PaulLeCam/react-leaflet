@@ -1,3 +1,4 @@
+import { PropTypes } from 'react';
 import { polyline } from 'leaflet';
 
 import latlngListType from './types/latlngList';
@@ -5,7 +6,10 @@ import Path from './Path';
 
 export default class Polyline extends Path {
   static propTypes = {
-    positions: latlngListType.isRequired,
+    positions: PropTypes.oneOfType([
+      latlngListType,
+      PropTypes.arrayOf(latlngListType),
+    ]).isRequired,
   };
 
   componentWillMount() {

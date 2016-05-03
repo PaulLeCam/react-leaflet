@@ -18,7 +18,6 @@ export MapControl from './MapControl';
 export MapLayer from './MapLayer';
 export Marker from './Marker';
 export MultiPolygon from './MultiPolygon';
-export MultiPolyline from './MultiPolyline';
 export Path from './Path';
 export Polygon from './Polygon';
 export Polyline from './Polyline';
