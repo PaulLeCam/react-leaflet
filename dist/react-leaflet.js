@@ -481,7 +481,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'componentWillUnmount',
 	    value: function componentWillUnmount() {
-	      this.leafletElement.removeFrom(this.props.map);
+	      this.leafletElement.remove();
 	    }
 	  }, {
 	    key: 'getLeafletElement',
