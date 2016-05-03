@@ -5850,11 +5850,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var center = _props.center;
 	      var _map = _props.map;
 	      var _lc = _props.layerContainer;
-	      var radius = _props.radius;
 
-	      var props = _objectWithoutProperties(_props, ['center', 'map', 'layerContainer', 'radius']);
+	      var props = _objectWithoutProperties(_props, ['center', 'map', 'layerContainer']);
 
-	      this.leafletElement = (0, _leaflet.circle)(center, radius, props);
+	      this.leafletElement = (0, _leaflet.circle)(center, props);
 	    }
 	  }, {
 	    key: 'componentDidUpdate',
