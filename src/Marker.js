@@ -14,7 +14,7 @@ export default class Marker extends MapLayer {
 
   componentWillMount() {
     super.componentWillMount();
-    const { map, position, ...props } = this.props;
+    const { map: _map, layerContainer: _lc, position, ...props } = this.props;
     this.leafletElement = marker(position, props);
   }
 
@@ -30,6 +30,14 @@ export default class Marker extends MapLayer {
     }
     if (this.props.opacity !== prevProps.opacity) {
       this.leafletElement.setOpacity(this.props.opacity);
+    }
+    if (this.props.draggable !== prevProps.draggable) {
+      if (this.props.draggable) {
+        this.leafletElement.dragging.enable();
+      }
+      else {
+        this.leafletElement.dragging.disable();
+      }
     }
   }
 

@@ -1,5 +1,5 @@
 import { PropTypes } from 'react';
-import { imageOverlay, Map } from 'leaflet';
+import { imageOverlay } from 'leaflet';
 
 import boundsType from './types/bounds';
 import MapLayer from './MapLayer';
@@ -8,14 +8,13 @@ export default class ImageOverlay extends MapLayer {
   static propTypes = {
     attribution: PropTypes.string,
     bounds: boundsType.isRequired,
-    map: PropTypes.instanceOf(Map),
     opacity: PropTypes.number,
     url: PropTypes.string.isRequired,
   };
 
   componentWillMount() {
     super.componentWillMount();
-    const { bounds, map, url, ...props } = this.props;
+    const { bounds, map: _map, layerContainer: _lc, url, ...props } = this.props;
     this.leafletElement = imageOverlay(url, bounds, props);
   }
 

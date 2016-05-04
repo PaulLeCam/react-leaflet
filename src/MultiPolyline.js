@@ -11,7 +11,7 @@ export default class MultiPolyline extends Path {
 
   componentWillMount() {
     super.componentWillMount();
-    const {map, polylines, ...props} = this.props;
+    const {map: _map, layerContainer: _lc, polylines, ...props} = this.props;
     this.leafletElement = multiPolyline(polylines, props);
   }
 
