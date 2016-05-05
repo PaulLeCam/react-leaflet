@@ -1,3 +1,7 @@
+## v0.11.4 (2016-05-05)
+
+Fixed `TileLayer` properties update.
+
 ## v0.11.3 (2016-04-28)
 
 Made the `draggable` property in `Marker` dynamic ([PR #148](https://github.com/PaulLeCam/react-leaflet/pull/148) by *riolowry*).
