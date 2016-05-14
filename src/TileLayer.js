@@ -17,7 +17,7 @@ export default class TileLayer extends BaseTileLayer {
   componentDidUpdate(prevProps) {
     super.componentDidUpdate(prevProps);
     const { url } = this.props;
-    if (url && url !== prevProps.url) {
+    if (url !== prevProps.url) {
       this.leafletElement.setUrl(url);
     }
   }

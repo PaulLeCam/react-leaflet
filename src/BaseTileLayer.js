@@ -10,10 +10,10 @@ export default class BaseTileLayer extends MapLayer {
 
   componentDidUpdate(prevProps) {
     const { opacity, zIndex } = this.props;
-    if (opacity && opacity !== prevProps.opacity) {
+    if (opacity !== prevProps.opacity) {
       this.leafletElement.setOpacity(opacity);
     }
-    if (zIndex && zIndex !== prevProps.zIndex) {
+    if (zIndex !== prevProps.zIndex) {
       this.leafletElement.setZIndex(zIndex);
     }
   }

@@ -51,7 +51,7 @@ export default class Map extends MapComponent {
   }
 
   componentDidUpdate(prevProps) {
-    const { bounds, center, maxBounds, zoom, animate } = this.props;
+    const { bounds, boundsOptions, center, maxBounds, zoom, animate } = this.props;
     if (center && this.shouldUpdateCenter(center, prevProps.center)) {
       this.leafletElement.setView(center, zoom, {animate});
     }
@@ -61,8 +61,11 @@ export default class Map extends MapComponent {
     if (maxBounds && this.shouldUpdateBounds(maxBounds, prevProps.maxBounds)) {
       this.leafletElement.setMaxBounds(maxBounds);
     }
-    if (bounds && this.shouldUpdateBounds(bounds, prevProps.bounds)) {
-      this.leafletElement.fitBounds(bounds, this.props.boundsOptions);
+    if (bounds && (
+      this.shouldUpdateBounds(bounds, prevProps.bounds)
+      || boundsOptions !== prevProps.boundsOptions
+    )) {
+      this.leafletElement.fitBounds(bounds, boundsOptions);
     }
   }
 

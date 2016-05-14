@@ -1,3 +1,8 @@
+## v0.11.5 (2016-05-14)
+
+- Fixed updating `boundsOptions` in the `Map` without updating `bounds`.
+- Fixed setting `opacity` and `zIndex` properties to `0` in tile layers.
+
 ## v0.11.4 (2016-05-05)
 
 Fixed `TileLayer` properties update.
