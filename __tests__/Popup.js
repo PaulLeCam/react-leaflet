@@ -1,48 +1,51 @@
+/* global describe, expect, it, jest */
 /* eslint-disable react/no-did-mount-set-state, react/no-did-update-set-state */
 
-import React from 'react';
-import { render } from 'react-dom';
+import Leaflet from 'leaflet';
+import React, { Component } from 'react';
+import { renderIntoDocument } from 'react-addons-test-utils';
 
-jest.dontMock('../src/BaseTileLayer');
-jest.dontMock('../src/MapComponent');
-jest.dontMock('../src/MapControl');
-jest.dontMock('../src/MapLayer');
-jest.dontMock('../src/Map');
-jest.dontMock('../src/Marker');
-jest.dontMock('../src/Popup');
-jest.dontMock('../src/TileLayer');
-jest.dontMock('../src/index');
-jest.dontMock('../src/Path');
-jest.dontMock('../src/types/bounds');
-jest.dontMock('../src/types/index');
-jest.dontMock('../src/types/latlng');
+import { Map, Popup, TileLayer } from '../src/';
 
-const { Map, Popup, TileLayer } = require('../src/');
+jest.unmock('../src/BaseTileLayer');
+jest.unmock('../src/MapComponent');
+jest.unmock('../src/MapControl');
+jest.unmock('../src/MapLayer');
+jest.unmock('../src/Map');
+jest.unmock('../src/Marker');
+jest.unmock('../src/Popup');
+jest.unmock('../src/TileLayer');
+jest.unmock('../src/index');
+jest.unmock('../src/Path');
+jest.unmock('../src/types/bounds');
+jest.unmock('../src/types/index');
+jest.unmock('../src/types/latlng');
 
 describe('Popup', () => {
   it('adds the popup to the map', () => {
+    let popup;
     const position = [0, 0];
-    const component = (
+
+    renderIntoDocument(
       <Map center={position} zoom={10}>
         <TileLayer url='http://{s}.tile.osm.org/{z}/{x}/{y}.png' />
-        <Popup position={position}>
+        <Popup position={position} ref={e => {popup = e;}}>
           <span>Test Popup</span>
         </Popup>
       </Map>
     );
 
-    document.body.innerHTML = '<div id="test"></div>';
-    render(component, document.getElementById('test'));
-
-    expect(document.querySelector('#test .leaflet-popup-content span').textContent).toBe('Test Popup');
+    expect(popup.leafletElement.options.position).toEqual(position);
   });
 
   it('adds and removes the popup on the map', () => {
-    const getNode = () => {
-      return document.querySelector('#test .leaflet-popup-content span');
-    };
+    const openOn = jest.genMockFunction();
+    const removeLayer = jest.genMockFunction();
 
-    class Component extends React.Component {
+    Leaflet.Map.prototype.removeLayer = removeLayer;
+    Leaflet.Popup.prototype.openOn = openOn
+
+    class TestComponent extends Component {
       constructor() {
         super();
         this.state = {
@@ -52,30 +55,31 @@ describe('Popup', () => {
       }
 
       componentDidMount() {
-        expect(getNode()).toBe(null);
+        expect(openOn.mock.calls.length).toBe(0);
+        expect(removeLayer.mock.calls.length).toBe(0);
         this.setState({show: true});
       }
 
       componentDidUpdate() {
         if (this.state.test) {
-          expect(getNode()).toBeDefined();
+          expect(openOn.mock.calls[0][0]).toBe(this.refs.map.leafletElement);
           this.setState({
             show: false,
             test: false,
           });
         }
         else {
-          expect(getNode()).toBe(null);
+          expect(removeLayer.mock.calls[0][0]).toBeDefined();
         }
       }
 
       render() {
         const position = [0, 0];
-        const popup = this.state.show
-          ? <Popup position={position}>
-              <span>Test Popup</span>
-            </Popup>
-          : null;
+        const popup = this.state.show ? (
+          <Popup position={position}>
+            <span>Test Popup</span>
+          </Popup>
+        ) : null;
 
         return (
           <Map center={position} ref='map' zoom={10}>
@@ -86,7 +90,6 @@ describe('Popup', () => {
       }
     }
 
-    document.body.innerHTML = '<div id="test"></div>';
-    render(<Component />, document.getElementById('test'));
+    renderIntoDocument(<TestComponent />);
   });
 });

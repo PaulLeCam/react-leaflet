@@ -1,22 +1,22 @@
+/* global describe, expect, it, jest */
+
 import Leaflet from 'leaflet';
-import React from 'react';
-import { render } from 'react-dom';
+import React, { Component } from 'react';
+import { renderIntoDocument } from 'react-addons-test-utils';
 
-jest.dontMock('../src/MapComponent');
-jest.dontMock('../src/MapLayer');
-jest.dontMock('../src/Map');
-jest.dontMock('../src/types/bounds');
-jest.dontMock('../src/types/index');
-jest.dontMock('../src/types/latlng');
+import Map from '../src/Map';
+import MapLayer from '../src/MapLayer';
 
-const MapLayer = require('../src/MapLayer').default;
-const Map = require('../src/Map').default;
+jest.unmock('../src/MapComponent');
+jest.unmock('../src/MapLayer');
+jest.unmock('../src/Map');
+jest.unmock('../src/types/bounds');
+jest.unmock('../src/types/index');
+jest.unmock('../src/types/latlng');
 
 describe('MapLayer', () => {
   it('passes its `map` prop to its children', () => {
-    document.body.innerHTML = '<div id="test"></div>';
-
-    class Component extends MapLayer {
+    class TestComponent extends MapLayer {
       static propTypes = {
         map: React.PropTypes.instanceOf(Leaflet.Map),
       };
@@ -33,7 +33,7 @@ describe('MapLayer', () => {
       }
     }
 
-    class ChildComponent extends React.Component {
+    class ChildComponent extends Component {
       static propTypes = {
         map: React.PropTypes.instanceOf(Leaflet.Map),
         parent: React.PropTypes.bool,
@@ -49,14 +49,12 @@ describe('MapLayer', () => {
       }
     }
 
-    const component = (
+    renderIntoDocument(
       <Map>
-        <Component>
+        <TestComponent>
           <ChildComponent />
-        </Component>
+        </TestComponent>
       </Map>
     );
-
-    render(component, document.getElementById('test'));
   });
 });
