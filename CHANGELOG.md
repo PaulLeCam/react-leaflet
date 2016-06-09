@@ -1,3 +1,8 @@
+## v0.11.6 (2016-06-09)
+
+- Fixed allowing to set and update the `style` prop as a function in `GeoJson`.
+- [internal] Added [lodash-webpack-plugin](https://github.com/lodash/lodash-webpack-plugin) to reduce the size of the UMD build.
+
 ## v0.11.5 (2016-05-14)
 
 - Fixed updating `boundsOptions` in the `Map` without updating `bounds`.

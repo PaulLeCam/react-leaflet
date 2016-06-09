@@ -1,3 +1,4 @@
+import { isFunction } from 'lodash';
 import { PropTypes } from 'react';
 import { geoJson } from 'leaflet';
 
@@ -15,6 +16,11 @@ export default class GeoJson extends Path {
   }
 
   componentDidUpdate(prevProps) {
-    this.setStyleIfChanged(prevProps, this.props);
+    if (isFunction(this.props.style)) {
+      this.setStyle(this.props.style);
+    }
+    else {
+      this.setStyleIfChanged(prevProps, this.props);
+    }
   }
 }

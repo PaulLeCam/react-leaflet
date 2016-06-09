@@ -1,4 +1,6 @@
 /* eslint-disable */
+var LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+
 module.exports = {
   output: {
     library: 'ReactLeaflet',
@@ -34,5 +36,8 @@ module.exports = {
     loaders: [
       {test: /\.js$/, exclude: /node_modules/, loader: 'babel'}
     ]
-  }
+  },
+  plugins: [
+    new LodashModuleReplacementPlugin()
+  ]
 };
