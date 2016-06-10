@@ -1,4 +1,5 @@
 import { isEqual, pick } from 'lodash';
+import { PropTypes } from 'react';
 
 import MapLayer from './MapLayer';
 
@@ -20,6 +21,16 @@ const OPTIONS = [
 ];
 
 export default class Path extends MapLayer {
+  static childContextTypes = {
+    popupContainer: PropTypes.object,
+  };
+
+  getChildContext() {
+    return {
+      popupContainer: this.leafletElement,
+    };
+  }
+
   getPathOptions(props) {
     return pick(props, OPTIONS);
   }
@@ -33,11 +44,5 @@ export default class Path extends MapLayer {
     if (!isEqual(nextStyle, this.getPathOptions(fromProps))) {
       this.setStyle(nextStyle);
     }
-  }
-
-  render() {
-    return this.renderChildrenWithProps({
-      popupContainer: this.leafletElement,
-    });
   }
 }

@@ -1,5 +1,5 @@
-import { PropTypes } from 'react';
 import { Icon, marker } from 'leaflet';
+import { PropTypes } from 'react';
 
 import latlngType from './types/latlng';
 import MapLayer from './MapLayer';
@@ -12,9 +12,19 @@ export default class Marker extends MapLayer {
     zIndexOffset: PropTypes.number,
   };
 
+  static childContextTypes = {
+    popupContainer: PropTypes.object,
+  };
+
+  getChildContext() {
+    return {
+      popupContainer: this.leafletElement,
+    };
+  }
+
   componentWillMount() {
     super.componentWillMount();
-    const { map: _map, layerContainer: _lc, position, ...props } = this.props;
+    const { position, ...props } = this.props;
     this.leafletElement = marker(position, props);
   }
 
@@ -42,8 +52,6 @@ export default class Marker extends MapLayer {
   }
 
   render() {
-    return this.renderChildrenWithProps({
-      popupContainer: this.leafletElement,
-    });
+    return this.props.children || null;
   }
 }

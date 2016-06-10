@@ -1,5 +1,5 @@
-import { PropTypes } from 'react';
 import { control } from 'leaflet';
+import { PropTypes } from 'react';
 
 import MapControl from './MapControl';
 

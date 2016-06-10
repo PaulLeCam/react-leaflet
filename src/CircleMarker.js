@@ -1,5 +1,5 @@
-import { PropTypes } from 'react';
 import { circleMarker } from 'leaflet';
+import { PropTypes } from 'react';
 
 import latlngType from './types/latlng';
 import Path from './Path';
@@ -12,7 +12,7 @@ export default class CircleMarker extends Path {
 
   componentWillMount() {
     super.componentWillMount();
-    const { center, map: _map, layerContainer: _lc, ...props } = this.props;
+    const { center, ...props } = this.props;
     this.leafletElement = circleMarker(center, props);
   }
 

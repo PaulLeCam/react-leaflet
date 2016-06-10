@@ -1,5 +1,5 @@
-import { PropTypes } from 'react';
 import { imageOverlay } from 'leaflet';
+import { PropTypes } from 'react';
 
 import boundsType from './types/bounds';
 import MapLayer from './MapLayer';
@@ -14,7 +14,7 @@ export default class ImageOverlay extends MapLayer {
 
   componentWillMount() {
     super.componentWillMount();
-    const { bounds, map: _map, layerContainer: _lc, url, ...props } = this.props;
+    const { bounds, url, ...props } = this.props;
     this.leafletElement = imageOverlay(url, bounds, props);
   }
 

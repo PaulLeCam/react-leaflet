@@ -1,19 +1,26 @@
-import React, { Component } from 'react';
-import { Map, TileLayer, Marker, Popup } from '../../src';
+import React, { Component, PropTypes } from 'react';
+import { Map, TileLayer, Marker, Popup, PropTypes as MapPropTypes } from '../../src';
 
-const MyPopupMarker = ({ layerContainer, map, position, children }) => (
-  <Marker layerContainer={layerContainer} map={map} position={position}>
+const MyPopupMarker = ({ children, position }) => (
+  <Marker position={position}>
     <Popup>
       <span>{children}</span>
     </Popup>
   </Marker>
 );
+MyPopupMarker.propTypes = {
+  children: MapPropTypes.children,
+  position: MapPropTypes.latlng,
+};
 
-const MyMarkersList = ({ layerContainer, map, markers }) => {
+const MyMarkersList = ({ markers }) => {
   const items = markers.map(({ key, ...props }) => (
-      <MyPopupMarker key={key} layerContainer={layerContainer} map={map} {...props} />
+    <MyPopupMarker key={key} {...props} />
   ));
   return <div style={{display: 'none'}}>{items}</div>;
+};
+MyMarkersList.propTypes = {
+  markers: PropTypes.array.isRequired,
 };
 
 export default class CustomComponent extends Component {

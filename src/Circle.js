@@ -1,5 +1,5 @@
-import { PropTypes } from 'react';
 import { circle } from 'leaflet';
+import { PropTypes } from 'react';
 
 import latlngType from './types/latlng';
 import Path from './Path';
@@ -12,7 +12,7 @@ export default class Circle extends Path {
 
   componentWillMount() {
     super.componentWillMount();
-    const { center, map: _map, layerContainer: _lc, radius, ...props } = this.props;
+    const { center, radius, ...props } = this.props;
     this.leafletElement = circle(center, radius, props);
   }
 

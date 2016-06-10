@@ -1,15 +1,19 @@
-import { Component, PropTypes } from 'react';
+import { Component } from 'react';
 
 import controlPositionType from './types/controlPosition';
+import mapType from './types/map';
 
 export default class MapControl extends Component {
   static propTypes = {
-    map: PropTypes.object,
     position: controlPositionType,
   };
 
+  static contextTypes = {
+    map: mapType,
+  };
+
   componentDidMount() {
-    this.leafletElement.addTo(this.props.map);
+    this.leafletElement.addTo(this.context.map);
   }
 
   componentDidUpdate(prevProps) {
@@ -19,10 +23,11 @@ export default class MapControl extends Component {
   }
 
   componentWillUnmount() {
-    this.leafletElement.removeFrom(this.props.map);
+    this.leafletElement.removeFrom(this.context.map);
   }
 
   getLeafletElement() {
+    // TODO: add warning form v0.12
     return this.leafletElement;
   }
 

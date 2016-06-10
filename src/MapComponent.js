@@ -29,6 +29,7 @@ export default class MapComponent extends Component {
   }
 
   getLeafletElement() {
+    // TODO: add warning for v0.12
     return this.leafletElement;
   }
 

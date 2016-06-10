@@ -32,6 +32,16 @@ export default class Map extends MapComponent {
     animate: false,
   };
 
+  static childContextTypes = {
+    map: PropTypes.instanceOf(Leaflet.Map),
+  };
+
+  getChildContext() {
+    return {
+      map: this.leafletElement,
+    };
+  }
+
   constructor(props) {
     super(props);
     this.state = {

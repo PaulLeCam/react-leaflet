@@ -1,29 +1,34 @@
+import { popup } from 'leaflet';
 import { Children, PropTypes } from 'react';
 import { render, unmountComponentAtNode } from 'react-dom';
-import { Map, popup } from 'leaflet';
 
 import latlngType from './types/latlng';
+import mapType from './types/map';
 import MapComponent from './MapComponent';
 
 export default class Popup extends MapComponent {
   static propTypes = {
     children: PropTypes.node,
-    map: PropTypes.instanceOf(Map),
-    popupContainer: PropTypes.object,
     position: latlngType,
+  };
+
+  static contextTypes = {
+    map: mapType,
+    popupContainer: PropTypes.object,
   };
 
   componentWillMount() {
     super.componentWillMount();
-    const { children: _children, map: _map, popupContainer, ...props } = this.props;
+    const { children: _children, ...props } = this.props;
 
-    this.leafletElement = popup(props, popupContainer);
+    this.leafletElement = popup(props, this.context.popupContainer);
     this.leafletElement.on('open', ::this.renderPopupContent);
     this.leafletElement.on('close', ::this.removePopupContent);
   }
 
   componentDidMount() {
-    const { map, popupContainer, position } = this.props;
+    const { position } = this.props;
+    const { map, popupContainer } = this.context;
     const el = this.leafletElement;
 
     if (popupContainer) {
@@ -54,7 +59,7 @@ export default class Popup extends MapComponent {
   componentWillUnmount() {
     super.componentWillUnmount();
     this.removePopupContent();
-    this.props.map.removeLayer(this.leafletElement);
+    this.context.map.removeLayer(this.leafletElement);
   }
 
   renderPopupContent() {

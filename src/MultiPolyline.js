@@ -1,5 +1,5 @@
-import { PropTypes } from 'react';
 import { multiPolyline } from 'leaflet';
+import { PropTypes } from 'react';
 
 import latlngListType from './types/latlngList';
 import Path from './Path';
@@ -11,7 +11,7 @@ export default class MultiPolyline extends Path {
 
   componentWillMount() {
     super.componentWillMount();
-    const {map: _map, layerContainer: _lc, polylines, ...props} = this.props;
+    const { polylines, ...props } = this.props;
     this.leafletElement = multiPolyline(polylines, props);
   }
 
