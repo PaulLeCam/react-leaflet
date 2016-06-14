@@ -1,8 +1,8 @@
-import { polygon } from 'leaflet';
-import { PropTypes } from 'react';
+import { polygon } from 'leaflet'
+import { PropTypes } from 'react'
 
-import latlngListType from './types/latlngList';
-import Path from './Path';
+import latlngListType from './types/latlngList'
+import Path from './Path'
 
 export default class Polygon extends Path {
   static propTypes = {
@@ -12,16 +12,16 @@ export default class Polygon extends Path {
     ]).isRequired,
   };
 
-  componentWillMount() {
-    super.componentWillMount();
-    const { positions, ...props } = this.props;
-    this.leafletElement = polygon(positions, props);
+  componentWillMount () {
+    super.componentWillMount()
+    const { positions, ...props } = this.props
+    this.leafletElement = polygon(positions, props)
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate (prevProps) {
     if (this.props.positions !== prevProps.positions) {
-      this.leafletElement.setLatLngs(this.props.positions);
+      this.leafletElement.setLatLngs(this.props.positions)
     }
-    this.setStyleIfChanged(prevProps, this.props);
+    this.setStyleIfChanged(prevProps, this.props)
   }
 }

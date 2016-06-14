@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import {
   Circle,
   FeatureGroup,
@@ -9,29 +9,29 @@ import {
   Popup,
   Rectangle,
   TileLayer,
-} from '../../src';
-const { BaseLayer, Overlay } = LayersControl;
+} from '../../src'
+const { BaseLayer, Overlay } = LayersControl
 
 export default class LayersControlExample extends Component {
-  render() {
-    const center = [51.505, -0.09];
+  render () {
+    const center = [51.505, -0.09]
     const rectangle = [
       [51.49, -0.08],
       [51.5, -0.06],
-    ];
+    ]
 
     return (
       <Map center={center} zoom={13}>
         <LayersControl position='topright'>
           <BaseLayer checked name='OpenStreetMap.Mapnik'>
             <TileLayer
-              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+              attribution='&copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
               url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
             />
           </BaseLayer>
           <BaseLayer name='OpenStreetMap.BlackAndWhite'>
             <TileLayer
-              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+              attribution='&copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
               url='http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png'
             />
           </BaseLayer>
@@ -62,6 +62,6 @@ export default class LayersControlExample extends Component {
           </Overlay>
         </LayersControl>
       </Map>
-    );
+    )
   }
 }

@@ -1,7 +1,7 @@
-import { control } from 'leaflet';
-import { PropTypes } from 'react';
+import { control } from 'leaflet'
+import { PropTypes } from 'react'
 
-import MapControl from './MapControl';
+import MapControl from './MapControl'
 
 export default class ZoomControl extends MapControl {
   static propTypes = {
@@ -11,7 +11,7 @@ export default class ZoomControl extends MapControl {
     updateWhenIdle: PropTypes.bool,
   };
 
-  componentWillMount() {
-    this.leafletElement = control.scale(this.props);
+  componentWillMount () {
+    this.leafletElement = control.scale(this.props)
   }
 }

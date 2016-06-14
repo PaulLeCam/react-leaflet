@@ -1,8 +1,8 @@
-import { Icon, marker } from 'leaflet';
-import { PropTypes } from 'react';
+import { Icon, marker } from 'leaflet'
+import { PropTypes } from 'react'
 
-import latlngType from './types/latlng';
-import MapLayer from './MapLayer';
+import latlngType from './types/latlng'
+import MapLayer from './MapLayer'
 
 export default class Marker extends MapLayer {
   static propTypes = {
@@ -16,42 +16,41 @@ export default class Marker extends MapLayer {
     popupContainer: PropTypes.object,
   };
 
-  getChildContext() {
+  getChildContext () {
     return {
       popupContainer: this.leafletElement,
-    };
+    }
   }
 
-  componentWillMount() {
-    super.componentWillMount();
-    const { position, ...props } = this.props;
-    this.leafletElement = marker(position, props);
+  componentWillMount () {
+    super.componentWillMount()
+    const { position, ...props } = this.props
+    this.leafletElement = marker(position, props)
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate (prevProps) {
     if (this.props.position !== prevProps.position) {
-      this.leafletElement.setLatLng(this.props.position);
+      this.leafletElement.setLatLng(this.props.position)
     }
     if (this.props.icon !== prevProps.icon) {
-      this.leafletElement.setIcon(this.props.icon);
+      this.leafletElement.setIcon(this.props.icon)
     }
     if (this.props.zIndexOffset !== prevProps.zIndexOffset) {
-      this.leafletElement.setZIndexOffset(this.props.zIndexOffset);
+      this.leafletElement.setZIndexOffset(this.props.zIndexOffset)
     }
     if (this.props.opacity !== prevProps.opacity) {
-      this.leafletElement.setOpacity(this.props.opacity);
+      this.leafletElement.setOpacity(this.props.opacity)
     }
     if (this.props.draggable !== prevProps.draggable) {
       if (this.props.draggable) {
-        this.leafletElement.dragging.enable();
-      }
-      else {
-        this.leafletElement.dragging.disable();
+        this.leafletElement.dragging.enable()
+      } else {
+        this.leafletElement.dragging.disable()
       }
     }
   }
 
-  render() {
-    return this.props.children || null;
+  render () {
+    return this.props.children || null
   }
 }

@@ -1,7 +1,7 @@
-import { isEqual, pick } from 'lodash';
-import { PropTypes } from 'react';
+import { isEqual, pick } from 'lodash'
+import { PropTypes } from 'react'
 
-import MapLayer from './MapLayer';
+import MapLayer from './MapLayer'
 
 const OPTIONS = [
   'stroke',
@@ -18,31 +18,31 @@ const OPTIONS = [
   'clickable',
   'pointerEvents',
   'className',
-];
+]
 
 export default class Path extends MapLayer {
   static childContextTypes = {
     popupContainer: PropTypes.object,
   };
 
-  getChildContext() {
+  getChildContext () {
     return {
       popupContainer: this.leafletElement,
-    };
+    }
   }
 
-  getPathOptions(props) {
-    return pick(props, OPTIONS);
+  getPathOptions (props) {
+    return pick(props, OPTIONS)
   }
 
-  setStyle(options = {}) {
-    this.leafletElement.setStyle(options);
+  setStyle (options = {}) {
+    this.leafletElement.setStyle(options)
   }
 
-  setStyleIfChanged(fromProps, toProps) {
-    const nextStyle = this.getPathOptions(toProps);
+  setStyleIfChanged (fromProps, toProps) {
+    const nextStyle = this.getPathOptions(toProps)
     if (!isEqual(nextStyle, this.getPathOptions(fromProps))) {
-      this.setStyle(nextStyle);
+      this.setStyle(nextStyle)
     }
   }
 }

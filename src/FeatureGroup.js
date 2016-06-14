@@ -1,8 +1,8 @@
-import { featureGroup } from 'leaflet';
-import { PropTypes } from 'react';
+import { featureGroup } from 'leaflet'
+import { PropTypes } from 'react'
 
-import layerContainerType from './types/layerContainer';
-import Path from './Path';
+import layerContainerType from './types/layerContainer'
+import Path from './Path'
 
 export default class FeatureGroup extends Path {
   static childContextTypes = {
@@ -10,23 +10,23 @@ export default class FeatureGroup extends Path {
     popupContainer: PropTypes.object,
   };
 
-  getChildContext() {
+  getChildContext () {
     return {
       layerContainer: this.leafletElement,
       popupContainer: this.leafletElement,
-    };
+    }
   }
 
-  componentWillMount() {
-    this.leafletElement = featureGroup();
+  componentWillMount () {
+    this.leafletElement = featureGroup()
   }
 
-  componentDidMount() {
-    super.componentDidMount();
-    this.setStyle(this.props);
+  componentDidMount () {
+    super.componentDidMount()
+    this.setStyle(this.props)
   }
 
-  componentDidUpdate(prevProps) {
-    this.setStyleIfChanged(prevProps, this.props);
+  componentDidUpdate (prevProps) {
+    this.setStyleIfChanged(prevProps, this.props)
   }
 }

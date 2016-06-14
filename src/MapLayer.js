@@ -1,10 +1,10 @@
-import React from 'react';
+import React from 'react'
 
-import childrenType from './types/children';
-import layerContainerType from './types/layerContainer';
-import mapType from './types/map';
+import childrenType from './types/children'
+import layerContainerType from './types/layerContainer'
+import mapType from './types/map'
 
-import MapComponent from './MapComponent';
+import MapComponent from './MapComponent'
 
 export default class MapLayer extends MapComponent {
   static propTypes = {
@@ -16,21 +16,21 @@ export default class MapLayer extends MapComponent {
     map: mapType,
   };
 
-  get layerContainer() {
-    return this.context.layerContainer || this.context.map;
+  get layerContainer () {
+    return this.context.layerContainer || this.context.map
   }
 
-  componentDidMount() {
-    super.componentDidMount();
-    this.layerContainer.addLayer(this.leafletElement);
+  componentDidMount () {
+    super.componentDidMount()
+    this.layerContainer.addLayer(this.leafletElement)
   }
 
-  componentWillUnmount() {
-    super.componentWillUnmount();
-    this.layerContainer.removeLayer(this.leafletElement);
+  componentWillUnmount () {
+    super.componentWillUnmount()
+    this.layerContainer.removeLayer(this.leafletElement)
   }
 
-  render() {
-    return <div style={{display: 'none'}}>{this.props.children}</div>;
+  render () {
+    return <div style={{display: 'none'}}>{this.props.children}</div>
   }
 }

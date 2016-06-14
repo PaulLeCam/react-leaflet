@@ -1,4 +1,4 @@
-import { Map } from 'leaflet';
-import { PropTypes } from 'react';
+import { Map } from 'leaflet'
+import { PropTypes } from 'react'
 
-export default PropTypes.instanceOf(Map);
+export default PropTypes.instanceOf(Map)

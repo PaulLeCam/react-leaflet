@@ -1,4 +1,4 @@
-import { PropTypes } from 'react';
+import { PropTypes } from 'react'
 
 export default PropTypes.oneOfType([
   // [Number, Number]
@@ -13,4 +13,4 @@ export default PropTypes.oneOfType([
     lat: PropTypes.number,
     lon: PropTypes.number,
   }),
-]);
+])
