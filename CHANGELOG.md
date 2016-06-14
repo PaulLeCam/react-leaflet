@@ -1,3 +1,7 @@
+## v0.11.7 (2016-06-14)
+
+- Fixed removing layers from `LayersControl`.
+
 ## v0.11.6 (2016-06-09)
 
 - Fixed allowing to set and update the `style` prop as a function in `GeoJson`.

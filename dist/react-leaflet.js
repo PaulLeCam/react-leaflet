@@ -3917,7 +3917,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  checked: _react.PropTypes.bool,
 	  children: _react.PropTypes.node.isRequired,
 	  name: _react.PropTypes.string.isRequired,
-	  removeLayer: _react.PropTypes.func
+	  removeLayer: _react.PropTypes.func,
+	  removeLayerControl: _react.PropTypes.func
 	};
 
 	// Abtract class for layer container, extended by BaseLayer and Overlay
@@ -3952,6 +3953,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	      } else if (this.props.checked && !checked) {
 	        this.context.map.removeLayer(this.layer);
 	      }
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      this.props.removeLayerControl(this.layer);
 	    }
 	  }, {
 	    key: 'removeLayer',
@@ -4051,7 +4057,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      this.controlProps = {
 	        addBaseLayer: this.addBaseLayer.bind(this),
 	        addOverlay: this.addOverlay.bind(this),
-	        removeLayer: this.removeLayer.bind(this)
+	        removeLayer: this.removeLayer.bind(this),
+	        removeLayerControl: this.removeLayerControl.bind(this)
 	      };
 	    }
 	  }, {
@@ -4078,6 +4085,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    key: 'removeLayer',
 	    value: function removeLayer(layer) {
 	      this.context.map.removeLayer(layer);
+	    }
+	  }, {
+	    key: 'removeLayerControl',
+	    value: function removeLayerControl(layer) {
+	      this.leafletElement.removeLayer(layer);
 	    }
 	  }, {
 	    key: 'render',

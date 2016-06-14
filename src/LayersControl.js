@@ -14,6 +14,7 @@ const controlledLayerPropTypes = {
   children: PropTypes.node.isRequired,
   name: PropTypes.string.isRequired,
   removeLayer: PropTypes.func,
+  removeLayerControl: PropTypes.func,
 }
 
 // Abtract class for layer container, extended by BaseLayer and Overlay
@@ -44,6 +45,10 @@ class ControlledLayer extends Component {
     } else if (this.props.checked && !checked) {
       this.context.map.removeLayer(this.layer)
     }
+  }
+
+  componentWillUnmount () {
+    this.props.removeLayerControl(this.layer)
   }
 
   removeLayer (layer) {
@@ -94,6 +99,7 @@ export default class LayersControl extends MapControl {
       addBaseLayer: ::this.addBaseLayer,
       addOverlay: ::this.addOverlay,
       removeLayer: ::this.removeLayer,
+      removeLayerControl: ::this.removeLayerControl,
     }
   }
 
@@ -113,6 +119,10 @@ export default class LayersControl extends MapControl {
 
   removeLayer (layer) {
     this.context.map.removeLayer(layer)
+  }
+
+  removeLayerControl (layer) {
+    this.leafletElement.removeLayer(layer)
   }
 
   render () {
