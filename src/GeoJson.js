@@ -6,7 +6,7 @@ import Path from './Path'
 
 export default class GeoJson extends Path {
   static propTypes = {
-    data: PropTypes.object.isRequired,
+    data: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
   };
 
   componentWillMount () {
