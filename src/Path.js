@@ -1,3 +1,5 @@
+/* @flow */
+
 import { isEqual, pick } from 'lodash'
 import { PropTypes } from 'react'
 
@@ -31,15 +33,15 @@ export default class Path extends MapLayer {
     }
   }
 
-  getPathOptions (props) {
+  getPathOptions (props: Object) {
     return pick(props, OPTIONS)
   }
 
-  setStyle (options = {}) {
+  setStyle (options: Object = {}) {
     this.leafletElement.setStyle(options)
   }
 
-  setStyleIfChanged (fromProps, toProps) {
+  setStyleIfChanged (fromProps: Object, toProps: Object) {
     const nextStyle = this.getPathOptions(toProps)
     if (!isEqual(nextStyle, this.getPathOptions(fromProps))) {
       this.setStyle(nextStyle)

@@ -736,10 +736,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	var MapComponent = function (_Component) {
 	  _inherits(MapComponent, _Component);
 
-	  function MapComponent() {
+	  function MapComponent(props, context) {
 	    _classCallCheck(this, MapComponent);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(MapComponent).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(MapComponent).call(this, props, context));
+
+	    _this._leafletEvents = {};
+	    return _this;
 	  }
 
 	  _createClass(MapComponent, [{
@@ -750,7 +753,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      this.bindLeafletEvents(this._leafletEvents);
+	      this.bindLeafletEvents(this._leafletEvents, {});
 	    }
 	  }, {
 	    key: 'componentWillReceiveProps',
@@ -798,7 +801,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var prev = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
 
 	      var el = this.leafletElement;
-	      if (!el || !el.on) return;
+	      if (!el || !el.on) return {};
 
 	      var diff = (0, _clone3.default)(prev);
 	      (0, _forEach3.default)(prev, function (cb, ev) {
@@ -3665,7 +3668,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}(_Path3.default);
 
 	GeoJson.propTypes = {
-	  data: _react.PropTypes.object.isRequired
+	  data: _react.PropTypes.oneOfType([_react.PropTypes.array, _react.PropTypes.object]).isRequired
 	};
 	exports.default = GeoJson;
 
@@ -3960,6 +3963,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	      this.props.removeLayerControl(this.layer);
 	    }
 	  }, {
+	    key: 'addLayer',
+	    value: function addLayer() {
+	      throw new Error('Must be implemented in extending class');
+	    }
+	  }, {
 	    key: 'removeLayer',
 	    value: function removeLayer(layer) {
 	      this.props.removeLayer(layer);
@@ -4147,21 +4155,17 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _isUndefined3 = _interopRequireDefault(_isUndefined2);
 
-	var _isArray2 = __webpack_require__(41);
-
-	var _isArray3 = _interopRequireDefault(_isArray2);
-
 	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _react = __webpack_require__(4);
-
-	var _react2 = _interopRequireDefault(_react);
-
 	var _leaflet = __webpack_require__(1);
 
 	var _leaflet2 = _interopRequireDefault(_leaflet);
+
+	var _react = __webpack_require__(4);
+
+	var _react2 = _interopRequireDefault(_react);
 
 	var _bounds = __webpack_require__(3);
 
@@ -4185,10 +4189,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint-disable react/no-did-mount-set-state */
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	/* eslint-disable react/no-did-mount-set-state */
 
 	var normalizeCenter = function normalizeCenter(pos) {
-	  return (0, _isArray3.default)(pos) ? pos : [pos.lat, pos.lng || pos.lon];
+	  return Array.isArray(pos) ? pos : [pos.lat, pos.lon ? pos.lon : pos.lng];
 	};
 
 	var Map = function (_MapComponent) {

@@ -1,3 +1,5 @@
+/* @flow */
+
 import { rectangle } from 'leaflet'
 
 import boundsType from './types/bounds'
@@ -14,7 +16,7 @@ export default class Rectangle extends Path {
     this.leafletElement = rectangle(bounds, props)
   }
 
-  componentDidUpdate (prevProps) {
+  componentDidUpdate (prevProps: Object) {
     if (this.props.bounds !== prevProps.bounds) {
       this.leafletElement.setBounds(this.props.bounds)
     }

@@ -1,3 +1,5 @@
+/* @flow */
+
 import { PropTypes } from 'react'
 import { LatLngBounds } from 'leaflet'
 

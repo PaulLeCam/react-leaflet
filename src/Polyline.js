@@ -1,3 +1,5 @@
+/* @flow */
+
 import { polyline } from 'leaflet'
 
 import latlngListType from './types/latlngList'
@@ -14,7 +16,7 @@ export default class Polyline extends Path {
     this.leafletElement = polyline(positions, props)
   }
 
-  componentDidUpdate (prevProps) {
+  componentDidUpdate (prevProps: Object) {
     if (this.props.positions !== prevProps.positions) {
       this.leafletElement.setLatLngs(this.props.positions)
     }

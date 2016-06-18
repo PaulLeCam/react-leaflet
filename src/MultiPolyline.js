@@ -1,3 +1,5 @@
+/* @flow */
+
 import { multiPolyline } from 'leaflet'
 import { PropTypes } from 'react'
 
@@ -15,7 +17,7 @@ export default class MultiPolyline extends Path {
     this.leafletElement = multiPolyline(polylines, props)
   }
 
-  componentDidUpdate (prevProps) {
+  componentDidUpdate (prevProps: Object) {
     if (this.props.polylines !== prevProps.polylines) {
       this.leafletElement.setLatLngs(this.props.polylines)
     }

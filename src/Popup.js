@@ -1,3 +1,5 @@
+/* @flow */
+
 import { popup } from 'leaflet'
 import { Children, PropTypes } from 'react'
 import { render, unmountComponentAtNode } from 'react-dom'
@@ -22,8 +24,8 @@ export default class Popup extends MapComponent {
     const { children: _children, ...props } = this.props
 
     this.leafletElement = popup(props, this.context.popupContainer)
-    this.leafletElement.on('open', ::this.renderPopupContent)
-    this.leafletElement.on('close', ::this.removePopupContent)
+    this.leafletElement.on('open', this.renderPopupContent.bind(this))
+    this.leafletElement.on('close', this.removePopupContent.bind(this))
   }
 
   componentDidMount () {
@@ -43,7 +45,7 @@ export default class Popup extends MapComponent {
     }
   }
 
-  componentDidUpdate (prevProps) {
+  componentDidUpdate (prevProps: Object) {
     const { position } = this.props
 
     if (position !== prevProps.position) {

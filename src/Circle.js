@@ -1,3 +1,5 @@
+/* @flow */
+
 import { circle } from 'leaflet'
 import { PropTypes } from 'react'
 
@@ -16,7 +18,7 @@ export default class Circle extends Path {
     this.leafletElement = circle(center, radius, props)
   }
 
-  componentDidUpdate (prevProps) {
+  componentDidUpdate (prevProps: Object) {
     if (this.props.center !== prevProps.center) {
       this.leafletElement.setLatLng(this.props.center)
     }

@@ -1,8 +1,10 @@
+/* @flow */
 /* eslint-disable react/no-did-mount-set-state */
 
-import { isArray, isUndefined, omit, uniqueId } from 'lodash'
-import React, { PropTypes } from 'react'
 import Leaflet from 'leaflet'
+import type { LatLng, LatLngBounds } from 'leaflet'
+import { isUndefined, omit, uniqueId } from 'lodash'
+import React, { PropTypes } from 'react'
 
 import boundsType from './types/bounds'
 import childrenType from './types/children'
@@ -10,7 +12,12 @@ import latlngType from './types/latlng'
 
 import MapComponent from './MapComponent'
 
-const normalizeCenter = pos => isArray(pos) ? pos : [pos.lat, pos.lng || pos.lon]
+type LatLngType = LatLng | Array<number> | Object
+type LatLngBoundsType = LatLngBounds | Array<LatLngType>
+
+const normalizeCenter = (pos: LatLngType): Array<number> => {
+  return Array.isArray(pos) ? pos : [pos.lat, pos.lon ? pos.lon : pos.lng]
+}
 
 export default class Map extends MapComponent {
   static propTypes = {
@@ -42,7 +49,7 @@ export default class Map extends MapComponent {
     }
   }
 
-  constructor (props) {
+  constructor (props: Object) {
     super(props)
     this.state = {
       id: props.id || uniqueId('map'),
@@ -59,7 +66,7 @@ export default class Map extends MapComponent {
     }
   }
 
-  componentDidUpdate (prevProps) {
+  componentDidUpdate (prevProps: Object) {
     const { bounds, boundsOptions, center, maxBounds, zoom, animate } = this.props
     if (center && this.shouldUpdateCenter(center, prevProps.center)) {
       this.leafletElement.setView(center, zoom, {animate})
@@ -82,14 +89,14 @@ export default class Map extends MapComponent {
     this.leafletElement.remove()
   }
 
-  shouldUpdateCenter (next, prev) {
+  shouldUpdateCenter (next: LatLngType, prev: LatLngType) {
     if (!prev) return true
     next = normalizeCenter(next)
     prev = normalizeCenter(prev)
     return next[0] !== prev[0] || next[1] !== prev[1]
   }
 
-  shouldUpdateBounds (next, prev) {
+  shouldUpdateBounds (next: LatLngBoundsType, prev: LatLngBoundsType) {
     if (!prev) return true
     next = Leaflet.latLngBounds(next)
     prev = Leaflet.latLngBounds(prev)

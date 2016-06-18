@@ -1,3 +1,5 @@
+/* @flow */
+
 import { Icon, marker } from 'leaflet'
 import { PropTypes } from 'react'
 
@@ -28,7 +30,7 @@ export default class Marker extends MapLayer {
     this.leafletElement = marker(position, props)
   }
 
-  componentDidUpdate (prevProps) {
+  componentDidUpdate (prevProps: Object) {
     if (this.props.position !== prevProps.position) {
       this.leafletElement.setLatLng(this.props.position)
     }

@@ -1,16 +1,16 @@
 # React-Leaflet documentation
 
-## [Getting started](#Getting%20started.md)
+## [Getting started](Getting%20started.md)
 
-- [About React-Leaflet](#Getting%20started.md#about-react-leaflet)
-- [Leaflet setup](#Getting%20started.md#leaflet-setup)
-- [Installation](#Getting%20started.md#installation)
+- [About React-Leaflet](Getting%20started.md#about-react-leaflet)
+- [Leaflet setup](Getting%20started.md#leaflet-setup)
+- [Installation](Getting%20started.md#installation)
 
-## [How it works](#How%20it%20works.md)
+## [How it works](How%20it%20works.md)
 
-- [Core concepts](#How%20it%20works.md#core-concepts)
-- [Lifecycle process](#How%20it%20works.md#lifecycle-process)
-- [Limitations](#How%20it%20works.md#limitations)
+- [Core concepts](How%20it%20works.md#core-concepts)
+- [Lifecycle process](How%20it%20works.md#lifecycle-process)
+- [Limitations](How%20it%20works.md#limitations)
 
 ## [API](API.md)
 

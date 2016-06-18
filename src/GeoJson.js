@@ -1,3 +1,5 @@
+/* @flow */
+
 import { geoJson } from 'leaflet'
 import { isFunction } from 'lodash'
 import { PropTypes } from 'react'
@@ -15,7 +17,7 @@ export default class GeoJson extends Path {
     this.leafletElement = geoJson(data, props)
   }
 
-  componentDidUpdate (prevProps) {
+  componentDidUpdate (prevProps: Object) {
     if (isFunction(this.props.style)) {
       this.setStyle(this.props.style)
     } else {

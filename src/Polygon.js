@@ -1,3 +1,5 @@
+/* @flow */
+
 import { polygon } from 'leaflet'
 import { PropTypes } from 'react'
 
@@ -18,7 +20,7 @@ export default class Polygon extends Path {
     this.leafletElement = polygon(positions, props)
   }
 
-  componentDidUpdate (prevProps) {
+  componentDidUpdate (prevProps: Object) {
     if (this.props.positions !== prevProps.positions) {
       this.leafletElement.setLatLngs(this.props.positions)
     }

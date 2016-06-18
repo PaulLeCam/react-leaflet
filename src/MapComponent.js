@@ -1,3 +1,5 @@
+/* @flow */
+
 import { clone, forEach, keys, reduce } from 'lodash'
 import { Component } from 'react'
 import warning from 'warning'
@@ -6,15 +8,23 @@ const EVENTS_RE_LEGACY = /^onLeaflet(.+)$/i
 const EVENTS_RE = /^on(.+)$/i
 
 export default class MapComponent extends Component {
+  _leafletEvents: Object;
+  leafletElement: Object;
+
+  constructor (props: Object, context: Object) {
+    super(props, context)
+    this._leafletEvents = {}
+  }
+
   componentWillMount () {
     this._leafletEvents = this.extractLeafletEvents(this.props)
   }
 
   componentDidMount () {
-    this.bindLeafletEvents(this._leafletEvents)
+    this.bindLeafletEvents(this._leafletEvents, {})
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps (nextProps: Object) {
     const next = this.extractLeafletEvents(nextProps)
     this._leafletEvents = this.bindLeafletEvents(next, this._leafletEvents)
   }
@@ -33,7 +43,7 @@ export default class MapComponent extends Component {
     return this.leafletElement
   }
 
-  extractLeafletEvents (props) {
+  extractLeafletEvents (props: Object) {
     return reduce(keys(props), (res, prop) => {
       const maybeEvent = prop.replace(EVENTS_RE_LEGACY, (match, p) => {
         warning(false, `"onLeaflet${p}" and other "onLeaflet..." properties are deprecated and support will be removed in the next version, use "on${p}" instead.`)
@@ -47,9 +57,9 @@ export default class MapComponent extends Component {
     }, {})
   }
 
-  bindLeafletEvents (next = {}, prev = {}) {
+  bindLeafletEvents (next: Object = {}, prev: Object = {}): Object {
     const el = this.leafletElement
-    if (!el || !el.on) return
+    if (!el || !el.on) return {}
 
     const diff = clone(prev)
     forEach(prev, (cb, ev) => {
@@ -69,7 +79,7 @@ export default class MapComponent extends Component {
     return diff
   }
 
-  fireLeafletEvent (type, data) {
+  fireLeafletEvent (type: string, data: ?any) {
     const el = this.leafletElement
     if (el) el.fire(type, data)
   }

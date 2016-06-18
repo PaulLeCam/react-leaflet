@@ -1,3 +1,5 @@
+/* @flow */
+
 import { featureGroup } from 'leaflet'
 import { PropTypes } from 'react'
 
@@ -26,7 +28,7 @@ export default class FeatureGroup extends Path {
     this.setStyle(this.props)
   }
 
-  componentDidUpdate (prevProps) {
+  componentDidUpdate (prevProps: Object) {
     this.setStyleIfChanged(prevProps, this.props)
   }
 }

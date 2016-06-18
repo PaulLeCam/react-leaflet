@@ -1,3 +1,5 @@
+/* @flow */
+
 import { control } from 'leaflet'
 import React, { cloneElement, Children, Component, PropTypes } from 'react'
 
@@ -19,6 +21,8 @@ const controlledLayerPropTypes = {
 
 // Abtract class for layer container, extended by BaseLayer and Overlay
 class ControlledLayer extends Component {
+  layer: ?Object;
+
   static propTypes = controlledLayerPropTypes;
 
   static contextTypes = {
@@ -32,8 +36,8 @@ class ControlledLayer extends Component {
   getChildContext () {
     return {
       layerContainer: {
-        addLayer: ::this.addLayer,
-        removeLayer: ::this.removeLayer,
+        addLayer: this.addLayer.bind(this),
+        removeLayer: this.removeLayer.bind(this),
       },
     }
   }
@@ -49,6 +53,10 @@ class ControlledLayer extends Component {
 
   componentWillUnmount () {
     this.props.removeLayerControl(this.layer)
+  }
+
+  addLayer () {
+    throw new Error('Must be implemented in extending class')
   }
 
   removeLayer (layer) {
@@ -96,32 +104,32 @@ export default class LayersControl extends MapControl {
     const { children: _children, ...options } = this.props
     this.leafletElement = control.layers(undefined, undefined, options)
     this.controlProps = {
-      addBaseLayer: ::this.addBaseLayer,
-      addOverlay: ::this.addOverlay,
-      removeLayer: ::this.removeLayer,
-      removeLayerControl: ::this.removeLayerControl,
+      addBaseLayer: this.addBaseLayer.bind(this),
+      addOverlay: this.addOverlay.bind(this),
+      removeLayer: this.removeLayer.bind(this),
+      removeLayerControl: this.removeLayerControl.bind(this),
     }
   }
 
-  addBaseLayer (layer, name, checked = false) {
+  addBaseLayer (layer: Object, name: string, checked: boolean = false) {
     if (checked) {
       this.context.map.addLayer(layer)
     }
     this.leafletElement.addBaseLayer(layer, name)
   }
 
-  addOverlay (layer, name, checked = false) {
+  addOverlay (layer: Object, name: string, checked: boolean = false) {
     if (checked) {
       this.context.map.addLayer(layer)
     }
     this.leafletElement.addOverlay(layer, name)
   }
 
-  removeLayer (layer) {
+  removeLayer (layer: Object) {
     this.context.map.removeLayer(layer)
   }
 
-  removeLayerControl (layer) {
+  removeLayerControl (layer: Object) {
     this.leafletElement.removeLayer(layer)
   }
 

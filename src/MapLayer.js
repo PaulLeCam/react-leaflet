@@ -1,3 +1,5 @@
+/* @flow */
+
 import React from 'react'
 
 import childrenType from './types/children'
@@ -16,7 +18,7 @@ export default class MapLayer extends MapComponent {
     map: mapType,
   };
 
-  get layerContainer () {
+  get layerContainer (): Object {
     return this.context.layerContainer || this.context.map
   }
 

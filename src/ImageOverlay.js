@@ -1,3 +1,5 @@
+/* @flow */
+
 import { imageOverlay } from 'leaflet'
 import { PropTypes } from 'react'
 
@@ -18,7 +20,7 @@ export default class ImageOverlay extends MapLayer {
     this.leafletElement = imageOverlay(url, bounds, props)
   }
 
-  componentDidUpdate (prevProps) {
+  componentDidUpdate (prevProps: Object) {
     if (this.props.url !== prevProps.url) {
       this.leafletElement.setUrl(this.props.url)
     }

@@ -1,3 +1,5 @@
+/* @flow */
+
 import { tileLayer } from 'leaflet'
 import { PropTypes } from 'react'
 
@@ -14,7 +16,7 @@ export default class TileLayer extends BaseTileLayer {
     this.leafletElement = tileLayer(url, props)
   }
 
-  componentDidUpdate (prevProps) {
+  componentDidUpdate (prevProps: Object) {
     super.componentDidUpdate(prevProps)
     const { url } = this.props
     if (url !== prevProps.url) {

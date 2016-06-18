@@ -1,3 +1,5 @@
+/* @flow */
+
 import { layerGroup } from 'leaflet'
 
 import layerContainerType from './types/layerContainer'

@@ -1,3 +1,5 @@
+/* @flow */
+
 import { multiPolygon } from 'leaflet'
 import { PropTypes } from 'react'
 
@@ -15,7 +17,7 @@ export default class MultiPolygon extends Path {
     this.leafletElement = multiPolygon(polygons, props)
   }
 
-  componentDidUpdate (prevProps) {
+  componentDidUpdate (prevProps: Object) {
     if (this.props.polygons !== prevProps.polygons) {
       this.leafletElement.setLatLngs(this.props.polygons)
     }

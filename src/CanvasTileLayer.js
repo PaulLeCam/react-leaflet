@@ -1,3 +1,5 @@
+/* @flow */
+
 import { tileLayer } from 'leaflet'
 
 import BaseTileLayer from './BaseTileLayer'
