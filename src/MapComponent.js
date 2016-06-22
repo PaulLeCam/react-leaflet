@@ -4,7 +4,6 @@ import { clone, forEach, keys, reduce } from 'lodash'
 import { Component } from 'react'
 import warning from 'warning'
 
-const EVENTS_RE_LEGACY = /^onLeaflet(.+)$/i
 const EVENTS_RE = /^on(.+)$/i
 
 export default class MapComponent extends Component {
@@ -39,18 +38,14 @@ export default class MapComponent extends Component {
   }
 
   getLeafletElement () {
-    // TODO: add warning for v0.12
+    warning(false, 'The "getLeafletElement()" method is deprecated and will be removed in the next version, simply use the "leafletElement" property instead.')
     return this.leafletElement
   }
 
   extractLeafletEvents (props: Object) {
     return reduce(keys(props), (res, prop) => {
-      const maybeEvent = prop.replace(EVENTS_RE_LEGACY, (match, p) => {
-        warning(false, `"onLeaflet${p}" and other "onLeaflet..." properties are deprecated and support will be removed in the next version, use "on${p}" instead.`)
-        return `on${p}`
-      })
-      if (EVENTS_RE.test(maybeEvent)) {
-        const key = maybeEvent.replace(EVENTS_RE, (match, p) => p.toLowerCase())
+      if (EVENTS_RE.test(prop)) {
+        const key = prop.replace(EVENTS_RE, (match, p) => p.toLowerCase())
         res[ key ] = props[ prop ]
       }
       return res

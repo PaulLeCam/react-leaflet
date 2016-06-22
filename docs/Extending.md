@@ -1,4 +1,10 @@
-# Creating custom components
+# Extending
+
+## Creating custom components
+
+React-Leaflet aims to provide all the controls and layers provided by Leaflet, but it does not support any Leaflet plugin.  
+Adding layers and behaviors provided by plugins in your application should be relatively easy by extending one of the components provided by React-Leaflet (see the class hierarchy below to find the most relevant component to extend) and implementing the relevant lifecycle methods.  
+Make sure to read the [how it works page](#How%20it%20works.md) of this documentation to understand what your custom component should use and eventually provide.
 
 ## Class hierarchy
 

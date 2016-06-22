@@ -49,8 +49,8 @@ export default class Map extends MapComponent {
     }
   }
 
-  constructor (props: Object) {
-    super(props)
+  constructor (props: Object, context: Object) {
+    super(props, context)
     this.state = {
       id: props.id || uniqueId('map'),
     }

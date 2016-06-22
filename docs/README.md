@@ -18,3 +18,8 @@
 - [PropTypes](API.md#proptypes)
 - [Events](API.md#events)
 - [Components](API.md#components)
+
+## [Extending](Extending.md)
+
+- [Creating custom components](Extending.md#creatingcustomcomponents)
+- [Class hierarchy](Extending.md#classhierarchy)
