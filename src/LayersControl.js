@@ -100,6 +100,13 @@ export default class LayersControl extends MapControl {
     map: mapType,
   };
 
+  controlProps: {
+    addBaseLayer: Function,
+    addOverlay: Function,
+    removeLayer: Function,
+    removeLayerControl: Function,
+  };
+
   componentWillMount () {
     const { children: _children, ...options } = this.props
     this.leafletElement = control.layers(undefined, undefined, options)
