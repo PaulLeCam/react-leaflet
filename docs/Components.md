@@ -47,19 +47,16 @@ These components are base classes used by other components. They can be extended
 ### MapComponent
 
 Base class extending `React.Component` and handling events binding and unbind.  
-It exposes a `getLeafletElement()` method to access the `Leaflet` object created for the component.
+It exposes a `leafletElement` property to access the `Leaflet` object created for the component.
 
 ### MapControl
 
 Base class extending `React.Component` for controls.  
-It exposes a `getLeafletElement()` method to access the `Leaflet` object created for the control.
+It exposes a `leafletElement` property to access the `Leaflet` object created for the control.
 
 ### MapLayer
 
-Base class extending [`MapComponent`](#mapcomponent) using the provided `map` prop to add its element and passing it down to its children.  
-It exposes the following methods:
-- `getClonedChildrenWithMap(object extra): object`: returns the cloned children of the component, adding the `map` and the `extra` props provided to them.
-- `renderChildrenWithProps(object props): object`: returns the cloned children of the component using `getClonedChildrenWithMap()`, wrapped in a `<div>` with `display: none` style.
+Base class extending [`MapComponent`](#mapcomponent), handling adding the layer to the map and removing it when relevant. It exposes the `layerContainer` property, to be used by extending classes to access their containing layer.
 
 ### BaseTileLayer
 

@@ -4,7 +4,7 @@
 
 This library provides an abstraction of [Leaflet](http://leafletjs.com/) as [React components](https://facebook.github.io/react/).  
 It does not replace Leaflet, only leverages [React's lifecycle methods](https://facebook.github.io/react/docs/component-specs.html#lifecycle-methods) to call the relevant Leaflet handlers. You can read more information about the lifecycle process in the [How it works](How%20it%works.md) page of this documentation.
-Please make sure you understand all the [TODO: link technical considerations]() to evaluate if this library is appropriate for your needs.
+Please make sure you understand all the [core concepts](How%20it%works.md#core-concepts) and [limitations](How%20it%works.md#limitations) to evaluate if this library is appropriate for your needs.
 
 React-Leaflet allows to convert this [sample code from Leaflet documentation](http://leafletjs.com/):
 
@@ -65,7 +65,7 @@ All components are React wrappers for Leaflet elements and layers, they need a m
 npm install react-leaflet
 ```
 
-React, ReactDOM and Leaflet are peer dependencies, if you haven't already installed them use:
+React, ReactDOM and Leaflet are peer dependencies, if you haven't already installed them you can use:
 
 ```bash
 npm install leaflet react react-dom react-leaflet

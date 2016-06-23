@@ -6,6 +6,8 @@
 
 ## PropTypes
 
+The following PropTypes are exported in the `PropTypes` object.
+
 **children**: One `PropTypes.node` or an Array of `PropTypes.node`.
 
 **latLng**: One of `[number, number]`, `{lat: number, lng: number}` or `{lat: number, lon: number}`.

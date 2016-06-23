@@ -7,7 +7,7 @@
     "clean:lib": "rm -Rf ./lib",
     "compile:lib": "babel src --out-dir lib",
     "build:lib": "npm run clean:lib && npm run compile:lib",
-    "build:dist": "webpack src/index.js dist/react-leaflet.js & webpack -p src/index.js dist/react-leaflet.min.js",
+    "build:dist": "webpack --progress",
     "build": "npm run build:lib && npm run build:dist",
     "watch": "babel src --watch --out-dir lib",
     "start": "npm run lint && npm run test && npm run build",
