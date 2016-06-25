@@ -1,9 +1,15 @@
+__mocks__
 __tests__
 coverage
+docs
 example
 .editorconfig
 .eslintignore
 .eslintrc.json
 .travis.yml
 bower.json
-webpack.config.js
+CHANGELOG.md
+CONTRIBUTING.md
+ISSUE_TEMPLATE.md
+UPGRADING.md
+webpack.config.babel.js
