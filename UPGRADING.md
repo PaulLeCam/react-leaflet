@@ -2,7 +2,7 @@
 
 ## v0.12.0
 
-Deprecated: the `getLeafletElement()` method on components is deprecated, you can simply use the `leafletElement` property instead.
+**Deprecated:** the `getLeafletElement()` method on components is deprecated, you can simply use the `leafletElement` property instead.
 
 The major change in this version is the use of [context](https://facebook.github.io/react/docs/context.html) instead of props to pass Leaflet instances from components to their children.  
 If you are only using the components provided by React-Leaflet, everything should continue to work as before.
