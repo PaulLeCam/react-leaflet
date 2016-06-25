@@ -1,47 +1,44 @@
+/* global describe, expect, it, jest */
+
 import Leaflet from 'leaflet';
-import React from 'react';
-import { render } from 'react-dom';
+import React, { Component } from 'react';
+import { renderIntoDocument } from 'react-addons-test-utils';
 
-jest.dontMock('../src/MapComponent');
-jest.dontMock('../src/MapLayer');
-jest.dontMock('../src/Map');
-jest.dontMock('../src/types/bounds');
-jest.dontMock('../src/types/index');
-jest.dontMock('../src/types/latlng');
+import Map from '../src/Map';
+import MapLayer from '../src/MapLayer';
 
-const MapLayer = require('../src/MapLayer').default;
-const Map = require('../src/Map').default;
+jest.unmock('../src/MapComponent');
+jest.unmock('../src/MapLayer');
+jest.unmock('../src/Map');
+jest.unmock('../src/types/bounds');
+jest.unmock('../src/types/index');
+jest.unmock('../src/types/latlng');
 
 describe('MapLayer', () => {
-  it('passes its `map` prop to its children', () => {
-    document.body.innerHTML = '<div id="test"></div>';
-
-    class Component extends MapLayer {
-      static propTypes = {
+  it('passes its `map` context to its children', () => {
+    class TestComponent extends MapLayer {
+      static contextTypes = {
         map: React.PropTypes.instanceOf(Leaflet.Map),
       };
 
       componentWillMount() {
         super.componentWillMount();
-        expect(this.props.map).toBeDefined();
+        expect(this.context.map).toBeDefined();
         this.leafletElement = Leaflet.marker([0, 0]);
       }
 
       render() {
-        const children = this.getClonedChildrenWithProps({parent: true});
-        return <div>{children}</div>;
+        return <div>{this.props.children}</div>;
       }
     }
 
-    class ChildComponent extends React.Component {
-      static propTypes = {
+    class ChildComponent extends Component {
+      static contextTypes = {
         map: React.PropTypes.instanceOf(Leaflet.Map),
-        parent: React.PropTypes.bool,
       };
 
       componentWillMount() {
-        expect(this.props.map).toBeDefined();
-        expect(this.props.parent).toBe(true);
+        expect(this.context.map).toBeDefined();
       }
 
       render() {
@@ -49,14 +46,12 @@ describe('MapLayer', () => {
       }
     }
 
-    const component = (
+    renderIntoDocument(
       <Map>
-        <Component>
+        <TestComponent>
           <ChildComponent />
-        </Component>
+        </TestComponent>
       </Map>
     );
-
-    render(component, document.getElementById('test'));
   });
 });

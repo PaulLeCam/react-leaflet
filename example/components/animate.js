@@ -1,38 +1,38 @@
-import React, { Component } from 'react';
-import { Map, TileLayer, Marker, Popup } from '../../src';
+import React, { Component } from 'react'
+import { Map, TileLayer, Marker, Popup } from '../../src'
 
 export default class AnimateExample extends Component {
-  constructor() {
-    super();
+  constructor () {
+    super()
     this.state = {
       animate: false,
       latlng: {
         lat: 51.505,
         lng: -0.09,
       },
-    };
+    }
   }
 
-  handleClick(e) {
+  handleClick (e) {
     this.setState({
       latlng: e.latlng,
-    });
+    })
   }
 
-  toggleAnimate() {
+  toggleAnimate () {
     this.setState({
       animate: !this.state.animate,
-    });
+    })
   }
 
-  render() {
-    const marker = this.state.hasLocation
-      ? <Marker position={this.state.latlng}>
-          <Popup>
-            <span>You are here</span>
-          </Popup>
-        </Marker>
-      : null;
+  render () {
+    const marker = this.state.hasLocation ? (
+      <Marker position={this.state.latlng}>
+        <Popup>
+          <span>You are here</span>
+        </Popup>
+      </Marker>
+    ) : null
 
     return (
       <div style={{textAlign: 'center'}}>
@@ -48,12 +48,12 @@ export default class AnimateExample extends Component {
           ref='map'
           zoom={13}>
           <TileLayer
-            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            attribution='&copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
           />
           {marker}
         </Map>
       </div>
-    );
+    )
   }
 }

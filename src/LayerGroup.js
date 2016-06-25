@@ -1,16 +1,23 @@
-import { layerGroup } from 'leaflet';
+/* @flow */
 
-import MapLayer from './MapLayer';
+import { layerGroup } from 'leaflet'
+
+import layerContainerType from './types/layerContainer'
+import MapLayer from './MapLayer'
 
 export default class LayerGroup extends MapLayer {
-  componentWillMount() {
-    super.componentWillMount();
-    this.leafletElement = layerGroup();
+  static childContextTypes = {
+    layerContainer: layerContainerType,
+  };
+
+  getChildContext () {
+    return {
+      layerContainer: this.leafletElement,
+    }
   }
 
-  render() {
-    return this.renderChildrenWithProps({
-      layerContainer: this.leafletElement,
-    });
+  componentWillMount () {
+    super.componentWillMount()
+    this.leafletElement = layerGroup()
   }
 }

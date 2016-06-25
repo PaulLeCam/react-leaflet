@@ -1,5 +1,7 @@
-import { PropTypes } from 'react';
+/* @flow */
 
-import latlng from './latlng';
+import { PropTypes } from 'react'
 
-export default PropTypes.arrayOf(latlng);
+import latlng from './latlng'
+
+export default PropTypes.arrayOf(latlng)

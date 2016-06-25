@@ -1,3 +1,27 @@
+## v0.12.0 (2016-06-25)
+
+- [BREAKING] Moved Leaflet instances injection from props to [context](https://facebook.github.io/react/docs/context.html). All components provided by this lib should continue to work as expected, but custom components need to be updated. Read the [UPGRADING](UPGRADING.md) file for more information.
+- Deprecated `getLeafletElement()` method, simply use the `leafletElement` property instead.
+- Documentation moved to the [docs](docs) folder and has been split into different files for better readability.
+
+## v0.11.7 (2016-06-14)
+
+- Fixed removing layers from `LayersControl`.
+
+## v0.11.6 (2016-06-09)
+
+- Fixed allowing to set and update the `style` prop as a function in `GeoJson`.
+- [internal] Added [lodash-webpack-plugin](https://github.com/lodash/lodash-webpack-plugin) to reduce the size of the UMD build.
+
+## v0.11.5 (2016-05-14)
+
+- Fixed updating `boundsOptions` in the `Map` without updating `bounds`.
+- Fixed setting `opacity` and `zIndex` properties to `0` in tile layers.
+
+## v0.11.4 (2016-05-05)
+
+Fixed `TileLayer` properties update.
+
 ## v0.11.3 (2016-04-28)
 
 Made the `draggable` property in `Marker` dynamic ([PR #148](https://github.com/PaulLeCam/react-leaflet/pull/148) by *riolowry*).

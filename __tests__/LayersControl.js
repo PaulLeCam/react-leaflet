@@ -1,23 +1,28 @@
+/* global describe, expect, it, jest */
+
 import Leaflet from 'leaflet';
-import React from 'react';
-import { render } from 'react-dom';
+import React, { Component } from 'react';
+import { renderIntoDocument } from 'react-addons-test-utils';
 
-jest.autoMockOff();
+import LayersControl from '../src/LayersControl';
+import Map from '../src/Map';
 
-const LayersControl = require('../src/LayersControl').default;
-const Map = require('../src/Map').default;
+jest.unmock('../src/LayersControl');
+jest.unmock('../src/Map');
+jest.unmock('../src/MapComponent');
+jest.unmock('../src/types/bounds');
+jest.unmock('../src/types/index');
+jest.unmock('../src/types/latlng');
 
 describe('LayersControl', () => {
-  it('passes its `map` prop to its children', () => {
-    document.body.innerHTML = '<div id="test"></div>';
-
-    class ChildComponent extends React.Component {
-      static propTypes = {
-        map: React.PropTypes.instanceOf(Leaflet.Map)
+  it('passes its `map` context to its children', () => {
+    class ChildComponent extends Component {
+      static contextTypes = {
+        map: React.PropTypes.instanceOf(Leaflet.Map),
       };
 
       componentWillMount() {
-        expect(this.props.map).toBeDefined();
+        expect(this.context.map).toBeDefined();
       }
 
       render() {
@@ -25,7 +30,7 @@ describe('LayersControl', () => {
       }
     }
 
-    const component = (
+    renderIntoDocument(
       <Map>
         <LayersControl>
           <LayersControl.Overlay checked name='test'>
@@ -34,7 +39,5 @@ describe('LayersControl', () => {
         </LayersControl>
       </Map>
     );
-
-    render(component, document.getElementById('test'));
   });
 });

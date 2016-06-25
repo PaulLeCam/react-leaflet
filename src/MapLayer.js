@@ -1,40 +1,38 @@
-import { assign } from 'lodash';
-import React, { cloneElement, Children, PropTypes } from 'react';
-import { Map } from 'leaflet';
+/* @flow */
 
-import childrenType from './types/children';
-import layerContainerType from './types/layerContainer';
+import React from 'react'
 
-import MapComponent from './MapComponent';
+import childrenType from './types/children'
+import layerContainerType from './types/layerContainer'
+import mapType from './types/map'
+
+import MapComponent from './MapComponent'
 
 export default class MapLayer extends MapComponent {
   static propTypes = {
     children: childrenType,
-    layerContainer: layerContainerType,
-    map: PropTypes.instanceOf(Map),
   };
 
-  componentDidMount() {
-    super.componentDidMount();
-    this.props.layerContainer.addLayer(this.leafletElement);
+  static contextTypes = {
+    layerContainer: layerContainerType,
+    map: mapType,
+  };
+
+  get layerContainer (): Object {
+    return this.context.layerContainer || this.context.map
   }
 
-  componentWillUnmount() {
-    super.componentWillUnmount();
-    this.props.layerContainer.removeLayer(this.leafletElement);
+  componentDidMount () {
+    super.componentDidMount()
+    this.layerContainer.addLayer(this.leafletElement)
   }
 
-  getClonedChildrenWithProps(extra) {
-    const { children, map, layerContainer } = this.props;
-    const props = assign({map, layerContainer}, extra);
-
-    return Children.map(children, child => {
-      return child ? cloneElement(child, props) : null;
-    });
+  componentWillUnmount () {
+    super.componentWillUnmount()
+    this.layerContainer.removeLayer(this.leafletElement)
   }
 
-  renderChildrenWithProps(props) {
-    const children = this.getClonedChildrenWithProps(props);
-    return <div style={{display: 'none'}}>{children}</div>;
+  render (): any {
+    return <div style={{display: 'none'}}>{this.props.children}</div>
   }
 }
