@@ -1,5 +1,10 @@
 # Upgrading
 
+## Leaflet v1.0 (in progress)
+
+- Renamed `GeoJson` to `GeoJSON` to match Leaflet change.
+- Removed `MultiPolygon` and `MultiPolyline`, now supported by `Polygon` and `Polyline`.
+
 ## v0.12.0
 
 **Deprecated:** the `getLeafletElement()` method on components is deprecated, you can simply use the `leafletElement` property instead.

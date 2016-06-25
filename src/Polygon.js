@@ -6,11 +6,14 @@ import { PropTypes } from 'react'
 import latlngListType from './types/latlngList'
 import Path from './Path'
 
+const multiLatLngListType = PropTypes.arrayOf(latlngListType)
+
 export default class Polygon extends Path {
   static propTypes = {
     positions: PropTypes.oneOfType([
       latlngListType,
-      PropTypes.arrayOf(latlngListType),
+      multiLatLngListType,
+      PropTypes.arrayOf(multiLatLngListType),
     ]).isRequired,
   };
 

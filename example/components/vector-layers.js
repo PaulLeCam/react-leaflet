@@ -3,8 +3,6 @@ import {
   Circle,
   CircleMarker,
   Map,
-  MultiPolygon,
-  MultiPolyline,
   Polygon,
   Polyline,
   Popup,
@@ -56,9 +54,9 @@ export default class VectorLayersExample extends Component {
           </Popup>
         </CircleMarker>
         <Polyline color='lime' positions={polyline} />
-        <MultiPolyline color='lime' polylines={multiPolyline} />
+        <Polyline color='lime' positions={multiPolyline} />
         <Polygon color='purple' positions={polygon} />
-        <MultiPolygon color='purple' polygons={multiPolygon} />
+        <Polygon color='purple' positions={multiPolygon} />
         <Rectangle bounds={rectangle} color='black' />
       </Map>
     )

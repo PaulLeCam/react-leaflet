@@ -1,6 +1,6 @@
 /* @flow */
 
-import { popup } from 'leaflet'
+import { popup as createPopup } from 'leaflet'
 import { Children, PropTypes } from 'react'
 import { render, unmountComponentAtNode } from 'react-dom'
 
@@ -23,9 +23,9 @@ export default class Popup extends MapComponent {
     super.componentWillMount()
     const { children: _children, ...props } = this.props
 
-    this.leafletElement = popup(props, this.context.popupContainer)
-    this.leafletElement.on('open', this.renderPopupContent.bind(this))
-    this.leafletElement.on('close', this.removePopupContent.bind(this))
+    this.leafletElement = createPopup(props, this.context.popupContainer)
+    this.context.map.on('popupopen', this.renderPopupContent)
+    this.context.map.on('popupclose', this.removePopupContent)
   }
 
   componentDidMount () {
@@ -52,37 +52,41 @@ export default class Popup extends MapComponent {
       this.leafletElement.setLatLng(position)
     }
 
-    if (this.leafletElement._isOpen) {
+    if (this.leafletElement.isOpen()) {
       this.renderPopupContent()
     }
   }
 
   componentWillUnmount () {
-    super.componentWillUnmount()
-    this.removePopupContent()
+    this.context.map.off('popupopen', this.renderPopupContent)
+    this.context.map.off('popupclose', this.removePopupContent)
     this.context.map.removeLayer(this.leafletElement)
+    super.componentWillUnmount()
   }
 
-  renderPopupContent () {
+  renderPopupContent: Function = ({ popup }: Object) => {
+    if (popup !== this.leafletElement) {
+      return
+    }
     if (this.props.children) {
       render(
         Children.only(this.props.children),
         this.leafletElement._contentNode
       )
-
-      this.leafletElement._updateLayout()
-      this.leafletElement._updatePosition()
-      this.leafletElement._adjustPan()
+      this.leafletElement.update()
     } else {
       this.removePopupContent()
     }
-  }
+  };
 
-  removePopupContent () {
+  removePopupContent: Function = ({ popup }: Object) => {
+    if (popup !== this.leafletElement) {
+      return
+    }
     if (this.leafletElement._contentNode) {
       unmountComponentAtNode(this.leafletElement._contentNode)
     }
-  }
+  };
 
   render () {
     return null
