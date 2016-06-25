@@ -7,7 +7,7 @@ React-Leaflet uses [React's lifecycle methods](https://facebook.github.io/react/
 ### DOM rendering
 
 React **does not** render Leaflet layers to the DOM, this rendering is done by Leaflet itself.  
-React only renders the map container for the [Map component](#Components.md#map) and potentially empty `<div>` elements for components having multiple children.
+React only renders the map container for the [Map component](Components.md#map) and potentially empty `<div>` elements for components having multiple children.
 
 ### Component properties
 

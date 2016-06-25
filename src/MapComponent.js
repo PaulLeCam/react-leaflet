@@ -6,7 +6,7 @@ import warning from 'warning'
 
 const EVENTS_RE = /^on(.+)$/i
 
-export default class MapComponent extends Component {
+export default class MapComponent extends Component<any, any, any> {
   _leafletEvents: Object;
   leafletElement: Object;
 

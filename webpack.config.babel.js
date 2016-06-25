@@ -39,7 +39,7 @@ const config = {
       {test: /\.js$/, exclude: /node_modules/, loader: 'babel'},
     ],
   },
-};
+}
 
 export default [
   {
@@ -74,7 +74,7 @@ export default [
         compress: {
           dead_code: true,
           warnings: false,
-        }
+        },
       }),
     ],
   },

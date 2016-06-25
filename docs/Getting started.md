@@ -4,7 +4,7 @@
 
 This library provides an abstraction of [Leaflet](http://leafletjs.com/) as [React components](https://facebook.github.io/react/).  
 It does not replace Leaflet, only leverages [React's lifecycle methods](https://facebook.github.io/react/docs/component-specs.html#lifecycle-methods) to call the relevant Leaflet handlers. You can read more information about the lifecycle process in the [How it works](How%20it%works.md) page of this documentation.
-Please make sure you understand all the [core concepts](How%20it%works.md#core-concepts) and [limitations](How%20it%works.md#limitations) to evaluate if this library is appropriate for your needs.
+Please make sure you understand all the [core concepts](How%20it%20works.md#core-concepts) and [limitations](How%20it%20works.md#limitations) to evaluate if this library is appropriate for your needs.
 
 React-Leaflet allows to convert this [sample code from Leaflet documentation](http://leafletjs.com/):
 
@@ -53,7 +53,7 @@ You can run an example code using React-Leaflet in [this jsfiddle](https://jsfid
 ## Leaflet setup
 
 If you are not familiar with Leaflet, make sure you read its [quick start guide](http://leafletjs.com/examples/quick-start.html) before using this library.  
-You will need to add its CSS to your page to render the map properly.
+You will notably need to add its CSS to your page to render the map properly, and set the height of the `<Map>` container.
 
 All components are React wrappers for Leaflet elements and layers, they need a map instance and therefore must be included in a top-level `<Map>` component.
 

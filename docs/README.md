@@ -21,5 +21,5 @@
 
 ## [Extending](Extending.md)
 
-- [Creating custom components](Extending.md#creatingcustomcomponents)
-- [Class hierarchy](Extending.md#classhierarchy)
+- [Creating custom components](Extending.md#creating-custom-components)
+- [Class hierarchy](Extending.md#class-hierarchy)

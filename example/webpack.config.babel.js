@@ -1,11 +1,11 @@
-/* eslint-disable */
-var webpack = require('webpack');
+import path from 'path'
+import webpack from 'webpack'
 
-module.exports = {
+export default {
   debug: true,
   devtool: 'source-map',
   entry: {
-    app: __dirname + '/components/index.js'
+    app: path.join(__dirname, 'components/index.js'),
   },
   module: {
     loaders: [
@@ -19,27 +19,27 @@ module.exports = {
               transforms: [{
                 transform: 'react-transform-hmr',
                 imports: ['react'],
-                locals: ['module']
-              }]
-            }]
-          ]
-        }
+                locals: ['module'],
+              }],
+            }],
+          ],
+        },
       },
-    ]
+    ],
   },
   output: {
-    path: __dirname + '/build/',
+    path: path.resolve(__dirname, 'build'),
     filename: '[name].js',
-    publicPath: 'http://localhost:8000/build'
+    publicPath: 'http://localhost:8000/build',
   },
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': '"development"'
-      }
+        'NODE_ENV': '"development"',
+      },
     }),
     new webpack.NoErrorsPlugin(),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
   ],
   devServer: {
     colors: true,
@@ -50,7 +50,7 @@ module.exports = {
     port: 8000,
     progress: true,
     stats: {
-      cached: false
-    }
-  }
-};
+      cached: false,
+    },
+  },
+}

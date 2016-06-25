@@ -11,11 +11,11 @@
     "build": "npm run build:lib && npm run build:dist",
     "watch": "babel src --watch --out-dir lib",
     "start": "npm run lint && npm run test && npm run build",
-    "test": "jest --coverage",
+    "test": "jest",
     "onchange": "onchange 'src/*.js' 'src/**/*.js' -- npm run lintAndTest",
     "dev": "npm run watch & npm run onchange",
     "prepublish": "npm ls && npm start",
-    "examples": "webpack-dev-server --config ./example/webpack.config.js",
+    "examples": "webpack-dev-server --config ./example/webpack.config.babel.js",
     "lint": "eslint ./src",
     "lintAndTest": "npm run lint && jest"
   },
@@ -75,6 +75,7 @@
     "webpack-dev-server": "^1.14.1"
   },
   "jest": {
+    "collectCoverage": true,
     "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
     "unmockedModulePathPatterns": [
       "<rootDir>/node_modules/fbjs",

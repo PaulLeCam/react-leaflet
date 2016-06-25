@@ -32,7 +32,7 @@ export default class MapLayer extends MapComponent {
     this.layerContainer.removeLayer(this.leafletElement)
   }
 
-  render () {
+  render (): any {
     return <div style={{display: 'none'}}>{this.props.children}</div>
   }
 }

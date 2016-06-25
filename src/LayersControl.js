@@ -89,6 +89,9 @@ class Overlay extends ControlledLayer {
 }
 
 export default class LayersControl extends MapControl {
+  static BaseLayer: any;
+  static Overlay: any;
+
   static propTypes = {
     baseLayers: PropTypes.object,
     children: childrenType,
@@ -140,7 +143,7 @@ export default class LayersControl extends MapControl {
     this.leafletElement.removeLayer(layer)
   }
 
-  render () {
+  render (): any {
     const children = Children.map(this.props.children, child => {
       return child ? cloneElement(child, this.controlProps) : null
     })

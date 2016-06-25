@@ -20,6 +20,11 @@ const normalizeCenter = (pos: LatLngType): Array<number> => {
 }
 
 export default class Map extends MapComponent {
+  state: {
+    id: string,
+    map?: Leaflet.Map,
+  };
+
   static propTypes = {
     animate: PropTypes.bool,
     bounds: boundsType,
