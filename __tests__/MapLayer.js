@@ -15,33 +15,30 @@ jest.unmock('../src/types/index');
 jest.unmock('../src/types/latlng');
 
 describe('MapLayer', () => {
-  it('passes its `map` prop to its children', () => {
+  it('passes its `map` context to its children', () => {
     class TestComponent extends MapLayer {
-      static propTypes = {
+      static contextTypes = {
         map: React.PropTypes.instanceOf(Leaflet.Map),
       };
 
       componentWillMount() {
         super.componentWillMount();
-        expect(this.props.map).toBeDefined();
+        expect(this.context.map).toBeDefined();
         this.leafletElement = Leaflet.marker([0, 0]);
       }
 
       render() {
-        const children = this.getClonedChildrenWithProps({parent: true});
-        return <div>{children}</div>;
+        return <div>{this.props.children}</div>;
       }
     }
 
     class ChildComponent extends Component {
-      static propTypes = {
+      static contextTypes = {
         map: React.PropTypes.instanceOf(Leaflet.Map),
-        parent: React.PropTypes.bool,
       };
 
       componentWillMount() {
-        expect(this.props.map).toBeDefined();
-        expect(this.props.parent).toBe(true);
+        expect(this.context.map).toBeDefined();
       }
 
       render() {

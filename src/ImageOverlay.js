@@ -1,8 +1,10 @@
-import { PropTypes } from 'react';
-import { imageOverlay } from 'leaflet';
+/* @flow */
 
-import boundsType from './types/bounds';
-import MapLayer from './MapLayer';
+import { imageOverlay } from 'leaflet'
+import { PropTypes } from 'react'
+
+import boundsType from './types/bounds'
+import MapLayer from './MapLayer'
 
 export default class ImageOverlay extends MapLayer {
   static propTypes = {
@@ -12,22 +14,22 @@ export default class ImageOverlay extends MapLayer {
     url: PropTypes.string.isRequired,
   };
 
-  componentWillMount() {
-    super.componentWillMount();
-    const { bounds, map: _map, layerContainer: _lc, url, ...props } = this.props;
-    this.leafletElement = imageOverlay(url, bounds, props);
+  componentWillMount () {
+    super.componentWillMount()
+    const { bounds, url, ...props } = this.props
+    this.leafletElement = imageOverlay(url, bounds, props)
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate (prevProps: Object) {
     if (this.props.url !== prevProps.url) {
-      this.leafletElement.setUrl(this.props.url);
+      this.leafletElement.setUrl(this.props.url)
     }
     if (this.props.opacity !== prevProps.opacity) {
-      this.leafletElement.setOpacity(this.props.opacity);
+      this.leafletElement.setOpacity(this.props.opacity)
     }
   }
 
-  render() {
-    return null;
+  render () {
+    return null
   }
 }

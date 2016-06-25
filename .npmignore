@@ -2,7 +2,8 @@ __tests__
 coverage
 example
 .editorconfig
-.eslintrc
+.eslintignore
+.eslintrc.json
 .travis.yml
 bower.json
 webpack.config.js

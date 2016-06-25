@@ -1,6 +1,8 @@
-import { PropTypes } from 'react';
+/* @flow */
 
-import MapLayer from './MapLayer';
+import { PropTypes } from 'react'
+
+import MapLayer from './MapLayer'
 
 export default class BaseTileLayer extends MapLayer {
   static propTypes = {
@@ -8,17 +10,17 @@ export default class BaseTileLayer extends MapLayer {
     zIndex: PropTypes.number,
   };
 
-  componentDidUpdate(prevProps) {
-    const { opacity, zIndex } = this.props;
+  componentDidUpdate (prevProps: Object) {
+    const { opacity, zIndex } = this.props
     if (opacity !== prevProps.opacity) {
-      this.leafletElement.setOpacity(opacity);
+      this.leafletElement.setOpacity(opacity)
     }
     if (zIndex !== prevProps.zIndex) {
-      this.leafletElement.setZIndex(zIndex);
+      this.leafletElement.setZIndex(zIndex)
     }
   }
 
-  render() {
-    return null;
+  render () {
+    return null
   }
 }

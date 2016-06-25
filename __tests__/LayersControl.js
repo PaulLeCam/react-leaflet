@@ -15,14 +15,14 @@ jest.unmock('../src/types/index');
 jest.unmock('../src/types/latlng');
 
 describe('LayersControl', () => {
-  it('passes its `map` prop to its children', () => {
+  it('passes its `map` context to its children', () => {
     class ChildComponent extends Component {
-      static propTypes = {
+      static contextTypes = {
         map: React.PropTypes.instanceOf(Leaflet.Map),
       };
 
       componentWillMount() {
-        expect(this.props.map).toBeDefined();
+        expect(this.context.map).toBeDefined();
       }
 
       render() {

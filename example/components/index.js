@@ -1,16 +1,16 @@
-import React from 'react';
-import { render } from 'react-dom';
+import React from 'react'
+import { render } from 'react-dom'
 
-import SimpleExample from './simple';
-import EventsExample from './events';
-import BoundsExample from './bounds';
-import VectorLayersExample from './vector-layers';
-import OtherLayersExample from './other-layers';
-import ZoomControlExample from './zoom-control';
-import LayersControlExample from './layers-control';
-import CustomComponentExample from './custom-component';
-import AnimateExample from './animate';
-import DraggableExample from './draggable-marker';
+import SimpleExample from './simple'
+import EventsExample from './events'
+import BoundsExample from './bounds'
+import VectorLayersExample from './vector-layers'
+import OtherLayersExample from './other-layers'
+import ZoomControlExample from './zoom-control'
+import LayersControlExample from './layers-control'
+import CustomComponentExample from './custom-component'
+import AnimateExample from './animate'
+import DraggableExample from './draggable-marker'
 
 const examples = (
   <div>
@@ -39,6 +39,6 @@ const examples = (
     <p>Click the map to move to the location</p>
     <AnimateExample />
   </div>
-);
+)
 
-render(examples, document.getElementById('app'));
+render(examples, document.getElementById('app'))

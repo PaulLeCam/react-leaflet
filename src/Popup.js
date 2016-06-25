@@ -1,85 +1,90 @@
-import { Children, PropTypes } from 'react';
-import { render, unmountComponentAtNode } from 'react-dom';
-import { Map, popup } from 'leaflet';
+/* @flow */
 
-import latlngType from './types/latlng';
-import MapComponent from './MapComponent';
+import { popup } from 'leaflet'
+import { Children, PropTypes } from 'react'
+import { render, unmountComponentAtNode } from 'react-dom'
+
+import latlngType from './types/latlng'
+import mapType from './types/map'
+import MapComponent from './MapComponent'
 
 export default class Popup extends MapComponent {
   static propTypes = {
     children: PropTypes.node,
-    map: PropTypes.instanceOf(Map),
-    popupContainer: PropTypes.object,
     position: latlngType,
   };
 
-  componentWillMount() {
-    super.componentWillMount();
-    const { children: _children, map: _map, popupContainer, ...props } = this.props;
+  static contextTypes = {
+    map: mapType,
+    popupContainer: PropTypes.object,
+  };
 
-    this.leafletElement = popup(props, popupContainer);
-    this.leafletElement.on('open', ::this.renderPopupContent);
-    this.leafletElement.on('close', ::this.removePopupContent);
+  componentWillMount () {
+    super.componentWillMount()
+    const { children: _children, ...props } = this.props
+
+    this.leafletElement = popup(props, this.context.popupContainer)
+    this.leafletElement.on('open', this.renderPopupContent.bind(this))
+    this.leafletElement.on('close', this.removePopupContent.bind(this))
   }
 
-  componentDidMount() {
-    const { map, popupContainer, position } = this.props;
-    const el = this.leafletElement;
+  componentDidMount () {
+    const { position } = this.props
+    const { map, popupContainer } = this.context
+    const el = this.leafletElement
 
     if (popupContainer) {
       // Attach to container component
-      popupContainer.bindPopup(el);
-    }
-    else {
+      popupContainer.bindPopup(el)
+    } else {
       // Attach to a Map
       if (position) {
-        el.setLatLng(position);
+        el.setLatLng(position)
       }
-      el.openOn(map);
+      el.openOn(map)
     }
   }
 
-  componentDidUpdate(prevProps) {
-    const { position } = this.props;
+  componentDidUpdate (prevProps: Object) {
+    const { position } = this.props
 
     if (position !== prevProps.position) {
-      this.leafletElement.setLatLng(position);
+      this.leafletElement.setLatLng(position)
     }
 
     if (this.leafletElement._isOpen) {
-      this.renderPopupContent();
+      this.renderPopupContent()
     }
   }
 
-  componentWillUnmount() {
-    super.componentWillUnmount();
-    this.removePopupContent();
-    this.props.map.removeLayer(this.leafletElement);
+  componentWillUnmount () {
+    super.componentWillUnmount()
+    this.removePopupContent()
+    this.context.map.removeLayer(this.leafletElement)
   }
 
-  renderPopupContent() {
+  renderPopupContent () {
     if (this.props.children) {
       render(
         Children.only(this.props.children),
         this.leafletElement._contentNode
-      );
+      )
 
-      this.leafletElement._updateLayout();
-      this.leafletElement._updatePosition();
-      this.leafletElement._adjustPan();
-    }
-    else {
-      this.removePopupContent();
+      this.leafletElement._updateLayout()
+      this.leafletElement._updatePosition()
+      this.leafletElement._adjustPan()
+    } else {
+      this.removePopupContent()
     }
   }
 
-  removePopupContent() {
+  removePopupContent () {
     if (this.leafletElement._contentNode) {
-      unmountComponentAtNode(this.leafletElement._contentNode);
+      unmountComponentAtNode(this.leafletElement._contentNode)
     }
   }
 
-  render() {
-    return null;
+  render () {
+    return null
   }
 }
