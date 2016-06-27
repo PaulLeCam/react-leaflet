@@ -26,7 +26,7 @@ export default class MapControl extends Component {
   }
 
   componentWillUnmount () {
-    this.leafletElement.removeFrom(this.context.map)
+    this.leafletElement.remove()
   }
 
   leafletElement: Object;
