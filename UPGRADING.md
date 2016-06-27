@@ -2,8 +2,7 @@
 
 ## Leaflet v1.0 (in progress)
 
-- Renamed `GeoJson` to `GeoJSON` to match Leaflet change.
-- Removed `MultiPolygon` and `MultiPolyline`, now supported by `Polygon` and `Polyline`.
+TODO
 
 ## v0.12.0
 

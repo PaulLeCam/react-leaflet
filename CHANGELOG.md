@@ -1,3 +1,9 @@
+## Leaflet v1.0 (dev)
+
+- Renamed `GeoJson` to `GeoJSON` to match Leaflet change.
+- Removed `MultiPolygon` and `MultiPolyline`, now supported by `Polygon` and `Polyline`.
+- The `Map` component no longer creates an unique ID for its container if none is provided.
+
 ## v0.12.0 (2016-06-25)
 
 - [BREAKING] Moved Leaflet instances injection from props to [context](https://facebook.github.io/react/docs/context.html). All components provided by this lib should continue to work as expected, but custom components need to be updated. Read the [UPGRADING](UPGRADING.md) file for more information.

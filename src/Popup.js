@@ -24,8 +24,10 @@ export default class Popup extends MapComponent {
     const { children: _children, ...props } = this.props
 
     this.leafletElement = createPopup(props, this.context.popupContainer)
-    this.context.map.on('popupopen', this.renderPopupContent)
-    this.context.map.on('popupclose', this.removePopupContent)
+    this.context.map.on({
+      popupopen: this.onPopupOpen,
+      popupclose: this.onPopupClose,
+    })
   }
 
   componentDidMount () {
@@ -58,16 +60,27 @@ export default class Popup extends MapComponent {
   }
 
   componentWillUnmount () {
-    this.context.map.off('popupopen', this.renderPopupContent)
-    this.context.map.off('popupclose', this.removePopupContent)
+    this.context.map.off({
+      popupopen: this.onPopupOpen,
+      popupclose: this.onPopupClose,
+    })
     this.context.map.removeLayer(this.leafletElement)
     super.componentWillUnmount()
   }
 
-  renderPopupContent: Function = ({ popup }: Object) => {
-    if (popup !== this.leafletElement) {
-      return
+  onPopupOpen: Function = ({ popup }: Object) => {
+    if (popup === this.leafletElement) {
+      this.renderPopupContent()
     }
+  };
+
+  onPopupClose: Function = ({ popup }: Object) => {
+    if (popup === this.leafletElement) {
+      this.removePopupContent()
+    }
+  };
+
+  renderPopupContent: Function = () => {
     if (this.props.children) {
       render(
         Children.only(this.props.children),
@@ -79,10 +92,7 @@ export default class Popup extends MapComponent {
     }
   };
 
-  removePopupContent: Function = ({ popup }: Object) => {
-    if (popup !== this.leafletElement) {
-      return
-    }
+  removePopupContent: Function = () => {
     if (this.leafletElement._contentNode) {
       unmountComponentAtNode(this.leafletElement._contentNode)
     }
