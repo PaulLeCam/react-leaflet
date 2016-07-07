@@ -22,7 +22,7 @@ describe('Map', () => {
     const component = <Map><TestComponent /></Map>;
     const html = renderToStaticMarkup(component);
 
-    expect(html).toBe('<div id="map1"></div>');
+    expect(html).toBe('<div></div>');
   });
 
   it('sets center and zoom props', () => {

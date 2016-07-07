@@ -18,14 +18,6 @@ export default class BoundsExample extends Component {
     }
   }
 
-  handleClick () {
-    if (this.state.bounds === outer) {
-      this.setState({bounds: inner})
-    } else {
-      this.setState({bounds: outer})
-    }
-  }
-
   render () {
     return (
       <Map bounds={this.state.bounds}>
@@ -36,12 +28,16 @@ export default class BoundsExample extends Component {
         <Rectangle
           bounds={outer}
           color={this.state.bounds === outer ? 'red' : 'white'}
-          onClick={() => this.setState({bounds: outer})}
+          onClick={() => {
+            this.setState({bounds: outer})
+          }}
         />
         <Rectangle
           bounds={inner}
           color={this.state.bounds === inner ? 'red' : 'white'}
-          onClick={() => this.setState({bounds: inner})}
+          onClick={() => {
+            this.setState({bounds: inner})
+          }}
         />
       </Map>
     )

@@ -17,7 +17,7 @@ export default class MapComponent extends Component<any, any, any> {
   }
 
   componentDidMount () {
-    this.bindLeafletEvents(this._leafletEvents, {})
+    this.bindLeafletEvents(this._leafletEvents)
   }
 
   componentWillReceiveProps (nextProps: Object) {
