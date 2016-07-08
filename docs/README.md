@@ -23,3 +23,5 @@
 
 - [Creating custom components](Extending.md#creating-custom-components)
 - [Class hierarchy](Extending.md#class-hierarchy)
+
+## [Plugins](Plugins.md)

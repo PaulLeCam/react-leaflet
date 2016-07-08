@@ -3777,6 +3777,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
+	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _leaflet = __webpack_require__(1);
@@ -3967,6 +3969,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	      };
 	    }
 	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      var _this5 = this;
+
+	      setTimeout(function () {
+	        _get(Object.getPrototypeOf(LayersControl.prototype), 'componentWillUnmount', _this5).call(_this5);
+	      }, 0);
+	    }
+	  }, {
 	    key: 'addBaseLayer',
 	    value: function addBaseLayer(layer, name) {
 	      var checked = arguments.length <= 2 || arguments[2] === undefined ? false : arguments[2];
@@ -3999,10 +4010,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var _this5 = this;
+	      var _this6 = this;
 
 	      var children = _react.Children.map(this.props.children, function (child) {
-	        return child ? (0, _react.cloneElement)(child, _this5.controlProps) : null;
+	        return child ? (0, _react.cloneElement)(child, _this6.controlProps) : null;
 	      });
 	      return _react2.default.createElement(
 	        'div',
