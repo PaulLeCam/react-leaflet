@@ -17,6 +17,10 @@ See the [CHANGELOG](https://github.com/PaulLeCam/react-leaflet/blob/master/CHANG
 
 See [CONTRIBUTING](https://github.com/PaulLeCam/react-leaflet/blob/master/CONTRIBUTING.md) file.
 
+## Support
+
+Please **do not** use GitHub issues for support, but instead post your questions on [StackOverflow](https://stackoverflow.com/) using the [`react-leaflet` tag](https://stackoverflow.com/questions/tagged/react-leaflet).
+
 ## License
 
 MIT  

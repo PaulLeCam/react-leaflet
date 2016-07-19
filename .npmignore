@@ -6,6 +6,7 @@ example
 .editorconfig
 .eslintignore
 .eslintrc.json
+.flowconfig
 .travis.yml
 bower.json
 CHANGELOG.md
