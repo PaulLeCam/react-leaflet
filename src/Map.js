@@ -44,6 +44,7 @@ export default class Map extends MapComponent {
 
   static defaultProps = {
     animate: false,
+    useFlyTo: false,
   };
 
   static childContextTypes = {
