@@ -38,6 +38,7 @@ export default class Map extends MapComponent {
     maxZoom: PropTypes.number,
     minZoom: PropTypes.number,
     style: PropTypes.object,
+    useFlyTo: PropTypes.bool,
     zoom: PropTypes.number,
   };
 
@@ -66,20 +67,33 @@ export default class Map extends MapComponent {
   }
 
   componentDidUpdate (prevProps: Object) {
-    const { bounds, boundsOptions, center, maxBounds, zoom, animate } = this.props
+    const { bounds, boundsOptions, center, maxBounds, zoom, animate, useFlyTo } = this.props
+
     if (center && this.shouldUpdateCenter(center, prevProps.center)) {
-      this.leafletElement.setView(center, zoom, {animate})
+      if (useFlyTo) {
+        this.leafletElement.flyTo(center, zoom, {animate})
+      } else {
+        this.leafletElement.setView(center, zoom, {animate})
+      }
     } else if (zoom && zoom !== prevProps.zoom) {
       this.leafletElement.setZoom(zoom)
     }
+
     if (maxBounds && this.shouldUpdateBounds(maxBounds, prevProps.maxBounds)) {
       this.leafletElement.setMaxBounds(maxBounds)
     }
+
     if (bounds && (
       this.shouldUpdateBounds(bounds, prevProps.bounds) ||
       boundsOptions !== prevProps.boundsOptions
     )) {
-      this.leafletElement.fitBounds(bounds, boundsOptions)
+
+      if (useFlyTo) {
+        this.leafletElement.flyToBounds(bounds, boundsOptions)
+      } else {
+        this.leafletElement.fitBounds(bounds, boundsOptions)
+      }
+
     }
   }
 
