@@ -73,7 +73,7 @@ export default class Map extends MapComponent {
   }
 
   componentDidUpdate (prevProps: Object) {
-    const { bounds, boundsOptions, center, maxBounds, zoom, animate, useFlyTo } = this.props
+    const { animate, bounds, boundsOptions, center, maxBounds, useFlyTo, zoom } = this.props
 
     if (center && this.shouldUpdateCenter(center, prevProps.center)) {
       if (useFlyTo) {
