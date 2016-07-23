@@ -3,7 +3,7 @@
 
 import Leaflet from 'leaflet'
 import type { LatLng, LatLngBounds } from 'leaflet'
-import { isUndefined, omit } from 'lodash'
+import { isUndefined, omit, uniqueId } from 'lodash'
 import React, { PropTypes } from 'react'
 
 import boundsType from './types/bounds'
@@ -56,6 +56,12 @@ export default class Map extends MapComponent {
     }
   }
 
+  constructor (props: Object, context: Object) {
+    super(props, context)
+    this.state = {
+      id: props.id || uniqueId('map'),
+    }
+  }
   componentDidMount () {
     const props = omit(this.props, ['children', 'className', 'id', 'style'])
     this.leafletElement = Leaflet.map(this.container, props)
@@ -87,13 +93,11 @@ export default class Map extends MapComponent {
       this.shouldUpdateBounds(bounds, prevProps.bounds) ||
       boundsOptions !== prevProps.boundsOptions
     )) {
-
       if (useFlyTo) {
         this.leafletElement.flyToBounds(bounds, boundsOptions)
       } else {
         this.leafletElement.fitBounds(bounds, boundsOptions)
       }
-
     }
   }
 
@@ -129,7 +133,7 @@ export default class Map extends MapComponent {
     return (
       <div
         className={this.props.className}
-        id={this.props.id}
+        id={this.state.id}
         ref={this.bindContainer}
         style={this.props.style}>
         {children}
