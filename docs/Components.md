@@ -81,6 +81,7 @@ This is the top-level component that must be mounted for children ones to be ren
 - `className: string` (optional): className property of the `<div>` container for the map.
 - `maxBounds: bounds` (optional)
 - `style: object` (optional): style property of the `<div>` container for the map.
+- `useFlyTo: boolean` (optional): boolean to control whether to use flyTo functions for bounds and center. If false `map.fitBounds` and `map.setView` will be used. If true `map.flyToBounds` and `map.flyTo` will be used. Defaults to false. 
 - `zoom: number` (optional)
 
 **Other properties**
