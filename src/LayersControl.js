@@ -121,6 +121,12 @@ export default class LayersControl extends MapControl {
     }
   }
 
+  componentWillUnmount () {
+    setTimeout(() => {
+      super.componentWillUnmount()
+    }, 0)
+  }
+
   addBaseLayer (layer: Object, name: string, checked: boolean = false) {
     if (checked) {
       this.context.map.addLayer(layer)
