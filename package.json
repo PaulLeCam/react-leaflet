@@ -1,6 +1,6 @@
 {
   "name": "react-leaflet",
-  "version": "0.12.1",
+  "version": "1.0.0-beta.1",
   "description": "React components for Leaflet maps",
   "main": "lib/index.js",
   "scripts": {
@@ -40,9 +40,9 @@
     "warning": "^3.0.0"
   },
   "peerDependencies": {
-    "leaflet": "^1.0.0-rc.1",
-    "react": "^0.14.0 || ^15.0.0",
-    "react-dom": "^0.14.0 || ^15.0.0"
+    "leaflet": "^1.0.0-rc.2",
+    "react": "^15.0.0",
+    "react-dom": "^15.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.10.1",
