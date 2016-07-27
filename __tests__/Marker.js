@@ -6,7 +6,7 @@ import { renderIntoDocument } from 'react-addons-test-utils';
 
 import { Map, Marker, TileLayer } from '../src/';
 
-jest.unmock('../src/BaseTileLayer');
+jest.unmock('../src/GridLayer');
 jest.unmock('../src/index');
 jest.unmock('../src/Map');
 jest.unmock('../src/MapComponent');

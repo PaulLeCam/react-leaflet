@@ -23,7 +23,7 @@ export default class DraggableExample extends Component {
     }
 
     this.updatePosition = () => {
-      const { lat, lng } = this.refs.marker.getLeafletElement().getLatLng()
+      const { lat, lng } = this.refs.marker.leafletElement.getLatLng()
       this.setState({
         marker: {lat, lng},
       })

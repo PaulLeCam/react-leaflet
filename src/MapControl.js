@@ -1,7 +1,6 @@
 /* @flow */
 
 import { Component } from 'react'
-import warning from 'warning'
 
 import controlPositionType from './types/controlPosition'
 import mapType from './types/map'
@@ -30,11 +29,6 @@ export default class MapControl extends Component {
   }
 
   leafletElement: Object;
-
-  getLeafletElement () {
-    warning(false, 'The "getLeafletElement()" method is deprecated and will be removed in the next version, simply use the "leafletElement" property instead.')
-    return this.leafletElement
-  }
 
   render () {
     return null

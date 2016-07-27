@@ -3,9 +3,9 @@
 import { tileLayer } from 'leaflet'
 import { PropTypes } from 'react'
 
-import BaseTileLayer from './BaseTileLayer'
+import GridLayer from './GridLayer'
 
-export default class WMSTileLayer extends BaseTileLayer {
+export default class WMSTileLayer extends GridLayer {
   static propTypes = {
     url: PropTypes.string.isRequired,
   };

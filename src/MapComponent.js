@@ -2,7 +2,6 @@
 
 import { clone, forEach, keys, reduce } from 'lodash'
 import { Component } from 'react'
-import warning from 'warning'
 
 const EVENTS_RE = /^on(.+)$/i
 
@@ -36,11 +35,6 @@ export default class MapComponent extends Component<any, any, any> {
 
   _leafletEvents: Object;
   leafletElement: Object;
-
-  getLeafletElement () {
-    warning(false, 'The "getLeafletElement()" method is deprecated and will be removed in the next version, simply use the "leafletElement" property instead.')
-    return this.leafletElement
-  }
 
   extractLeafletEvents (props: Object) {
     return reduce(keys(props), (res, prop) => {

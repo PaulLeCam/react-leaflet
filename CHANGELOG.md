@@ -3,6 +3,11 @@
 - Renamed `GeoJson` to `GeoJSON` to match Leaflet change.
 - Removed `MultiPolygon` and `MultiPolyline`, now supported by `Polygon` and `Polyline`.
 - The `Map` component no longer creates an unique ID for its container if none is provided.
+- Added `useFlyTo: bool` property to `Map` to use `flyTo` instead of `setView` and `flyToBounds` instead of `fitBounds` when changing the map's view or bounds ([PR #148](https://github.com/PaulLeCam/react-leaflet/pull/192) by *jgimbel*).
+- Removed `BaseTileLayer`, replaced by `GridLayer`.
+- Removed `CanvasTileLayer`, replaced by `GridLayer`.
+- Added `GridLayer`.
+- Removed `getLeafletElement()` method in `MapComponent` and `MapControl`, deprecated since v0.12.0.
 
 ## v0.12.1 (2016-07-08)
 

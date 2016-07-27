@@ -1,14 +1,20 @@
 /* @flow */
 
+import { gridLayer } from 'leaflet'
 import { PropTypes } from 'react'
 
 import MapLayer from './MapLayer'
 
-export default class BaseTileLayer extends MapLayer {
+export default class GridLayer extends MapLayer {
   static propTypes = {
     opacity: PropTypes.number,
     zIndex: PropTypes.number,
   };
+
+  componentWillMount () {
+    super.componentWillMount()
+    this.leafletElement = gridLayer(this.props)
+  }
 
   componentDidUpdate (prevProps: Object) {
     const { opacity, zIndex } = this.props
