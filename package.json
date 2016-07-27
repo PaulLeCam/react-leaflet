@@ -64,7 +64,7 @@
     "eslint-plugin-react": "^5.2.2",
     "eslint-plugin-standard": "^2.0.0",
     "jest-cli": "^13.2.3",
-    "leaflet": "^1.0.0-rc.1",
+    "leaflet": "^1.0.0-rc.2",
     "lodash-webpack-plugin": "^0.9.2",
     "onchange": "^2.5.0",
     "react": "^15.2.1",
