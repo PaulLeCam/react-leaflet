@@ -2,7 +2,7 @@
 
 ## Helpers
 
-**setIconDefaultImagePath(path: string)**: Setter for `Leaflet.Icon.Default.imagePath`, set to `//cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.0-rc.1/images` by default.
+**setIconDefaultImagePath(path: string)**: Setter for `Leaflet.Icon.Default.imagePath`, set to `//cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.0-rc.2/images` by default.
 
 ## PropTypes
 

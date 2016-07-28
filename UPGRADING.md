@@ -1,8 +1,8 @@
 # Upgrading
 
-## Leaflet v1.0 (in progress)
+## v1.0 (in progress)
 
-TODO
+TODO for v1 RC, keep track of changes in Leaflet and local commits / change log in the meantime.
 
 ## v0.12.0
 

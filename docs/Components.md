@@ -9,7 +9,6 @@ You can directly access the Leaflet element created by a component using `this.l
   - [MapComponent](#mapcomponent)
   - [MapControl](#mapcontrol)
   - [MapLayer](#maplayer)
-  - [BaseTileLayer](#basetilelayer)
   - [Path](#path)
 - [Map](#map)
 - [UI Layers](#ui-layers)
@@ -18,7 +17,6 @@ You can directly access the Leaflet element created by a component using `this.l
 - [Raster Layers](#raster-layers)
   - [TileLayer](#tilelayer)
   - [ImageOverlay](#imageoverlay)
-  - [CanvasTileLayer](#canvastilelayer)
   - [WMSTileLayer](#wmstilelayer)
 - [Vector Layers](#vector-layers)
   - [Circle](#circle)
@@ -29,9 +27,10 @@ You can directly access the Leaflet element created by a component using `this.l
   - [MultiPolygon](#multipolygon)
   - [Rectangle](#rectangle)
 - [Other Layers](#other-layers)
-  - [LayerGroup](#layergroup)
   - [FeatureGroup](#featuregroup)
   - [GeoJson](#geojson)
+  - [GridLayer](#gridlayer)
+  - [LayerGroup](#layergroup)
 - [Controls](#controls)
   - [AttributionControl](#attributioncontrol)
   - [LayersControl](#layerscontrol)
@@ -58,10 +57,6 @@ It exposes a `leafletElement` property to access the `Leaflet` object created fo
 
 Base class extending [`MapComponent`](#mapcomponent), handling adding the layer to the map and removing it when relevant. It exposes the `layerContainer` property, to be used by extending classes to access their containing layer.
 
-### BaseTileLayer
-
-Base class extending [`MapLayer`](#maplayer) with a `render()` method and handling a TitleLayer `opacity` and `zIndex` props.
-
 ### Path
 
 Base class extending [`MapLayer`](#maplayer) with the following methods:
@@ -81,7 +76,7 @@ This is the top-level component that must be mounted for children ones to be ren
 - `className: string` (optional): className property of the `<div>` container for the map.
 - `maxBounds: bounds` (optional)
 - `style: object` (optional): style property of the `<div>` container for the map.
-- `useFlyTo: boolean` (optional): boolean to control whether to use flyTo functions for bounds and center. If false `map.fitBounds` and `map.setView` will be used. If true `map.flyToBounds` and `map.flyTo` will be used. Defaults to false. 
+- `useFlyTo: boolean` (optional): boolean to control whether to use flyTo functions for bounds and center. If false `map.fitBounds` and `map.setView` will be used. If true `map.flyToBounds` and `map.flyTo` will be used. Defaults to false.
 - `zoom: number` (optional)
 
 **Other properties**
@@ -128,10 +123,6 @@ The Popup children will be rendered using `ReactDOM.render()`, they must be vali
 - `url: string` (required)
 - `opacity: number` (optional)
 
-### CanvasTileLayer
-
-[Leaflet reference](http://leafletjs.com/reference.html#tilelayer-canvas)
-
 ### WMSTileLayer
 
 [Leaflet reference](http://leafletjs.com/reference.html#tilelayer-wms)
@@ -168,7 +159,7 @@ All vector layers extend the **Path** component and therefore accept dynamic [Pa
 [Leaflet reference](http://leafletjs.com/reference.html#multipolyline)
 
 **Dynamic properties**
-- `polylines: array<latLngList>` (required)
+- `polylines: Array<latLngList>` (required)
 
 ### Polygon
 
@@ -182,20 +173,16 @@ All vector layers extend the **Path** component and therefore accept dynamic [Pa
 [Leaflet reference](http://leafletjs.com/reference.html#multipolygon)
 
 **Dynamic properties**
-- `polygons: array<latLngList>` (required)
+- `polygons: Array<latLngList>` (required)
 
 ### Rectangle
 
 [Leaflet reference](http://leafletjs.com/reference.html#rectangle)
 
 **Dynamic properties**
-- `bounds: bounds` (required, dynamic)
+- `bounds: bounds` (required)
 
 ## Other Layers
-
-### LayerGroup
-
-Use the `LayerGroup` wrapper component to group children layers together.
 
 ### FeatureGroup
 
@@ -207,6 +194,18 @@ Extended `LayerGroup` supporting a `Popup` child.
 
 **Properties**
 - `data: GeoJSON` (required). This property will *not* be updated if it is changed after the component is mounted.
+
+### GridLayer
+
+[Leaflet reference](http://leafletjs.com/reference-1.0.0.html#gridlayer)
+
+**Dynamic properties**
+- `opacity: number` (optional)
+- `zIndex: number` (optional)
+
+### LayerGroup
+
+Use the `LayerGroup` wrapper component to group children layers together.
 
 ## Controls
 

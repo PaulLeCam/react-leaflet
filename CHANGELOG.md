@@ -1,13 +1,15 @@
-## Leaflet v1.0 (dev)
+## v1.0 (dev)
 
-- Renamed `GeoJson` to `GeoJSON` to match Leaflet change.
-- Removed `MultiPolygon` and `MultiPolyline`, now supported by `Polygon` and `Polyline`.
-- The `Map` component no longer creates an unique ID for its container if none is provided.
-- Added `useFlyTo: bool` property to `Map` to use `flyTo` instead of `setView` and `flyToBounds` instead of `fitBounds` when changing the map's view or bounds ([PR #148](https://github.com/PaulLeCam/react-leaflet/pull/192) by *jgimbel*).
+- [BREAKING] Renamed `GeoJson` to `GeoJSON` to match Leaflet change.
+- [BREAKING] Removed `MultiPolygon` and `MultiPolyline`, now supported by `Polygon` and `Polyline` respectively.
+- [BREAKING] Removed `CanvasTileLayer`, replaced by `GridLayer`.
+- [BREAKING] Removed `getLeafletElement()` method in `MapComponent` and `MapControl`, deprecated since v0.12.0.
 - Removed `BaseTileLayer`, replaced by `GridLayer`.
-- Removed `CanvasTileLayer`, replaced by `GridLayer`.
+- Removed support for React < v15.0.0.
+- Removed `bower.json` file.
+- The `Map` component no longer creates an unique ID for its container if none is provided.
 - Added `GridLayer`.
-- Removed `getLeafletElement()` method in `MapComponent` and `MapControl`, deprecated since v0.12.0.
+- Added `useFlyTo: bool` property to `Map` to use `flyTo` instead of `setView` and `flyToBounds` instead of `fitBounds` when changing the map's view or bounds ([PR #148](https://github.com/PaulLeCam/react-leaflet/pull/192) by *jgimbel*).
 
 ## v0.12.1 (2016-07-08)
 
