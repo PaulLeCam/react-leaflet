@@ -18,7 +18,7 @@ However, please **do not** send pull requests to add features that are not suppo
 ## Features requests
 
 This library aims only to support the features provided by Leaflet. If any of these features is not implemented yet, please submit a feature request to add it.
-If you are looking for implementations of features provided by plugins, they will not be provided by this library. Please read the [creating custom components](#creating-custom-components) section of the documentation to see how to implement plugins in your own code.
+If you are looking for implementations of features provided by plugins, they will not be provided by this library. Please read the [extending](https://github.com/PaulLeCam/react-leaflet/blob/next/docs/Extending.md) section of the documentation to see how to implement plugins in your own code.
 
 ## Other issues
 

@@ -467,8 +467,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var MapControl = function (_Component) {
-	  _inherits(MapControl, _Component);
+	var MapControl = function (_PureComponent) {
+	  _inherits(MapControl, _PureComponent);
 
 	  function MapControl() {
 	    _classCallCheck(this, MapControl);
@@ -501,7 +501,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }]);
 
 	  return MapControl;
-	}(_react.Component);
+	}(_react.PureComponent);
 
 	MapControl.propTypes = {
 	  position: _controlPosition2.default
@@ -1406,6 +1406,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  }
 	  stack['delete'](array);
+	  stack['delete'](other);
 	  return result;
 	}
 
@@ -1684,6 +1685,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  }
 	  stack['delete'](object);
+	  stack['delete'](other);
 	  return result;
 	}
 
@@ -2097,8 +2099,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var EVENTS_RE = /^on(.+)$/i;
 
-	var MapComponent = function (_Component) {
-	  _inherits(MapComponent, _Component);
+	var MapComponent = function (_PureComponent) {
+	  _inherits(MapComponent, _PureComponent);
 
 	  function MapComponent(props, context) {
 	    _classCallCheck(this, MapComponent);
@@ -2183,7 +2185,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }]);
 
 	  return MapComponent;
-	}(_react.Component);
+	}(_react.PureComponent);
 
 	exports.default = MapComponent;
 
@@ -2425,9 +2427,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // Recursively populate clone (susceptible to call stack limits).
 	    assignValue(result, key, baseClone(subValue, isDeep, isFull, customizer, key, value, stack));
 	  });
-	  if (!isFull) {
-	    stack['delete'](value);
-	  }
 	  return result;
 	}
 
@@ -3446,8 +3445,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	// Abtract class for layer container, extended by BaseLayer and Overlay
 
-	var ControlledLayer = function (_Component) {
-	  _inherits(ControlledLayer, _Component);
+	var ControlledLayer = function (_PureComponent) {
+	  _inherits(ControlledLayer, _PureComponent);
 
 	  function ControlledLayer() {
 	    _classCallCheck(this, ControlledLayer);
@@ -3500,7 +3499,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }]);
 
 	  return ControlledLayer;
-	}(_react.Component);
+	}(_react.PureComponent);
 
 	ControlledLayer.propTypes = controlledLayerPropTypes;
 	ControlledLayer.contextTypes = {

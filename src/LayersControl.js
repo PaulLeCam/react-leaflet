@@ -1,7 +1,7 @@
 /* @flow */
 
 import { control } from 'leaflet'
-import React, { cloneElement, Children, Component, PropTypes } from 'react'
+import React, { cloneElement, Children, PropTypes, PureComponent } from 'react'
 
 import childrenType from './types/children'
 import layerContainerType from './types/layerContainer'
@@ -20,7 +20,7 @@ const controlledLayerPropTypes = {
 }
 
 // Abtract class for layer container, extended by BaseLayer and Overlay
-class ControlledLayer extends Component {
+class ControlledLayer extends PureComponent {
   static propTypes = controlledLayerPropTypes;
 
   static contextTypes = {

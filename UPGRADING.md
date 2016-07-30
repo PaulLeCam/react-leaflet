@@ -2,7 +2,7 @@
 
 ## v1.0 (in progress)
 
-TODO for v1 RC, keep track of changes in Leaflet and local commits / change log in the meantime.
+TODO for v1 RC, keep track of changes in Leaflet and [local commits](https://github.com/PaulLeCam/react-leaflet/pull/196) / [changelog](CHANGELOG.md) in the meantime.
 
 ## v0.12.0
 

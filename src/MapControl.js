@@ -1,11 +1,11 @@
 /* @flow */
 
-import { Component } from 'react'
+import { PureComponent } from 'react'
 
 import controlPositionType from './types/controlPosition'
 import mapType from './types/map'
 
-export default class MapControl extends Component {
+export default class MapControl extends PureComponent {
   static propTypes = {
     position: controlPositionType,
   };

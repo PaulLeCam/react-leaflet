@@ -8,7 +8,7 @@ Make sure to read the [how it works page](How%20it%20works.md) of this documenta
 
 ## Class hierarchy
 
-- `React.Component`
+- `React.PureComponent`
   - `ControlledLayer`: base class used by `LayersControl` to handle adding and removing its layers.
     - [`LayersControl.BaseLayer`](Components.md#layerscontrolbaselayer)
     - [`LayersControl.Overlay`](Components.md#layerscontroloverlay)
