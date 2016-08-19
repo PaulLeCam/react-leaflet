@@ -30,4 +30,4 @@ export const setIconDefaultImagePath = path => {
   Leaflet.Icon.Default.imagePath = path
 }
 
-setIconDefaultImagePath('//cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.0-rc.2/images')
+setIconDefaultImagePath('//cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.0-rc.3/images')

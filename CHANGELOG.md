@@ -1,3 +1,7 @@
+## v1.0.0-beta.2 (unreleased)
+
+- Revert basing components from `React.PureComponent` to `React.Component`.
+
 ## v1.0.0-beta.1 (2016-07-30)
 
 - [BREAKING] Renamed `GeoJson` to `GeoJSON` to match Leaflet's change.

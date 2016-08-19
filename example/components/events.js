@@ -2,27 +2,24 @@ import React, { Component } from 'react'
 import { Map, TileLayer, Marker, Popup } from '../../src'
 
 export default class EventsExample extends Component {
-  constructor () {
-    super()
-    this.state = {
-      hasLocation: false,
-      latlng: {
-        lat: 51.505,
-        lng: -0.09,
-      },
-    }
-  }
+  state = {
+    hasLocation: false,
+    latlng: {
+      lat: 51.505,
+      lng: -0.09,
+    },
+  };
 
-  handleClick () {
+  handleClick = () => {
     this.refs.map.leafletElement.locate()
-  }
+  };
 
-  handleLocationFound (e) {
+  handleLocationFound = (e) => {
     this.setState({
       hasLocation: true,
       latlng: e.latlng,
     })
-  }
+  };
 
   render () {
     const marker = this.state.hasLocation ? (
@@ -37,8 +34,8 @@ export default class EventsExample extends Component {
       <Map
         center={this.state.latlng}
         length={4}
-        onClick={::this.handleClick}
-        onLocationfound={::this.handleLocationFound}
+        onClick={this.handleClick}
+        onLocationfound={this.handleLocationFound}
         ref='map'
         zoom={13}>
         <TileLayer

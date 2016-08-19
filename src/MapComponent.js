@@ -1,11 +1,11 @@
 /* @flow */
 
 import { clone, forEach, keys, reduce } from 'lodash'
-import { PureComponent } from 'react'
+import { Component } from 'react'
 
 const EVENTS_RE = /^on(.+)$/i
 
-export default class MapComponent extends PureComponent<any, any, any> {
+export default class MapComponent extends Component<any, any, any> {
   constructor (props: Object, context: Object) {
     super(props, context)
     this._leafletEvents = {}

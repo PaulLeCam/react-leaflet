@@ -15,6 +15,7 @@
   ],
   "rules": {
     "comma-dangle": [1, "always-multiline"],
+    "jsx-quotes": [2, "prefer-single"],
     "no-duplicate-imports": [0],
     "no-unused-vars": [2, { "varsIgnorePattern": "^_" }],
     "space-infix-ops": [0]
