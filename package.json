@@ -1,6 +1,6 @@
 {
   "name": "react-leaflet",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.2",
   "description": "React components for Leaflet maps",
   "main": "lib/index.js",
   "scripts": {
@@ -67,9 +67,9 @@
     "leaflet": "^1.0.0-rc.3",
     "lodash-webpack-plugin": "^0.10.0",
     "onchange": "^2.5.0",
-    "react": "^15.3.0",
-    "react-addons-test-utils": "^15.3.0",
-    "react-dom": "^15.3.0",
+    "react": "^15.3.1",
+    "react-addons-test-utils": "^15.3.1",
+    "react-dom": "^15.3.1",
     "react-transform-hmr": "^1.0.4",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.14.1"

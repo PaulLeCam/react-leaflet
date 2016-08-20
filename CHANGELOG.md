@@ -1,6 +1,8 @@
-## v1.0.0-beta.2 (unreleased)
+## v1.0.0-beta.2 (2016-08-20)
 
-- Revert basing components from `React.PureComponent` to `React.Component`.
+- Added `Tooltip` component introduced in Leaflet v1.0.0-rc.2. See [Leaflet's documentation](http://leafletjs.com/reference-1.0.0.html#tooltip) for usage.
+- Updated Leaflet dependency to v1.0.0-rc.3.
+- Reverted basing components on `React.PureComponent`, they are now based on `React.Component`.
 
 ## v1.0.0-beta.1 (2016-07-30)
 

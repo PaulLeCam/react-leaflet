@@ -33,6 +33,7 @@ Make sure to read the [how it works page](How%20it%20works.md) of this documenta
         - [`Polyline`](Components.md#polyline)
         - [`Rectangle`](Components.md#rectangle)
     - [`Popup`](Components.md#popup)
+    - [`Tooltip`](Components.md#tooltip)
   - [`MapControl`](Components.md#mapcontrol): base class for all controls, handles positioning.
     - [`AttributionControl`](Components.md#attributioncontrol)
     - [`LayersControl`](Components.md#layerscontrol)

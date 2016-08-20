@@ -14,6 +14,7 @@ You can directly access the Leaflet element created by a component using `this.l
 - [UI Layers](#ui-layers)
   - [Marker](#marker)
   - [Popup](#popup)
+  - [Tooltip](#tooltip)
 - [Raster Layers](#raster-layers)
   - [TileLayer](#tilelayer)
   - [ImageOverlay](#imageoverlay)
@@ -103,6 +104,12 @@ The Popup children will be rendered using `ReactDOM.render()`, they must be vali
 
 **Dynamic properties**
 - `position: latLng` (optional)
+
+### Tooltip
+
+[Leaflet reference](http://leafletjs.com/reference-1.0.0.html#tooltip)
+
+The Tooltip children will be rendered using `ReactDOM.render()`, they must be valid React elements.
 
 ## Raster Layers
 

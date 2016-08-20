@@ -23,6 +23,7 @@ export Popup from './Popup'
 export Rectangle from './Rectangle'
 export ScaleControl from './ScaleControl'
 export TileLayer from './TileLayer'
+export Tooltip from './Tooltip'
 export WMSTileLayer from './WMSTileLayer'
 export ZoomControl from './ZoomControl'
 

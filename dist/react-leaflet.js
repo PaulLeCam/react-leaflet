@@ -59,7 +59,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.setIconDefaultImagePath = exports.ZoomControl = exports.WMSTileLayer = exports.TileLayer = exports.ScaleControl = exports.Rectangle = exports.Popup = exports.Polyline = exports.Polygon = exports.Path = exports.Marker = exports.MapLayer = exports.MapControl = exports.MapComponent = exports.Map = exports.LayersControl = exports.LayerGroup = exports.ImageOverlay = exports.GridLayer = exports.GeoJSON = exports.FeatureGroup = exports.CircleMarker = exports.Circle = exports.AttributionControl = exports.PropTypes = undefined;
+	exports.setIconDefaultImagePath = exports.ZoomControl = exports.WMSTileLayer = exports.Tooltip = exports.TileLayer = exports.ScaleControl = exports.Rectangle = exports.Popup = exports.Polyline = exports.Polygon = exports.Path = exports.Marker = exports.MapLayer = exports.MapControl = exports.MapComponent = exports.Map = exports.LayersControl = exports.LayerGroup = exports.ImageOverlay = exports.GridLayer = exports.GeoJSON = exports.FeatureGroup = exports.CircleMarker = exports.Circle = exports.AttributionControl = exports.PropTypes = undefined;
 
 	var _leaflet = __webpack_require__(1);
 
@@ -153,11 +153,15 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _TileLayer3 = _interopRequireDefault(_TileLayer2);
 
-	var _WMSTileLayer2 = __webpack_require__(104);
+	var _Tooltip2 = __webpack_require__(104);
+
+	var _Tooltip3 = _interopRequireDefault(_Tooltip2);
+
+	var _WMSTileLayer2 = __webpack_require__(105);
 
 	var _WMSTileLayer3 = _interopRequireDefault(_WMSTileLayer2);
 
-	var _ZoomControl2 = __webpack_require__(105);
+	var _ZoomControl2 = __webpack_require__(106);
 
 	var _ZoomControl3 = _interopRequireDefault(_ZoomControl2);
 
@@ -187,6 +191,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.Rectangle = _Rectangle3.default;
 	exports.ScaleControl = _ScaleControl3.default;
 	exports.TileLayer = _TileLayer3.default;
+	exports.Tooltip = _Tooltip3.default;
 	exports.WMSTileLayer = _WMSTileLayer3.default;
 	exports.ZoomControl = _ZoomControl3.default;
 	var setIconDefaultImagePath = exports.setIconDefaultImagePath = function setIconDefaultImagePath(path) {
@@ -4848,6 +4853,135 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react = __webpack_require__(4);
 
+	var _reactDom = __webpack_require__(100);
+
+	var _MapComponent2 = __webpack_require__(51);
+
+	var _MapComponent3 = _interopRequireDefault(_MapComponent2);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Tooltip = function (_MapComponent) {
+	  _inherits(Tooltip, _MapComponent);
+
+	  function Tooltip() {
+	    var _Object$getPrototypeO;
+
+	    var _temp, _this, _ret;
+
+	    _classCallCheck(this, Tooltip);
+
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(Tooltip)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.onTooltipOpen = function (_ref) {
+	      var tooltip = _ref.tooltip;
+
+	      if (tooltip === _this.leafletElement) {
+	        _this.renderTooltipContent();
+	      }
+	    }, _this.onTooltipClose = function (_ref2) {
+	      var tooltip = _ref2.tooltip;
+
+	      if (tooltip === _this.leafletElement) {
+	        _this.removeTooltipContent();
+	      }
+	    }, _this.renderTooltipContent = function () {
+	      if (_this.props.children) {
+	        (0, _reactDom.render)(_react.Children.only(_this.props.children), _this.leafletElement._contentNode);
+	        _this.leafletElement.update();
+	      } else {
+	        _this.removeTooltipContent();
+	      }
+	    }, _this.removeTooltipContent = function () {
+	      if (_this.leafletElement._contentNode) {
+	        (0, _reactDom.unmountComponentAtNode)(_this.leafletElement._contentNode);
+	      }
+	    }, _temp), _possibleConstructorReturn(_this, _ret);
+	  }
+
+	  _createClass(Tooltip, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      _get(Object.getPrototypeOf(Tooltip.prototype), 'componentWillMount', this).call(this);
+	      var _props = this.props;
+	      var _children = _props.children;
+
+	      var props = _objectWithoutProperties(_props, ['children']);
+
+	      this.leafletElement = (0, _leaflet.tooltip)(props, this.context.popupContainer);
+	      this.context.popupContainer.on({
+	        tooltipopen: this.onTooltipOpen,
+	        tooltipclose: this.onTooltipClose
+	      });
+	    }
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      this.context.popupContainer.bindTooltip(this.leafletElement);
+	    }
+	  }, {
+	    key: 'componentDidUpdate',
+	    value: function componentDidUpdate() {
+	      if (this.leafletElement.isOpen()) {
+	        this.renderTooltipContent();
+	      }
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      this.context.popupContainer.off({
+	        tooltipopen: this.onTooltipOpen,
+	        tooltipclose: this.onTooltipClose
+	      });
+	      this.context.popupContainer.removeLayer(this.leafletElement);
+	      _get(Object.getPrototypeOf(Tooltip.prototype), 'componentWillUnmount', this).call(this);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return null;
+	    }
+	  }]);
+
+	  return Tooltip;
+	}(_MapComponent3.default);
+
+	Tooltip.propTypes = {
+	  children: _react.PropTypes.node
+	};
+	Tooltip.contextTypes = {
+	  popupContainer: _react.PropTypes.object
+	};
+	exports.default = Tooltip;
+
+/***/ },
+/* 105 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+	var _leaflet = __webpack_require__(1);
+
+	var _react = __webpack_require__(4);
+
 	var _GridLayer2 = __webpack_require__(78);
 
 	var _GridLayer3 = _interopRequireDefault(_GridLayer2);
@@ -4893,7 +5027,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = WMSTileLayer;
 
 /***/ },
-/* 105 */
+/* 106 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
