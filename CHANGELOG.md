@@ -1,3 +1,7 @@
+## v1.0.0-beta.3 (2016-08-26)
+
+- Fixed `Tooltip` removal handling.
+
 ## v1.0.0-beta.2 (2016-08-20)
 
 - Added `Tooltip` component introduced in Leaflet v1.0.0-rc.2. See [Leaflet's documentation](http://leafletjs.com/reference-1.0.0.html#tooltip) for usage.

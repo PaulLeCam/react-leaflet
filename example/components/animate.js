@@ -8,7 +8,7 @@ export default class AnimateExample extends Component {
       lat: 51.505,
       lng: -0.09,
     },
-  };
+  }
 
   handleClick = (e) => {
     this.setState({
@@ -20,7 +20,7 @@ export default class AnimateExample extends Component {
     this.setState({
       animate: !this.state.animate,
     })
-  };
+  }
 
   render () {
     const marker = this.state.hasLocation ? (

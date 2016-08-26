@@ -13,18 +13,18 @@ export default class DraggableExample extends Component {
     },
     zoom: 13,
     draggable: true,
-  };
+  }
 
   toggleDraggable = () => {
     this.setState({draggable: !this.state.draggable})
-  };
+  }
 
   updatePosition = () => {
     const { lat, lng } = this.refs.marker.leafletElement.getLatLng()
     this.setState({
       marker: {lat, lng},
     })
-  };
+  }
 
   render () {
     const position = [this.state.center.lat, this.state.center.lng]

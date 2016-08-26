@@ -20,12 +20,6 @@ const normalizeCenter = (pos: LatLngType): Array<number> => {
 }
 
 export default class Map extends MapComponent {
-  container: Object;
-
-  state: {
-    map?: Leaflet.Map,
-  };
-
   static propTypes = {
     animate: PropTypes.bool,
     bounds: boundsType,
@@ -50,6 +44,12 @@ export default class Map extends MapComponent {
   static childContextTypes = {
     map: PropTypes.instanceOf(Leaflet.Map),
   };
+
+  container: HTMLDivElement
+
+  state: {
+    map?: Leaflet.Map,
+  }
 
   getChildContext () {
     return {
@@ -101,9 +101,9 @@ export default class Map extends MapComponent {
     this.leafletElement.remove()
   }
 
-  bindContainer: Function = (container: Object) => {
+  bindContainer = (container: HTMLDivElement) => {
     this.container = container
-  };
+  }
 
   shouldUpdateCenter (next: LatLngType, prev: LatLngType) {
     if (!prev) return true

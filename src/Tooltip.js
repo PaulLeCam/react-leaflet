@@ -4,6 +4,8 @@ import { tooltip as createTooltip } from 'leaflet'
 import { Children, PropTypes } from 'react'
 import { render, unmountComponentAtNode } from 'react-dom'
 
+import mapType from './types/map'
+
 import MapComponent from './MapComponent'
 
 export default class Tooltip extends MapComponent {
@@ -12,6 +14,7 @@ export default class Tooltip extends MapComponent {
   };
 
   static contextTypes = {
+    map: mapType,
     popupContainer: PropTypes.object,
   };
 
@@ -41,23 +44,23 @@ export default class Tooltip extends MapComponent {
       tooltipopen: this.onTooltipOpen,
       tooltipclose: this.onTooltipClose,
     })
-    this.context.popupContainer.removeLayer(this.leafletElement)
+    this.context.map.removeLayer(this.leafletElement)
     super.componentWillUnmount()
   }
 
-  onTooltipOpen: Function = ({ tooltip }: Object) => {
+  onTooltipOpen = ({ tooltip }: Object) => {
     if (tooltip === this.leafletElement) {
       this.renderTooltipContent()
     }
-  };
+  }
 
-  onTooltipClose: Function = ({ tooltip }: Object) => {
+  onTooltipClose = ({ tooltip }: Object) => {
     if (tooltip === this.leafletElement) {
       this.removeTooltipContent()
     }
-  };
+  }
 
-  renderTooltipContent: Function = () => {
+  renderTooltipContent = () => {
     if (this.props.children) {
       render(
         Children.only(this.props.children),
@@ -67,13 +70,13 @@ export default class Tooltip extends MapComponent {
     } else {
       this.removeTooltipContent()
     }
-  };
+  }
 
-  removeTooltipContent: Function = () => {
+  removeTooltipContent = () => {
     if (this.leafletElement._contentNode) {
       unmountComponentAtNode(this.leafletElement._contentNode)
     }
-  };
+  }
 
   render () {
     return null

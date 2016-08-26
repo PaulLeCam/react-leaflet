@@ -424,7 +424,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function AttributionControl() {
 	    _classCallCheck(this, AttributionControl);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(AttributionControl).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (AttributionControl.__proto__ || Object.getPrototypeOf(AttributionControl)).apply(this, arguments));
 	  }
 
 	  _createClass(AttributionControl, [{
@@ -478,7 +478,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function MapControl() {
 	    _classCallCheck(this, MapControl);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(MapControl).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (MapControl.__proto__ || Object.getPrototypeOf(MapControl)).apply(this, arguments));
 	  }
 
 	  _createClass(MapControl, [{
@@ -558,13 +558,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function Circle() {
 	    _classCallCheck(this, Circle);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Circle).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (Circle.__proto__ || Object.getPrototypeOf(Circle)).apply(this, arguments));
 	  }
 
 	  _createClass(Circle, [{
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
-	      _get(Object.getPrototypeOf(Circle.prototype), 'componentWillMount', this).call(this);
+	      _get(Circle.prototype.__proto__ || Object.getPrototypeOf(Circle.prototype), 'componentWillMount', this).call(this);
 	      var _props = this.props;
 	      var center = _props.center;
 	      var radius = _props.radius;
@@ -637,7 +637,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function Path() {
 	    _classCallCheck(this, Path);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Path).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (Path.__proto__ || Object.getPrototypeOf(Path)).apply(this, arguments));
 	  }
 
 	  _createClass(Path, [{
@@ -1962,19 +1962,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function MapLayer() {
 	    _classCallCheck(this, MapLayer);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(MapLayer).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (MapLayer.__proto__ || Object.getPrototypeOf(MapLayer)).apply(this, arguments));
 	  }
 
 	  _createClass(MapLayer, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      _get(Object.getPrototypeOf(MapLayer.prototype), 'componentDidMount', this).call(this);
+	      _get(MapLayer.prototype.__proto__ || Object.getPrototypeOf(MapLayer.prototype), 'componentDidMount', this).call(this);
 	      this.layerContainer.addLayer(this.leafletElement);
 	    }
 	  }, {
 	    key: 'componentWillUnmount',
 	    value: function componentWillUnmount() {
-	      _get(Object.getPrototypeOf(MapLayer.prototype), 'componentWillUnmount', this).call(this);
+	      _get(MapLayer.prototype.__proto__ || Object.getPrototypeOf(MapLayer.prototype), 'componentWillUnmount', this).call(this);
 	      this.layerContainer.removeLayer(this.leafletElement);
 	    }
 	  }, {
@@ -2051,7 +2051,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function MapComponent(props, context) {
 	    _classCallCheck(this, MapComponent);
 
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(MapComponent).call(this, props, context));
+	    var _this = _possibleConstructorReturn(this, (MapComponent.__proto__ || Object.getPrototypeOf(MapComponent)).call(this, props, context));
 
 	    _this._leafletEvents = {};
 	    return _this;
@@ -2088,10 +2088,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function extractLeafletEvents(props) {
 	      return (0, _reduce3.default)((0, _keys3.default)(props), function (res, prop) {
 	        if (EVENTS_RE.test(prop)) {
-	          var key = prop.replace(EVENTS_RE, function (match, p) {
+	          var _key = prop.replace(EVENTS_RE, function (match, p) {
 	            return p.toLowerCase();
 	          });
-	          res[key] = props[prop];
+	          res[_key] = props[prop];
 	        }
 	        return res;
 	      }, {});
@@ -2884,13 +2884,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function CircleMarker() {
 	    _classCallCheck(this, CircleMarker);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(CircleMarker).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (CircleMarker.__proto__ || Object.getPrototypeOf(CircleMarker)).apply(this, arguments));
 	  }
 
 	  _createClass(CircleMarker, [{
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
-	      _get(Object.getPrototypeOf(CircleMarker.prototype), 'componentWillMount', this).call(this);
+	      _get(CircleMarker.prototype.__proto__ || Object.getPrototypeOf(CircleMarker.prototype), 'componentWillMount', this).call(this);
 	      var _props = this.props;
 	      var center = _props.center;
 
@@ -2960,7 +2960,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function FeatureGroup() {
 	    _classCallCheck(this, FeatureGroup);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(FeatureGroup).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (FeatureGroup.__proto__ || Object.getPrototypeOf(FeatureGroup)).apply(this, arguments));
 	  }
 
 	  _createClass(FeatureGroup, [{
@@ -2979,7 +2979,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      _get(Object.getPrototypeOf(FeatureGroup.prototype), 'componentDidMount', this).call(this);
+	      _get(FeatureGroup.prototype.__proto__ || Object.getPrototypeOf(FeatureGroup.prototype), 'componentDidMount', this).call(this);
 	      this.setStyle(this.props);
 	    }
 	  }, {
@@ -3040,13 +3040,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function GeoJSON() {
 	    _classCallCheck(this, GeoJSON);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(GeoJSON).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (GeoJSON.__proto__ || Object.getPrototypeOf(GeoJSON)).apply(this, arguments));
 	  }
 
 	  _createClass(GeoJSON, [{
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
-	      _get(Object.getPrototypeOf(GeoJSON.prototype), 'componentWillMount', this).call(this);
+	      _get(GeoJSON.prototype.__proto__ || Object.getPrototypeOf(GeoJSON.prototype), 'componentWillMount', this).call(this);
 	      var _props = this.props;
 	      var data = _props.data;
 
@@ -3156,13 +3156,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function GridLayer() {
 	    _classCallCheck(this, GridLayer);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(GridLayer).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (GridLayer.__proto__ || Object.getPrototypeOf(GridLayer)).apply(this, arguments));
 	  }
 
 	  _createClass(GridLayer, [{
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
-	      _get(Object.getPrototypeOf(GridLayer.prototype), 'componentWillMount', this).call(this);
+	      _get(GridLayer.prototype.__proto__ || Object.getPrototypeOf(GridLayer.prototype), 'componentWillMount', this).call(this);
 	      this.leafletElement = (0, _leaflet.gridLayer)(this.props);
 	    }
 	  }, {
@@ -3237,13 +3237,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function ImageOverlay() {
 	    _classCallCheck(this, ImageOverlay);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(ImageOverlay).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (ImageOverlay.__proto__ || Object.getPrototypeOf(ImageOverlay)).apply(this, arguments));
 	  }
 
 	  _createClass(ImageOverlay, [{
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
-	      _get(Object.getPrototypeOf(ImageOverlay.prototype), 'componentWillMount', this).call(this);
+	      _get(ImageOverlay.prototype.__proto__ || Object.getPrototypeOf(ImageOverlay.prototype), 'componentWillMount', this).call(this);
 	      var _props = this.props;
 	      var bounds = _props.bounds;
 	      var url = _props.url;
@@ -3318,7 +3318,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function LayerGroup() {
 	    _classCallCheck(this, LayerGroup);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(LayerGroup).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (LayerGroup.__proto__ || Object.getPrototypeOf(LayerGroup)).apply(this, arguments));
 	  }
 
 	  _createClass(LayerGroup, [{
@@ -3331,7 +3331,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
-	      _get(Object.getPrototypeOf(LayerGroup.prototype), 'componentWillMount', this).call(this);
+	      _get(LayerGroup.prototype.__proto__ || Object.getPrototypeOf(LayerGroup.prototype), 'componentWillMount', this).call(this);
 	      this.leafletElement = (0, _leaflet.layerGroup)();
 	    }
 	  }]);
@@ -3408,7 +3408,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function ControlledLayer() {
 	    _classCallCheck(this, ControlledLayer);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(ControlledLayer).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (ControlledLayer.__proto__ || Object.getPrototypeOf(ControlledLayer)).apply(this, arguments));
 	  }
 
 	  _createClass(ControlledLayer, [{
@@ -3472,7 +3472,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function BaseLayer() {
 	    _classCallCheck(this, BaseLayer);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(BaseLayer).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (BaseLayer.__proto__ || Object.getPrototypeOf(BaseLayer)).apply(this, arguments));
 	  }
 
 	  _createClass(BaseLayer, [{
@@ -3499,7 +3499,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function Overlay() {
 	    _classCallCheck(this, Overlay);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Overlay).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (Overlay.__proto__ || Object.getPrototypeOf(Overlay)).apply(this, arguments));
 	  }
 
 	  _createClass(Overlay, [{
@@ -3526,7 +3526,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function LayersControl() {
 	    _classCallCheck(this, LayersControl);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(LayersControl).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (LayersControl.__proto__ || Object.getPrototypeOf(LayersControl)).apply(this, arguments));
 	  }
 
 	  _createClass(LayersControl, [{
@@ -3551,7 +3551,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var _this5 = this;
 
 	      setTimeout(function () {
-	        _get(Object.getPrototypeOf(LayersControl.prototype), 'componentWillUnmount', _this5).call(_this5);
+	        _get(LayersControl.prototype.__proto__ || Object.getPrototypeOf(LayersControl.prototype), 'componentWillUnmount', _this5).call(_this5);
 	      }, 0);
 	    }
 	  }, {
@@ -3681,7 +3681,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  _inherits(Map, _MapComponent);
 
 	  function Map() {
-	    var _Object$getPrototypeO;
+	    var _ref;
 
 	    var _temp, _this, _ret;
 
@@ -3691,7 +3691,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      args[_key] = arguments[_key];
 	    }
 
-	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(Map)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.bindContainer = function (container) {
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Map.__proto__ || Object.getPrototypeOf(Map)).call.apply(_ref, [this].concat(args))), _this), _this.bindContainer = function (container) {
 	      _this.container = container;
 	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
@@ -3708,7 +3708,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function componentDidMount() {
 	      var props = (0, _omit3.default)(this.props, ['children', 'className', 'id', 'style']);
 	      this.leafletElement = _leaflet2.default.map(this.container, props);
-	      _get(Object.getPrototypeOf(Map.prototype), 'componentDidMount', this).call(this);
+	      _get(Map.prototype.__proto__ || Object.getPrototypeOf(Map.prototype), 'componentDidMount', this).call(this);
 	      this.setState({ map: this.leafletElement });
 	      if (!(0, _isUndefined3.default)(props.bounds)) {
 	        this.leafletElement.fitBounds(props.bounds, props.boundsOptions);
@@ -3752,7 +3752,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'componentWillUnmount',
 	    value: function componentWillUnmount() {
-	      _get(Object.getPrototypeOf(Map.prototype), 'componentWillUnmount', this).call(this);
+	      _get(Map.prototype.__proto__ || Object.getPrototypeOf(Map.prototype), 'componentWillUnmount', this).call(this);
 	      this.leafletElement.remove();
 	    }
 	  }, {
@@ -4253,7 +4253,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function Marker() {
 	    _classCallCheck(this, Marker);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Marker).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (Marker.__proto__ || Object.getPrototypeOf(Marker)).apply(this, arguments));
 	  }
 
 	  _createClass(Marker, [{
@@ -4266,7 +4266,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
-	      _get(Object.getPrototypeOf(Marker.prototype), 'componentWillMount', this).call(this);
+	      _get(Marker.prototype.__proto__ || Object.getPrototypeOf(Marker.prototype), 'componentWillMount', this).call(this);
 	      var _props = this.props;
 	      var position = _props.position;
 
@@ -4362,13 +4362,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function Polygon() {
 	    _classCallCheck(this, Polygon);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Polygon).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (Polygon.__proto__ || Object.getPrototypeOf(Polygon)).apply(this, arguments));
 	  }
 
 	  _createClass(Polygon, [{
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
-	      _get(Object.getPrototypeOf(Polygon.prototype), 'componentWillMount', this).call(this);
+	      _get(Polygon.prototype.__proto__ || Object.getPrototypeOf(Polygon.prototype), 'componentWillMount', this).call(this);
 	      var _props = this.props;
 	      var positions = _props.positions;
 
@@ -4436,13 +4436,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function Polyline() {
 	    _classCallCheck(this, Polyline);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Polyline).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (Polyline.__proto__ || Object.getPrototypeOf(Polyline)).apply(this, arguments));
 	  }
 
 	  _createClass(Polyline, [{
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
-	      _get(Object.getPrototypeOf(Polyline.prototype), 'componentWillMount', this).call(this);
+	      _get(Polyline.prototype.__proto__ || Object.getPrototypeOf(Polyline.prototype), 'componentWillMount', this).call(this);
 	      var _props = this.props;
 	      var positions = _props.positions;
 
@@ -4514,7 +4514,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  _inherits(Popup, _MapComponent);
 
 	  function Popup() {
-	    var _Object$getPrototypeO;
+	    var _ref;
 
 	    var _temp, _this, _ret;
 
@@ -4524,14 +4524,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	      args[_key] = arguments[_key];
 	    }
 
-	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(Popup)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.onPopupOpen = function (_ref) {
-	      var popup = _ref.popup;
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Popup.__proto__ || Object.getPrototypeOf(Popup)).call.apply(_ref, [this].concat(args))), _this), _this.onPopupOpen = function (_ref2) {
+	      var popup = _ref2.popup;
 
 	      if (popup === _this.leafletElement) {
 	        _this.renderPopupContent();
 	      }
-	    }, _this.onPopupClose = function (_ref2) {
-	      var popup = _ref2.popup;
+	    }, _this.onPopupClose = function (_ref3) {
+	      var popup = _ref3.popup;
 
 	      if (popup === _this.leafletElement) {
 	        _this.removePopupContent();
@@ -4553,7 +4553,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  _createClass(Popup, [{
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
-	      _get(Object.getPrototypeOf(Popup.prototype), 'componentWillMount', this).call(this);
+	      _get(Popup.prototype.__proto__ || Object.getPrototypeOf(Popup.prototype), 'componentWillMount', this).call(this);
 	      var _props = this.props;
 	      var _children = _props.children;
 
@@ -4608,7 +4608,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        popupclose: this.onPopupClose
 	      });
 	      this.context.map.removeLayer(this.leafletElement);
-	      _get(Object.getPrototypeOf(Popup.prototype), 'componentWillUnmount', this).call(this);
+	      _get(Popup.prototype.__proto__ || Object.getPrototypeOf(Popup.prototype), 'componentWillUnmount', this).call(this);
 	    }
 	  }, {
 	    key: 'render',
@@ -4676,13 +4676,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function Rectangle() {
 	    _classCallCheck(this, Rectangle);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Rectangle).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (Rectangle.__proto__ || Object.getPrototypeOf(Rectangle)).apply(this, arguments));
 	  }
 
 	  _createClass(Rectangle, [{
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
-	      _get(Object.getPrototypeOf(Rectangle.prototype), 'componentWillMount', this).call(this);
+	      _get(Rectangle.prototype.__proto__ || Object.getPrototypeOf(Rectangle.prototype), 'componentWillMount', this).call(this);
 	      var _props = this.props;
 	      var bounds = _props.bounds;
 
@@ -4742,7 +4742,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function ZoomControl() {
 	    _classCallCheck(this, ZoomControl);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(ZoomControl).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (ZoomControl.__proto__ || Object.getPrototypeOf(ZoomControl)).apply(this, arguments));
 	  }
 
 	  _createClass(ZoomControl, [{
@@ -4801,13 +4801,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function TileLayer() {
 	    _classCallCheck(this, TileLayer);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(TileLayer).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (TileLayer.__proto__ || Object.getPrototypeOf(TileLayer)).apply(this, arguments));
 	  }
 
 	  _createClass(TileLayer, [{
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
-	      _get(Object.getPrototypeOf(TileLayer.prototype), 'componentWillMount', this).call(this);
+	      _get(TileLayer.prototype.__proto__ || Object.getPrototypeOf(TileLayer.prototype), 'componentWillMount', this).call(this);
 	      var _props = this.props;
 	      var url = _props.url;
 
@@ -4818,7 +4818,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'componentDidUpdate',
 	    value: function componentDidUpdate(prevProps) {
-	      _get(Object.getPrototypeOf(TileLayer.prototype), 'componentDidUpdate', this).call(this, prevProps);
+	      _get(TileLayer.prototype.__proto__ || Object.getPrototypeOf(TileLayer.prototype), 'componentDidUpdate', this).call(this, prevProps);
 	      var url = this.props.url;
 
 	      if (url !== prevProps.url) {
@@ -4855,6 +4855,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _reactDom = __webpack_require__(100);
 
+	var _map = __webpack_require__(10);
+
+	var _map2 = _interopRequireDefault(_map);
+
 	var _MapComponent2 = __webpack_require__(51);
 
 	var _MapComponent3 = _interopRequireDefault(_MapComponent2);
@@ -4873,7 +4877,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  _inherits(Tooltip, _MapComponent);
 
 	  function Tooltip() {
-	    var _Object$getPrototypeO;
+	    var _ref;
 
 	    var _temp, _this, _ret;
 
@@ -4883,14 +4887,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	      args[_key] = arguments[_key];
 	    }
 
-	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(Tooltip)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.onTooltipOpen = function (_ref) {
-	      var tooltip = _ref.tooltip;
+	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Tooltip.__proto__ || Object.getPrototypeOf(Tooltip)).call.apply(_ref, [this].concat(args))), _this), _this.onTooltipOpen = function (_ref2) {
+	      var tooltip = _ref2.tooltip;
 
 	      if (tooltip === _this.leafletElement) {
 	        _this.renderTooltipContent();
 	      }
-	    }, _this.onTooltipClose = function (_ref2) {
-	      var tooltip = _ref2.tooltip;
+	    }, _this.onTooltipClose = function (_ref3) {
+	      var tooltip = _ref3.tooltip;
 
 	      if (tooltip === _this.leafletElement) {
 	        _this.removeTooltipContent();
@@ -4912,7 +4916,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  _createClass(Tooltip, [{
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
-	      _get(Object.getPrototypeOf(Tooltip.prototype), 'componentWillMount', this).call(this);
+	      _get(Tooltip.prototype.__proto__ || Object.getPrototypeOf(Tooltip.prototype), 'componentWillMount', this).call(this);
 	      var _props = this.props;
 	      var _children = _props.children;
 
@@ -4943,8 +4947,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        tooltipopen: this.onTooltipOpen,
 	        tooltipclose: this.onTooltipClose
 	      });
-	      this.context.popupContainer.removeLayer(this.leafletElement);
-	      _get(Object.getPrototypeOf(Tooltip.prototype), 'componentWillUnmount', this).call(this);
+	      this.context.map.removeLayer(this.leafletElement);
+	      _get(Tooltip.prototype.__proto__ || Object.getPrototypeOf(Tooltip.prototype), 'componentWillUnmount', this).call(this);
 	    }
 	  }, {
 	    key: 'render',
@@ -4960,6 +4964,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  children: _react.PropTypes.node
 	};
 	Tooltip.contextTypes = {
+	  map: _map2.default,
 	  popupContainer: _react.PropTypes.object
 	};
 	exports.default = Tooltip;
@@ -5002,13 +5007,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function WMSTileLayer() {
 	    _classCallCheck(this, WMSTileLayer);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(WMSTileLayer).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (WMSTileLayer.__proto__ || Object.getPrototypeOf(WMSTileLayer)).apply(this, arguments));
 	  }
 
 	  _createClass(WMSTileLayer, [{
 	    key: 'componentWillMount',
 	    value: function componentWillMount() {
-	      _get(Object.getPrototypeOf(WMSTileLayer.prototype), 'componentWillMount', this).call(this);
+	      _get(WMSTileLayer.prototype.__proto__ || Object.getPrototypeOf(WMSTileLayer.prototype), 'componentWillMount', this).call(this);
 	      var _props = this.props;
 	      var url = _props.url;
 
@@ -5060,7 +5065,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function ZoomControl() {
 	    _classCallCheck(this, ZoomControl);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(ZoomControl).apply(this, arguments));
+	    return _possibleConstructorReturn(this, (ZoomControl.__proto__ || Object.getPrototypeOf(ZoomControl)).apply(this, arguments));
 	  }
 
 	  _createClass(ZoomControl, [{

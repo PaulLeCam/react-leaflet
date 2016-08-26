@@ -8,18 +8,18 @@ export default class EventsExample extends Component {
       lat: 51.505,
       lng: -0.09,
     },
-  };
+  }
 
   handleClick = () => {
     this.refs.map.leafletElement.locate()
-  };
+  }
 
   handleLocationFound = (e) => {
     this.setState({
       hasLocation: true,
       latlng: e.latlng,
     })
-  };
+  }
 
   render () {
     const marker = this.state.hasLocation ? (

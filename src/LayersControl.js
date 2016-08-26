@@ -104,11 +104,11 @@ export default class LayersControl extends MapControl {
   };
 
   controlProps: {
-    addBaseLayer: Function,
-    addOverlay: Function,
-    removeLayer: Function,
-    removeLayerControl: Function,
-  };
+    addBaseLayer: (layer: Object, name: string, checked: bool) => void,
+    addOverlay: (layer: Object, name: string, checked: bool) => void,
+    removeLayer: (layer: Object) => void,
+    removeLayerControl: (layer: Object) => void,
+  }
 
   componentWillMount () {
     const { children: _children, ...options } = this.props

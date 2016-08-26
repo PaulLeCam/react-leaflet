@@ -68,19 +68,19 @@ export default class Popup extends MapComponent {
     super.componentWillUnmount()
   }
 
-  onPopupOpen: Function = ({ popup }: Object) => {
+  onPopupOpen = ({ popup }: Object) => {
     if (popup === this.leafletElement) {
       this.renderPopupContent()
     }
-  };
+  }
 
-  onPopupClose: Function = ({ popup }: Object) => {
+  onPopupClose = ({ popup }: Object) => {
     if (popup === this.leafletElement) {
       this.removePopupContent()
     }
-  };
+  }
 
-  renderPopupContent: Function = () => {
+  renderPopupContent = () => {
     if (this.props.children) {
       render(
         Children.only(this.props.children),
@@ -90,13 +90,13 @@ export default class Popup extends MapComponent {
     } else {
       this.removePopupContent()
     }
-  };
+  }
 
-  removePopupContent: Function = () => {
+  removePopupContent = () => {
     if (this.leafletElement._contentNode) {
       unmountComponentAtNode(this.leafletElement._contentNode)
     }
-  };
+  }
 
   render () {
     return null

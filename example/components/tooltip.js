@@ -12,20 +12,14 @@ import {
 export default class TooltipExample extends Component {
   state = {
     clicked: 0,
-  };
+  }
 
   onClickCircle = () => {
     this.setState({clicked: this.state.clicked + 1})
-  };
+  }
 
   render () {
     const center = [51.505, -0.09]
-
-    const polygon = [
-      [51.515, -0.09],
-      [51.52, -0.1],
-      [51.52, -0.12],
-    ]
 
     const multiPolygon = [
       [[51.51, -0.12], [51.51, -0.13], [51.53, -0.13]],

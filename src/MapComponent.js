@@ -33,7 +33,7 @@ export default class MapComponent extends Component<any, any, any> {
     })
   }
 
-  _leafletEvents: Object;
+  _leafletEvents: {[key: string]: Function};
   leafletElement: Object;
 
   extractLeafletEvents (props: Object) {

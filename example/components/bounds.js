@@ -13,15 +13,15 @@ const inner = [
 export default class BoundsExample extends Component {
   state = {
     bounds: outer,
-  };
+  }
 
   onClickInner = () => {
     this.setState({bounds: inner})
-  };
+  }
 
   onClickOuter = () => {
     this.setState({bounds: outer})
-  };
+  }
 
   render () {
     return (
