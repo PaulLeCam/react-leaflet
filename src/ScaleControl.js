@@ -5,7 +5,7 @@ import { PropTypes } from 'react'
 
 import MapControl from './MapControl'
 
-export default class ZoomControl extends MapControl {
+export default class ScaleControl extends MapControl {
   static propTypes = {
     imperial: PropTypes.bool,
     maxWidth: PropTypes.number,

@@ -48,7 +48,7 @@
     "babel-cli": "^6.10.1",
     "babel-core": "^6.10.4",
     "babel-eslint": "^6.1.2",
-    "babel-jest": "^13.2.2",
+    "babel-jest": "^15.0.0",
     "babel-loader": "^6.2.4",
     "babel-plugin-dev-expression": "^0.2.1",
     "babel-plugin-lodash": "^3.2.4",
@@ -57,16 +57,16 @@
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-0": "^6.5.0",
     "eslint": "^3.1.1",
-    "eslint-config-standard": "^5.3.5",
-    "eslint-config-standard-jsx": "^2.0.0",
-    "eslint-config-standard-react": "^3.0.0",
+    "eslint-config-standard": "^6.0.0",
+    "eslint-config-standard-jsx": "^3.0.0",
+    "eslint-config-standard-react": "^4.0.0",
     "eslint-plugin-promise": "^2.0.0",
-    "eslint-plugin-react": "^5.2.2",
+    "eslint-plugin-react": "^6.2.0",
     "eslint-plugin-standard": "^2.0.0",
-    "jest-cli": "^13.2.3",
+    "jest-cli": "^15.1.1",
     "leaflet": "^0.7.7",
-    "lodash-webpack-plugin": "^0.9.2",
-    "onchange": "^2.5.0",
+    "lodash-webpack-plugin": "^0.10.0",
+    "onchange": "^3.0.0",
     "react": "^15.2.1",
     "react-addons-test-utils": "^15.2.1",
     "react-dom": "^15.2.1",
@@ -76,13 +76,6 @@
   },
   "jest": {
     "collectCoverage": true,
-    "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
-    "unmockedModulePathPatterns": [
-      "<rootDir>/node_modules/fbjs",
-      "<rootDir>/node_modules/jest-cli",
-      "<rootDir>/node_modules/lodash",
-      "<rootDir>/node_modules/react",
-      "<rootDir>/node_modules/react-dom"
-    ]
+    "scriptPreprocessor": "<rootDir>/node_modules/babel-jest"
   }
 }
