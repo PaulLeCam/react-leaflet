@@ -8,7 +8,12 @@ import Path from './Path'
 
 export default class MultiPolygon extends Path {
   static propTypes = {
-    polygons: PropTypes.arrayOf(latlngListType).isRequired,
+    polygons: PropTypes.arrayOf(
+      PropTypes.oneOfType([
+        latlngListType,
+        PropTypes.arrayOf(latlngListType),
+      ])
+    ).isRequired,
   };
 
   componentWillMount () {
