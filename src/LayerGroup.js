@@ -13,6 +13,7 @@ export default class LayerGroup extends MapLayer {
   };
 
   static contextTypes = {
+    ...MapLayer.contextTypes,
     pane: paneType,
   };
 
