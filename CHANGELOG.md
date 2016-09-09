@@ -1,3 +1,8 @@
+## v0.12.2 (2016-09-09)
+
+- Updated propTypes to allow polygons with holes in `MultiPolygon` ([PR #218](https://github.com/PaulLeCam/react-leaflet/pull/218) by *ernoaapa*).
+- Fixed badly named `ScaleControl` class.
+
 ## v0.12.1 (2016-07-08)
 
 - Fixed unmounting `LayersControl` when the `Map` is unmounting as well.
