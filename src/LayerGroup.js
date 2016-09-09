@@ -10,6 +10,9 @@ import MapLayer from './MapLayer'
 export default class LayerGroup extends MapLayer {
   static childContextTypes = {
     layerContainer: layerContainerType,
+  };
+
+  static contextTypes = {
     pane: paneType,
   };
 

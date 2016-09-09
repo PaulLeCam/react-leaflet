@@ -3,6 +3,7 @@ import React, { Component, PropTypes } from 'react'
 
 import childrenType from './types/children'
 import mapType from './types/map'
+import paneType from './types/pane'
 
 export default class MapPane extends Component {
   static propTypes = {
@@ -11,8 +12,12 @@ export default class MapPane extends Component {
     map: mapType,
   };
 
-  static childContextTypes = {
+  static contextTypes = {
     map: mapType,
+  };
+
+  static childContextTypes = {
+    pane: paneType,
   };
 
   getChildContext () {
