@@ -4,6 +4,7 @@ import { Icon, marker } from 'leaflet'
 import { PropTypes } from 'react'
 
 import latlngType from './types/latlng'
+import paneType from './types/pane'
 import MapLayer from './MapLayer'
 
 export default class Marker extends MapLayer {
@@ -12,6 +13,11 @@ export default class Marker extends MapLayer {
     opacity: PropTypes.number,
     position: latlngType.isRequired,
     zIndexOffset: PropTypes.number,
+  };
+
+  static contextTypes = {
+    ...(MapLayer.contextTypes || {}),
+    pane: paneType,
   };
 
   static childContextTypes = {
@@ -27,7 +33,10 @@ export default class Marker extends MapLayer {
   componentWillMount () {
     super.componentWillMount()
     const { position, ...props } = this.props
-    this.leafletElement = marker(position, props)
+    this.leafletElement = marker(position, {
+      ...props,
+      pane: this.context.pane,
+    })
   }
 
   componentDidUpdate (prevProps: Object) {
