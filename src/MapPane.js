@@ -1,5 +1,6 @@
 /* @flow */
 import React, { PropTypes, Component } from 'react'
+import { omit } from 'lodash'
 
 import childrenType from './types/children'
 import mapType from './types/map'
@@ -20,9 +21,17 @@ export default class MapPane extends Component {
     pane: paneType,
   };
 
+  constructor () {
+    super()
+
+    this.state = {
+      _isMounted: false,
+    }
+  }
+
   getChildContext () {
     return {
-      pane: this.leafletElement,
+      pane: this.props.name,
     }
   }
 
@@ -31,14 +40,41 @@ export default class MapPane extends Component {
     const map = this.context.map || this.props.map
 
     if (name && map && map.createPane) {
-      this.leafletElement = map.createPane(name)
-    }
+      const existing = this.getPane()
 
-    console.log(name, this)
+      if (!existing) {
+        map.createPane(name)
+      }
+    }
+  }
+
+  componentDidMount () {
+    this.setState({
+      _isMounted: true,
+    })
   }
 
   componentWillUnmount () {
-    this.leafletElement && this.leafletElement.remove && this.leafletElement.remove()
+    // const pane = this.getPane()
+    // pane && pane.remove && pane.remove()
+    //
+    // const map = this.context.map || this.props.map
+    // const { name } = this.props
+    //
+    // if (name && map && map._panes) {
+    //   map._panes = omit(map._panes, name)
+    // }
+  }
+
+  getPane () {
+    const { name } = this.props
+    const map = this.context.map || this.props.map
+
+    if (name && map && map) {
+      return map.getPane(name)
+    }
+
+    return null
   }
 
   getChildren () {
@@ -48,6 +84,7 @@ export default class MapPane extends Component {
   }
 
   render (): any {
-    return <div style={{display: 'none'}}>{this.getChildren()}</div>
+    const { _isMounted } = this.state
+    return _isMounted ? <div style={{display: 'none'}}>{this.getChildren()}</div> : null
   }
 }
