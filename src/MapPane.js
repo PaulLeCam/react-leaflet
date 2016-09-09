@@ -11,6 +11,7 @@ export default class MapPane extends Component {
     name: PropTypes.string.isRequired,
     children: childrenType,
     map: mapType,
+    zIndex: PropTypes.number,
   };
 
   static contextTypes = {
@@ -48,10 +49,23 @@ export default class MapPane extends Component {
     }
   }
 
+  componentWillReceiveProps ({zIndex}) {
+    if (zIndex !== this.props.zIndex) {
+      const pane = this.getPane()
+      pane.style.zIndex = zIndex || 'initial'
+    }
+  }
+
   componentDidMount () {
     this.setState({
       _isMounted: true,
     })
+
+    const pane = this.getPane()
+    const { zIndex } = this.props
+    if (pane && zIndex != null) {
+      pane.style.zIndex = zIndex
+    }
   }
 
   componentWillUnmount () {
