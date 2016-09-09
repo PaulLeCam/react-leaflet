@@ -1,11 +1,13 @@
 /* @flow */
-import React, { Component, PropTypes } from 'react'
+import { PropTypes } from 'react'
+
+import MapLayer from './MapLayer'
 
 import childrenType from './types/children'
 import mapType from './types/map'
 import paneType from './types/pane'
 
-export default class MapPane extends Component {
+export default class MapPane extends MapLayer {
   static propTypes = {
     name: PropTypes.string.isRequired,
     children: childrenType,
@@ -26,6 +28,14 @@ export default class MapPane extends Component {
     }
   }
 
+  componentWillReceiveProps () {
+
+  }
+
+  componentDidMount () {
+
+  }
+
   componentWillMount () {
     const { name } = this.props
     const map = this.context.map || this.props.map
@@ -37,9 +47,5 @@ export default class MapPane extends Component {
 
   componentWillUnmount () {
     this.leafletElement && this.leafletElement.remove && this.leafletElement.remove()
-  }
-
-  render (): any {
-    return <div style={{display: 'none'}}>{this.props.children}</div>
   }
 }
