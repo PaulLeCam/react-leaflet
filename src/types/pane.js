@@ -1,4 +1,4 @@
 /* @flow */
 import { PropTypes } from 'react'
 
-export default PropTypes.instanceOf(HTMLDivElement)
+export default PropTypes.string
