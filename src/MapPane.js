@@ -1,5 +1,6 @@
 /* @flow */
 import React, { PropTypes, Component } from 'react'
+import ReactDOM from 'react-dom'
 // import { omit } from 'lodash'
 
 import childrenType from './types/children'
@@ -69,6 +70,12 @@ export default class MapPane extends Component {
   }
 
   componentWillUnmount () {
+    const pane = this.getPane()
+
+    if (pane) {
+      ReactDOM.unmountComponentAtNode(pane)
+    }
+
     // const pane = this.getPane()
     // pane && pane.remove && pane.remove()
     //
@@ -99,10 +106,15 @@ export default class MapPane extends Component {
 
   render (): any {
     const { _isMounted } = this.state
-    return _isMounted ? (
-      <div style={{position: 'absolute'}}>
-        {this.getChildren()}
-      </div>
-    ) : null
+
+    if (_isMounted) {
+      const pane = this.getPane()
+
+      if (pane) {
+        ReactDOM.render(this.getChildren(), pane)
+      }
+    }
+
+    return null
   }
 }
