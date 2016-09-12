@@ -1,6 +1,6 @@
 /* @flow */
 import React, { PropTypes, Component } from 'react'
-import { omit } from 'lodash'
+// import { omit } from 'lodash'
 
 import childrenType from './types/children'
 import mapType from './types/map'
@@ -99,6 +99,10 @@ export default class MapPane extends Component {
 
   render (): any {
     const { _isMounted } = this.state
-    return _isMounted ? <div style={{display: 'none'}}>{this.getChildren()}</div> : null
+    return _isMounted ? (
+      <div style={{position: 'absolute'}}>
+        {this.getChildren()}
+      </div>
+    ) : null
   }
 }
