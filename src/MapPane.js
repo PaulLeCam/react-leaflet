@@ -1,6 +1,6 @@
 /* @flow */
 import React, { PropTypes, Component } from 'react'
-// import { omit } from 'lodash'
+import { forEach } from 'lodash'
 
 import childrenType from './types/children'
 import mapType from './types/map'
@@ -12,6 +12,8 @@ export default class MapPane extends Component {
     children: childrenType,
     map: mapType,
     zIndex: PropTypes.number,
+    className: PropTypes.string,
+    style: PropTypes.object,
   };
 
   static contextTypes = {
@@ -49,10 +51,21 @@ export default class MapPane extends Component {
     }
   }
 
-  componentWillReceiveProps ({zIndex}) {
-    if (zIndex !== this.props.zIndex) {
-      const pane = this.getPane()
+  componentWillReceiveProps (props) {
+    this.setStyle(props)
+  }
+
+  setStyle ({ style, zIndex } = this.props) {
+    const pane = this.getPane()
+
+    if (pane) {
       pane.style.zIndex = zIndex || 'initial'
+
+      if (style) {
+        forEach(style, (value, key) => {
+          pane.style[key] = value
+        })
+      }
     }
   }
 
@@ -61,11 +74,7 @@ export default class MapPane extends Component {
       _isMounted: true,
     })
 
-    const pane = this.getPane()
-    const { zIndex } = this.props
-    if (pane && zIndex != null) {
-      pane.style.zIndex = zIndex
-    }
+    this.setStyle()
   }
 
   componentWillUnmount () {
