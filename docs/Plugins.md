@@ -15,3 +15,4 @@ A non-exhaustive list of plugins adding functionalities to React-Leaflet. Please
 - [`react-leaflet-pane`](https://www.npmjs.com/package/react-leaflet-pane)
 - [`react-leaflet-shapefile`](https://www.npmjs.com/package/react-leaflet-shapefile)
 - [`react-mapbox-components`](https://www.npmjs.com/package/react-mapbox-components)
+- [`react-leaflet-zoom-display`](https://www.npmjs.com/package/react-leaflet-zoom-display)
