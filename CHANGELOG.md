@@ -1,3 +1,7 @@
+## v0.12.3 (2016-09-21)
+
+Fixed events bindind in UMD build.
+
 ## v0.12.2 (2016-09-09)
 
 - Updated propTypes to allow polygons with holes in `MultiPolygon` ([PR #218](https://github.com/PaulLeCam/react-leaflet/pull/218) by *ernoaapa*).

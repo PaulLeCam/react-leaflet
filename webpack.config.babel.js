@@ -4,6 +4,11 @@ import LodashModuleReplacementPlugin from 'lodash-webpack-plugin'
 
 const outputPath = path.resolve(__dirname, 'dist')
 
+const lodashFeatures = {
+  caching: true,
+  collections: true,
+}
+
 const config = {
   entry: {
     lib: './src/index',
@@ -54,7 +59,7 @@ export default [
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify('development'),
       }),
-      new LodashModuleReplacementPlugin(),
+      new LodashModuleReplacementPlugin(lodashFeatures),
     ],
   },
   {
@@ -69,7 +74,7 @@ export default [
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify('production'),
       }),
-      new LodashModuleReplacementPlugin(),
+      new LodashModuleReplacementPlugin(lodashFeatures),
       new webpack.optimize.UglifyJsPlugin({
         compress: {
           dead_code: true,
