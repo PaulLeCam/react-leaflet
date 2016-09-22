@@ -1,6 +1,6 @@
 /* @flow */
 import React, { PropTypes, Component } from 'react'
-import { forEach, omit } from 'lodash'
+import { forEach, omit, uniqueId } from 'lodash'
 
 import childrenType from './types/children'
 import mapType from './types/map'
@@ -8,7 +8,7 @@ import paneType from './types/pane'
 
 export default class MapPane extends Component {
   static propTypes = {
-    name: PropTypes.string.isRequired,
+    name: PropTypes.string,
     children: childrenType,
     map: mapType,
     zIndex: PropTypes.number,
@@ -25,28 +25,29 @@ export default class MapPane extends Component {
   };
 
   constructor () {
-    super()
+    super({name})
 
     this.state = {
       _isMounted: false,
     }
+
+    this._name = name || uniqueId()
   }
 
   getChildContext () {
     return {
-      pane: this.props.name,
+      pane: this._name,
     }
   }
 
   componentWillMount () {
-    const { name } = this.props
     const map = this.context.map || this.props.map
 
     if (name && map && map.createPane) {
       const existing = this.getPane()
 
       if (!existing) {
-        map.createPane(name)
+        map.createPane(this._name)
       }
     }
   }
@@ -83,20 +84,18 @@ export default class MapPane extends Component {
     pane.remove()
 
     const map = this.context.map || this.props.map
-    const { name } = this.props
 
-    if (name && map && map._panes) {
-      map._panes = omit(map._panes, name)
-      map._paneRenderers = omit(map._paneRenderers, name)
+    if (this._name && map && map._panes) {
+      map._panes = omit(map._panes, this._name)
+      map._paneRenderers = omit(map._paneRenderers, this._name)
     }
   }
 
   getPane () {
-    const { name } = this.props
     const map = this.context.map || this.props.map
 
-    if (name && map && map) {
-      return map.getPane(name)
+    if (this._name && map && map) {
+      return map.getPane(this._name)
     }
 
     return null
