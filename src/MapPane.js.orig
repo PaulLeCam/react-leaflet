@@ -1,6 +1,6 @@
 /* @flow */
 import React, { PropTypes, Component } from 'react'
-import { forEach } from 'lodash'
+// import { omit } from 'lodash'
 
 import childrenType from './types/children'
 import mapType from './types/map'
@@ -12,8 +12,6 @@ export default class MapPane extends Component {
     children: childrenType,
     map: mapType,
     zIndex: PropTypes.number,
-    className: PropTypes.string,
-    style: PropTypes.object,
   };
 
   static contextTypes = {
@@ -51,21 +49,10 @@ export default class MapPane extends Component {
     }
   }
 
-  componentWillReceiveProps (props) {
-    this.setStyle(props)
-  }
-
-  setStyle ({ style, zIndex } = this.props) {
-    const pane = this.getPane()
-
-    if (pane) {
+  componentWillReceiveProps ({zIndex}) {
+    if (zIndex !== this.props.zIndex) {
+      const pane = this.getPane()
       pane.style.zIndex = zIndex || 'initial'
-
-      if (style) {
-        forEach(style, (value, key) => {
-          pane.style[key] = value
-        })
-      }
     }
   }
 
@@ -74,21 +61,23 @@ export default class MapPane extends Component {
       _isMounted: true,
     })
 
-    this.setStyle()
+    const pane = this.getPane()
+    const { zIndex } = this.props
+    if (pane && zIndex != null) {
+      pane.style.zIndex = zIndex
+    }
   }
 
   componentWillUnmount () {
-    const pane = this.getPane()
-    pane && pane.remove &&
-    pane.remove()
-
-    const map = this.context.map || this.props.map
-    const { name } = this.props
-
-    if (name && map && map._panes) {
-      map._panes = omit(map._panes, name)
-      map._paneRenderers = omit(map._paneRenderers, name)
-    }
+    // const pane = this.getPane()
+    // pane && pane.remove && pane.remove()
+    //
+    // const map = this.context.map || this.props.map
+    // const { name } = this.props
+    //
+    // if (name && map && map._panes) {
+    //   map._panes = omit(map._panes, name)
+    // }
   }
 
   getPane () {
@@ -111,6 +100,7 @@ export default class MapPane extends Component {
   render (): any {
     const { _isMounted } = this.state
     return _isMounted ? (
+<<<<<<< HEAD
       <div style={{
         position: 'absolute',
         top: 0,
@@ -118,6 +108,9 @@ export default class MapPane extends Component {
         bottom: 0,
         left: 0,
       }}>
+=======
+      <div style={{position: 'absolute'}}>
+>>>>>>> ac8e65aeff77ac422960c1e56100440b5ae9b8ee
         {this.getChildren()}
       </div>
     ) : null
