@@ -26,8 +26,8 @@ export default class MapPane extends Component {
     pane: paneType,
   };
 
-  constructor () {
-    super({name})
+  constructor ({name}) {
+    super()
 
     this.state = {
       _isMounted: false,
