@@ -7,6 +7,7 @@ import { render, unmountComponentAtNode } from 'react-dom'
 import latlngType from './types/latlng'
 import mapType from './types/map'
 import MapComponent from './MapComponent'
+import paneType from './types/pane'
 
 export default class Popup extends MapComponent {
   static propTypes = {
@@ -17,13 +18,18 @@ export default class Popup extends MapComponent {
   static contextTypes = {
     map: mapType,
     popupContainer: PropTypes.object,
+    pane: paneType,
   };
 
   componentWillMount () {
     super.componentWillMount()
     const { children: _children, ...props } = this.props
 
-    this.leafletElement = createPopup(props, this.context.popupContainer)
+    this.leafletElement = createPopup({
+      ...props,
+      pane: this.context.pane,
+    }, this.context.popupContainer)
+
     this.context.map.on({
       popupopen: this.onPopupOpen,
       popupclose: this.onPopupClose,

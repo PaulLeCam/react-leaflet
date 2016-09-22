@@ -13,7 +13,10 @@ export default class TileLayer extends GridLayer {
   componentWillMount () {
     super.componentWillMount()
     const { url, ...props } = this.props
-    this.leafletElement = tileLayer(url, props)
+    this.leafletElement = tileLayer(url, {
+      ...props,
+      pane: this.context.pane,
+    })
   }
 
   componentDidUpdate (prevProps: Object) {

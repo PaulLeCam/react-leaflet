@@ -1,10 +1,12 @@
 /* @flow */
 import React, { PropTypes, Component } from 'react'
-import { forEach, omit, uniqueId } from 'lodash'
+import { forEach, omit, uniqueId, indexOf } from 'lodash'
 
 import childrenType from './types/children'
 import mapType from './types/map'
 import paneType from './types/pane'
+
+const BLACKLIST = ['tile', 'shadow', 'overlay', 'map', 'marker', 'tooltip', 'popup']
 
 export default class MapPane extends Component {
   static propTypes = {
@@ -79,6 +81,18 @@ export default class MapPane extends Component {
   }
 
   componentWillUnmount () {
+    const { name } = this.props
+
+    if (name) {
+      const _name = (name + '').replace(/-*pane/gi, '')
+
+      if (indexOf(BLACKLIST, _name)) {
+        // Don't remove panes created by leaflet
+        return
+      }
+    }
+
+    // Remove the created pane
     const pane = this.getPane()
     pane && pane.remove &&
     pane.remove()

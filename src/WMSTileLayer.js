@@ -13,6 +13,9 @@ export default class WMSTileLayer extends GridLayer {
   componentWillMount () {
     super.componentWillMount()
     const { url, ...props } = this.props
-    this.leafletElement = tileLayer.wms(url, props)
+    this.leafletElement = tileLayer.wms(url, {
+      ...props,
+      pane: this.context.pane,
+    })
   }
 }

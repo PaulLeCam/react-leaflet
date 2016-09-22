@@ -20,7 +20,10 @@ export default class Polygon extends Path {
   componentWillMount () {
     super.componentWillMount()
     const { positions, ...props } = this.props
-    this.leafletElement = polygon(positions, props)
+    this.leafletElement = polygon(positions, {
+      ...props,
+      pane: this.context.pane,
+    })
   }
 
   componentDidUpdate (prevProps: Object) {

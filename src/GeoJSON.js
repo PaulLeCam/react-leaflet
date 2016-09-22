@@ -4,18 +4,11 @@ import { geoJSON } from 'leaflet'
 import { isFunction } from 'lodash'
 import { PropTypes } from 'react'
 
-import paneType from './types/pane'
-
 import Path from './Path'
 
 export default class GeoJSON extends Path {
   static propTypes = {
     data: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
-  };
-
-  static contextTypes = {
-    ...(Path.contextTypes || {}),
-    pane: paneType,
   };
 
   componentWillMount () {
