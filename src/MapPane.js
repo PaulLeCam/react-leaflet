@@ -86,7 +86,7 @@ export default class MapPane extends Component {
     if (name) {
       const _name = (name + '').replace(/-*pane/gi, '')
 
-      if (indexOf(BLACKLIST, _name)) {
+      if (indexOf(BLACKLIST, _name) >= 0) {
         // Don't remove panes created by leaflet
         return
       }
