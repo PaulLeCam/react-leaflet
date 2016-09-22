@@ -33,7 +33,7 @@ export default class MapPane extends Component {
       _isMounted: false,
     }
 
-    this._name = name || uniqueId()
+    this._name = name || `pane-${uniqueId()}`
   }
 
   getChildContext () {
@@ -45,7 +45,7 @@ export default class MapPane extends Component {
   componentWillMount () {
     const map = this.context.map || this.props.map
 
-    if (name && map && map.createPane) {
+    if (this._name && map && map.createPane) {
       const existing = this.getPane()
 
       if (!existing) {
