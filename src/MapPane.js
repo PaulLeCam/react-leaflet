@@ -1,6 +1,6 @@
 /* @flow */
 import React, { PropTypes, Component } from 'react'
-import { forEach } from 'lodash'
+import { forEach, omit } from 'lodash'
 
 import childrenType from './types/children'
 import mapType from './types/map'
