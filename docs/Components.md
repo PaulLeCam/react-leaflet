@@ -84,7 +84,7 @@ This is the top-level component that must be mounted for children ones to be ren
 **Other properties**
 - `id: string` (optional): The ID of the `<div>` container for the map. If you don't provide it, a unique one will be created.
 
-## MapPane
+## Map Pane
 **Dynamic properties**
 - `name: string` (optional)
 - `zIndex: number` (optional)
