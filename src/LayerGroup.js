@@ -19,8 +19,6 @@ export default class LayerGroup extends MapLayer {
 
   componentWillMount () {
     super.componentWillMount()
-    this.leafletElement = layerGroup({
-      pane: this.context.pane,
-    })
+    this.leafletElement = layerGroup(this.getInstanceOptions())
   }
 }

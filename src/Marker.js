@@ -27,10 +27,7 @@ export default class Marker extends MapLayer {
   componentWillMount () {
     super.componentWillMount()
     const { position, ...props } = this.props
-    this.leafletElement = marker(position, {
-      ...props,
-      pane: this.context.pane,
-    })
+    this.leafletElement = marker(position, this.getInstanceOptions(props))
   }
 
   componentDidUpdate (prevProps: Object) {

@@ -14,10 +14,7 @@ export default class GeoJSON extends Path {
   componentWillMount () {
     super.componentWillMount()
     const { data, ...props } = this.props
-    this.leafletElement = geoJSON(data, {
-      ...props,
-      pane: this.context.pane,
-    })
+    this.leafletElement = geoJSON(data, this.getInstanceOptions(props))
   }
 
   componentDidUpdate (prevProps: Object) {
