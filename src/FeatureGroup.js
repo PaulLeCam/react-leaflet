@@ -20,7 +20,7 @@ export default class FeatureGroup extends Path {
   }
 
   componentWillMount () {
-    this.leafletElement = featureGroup(this.getInstanceOptions(props))
+    this.leafletElement = featureGroup(this.getInstanceOptions(this.props))
   }
 
   componentDidMount () {
