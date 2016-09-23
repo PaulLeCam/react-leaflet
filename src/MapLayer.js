@@ -5,6 +5,7 @@ import React from 'react'
 import childrenType from './types/children'
 import layerContainerType from './types/layerContainer'
 import mapType from './types/map'
+import paneType from './types/pane'
 
 import MapComponent from './MapComponent'
 
@@ -16,6 +17,7 @@ export default class MapLayer extends MapComponent {
   static contextTypes = {
     layerContainer: layerContainerType,
     map: mapType,
+    pane: paneType,
   };
 
   get layerContainer (): Object {

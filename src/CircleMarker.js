@@ -15,7 +15,7 @@ export default class CircleMarker extends Path {
   componentWillMount () {
     super.componentWillMount()
     const { center, ...props } = this.props
-    this.leafletElement = circleMarker(center, props)
+    this.leafletElement = circleMarker(center, this.getInstanceOptions(props))
   }
 
   componentDidUpdate (prevProps: Object) {
