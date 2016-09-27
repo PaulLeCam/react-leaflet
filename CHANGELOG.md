@@ -21,6 +21,15 @@
 - Added `GridLayer`.
 - Added `useFlyTo: bool` property to `Map` to use `flyTo` instead of `setView` and `flyToBounds` instead of `fitBounds` when changing the map's view or bounds ([PR #148](https://github.com/PaulLeCam/react-leaflet/pull/192) by *jgimbel*).
 
+## v0.12.3 (2016-09-21)
+
+Fixed events bindind in UMD build.
+
+## v0.12.2 (2016-09-09)
+
+- Updated propTypes to allow polygons with holes in `MultiPolygon` ([PR #218](https://github.com/PaulLeCam/react-leaflet/pull/218) by *ernoaapa*).
+- Fixed badly named `ScaleControl` class.
+
 ## v0.12.1 (2016-07-08)
 
 - Fixed unmounting `LayersControl` when the `Map` is unmounting as well.
