@@ -16,10 +16,12 @@ export default class MapPane extends Component {
     zIndex: PropTypes.number,
     className: PropTypes.string,
     style: PropTypes.object,
+    pane: paneType,
   };
 
   static contextTypes = {
     map: mapType,
+    pane: paneType,
   };
 
   static childContextTypes = {
@@ -49,7 +51,7 @@ export default class MapPane extends Component {
       const existing = this.getPane()
 
       if (!existing) {
-        map.createPane(this._name)
+        map.createPane(this._name, this.getParentPane())
       }
     }
   }
@@ -105,6 +107,20 @@ export default class MapPane extends Component {
     }
   }
 
+  getParentPane () {
+    const pane = this.props.pane || this.context.pane
+
+    if (pane) {
+      const map = this.context.map || this.props.map
+
+      if (map) {
+        return map.getPane(pane) || null
+      }
+    }
+
+    return null
+  }
+
   getPane () {
     const map = this.context.map || this.props.map
 
@@ -117,6 +133,10 @@ export default class MapPane extends Component {
 
   getChildren () {
     return React.Children.map(this.props.children, child => {
+      if (child.type === MapPane) {
+        return child
+      }
+
       return child ? React.cloneElement(child, this.props) : null
     })
   }
