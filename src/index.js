@@ -1,5 +1,3 @@
-import Leaflet from 'leaflet'
-
 export * as PropTypes from './types'
 
 export AttributionControl from './AttributionControl'
@@ -26,9 +24,3 @@ export TileLayer from './TileLayer'
 export Tooltip from './Tooltip'
 export WMSTileLayer from './WMSTileLayer'
 export ZoomControl from './ZoomControl'
-
-export const setIconDefaultImagePath = path => {
-  Leaflet.Icon.Default.imagePath = path
-}
-
-setIconDefaultImagePath('//cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.0-rc.3/images')

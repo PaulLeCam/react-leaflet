@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("leaflet"), require("react"), require("react-dom"));
+		module.exports = factory(require("react"), require("leaflet"), require("react-dom"));
 	else if(typeof define === 'function' && define.amd)
-		define(["leaflet", "react", "react-dom"], factory);
+		define(["react", "leaflet", "react-dom"], factory);
 	else if(typeof exports === 'object')
-		exports["ReactLeaflet"] = factory(require("leaflet"), require("react"), require("react-dom"));
+		exports["ReactLeaflet"] = factory(require("react"), require("leaflet"), require("react-dom"));
 	else
-		root["ReactLeaflet"] = factory(root["L"], root["React"], root["ReactDOM"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_1__, __WEBPACK_EXTERNAL_MODULE_4__, __WEBPACK_EXTERNAL_MODULE_130__) {
+		root["ReactLeaflet"] = factory(root["React"], root["L"], root["ReactDOM"]);
+})(this, function(__WEBPACK_EXTERNAL_MODULE_3__, __WEBPACK_EXTERNAL_MODULE_4__, __WEBPACK_EXTERNAL_MODULE_130__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -59,13 +59,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.setIconDefaultImagePath = exports.ZoomControl = exports.WMSTileLayer = exports.Tooltip = exports.TileLayer = exports.ScaleControl = exports.Rectangle = exports.Popup = exports.Polyline = exports.Polygon = exports.Path = exports.Marker = exports.MapLayer = exports.MapControl = exports.MapComponent = exports.Map = exports.LayersControl = exports.LayerGroup = exports.ImageOverlay = exports.GridLayer = exports.GeoJSON = exports.FeatureGroup = exports.CircleMarker = exports.Circle = exports.AttributionControl = exports.PropTypes = undefined;
+	exports.ZoomControl = exports.WMSTileLayer = exports.Tooltip = exports.TileLayer = exports.ScaleControl = exports.Rectangle = exports.Popup = exports.Polyline = exports.Polygon = exports.Path = exports.Marker = exports.MapLayer = exports.MapControl = exports.MapComponent = exports.Map = exports.LayersControl = exports.LayerGroup = exports.ImageOverlay = exports.GridLayer = exports.GeoJSON = exports.FeatureGroup = exports.CircleMarker = exports.Circle = exports.AttributionControl = exports.PropTypes = undefined;
 
-	var _leaflet = __webpack_require__(1);
-
-	var _leaflet2 = _interopRequireDefault(_leaflet);
-
-	var _types = __webpack_require__(2);
+	var _types = __webpack_require__(1);
 
 	var _PropTypes = _interopRequireWildcard(_types);
 
@@ -165,9 +161,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _ZoomControl3 = _interopRequireDefault(_ZoomControl2);
 
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 	exports.PropTypes = _PropTypes;
 	exports.AttributionControl = _AttributionControl3.default;
@@ -194,20 +190,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.Tooltip = _Tooltip3.default;
 	exports.WMSTileLayer = _WMSTileLayer3.default;
 	exports.ZoomControl = _ZoomControl3.default;
-	var setIconDefaultImagePath = exports.setIconDefaultImagePath = function setIconDefaultImagePath(path) {
-	  _leaflet2.default.Icon.Default.imagePath = path;
-	};
-
-	setIconDefaultImagePath('//cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.0-rc.3/images');
 
 /***/ },
 /* 1 */
-/***/ function(module, exports) {
-
-	module.exports = __WEBPACK_EXTERNAL_MODULE_1__;
-
-/***/ },
-/* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -217,7 +202,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.map = exports.layerContainer = exports.latlngList = exports.latlng = exports.controlPosition = exports.children = exports.bounds = undefined;
 
-	var _bounds2 = __webpack_require__(3);
+	var _bounds2 = __webpack_require__(2);
 
 	var _bounds3 = _interopRequireDefault(_bounds2);
 
@@ -256,7 +241,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.map = _map3.default;
 
 /***/ },
-/* 3 */
+/* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -265,9 +250,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _react = __webpack_require__(4);
+	var _react = __webpack_require__(3);
 
-	var _leaflet = __webpack_require__(1);
+	var _leaflet = __webpack_require__(4);
 
 	var _latlngList = __webpack_require__(5);
 
@@ -276,6 +261,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.default = _react.PropTypes.oneOfType([_react.PropTypes.instanceOf(_leaflet.LatLngBounds), _latlngList2.default]);
+
+/***/ },
+/* 3 */
+/***/ function(module, exports) {
+
+	module.exports = __WEBPACK_EXTERNAL_MODULE_3__;
 
 /***/ },
 /* 4 */
@@ -293,7 +284,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _react = __webpack_require__(4);
+	var _react = __webpack_require__(3);
 
 	var _latlng = __webpack_require__(6);
 
@@ -313,7 +304,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _react = __webpack_require__(4);
+	var _react = __webpack_require__(3);
 
 	exports.default = _react.PropTypes.oneOfType([
 	// [Number, Number]
@@ -339,7 +330,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _react = __webpack_require__(4);
+	var _react = __webpack_require__(3);
 
 	exports.default = _react.PropTypes.oneOfType([_react.PropTypes.arrayOf(_react.PropTypes.node), _react.PropTypes.node]);
 
@@ -353,7 +344,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _react = __webpack_require__(4);
+	var _react = __webpack_require__(3);
 
 	exports.default = _react.PropTypes.oneOf(['topleft', 'topright', 'bottomleft', 'bottomright']);
 
@@ -367,7 +358,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _react = __webpack_require__(4);
+	var _react = __webpack_require__(3);
 
 	exports.default = _react.PropTypes.shape({
 	  addLayer: _react.PropTypes.func.isRequired,
@@ -384,9 +375,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _leaflet = __webpack_require__(1);
+	var _leaflet = __webpack_require__(4);
 
-	var _react = __webpack_require__(4);
+	var _react = __webpack_require__(3);
 
 	exports.default = _react.PropTypes.instanceOf(_leaflet.Map);
 
@@ -402,9 +393,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _leaflet = __webpack_require__(1);
+	var _leaflet = __webpack_require__(4);
 
-	var _react = __webpack_require__(4);
+	var _react = __webpack_require__(3);
 
 	var _MapControl2 = __webpack_require__(12);
 
@@ -454,7 +445,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _react = __webpack_require__(4);
+	var _react = __webpack_require__(3);
 
 	var _controlPosition = __webpack_require__(8);
 
@@ -530,9 +521,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-	var _leaflet = __webpack_require__(1);
+	var _leaflet = __webpack_require__(4);
 
-	var _react = __webpack_require__(4);
+	var _react = __webpack_require__(3);
 
 	var _latlng = __webpack_require__(6);
 
@@ -615,7 +606,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _react = __webpack_require__(4);
+	var _react = __webpack_require__(3);
 
 	var _MapLayer2 = __webpack_require__(73);
 
@@ -2461,7 +2452,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-	var _react = __webpack_require__(4);
+	var _react = __webpack_require__(3);
 
 	var _react2 = _interopRequireDefault(_react);
 
@@ -2566,7 +2557,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _react = __webpack_require__(4);
+	var _react = __webpack_require__(3);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3771,9 +3762,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-	var _leaflet = __webpack_require__(1);
+	var _leaflet = __webpack_require__(4);
 
-	var _react = __webpack_require__(4);
+	var _react = __webpack_require__(3);
 
 	var _latlng = __webpack_require__(6);
 
@@ -3849,9 +3840,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-	var _leaflet = __webpack_require__(1);
+	var _leaflet = __webpack_require__(4);
 
-	var _react = __webpack_require__(4);
+	var _react = __webpack_require__(3);
 
 	var _layerContainer = __webpack_require__(9);
 
@@ -3931,9 +3922,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-	var _leaflet = __webpack_require__(1);
+	var _leaflet = __webpack_require__(4);
 
-	var _react = __webpack_require__(4);
+	var _react = __webpack_require__(3);
 
 	var _Path2 = __webpack_require__(14);
 
@@ -4002,9 +3993,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-	var _leaflet = __webpack_require__(1);
+	var _leaflet = __webpack_require__(4);
 
-	var _react = __webpack_require__(4);
+	var _react = __webpack_require__(3);
 
 	var _MapLayer2 = __webpack_require__(73);
 
@@ -4077,11 +4068,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-	var _leaflet = __webpack_require__(1);
+	var _leaflet = __webpack_require__(4);
 
-	var _react = __webpack_require__(4);
+	var _react = __webpack_require__(3);
 
-	var _bounds = __webpack_require__(3);
+	var _bounds = __webpack_require__(2);
 
 	var _bounds2 = _interopRequireDefault(_bounds);
 
@@ -4162,7 +4153,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-	var _leaflet = __webpack_require__(1);
+	var _leaflet = __webpack_require__(4);
 
 	var _layerContainer = __webpack_require__(9);
 
@@ -4226,9 +4217,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _leaflet = __webpack_require__(1);
+	var _leaflet = __webpack_require__(4);
 
-	var _react = __webpack_require__(4);
+	var _react = __webpack_require__(3);
 
 	var _react2 = _interopRequireDefault(_react);
 
@@ -4508,15 +4499,15 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-	var _leaflet = __webpack_require__(1);
+	var _leaflet = __webpack_require__(4);
 
 	var _leaflet2 = _interopRequireDefault(_leaflet);
 
-	var _react = __webpack_require__(4);
+	var _react = __webpack_require__(3);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _bounds = __webpack_require__(3);
+	var _bounds = __webpack_require__(2);
 
 	var _bounds2 = _interopRequireDefault(_bounds);
 
@@ -5042,9 +5033,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-	var _leaflet = __webpack_require__(1);
+	var _leaflet = __webpack_require__(4);
 
-	var _react = __webpack_require__(4);
+	var _react = __webpack_require__(3);
 
 	var _latlng = __webpack_require__(6);
 
@@ -5149,9 +5140,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-	var _leaflet = __webpack_require__(1);
+	var _leaflet = __webpack_require__(4);
 
-	var _react = __webpack_require__(4);
+	var _react = __webpack_require__(3);
 
 	var _latlngList = __webpack_require__(5);
 
@@ -5225,9 +5216,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-	var _leaflet = __webpack_require__(1);
+	var _leaflet = __webpack_require__(4);
 
-	var _react = __webpack_require__(4);
+	var _react = __webpack_require__(3);
 
 	var _latlngList = __webpack_require__(5);
 
@@ -5299,9 +5290,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-	var _leaflet = __webpack_require__(1);
+	var _leaflet = __webpack_require__(4);
 
-	var _react = __webpack_require__(4);
+	var _react = __webpack_require__(3);
 
 	var _reactDom = __webpack_require__(130);
 
@@ -5467,9 +5458,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-	var _leaflet = __webpack_require__(1);
+	var _leaflet = __webpack_require__(4);
 
-	var _bounds = __webpack_require__(3);
+	var _bounds = __webpack_require__(2);
 
 	var _bounds2 = _interopRequireDefault(_bounds);
 
@@ -5537,9 +5528,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _leaflet = __webpack_require__(1);
+	var _leaflet = __webpack_require__(4);
 
-	var _react = __webpack_require__(4);
+	var _react = __webpack_require__(3);
 
 	var _MapControl2 = __webpack_require__(12);
 
@@ -5594,9 +5585,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-	var _leaflet = __webpack_require__(1);
+	var _leaflet = __webpack_require__(4);
 
-	var _react = __webpack_require__(4);
+	var _react = __webpack_require__(3);
 
 	var _GridLayer2 = __webpack_require__(110);
 
@@ -5666,9 +5657,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-	var _leaflet = __webpack_require__(1);
+	var _leaflet = __webpack_require__(4);
 
-	var _react = __webpack_require__(4);
+	var _react = __webpack_require__(3);
 
 	var _reactDom = __webpack_require__(130);
 
@@ -5800,9 +5791,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
-	var _leaflet = __webpack_require__(1);
+	var _leaflet = __webpack_require__(4);
 
-	var _react = __webpack_require__(4);
+	var _react = __webpack_require__(3);
 
 	var _GridLayer2 = __webpack_require__(110);
 
@@ -5860,9 +5851,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _leaflet = __webpack_require__(1);
+	var _leaflet = __webpack_require__(4);
 
-	var _react = __webpack_require__(4);
+	var _react = __webpack_require__(3);
 
 	var _MapControl2 = __webpack_require__(12);
 

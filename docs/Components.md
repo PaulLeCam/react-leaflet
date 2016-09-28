@@ -23,9 +23,7 @@ You can directly access the Leaflet element created by a component using `this.l
   - [Circle](#circle)
   - [CircleMarker](#circlemarker)
   - [Polyline](#polyline)
-  - [MultiPolyline](#multipolyline)
   - [Polygon](#polygon)
-  - [MultiPolygon](#multipolygon)
   - [Rectangle](#rectangle)
 - [Other Layers](#other-layers)
   - [FeatureGroup](#featuregroup)
@@ -159,28 +157,14 @@ All vector layers extend the **Path** component and therefore accept dynamic [Pa
 [Leaflet reference](http://leafletjs.com/reference.html#polyline)
 
 **Dynamic properties**
-- `positions: latLngList` (required)
-
-### MultiPolyline
-
-[Leaflet reference](http://leafletjs.com/reference.html#multipolyline)
-
-**Dynamic properties**
-- `polylines: Array<latLngList>` (required)
+- `positions: latLngList | latLngList[]` (required)
 
 ### Polygon
 
 [Leaflet reference](http://leafletjs.com/reference.html#polygon)
 
 **Dynamic properties**
-- `positions: latLngList | Array<latLngList>` (required)
-
-### MultiPolygon
-
-[Leaflet reference](http://leafletjs.com/reference.html#multipolygon)
-
-**Dynamic properties**
-- `polygons: Array<latLngList>` (required)
+- `positions: latLngList | latLngList[] | latLngList[][]` (required)
 
 ### Rectangle
 

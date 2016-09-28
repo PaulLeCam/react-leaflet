@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <title>React-Leaflet UMD example</title>
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.2/normalize.min.css">
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css">
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.0/leaflet.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.0/leaflet.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.15.0/babel.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react-dom.js"></script>
@@ -24,8 +24,6 @@
   <body>
     <div id="container"></div>
     <script type="text/babel" data-presets="es2015,react">
-      window.ReactLeaflet.setIconDefaultImagePath('http://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images')
-
       const React = window.React
       const { Map, TileLayer, Marker, Popup } = window.ReactLeaflet
 

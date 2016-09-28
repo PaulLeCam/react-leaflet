@@ -1,6 +1,12 @@
+## v1.0.0-rc.1 (2016-09-28)
+
+- [BREAKING] Removed `setIconDefaultImagePath()` helper, set `Leaflet.Icon.Default.imagePath` directly using Leaflet if you need.
+- Updated Leaflet dependency requirement to v1.0.0.
+- `Leaflet.Icon.Default.imagePath` is no longer set by default, as per Leaflet v1.0.0 it should be auto-detected.
+
 ## v1.0.0-beta.3 (2016-08-26)
 
-- Fixed `Tooltip` removal handling.
+Fixed `Tooltip` removal handling.
 
 ## v1.0.0-beta.2 (2016-08-20)
 
@@ -43,7 +49,7 @@ Fixed events bindind in UMD build.
 
 ## v0.11.7 (2016-06-14)
 
-- Fixed removing layers from `LayersControl`.
+Fixed removing layers from `LayersControl`.
 
 ## v0.11.6 (2016-06-09)
 
