@@ -1,9 +1,5 @@
 # API
 
-## Helpers
-
-**setIconDefaultImagePath(path: string)**: Setter for `Leaflet.Icon.Default.imagePath`, set to `//cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.0-rc.2/images` by default.
-
 ## PropTypes
 
 The following PropTypes are exported in the `PropTypes` object.

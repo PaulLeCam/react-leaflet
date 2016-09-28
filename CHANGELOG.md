@@ -1,6 +1,12 @@
+## v1.0.0-rc.1 (2016-09-28)
+
+- [BREAKING] Removed `setIconDefaultImagePath()` helper, set `Leaflet.Icon.Default.imagePath` directly using Leaflet if you need.
+- Updated Leaflet dependency requirement to v1.0.0.
+- `Leaflet.Icon.Default.imagePath` is no longer set by default, as per Leaflet v1.0.0 it should be auto-detected.
+
 ## v1.0.0-beta.3 (2016-08-26)
 
-- Fixed `Tooltip` removal handling.
+Fixed `Tooltip` removal handling.
 
 ## v1.0.0-beta.2 (2016-08-20)
 
@@ -21,6 +27,15 @@
 - Added `GridLayer`.
 - Added `useFlyTo: bool` property to `Map` to use `flyTo` instead of `setView` and `flyToBounds` instead of `fitBounds` when changing the map's view or bounds ([PR #148](https://github.com/PaulLeCam/react-leaflet/pull/192) by *jgimbel*).
 
+## v0.12.3 (2016-09-21)
+
+Fixed events bindind in UMD build.
+
+## v0.12.2 (2016-09-09)
+
+- Updated propTypes to allow polygons with holes in `MultiPolygon` ([PR #218](https://github.com/PaulLeCam/react-leaflet/pull/218) by *ernoaapa*).
+- Fixed badly named `ScaleControl` class.
+
 ## v0.12.1 (2016-07-08)
 
 - Fixed unmounting `LayersControl` when the `Map` is unmounting as well.
@@ -34,7 +49,7 @@
 
 ## v0.11.7 (2016-06-14)
 
-- Fixed removing layers from `LayersControl`.
+Fixed removing layers from `LayersControl`.
 
 ## v0.11.6 (2016-06-09)
 

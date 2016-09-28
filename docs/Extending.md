@@ -27,8 +27,6 @@ Make sure to read the [how it works page](How%20it%20works.md) of this documenta
         - [`CircleMarker`](Components.md#circlemarker)
         - [`FeatureGroup`](Components.md#featuregroup)
         - [`GeoJson`](Components.md#geojson)
-        - [`MultiPolygon`](Components.md#multipolygon)
-        - [`MultiPolyline`](Components.md#multipolyline)
         - [`Polygon`](Components.md#polygon)
         - [`Polyline`](Components.md#polyline)
         - [`Rectangle`](Components.md#rectangle)
