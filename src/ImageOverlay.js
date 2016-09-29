@@ -17,7 +17,7 @@ export default class ImageOverlay extends MapLayer {
   componentWillMount () {
     super.componentWillMount()
     const { bounds, url, ...props } = this.props
-    this.leafletElement = imageOverlay(url, bounds, this.getInstanceOptions(props))
+    this.leafletElement = imageOverlay(url, bounds, this.getOptions(props))
   }
 
   componentDidUpdate (prevProps: Object) {

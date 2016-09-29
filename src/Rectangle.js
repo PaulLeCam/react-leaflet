@@ -13,7 +13,7 @@ export default class Rectangle extends Path {
   componentWillMount () {
     super.componentWillMount()
     const { bounds, ...props } = this.props
-    this.leafletElement = rectangle(bounds, this.getInstanceOptions(props))
+    this.leafletElement = rectangle(bounds, this.getOptions(props))
   }
 
   componentDidUpdate (prevProps: Object) {

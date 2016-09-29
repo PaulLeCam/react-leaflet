@@ -24,7 +24,7 @@ export default class Tooltip extends MapComponent {
     super.componentWillMount()
     const { children: _children, ...props } = this.props
 
-    this.leafletElement = createTooltip(this.getInstanceOptions(props), this.context.popupContainer)
+    this.leafletElement = createTooltip(this.getOptions(props), this.context.popupContainer)
 
     this.context.popupContainer.on({
       tooltipopen: this.onTooltipOpen,

@@ -17,7 +17,7 @@ export default class Polyline extends Path {
   componentWillMount () {
     super.componentWillMount()
     const { positions, ...props } = this.props
-    this.leafletElement = polyline(positions, this.getInstanceOptions(props))
+    this.leafletElement = polyline(positions, this.getOptions(props))
   }
 
   componentDidUpdate (prevProps: Object) {

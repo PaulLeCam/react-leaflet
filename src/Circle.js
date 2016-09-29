@@ -15,7 +15,7 @@ export default class Circle extends Path {
   componentWillMount () {
     super.componentWillMount()
     const { center, radius, ...props } = this.props
-    this.leafletElement = circle(center, radius, this.getInstanceOptions(props))
+    this.leafletElement = circle(center, radius, this.getOptions(props))
   }
 
   componentDidUpdate (prevProps: Object) {
