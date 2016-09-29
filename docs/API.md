@@ -30,7 +30,7 @@ Check Leaflet documentation for the events associated to each component.
   - [BaseTileLayer](Components.md#basetilelayer)
   - [Path](Components.md#path)
 - [Map](Components.md#map)
-- [MapPanes](Components.md#map-pane)
+- [Panes](Components.md#map-pane)
 - [UI Layers](Components.md#ui-layers)
   - [Marker](Components.md#marker)
   - [Popup](Components.md#popup)

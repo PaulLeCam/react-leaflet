@@ -11,7 +11,7 @@ You can directly access the Leaflet element created by a component using `this.l
   - [MapLayer](#maplayer)
   - [Path](#path)
 - [Map](#map)
-- [MapPane](#map-pane)
+- [Pane](#map-pane)
 - [UI Layers](#ui-layers)
   - [Marker](#marker)
   - [Popup](#popup)

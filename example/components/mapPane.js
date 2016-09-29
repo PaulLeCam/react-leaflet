@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { MapPane, TileLayer, Rectangle } from '../../src'
+import { Pane, TileLayer, Rectangle } from '../../src'
 
 const outer = [
   [50.505, -29.09],
@@ -10,7 +10,7 @@ const inner = [
   [53.505, 2.09],
 ]
 
-export default class MapPaneExample extends Component {
+export default class PaneExample extends Component {
   state = {
     bounds: outer,
   }
@@ -30,21 +30,21 @@ export default class MapPaneExample extends Component {
           attribution='&copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
         />
-        <MapPane name='cyan-rectangle'>
+        <Pane name='cyan-rectangle'>
           <Rectangle
             bounds={outer}
             zIndex={500}
             color={'Cyan'}
           />
-        </MapPane>
+        </Pane>
 
-        <MapPane name='yellow-rectangle'>
+        <Pane name='yellow-rectangle'>
           <Rectangle
             bounds={inner}
             color={'Yellow'}
             zIndex={499}
           />
-        </MapPane>
+        </Pane>
       </Map>
     )
   }
