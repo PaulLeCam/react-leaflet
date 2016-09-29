@@ -16,7 +16,7 @@ export default class MapLayer extends MapComponent {
   static contextTypes = {
     layerContainer: layerContainerType,
     map: mapType,
-    pane: PropTypes.string,
+    pane: React.PropTypes.string,
   };
 
   get layerContainer (): Object {
