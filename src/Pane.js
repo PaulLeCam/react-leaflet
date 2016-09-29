@@ -4,7 +4,6 @@ import { forEach, omit, uniqueId, indexOf } from 'lodash'
 
 import childrenType from './types/children'
 import mapType from './types/map'
-import paneType from './types/pane'
 
 const BLACKLIST = ['tile', 'shadow', 'overlay', 'map', 'marker', 'tooltip', 'popup']
 
@@ -16,16 +15,16 @@ export default class Pane extends Component {
     zIndex: PropTypes.number,
     className: PropTypes.string,
     style: PropTypes.object,
-    pane: paneType,
+    pane: PropTypes.string,
   };
 
   static contextTypes = {
     map: mapType,
-    pane: paneType,
+    pane: PropTypes.string,
   };
 
   static childContextTypes = {
-    pane: paneType,
+    pane: PropTypes.string,
   };
 
   constructor ({name}) {

@@ -7,7 +7,6 @@ import { render, unmountComponentAtNode } from 'react-dom'
 import latlngType from './types/latlng'
 import mapType from './types/map'
 import MapComponent from './MapComponent'
-import paneType from './types/pane'
 
 export default class Popup extends MapComponent {
   static propTypes = {
@@ -18,7 +17,7 @@ export default class Popup extends MapComponent {
   static contextTypes = {
     map: mapType,
     popupContainer: PropTypes.object,
-    pane: paneType,
+    pane: PropTypes.string,
   };
 
   componentWillMount () {

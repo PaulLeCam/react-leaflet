@@ -5,7 +5,6 @@ import { Children, PropTypes } from 'react'
 import { render, unmountComponentAtNode } from 'react-dom'
 
 import mapType from './types/map'
-import paneType from './types/pane'
 
 import MapComponent from './MapComponent'
 
@@ -17,7 +16,7 @@ export default class Tooltip extends MapComponent {
   static contextTypes = {
     map: mapType,
     popupContainer: PropTypes.object,
-    pane: paneType,
+    pane: PropTypes.string,
   };
 
   componentWillMount () {
