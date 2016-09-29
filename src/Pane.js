@@ -33,6 +33,8 @@ export default class Pane extends Component {
     this.state = {
       name: null,
     }
+
+    this.setStyle = this.setStyle.bind(this)
   }
 
   getChildContext () {
@@ -41,42 +43,25 @@ export default class Pane extends Component {
     }
   }
 
-  componentWillMount () {
+  componentDidMount () {
     const map = this.context.map || this.props.map
+    const name = this.props.name || `pane-${uniqueId()}`
 
-    if (this.state.name && map && map.createPane) {
+    if (map && map.createPane) {
       const existing = this.getPane()
 
       if (!existing) {
-        map.createPane(this.state.name, this.getParentPane())
+        map.createPane(name, this.getParentPane())
       }
+
+      this.setState({
+        name,
+      }, this.setStyle)
     }
   }
 
   componentWillReceiveProps (props) {
     this.setStyle(props)
-  }
-
-  setStyle ({ style, zIndex } = this.props) {
-    const pane = this.getPane()
-
-    if (pane) {
-      pane.style.zIndex = zIndex || 'initial'
-
-      if (style) {
-        forEach(style, (value, key) => {
-          pane.style[key] = value
-        })
-      }
-    }
-  }
-
-  componentDidMount () {
-    this.setState({
-      name: this.props.name || `pane-${uniqueId()}`,
-    })
-
-    this.setStyle()
   }
 
   componentWillUnmount () {
@@ -101,6 +86,20 @@ export default class Pane extends Component {
     if (this.state.name && map && map._panes) {
       map._panes = omit(map._panes, this.state.name)
       map._paneRenderers = omit(map._paneRenderers, this.state.name)
+    }
+  }
+
+  setStyle ({ style, zIndex } = this.props) {
+    const pane = this.getPane()
+
+    if (pane) {
+      pane.style.zIndex = zIndex || 'initial'
+
+      if (style) {
+        forEach(style, (value, key) => {
+          pane.style[key] = value
+        })
+      }
     }
   }
 
