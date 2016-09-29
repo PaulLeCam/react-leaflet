@@ -44,6 +44,15 @@ export default class PaneExample extends Component {
             color={'Yellow'}
             zIndex={499}
           />
+
+          {/* Nested Pane */}
+          <Pane name='purple-rectangle'>
+            <Rectangle
+              bounds={outer}
+              color={'Purple'}
+              zIndex={500}
+            />
+          </Pane>
         </Pane>
       </Map>
     )
