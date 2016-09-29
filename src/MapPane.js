@@ -8,7 +8,7 @@ import paneType from './types/pane'
 
 const BLACKLIST = ['tile', 'shadow', 'overlay', 'map', 'marker', 'tooltip', 'popup']
 
-export default class MapPane extends Component {
+export default class Pane extends Component {
   static propTypes = {
     name: PropTypes.string,
     children: childrenType,
@@ -133,7 +133,7 @@ export default class MapPane extends Component {
 
   getChildren () {
     return React.Children.map(this.props.children, child => {
-      if (child.type === MapPane) {
+      if (child.type === Pane) {
         return child
       }
 
