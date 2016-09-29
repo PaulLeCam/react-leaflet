@@ -27,30 +27,28 @@ export default class Pane extends Component {
     pane: PropTypes.string,
   };
 
-  constructor ({name}) {
+  constructor () {
     super()
 
     this.state = {
-      _isMounted: false,
+      name: null,
     }
-
-    this._name = name || `pane-${uniqueId()}`
   }
 
   getChildContext () {
     return {
-      pane: this._name,
+      pane: this.state.name,
     }
   }
 
   componentWillMount () {
     const map = this.context.map || this.props.map
 
-    if (this._name && map && map.createPane) {
+    if (this.state.name && map && map.createPane) {
       const existing = this.getPane()
 
       if (!existing) {
-        map.createPane(this._name, this.getParentPane())
+        map.createPane(this.state.name, this.getParentPane())
       }
     }
   }
@@ -75,7 +73,7 @@ export default class Pane extends Component {
 
   componentDidMount () {
     this.setState({
-      _isMounted: true,
+      name: this.props.name || `pane-${uniqueId()}`,
     })
 
     this.setStyle()
@@ -100,9 +98,9 @@ export default class Pane extends Component {
 
     const map = this.context.map || this.props.map
 
-    if (this._name && map && map._panes) {
-      map._panes = omit(map._panes, this._name)
-      map._paneRenderers = omit(map._paneRenderers, this._name)
+    if (this.state.name && map && map._panes) {
+      map._panes = omit(map._panes, this.state.name)
+      map._paneRenderers = omit(map._paneRenderers, this.state.name)
     }
   }
 
@@ -123,8 +121,8 @@ export default class Pane extends Component {
   getPane () {
     const map = this.context.map || this.props.map
 
-    if (this._name && map && map) {
-      return map.getPane(this._name)
+    if (this.state.name && map && map) {
+      return map.getPane(this.state.name)
     }
 
     return null
@@ -141,8 +139,7 @@ export default class Pane extends Component {
   }
 
   render (): any {
-    const { _isMounted } = this.state
-    return _isMounted ? (
+    return this.state.name ? (
       <div style={{
         position: 'absolute',
         top: 0,
