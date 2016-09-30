@@ -30,27 +30,28 @@ export default class PaneExample extends Component {
           attribution='&copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
         />
-        <Pane name='cyan-rectangle'>
+        <Pane name='cyan-rectangle' style={{
+          zIndex: 500,
+        }}>
           <Rectangle
             bounds={outer}
-            zIndex={500}
             color={'Cyan'}
           />
         </Pane>
 
-        <Pane name='yellow-rectangle'>
+        <Pane name='yellow-rectangle' style={{
+          zIndex: 499,
+        }}>
           <Rectangle
             bounds={inner}
             color={'Yellow'}
-            zIndex={499}
           />
 
           {/* Nested Pane */}
-          <Pane name='purple-rectangle'>
+          <Pane name='purple-rectangle' className={'purplePane-purplePane'}>
             <Rectangle
               bounds={outer}
               color={'Purple'}
-              zIndex={500}
             />
           </Pane>
         </Pane>
