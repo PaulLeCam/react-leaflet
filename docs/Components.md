@@ -84,9 +84,9 @@ This is the top-level component that must be mounted for children ones to be ren
 
 ## Pane
 **Dynamic properties**
-- `name: string` (optional, can be a default leaflet pane like 'popupPane' or 'tilePane')
-- `style: object` (optional, ignored for default leaflet panes)
-- `className: string` (optional, ignored for default leaflet panes)
+- `name: string` (optional): Names of default leaflet panes are blacklisted.
+- `style: object` (optional): style property of the pane's `<div>`
+- `className: string` (optional):  className property of the pane's `<div>`
 
 [Leaflet reference](http://leafletjs.com/examples/map-panes.html)
 
