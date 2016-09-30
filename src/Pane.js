@@ -106,11 +106,6 @@ export default class Pane extends Component {
 
       if (!existing) {
         map.createPane(name, this.getParentPane())
-        const pane = map.getPane(name)
-
-        if (pane) {
-          pane.att
-        }
       } else if (!isDefault) {
         throw new Error(`A pane with this name already exists. (${name})`)
       }
