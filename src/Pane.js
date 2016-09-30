@@ -48,15 +48,21 @@ export default class Pane extends Component {
   }
 
   componentWillReceiveProps (nextProps) {
+    if (!this.state.name) {
+      // Do nothing if this.state.name is undefined due to errors or
+      // an invalid props.name value
+      return
+    }
+
     // If the 'name' prop has changed the current pane is unmounted and a new
     // pane is created.
     if (nextProps.name !== this.props.name) {
       this.removePane()
       this.createPane(nextProps)
-    } else if (!this.isDefaultPane()) {
+    } else {
       // Remove the previous css class name from the pane if it has changed.
       // setStyle will take care of adding in the updated className
-      if (nextProps.className !== this.props.className) {
+      if (this.props.className && nextProps.className !== this.props.className) {
         const pane = this.getPane()
         pane && pane.classList.remove(this.props.className)
       }
@@ -101,18 +107,22 @@ export default class Pane extends Component {
     const name = props.name || `pane-${uniqueId()}`
 
     if (map && map.createPane) {
-      const existing = this.getPane(name)
       const isDefault = this.isDefaultPane(name)
+      const existing = isDefault || this.getPane(name)
 
       if (!existing) {
         map.createPane(name, this.getParentPane())
-      } else if (!isDefault) {
-        throw new Error(`A pane with this name already exists. (${name})`)
+      } else {
+        if (isDefault) {
+          throw new Error(`You must use a unique name for a pane that is not a default leaflet pane (${name})`)
+        } else {
+          throw new Error(`A pane with this name already exists. (${name})`)
+        }
       }
 
       this.setState({
         name,
-      }, isDefault ? this.setStyle : undefined)
+      }, this.setStyle)
     }
   }
 
@@ -122,15 +132,15 @@ export default class Pane extends Component {
    * leaflet pane.
    */
   removePane () {
-    if (!this.isDefaultPane()) {
-      // Remove the created pane
+    // Remove the created pane
+    if (this.state.name) {
       const pane = this.getPane()
       pane && pane.remove &&
       pane.remove()
 
       const map = this.context.map || this.props.map
 
-      if (this.state.name && map && map._panes) {
+      if (map && map._panes) {
         map._panes = omit(map._panes, this.state.name)
         map._paneRenderers = omit(map._paneRenderers, this.state.name)
       }
@@ -166,16 +176,7 @@ export default class Pane extends Component {
    */
   getParentPane () {
     const pane = this.props.pane || this.context.pane
-
-    if (pane) {
-      const map = this.context.map || this.props.map
-
-      if (map) {
-        return map.getPane(pane) || null
-      }
-    }
-
-    return null
+    return this.getPane(pane)
   }
 
   /**
@@ -187,7 +188,7 @@ export default class Pane extends Component {
   getPane (name = this.state.name) {
     const map = this.context.map || this.props.map
 
-    if (name && map && map) {
+    if (name && map) {
       return map.getPane(name)
     }
 
