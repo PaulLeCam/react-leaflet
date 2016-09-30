@@ -112,6 +112,7 @@ export default class Pane extends Component {
 
       if (!existing) {
         map.createPane(name, this.getParentPane())
+        this.paneName = name
       } else {
         if (isDefault) {
           throw new Error(`You must use a unique name for a pane that is not a default leaflet pane (${name})`)
@@ -133,17 +134,19 @@ export default class Pane extends Component {
    */
   removePane () {
     // Remove the created pane
-    if (this.state.name) {
-      const pane = this.getPane()
+    if (this.paneName) {
+      const pane = this.getPane(this.paneName)
       pane && pane.remove &&
       pane.remove()
 
       const map = this.context.map || this.props.map
 
       if (map && map._panes) {
-        map._panes = omit(map._panes, this.state.name)
-        map._paneRenderers = omit(map._paneRenderers, this.state.name)
+        map._panes = omit(map._panes, this.paneName)
+        map._paneRenderers = omit(map._paneRenderers, this.paneName)
       }
+
+      this.paneName = null
     }
   }
 
@@ -196,20 +199,12 @@ export default class Pane extends Component {
   }
 
   /**
-   * getChildren - Returns a clone of any children with props passed down unless
-   * the child is an instance of Pane as well in which case the child is returned
-   * as is.
+   * getChildren - Returns this.props.children
    *
    * @returns {node}  Component children
    */
   getChildren () {
-    return React.Children.map(this.props.children, child => {
-      if (child.type === Pane) {
-        return child
-      }
-
-      return child ? React.cloneElement(child, this.props) : null
-    })
+    return this.props.children
   }
 
   render (): any {
