@@ -17,13 +17,15 @@ export default class Popup extends MapComponent {
   static contextTypes = {
     map: mapType,
     popupContainer: PropTypes.object,
+    pane: PropTypes.string,
   };
 
   componentWillMount () {
     super.componentWillMount()
     const { children: _children, ...props } = this.props
 
-    this.leafletElement = createPopup(props, this.context.popupContainer)
+    this.leafletElement = createPopup(this.getOptions(props), this.context.popupContainer)
+
     this.context.map.on({
       popupopen: this.onPopupOpen,
       popupclose: this.onPopupClose,

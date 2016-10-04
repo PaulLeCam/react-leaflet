@@ -13,7 +13,7 @@ export default class GridLayer extends MapLayer {
 
   componentWillMount () {
     super.componentWillMount()
-    this.leafletElement = gridLayer(this.props)
+    this.leafletElement = gridLayer(this.getOptions(this.props))
   }
 
   componentDidUpdate (prevProps: Object) {

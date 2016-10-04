@@ -16,13 +16,15 @@ export default class Tooltip extends MapComponent {
   static contextTypes = {
     map: mapType,
     popupContainer: PropTypes.object,
+    pane: PropTypes.string,
   };
 
   componentWillMount () {
     super.componentWillMount()
     const { children: _children, ...props } = this.props
 
-    this.leafletElement = createTooltip(props, this.context.popupContainer)
+    this.leafletElement = createTooltip(this.getOptions(props), this.context.popupContainer)
+
     this.context.popupContainer.on({
       tooltipopen: this.onTooltipOpen,
       tooltipclose: this.onTooltipClose,

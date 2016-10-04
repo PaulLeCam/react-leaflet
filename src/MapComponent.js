@@ -72,4 +72,17 @@ export default class MapComponent extends Component<any, any, any> {
     const el = this.leafletElement
     if (el) el.fire(type, data)
   }
+
+  getOptions (props = {}) {
+    const pane = props.pane || this.context.pane
+
+    if (pane) {
+      return {
+        ...props,
+        pane,
+      }
+    }
+
+    return props
+  }
 }

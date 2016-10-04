@@ -11,6 +11,7 @@ You can directly access the Leaflet element created by a component using `this.l
   - [MapLayer](#maplayer)
   - [Path](#path)
 - [Map](#map)
+- [Pane](#pane)
 - [UI Layers](#ui-layers)
   - [Marker](#marker)
   - [Popup](#popup)
@@ -80,6 +81,14 @@ This is the top-level component that must be mounted for children ones to be ren
 
 **Other properties**
 - `id: string` (optional): The ID of the `<div>` container for the map. If you don't provide it, a unique one will be created.
+
+## Pane
+**Dynamic properties**
+- `name: string` (optional): Names of default leaflet panes are blacklisted.
+- `style: object` (optional): style property of the pane's `<div>`
+- `className: string` (optional):  className property of the pane's `<div>`
+
+[Leaflet reference](http://leafletjs.com/examples/map-panes.html)
 
 ## UI Layers
 

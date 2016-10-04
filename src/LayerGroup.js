@@ -3,6 +3,7 @@
 import { layerGroup } from 'leaflet'
 
 import layerContainerType from './types/layerContainer'
+
 import MapLayer from './MapLayer'
 
 export default class LayerGroup extends MapLayer {
@@ -18,6 +19,6 @@ export default class LayerGroup extends MapLayer {
 
   componentWillMount () {
     super.componentWillMount()
-    this.leafletElement = layerGroup()
+    this.leafletElement = layerGroup(this.getOptions())
   }
 }
