@@ -1,4 +1,4 @@
 {
-  "plugins": ["dev-expression", "lodash"],
-  "presets": ["es2015", "react", "stage-0"]
+  "plugins": ["dev-expression", "lodash", "transform-proto-to-assign"],
+  "presets": [ ["es2015", { "loose" : true} ], "react", "stage-0"]
 }
