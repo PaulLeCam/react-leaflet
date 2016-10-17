@@ -1,3 +1,4 @@
+import Leaflet from 'leaflet'
 import React from 'react'
 import { render } from 'react-dom'
 
@@ -12,6 +13,9 @@ import BoundsExample from './bounds'
 import CustomComponentExample from './custom-component'
 import AnimateExample from './animate'
 import TooltipExample from './tooltip'
+import PaneExample from './pane'
+
+Leaflet.Icon.Default.imagePath = '//cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.0/images/'
 
 const examples = (
   <div>
@@ -31,6 +35,8 @@ const examples = (
     <ZoomControlExample />
     <h2>Layers control</h2>
     <LayersControlExample />
+    <h2>Panes</h2>
+    <PaneExample />
     <h2>Draggable Marker</h2>
     <DraggableExample />
     <h2>Map view by bounds</h2>

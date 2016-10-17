@@ -1,11 +1,25 @@
 /* @flow */
+
+import { forEach, omit, uniqueId } from 'lodash'
 import React, { PropTypes, Component } from 'react'
-import { forEach, omit, uniqueId, indexOf } from 'lodash'
+import warning from 'warning'
 
 import childrenType from './types/children'
 import mapType from './types/map'
 
-const BLACKLIST = ['tile', 'shadow', 'overlay', 'map', 'marker', 'tooltip', 'popup']
+const LEAFLET_PANES = ['tile', 'shadow', 'overlay', 'map', 'marker', 'tooltip', 'popup']
+
+const isLeafletPane = (name: string): bool => {
+  return LEAFLET_PANES.indexOf(name.replace(/-*pane/gi, '')) !== -1
+}
+
+const paneStyles = {
+  position: 'absolute',
+  top: 0,
+  right: 0,
+  bottom: 0,
+  left: 0,
+}
 
 export default class Pane extends Component {
   static propTypes = {
@@ -19,7 +33,6 @@ export default class Pane extends Component {
 
   static contextTypes = {
     map: mapType,
-    // Reference to a possible parent pane
     pane: PropTypes.string,
   };
 
@@ -27,14 +40,10 @@ export default class Pane extends Component {
     pane: PropTypes.string,
   };
 
-  constructor () {
-    super()
-
-    this.state = {
-      name: null,
-    }
-
-    this.setStyle = this.setStyle.bind(this)
+  state: {
+    name: ?string,
+  } = {
+    name: undefined,
   }
 
   getChildContext () {
@@ -44,10 +53,10 @@ export default class Pane extends Component {
   }
 
   componentDidMount () {
-    this.createPane()
+    this.createPane(this.props)
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps (nextProps: Object) {
     if (!this.state.name) {
       // Do nothing if this.state.name is undefined due to errors or
       // an invalid props.name value
@@ -64,7 +73,7 @@ export default class Pane extends Component {
       // setStyle will take care of adding in the updated className
       if (this.props.className && nextProps.className !== this.props.className) {
         const pane = this.getPane()
-        pane && pane.classList.remove(this.props.className)
+        if (pane) pane.classList.remove(this.props.className)
       }
 
       // Update the pane's DOM node style and class
@@ -76,148 +85,69 @@ export default class Pane extends Component {
     this.removePane()
   }
 
-  /**
-   * isDefaultPane - Returns true if this.props.name matches the name
-   * of a default leaflet pane.
-   *
-   * @param   {object}  props  Component props, defaults to this.props
-   * @returns {boolean}        True if the pane is a default leaflet pane
-   */
-  isDefaultPane (name = this.props.name) {
-    if (name) {
-      const _name = (name + '').replace(/-*pane/gi, '')
-
-      if (indexOf(BLACKLIST, _name) >= 0) {
-        return true
-      }
-    }
-
-    return false
-  }
-
-  /**
-   * createPane - Creates a new pane for the map if it does not exist yet.
-   * Existing panes are allowed only if they are a default leaflet pane like
-   * 'popupPane' or 'tilePane'
-   *
-   * @param   {object} props  Component props, defaults to this.props
-   */
-  createPane (props = this.props) {
-    const map = this.context.map || props.map
+  createPane (props: Object) {
+    const map = this.context.map
     const name = props.name || `pane-${uniqueId()}`
 
     if (map && map.createPane) {
-      const isDefault = this.isDefaultPane(name)
+      const isDefault = isLeafletPane(name)
       const existing = isDefault || this.getPane(name)
 
       if (!existing) {
         map.createPane(name, this.getParentPane())
-        this.paneName = name
       } else {
-        if (isDefault) {
-          throw new Error(`You must use a unique name for a pane that is not a default leaflet pane (${name})`)
-        } else {
-          throw new Error(`A pane with this name already exists. (${name})`)
-        }
+        const message = isDefault
+          ? `You must use a unique name for a pane that is not a default leaflet pane (${name})`
+          : `A pane with this name already exists. (${name})`
+        warning(false, message)
       }
 
-      this.setState({
-        name,
-      }, this.setStyle)
+      this.setState({name}, this.setStyle)
     }
   }
 
-  /**
-   * removePane - Removes the pane from the DOM and it's references in
-   * map._pane and map._paneRenderers if the pane is not a default
-   * leaflet pane.
-   */
   removePane () {
     // Remove the created pane
-    if (this.paneName) {
-      const pane = this.getPane(this.paneName)
-      pane && pane.remove &&
-      pane.remove()
+    const { name } = this.state
+    if (name) {
+      const pane = this.getPane(name)
+      if (pane && pane.remove) pane.remove()
 
-      const map = this.context.map || this.props.map
-
+      const map = this.context.map
       if (map && map._panes) {
-        map._panes = omit(map._panes, this.paneName)
-        map._paneRenderers = omit(map._paneRenderers, this.paneName)
+        map._panes = omit(map._panes, name)
+        map._paneRenderers = omit(map._paneRenderers, name)
       }
 
-      this.paneName = null
+      this.setState({name: undefined})
     }
   }
 
-  /**
-   * setStyle - Updates the style attr of the pane's DOM node
-   *
-   * @param   {object} style  Style object
-   */
-  setStyle ({ style, className } = this.props) {
-    const pane = this.getPane()
-
+  setStyle = ({ style, className }: Object = this.props) => {
+    const pane = this.getPane(this.state.name)
     if (pane) {
+      if (className) {
+        pane.classList.add(className)
+      }
       if (style) {
         forEach(style, (value, key) => {
           pane.style[key] = value
         })
       }
-
-      if (className) {
-        pane.classList.add(className)
-      }
     }
   }
 
-  /**
-   * getParentPane - Returns the DOM node of a parent pane if existing
-   *
-   * @param   {string} name     The name of the parent pane
-   * @returns {HTMLDivElement}  The DOM node that is the parent pane
-   */
   getParentPane () {
-    const pane = this.props.pane || this.context.pane
-    return this.getPane(pane)
+    return this.getPane(this.props.pane || this.context.pane)
   }
 
-  /**
-   * getPane - Returns the DOM node returned by map.getPane
-   *
-   * @param   {string} name     The name of the pane
-   * @returns {HTMLDivElement}  The DOM node that is the pane
-   */
-  getPane (name = this.state.name) {
-    const map = this.context.map || this.props.map
-
-    if (name && map) {
-      return map.getPane(name)
-    }
-
-    return null
-  }
-
-  /**
-   * getChildren - Returns this.props.children
-   *
-   * @returns {node}  Component children
-   */
-  getChildren () {
-    return this.props.children
+  getPane (name: ?string) {
+    return name ? this.context.map.getPane(name) : undefined
   }
 
   render (): any {
     return this.state.name ? (
-      <div style={{
-        position: 'absolute',
-        top: 0,
-        right: 0,
-        bottom: 0,
-        left: 0,
-      }}>
-        {this.getChildren()}
-      </div>
+      <div style={paneStyles}>{this.props.children}</div>
     ) : null
   }
 }

@@ -73,16 +73,8 @@ export default class MapComponent extends Component<any, any, any> {
     if (el) el.fire(type, data)
   }
 
-  getOptions (props = {}) {
+  getOptions (props: Object = {}) {
     const pane = props.pane || this.context.pane
-
-    if (pane) {
-      return {
-        ...props,
-        pane,
-      }
-    }
-
-    return props
+    return pane ? {...props, pane} : props
   }
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Pane, TileLayer, Rectangle } from '../../src'
+import { Map, Pane, TileLayer, Rectangle } from '../../src'
 
 const outer = [
   [50.505, -29.09],
@@ -12,47 +12,33 @@ const inner = [
 
 export default class PaneExample extends Component {
   state = {
-    bounds: outer,
+    render: true,
   }
 
-  onClickInner = () => {
-    this.setState({bounds: inner})
-  }
-
-  onClickOuter = () => {
-    this.setState({bounds: outer})
+  componentDidMount () {
+    setInterval(() => {
+      this.setState({
+        render: !this.state.render,
+      })
+    }, 5000)
   }
 
   render () {
     return (
-      <Map bounds={this.state.bounds}>
+      <Map bounds={outer}>
         <TileLayer
           attribution='&copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
         />
-        <Pane name='cyan-rectangle' style={{
-          zIndex: 500,
-        }}>
-          <Rectangle
-            bounds={outer}
-            color={'Cyan'}
-          />
-        </Pane>
-
-        <Pane name='yellow-rectangle' style={{
-          zIndex: 499,
-        }}>
-          <Rectangle
-            bounds={inner}
-            color={'Yellow'}
-          />
-
-          {/* Nested Pane */}
-          <Pane name='purple-rectangle' className={'purplePane-purplePane'}>
-            <Rectangle
-              bounds={outer}
-              color={'Purple'}
-            />
+        {this.state.render ? (
+          <Pane name='cyan-rectangle' style={{zIndex: 500}}>
+            <Rectangle bounds={outer} color='cyan' />
+          </Pane>
+        ) : null}
+        <Pane name='yellow-rectangle' style={{zIndex: 499}}>
+          <Rectangle bounds={inner} color='yellow' />
+          <Pane name='purple-rectangle' className='purplePane-purplePane'>
+            <Rectangle bounds={outer} color='purple' />
           </Pane>
         </Pane>
       </Map>
