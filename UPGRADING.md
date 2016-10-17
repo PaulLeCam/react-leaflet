@@ -17,6 +17,8 @@ Read the [changelog](CHANGELOG.md) for more details about these changes.
 
 ## v0.12.0
 
+**Drop support for IE <= 10** as explained in [this comment](https://github.com/PaulLeCam/react-leaflet/issues/215#issuecomment-243996907).
+
 **Deprecated:** the `getLeafletElement()` method on components is deprecated, you can simply use the `leafletElement` property instead.
 
 The major change in this version is the use of [context](https://facebook.github.io/react/docs/context.html) instead of props to pass Leaflet instances from components to their children.  
