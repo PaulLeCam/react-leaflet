@@ -5930,6 +5930,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	exports.__esModule = true;
 
+	var _isEqual2 = __webpack_require__(24);
+
+	var _isEqual3 = _interopRequireDefault(_isEqual2);
+
 	var _leaflet = __webpack_require__(4);
 
 	var _react = __webpack_require__(3);
@@ -5967,6 +5971,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var props = _objectWithoutProperties(_props, ['url']);
 
 	    this.leafletElement = _leaflet.tileLayer.wms(url, this.getOptions(props));
+	  };
+
+	  WMSTileLayer.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
+	    if (!(0, _isEqual3.default)(this.props, prevProps)) {
+	      this.leafletElement.setParams(this.props);
+	    }
 	  };
 
 	  return WMSTileLayer;

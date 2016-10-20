@@ -14,6 +14,7 @@ import CustomComponentExample from './custom-component'
 import AnimateExample from './animate'
 import TooltipExample from './tooltip'
 import PaneExample from './pane'
+import WMSTileLayerExample from './wms-tile-layer'
 
 Leaflet.Icon.Default.imagePath = '//cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.0/images/'
 
@@ -47,6 +48,8 @@ const examples = (
     <h2>Animate</h2>
     <p>Click the map to move to the location</p>
     <AnimateExample />
+    <h2>WMS tile layer</h2>
+    <WMSTileLayerExample />
   </div>
 )
 

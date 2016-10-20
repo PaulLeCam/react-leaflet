@@ -11,7 +11,7 @@ You can directly access the Leaflet element created by a component using `this.l
   - [MapLayer](#maplayer)
   - [Path](#path)
 - [Map](#map)
-- [Pane](#pane)
+  - [Pane](#pane)
 - [UI Layers](#ui-layers)
   - [Marker](#marker)
   - [Popup](#popup)
@@ -60,13 +60,13 @@ Base class extending [`MapComponent`](#mapcomponent), handling adding the layer 
 ### Path
 
 Base class extending [`MapLayer`](#maplayer) with the following methods:
-- `getPathOptions(object props): object`: filters the input `props` and return a new object of [Path options](http://leafletjs.com/reference.html#path-options) properties.
-- `setStyle(object options = {}): void`: alias to the Leaflet element [`setStyle()`](http://leafletjs.com/reference.html#path-setstyle).
+- `getPathOptions(object props): object`: filters the input `props` and return a new object of [Path options](http://leafletjs.com/reference-1.0.0.html#path-options) properties.
+- `setStyle(object options = {}): void`: alias to the Leaflet element [`setStyle()`](http://leafletjs.com/reference-1.0.0.html#path-setstyle).
 - `setStyleIfChanged(object fromProps, object toProps): void`: extracts the Path options of the two arguments, and calls `setStyle()` with the new options if different from the previous ones.
 
 ## Map
 
-This is the top-level component that must be mounted for children ones to be rendered. Refer to [Leaflet documentation](http://leafletjs.com/reference.html#map-options) for more information about the properties.
+This is the top-level component that must be mounted for children ones to be rendered. Refer to [Leaflet documentation](http://leafletjs.com/reference-1.0.0.html#map-options) for more information about the properties.
 
 **Dynamic properties**
 - `animate: boolean` (optional): If `true`, panning will always be animated if possible. Defaults to `false`.
@@ -83,18 +83,19 @@ This is the top-level component that must be mounted for children ones to be ren
 - `id: string` (optional): The ID of the `<div>` container for the map. If you don't provide it, a unique one will be created.
 
 ## Pane
+
+[Leaflet reference](http://leafletjs.com/reference-1.0.0.html#map-pane)
+
 **Dynamic properties**
-- `name: string` (optional): Names of default leaflet panes are blacklisted.
+- `name: string` (optional): Unique name for the pane. Existing Leaflet panes are blacklisted.
 - `style: object` (optional): style property of the pane's `<div>`
 - `className: string` (optional):  className property of the pane's `<div>`
-
-[Leaflet reference](http://leafletjs.com/examples/map-panes.html)
 
 ## UI Layers
 
 ### Marker
 
-[Leaflet reference](http://leafletjs.com/reference.html#marker)
+[Leaflet reference](http://leafletjs.com/reference-1.0.0.html#marker)
 
 **Dynamic properties**
 - `position: latLng` (required)
@@ -105,7 +106,7 @@ This is the top-level component that must be mounted for children ones to be ren
 
 ### Popup
 
-[Leaflet reference](http://leafletjs.com/reference.html#popup)
+[Leaflet reference](http://leafletjs.com/reference-1.0.0.html#popup)
 
 The Popup children will be rendered using `ReactDOM.render()`, they must be valid React elements.
 
@@ -122,7 +123,7 @@ The Tooltip children will be rendered using `ReactDOM.render()`, they must be va
 
 ### TileLayer
 
-[Leaflet reference](http://leafletjs.com/reference.html#tilelayer)
+[Leaflet reference](http://leafletjs.com/reference-1.0.0.html#tilelayer)
 
 **Dynamic properties**
 - `url: string` (required)
@@ -131,7 +132,7 @@ The Tooltip children will be rendered using `ReactDOM.render()`, they must be va
 
 ### ImageOverlay
 
-[Leaflet reference](http://leafletjs.com/reference.html#imageoverlay)
+[Leaflet reference](http://leafletjs.com/reference-1.0.0.html#imageoverlay)
 
 **Dynamic properties**
 - `url: string` (required)
@@ -139,15 +140,20 @@ The Tooltip children will be rendered using `ReactDOM.render()`, they must be va
 
 ### WMSTileLayer
 
-[Leaflet reference](http://leafletjs.com/reference.html#tilelayer-wms)
+[Leaflet reference](http://leafletjs.com/reference-1.0.0.html#tilelayer-wms)
+
+**Properties**
+- `url: string` (required)
+
+All other properties are passed as parameters and dynamic, they will cause the layer to redraw if they change.
 
 ## Vector Layers
 
-All vector layers extend the **Path** component and therefore accept dynamic [Path options](http://leafletjs.com/reference.html#path-options) properties.
+All vector layers extend the **Path** component and therefore accept dynamic [Path options](http://leafletjs.com/reference-1.0.0.html#path-options) properties.
 
 ### Circle
 
-[Leaflet reference](http://leafletjs.com/reference.html#circle)
+[Leaflet reference](http://leafletjs.com/reference-1.0.0.html#circle)
 
 **Dynamic properties**
 - `center: latLng` (required)
@@ -155,7 +161,7 @@ All vector layers extend the **Path** component and therefore accept dynamic [Pa
 
 ### CircleMarker
 
-[Leaflet reference](http://leafletjs.com/reference.html#circlemarker)
+[Leaflet reference](http://leafletjs.com/reference-1.0.0.html#circlemarker)
 
 **Dynamic properties**
 - `center: latLng` (required)
@@ -163,21 +169,21 @@ All vector layers extend the **Path** component and therefore accept dynamic [Pa
 
 ### Polyline
 
-[Leaflet reference](http://leafletjs.com/reference.html#polyline)
+[Leaflet reference](http://leafletjs.com/reference-1.0.0.html#polyline)
 
 **Dynamic properties**
 - `positions: latLngList | latLngList[]` (required)
 
 ### Polygon
 
-[Leaflet reference](http://leafletjs.com/reference.html#polygon)
+[Leaflet reference](http://leafletjs.com/reference-1.0.0.html#polygon)
 
 **Dynamic properties**
 - `positions: latLngList | latLngList[] | latLngList[][]` (required)
 
 ### Rectangle
 
-[Leaflet reference](http://leafletjs.com/reference.html#rectangle)
+[Leaflet reference](http://leafletjs.com/reference-1.0.0.html#rectangle)
 
 **Dynamic properties**
 - `bounds: bounds` (required)
@@ -190,7 +196,7 @@ Extended `LayerGroup` supporting a `Popup` child.
 
 ### GeoJson
 
-[Leaflet reference](http://leafletjs.com/reference.html#geojson)
+[Leaflet reference](http://leafletjs.com/reference-1.0.0.html#geojson)
 
 **Properties**
 - `data: GeoJSON` (required). This property will *not* be updated if it is changed after the component is mounted.
@@ -211,14 +217,14 @@ Use the `LayerGroup` wrapper component to group children layers together.
 
 ### AttributionControl
 
-[Leaflet reference](http://leafletjs.com/reference.html#control-attribution)
+[Leaflet reference](http://leafletjs.com/reference-1.0.0.html#control-attribution)
 
 **Dynamic properties**
 - `position: controlPosition` (optional)
 
 ### LayersControl
 
-[Leaflet reference](http://leafletjs.com/reference.html#control-layers)  
+[Leaflet reference](http://leafletjs.com/reference-1.0.0.html#control-layers)  
 
 **Dynamic properties**
 - `position: controlPosition` (optional)
@@ -277,14 +283,14 @@ Example usage:
 
 ### ScaleControl
 
-[Leaflet reference](http://leafletjs.com/reference.html#control-scale)
+[Leaflet reference](http://leafletjs.com/reference-1.0.0.html#control-scale)
 
 **Dynamic properties**
 - `position: controlPosition` (optional)
 
 ### ZoomControl
 
-[Leaflet reference](http://leafletjs.com/reference.html#control-zoom)
+[Leaflet reference](http://leafletjs.com/reference-1.0.0.html#control-zoom)
 
 **Dynamic properties**
 - `position: controlPosition` (optional)

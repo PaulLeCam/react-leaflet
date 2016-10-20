@@ -1,3 +1,9 @@
+## v1.0.0-rc.2 (2016-10-20)
+
+- Added `Pane` component introduced in Leaflet v1. ([PR #227](https://github.com/PaulLeCam/react-leaflet/pull/227) by *rjdestigter*).
+- Added support for IE9 and IE10 ([PR #235](https://github.com/PaulLeCam/react-leaflet/pull/235) by *dettier*).
+- Updated `WMSTileLayer` to support dynamic parameters.
+
 ## v1.0.0-rc.1 (2016-09-28)
 
 - [BREAKING] Removed `setIconDefaultImagePath()` helper, set `Leaflet.Icon.Default.imagePath` directly using Leaflet if you need.
