@@ -206,7 +206,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  _leaflet2.default.Icon.Default.imagePath = path;
 	};
 
-	setIconDefaultImagePath('//cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.1/images/');
+	setIconDefaultImagePath('//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/');
 
 /***/ },
 /* 1 */
