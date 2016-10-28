@@ -61,7 +61,7 @@
     "eslint-config-standard": "^6.0.1",
     "eslint-config-standard-jsx": "^3.0.1",
     "eslint-config-standard-react": "^4.0.2",
-    "eslint-plugin-promise": "^2.0.0",
+    "eslint-plugin-promise": "^3.3.0",
     "eslint-plugin-react": "^6.3.0",
     "eslint-plugin-standard": "^2.0.0",
     "jest-cli": "^15.1.1",
