@@ -604,9 +604,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 
 	  BaseTileLayer.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
-	    var _props = this.props;
-	    var opacity = _props.opacity;
-	    var zIndex = _props.zIndex;
+	    var _props = this.props,
+	        opacity = _props.opacity,
+	        zIndex = _props.zIndex;
 
 	    if (opacity !== prevProps.opacity) {
 	      this.leafletElement.setOpacity(opacity);
@@ -3052,11 +3052,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  Circle.prototype.componentWillMount = function componentWillMount() {
 	    _Path.prototype.componentWillMount.call(this);
-	    var _props = this.props;
-	    var center = _props.center;
-	    var radius = _props.radius;
 
-	    var props = _objectWithoutProperties(_props, ['center', 'radius']);
+	    var _props = this.props,
+	        center = _props.center,
+	        radius = _props.radius,
+	        props = _objectWithoutProperties(_props, ['center', 'radius']);
 
 	    this.leafletElement = (0, _leaflet.circle)(center, radius, props);
 	  };
@@ -3956,10 +3956,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  CircleMarker.prototype.componentWillMount = function componentWillMount() {
 	    _Path.prototype.componentWillMount.call(this);
-	    var _props = this.props;
-	    var center = _props.center;
 
-	    var props = _objectWithoutProperties(_props, ['center']);
+	    var _props = this.props,
+	        center = _props.center,
+	        props = _objectWithoutProperties(_props, ['center']);
 
 	    this.leafletElement = (0, _leaflet.circleMarker)(center, props);
 	  };
@@ -4094,10 +4094,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  GeoJson.prototype.componentWillMount = function componentWillMount() {
 	    _Path.prototype.componentWillMount.call(this);
-	    var _props = this.props;
-	    var data = _props.data;
 
-	    var props = _objectWithoutProperties(_props, ['data']);
+	    var _props = this.props,
+	        data = _props.data,
+	        props = _objectWithoutProperties(_props, ['data']);
 
 	    this.leafletElement = (0, _leaflet.geoJson)(data, props);
 	  };
@@ -4161,11 +4161,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  ImageOverlay.prototype.componentWillMount = function componentWillMount() {
 	    _MapLayer.prototype.componentWillMount.call(this);
-	    var _props = this.props;
-	    var bounds = _props.bounds;
-	    var url = _props.url;
 
-	    var props = _objectWithoutProperties(_props, ['bounds', 'url']);
+	    var _props = this.props,
+	        bounds = _props.bounds,
+	        url = _props.url,
+	        props = _objectWithoutProperties(_props, ['bounds', 'url']);
 
 	    this.leafletElement = (0, _leaflet.imageOverlay)(url, bounds, props);
 	  };
@@ -4371,10 +4371,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  BaseLayer.prototype.addLayer = function addLayer(layer) {
 	    this.layer = layer; // Keep layer reference to handle dynamic changes of props
-	    var _props = this.props;
-	    var addBaseLayer = _props.addBaseLayer;
-	    var checked = _props.checked;
-	    var name = _props.name;
+	    var _props = this.props,
+	        addBaseLayer = _props.addBaseLayer,
+	        checked = _props.checked,
+	        name = _props.name;
 
 	    addBaseLayer(layer, name, checked);
 	  };
@@ -4395,10 +4395,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  Overlay.prototype.addLayer = function addLayer(layer) {
 	    this.layer = layer; // Keep layer reference to handle dynamic changes of props
-	    var _props2 = this.props;
-	    var addOverlay = _props2.addOverlay;
-	    var checked = _props2.checked;
-	    var name = _props2.name;
+	    var _props2 = this.props,
+	        addOverlay = _props2.addOverlay,
+	        checked = _props2.checked,
+	        name = _props2.name;
 
 	    addOverlay(layer, name, checked);
 	  };
@@ -4418,10 +4418,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 
 	  LayersControl.prototype.componentWillMount = function componentWillMount() {
-	    var _props3 = this.props;
-	    var _children = _props3.children;
-
-	    var options = _objectWithoutProperties(_props3, ['children']);
+	    var _props3 = this.props,
+	        _children = _props3.children,
+	        options = _objectWithoutProperties(_props3, ['children']);
 
 	    this.leafletElement = _leaflet.control.layers(undefined, undefined, options);
 	    this.controlProps = {
@@ -4587,13 +4586,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	  };
 
 	  Map.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
-	    var _props = this.props;
-	    var bounds = _props.bounds;
-	    var boundsOptions = _props.boundsOptions;
-	    var center = _props.center;
-	    var maxBounds = _props.maxBounds;
-	    var zoom = _props.zoom;
-	    var animate = _props.animate;
+	    var _props = this.props,
+	        bounds = _props.bounds,
+	        boundsOptions = _props.boundsOptions,
+	        center = _props.center,
+	        maxBounds = _props.maxBounds,
+	        zoom = _props.zoom,
+	        animate = _props.animate;
 
 	    if (center && this.shouldUpdateCenter(center, prevProps.center)) {
 	      this.leafletElement.setView(center, zoom, { animate: animate });
@@ -5120,10 +5119,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  Marker.prototype.componentWillMount = function componentWillMount() {
 	    _MapLayer.prototype.componentWillMount.call(this);
-	    var _props = this.props;
-	    var position = _props.position;
 
-	    var props = _objectWithoutProperties(_props, ['position']);
+	    var _props = this.props,
+	        position = _props.position,
+	        props = _objectWithoutProperties(_props, ['position']);
 
 	    this.leafletElement = (0, _leaflet.marker)(position, props);
 	  };
@@ -5211,10 +5210,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  MultiPolygon.prototype.componentWillMount = function componentWillMount() {
 	    _Path.prototype.componentWillMount.call(this);
-	    var _props = this.props;
-	    var polygons = _props.polygons;
 
-	    var props = _objectWithoutProperties(_props, ['polygons']);
+	    var _props = this.props,
+	        polygons = _props.polygons,
+	        props = _objectWithoutProperties(_props, ['polygons']);
 
 	    this.leafletElement = (0, _leaflet.multiPolygon)(polygons, props);
 	  };
@@ -5277,10 +5276,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  MultiPolyline.prototype.componentWillMount = function componentWillMount() {
 	    _Path.prototype.componentWillMount.call(this);
-	    var _props = this.props;
-	    var polylines = _props.polylines;
 
-	    var props = _objectWithoutProperties(_props, ['polylines']);
+	    var _props = this.props,
+	        polylines = _props.polylines,
+	        props = _objectWithoutProperties(_props, ['polylines']);
 
 	    this.leafletElement = (0, _leaflet.multiPolyline)(polylines, props);
 	  };
@@ -5343,10 +5342,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  Polygon.prototype.componentWillMount = function componentWillMount() {
 	    _Path.prototype.componentWillMount.call(this);
-	    var _props = this.props;
-	    var positions = _props.positions;
 
-	    var props = _objectWithoutProperties(_props, ['positions']);
+	    var _props = this.props,
+	        positions = _props.positions,
+	        props = _objectWithoutProperties(_props, ['positions']);
 
 	    this.leafletElement = (0, _leaflet.polygon)(positions, props);
 	  };
@@ -5407,10 +5406,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  Polyline.prototype.componentWillMount = function componentWillMount() {
 	    _Path.prototype.componentWillMount.call(this);
-	    var _props = this.props;
-	    var positions = _props.positions;
 
-	    var props = _objectWithoutProperties(_props, ['positions']);
+	    var _props = this.props,
+	        positions = _props.positions,
+	        props = _objectWithoutProperties(_props, ['positions']);
 
 	    this.leafletElement = (0, _leaflet.polyline)(positions, props);
 	  };
@@ -5479,10 +5478,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  Popup.prototype.componentWillMount = function componentWillMount() {
 	    _MapComponent.prototype.componentWillMount.call(this);
-	    var _props = this.props;
-	    var _children = _props.children;
 
-	    var props = _objectWithoutProperties(_props, ['children']);
+	    var _props = this.props,
+	        _children = _props.children,
+	        props = _objectWithoutProperties(_props, ['children']);
 
 	    this.leafletElement = (0, _leaflet.popup)(props, this.context.popupContainer);
 	    this.leafletElement.on('open', this.renderPopupContent.bind(this));
@@ -5491,9 +5490,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  Popup.prototype.componentDidMount = function componentDidMount() {
 	    var position = this.props.position;
-	    var _context = this.context;
-	    var map = _context.map;
-	    var popupContainer = _context.popupContainer;
+	    var _context = this.context,
+	        map = _context.map,
+	        popupContainer = _context.popupContainer;
 
 	    var el = this.leafletElement;
 
@@ -5610,10 +5609,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  Rectangle.prototype.componentWillMount = function componentWillMount() {
 	    _Path.prototype.componentWillMount.call(this);
-	    var _props = this.props;
-	    var bounds = _props.bounds;
 
-	    var props = _objectWithoutProperties(_props, ['bounds']);
+	    var _props = this.props,
+	        bounds = _props.bounds,
+	        props = _objectWithoutProperties(_props, ['bounds']);
 
 	    this.leafletElement = (0, _leaflet.rectangle)(bounds, props);
 	  };
@@ -5722,10 +5721,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  TileLayer.prototype.componentWillMount = function componentWillMount() {
 	    _BaseTileLayer.prototype.componentWillMount.call(this);
-	    var _props = this.props;
-	    var url = _props.url;
 
-	    var props = _objectWithoutProperties(_props, ['url']);
+	    var _props = this.props,
+	        url = _props.url,
+	        props = _objectWithoutProperties(_props, ['url']);
 
 	    this.leafletElement = (0, _leaflet.tileLayer)(url, props);
 	  };
@@ -5786,10 +5785,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  WMSTileLayer.prototype.componentWillMount = function componentWillMount() {
 	    _BaseTileLayer.prototype.componentWillMount.call(this);
-	    var _props = this.props;
-	    var url = _props.url;
 
-	    var props = _objectWithoutProperties(_props, ['url']);
+	    var _props = this.props,
+	        url = _props.url,
+	        props = _objectWithoutProperties(_props, ['url']);
 
 	    this.leafletElement = _leaflet.tileLayer.wms(url, props);
 	  };
