@@ -18,8 +18,13 @@ export default class WMSTileLayer extends GridLayer {
   }
 
   componentDidUpdate (prevProps: Object) {
-    if (!isEqual(this.props, prevProps)) {
-      this.leafletElement.setParams(this.props)
+    const { url: prevUrl, ...prevParams } = prevProps
+    const { url, ...params } = this.props
+    if (url !== prevUrl) {
+      this.leafletElement.setUrl(url)
+    }
+    if (!isEqual(params, prevParams)) {
+      this.leafletElement.setParams(params)
     }
   }
 }

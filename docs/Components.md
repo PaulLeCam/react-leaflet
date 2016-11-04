@@ -142,7 +142,7 @@ The Tooltip children will be rendered using `ReactDOM.render()`, they must be va
 
 [Leaflet reference](http://leafletjs.com/reference-1.0.0.html#tilelayer-wms)
 
-**Properties**
+**Dynamic properties**
 - `url: string` (required)
 
 All other properties are passed as parameters and dynamic, they will cause the layer to redraw if they change.

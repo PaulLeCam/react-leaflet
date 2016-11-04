@@ -1,3 +1,7 @@
+## v1.0.0-rc.3 (2016-11-04)
+
+Updated `WMSTileLayer` to support dynamic `url` property.
+
 ## v1.0.0-rc.2 (2016-10-20)
 
 - Added `Pane` component introduced in Leaflet v1. ([PR #227](https://github.com/PaulLeCam/react-leaflet/pull/227) by *rjdestigter*).
