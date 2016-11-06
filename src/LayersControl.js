@@ -4,6 +4,7 @@ import { control } from 'leaflet'
 import React, { cloneElement, Children, Component, PropTypes } from 'react'
 
 import childrenType from './types/children'
+import controlPositionType from './types/controlPosition'
 import layerContainerType from './types/layerContainer'
 import mapType from './types/map'
 
@@ -96,6 +97,7 @@ export default class LayersControl extends MapControl {
     baseLayers: PropTypes.object,
     children: childrenType,
     overlays: PropTypes.object,
+    position: controlPositionType,
   };
 
   static contextTypes = {

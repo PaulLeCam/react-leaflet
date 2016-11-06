@@ -1,13 +1,17 @@
 /* @flow */
 
 import { rectangle } from 'leaflet'
+import { PropTypes } from 'react'
 
 import boundsType from './types/bounds'
+import childrenType from './types/children'
 import Path from './Path'
 
 export default class Rectangle extends Path {
   static propTypes = {
+    children: childrenType,
     bounds: boundsType.isRequired,
+    popupContainer: PropTypes.object,
   };
 
   componentWillMount () {

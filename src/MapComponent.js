@@ -37,12 +37,12 @@ export default class MapComponent extends Component<any, any, any> {
     })
   }
 
-  getLeafletElement () {
+  getLeafletElement (): Object {
     warning(false, 'The "getLeafletElement()" method is deprecated and will be removed in the next version, simply use the "leafletElement" property instead.')
     return this.leafletElement
   }
 
-  extractLeafletEvents (props: Object) {
+  extractLeafletEvents (props: Object): Object {
     return reduce(keys(props), (res, prop) => {
       if (EVENTS_RE.test(prop)) {
         const key = prop.replace(EVENTS_RE, (match, p) => p.toLowerCase())

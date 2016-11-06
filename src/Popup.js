@@ -84,7 +84,7 @@ export default class Popup extends MapComponent {
     }
   }
 
-  render () {
+  render (): null {
     return null
   }
 }

@@ -31,12 +31,12 @@ export default class MapControl extends Component {
     this.leafletElement.removeFrom(this.context.map)
   }
 
-  getLeafletElement () {
+  getLeafletElement (): Object {
     warning(false, 'The "getLeafletElement()" method is deprecated and will be removed in the next version, simply use the "leafletElement" property instead.')
     return this.leafletElement
   }
 
-  render () {
+  render (): null {
     return null
   }
 }
