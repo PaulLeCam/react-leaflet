@@ -2,11 +2,13 @@
 
 import { polyline } from 'leaflet'
 
+import childrenType from './types/children'
 import latlngListType from './types/latlngList'
 import Path from './Path'
 
 export default class Polyline extends Path {
   static propTypes = {
+    children: childrenType,
     positions: latlngListType.isRequired,
   };
 

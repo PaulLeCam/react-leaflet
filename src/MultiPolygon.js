@@ -3,11 +3,14 @@
 import { multiPolygon } from 'leaflet'
 import { PropTypes } from 'react'
 
+import childrenType from './types/children'
 import latlngListType from './types/latlngList'
 import Path from './Path'
 
 export default class MultiPolygon extends Path {
   static propTypes = {
+    children: childrenType,
+    popupContainer: PropTypes.object,
     polygons: PropTypes.arrayOf(
       PropTypes.oneOfType([
         latlngListType,
