@@ -45,17 +45,13 @@ export default class Map extends MapComponent {
     map: PropTypes.instanceOf(Leaflet.Map),
   };
 
-<<<<<<< HEAD
-  getChildContext (): { map: Object } {
-=======
-  container: HTMLDivElement
+  container: HTMLDivElement;
 
   state: {
     map?: Leaflet.Map,
-  }
+  };
 
-  getChildContext () {
->>>>>>> next
+  getChildContext (): { map: Object } {
     return {
       map: this.leafletElement,
     }
@@ -105,15 +101,11 @@ export default class Map extends MapComponent {
     this.leafletElement.remove()
   }
 
-<<<<<<< HEAD
-  shouldUpdateCenter (next: LatLngType, prev: LatLngType): boolean {
-=======
-  bindContainer = (container: HTMLDivElement) => {
+  bindContainer: Function = (container: HTMLDivElement): void => {
     this.container = container
-  }
+  };
 
-  shouldUpdateCenter (next: LatLngType, prev: LatLngType) {
->>>>>>> next
+  shouldUpdateCenter (next: LatLngType, prev: LatLngType): boolean {
     if (!prev) return true
     next = normalizeCenter(next)
     prev = normalizeCenter(prev)

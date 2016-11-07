@@ -110,7 +110,7 @@ export default class LayersControl extends MapControl {
     addOverlay: (layer: Object, name: string, checked: bool) => void,
     removeLayer: (layer: Object) => void,
     removeLayerControl: (layer: Object) => void,
-  }
+  };
 
   componentWillMount () {
     const { children: _children, ...options } = this.props
@@ -151,7 +151,7 @@ export default class LayersControl extends MapControl {
     this.leafletElement.removeLayer(layer)
   }
 
-  render (): any {
+  render (): React.Element {
     const children = Children.map(this.props.children, child => {
       return child ? cloneElement(child, this.controlProps) : null
     })

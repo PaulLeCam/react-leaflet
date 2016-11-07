@@ -4,12 +4,8 @@ import { tileLayer } from 'leaflet'
 import { isEqual } from 'lodash'
 import { PropTypes } from 'react'
 
-<<<<<<< HEAD
-import BaseTileLayer from './BaseTileLayer'
 import childrenType from './types/children'
-=======
 import GridLayer from './GridLayer'
->>>>>>> next
 
 export default class WMSTileLayer extends GridLayer {
   static propTypes = {

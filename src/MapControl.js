@@ -14,7 +14,7 @@ export default class MapControl extends Component {
     map: mapType,
   };
 
-  leafletElement: Object
+  leafletElement: Object;
 
   componentDidMount () {
     this.leafletElement.addTo(this.context.map)
@@ -27,16 +27,7 @@ export default class MapControl extends Component {
   }
 
   componentWillUnmount () {
-<<<<<<< HEAD
-    this.leafletElement.removeFrom(this.context.map)
-  }
-
-  getLeafletElement (): Object {
-    warning(false, 'The "getLeafletElement()" method is deprecated and will be removed in the next version, simply use the "leafletElement" property instead.')
-    return this.leafletElement
-=======
     this.leafletElement.remove()
->>>>>>> next
   }
 
   render (): null {

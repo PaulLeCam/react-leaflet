@@ -33,15 +33,8 @@ export default class MapComponent extends Component<any, any, any> {
     })
   }
 
-<<<<<<< HEAD
-  getLeafletElement (): Object {
-    warning(false, 'The "getLeafletElement()" method is deprecated and will be removed in the next version, simply use the "leafletElement" property instead.')
-    return this.leafletElement
-  }
-=======
   _leafletEvents: {[key: string]: Function};
   leafletElement: Object;
->>>>>>> next
 
   extractLeafletEvents (props: Object): Object {
     return reduce(keys(props), (res, prop) => {
@@ -80,7 +73,7 @@ export default class MapComponent extends Component<any, any, any> {
     if (el) el.fire(type, data)
   }
 
-  getOptions (props: Object = {}) {
+  getOptions (props: Object = {}): Object {
     const pane = props.pane || this.context.pane
     return pane ? {...props, pane} : props
   }

@@ -9,15 +9,11 @@ import Path from './Path'
 
 export default class Polyline extends Path {
   static propTypes = {
-<<<<<<< HEAD
     children: childrenType,
-    positions: latlngListType.isRequired,
-=======
     positions: PropTypes.oneOfType([
       latlngListType,
       PropTypes.arrayOf(latlngListType),
     ]).isRequired,
->>>>>>> next
   };
 
   componentWillMount () {
