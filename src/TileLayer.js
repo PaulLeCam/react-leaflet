@@ -3,10 +3,14 @@
 import { tileLayer } from 'leaflet'
 import { PropTypes } from 'react'
 
+<<<<<<< HEAD
 import BaseTileLayer from './BaseTileLayer'
 import childrenType from './types/children'
+=======
+import GridLayer from './GridLayer'
+>>>>>>> next
 
-export default class TileLayer extends BaseTileLayer {
+export default class TileLayer extends GridLayer {
   static propTypes = {
     children: childrenType,
     opacity: PropTypes.number,
@@ -17,7 +21,7 @@ export default class TileLayer extends BaseTileLayer {
   componentWillMount () {
     super.componentWillMount()
     const { url, ...props } = this.props
-    this.leafletElement = tileLayer(url, props)
+    this.leafletElement = tileLayer(url, this.getOptions(props))
   }
 
   componentDidUpdate (prevProps: Object) {

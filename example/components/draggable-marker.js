@@ -2,32 +2,28 @@ import React, { Component } from 'react'
 import { Map, TileLayer, Marker, Popup } from '../../src'
 
 export default class DraggableExample extends Component {
-  constructor () {
-    super()
+  state = {
+    center: {
+      lat: 51.505,
+      lng: -0.09,
+    },
+    marker: {
+      lat: 51.505,
+      lng: -0.09,
+    },
+    zoom: 13,
+    draggable: true,
+  }
 
-    this.state = {
-      center: {
-        lat: 51.505,
-        lng: -0.09,
-      },
-      marker: {
-        lat: 51.505,
-        lng: -0.09,
-      },
-      zoom: 13,
-      draggable: true,
-    }
+  toggleDraggable = () => {
+    this.setState({draggable: !this.state.draggable})
+  }
 
-    this.toggleDraggable = () => {
-      this.setState({draggable: !this.state.draggable})
-    }
-
-    this.updatePosition = () => {
-      const { lat, lng } = this.refs.marker.getLeafletElement().getLatLng()
-      this.setState({
-        marker: {lat, lng},
-      })
-    }
+  updatePosition = () => {
+    const { lat, lng } = this.refs.marker.leafletElement.getLatLng()
+    this.setState({
+      marker: {lat, lng},
+    })
   }
 
   render () {

@@ -14,7 +14,6 @@
 
 ## [API](API.md)
 
-- [Helpers](API.md#helpers)
 - [PropTypes](API.md#proptypes)
 - [Events](API.md#events)
 - [Components](API.md#components)

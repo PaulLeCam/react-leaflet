@@ -24,14 +24,11 @@ MyMarkersList.propTypes = {
 }
 
 export default class CustomComponent extends Component {
-  constructor () {
-    super()
-    this.state = {
-      lat: 51.505,
-      lng: -0.09,
-      zoom: 13,
-    }
-  }
+  state = {
+    lat: 51.505,
+    lng: -0.09,
+    zoom: 13,
+  };
 
   render () {
     const center = [this.state.lat, this.state.lng]

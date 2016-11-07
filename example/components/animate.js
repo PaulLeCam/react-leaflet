@@ -2,24 +2,21 @@ import React, { Component } from 'react'
 import { Map, TileLayer, Marker, Popup } from '../../src'
 
 export default class AnimateExample extends Component {
-  constructor () {
-    super()
-    this.state = {
-      animate: false,
-      latlng: {
-        lat: 51.505,
-        lng: -0.09,
-      },
-    }
+  state = {
+    animate: false,
+    latlng: {
+      lat: 51.505,
+      lng: -0.09,
+    },
   }
 
-  handleClick (e) {
+  handleClick = (e) => {
     this.setState({
       latlng: e.latlng,
     })
   }
 
-  toggleAnimate () {
+  toggleAnimate = () => {
     this.setState({
       animate: !this.state.animate,
     })
@@ -37,14 +34,14 @@ export default class AnimateExample extends Component {
     return (
       <div style={{textAlign: 'center'}}>
         <label>
-          <input checked={this.state.animate} onChange={::this.toggleAnimate} type='checkbox' />
+          <input checked={this.state.animate} onChange={this.toggleAnimate} type='checkbox' />
           Animate panning
         </label>
         <Map
           animate={this.state.animate}
           center={this.state.latlng}
           length={4}
-          onClick={::this.handleClick}
+          onClick={this.handleClick}
           ref='map'
           zoom={13}>
           <TileLayer

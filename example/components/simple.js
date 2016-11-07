@@ -2,13 +2,10 @@ import React, { Component } from 'react'
 import { Map, TileLayer, Marker, Popup } from '../../src'
 
 export default class SimpleExample extends Component {
-  constructor () {
-    super()
-    this.state = {
-      lat: 51.505,
-      lng: -0.09,
-      zoom: 13,
-    }
+  state = {
+    lat: 51.505,
+    lng: -0.09,
+    zoom: 13,
   }
 
   render () {

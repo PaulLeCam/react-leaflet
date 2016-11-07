@@ -1,9 +1,5 @@
 # API
 
-## Helpers
-
-**setIconDefaultImagePath(path: string)**: Setter for `Leaflet.Icon.Default.imagePath`, set to `//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images` by default.
-
 ## PropTypes
 
 The following PropTypes are exported in the `PropTypes` object.
@@ -34,6 +30,7 @@ Check Leaflet documentation for the events associated to each component.
   - [BaseTileLayer](Components.md#basetilelayer)
   - [Path](Components.md#path)
 - [Map](Components.md#map)
+- [Pane](Components.md#pane)
 - [UI Layers](Components.md#ui-layers)
   - [Marker](Components.md#marker)
   - [Popup](Components.md#popup)

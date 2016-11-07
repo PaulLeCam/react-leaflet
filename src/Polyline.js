@@ -1,6 +1,7 @@
 /* @flow */
 
 import { polyline } from 'leaflet'
+import { PropTypes } from 'react'
 
 import childrenType from './types/children'
 import latlngListType from './types/latlngList'
@@ -8,14 +9,21 @@ import Path from './Path'
 
 export default class Polyline extends Path {
   static propTypes = {
+<<<<<<< HEAD
     children: childrenType,
     positions: latlngListType.isRequired,
+=======
+    positions: PropTypes.oneOfType([
+      latlngListType,
+      PropTypes.arrayOf(latlngListType),
+    ]).isRequired,
+>>>>>>> next
   };
 
   componentWillMount () {
     super.componentWillMount()
     const { positions, ...props } = this.props
-    this.leafletElement = polyline(positions, props)
+    this.leafletElement = polyline(positions, this.getOptions(props))
   }
 
   componentDidUpdate (prevProps: Object) {

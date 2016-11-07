@@ -1,7 +1,7 @@
 /* @flow */
 
 import { control } from 'leaflet'
-import React, { cloneElement, Children, Component, PropTypes } from 'react'
+import React, { cloneElement, Component, Children, PropTypes } from 'react'
 
 import childrenType from './types/children'
 import controlPositionType from './types/controlPosition'
@@ -22,8 +22,6 @@ const controlledLayerPropTypes = {
 
 // Abtract class for layer container, extended by BaseLayer and Overlay
 class ControlledLayer extends Component {
-  layer: ?Object;
-
   static propTypes = controlledLayerPropTypes;
 
   static contextTypes = {
@@ -55,6 +53,8 @@ class ControlledLayer extends Component {
   componentWillUnmount () {
     this.props.removeLayerControl(this.layer)
   }
+
+  layer: ?Object;
 
   addLayer () {
     throw new Error('Must be implemented in extending class')
@@ -106,11 +106,11 @@ export default class LayersControl extends MapControl {
   };
 
   controlProps: {
-    addBaseLayer: Function,
-    addOverlay: Function,
-    removeLayer: Function,
-    removeLayerControl: Function,
-  };
+    addBaseLayer: (layer: Object, name: string, checked: bool) => void,
+    addOverlay: (layer: Object, name: string, checked: bool) => void,
+    removeLayer: (layer: Object) => void,
+    removeLayerControl: (layer: Object) => void,
+  }
 
   componentWillMount () {
     const { children: _children, ...options } = this.props
