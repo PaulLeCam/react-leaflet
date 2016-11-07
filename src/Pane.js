@@ -44,9 +44,9 @@ export default class Pane extends Component {
     name: ?string,
   } = {
     name: undefined,
-  }
+  };
 
-  getChildContext () {
+  getChildContext (): { pane: ?string } {
     return {
       pane: this.state.name,
     }
@@ -123,7 +123,7 @@ export default class Pane extends Component {
     }
   }
 
-  setStyle = ({ style, className }: Object = this.props) => {
+  setStyle: Function = ({ style, className }: Object = this.props): void => {
     const pane = this.getPane(this.state.name)
     if (pane) {
       if (className) {
@@ -135,13 +135,13 @@ export default class Pane extends Component {
         })
       }
     }
-  }
+  };
 
-  getParentPane () {
+  getParentPane (): ?Object {
     return this.getPane(this.props.pane || this.context.pane)
   }
 
-  getPane (name: ?string) {
+  getPane (name: ?string): ?Object {
     return name ? this.context.map.getPane(name) : undefined
   }
 

@@ -3,6 +3,7 @@
 import { isEqual, pick } from 'lodash'
 import { PropTypes } from 'react'
 
+import childrenType from './types/children'
 import MapLayer from './MapLayer'
 
 const OPTIONS = [
@@ -24,16 +25,17 @@ const OPTIONS = [
 
 export default class Path extends MapLayer {
   static childContextTypes = {
+    children: childrenType,
     popupContainer: PropTypes.object,
   };
 
-  getChildContext () {
+  getChildContext (): { popupContainer: Object } {
     return {
       popupContainer: this.leafletElement,
     }
   }
 
-  getPathOptions (props: Object) {
+  getPathOptions (props: Object): Object {
     return pick(props, OPTIONS)
   }
 

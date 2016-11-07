@@ -4,6 +4,7 @@ import { control } from 'leaflet'
 import React, { cloneElement, Component, Children, PropTypes } from 'react'
 
 import childrenType from './types/children'
+import controlPositionType from './types/controlPosition'
 import layerContainerType from './types/layerContainer'
 import mapType from './types/map'
 
@@ -96,6 +97,7 @@ export default class LayersControl extends MapControl {
     baseLayers: PropTypes.object,
     children: childrenType,
     overlays: PropTypes.object,
+    position: controlPositionType,
   };
 
   static contextTypes = {
@@ -108,7 +110,7 @@ export default class LayersControl extends MapControl {
     addOverlay: (layer: Object, name: string, checked: bool) => void,
     removeLayer: (layer: Object) => void,
     removeLayerControl: (layer: Object) => void,
-  }
+  };
 
   componentWillMount () {
     const { children: _children, ...options } = this.props
@@ -149,7 +151,7 @@ export default class LayersControl extends MapControl {
     this.leafletElement.removeLayer(layer)
   }
 
-  render (): any {
+  render (): React.Element {
     const children = Children.map(this.props.children, child => {
       return child ? cloneElement(child, this.controlProps) : null
     })

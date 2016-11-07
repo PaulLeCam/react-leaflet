@@ -3,10 +3,12 @@
 import { gridLayer } from 'leaflet'
 import { PropTypes } from 'react'
 
+import childrenType from './types/children'
 import MapLayer from './MapLayer'
 
 export default class GridLayer extends MapLayer {
   static propTypes = {
+    children: childrenType,
     opacity: PropTypes.number,
     zIndex: PropTypes.number,
   };
@@ -26,7 +28,7 @@ export default class GridLayer extends MapLayer {
     }
   }
 
-  render () {
+  render (): null {
     return null
   }
 }

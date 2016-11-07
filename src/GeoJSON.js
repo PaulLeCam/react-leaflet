@@ -4,10 +4,12 @@ import { geoJSON } from 'leaflet'
 import { isFunction } from 'lodash'
 import { PropTypes } from 'react'
 
+import childrenType from './types/children'
 import Path from './Path'
 
 export default class GeoJSON extends Path {
   static propTypes = {
+    children: childrenType,
     data: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
   };
 

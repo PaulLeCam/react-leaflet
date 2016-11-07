@@ -36,7 +36,7 @@ export default class MapComponent extends Component<any, any, any> {
   _leafletEvents: {[key: string]: Function};
   leafletElement: Object;
 
-  extractLeafletEvents (props: Object) {
+  extractLeafletEvents (props: Object): Object {
     return reduce(keys(props), (res, prop) => {
       if (EVENTS_RE.test(prop)) {
         const key = prop.replace(EVENTS_RE, (match, p) => p.toLowerCase())
@@ -73,7 +73,7 @@ export default class MapComponent extends Component<any, any, any> {
     if (el) el.fire(type, data)
   }
 
-  getOptions (props: Object = {}) {
+  getOptions (props: Object = {}): Object {
     const pane = props.pane || this.context.pane
     return pane ? {...props, pane} : props
   }

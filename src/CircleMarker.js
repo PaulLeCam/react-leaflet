@@ -3,12 +3,14 @@
 import { circleMarker } from 'leaflet'
 import { PropTypes } from 'react'
 
+import childrenType from './types/children'
 import latlngType from './types/latlng'
 import Path from './Path'
 
 export default class CircleMarker extends Path {
   static propTypes = {
     center: latlngType.isRequired,
+    children: childrenType,
     radius: PropTypes.number,
   };
 

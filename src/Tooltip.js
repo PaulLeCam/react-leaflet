@@ -50,19 +50,19 @@ export default class Tooltip extends MapComponent {
     super.componentWillUnmount()
   }
 
-  onTooltipOpen = ({ tooltip }: Object) => {
+  onTooltipOpen: Function = ({ tooltip }: Object): void => {
     if (tooltip === this.leafletElement) {
       this.renderTooltipContent()
     }
-  }
+  };
 
-  onTooltipClose = ({ tooltip }: Object) => {
+  onTooltipClose: Function = ({ tooltip }: Object): void => {
     if (tooltip === this.leafletElement) {
       this.removeTooltipContent()
     }
-  }
+  };
 
-  renderTooltipContent = () => {
+  renderTooltipContent: Function = (): void => {
     if (this.props.children) {
       render(
         Children.only(this.props.children),
@@ -72,15 +72,15 @@ export default class Tooltip extends MapComponent {
     } else {
       this.removeTooltipContent()
     }
-  }
+  };
 
-  removeTooltipContent = () => {
+  removeTooltipContent: Function = (): void => {
     if (this.leafletElement._contentNode) {
       unmountComponentAtNode(this.leafletElement._contentNode)
     }
-  }
+  };
 
-  render () {
+  render (): null {
     return null
   }
 }

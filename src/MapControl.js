@@ -14,7 +14,7 @@ export default class MapControl extends Component {
     map: mapType,
   };
 
-  leafletElement: Object
+  leafletElement: Object;
 
   componentDidMount () {
     this.leafletElement.addTo(this.context.map)
@@ -30,7 +30,7 @@ export default class MapControl extends Component {
     this.leafletElement.remove()
   }
 
-  render () {
+  render (): null {
     return null
   }
 }
