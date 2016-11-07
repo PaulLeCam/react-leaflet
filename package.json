@@ -14,7 +14,7 @@
     "lint": "eslint ./src",
     "lintAndTest": "npm run lint && jest",
     "flow": "flow",
-    "start": "npm run lint && npm run test && npm run build",
+    "start": "npm run lint && npm run flow && npm run test && npm run build",
     "dev": "npm run watch & npm run onchange",
     "prepublish": "npm ls && npm start",
     "examples": "webpack-dev-server --config ./example/webpack.config.babel.js"

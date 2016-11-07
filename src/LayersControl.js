@@ -151,7 +151,7 @@ export default class LayersControl extends MapControl {
     this.leafletElement.removeLayer(layer)
   }
 
-  render (): React.Element {
+  render (): null | React.Element<*> {
     const children = Children.map(this.props.children, child => {
       return child ? cloneElement(child, this.controlProps) : null
     })

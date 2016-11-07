@@ -1,3 +1,25 @@
+## v1.0.0 (in progress)
+
+Changes from v0.12.3:
+
+- [BREAKING] Renamed `GeoJson` to `GeoJSON` to match Leaflet's change.
+- [BREAKING] Removed `MultiPolygon` and `MultiPolyline`, now supported by `Polygon` and `Polyline` respectively.
+- [BREAKING] Removed `CanvasTileLayer`, replaced by `GridLayer`. See [Leaflet's documentation](http://leafletjs.com/reference-1.0.0.html#gridlayer).
+- [BREAKING] Removed `getLeafletElement()` method in `MapComponent` and `MapControl`, deprecated since v0.12.0.
+- [BREAKING] Removed `setIconDefaultImagePath()` helper, set `Leaflet.Icon.Default.imagePath` directly using Leaflet if you need.
+- Updated Leaflet dependency requirement to v1.0.0.
+- `Leaflet.Icon.Default.imagePath` is no longer set by default, as per Leaflet v1.0.0 it should be auto-detected.
+- The `Map` component no longer creates an unique ID for its container if none is provided.
+- Added `useFlyTo: bool` property to `Map` to use `flyTo` instead of `setView` and `flyToBounds` instead of `fitBounds` when changing the map's view or bounds ([PR #148](https://github.com/PaulLeCam/react-leaflet/pull/192) by *jgimbel*).
+- Added `GridLayer`.
+- Added `Pane` component introduced in Leaflet v1. ([PR #227](https://github.com/PaulLeCam/react-leaflet/pull/227) by *rjdestigter*).
+- Added `Tooltip` component introduced in Leaflet v1. See [Leaflet's documentation](http://leafletjs.com/reference-1.0.0.html#tooltip) for usage.
+- Added support for IE9 and IE10 ([PR #235](https://github.com/PaulLeCam/react-leaflet/pull/235) by *dettier*).
+- Updated `WMSTileLayer` to support dynamic `url` and parameters.
+- [internal] Fixed Flow errors ([PR #251](https://github.com/PaulLeCam/react-leaflet/pull/251) by *joeyrosztoczy*).
+- [internal] Removed `BaseTileLayer`, replaced by `GridLayer`.
+- [internal] Removed `bower.json` file.
+
 ## v1.0.0-rc.3 (2016-11-04)
 
 Updated `WMSTileLayer` to support dynamic `url` property.

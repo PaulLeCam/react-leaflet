@@ -119,7 +119,7 @@ export default class Map extends MapComponent {
     return !next.equals(prev)
   }
 
-  render (): React.Element {
+  render (): React.Element<*> {
     const map = this.leafletElement
     const children = map ? React.Children.map(this.props.children, child => {
       return child ? React.cloneElement(child, {map, layerContainer: map}) : null

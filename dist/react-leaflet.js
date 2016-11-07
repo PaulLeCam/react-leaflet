@@ -380,6 +380,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react = __webpack_require__(3);
 
+	var _controlPosition = __webpack_require__(8);
+
+	var _controlPosition2 = _interopRequireDefault(_controlPosition);
+
 	var _MapControl2 = __webpack_require__(12);
 
 	var _MapControl3 = _interopRequireDefault(_MapControl2);
@@ -411,6 +415,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}(_MapControl3.default);
 
 	AttributionControl.propTypes = {
+	  position: _controlPosition2.default,
 	  prefix: _react.PropTypes.string
 	};
 	exports.default = AttributionControl;
@@ -424,6 +429,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.__esModule = true;
 
 	var _react = __webpack_require__(3);
+
+	var _react2 = _interopRequireDefault(_react);
 
 	var _controlPosition = __webpack_require__(8);
 
@@ -493,6 +500,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react = __webpack_require__(3);
 
+	var _children = __webpack_require__(7);
+
+	var _children2 = _interopRequireDefault(_children);
+
 	var _latlng = __webpack_require__(6);
 
 	var _latlng2 = _interopRequireDefault(_latlng);
@@ -548,6 +559,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	Circle.propTypes = {
 	  center: _latlng2.default.isRequired,
+	  children: _children2.default,
 	  radius: _react.PropTypes.number.isRequired
 	};
 	exports.default = Circle;
@@ -569,6 +581,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _isEqual3 = _interopRequireDefault(_isEqual2);
 
 	var _react = __webpack_require__(3);
+
+	var _children = __webpack_require__(7);
+
+	var _children2 = _interopRequireDefault(_children);
 
 	var _MapLayer2 = __webpack_require__(75);
 
@@ -622,6 +638,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}(_MapLayer3.default);
 
 	Path.childContextTypes = {
+	  children: _children2.default,
 	  popupContainer: _react.PropTypes.object
 	};
 	exports.default = Path;
@@ -3785,6 +3802,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react = __webpack_require__(3);
 
+	var _children = __webpack_require__(7);
+
+	var _children2 = _interopRequireDefault(_children);
+
 	var _latlng = __webpack_require__(6);
 
 	var _latlng2 = _interopRequireDefault(_latlng);
@@ -3839,6 +3860,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	CircleMarker.propTypes = {
 	  center: _latlng2.default.isRequired,
+	  children: _children2.default,
 	  radius: _react.PropTypes.number
 	};
 	exports.default = CircleMarker;
@@ -3854,6 +3876,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _leaflet = __webpack_require__(4);
 
 	var _react = __webpack_require__(3);
+
+	var _children = __webpack_require__(7);
+
+	var _children2 = _interopRequireDefault(_children);
 
 	var _layerContainer = __webpack_require__(9);
 
@@ -3906,6 +3932,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}(_Path3.default);
 
 	FeatureGroup.childContextTypes = {
+	  children: _children2.default,
 	  layerContainer: _layerContainer2.default,
 	  popupContainer: _react.PropTypes.object
 	};
@@ -3926,6 +3953,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _leaflet = __webpack_require__(4);
 
 	var _react = __webpack_require__(3);
+
+	var _children = __webpack_require__(7);
+
+	var _children2 = _interopRequireDefault(_children);
 
 	var _Path2 = __webpack_require__(14);
 
@@ -3974,6 +4005,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}(_Path3.default);
 
 	GeoJSON.propTypes = {
+	  children: _children2.default,
 	  data: _react.PropTypes.oneOfType([_react.PropTypes.array, _react.PropTypes.object]).isRequired
 	};
 	exports.default = GeoJSON;
@@ -3989,6 +4021,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _leaflet = __webpack_require__(4);
 
 	var _react = __webpack_require__(3);
+
+	var _children = __webpack_require__(7);
+
+	var _children2 = _interopRequireDefault(_children);
 
 	var _MapLayer2 = __webpack_require__(75);
 
@@ -4039,6 +4075,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}(_MapLayer3.default);
 
 	GridLayer.propTypes = {
+	  children: _children2.default,
 	  opacity: _react.PropTypes.number,
 	  zIndex: _react.PropTypes.number
 	};
@@ -4059,6 +4096,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _bounds = __webpack_require__(2);
 
 	var _bounds2 = _interopRequireDefault(_bounds);
+
+	var _children = __webpack_require__(7);
+
+	var _children2 = _interopRequireDefault(_children);
 
 	var _MapLayer2 = __webpack_require__(75);
 
@@ -4115,6 +4156,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	ImageOverlay.propTypes = {
 	  attribution: _react.PropTypes.string,
 	  bounds: _bounds2.default.isRequired,
+	  children: _children2.default,
 	  opacity: _react.PropTypes.number,
 	  url: _react.PropTypes.string.isRequired
 	};
@@ -4193,6 +4235,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _children2 = __webpack_require__(7);
 
 	var _children3 = _interopRequireDefault(_children2);
+
+	var _controlPosition = __webpack_require__(8);
+
+	var _controlPosition2 = _interopRequireDefault(_controlPosition);
 
 	var _layerContainer = __webpack_require__(9);
 
@@ -4410,7 +4456,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	LayersControl.propTypes = {
 	  baseLayers: _react.PropTypes.object,
 	  children: _children3.default,
-	  overlays: _react.PropTypes.object
+	  overlays: _react.PropTypes.object,
+	  position: _controlPosition2.default
 	};
 	LayersControl.contextTypes = {
 	  layerContainer: _layerContainer2.default,
@@ -4961,6 +5008,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react = __webpack_require__(3);
 
+	var _react2 = _interopRequireDefault(_react);
+
+	var _children = __webpack_require__(7);
+
+	var _children2 = _interopRequireDefault(_children);
+
 	var _latlng = __webpack_require__(6);
 
 	var _latlng2 = _interopRequireDefault(_latlng);
@@ -5036,6 +5089,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}(_MapLayer3.default);
 
 	Marker.propTypes = {
+	  children: _children2.default,
 	  icon: _react.PropTypes.instanceOf(_leaflet.Icon),
 	  opacity: _react.PropTypes.number,
 	  position: _latlng2.default.isRequired,
@@ -5165,8 +5219,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      // Remove the previous css class name from the pane if it has changed.
 	      // setStyle will take care of adding in the updated className
 	      if (this.props.className && nextProps.className !== this.props.className) {
-	        var pane = this.getPane();
-	        if (pane) pane.classList.remove(this.props.className);
+	        var _pane = this.getPane();
+	        if (_pane) _pane.classList.remove(this.props.className);
 	      }
 
 	      // Update the pane's DOM node style and class
@@ -5202,8 +5256,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var name = this.state.name;
 
 	    if (name) {
-	      var pane = this.getPane(name);
-	      if (pane && pane.remove) pane.remove();
+	      var _pane2 = this.getPane(name);
+	      if (_pane2 && _pane2.remove) _pane2.remove();
 
 	      var map = this.context.map;
 	      if (map && map._panes) {
@@ -5390,6 +5444,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react = __webpack_require__(3);
 
+	var _children = __webpack_require__(7);
+
+	var _children2 = _interopRequireDefault(_children);
+
 	var _latlngList = __webpack_require__(5);
 
 	var _latlngList2 = _interopRequireDefault(_latlngList);
@@ -5442,6 +5500,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	}(_Path3.default);
 
 	Polygon.propTypes = {
+	  children: _children2.default,
+	  popupContainer: _react.PropTypes.object,
 	  positions: _react.PropTypes.oneOfType([_latlngList2.default, multiLatLngListType, _react.PropTypes.arrayOf(multiLatLngListType)]).isRequired
 	};
 	exports.default = Polygon;
@@ -5457,6 +5517,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _leaflet = __webpack_require__(4);
 
 	var _react = __webpack_require__(3);
+
+	var _children = __webpack_require__(7);
+
+	var _children2 = _interopRequireDefault(_children);
 
 	var _latlngList = __webpack_require__(5);
 
@@ -5508,6 +5572,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}(_Path3.default);
 
 	Polyline.propTypes = {
+	  children: _children2.default,
 	  positions: _react.PropTypes.oneOfType([_latlngList2.default, _react.PropTypes.arrayOf(_latlngList2.default)]).isRequired
 	};
 	exports.default = Polyline;
@@ -5679,9 +5744,15 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _leaflet = __webpack_require__(4);
 
+	var _react = __webpack_require__(3);
+
 	var _bounds = __webpack_require__(2);
 
 	var _bounds2 = _interopRequireDefault(_bounds);
+
+	var _children = __webpack_require__(7);
+
+	var _children2 = _interopRequireDefault(_children);
 
 	var _Path2 = __webpack_require__(14);
 
@@ -5729,7 +5800,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}(_Path3.default);
 
 	Rectangle.propTypes = {
-	  bounds: _bounds2.default.isRequired
+	  children: _children2.default,
+	  bounds: _bounds2.default.isRequired,
+	  popupContainer: _react.PropTypes.object
 	};
 	exports.default = Rectangle;
 
@@ -5744,6 +5817,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _leaflet = __webpack_require__(4);
 
 	var _react = __webpack_require__(3);
+
+	var _controlPosition = __webpack_require__(8);
+
+	var _controlPosition2 = _interopRequireDefault(_controlPosition);
 
 	var _MapControl2 = __webpack_require__(12);
 
@@ -5779,6 +5856,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  imperial: _react.PropTypes.bool,
 	  maxWidth: _react.PropTypes.number,
 	  metric: _react.PropTypes.bool,
+	  position: _controlPosition2.default,
 	  updateWhenIdle: _react.PropTypes.bool
 	};
 	exports.default = ScaleControl;
@@ -5794,6 +5872,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _leaflet = __webpack_require__(4);
 
 	var _react = __webpack_require__(3);
+
+	var _children = __webpack_require__(7);
+
+	var _children2 = _interopRequireDefault(_children);
 
 	var _GridLayer2 = __webpack_require__(113);
 
@@ -5843,7 +5925,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	}(_GridLayer3.default);
 
 	TileLayer.propTypes = {
-	  url: _react.PropTypes.string.isRequired
+	  children: _children2.default,
+	  opacity: _react.PropTypes.number,
+	  url: _react.PropTypes.string.isRequired,
+	  zIndex: _react.PropTypes.number
 	};
 	exports.default = TileLayer;
 
@@ -5986,6 +6071,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react = __webpack_require__(3);
 
+	var _children = __webpack_require__(7);
+
+	var _children2 = _interopRequireDefault(_children);
+
 	var _GridLayer2 = __webpack_require__(113);
 
 	var _GridLayer3 = _interopRequireDefault(_GridLayer2);
@@ -6041,7 +6130,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	}(_GridLayer3.default);
 
 	WMSTileLayer.propTypes = {
-	  url: _react.PropTypes.string.isRequired
+	  children: _children2.default,
+	  opacity: _react.PropTypes.number,
+	  url: _react.PropTypes.string.isRequired,
+	  zIndex: _react.PropTypes.number
 	};
 	exports.default = WMSTileLayer;
 
@@ -6060,6 +6152,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _MapControl2 = __webpack_require__(12);
 
 	var _MapControl3 = _interopRequireDefault(_MapControl2);
+
+	var _controlPosition = __webpack_require__(8);
+
+	var _controlPosition2 = _interopRequireDefault(_controlPosition);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -6088,6 +6184,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}(_MapControl3.default);
 
 	ZoomControl.propTypes = {
+	  position: _controlPosition2.default,
 	  zoomInText: _react.PropTypes.string,
 	  zoomInTitle: _react.PropTypes.string,
 	  zoomOutText: _react.PropTypes.string,
