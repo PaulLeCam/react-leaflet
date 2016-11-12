@@ -2521,11 +2521,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  };
 
 	  MapLayer.prototype.render = function render() {
-	    return _react2.default.createElement(
+	    return Array.isArray(this.props.children) ? _react2.default.createElement(
 	      'div',
 	      { style: { display: 'none' } },
 	      this.props.children
-	    );
+	    ) : this.props.children || null;
 	  };
 
 	  _createClass(MapLayer, [{

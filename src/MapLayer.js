@@ -33,7 +33,9 @@ export default class MapLayer extends MapComponent {
     this.layerContainer.removeLayer(this.leafletElement)
   }
 
-  render (): any {
-    return <div style={{display: 'none'}}>{this.props.children}</div>
+  render (): React.Element<*> | null {
+    return Array.isArray(this.props.children)
+      ? <div style={{display: 'none'}}>{this.props.children}</div>
+      : (this.props.children || null)
   }
 }
