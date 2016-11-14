@@ -1,6 +1,6 @@
 # Upgrading
 
-## v1.0 (in progress)
+## v1.0
 
 React-Leaflet v1 requires Leaflet v1.0.0 and therefore contains breaking changes from v0.12, based on Leaflet v0.7.  
 Make sure to update your Leaflet dependency to v1.0.0, as well as its CSS file.
