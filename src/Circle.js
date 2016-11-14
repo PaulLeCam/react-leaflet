@@ -3,19 +3,21 @@
 import { circle } from 'leaflet'
 import { PropTypes } from 'react'
 
+import childrenType from './types/children'
 import latlngType from './types/latlng'
 import Path from './Path'
 
 export default class Circle extends Path {
   static propTypes = {
     center: latlngType.isRequired,
+    children: childrenType,
     radius: PropTypes.number.isRequired,
   };
 
   componentWillMount () {
     super.componentWillMount()
     const { center, radius, ...props } = this.props
-    this.leafletElement = circle(center, radius, props)
+    this.leafletElement = circle(center, radius, this.getOptions(props))
   }
 
   componentDidUpdate (prevProps: Object) {

@@ -1,5 +1,20 @@
 # Upgrading
 
+## v1.0
+
+React-Leaflet v1 requires Leaflet v1.0.0 and therefore contains breaking changes from v0.12, based on Leaflet v0.7.  
+Make sure to update your Leaflet dependency to v1.0.0, as well as its CSS file.
+
+The following list includes breaking changes upgrading to React-Leaflet v1.0 from v0.12, it may not be exhaustive:
+
+- Renamed `GeoJson` to `GeoJSON` to match Leaflet's change.
+- Removed `MultiPolygon` and `MultiPolyline`, now supported by `Polygon` and `Polyline` respectively.
+- Removed `CanvasTileLayer`, replaced by `GridLayer`. See [Leaflet's documentation](http://leafletjs.com/reference-1.0.0.html#gridlayer).
+- Removed `getLeafletElement()` method in `MapComponent` and `MapControl`, deprecated since v0.12.0.
+- Removed `setIconDefaultImagePath()` helper, set `Leaflet.Icon.Default.imagePath` directly using Leaflet if you need.
+
+Read the [changelog](CHANGELOG.md) for more details about these changes.
+
 ## v0.12.0
 
 **Drop support for IE <= 10** as explained in [this comment](https://github.com/PaulLeCam/react-leaflet/issues/215#issuecomment-243996907).

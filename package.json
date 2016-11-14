@@ -1,6 +1,6 @@
 {
   "name": "react-leaflet",
-  "version": "0.12.3",
+  "version": "1.0.0",
   "description": "React components for Leaflet maps",
   "main": "lib/index.js",
   "scripts": {
@@ -10,14 +10,14 @@
     "build:dist": "webpack --progress",
     "build": "npm run build:lib && npm run build:dist",
     "watch": "babel src --watch --out-dir lib",
-    "start": "npm run lint && npm run test && npm run build",
     "test": "jest",
-    "onchange": "onchange 'src/*.js' 'src/**/*.js' -- npm run lintAndTest",
+    "lint": "eslint ./src",
+    "lintAndTest": "npm run lint && jest",
+    "flow": "flow",
+    "start": "npm run lint && npm run flow && npm run test && npm run build",
     "dev": "npm run watch & npm run onchange",
     "prepublish": "npm ls && npm start",
-    "examples": "webpack-dev-server --config ./example/webpack.config.babel.js",
-    "lint": "eslint ./src",
-    "lintAndTest": "npm run lint && jest"
+    "examples": "webpack-dev-server --config ./example/webpack.config.babel.js"
   },
   "repository": {
     "type": "git",
@@ -40,34 +40,34 @@
     "warning": "^3.0.0"
   },
   "peerDependencies": {
-    "leaflet": "^0.7.0",
-    "react": "^0.14.0 || ^15.0.0",
-    "react-dom": "^0.14.0 || ^15.0.0"
+    "leaflet": "^1.0.0",
+    "react": "^15.0.0",
+    "react-dom": "^15.0.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.10.1",
-    "babel-core": "^6.10.4",
-    "babel-eslint": "^6.1.2",
-    "babel-jest": "^15.0.0",
-    "babel-loader": "^6.2.4",
+    "babel-cli": "^6.14.0",
+    "babel-core": "^6.14.0",
+    "babel-eslint": "^7.1.0",
+    "babel-jest": "^17.0.0",
+    "babel-loader": "^6.2.5",
     "babel-plugin-dev-expression": "^0.2.1",
     "babel-plugin-lodash": "^3.2.9",
     "babel-plugin-react-transform": "^2.0.2",
     "babel-plugin-transform-proto-to-assign": "^6.9.0",
-    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-es2015": "^6.14.0",
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-0": "^6.5.0",
-    "eslint": "^3.5.0",
-    "eslint-config-standard": "^6.0.1",
-    "eslint-config-standard-jsx": "^3.0.1",
-    "eslint-config-standard-react": "^4.0.2",
-    "eslint-plugin-promise": "^3.3.0",
-    "eslint-plugin-react": "^6.3.0",
-    "eslint-plugin-standard": "^2.0.0",
-    "jest-cli": "^15.1.1",
-    "leaflet": "^0.7.7",
-    "lodash-webpack-plugin": "^0.10.1",
-    "onchange": "^3.0.2",
+    "eslint": "^3.10.1",
+    "eslint-config-standard": "^6.1.0",
+    "eslint-config-standard-jsx": "^3.1.0",
+    "eslint-config-standard-react": "^4.1.0",
+    "eslint-plugin-promise": "^3.3.2",
+    "eslint-plugin-react": "^6.7.0",
+    "eslint-plugin-standard": "^2.0.1",
+    "flow-bin": "^0.35.0",
+    "jest-cli": "^17.0.1",
+    "leaflet": "^1.0.0",
+    "lodash-webpack-plugin": "^0.10.5",
     "react": "^15.3.2",
     "react-addons-test-utils": "^15.3.2",
     "react-dom": "^15.3.2",
@@ -77,6 +77,8 @@
   },
   "jest": {
     "collectCoverage": true,
-    "scriptPreprocessor": "<rootDir>/node_modules/babel-jest"
+    "transform": {
+      ".*": "<rootDir>/node_modules/babel-jest"
+    }
   }
 }

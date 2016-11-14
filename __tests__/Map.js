@@ -16,7 +16,7 @@ describe('Map', () => {
     const component = <Map><TestComponent /></Map>
     const html = renderToStaticMarkup(component)
 
-    expect(html).toBe('<div id="map1"></div>')
+    expect(html).toBe('<div></div>')
   })
 
   it('sets center and zoom props', () => {
@@ -35,7 +35,7 @@ describe('Map', () => {
     const bounds = [[0, 0], [2, 2]]
     const map = renderIntoDocument(<Map bounds={bounds} />)
     const mapBounds = map.leafletElement.getBounds()
-    expect(mapBounds).toBe(bounds)
+    expect(mapBounds).toEqual(bounds)
   })
 
   it('updates center and zoom props', () => {
@@ -101,8 +101,8 @@ describe('Map', () => {
     const component = renderIntoDocument(<TestComponent />)
     const mapLeaflet = component.getLeafletMap()
 
-    expect(mapLeaflet.getBounds()).toBe(firstBounds)
+    expect(mapLeaflet.getBounds()).toEqual(firstBounds)
     component.updatePosition()
-    expect(mapLeaflet.getBounds()).toBe(secondBounds)
+    expect(mapLeaflet.getBounds()).toEqual(secondBounds)
   })
 })

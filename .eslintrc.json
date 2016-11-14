@@ -6,7 +6,7 @@
   "extends": ["standard", "standard-react"],
   "parser": "babel-eslint",
   "parserOptions": {
-    "ecmaVersion": 6,
+    "ecmaVersion": 7,
     "jsx": true,
     "sourceType": "module"
   },
@@ -15,6 +15,7 @@
   ],
   "rules": {
     "comma-dangle": [1, "always-multiline"],
+    "jsx-quotes": [2, "prefer-single"],
     "no-duplicate-imports": [0],
     "no-unused-vars": [2, { "varsIgnorePattern": "^_" }],
     "space-infix-ops": [0]

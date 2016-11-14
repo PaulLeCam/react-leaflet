@@ -4,12 +4,14 @@ import { imageOverlay } from 'leaflet'
 import { PropTypes } from 'react'
 
 import boundsType from './types/bounds'
+import childrenType from './types/children'
 import MapLayer from './MapLayer'
 
 export default class ImageOverlay extends MapLayer {
   static propTypes = {
     attribution: PropTypes.string,
     bounds: boundsType.isRequired,
+    children: childrenType,
     opacity: PropTypes.number,
     url: PropTypes.string.isRequired,
   };
@@ -17,7 +19,7 @@ export default class ImageOverlay extends MapLayer {
   componentWillMount () {
     super.componentWillMount()
     const { bounds, url, ...props } = this.props
-    this.leafletElement = imageOverlay(url, bounds, props)
+    this.leafletElement = imageOverlay(url, bounds, this.getOptions(props))
   }
 
   componentDidUpdate (prevProps: Object) {
@@ -29,7 +31,7 @@ export default class ImageOverlay extends MapLayer {
     }
   }
 
-  render () {
+  render (): null {
     return null
   }
 }

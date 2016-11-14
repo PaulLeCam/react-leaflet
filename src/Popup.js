@@ -1,6 +1,6 @@
 /* @flow */
 
-import { popup } from 'leaflet'
+import { popup as createPopup } from 'leaflet'
 import { Children, PropTypes } from 'react'
 import { render, unmountComponentAtNode } from 'react-dom'
 
@@ -17,15 +17,19 @@ export default class Popup extends MapComponent {
   static contextTypes = {
     map: mapType,
     popupContainer: PropTypes.object,
+    pane: PropTypes.string,
   };
 
   componentWillMount () {
     super.componentWillMount()
     const { children: _children, ...props } = this.props
 
-    this.leafletElement = popup(props, this.context.popupContainer)
-    this.leafletElement.on('open', this.renderPopupContent.bind(this))
-    this.leafletElement.on('close', this.removePopupContent.bind(this))
+    this.leafletElement = createPopup(this.getOptions(props), this.context.popupContainer)
+
+    this.context.map.on({
+      popupopen: this.onPopupOpen,
+      popupclose: this.onPopupClose,
+    })
   }
 
   componentDidMount () {
@@ -52,39 +56,51 @@ export default class Popup extends MapComponent {
       this.leafletElement.setLatLng(position)
     }
 
-    if (this.leafletElement._isOpen) {
+    if (this.leafletElement.isOpen()) {
       this.renderPopupContent()
     }
   }
 
   componentWillUnmount () {
-    super.componentWillUnmount()
-    this.removePopupContent()
+    this.context.map.off({
+      popupopen: this.onPopupOpen,
+      popupclose: this.onPopupClose,
+    })
     this.context.map.removeLayer(this.leafletElement)
+    super.componentWillUnmount()
   }
 
-  renderPopupContent () {
+  onPopupOpen: Function = ({ popup }: Object): void => {
+    if (popup === this.leafletElement) {
+      this.renderPopupContent()
+    }
+  };
+
+  onPopupClose: Function = ({ popup }: Object): void => {
+    if (popup === this.leafletElement) {
+      this.removePopupContent()
+    }
+  };
+
+  renderPopupContent: Function = (): void => {
     if (this.props.children) {
       render(
         Children.only(this.props.children),
         this.leafletElement._contentNode
       )
-
-      this.leafletElement._updateLayout()
-      this.leafletElement._updatePosition()
-      this.leafletElement._adjustPan()
+      this.leafletElement.update()
     } else {
       this.removePopupContent()
     }
-  }
+  };
 
-  removePopupContent () {
+  removePopupContent: Function = (): void => {
     if (this.leafletElement._contentNode) {
       unmountComponentAtNode(this.leafletElement._contentNode)
     }
-  }
+  };
 
-  render () {
+  render (): null {
     return null
   }
 }

@@ -3,21 +3,27 @@
 import { polygon } from 'leaflet'
 import { PropTypes } from 'react'
 
+import childrenType from './types/children'
 import latlngListType from './types/latlngList'
 import Path from './Path'
 
+const multiLatLngListType = PropTypes.arrayOf(latlngListType)
+
 export default class Polygon extends Path {
   static propTypes = {
+    children: childrenType,
+    popupContainer: PropTypes.object,
     positions: PropTypes.oneOfType([
       latlngListType,
-      PropTypes.arrayOf(latlngListType),
+      multiLatLngListType,
+      PropTypes.arrayOf(multiLatLngListType),
     ]).isRequired,
   };
 
   componentWillMount () {
     super.componentWillMount()
     const { positions, ...props } = this.props
-    this.leafletElement = polygon(positions, props)
+    this.leafletElement = polygon(positions, this.getOptions(props))
   }
 
   componentDidUpdate (prevProps: Object) {

@@ -1,9 +1,12 @@
 [ignore]
+.*/node_modules/fbjs/.*
 
 [include]
+./node_modules/react
 
 [libs]
 
 [options]
+esproposal.class_instance_fields=enable
 esproposal.class_static_fields=enable
 unsafe.enable_getters_and_setters=true

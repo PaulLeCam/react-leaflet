@@ -1,13 +1,15 @@
 /* @flow */
 
 import { Icon, marker } from 'leaflet'
-import { PropTypes } from 'react'
+import React, { PropTypes } from 'react'
 
+import childrenType from './types/children'
 import latlngType from './types/latlng'
 import MapLayer from './MapLayer'
 
 export default class Marker extends MapLayer {
   static propTypes = {
+    children: childrenType,
     icon: PropTypes.instanceOf(Icon),
     opacity: PropTypes.number,
     position: latlngType.isRequired,
@@ -18,7 +20,7 @@ export default class Marker extends MapLayer {
     popupContainer: PropTypes.object,
   };
 
-  getChildContext () {
+  getChildContext (): { popupContainer: Object } {
     return {
       popupContainer: this.leafletElement,
     }
@@ -27,7 +29,7 @@ export default class Marker extends MapLayer {
   componentWillMount () {
     super.componentWillMount()
     const { position, ...props } = this.props
-    this.leafletElement = marker(position, props)
+    this.leafletElement = marker(position, this.getOptions(props))
   }
 
   componentDidUpdate (prevProps: Object) {
@@ -52,7 +54,7 @@ export default class Marker extends MapLayer {
     }
   }
 
-  render () {
+  render (): null | React.Element<*> {
     return this.props.children || null
   }
 }

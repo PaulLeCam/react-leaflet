@@ -2,14 +2,10 @@
 
 import { clone, forEach, keys, reduce } from 'lodash'
 import { Component } from 'react'
-import warning from 'warning'
 
 const EVENTS_RE = /^on(.+)$/i
 
 export default class MapComponent extends Component<any, any, any> {
-  _leafletEvents: Object;
-  leafletElement: Object;
-
   constructor (props: Object, context: Object) {
     super(props, context)
     this._leafletEvents = {}
@@ -20,7 +16,7 @@ export default class MapComponent extends Component<any, any, any> {
   }
 
   componentDidMount () {
-    this.bindLeafletEvents(this._leafletEvents, {})
+    this.bindLeafletEvents(this._leafletEvents)
   }
 
   componentWillReceiveProps (nextProps: Object) {
@@ -37,12 +33,10 @@ export default class MapComponent extends Component<any, any, any> {
     })
   }
 
-  getLeafletElement () {
-    warning(false, 'The "getLeafletElement()" method is deprecated and will be removed in the next version, simply use the "leafletElement" property instead.')
-    return this.leafletElement
-  }
+  _leafletEvents: {[key: string]: Function};
+  leafletElement: Object;
 
-  extractLeafletEvents (props: Object) {
+  extractLeafletEvents (props: Object): Object {
     return reduce(keys(props), (res, prop) => {
       if (EVENTS_RE.test(prop)) {
         const key = prop.replace(EVENTS_RE, (match, p) => p.toLowerCase())
@@ -77,5 +71,10 @@ export default class MapComponent extends Component<any, any, any> {
   fireLeafletEvent (type: string, data: ?any) {
     const el = this.leafletElement
     if (el) el.fire(type, data)
+  }
+
+  getOptions (props: Object = {}): Object {
+    const pane = props.pane || this.context.pane
+    return pane ? {...props, pane} : props
   }
 }

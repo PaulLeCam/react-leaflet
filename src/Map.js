@@ -3,7 +3,7 @@
 
 import Leaflet from 'leaflet'
 import type { LatLng, LatLngBounds } from 'leaflet'
-import { isUndefined, omit, uniqueId } from 'lodash'
+import { isUndefined, omit } from 'lodash'
 import React, { PropTypes } from 'react'
 
 import boundsType from './types/bounds'
@@ -12,19 +12,14 @@ import latlngType from './types/latlng'
 
 import MapComponent from './MapComponent'
 
-type LatLngType = LatLng | Array<number> | Object
-type LatLngBoundsType = LatLngBounds | Array<LatLngType>
+type LatLngType = LatLng | Array<number> | Object;
+type LatLngBoundsType = LatLngBounds | Array<LatLngType>;
 
 const normalizeCenter = (pos: LatLngType): Array<number> => {
   return Array.isArray(pos) ? pos : [pos.lat, pos.lon ? pos.lon : pos.lng]
 }
 
 export default class Map extends MapComponent {
-  state: {
-    id: string,
-    map?: Leaflet.Map,
-  };
-
   static propTypes = {
     animate: PropTypes.bool,
     bounds: boundsType,
@@ -37,33 +32,34 @@ export default class Map extends MapComponent {
     maxZoom: PropTypes.number,
     minZoom: PropTypes.number,
     style: PropTypes.object,
+    useFlyTo: PropTypes.bool,
     zoom: PropTypes.number,
   };
 
   static defaultProps = {
     animate: false,
+    useFlyTo: false,
   };
 
   static childContextTypes = {
     map: PropTypes.instanceOf(Leaflet.Map),
   };
 
-  getChildContext () {
+  container: HTMLDivElement;
+
+  state: {
+    map?: Leaflet.Map,
+  };
+
+  getChildContext (): { map: Object } {
     return {
       map: this.leafletElement,
     }
   }
 
-  constructor (props: Object, context: Object) {
-    super(props, context)
-    this.state = {
-      id: props.id || uniqueId('map'),
-    }
-  }
-
   componentDidMount () {
     const props = omit(this.props, ['children', 'className', 'id', 'style'])
-    this.leafletElement = Leaflet.map(this.state.id, props)
+    this.leafletElement = Leaflet.map(this.container, props)
     super.componentDidMount()
     this.setState({map: this.leafletElement})
     if (!isUndefined(props.bounds)) {
@@ -72,20 +68,31 @@ export default class Map extends MapComponent {
   }
 
   componentDidUpdate (prevProps: Object) {
-    const { bounds, boundsOptions, center, maxBounds, zoom, animate } = this.props
+    const { animate, bounds, boundsOptions, center, maxBounds, useFlyTo, zoom } = this.props
+
     if (center && this.shouldUpdateCenter(center, prevProps.center)) {
-      this.leafletElement.setView(center, zoom, {animate})
+      if (useFlyTo) {
+        this.leafletElement.flyTo(center, zoom, {animate})
+      } else {
+        this.leafletElement.setView(center, zoom, {animate})
+      }
     } else if (zoom && zoom !== prevProps.zoom) {
       this.leafletElement.setZoom(zoom)
     }
+
     if (maxBounds && this.shouldUpdateBounds(maxBounds, prevProps.maxBounds)) {
       this.leafletElement.setMaxBounds(maxBounds)
     }
+
     if (bounds && (
       this.shouldUpdateBounds(bounds, prevProps.bounds) ||
       boundsOptions !== prevProps.boundsOptions
     )) {
-      this.leafletElement.fitBounds(bounds, boundsOptions)
+      if (useFlyTo) {
+        this.leafletElement.flyToBounds(bounds, boundsOptions)
+      } else {
+        this.leafletElement.fitBounds(bounds, boundsOptions)
+      }
     }
   }
 
@@ -94,21 +101,25 @@ export default class Map extends MapComponent {
     this.leafletElement.remove()
   }
 
-  shouldUpdateCenter (next: LatLngType, prev: LatLngType) {
+  bindContainer: Function = (container: HTMLDivElement): void => {
+    this.container = container
+  };
+
+  shouldUpdateCenter (next: LatLngType, prev: LatLngType): boolean {
     if (!prev) return true
     next = normalizeCenter(next)
     prev = normalizeCenter(prev)
     return next[0] !== prev[0] || next[1] !== prev[1]
   }
 
-  shouldUpdateBounds (next: LatLngBoundsType, prev: LatLngBoundsType) {
+  shouldUpdateBounds (next: LatLngBoundsType, prev: LatLngBoundsType): boolean {
     if (!prev) return true
     next = Leaflet.latLngBounds(next)
     prev = Leaflet.latLngBounds(prev)
     return !next.equals(prev)
   }
 
-  render () {
+  render (): React.Element<*> {
     const map = this.leafletElement
     const children = map ? React.Children.map(this.props.children, child => {
       return child ? React.cloneElement(child, {map, layerContainer: map}) : null
@@ -117,7 +128,8 @@ export default class Map extends MapComponent {
     return (
       <div
         className={this.props.className}
-        id={this.state.id}
+        id={this.props.id}
+        ref={this.bindContainer}
         style={this.props.style}>
         {children}
       </div>

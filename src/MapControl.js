@@ -1,14 +1,11 @@
 /* @flow */
 
-import { Component } from 'react'
-import warning from 'warning'
+import React, { Component } from 'react'
 
 import controlPositionType from './types/controlPosition'
 import mapType from './types/map'
 
 export default class MapControl extends Component {
-  leafletElement: Object;
-
   static propTypes = {
     position: controlPositionType,
   };
@@ -16,6 +13,8 @@ export default class MapControl extends Component {
   static contextTypes = {
     map: mapType,
   };
+
+  leafletElement: Object;
 
   componentDidMount () {
     this.leafletElement.addTo(this.context.map)
@@ -28,15 +27,10 @@ export default class MapControl extends Component {
   }
 
   componentWillUnmount () {
-    this.leafletElement.removeFrom(this.context.map)
+    this.leafletElement.remove()
   }
 
-  getLeafletElement () {
-    warning(false, 'The "getLeafletElement()" method is deprecated and will be removed in the next version, simply use the "leafletElement" property instead.')
-    return this.leafletElement
-  }
-
-  render () {
+  render (): null | React.Element<*> {
     return null
   }
 }
