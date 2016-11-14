@@ -1,10 +1,6 @@
-# React-Leaflet [![Build Status](https://img.shields.io/travis/PaulLeCam/react-leaflet/next.svg)](https://travis-ci.org/PaulLeCam/react-leaflet) [![npm version](https://img.shields.io/npm/v/react-leaflet.svg)](https://www.npmjs.com/package/react-leaflet)
+# React-Leaflet [![Build Status](https://img.shields.io/travis/PaulLeCam/react-leaflet/master.svg)](https://travis-ci.org/PaulLeCam/react-leaflet) [![npm version](https://img.shields.io/npm/v/react-leaflet.svg)](https://www.npmjs.com/package/react-leaflet)
 
 React components for Leaflet maps.
-
-## Disclaimer
-
-This is a development branch in preparation for a future v1 release. Code can be unstable and APIs can be changed between releases without other warnings than the [CHANGELOG](CHANGELOG.md). Please try it and report any issue you have upgrading, but be aware it should not be considered stable in any way.
 
 ## [Documentation](docs/README.md)
 
