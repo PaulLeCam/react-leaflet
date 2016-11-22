@@ -8,6 +8,7 @@ React components for Leaflet maps.
 - [How it works](docs/How%20it%20works.md)
 - [API](docs/API.md)
 - [Extending](docs/Extending.md)
+- [Plugins](docs/Plugins.md)
 
 ## Changes
 
