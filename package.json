@@ -67,7 +67,6 @@
     "flow-bin": "^0.36.0",
     "jest-cli": "^17.0.3",
     "leaflet": "^1.0.2",
-    "lodash": "^4.17.2",
     "lodash-webpack-plugin": "^0.10.6",
     "react": "^15.4.1",
     "react-addons-test-utils": "^15.4.1",
