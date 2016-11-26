@@ -1,3 +1,8 @@
+## v1.0.1 (2016-11-26)
+
+- Fixed updating `opacity` and `zIndex` in `WMSTileLayer` ([PR #259 ](https://github.com/PaulLeCam/react-leaflet/pull/259) by *YannickBochatay*).
+- [doc] Added link to plugins documentation in README ([PR #258](https://github.com/PaulLeCam/react-leaflet/pull/258) by *jakehm*).
+
 ## v1.0.0 (2016-11-14)
 
 Changes from v0.12.3:

@@ -6230,12 +6230,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	  };
 
 	  WMSTileLayer.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
+	    _GridLayer.prototype.componentDidUpdate.call(this, prevProps);
+
 	    var prevUrl = prevProps.url,
-	        prevParams = _objectWithoutProperties(prevProps, ['url']);
+	        _po = prevProps.opacity,
+	        _pz = prevProps.zIndex,
+	        prevParams = _objectWithoutProperties(prevProps, ['url', 'opacity', 'zIndex']);
 
 	    var _props2 = this.props,
 	        url = _props2.url,
-	        params = _objectWithoutProperties(_props2, ['url']);
+	        _o = _props2.opacity,
+	        _z = _props2.zIndex,
+	        params = _objectWithoutProperties(_props2, ['url', 'opacity', 'zIndex']);
 
 	    if (url !== prevUrl) {
 	      this.leafletElement.setUrl(url);
