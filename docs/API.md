@@ -50,7 +50,7 @@ Check Leaflet documentation for the events associated to each component.
 - [Other Layers](Components.md#other-layers)
   - [LayerGroup](Components.md#layergroup)
   - [FeatureGroup](Components.md#featuregroup)
-  - [GeoJson](Components.md#geojson)
+  - [GeoJSON](Components.md#geojson)
 - [Controls](Components.md#controls)
   - [AttributionControl](Components.md#attributioncontrol)
   - [LayersControl](Components.md#layerscontrol)

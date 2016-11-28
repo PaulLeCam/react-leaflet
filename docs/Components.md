@@ -28,7 +28,7 @@ You can directly access the Leaflet element created by a component using `this.l
   - [Rectangle](#rectangle)
 - [Other Layers](#other-layers)
   - [FeatureGroup](#featuregroup)
-  - [GeoJson](#geojson)
+  - [GeoJSON](#geojson)
   - [GridLayer](#gridlayer)
   - [LayerGroup](#layergroup)
 - [Controls](#controls)
@@ -194,7 +194,7 @@ All vector layers extend the **Path** component and therefore accept dynamic [Pa
 
 Extended `LayerGroup` supporting a `Popup` child.
 
-### GeoJson
+### GeoJSON
 
 [Leaflet reference](http://leafletjs.com/reference-1.0.0.html#geojson)
 
