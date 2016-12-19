@@ -1,3 +1,7 @@
+## v1.0.2 (2016-12-19)
+
+Fixed binding events in `FeatureGroup`.
+
 ## v1.0.1 (2016-11-26)
 
 - Fixed updating `opacity` and `zIndex` in `WMSTileLayer` ([PR #259 ](https://github.com/PaulLeCam/react-leaflet/pull/259) by *YannickBochatay*).

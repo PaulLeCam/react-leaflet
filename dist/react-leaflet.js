@@ -4181,6 +4181,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  };
 
 	  FeatureGroup.prototype.componentWillMount = function componentWillMount() {
+	    _Path.prototype.componentWillMount.call(this);
 	    this.leafletElement = (0, _leaflet.featureGroup)(this.getOptions(this.props));
 	  };
 
