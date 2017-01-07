@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 
 import { control } from 'leaflet'
 import { PropTypes } from 'react'
@@ -13,9 +13,9 @@ export default class ScaleControl extends MapControl {
     metric: PropTypes.bool,
     position: controlPositionType,
     updateWhenIdle: PropTypes.bool,
-  };
+  }
 
-  componentWillMount () {
-    this.leafletElement = control.scale(this.props)
+  createLeafletElement (props: Object): Object {
+    return control.scale(props)
   }
 }

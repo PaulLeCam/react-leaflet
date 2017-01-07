@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 
 import { control } from 'leaflet'
 import { PropTypes } from 'react'
@@ -13,9 +13,9 @@ export default class ZoomControl extends MapControl {
     zoomInTitle: PropTypes.string,
     zoomOutText: PropTypes.string,
     zoomOutTitle: PropTypes.string,
-  };
+  }
 
-  componentWillMount () {
-    this.leafletElement = control.zoom(this.props)
+  createLeafletElement (props: Object): Object {
+    return control.zoom(props)
   }
 }

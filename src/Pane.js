@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 
 import { forEach, omit, uniqueId } from 'lodash'
 import React, { PropTypes, Component } from 'react'
@@ -29,24 +29,24 @@ export default class Pane extends Component {
     className: PropTypes.string,
     style: PropTypes.object,
     pane: PropTypes.string,
-  };
+  }
 
   static contextTypes = {
     map: mapType,
     pane: PropTypes.string,
-  };
+  }
 
   static childContextTypes = {
     pane: PropTypes.string,
-  };
+  }
 
   state: {
     name: ?string,
   } = {
     name: undefined,
-  };
+  }
 
-  getChildContext (): { pane: ?string } {
+  getChildContext (): {pane: ?string} {
     return {
       pane: this.state.name,
     }
@@ -123,7 +123,7 @@ export default class Pane extends Component {
     }
   }
 
-  setStyle: Function = ({ style, className }: Object = this.props): void => {
+  setStyle = ({ style, className }: Object = this.props): void => {
     const pane = this.getPane(this.state.name)
     if (pane) {
       if (className) {

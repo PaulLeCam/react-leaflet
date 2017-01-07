@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 
 import { tileLayer } from 'leaflet'
 import { isEqual } from 'lodash'
@@ -13,18 +13,16 @@ export default class WMSTileLayer extends GridLayer {
     opacity: PropTypes.number,
     url: PropTypes.string.isRequired,
     zIndex: PropTypes.number,
-  };
-
-  componentWillMount () {
-    super.componentWillMount()
-    const { url, ...props } = this.props
-    this.leafletElement = tileLayer.wms(url, this.getOptions(props))
   }
 
-  componentDidUpdate (prevProps: Object) {
-    super.componentDidUpdate(prevProps)
-    const { url: prevUrl, opacity: _po, zIndex: _pz, ...prevParams } = prevProps
-    const { url, opacity: _o, zIndex: _z, ...params } = this.props
+  createLeafletElement (props: Object): Object {
+    const { url, ...options } = props
+    return tileLayer.wms(url, this.getOptions(options))
+  }
+
+  updateLeafletElement (fromProps: Object, toProps: Object) {
+    const { url: prevUrl, opacity: _po, zIndex: _pz, ...prevParams } = fromProps
+    const { url, opacity: _o, zIndex: _z, ...params } = toProps
 
     if (url !== prevUrl) {
       this.leafletElement.setUrl(url)

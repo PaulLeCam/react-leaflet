@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 
 import { Map } from 'leaflet'
 import { PropTypes } from 'react'

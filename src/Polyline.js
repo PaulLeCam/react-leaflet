@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 
 import { polyline } from 'leaflet'
 import { PropTypes } from 'react'
@@ -14,18 +14,17 @@ export default class Polyline extends Path {
       latlngListType,
       PropTypes.arrayOf(latlngListType),
     ]).isRequired,
-  };
-
-  componentWillMount () {
-    super.componentWillMount()
-    const { positions, ...props } = this.props
-    this.leafletElement = polyline(positions, this.getOptions(props))
   }
 
-  componentDidUpdate (prevProps: Object) {
-    if (this.props.positions !== prevProps.positions) {
-      this.leafletElement.setLatLngs(this.props.positions)
+  createLeafletElement (props: Object): Object {
+    const { positions, ...options } = props
+    return polyline(positions, this.getOptions(options))
+  }
+
+  updateLeafletElement (fromProps: Object, toProps: Object) {
+    if (toProps.positions !== fromProps.positions) {
+      this.leafletElement.setLatLngs(toProps.positions)
     }
-    this.setStyleIfChanged(prevProps, this.props)
+    this.setStyleIfChanged(fromProps, toProps)
   }
 }

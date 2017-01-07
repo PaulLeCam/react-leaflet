@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 
 import { control } from 'leaflet'
 import { PropTypes } from 'react'
@@ -10,9 +10,9 @@ export default class AttributionControl extends MapControl {
   static propTypes = {
     position: controlPositionType,
     prefix: PropTypes.string,
-  };
+  }
 
-  componentWillMount () {
-    this.leafletElement = control.attribution(this.props)
+  createLeafletElement (props: Object): Object {
+    return control.attribution(props)
   }
 }

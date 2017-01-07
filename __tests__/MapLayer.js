@@ -12,12 +12,15 @@ describe('MapLayer', () => {
     class TestComponent extends MapLayer {
       static contextTypes = {
         map: React.PropTypes.instanceOf(Leaflet.Map),
-      };
+      }
+
+      createLeafletElement () {
+        return Leaflet.marker([0, 0])
+      }
 
       componentWillMount () {
         super.componentWillMount()
         expect(this.context.map).toBeDefined()
-        this.leafletElement = Leaflet.marker([0, 0])
       }
 
       render () {
@@ -28,7 +31,7 @@ describe('MapLayer', () => {
     class ChildComponent extends Component {
       static contextTypes = {
         map: React.PropTypes.instanceOf(Leaflet.Map),
-      };
+      }
 
       componentWillMount () {
         expect(this.context.map).toBeDefined()

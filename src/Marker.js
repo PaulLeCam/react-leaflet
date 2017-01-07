@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 
 import { Icon, marker } from 'leaflet'
 import React, { PropTypes } from 'react'
@@ -14,11 +14,11 @@ export default class Marker extends MapLayer {
     opacity: PropTypes.number,
     position: latlngType.isRequired,
     zIndexOffset: PropTypes.number,
-  };
+  }
 
   static childContextTypes = {
     popupContainer: PropTypes.object,
-  };
+  }
 
   getChildContext (): { popupContainer: Object } {
     return {
@@ -26,27 +26,26 @@ export default class Marker extends MapLayer {
     }
   }
 
-  componentWillMount () {
-    super.componentWillMount()
-    const { position, ...props } = this.props
-    this.leafletElement = marker(position, this.getOptions(props))
+  createLeafletElement (props: Object): Object {
+    const { position, ...options } = props
+    return marker(position, this.getOptions(options))
   }
 
-  componentDidUpdate (prevProps: Object) {
-    if (this.props.position !== prevProps.position) {
-      this.leafletElement.setLatLng(this.props.position)
+  updateLeafletElement (fromProps: Object, toProps: Object) {
+    if (toProps.position !== fromProps.position) {
+      this.leafletElement.setLatLng(toProps.position)
     }
-    if (this.props.icon !== prevProps.icon) {
-      this.leafletElement.setIcon(this.props.icon)
+    if (toProps.icon !== fromProps.icon) {
+      this.leafletElement.setIcon(toProps.icon)
     }
-    if (this.props.zIndexOffset !== prevProps.zIndexOffset) {
-      this.leafletElement.setZIndexOffset(this.props.zIndexOffset)
+    if (toProps.zIndexOffset !== fromProps.zIndexOffset) {
+      this.leafletElement.setZIndexOffset(toProps.zIndexOffset)
     }
-    if (this.props.opacity !== prevProps.opacity) {
-      this.leafletElement.setOpacity(this.props.opacity)
+    if (toProps.opacity !== fromProps.opacity) {
+      this.leafletElement.setOpacity(toProps.opacity)
     }
-    if (this.props.draggable !== prevProps.draggable) {
-      if (this.props.draggable) {
+    if (toProps.draggable !== fromProps.draggable) {
+      if (toProps.draggable) {
         this.leafletElement.dragging.enable()
       } else {
         this.leafletElement.dragging.disable()

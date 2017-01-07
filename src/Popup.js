@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 
 import { popup as createPopup } from 'leaflet'
 import { Children, PropTypes } from 'react'
@@ -12,19 +12,28 @@ export default class Popup extends MapComponent {
   static propTypes = {
     children: PropTypes.node,
     position: latlngType,
-  };
+  }
 
   static contextTypes = {
     map: mapType,
     popupContainer: PropTypes.object,
     pane: PropTypes.string,
-  };
+  }
+
+  createLeafletElement (props: Object): Object {
+    const { children: _children, ...options } = props
+    return createPopup(this.getOptions(options), this.context.popupContainer)
+  }
+
+  updateLeafletElement (fromProps: Object, toProps: Object) {
+    if (toProps.position !== fromProps.position) {
+      this.leafletElement.setLatLng(toProps.position)
+    }
+  }
 
   componentWillMount () {
     super.componentWillMount()
-    const { children: _children, ...props } = this.props
-
-    this.leafletElement = createPopup(this.getOptions(props), this.context.popupContainer)
+    this.leafletElement = this.createLeafletElement(this.props)
 
     this.context.map.on({
       popupopen: this.onPopupOpen,
@@ -50,11 +59,7 @@ export default class Popup extends MapComponent {
   }
 
   componentDidUpdate (prevProps: Object) {
-    const { position } = this.props
-
-    if (position !== prevProps.position) {
-      this.leafletElement.setLatLng(position)
-    }
+    this.updateLeafletElement(prevProps, this.props)
 
     if (this.leafletElement.isOpen()) {
       this.renderPopupContent()
@@ -70,19 +75,19 @@ export default class Popup extends MapComponent {
     super.componentWillUnmount()
   }
 
-  onPopupOpen: Function = ({ popup }: Object): void => {
+  onPopupOpen = ({ popup }: Object): void => {
     if (popup === this.leafletElement) {
       this.renderPopupContent()
     }
-  };
+  }
 
-  onPopupClose: Function = ({ popup }: Object): void => {
+  onPopupClose = ({ popup }: Object): void => {
     if (popup === this.leafletElement) {
       this.removePopupContent()
     }
-  };
+  }
 
-  renderPopupContent: Function = (): void => {
+  renderPopupContent = (): void => {
     if (this.props.children) {
       render(
         Children.only(this.props.children),
@@ -92,13 +97,13 @@ export default class Popup extends MapComponent {
     } else {
       this.removePopupContent()
     }
-  };
+  }
 
-  removePopupContent: Function = (): void => {
+  removePopupContent = (): void => {
     if (this.leafletElement._contentNode) {
       unmountComponentAtNode(this.leafletElement._contentNode)
     }
-  };
+  }
 
   render (): null {
     return null
