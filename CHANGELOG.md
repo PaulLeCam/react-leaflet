@@ -1,3 +1,7 @@
+## v1.0.3 (2017-01-07)
+
+Fixed updating the `className` property of `Map`.
+
 ## v1.0.2 (2016-12-19)
 
 Fixed binding events in `FeatureGroup`.
