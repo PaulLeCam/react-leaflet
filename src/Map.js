@@ -45,13 +45,18 @@ export default class Map extends MapComponent {
     map: PropTypes.instanceOf(Leaflet.Map),
   };
 
-  container: HTMLDivElement;
-
+  className: ?string
+  container: HTMLDivElement
   state: {
     map?: Leaflet.Map,
-  };
+  }
 
-  getChildContext (): { map: Object } {
+  constructor (props: Object, context: Object) {
+    super(props, context)
+    this.className = props.className
+  }
+
+  getChildContext (): {map: Object} {
     return {
       map: this.leafletElement,
     }
@@ -68,7 +73,16 @@ export default class Map extends MapComponent {
   }
 
   componentDidUpdate (prevProps: Object) {
-    const { animate, bounds, boundsOptions, center, maxBounds, useFlyTo, zoom } = this.props
+    const { animate, bounds, boundsOptions, center, className, maxBounds, useFlyTo, zoom } = this.props
+
+    if (className !== prevProps.className) {
+      if (prevProps.className) {
+        Leaflet.DomUtil.removeClass(this.container, prevProps.className)
+      }
+      if (className) {
+        Leaflet.DomUtil.addClass(this.container, className)
+      }
+    }
 
     if (center && this.shouldUpdateCenter(center, prevProps.center)) {
       if (useFlyTo) {
@@ -101,9 +115,9 @@ export default class Map extends MapComponent {
     this.leafletElement.remove()
   }
 
-  bindContainer: Function = (container: HTMLDivElement): void => {
+  bindContainer = (container: HTMLDivElement): void => {
     this.container = container
-  };
+  }
 
   shouldUpdateCenter (next: LatLngType, prev: LatLngType): boolean {
     if (!prev) return true
@@ -127,7 +141,7 @@ export default class Map extends MapComponent {
 
     return (
       <div
-        className={this.props.className}
+        className={this.className}
         id={this.props.id}
         ref={this.bindContainer}
         style={this.props.style}>
