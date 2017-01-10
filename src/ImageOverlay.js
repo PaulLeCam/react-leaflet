@@ -16,6 +16,16 @@ export default class ImageOverlay extends MapLayer {
     url: PropTypes.string.isRequired,
   }
 
+  static childContextTypes = {
+    popupContainer: PropTypes.object,
+  }
+
+  getChildContext (): {popupContainer: Object} {
+    return {
+      popupContainer: this.leafletElement,
+    }
+  }
+
   createLeafletElement (props: Object): Object {
     const { bounds, url, ...options } = props
     return imageOverlay(url, bounds, this.getOptions(options))
@@ -28,9 +38,5 @@ export default class ImageOverlay extends MapLayer {
     if (toProps.opacity !== fromProps.opacity) {
       this.leafletElement.setOpacity(toProps.opacity)
     }
-  }
-
-  render (): null {
-    return null
   }
 }

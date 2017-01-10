@@ -4676,6 +4676,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return _possibleConstructorReturn(this, _MapLayer.apply(this, arguments));
 	  }
 
+	  ImageOverlay.prototype.getChildContext = function getChildContext() {
+	    return {
+	      popupContainer: this.leafletElement
+	    };
+	  };
+
 	  ImageOverlay.prototype.createLeafletElement = function createLeafletElement(props) {
 	    var bounds = props.bounds,
 	        url = props.url,
@@ -4693,10 +4699,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  };
 
-	  ImageOverlay.prototype.render = function render() {
-	    return null;
-	  };
-
 	  return ImageOverlay;
 	}(_MapLayer3.default);
 
@@ -4706,6 +4708,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  children: _children2.default,
 	  opacity: _react.PropTypes.number,
 	  url: _react.PropTypes.string.isRequired
+	};
+	ImageOverlay.childContextTypes = {
+	  popupContainer: _react.PropTypes.object
 	};
 	exports.default = ImageOverlay;
 
@@ -5076,18 +5081,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	var Map = function (_MapComponent) {
 	  _inherits(Map, _MapComponent);
 
-	  function Map() {
-	    var _temp, _this, _ret;
-
+	  function Map(props, context) {
 	    _classCallCheck(this, Map);
 
-	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-	      args[_key] = arguments[_key];
-	    }
+	    var _this = _possibleConstructorReturn(this, _MapComponent.call(this, props, context));
 
-	    return _ret = (_temp = (_this = _possibleConstructorReturn(this, _MapComponent.call.apply(_MapComponent, [this].concat(args))), _this), _this.bindContainer = function (container) {
+	    _this.bindContainer = function (container) {
 	      _this.container = container;
-	    }, _temp), _possibleConstructorReturn(_this, _ret);
+	    };
+
+	    _this.className = props.className;
+	    return _this;
 	  }
 
 	  Map.prototype.getChildContext = function getChildContext() {
@@ -5105,10 +5109,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	        bounds = toProps.bounds,
 	        boundsOptions = toProps.boundsOptions,
 	        center = toProps.center,
+	        className = toProps.className,
 	        maxBounds = toProps.maxBounds,
 	        useFlyTo = toProps.useFlyTo,
 	        zoom = toProps.zoom;
 
+
+	    if (className !== fromProps.className) {
+	      if (fromProps.className) {
+	        _leaflet2.default.DomUtil.removeClass(this.container, fromProps.className);
+	      }
+	      if (className) {
+	        _leaflet2.default.DomUtil.addClass(this.container, className);
+	      }
+	    }
 
 	    if (center && this.shouldUpdateCenter(center, fromProps.center)) {
 	      if (useFlyTo) {
@@ -5175,7 +5189,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return _react2.default.createElement(
 	      'div',
 	      {
-	        className: this.props.className,
+	        className: this.className,
 	        id: this.props.id,
 	        ref: this.bindContainer,
 	        style: this.props.style },
