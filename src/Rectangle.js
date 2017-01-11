@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 
 import { rectangle } from 'leaflet'
 import { PropTypes } from 'react'
@@ -12,18 +12,17 @@ export default class Rectangle extends Path {
     children: childrenType,
     bounds: boundsType.isRequired,
     popupContainer: PropTypes.object,
-  };
-
-  componentWillMount () {
-    super.componentWillMount()
-    const { bounds, ...props } = this.props
-    this.leafletElement = rectangle(bounds, this.getOptions(props))
   }
 
-  componentDidUpdate (prevProps: Object) {
-    if (this.props.bounds !== prevProps.bounds) {
-      this.leafletElement.setBounds(this.props.bounds)
+  createLeafletElement (props: Object): Object {
+    const { bounds, ...options } = props
+    return rectangle(bounds, this.getOptions(options))
+  }
+
+  updateLeafletElement (fromProps: Object, toProps: Object) {
+    if (toProps.bounds !== fromProps.bounds) {
+      this.leafletElement.setBounds(toProps.bounds)
     }
-    this.setStyleIfChanged(prevProps, this.props)
+    this.setStyleIfChanged(fromProps, toProps)
   }
 }

@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 
 import { control } from 'leaflet'
 import React, { cloneElement, Component, Children, PropTypes } from 'react'
@@ -22,15 +22,17 @@ const controlledLayerPropTypes = {
 
 // Abtract class for layer container, extended by BaseLayer and Overlay
 class ControlledLayer extends Component {
-  static propTypes = controlledLayerPropTypes;
+  static propTypes = controlledLayerPropTypes
 
   static contextTypes = {
     map: mapType,
-  };
+  }
 
   static childContextTypes = {
     layerContainer: layerContainerType,
-  };
+  }
+
+  layer: ?Object
 
   getChildContext () {
     return {
@@ -54,8 +56,6 @@ class ControlledLayer extends Component {
     this.props.removeLayerControl(this.layer)
   }
 
-  layer: ?Object;
-
   addLayer () {
     throw new Error('Must be implemented in extending class')
   }
@@ -70,7 +70,7 @@ class ControlledLayer extends Component {
 }
 
 class BaseLayer extends ControlledLayer {
-  static propTypes = controlledLayerPropTypes;
+  static propTypes = controlledLayerPropTypes
 
   addLayer (layer) {
     this.layer = layer // Keep layer reference to handle dynamic changes of props
@@ -80,7 +80,7 @@ class BaseLayer extends ControlledLayer {
 }
 
 class Overlay extends ControlledLayer {
-  static propTypes = controlledLayerPropTypes;
+  static propTypes = controlledLayerPropTypes
 
   addLayer (layer) {
     this.layer = layer // Keep layer reference to handle dynamic changes of props
@@ -90,31 +90,35 @@ class Overlay extends ControlledLayer {
 }
 
 export default class LayersControl extends MapControl {
-  static BaseLayer: any;
-  static Overlay: any;
+  static BaseLayer: any
+  static Overlay: any
 
   static propTypes = {
     baseLayers: PropTypes.object,
     children: childrenType,
     overlays: PropTypes.object,
     position: controlPositionType,
-  };
+  }
 
   static contextTypes = {
     layerContainer: layerContainerType,
     map: mapType,
-  };
+  }
 
   controlProps: {
-    addBaseLayer: (layer: Object, name: string, checked: bool) => void,
-    addOverlay: (layer: Object, name: string, checked: bool) => void,
+    addBaseLayer: (layer: Object, name: string, checked: boolean) => void,
+    addOverlay: (layer: Object, name: string, checked: boolean) => void,
     removeLayer: (layer: Object) => void,
     removeLayerControl: (layer: Object) => void,
-  };
+  }
+
+  createLeafletElement (props: Object): Object {
+    const { children: _children, ...options } = props
+    return control.layers(undefined, undefined, options)
+  }
 
   componentWillMount () {
-    const { children: _children, ...options } = this.props
-    this.leafletElement = control.layers(undefined, undefined, options)
+    super.componentWillMount()
     this.controlProps = {
       addBaseLayer: this.addBaseLayer.bind(this),
       addOverlay: this.addOverlay.bind(this),

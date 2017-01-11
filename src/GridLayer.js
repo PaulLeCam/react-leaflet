@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 
 import { gridLayer } from 'leaflet'
 import { PropTypes } from 'react'
@@ -11,19 +11,18 @@ export default class GridLayer extends MapLayer {
     children: childrenType,
     opacity: PropTypes.number,
     zIndex: PropTypes.number,
-  };
-
-  componentWillMount () {
-    super.componentWillMount()
-    this.leafletElement = gridLayer(this.getOptions(this.props))
   }
 
-  componentDidUpdate (prevProps: Object) {
-    const { opacity, zIndex } = this.props
-    if (opacity !== prevProps.opacity) {
+  createLeafletElement (props: Object): Object {
+    return gridLayer(this.getOptions(props))
+  }
+
+  updateLeafletElement (fromProps: Object, toProps: Object) {
+    const { opacity, zIndex } = toProps
+    if (opacity !== fromProps.opacity) {
       this.leafletElement.setOpacity(opacity)
     }
-    if (zIndex !== prevProps.zIndex) {
+    if (zIndex !== fromProps.zIndex) {
       this.leafletElement.setZIndex(zIndex)
     }
   }

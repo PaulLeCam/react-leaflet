@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 
 import { forEach, omit, uniqueId } from 'lodash'
 import React, { PropTypes, Component } from 'react'
@@ -9,7 +9,7 @@ import mapType from './types/map'
 
 const LEAFLET_PANES = ['tile', 'shadow', 'overlay', 'map', 'marker', 'tooltip', 'popup']
 
-const isLeafletPane = (name: string): bool => {
+const isLeafletPane = (name: string): boolean => {
   return LEAFLET_PANES.indexOf(name.replace(/-*pane/gi, '')) !== -1
 }
 
@@ -29,24 +29,24 @@ export default class Pane extends Component {
     className: PropTypes.string,
     style: PropTypes.object,
     pane: PropTypes.string,
-  };
+  }
 
   static contextTypes = {
     map: mapType,
     pane: PropTypes.string,
-  };
+  }
 
   static childContextTypes = {
     pane: PropTypes.string,
-  };
+  }
 
   state: {
     name: ?string,
   } = {
     name: undefined,
-  };
+  }
 
-  getChildContext (): { pane: ?string } {
+  getChildContext (): {pane: ?string} {
     return {
       pane: this.state.name,
     }
@@ -123,7 +123,7 @@ export default class Pane extends Component {
     }
   }
 
-  setStyle: Function = ({ style, className }: Object = this.props): void => {
+  setStyle = ({ style, className }: Object = this.props): void => {
     const pane = this.getPane(this.state.name)
     if (pane) {
       if (className) {

@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 
 import { imageOverlay } from 'leaflet'
 import { PropTypes } from 'react'
@@ -14,30 +14,29 @@ export default class ImageOverlay extends MapLayer {
     children: childrenType,
     opacity: PropTypes.number,
     url: PropTypes.string.isRequired,
-  };
+  }
 
   static childContextTypes = {
     popupContainer: PropTypes.object,
-  };
+  }
 
-  getChildContext (): { popupContainer: Object } {
+  getChildContext (): {popupContainer: Object} {
     return {
       popupContainer: this.leafletElement,
     }
   }
 
-  componentWillMount () {
-    super.componentWillMount()
-    const { bounds, url, ...props } = this.props
-    this.leafletElement = imageOverlay(url, bounds, this.getOptions(props))
+  createLeafletElement (props: Object): Object {
+    const { bounds, url, ...options } = props
+    return imageOverlay(url, bounds, this.getOptions(options))
   }
 
-  componentDidUpdate (prevProps: Object) {
-    if (this.props.url !== prevProps.url) {
-      this.leafletElement.setUrl(this.props.url)
+  updateLeafletElement (fromProps: Object, toProps: Object) {
+    if (toProps.url !== fromProps.url) {
+      this.leafletElement.setUrl(toProps.url)
     }
-    if (this.props.opacity !== prevProps.opacity) {
-      this.leafletElement.setOpacity(this.props.opacity)
+    if (toProps.opacity !== fromProps.opacity) {
+      this.leafletElement.setOpacity(toProps.opacity)
     }
   }
 }

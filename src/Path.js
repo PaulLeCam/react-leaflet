@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 
 import { isEqual, pick } from 'lodash'
 import { PropTypes } from 'react'
@@ -27,9 +27,14 @@ export default class Path extends MapLayer {
   static childContextTypes = {
     children: childrenType,
     popupContainer: PropTypes.object,
-  };
+  }
 
-  getChildContext (): { popupContainer: Object } {
+  componentDidUpdate (prevProps: Object) {
+    super.componentDidUpdate(prevProps)
+    this.setStyleIfChanged(prevProps, this.props)
+  }
+
+  getChildContext (): {popupContainer: Object} {
     return {
       popupContainer: this.leafletElement,
     }

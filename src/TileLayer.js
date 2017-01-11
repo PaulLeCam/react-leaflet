@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 
 import { tileLayer } from 'leaflet'
 import { PropTypes } from 'react'
@@ -12,19 +12,16 @@ export default class TileLayer extends GridLayer {
     opacity: PropTypes.number,
     url: PropTypes.string.isRequired,
     zIndex: PropTypes.number,
-  };
-
-  componentWillMount () {
-    super.componentWillMount()
-    const { url, ...props } = this.props
-    this.leafletElement = tileLayer(url, this.getOptions(props))
   }
 
-  componentDidUpdate (prevProps: Object) {
-    super.componentDidUpdate(prevProps)
-    const { url } = this.props
-    if (url !== prevProps.url) {
-      this.leafletElement.setUrl(url)
+  createLeafletElement (props: Object): Object {
+    const { url, ...options } = props
+    return tileLayer(url, this.getOptions(options))
+  }
+
+  updateLeafletElement (fromProps: Object, toProps: Object) {
+    if (toProps.url !== fromProps.url) {
+      this.leafletElement.setUrl(toProps.url)
     }
   }
 }

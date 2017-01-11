@@ -407,8 +407,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return _possibleConstructorReturn(this, _MapControl.apply(this, arguments));
 	  }
 
-	  AttributionControl.prototype.componentWillMount = function componentWillMount() {
-	    this.leafletElement = _leaflet.control.attribution(this.props);
+	  AttributionControl.prototype.createLeafletElement = function createLeafletElement(props) {
+	    return _leaflet.control.attribution(props);
 	  };
 
 	  return AttributionControl;
@@ -459,14 +459,27 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return _possibleConstructorReturn(this, _Component.apply(this, arguments));
 	  }
 
+	  // eslint-disable-next-line no-unused-vars
+	  MapControl.prototype.createLeafletElement = function createLeafletElement(props) {
+	    throw new Error('createLeafletElement() must be implemented');
+	  };
+
+	  MapControl.prototype.updateLeafletElement = function updateLeafletElement(fromProps, toProps) {
+	    if (toProps.position !== fromProps.position) {
+	      this.leafletElement.setPosition(toProps.position);
+	    }
+	  };
+
+	  MapControl.prototype.componentWillMount = function componentWillMount() {
+	    this.leafletElement = this.createLeafletElement(this.props);
+	  };
+
 	  MapControl.prototype.componentDidMount = function componentDidMount() {
 	    this.leafletElement.addTo(this.context.map);
 	  };
 
 	  MapControl.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
-	    if (this.props.position !== prevProps.position) {
-	      this.leafletElement.setPosition(this.props.position);
-	    }
+	    this.updateLeafletElement(prevProps, this.props);
 	  };
 
 	  MapControl.prototype.componentWillUnmount = function componentWillUnmount() {
@@ -533,25 +546,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return _possibleConstructorReturn(this, _Path.apply(this, arguments));
 	  }
 
-	  Circle.prototype.componentWillMount = function componentWillMount() {
-	    _Path.prototype.componentWillMount.call(this);
+	  Circle.prototype.createLeafletElement = function createLeafletElement(props) {
+	    var center = props.center,
+	        radius = props.radius,
+	        options = _objectWithoutProperties(props, ['center', 'radius']);
 
-	    var _props = this.props,
-	        center = _props.center,
-	        radius = _props.radius,
-	        props = _objectWithoutProperties(_props, ['center', 'radius']);
-
-	    this.leafletElement = (0, _leaflet.circle)(center, radius, this.getOptions(props));
+	    return (0, _leaflet.circle)(center, radius, this.getOptions(options));
 	  };
 
-	  Circle.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
-	    if (this.props.center !== prevProps.center) {
-	      this.leafletElement.setLatLng(this.props.center);
+	  Circle.prototype.updateLeafletElement = function updateLeafletElement(fromProps, toProps) {
+	    if (toProps.center !== fromProps.center) {
+	      this.leafletElement.setLatLng(toProps.center);
 	    }
-	    if (this.props.radius !== prevProps.radius) {
-	      this.leafletElement.setRadius(this.props.radius);
+	    if (toProps.radius !== fromProps.radius) {
+	      this.leafletElement.setRadius(toProps.radius);
 	    }
-	    this.setStyleIfChanged(prevProps, this.props);
 	  };
 
 	  return Circle;
@@ -610,6 +619,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    return _possibleConstructorReturn(this, _MapLayer.apply(this, arguments));
 	  }
+
+	  Path.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
+	    _MapLayer.prototype.componentDidUpdate.call(this, prevProps);
+	    this.setStyleIfChanged(prevProps, this.props);
+	  };
 
 	  Path.prototype.getChildContext = function getChildContext() {
 	    return {
@@ -2961,9 +2975,28 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return _possibleConstructorReturn(this, _MapComponent.apply(this, arguments));
 	  }
 
+	  // eslint-disable-next-line no-unused-vars
+	  MapLayer.prototype.createLeafletElement = function createLeafletElement(props) {
+	    throw new Error('createLeafletElement() must be implemented');
+	  };
+
+	  // eslint-disable-next-line no-unused-vars
+
+
+	  MapLayer.prototype.updateLeafletElement = function updateLeafletElement(fromProps, toProps) {};
+
+	  MapLayer.prototype.componentWillMount = function componentWillMount() {
+	    _MapComponent.prototype.componentWillMount.call(this);
+	    this.leafletElement = this.createLeafletElement(this.props);
+	  };
+
 	  MapLayer.prototype.componentDidMount = function componentDidMount() {
 	    _MapComponent.prototype.componentDidMount.call(this);
 	    this.layerContainer.addLayer(this.leafletElement);
+	  };
+
+	  MapLayer.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
+	    this.updateLeafletElement(prevProps, this.props);
 	  };
 
 	  MapLayer.prototype.componentWillUnmount = function componentWillUnmount() {
@@ -4360,24 +4393,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return _possibleConstructorReturn(this, _Path.apply(this, arguments));
 	  }
 
-	  CircleMarker.prototype.componentWillMount = function componentWillMount() {
-	    _Path.prototype.componentWillMount.call(this);
+	  CircleMarker.prototype.createLeafletElement = function createLeafletElement(props) {
+	    var center = props.center,
+	        options = _objectWithoutProperties(props, ['center']);
 
-	    var _props = this.props,
-	        center = _props.center,
-	        props = _objectWithoutProperties(_props, ['center']);
-
-	    this.leafletElement = (0, _leaflet.circleMarker)(center, this.getOptions(props));
+	    return (0, _leaflet.circleMarker)(center, this.getOptions(options));
 	  };
 
-	  CircleMarker.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
-	    if (this.props.center !== prevProps.center) {
-	      this.leafletElement.setLatLng(this.props.center);
+	  CircleMarker.prototype.updateLeafletElement = function updateLeafletElement(fromProps, toProps) {
+	    if (toProps.center !== fromProps.center) {
+	      this.leafletElement.setLatLng(toProps.center);
 	    }
-	    if (this.props.radius !== prevProps.radius) {
-	      this.leafletElement.setRadius(this.props.radius);
+	    if (toProps.radius !== fromProps.radius) {
+	      this.leafletElement.setRadius(toProps.radius);
 	    }
-	    this.setStyleIfChanged(prevProps, this.props);
 	  };
 
 	  return CircleMarker;
@@ -4440,18 +4469,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 	  };
 
-	  FeatureGroup.prototype.componentWillMount = function componentWillMount() {
-	    _Path.prototype.componentWillMount.call(this);
-	    this.leafletElement = (0, _leaflet.featureGroup)(this.getOptions(this.props));
+	  FeatureGroup.prototype.createLeafletElement = function createLeafletElement(props) {
+	    return (0, _leaflet.featureGroup)(this.getOptions(props));
 	  };
 
 	  FeatureGroup.prototype.componentDidMount = function componentDidMount() {
 	    _Path.prototype.componentDidMount.call(this);
 	    this.setStyle(this.props);
-	  };
-
-	  FeatureGroup.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
-	    this.setStyleIfChanged(prevProps, this.props);
 	  };
 
 	  return FeatureGroup;
@@ -4509,21 +4533,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return _possibleConstructorReturn(this, _Path.apply(this, arguments));
 	  }
 
-	  GeoJSON.prototype.componentWillMount = function componentWillMount() {
-	    _Path.prototype.componentWillMount.call(this);
+	  GeoJSON.prototype.createLeafletElement = function createLeafletElement(props) {
+	    var data = props.data,
+	        options = _objectWithoutProperties(props, ['data']);
 
-	    var _props = this.props,
-	        data = _props.data,
-	        props = _objectWithoutProperties(_props, ['data']);
-
-	    this.leafletElement = (0, _leaflet.geoJSON)(data, this.getOptions(props));
+	    return (0, _leaflet.geoJSON)(data, this.getOptions(options));
 	  };
 
-	  GeoJSON.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
-	    if ((0, _isFunction3.default)(this.props.style)) {
-	      this.setStyle(this.props.style);
+	  GeoJSON.prototype.updateLeafletElement = function updateLeafletElement(fromProps, toProps) {
+	    if ((0, _isFunction3.default)(toProps.style)) {
+	      this.setStyle(toProps.style);
 	    } else {
-	      this.setStyleIfChanged(prevProps, this.props);
+	      this.setStyleIfChanged(fromProps, toProps);
 	    }
 	  };
 
@@ -4575,20 +4596,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return _possibleConstructorReturn(this, _MapLayer.apply(this, arguments));
 	  }
 
-	  GridLayer.prototype.componentWillMount = function componentWillMount() {
-	    _MapLayer.prototype.componentWillMount.call(this);
-	    this.leafletElement = (0, _leaflet.gridLayer)(this.getOptions(this.props));
+	  GridLayer.prototype.createLeafletElement = function createLeafletElement(props) {
+	    return (0, _leaflet.gridLayer)(this.getOptions(props));
 	  };
 
-	  GridLayer.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
-	    var _props = this.props,
-	        opacity = _props.opacity,
-	        zIndex = _props.zIndex;
+	  GridLayer.prototype.updateLeafletElement = function updateLeafletElement(fromProps, toProps) {
+	    var opacity = toProps.opacity,
+	        zIndex = toProps.zIndex;
 
-	    if (opacity !== prevProps.opacity) {
+	    if (opacity !== fromProps.opacity) {
 	      this.leafletElement.setOpacity(opacity);
 	    }
-	    if (zIndex !== prevProps.zIndex) {
+	    if (zIndex !== fromProps.zIndex) {
 	      this.leafletElement.setZIndex(zIndex);
 	    }
 	  };
@@ -4652,28 +4671,27 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return _possibleConstructorReturn(this, _MapLayer.apply(this, arguments));
 	  }
 
-	  ImageOverlay.prototype.componentWillMount = function componentWillMount() {
-	    _MapLayer.prototype.componentWillMount.call(this);
-
-	    var _props = this.props,
-	        bounds = _props.bounds,
-	        url = _props.url,
-	        props = _objectWithoutProperties(_props, ['bounds', 'url']);
-
-	    this.leafletElement = (0, _leaflet.imageOverlay)(url, bounds, this.getOptions(props));
+	  ImageOverlay.prototype.getChildContext = function getChildContext() {
+	    return {
+	      popupContainer: this.leafletElement
+	    };
 	  };
 
-	  ImageOverlay.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
-	    if (this.props.url !== prevProps.url) {
-	      this.leafletElement.setUrl(this.props.url);
-	    }
-	    if (this.props.opacity !== prevProps.opacity) {
-	      this.leafletElement.setOpacity(this.props.opacity);
-	    }
+	  ImageOverlay.prototype.createLeafletElement = function createLeafletElement(props) {
+	    var bounds = props.bounds,
+	        url = props.url,
+	        options = _objectWithoutProperties(props, ['bounds', 'url']);
+
+	    return (0, _leaflet.imageOverlay)(url, bounds, this.getOptions(options));
 	  };
 
-	  ImageOverlay.prototype.render = function render() {
-	    return null;
+	  ImageOverlay.prototype.updateLeafletElement = function updateLeafletElement(fromProps, toProps) {
+	    if (toProps.url !== fromProps.url) {
+	      this.leafletElement.setUrl(toProps.url);
+	    }
+	    if (toProps.opacity !== fromProps.opacity) {
+	      this.leafletElement.setOpacity(toProps.opacity);
+	    }
 	  };
 
 	  return ImageOverlay;
@@ -4685,6 +4703,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  children: _children2.default,
 	  opacity: _react.PropTypes.number,
 	  url: _react.PropTypes.string.isRequired
+	};
+	ImageOverlay.childContextTypes = {
+	  popupContainer: _react.PropTypes.object
 	};
 	exports.default = ImageOverlay;
 
@@ -4731,9 +4752,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 	  };
 
-	  LayerGroup.prototype.componentWillMount = function componentWillMount() {
-	    _MapLayer.prototype.componentWillMount.call(this);
-	    this.leafletElement = (0, _leaflet.layerGroup)(this.getOptions());
+	  LayerGroup.prototype.createLeafletElement = function createLeafletElement() {
+	    return (0, _leaflet.layerGroup)(this.getOptions());
 	  };
 
 	  return LayerGroup;
@@ -4915,12 +4935,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return _possibleConstructorReturn(this, _MapControl.apply(this, arguments));
 	  }
 
-	  LayersControl.prototype.componentWillMount = function componentWillMount() {
-	    var _props3 = this.props,
-	        _children = _props3.children,
-	        options = _objectWithoutProperties(_props3, ['children']);
+	  LayersControl.prototype.createLeafletElement = function createLeafletElement(props) {
+	    var _children = props.children,
+	        options = _objectWithoutProperties(props, ['children']);
 
-	    this.leafletElement = _leaflet.control.layers(undefined, undefined, options);
+	    return _leaflet.control.layers(undefined, undefined, options);
+	  };
+
+	  LayersControl.prototype.componentWillMount = function componentWillMount() {
+	    _MapControl.prototype.componentWillMount.call(this);
 	    this.controlProps = {
 	      addBaseLayer: this.addBaseLayer.bind(this),
 	      addOverlay: this.addOverlay.bind(this),
@@ -5072,9 +5095,56 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 	  };
 
+	  Map.prototype.createLeafletElement = function createLeafletElement(props) {
+	    return _leaflet2.default.map(this.container, props);
+	  };
+
+	  Map.prototype.updateLeafletElement = function updateLeafletElement(fromProps, toProps) {
+	    var animate = toProps.animate,
+	        bounds = toProps.bounds,
+	        boundsOptions = toProps.boundsOptions,
+	        center = toProps.center,
+	        className = toProps.className,
+	        maxBounds = toProps.maxBounds,
+	        useFlyTo = toProps.useFlyTo,
+	        zoom = toProps.zoom;
+
+
+	    if (className !== fromProps.className) {
+	      if (fromProps.className) {
+	        _leaflet2.default.DomUtil.removeClass(this.container, fromProps.className);
+	      }
+	      if (className) {
+	        _leaflet2.default.DomUtil.addClass(this.container, className);
+	      }
+	    }
+
+	    if (center && this.shouldUpdateCenter(center, fromProps.center)) {
+	      if (useFlyTo) {
+	        this.leafletElement.flyTo(center, zoom, { animate: animate });
+	      } else {
+	        this.leafletElement.setView(center, zoom, { animate: animate });
+	      }
+	    } else if (zoom && zoom !== fromProps.zoom) {
+	      this.leafletElement.setZoom(zoom);
+	    }
+
+	    if (maxBounds && this.shouldUpdateBounds(maxBounds, fromProps.maxBounds)) {
+	      this.leafletElement.setMaxBounds(maxBounds);
+	    }
+
+	    if (bounds && (this.shouldUpdateBounds(bounds, fromProps.bounds) || boundsOptions !== fromProps.boundsOptions)) {
+	      if (useFlyTo) {
+	        this.leafletElement.flyToBounds(bounds, boundsOptions);
+	      } else {
+	        this.leafletElement.fitBounds(bounds, boundsOptions);
+	      }
+	    }
+	  };
+
 	  Map.prototype.componentDidMount = function componentDidMount() {
 	    var props = (0, _omit3.default)(this.props, ['children', 'className', 'id', 'style']);
-	    this.leafletElement = _leaflet2.default.map(this.container, props);
+	    this.leafletElement = this.createLeafletElement(props);
 	    _MapComponent.prototype.componentDidMount.call(this);
 	    this.setState({ map: this.leafletElement });
 	    if (!(0, _isUndefined3.default)(props.bounds)) {
@@ -5083,47 +5153,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  };
 
 	  Map.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
-	    var _props = this.props,
-	        animate = _props.animate,
-	        bounds = _props.bounds,
-	        boundsOptions = _props.boundsOptions,
-	        center = _props.center,
-	        className = _props.className,
-	        maxBounds = _props.maxBounds,
-	        useFlyTo = _props.useFlyTo,
-	        zoom = _props.zoom;
-
-
-	    if (className !== prevProps.className) {
-	      if (prevProps.className) {
-	        _leaflet2.default.DomUtil.removeClass(this.container, prevProps.className);
-	      }
-	      if (className) {
-	        _leaflet2.default.DomUtil.addClass(this.container, className);
-	      }
-	    }
-
-	    if (center && this.shouldUpdateCenter(center, prevProps.center)) {
-	      if (useFlyTo) {
-	        this.leafletElement.flyTo(center, zoom, { animate: animate });
-	      } else {
-	        this.leafletElement.setView(center, zoom, { animate: animate });
-	      }
-	    } else if (zoom && zoom !== prevProps.zoom) {
-	      this.leafletElement.setZoom(zoom);
-	    }
-
-	    if (maxBounds && this.shouldUpdateBounds(maxBounds, prevProps.maxBounds)) {
-	      this.leafletElement.setMaxBounds(maxBounds);
-	    }
-
-	    if (bounds && (this.shouldUpdateBounds(bounds, prevProps.bounds) || boundsOptions !== prevProps.boundsOptions)) {
-	      if (useFlyTo) {
-	        this.leafletElement.flyToBounds(bounds, boundsOptions);
-	      } else {
-	        this.leafletElement.fitBounds(bounds, boundsOptions);
-	      }
-	    }
+	    this.updateLeafletElement(prevProps, this.props);
 	  };
 
 	  Map.prototype.componentWillUnmount = function componentWillUnmount() {
@@ -5561,31 +5591,28 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 	  };
 
-	  Marker.prototype.componentWillMount = function componentWillMount() {
-	    _MapLayer.prototype.componentWillMount.call(this);
+	  Marker.prototype.createLeafletElement = function createLeafletElement(props) {
+	    var position = props.position,
+	        options = _objectWithoutProperties(props, ['position']);
 
-	    var _props = this.props,
-	        position = _props.position,
-	        props = _objectWithoutProperties(_props, ['position']);
-
-	    this.leafletElement = (0, _leaflet.marker)(position, this.getOptions(props));
+	    return (0, _leaflet.marker)(position, this.getOptions(options));
 	  };
 
-	  Marker.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
-	    if (this.props.position !== prevProps.position) {
-	      this.leafletElement.setLatLng(this.props.position);
+	  Marker.prototype.updateLeafletElement = function updateLeafletElement(fromProps, toProps) {
+	    if (toProps.position !== fromProps.position) {
+	      this.leafletElement.setLatLng(toProps.position);
 	    }
-	    if (this.props.icon !== prevProps.icon) {
-	      this.leafletElement.setIcon(this.props.icon);
+	    if (toProps.icon !== fromProps.icon) {
+	      this.leafletElement.setIcon(toProps.icon);
 	    }
-	    if (this.props.zIndexOffset !== prevProps.zIndexOffset) {
-	      this.leafletElement.setZIndexOffset(this.props.zIndexOffset);
+	    if (toProps.zIndexOffset !== fromProps.zIndexOffset) {
+	      this.leafletElement.setZIndexOffset(toProps.zIndexOffset);
 	    }
-	    if (this.props.opacity !== prevProps.opacity) {
-	      this.leafletElement.setOpacity(this.props.opacity);
+	    if (toProps.opacity !== fromProps.opacity) {
+	      this.leafletElement.setOpacity(toProps.opacity);
 	    }
-	    if (this.props.draggable !== prevProps.draggable) {
-	      if (this.props.draggable) {
+	    if (toProps.draggable !== fromProps.draggable) {
+	      if (toProps.draggable) {
 	        this.leafletElement.dragging.enable();
 	      } else {
 	        this.leafletElement.dragging.disable();
@@ -5964,21 +5991,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return _possibleConstructorReturn(this, _Path.apply(this, arguments));
 	  }
 
-	  Polygon.prototype.componentWillMount = function componentWillMount() {
-	    _Path.prototype.componentWillMount.call(this);
+	  Polygon.prototype.createLeafletElement = function createLeafletElement(props) {
+	    var positions = props.positions,
+	        options = _objectWithoutProperties(props, ['positions']);
 
-	    var _props = this.props,
-	        positions = _props.positions,
-	        props = _objectWithoutProperties(_props, ['positions']);
-
-	    this.leafletElement = (0, _leaflet.polygon)(positions, this.getOptions(props));
+	    return (0, _leaflet.polygon)(positions, this.getOptions(options));
 	  };
 
-	  Polygon.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
-	    if (this.props.positions !== prevProps.positions) {
-	      this.leafletElement.setLatLngs(this.props.positions);
+	  Polygon.prototype.updateLeafletElement = function updateLeafletElement(fromProps, toProps) {
+	    if (toProps.positions !== fromProps.positions) {
+	      this.leafletElement.setLatLngs(toProps.positions);
 	    }
-	    this.setStyleIfChanged(prevProps, this.props);
+	    this.setStyleIfChanged(fromProps, toProps);
 	  };
 
 	  return Polygon;
@@ -6036,21 +6060,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return _possibleConstructorReturn(this, _Path.apply(this, arguments));
 	  }
 
-	  Polyline.prototype.componentWillMount = function componentWillMount() {
-	    _Path.prototype.componentWillMount.call(this);
+	  Polyline.prototype.createLeafletElement = function createLeafletElement(props) {
+	    var positions = props.positions,
+	        options = _objectWithoutProperties(props, ['positions']);
 
-	    var _props = this.props,
-	        positions = _props.positions,
-	        props = _objectWithoutProperties(_props, ['positions']);
-
-	    this.leafletElement = (0, _leaflet.polyline)(positions, this.getOptions(props));
+	    return (0, _leaflet.polyline)(positions, this.getOptions(options));
 	  };
 
-	  Polyline.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
-	    if (this.props.positions !== prevProps.positions) {
-	      this.leafletElement.setLatLngs(this.props.positions);
+	  Polyline.prototype.updateLeafletElement = function updateLeafletElement(fromProps, toProps) {
+	    if (toProps.positions !== fromProps.positions) {
+	      this.leafletElement.setLatLngs(toProps.positions);
 	    }
-	    this.setStyleIfChanged(prevProps, this.props);
+	    this.setStyleIfChanged(fromProps, toProps);
 	  };
 
 	  return Polyline;
@@ -6138,14 +6159,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
 
+	  Popup.prototype.createLeafletElement = function createLeafletElement(props) {
+	    var _children = props.children,
+	        options = _objectWithoutProperties(props, ['children']);
+
+	    return (0, _leaflet.popup)(this.getOptions(options), this.context.popupContainer);
+	  };
+
+	  Popup.prototype.updateLeafletElement = function updateLeafletElement(fromProps, toProps) {
+	    if (toProps.position !== fromProps.position) {
+	      this.leafletElement.setLatLng(toProps.position);
+	    }
+	  };
+
 	  Popup.prototype.componentWillMount = function componentWillMount() {
 	    _MapComponent.prototype.componentWillMount.call(this);
-
-	    var _props = this.props,
-	        _children = _props.children,
-	        props = _objectWithoutProperties(_props, ['children']);
-
-	    this.leafletElement = (0, _leaflet.popup)(this.getOptions(props), this.context.popupContainer);
+	    this.leafletElement = this.createLeafletElement(this.props);
 
 	    this.context.map.on({
 	      popupopen: this.onPopupOpen,
@@ -6174,12 +6203,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  };
 
 	  Popup.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
-	    var position = this.props.position;
-
-
-	    if (position !== prevProps.position) {
-	      this.leafletElement.setLatLng(position);
-	    }
+	    this.updateLeafletElement(prevProps, this.props);
 
 	    if (this.leafletElement.isOpen()) {
 	      this.renderPopupContent();
@@ -6264,21 +6288,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return _possibleConstructorReturn(this, _Path.apply(this, arguments));
 	  }
 
-	  Rectangle.prototype.componentWillMount = function componentWillMount() {
-	    _Path.prototype.componentWillMount.call(this);
+	  Rectangle.prototype.createLeafletElement = function createLeafletElement(props) {
+	    var bounds = props.bounds,
+	        options = _objectWithoutProperties(props, ['bounds']);
 
-	    var _props = this.props,
-	        bounds = _props.bounds,
-	        props = _objectWithoutProperties(_props, ['bounds']);
-
-	    this.leafletElement = (0, _leaflet.rectangle)(bounds, this.getOptions(props));
+	    return (0, _leaflet.rectangle)(bounds, this.getOptions(options));
 	  };
 
-	  Rectangle.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
-	    if (this.props.bounds !== prevProps.bounds) {
-	      this.leafletElement.setBounds(this.props.bounds);
+	  Rectangle.prototype.updateLeafletElement = function updateLeafletElement(fromProps, toProps) {
+	    if (toProps.bounds !== fromProps.bounds) {
+	      this.leafletElement.setBounds(toProps.bounds);
 	    }
-	    this.setStyleIfChanged(prevProps, this.props);
+	    this.setStyleIfChanged(fromProps, toProps);
 	  };
 
 	  return Rectangle;
@@ -6330,8 +6351,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return _possibleConstructorReturn(this, _MapControl.apply(this, arguments));
 	  }
 
-	  ScaleControl.prototype.componentWillMount = function componentWillMount() {
-	    this.leafletElement = _leaflet.control.scale(this.props);
+	  ScaleControl.prototype.createLeafletElement = function createLeafletElement(props) {
+	    return _leaflet.control.scale(props);
 	  };
 
 	  return ScaleControl;
@@ -6387,22 +6408,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return _possibleConstructorReturn(this, _GridLayer.apply(this, arguments));
 	  }
 
-	  TileLayer.prototype.componentWillMount = function componentWillMount() {
-	    _GridLayer.prototype.componentWillMount.call(this);
+	  TileLayer.prototype.createLeafletElement = function createLeafletElement(props) {
+	    var url = props.url,
+	        options = _objectWithoutProperties(props, ['url']);
 
-	    var _props = this.props,
-	        url = _props.url,
-	        props = _objectWithoutProperties(_props, ['url']);
-
-	    this.leafletElement = (0, _leaflet.tileLayer)(url, this.getOptions(props));
+	    return (0, _leaflet.tileLayer)(url, this.getOptions(options));
 	  };
 
-	  TileLayer.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
-	    _GridLayer.prototype.componentDidUpdate.call(this, prevProps);
-	    var url = this.props.url;
-
-	    if (url !== prevProps.url) {
-	      this.leafletElement.setUrl(url);
+	  TileLayer.prototype.updateLeafletElement = function updateLeafletElement(fromProps, toProps) {
+	    if (toProps.url !== fromProps.url) {
+	      this.leafletElement.setUrl(toProps.url);
 	    }
 	  };
 
@@ -6489,14 +6504,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }, _temp), _possibleConstructorReturn(_this, _ret);
 	  }
 
+	  Tooltip.prototype.createLeafletElement = function createLeafletElement(props) {
+	    var _children = props.children,
+	        options = _objectWithoutProperties(props, ['children']);
+
+	    return (0, _leaflet.tooltip)(this.getOptions(options), this.context.popupContainer);
+	  };
+
 	  Tooltip.prototype.componentWillMount = function componentWillMount() {
 	    _MapComponent.prototype.componentWillMount.call(this);
-
-	    var _props = this.props,
-	        _children = _props.children,
-	        props = _objectWithoutProperties(_props, ['children']);
-
-	    this.leafletElement = (0, _leaflet.tooltip)(this.getOptions(props), this.context.popupContainer);
+	    this.leafletElement = this.createLeafletElement(this.props);
 
 	    this.context.popupContainer.on({
 	      tooltipopen: this.onTooltipOpen,
@@ -6585,29 +6602,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return _possibleConstructorReturn(this, _GridLayer.apply(this, arguments));
 	  }
 
-	  WMSTileLayer.prototype.componentWillMount = function componentWillMount() {
-	    _GridLayer.prototype.componentWillMount.call(this);
+	  WMSTileLayer.prototype.createLeafletElement = function createLeafletElement(props) {
+	    var url = props.url,
+	        options = _objectWithoutProperties(props, ['url']);
 
-	    var _props = this.props,
-	        url = _props.url,
-	        props = _objectWithoutProperties(_props, ['url']);
-
-	    this.leafletElement = _leaflet.tileLayer.wms(url, this.getOptions(props));
+	    return _leaflet.tileLayer.wms(url, this.getOptions(options));
 	  };
 
-	  WMSTileLayer.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
-	    _GridLayer.prototype.componentDidUpdate.call(this, prevProps);
+	  WMSTileLayer.prototype.updateLeafletElement = function updateLeafletElement(fromProps, toProps) {
+	    var prevUrl = fromProps.url,
+	        _po = fromProps.opacity,
+	        _pz = fromProps.zIndex,
+	        prevParams = _objectWithoutProperties(fromProps, ['url', 'opacity', 'zIndex']);
 
-	    var prevUrl = prevProps.url,
-	        _po = prevProps.opacity,
-	        _pz = prevProps.zIndex,
-	        prevParams = _objectWithoutProperties(prevProps, ['url', 'opacity', 'zIndex']);
-
-	    var _props2 = this.props,
-	        url = _props2.url,
-	        _o = _props2.opacity,
-	        _z = _props2.zIndex,
-	        params = _objectWithoutProperties(_props2, ['url', 'opacity', 'zIndex']);
+	    var url = toProps.url,
+	        _o = toProps.opacity,
+	        _z = toProps.zIndex,
+	        params = _objectWithoutProperties(toProps, ['url', 'opacity', 'zIndex']);
 
 	    if (url !== prevUrl) {
 	      this.leafletElement.setUrl(url);
@@ -6667,8 +6678,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return _possibleConstructorReturn(this, _MapControl.apply(this, arguments));
 	  }
 
-	  ZoomControl.prototype.componentWillMount = function componentWillMount() {
-	    this.leafletElement = _leaflet.control.zoom(this.props);
+	  ZoomControl.prototype.createLeafletElement = function createLeafletElement(props) {
+	    return _leaflet.control.zoom(props);
 	  };
 
 	  return ZoomControl;

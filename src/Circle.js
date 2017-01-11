@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 
 import { circle } from 'leaflet'
 import { PropTypes } from 'react'
@@ -12,21 +12,19 @@ export default class Circle extends Path {
     center: latlngType.isRequired,
     children: childrenType,
     radius: PropTypes.number.isRequired,
-  };
-
-  componentWillMount () {
-    super.componentWillMount()
-    const { center, radius, ...props } = this.props
-    this.leafletElement = circle(center, radius, this.getOptions(props))
   }
 
-  componentDidUpdate (prevProps: Object) {
-    if (this.props.center !== prevProps.center) {
-      this.leafletElement.setLatLng(this.props.center)
+  createLeafletElement (props: Object): Object {
+    const { center, radius, ...options } = props
+    return circle(center, radius, this.getOptions(options))
+  }
+
+  updateLeafletElement (fromProps: Object, toProps: Object) {
+    if (toProps.center !== fromProps.center) {
+      this.leafletElement.setLatLng(toProps.center)
     }
-    if (this.props.radius !== prevProps.radius) {
-      this.leafletElement.setRadius(this.props.radius)
+    if (toProps.radius !== fromProps.radius) {
+      this.leafletElement.setRadius(toProps.radius)
     }
-    this.setStyleIfChanged(prevProps, this.props)
   }
 }

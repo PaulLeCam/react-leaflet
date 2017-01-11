@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 
 import { tooltip as createTooltip } from 'leaflet'
 import { Children, PropTypes } from 'react'
@@ -11,19 +11,22 @@ import MapComponent from './MapComponent'
 export default class Tooltip extends MapComponent {
   static propTypes = {
     children: PropTypes.node,
-  };
+  }
 
   static contextTypes = {
     map: mapType,
     popupContainer: PropTypes.object,
     pane: PropTypes.string,
-  };
+  }
+
+  createLeafletElement (props: Object): Object {
+    const { children: _children, ...options } = props
+    return createTooltip(this.getOptions(options), this.context.popupContainer)
+  }
 
   componentWillMount () {
     super.componentWillMount()
-    const { children: _children, ...props } = this.props
-
-    this.leafletElement = createTooltip(this.getOptions(props), this.context.popupContainer)
+    this.leafletElement = this.createLeafletElement(this.props)
 
     this.context.popupContainer.on({
       tooltipopen: this.onTooltipOpen,
@@ -50,19 +53,19 @@ export default class Tooltip extends MapComponent {
     super.componentWillUnmount()
   }
 
-  onTooltipOpen: Function = ({ tooltip }: Object): void => {
+  onTooltipOpen = ({ tooltip }: Object): void => {
     if (tooltip === this.leafletElement) {
       this.renderTooltipContent()
     }
-  };
+  }
 
-  onTooltipClose: Function = ({ tooltip }: Object): void => {
+  onTooltipClose = ({ tooltip }: Object): void => {
     if (tooltip === this.leafletElement) {
       this.removeTooltipContent()
     }
-  };
+  }
 
-  renderTooltipContent: Function = (): void => {
+  renderTooltipContent = (): void => {
     if (this.props.children) {
       render(
         Children.only(this.props.children),
@@ -74,7 +77,7 @@ export default class Tooltip extends MapComponent {
     }
   };
 
-  removeTooltipContent: Function = (): void => {
+  removeTooltipContent = (): void => {
     if (this.leafletElement._contentNode) {
       unmountComponentAtNode(this.leafletElement._contentNode)
     }

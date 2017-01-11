@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 
 import { layerGroup } from 'leaflet'
 
@@ -9,16 +9,15 @@ import MapLayer from './MapLayer'
 export default class LayerGroup extends MapLayer {
   static childContextTypes = {
     layerContainer: layerContainerType,
-  };
+  }
 
-  getChildContext (): { layerContainer: Object } {
+  getChildContext (): {layerContainer: Object} {
     return {
       layerContainer: this.leafletElement,
     }
   }
 
-  componentWillMount () {
-    super.componentWillMount()
-    this.leafletElement = layerGroup(this.getOptions())
+  createLeafletElement (): Object {
+    return layerGroup(this.getOptions())
   }
 }

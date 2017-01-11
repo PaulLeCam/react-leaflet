@@ -1,11 +1,16 @@
-/* @flow */
+// @flow
 
 import { clone, forEach, keys, reduce } from 'lodash'
 import { Component } from 'react'
 
 const EVENTS_RE = /^on(.+)$/i
 
+type EventsObject = {[key: string]: Function}
+
 export default class MapComponent extends Component<any, any, any> {
+  _leafletEvents: EventsObject
+  leafletElement: Object
+
   constructor (props: Object, context: Object) {
     super(props, context)
     this._leafletEvents = {}
@@ -33,10 +38,7 @@ export default class MapComponent extends Component<any, any, any> {
     })
   }
 
-  _leafletEvents: {[key: string]: Function};
-  leafletElement: Object;
-
-  extractLeafletEvents (props: Object): Object {
+  extractLeafletEvents (props: Object): EventsObject {
     return reduce(keys(props), (res, prop) => {
       if (EVENTS_RE.test(prop)) {
         const key = prop.replace(EVENTS_RE, (match, p) => p.toLowerCase())
@@ -46,7 +48,7 @@ export default class MapComponent extends Component<any, any, any> {
     }, {})
   }
 
-  bindLeafletEvents (next: Object = {}, prev: Object = {}): Object {
+  bindLeafletEvents (next: EventsObject = {}, prev: EventsObject = {}): EventsObject {
     const el = this.leafletElement
     if (!el || !el.on) return {}
 

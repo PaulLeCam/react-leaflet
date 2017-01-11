@@ -12,7 +12,7 @@ describe('LayersControl', () => {
     class ChildComponent extends Component {
       static contextTypes = {
         map: React.PropTypes.instanceOf(Leaflet.Map),
-      };
+      }
 
       componentWillMount () {
         expect(this.context.map).toBeDefined()
