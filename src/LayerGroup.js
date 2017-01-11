@@ -11,7 +11,7 @@ export default class LayerGroup extends MapLayer {
     layerContainer: layerContainerType,
   }
 
-  getChildContext (): { layerContainer: Object } {
+  getChildContext (): {layerContainer: Object} {
     return {
       layerContainer: this.leafletElement,
     }

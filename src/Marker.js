@@ -20,7 +20,7 @@ export default class Marker extends MapLayer {
     popupContainer: PropTypes.object,
   }
 
-  getChildContext (): { popupContainer: Object } {
+  getChildContext (): {popupContainer: Object} {
     return {
       popupContainer: this.leafletElement,
     }

@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 
 import { control } from 'leaflet'
 import React, { cloneElement, Component, Children, PropTypes } from 'react'
@@ -106,8 +106,8 @@ export default class LayersControl extends MapControl {
   }
 
   controlProps: {
-    addBaseLayer: (layer: Object, name: string, checked: bool) => void,
-    addOverlay: (layer: Object, name: string, checked: bool) => void,
+    addBaseLayer: (layer: Object, name: string, checked: boolean) => void,
+    addOverlay: (layer: Object, name: string, checked: boolean) => void,
     removeLayer: (layer: Object) => void,
     removeLayerControl: (layer: Object) => void,
   }

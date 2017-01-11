@@ -9,7 +9,7 @@ import mapType from './types/map'
 
 const LEAFLET_PANES = ['tile', 'shadow', 'overlay', 'map', 'marker', 'tooltip', 'popup']
 
-const isLeafletPane = (name: string): bool => {
+const isLeafletPane = (name: string): boolean => {
   return LEAFLET_PANES.indexOf(name.replace(/-*pane/gi, '')) !== -1
 }
 

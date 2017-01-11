@@ -1,3 +1,8 @@
+## v1.1.0 (2017-01-11)
+
+- Added support for `Popup` and `Tooltip` children to `ImageOverlay` [PR #270](https://github.com/PaulLeCam/react-leaflet/pull/270) by *rjdestigter*.
+- Added `createLeafletElement()` and `updateLeafletElement()` methods to simplify the abstraction between React's lifecycle hooks and Leaflet's APIs. See the [relevant section of the upgrading guide](https://github.com/PaulLeCam/react-leaflet/blob/master/UPGRADING.md#v11) for more information.
+
 ## v1.0.3 (2017-01-07)
 
 Fixed updating the `className` property of `Map`.

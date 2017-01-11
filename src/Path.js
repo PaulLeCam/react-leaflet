@@ -29,17 +29,12 @@ export default class Path extends MapLayer {
     popupContainer: PropTypes.object,
   }
 
-  componentWillMount () {
-    super.componentWillMount()
-    this.leafletElement = this.createLeafletElement(this.props)
-  }
-
   componentDidUpdate (prevProps: Object) {
     super.componentDidUpdate(prevProps)
     this.setStyleIfChanged(prevProps, this.props)
   }
 
-  getChildContext (): { popupContainer: Object } {
+  getChildContext (): {popupContainer: Object} {
     return {
       popupContainer: this.leafletElement,
     }

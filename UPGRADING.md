@@ -1,5 +1,10 @@
 # Upgrading
 
+## v1.1
+
+This release changes the way Leaflet elements are created and updated internally. If you are only using public APIs, nothing should change, however if you are extending or creating custom components, you should now use the added `createLeafletElement()` and `updateLeafletElement()` methods described in the [Extending](https://github.com/PaulLeCam/react-leaflet/blob/master/docs/Extending.md#extending) section of the documentation rather than overriding the lifecycle hooks directly.  
+See the [relevant commit](https://github.com/PaulLeCam/react-leaflet/commit/b42026f9dc93be45f0b8ffc6638a9d3824751091) for more details about the changes involved.
+
 ## v1.0
 
 React-Leaflet v1 requires Leaflet v1.0.0 and therefore contains breaking changes from v0.12, based on Leaflet v0.7.  

@@ -26,6 +26,8 @@ export default class Tooltip extends MapComponent {
 
   componentWillMount () {
     super.componentWillMount()
+    this.leafletElement = this.createLeafletElement(this.props)
+
     this.context.popupContainer.on({
       tooltipopen: this.onTooltipOpen,
       tooltipclose: this.onTooltipClose,
@@ -55,13 +57,13 @@ export default class Tooltip extends MapComponent {
     if (tooltip === this.leafletElement) {
       this.renderTooltipContent()
     }
-  };
+  }
 
   onTooltipClose = ({ tooltip }: Object): void => {
     if (tooltip === this.leafletElement) {
       this.removeTooltipContent()
     }
-  };
+  }
 
   renderTooltipContent = (): void => {
     if (this.props.children) {

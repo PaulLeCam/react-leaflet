@@ -620,11 +620,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return _possibleConstructorReturn(this, _MapLayer.apply(this, arguments));
 	  }
 
-	  Path.prototype.componentWillMount = function componentWillMount() {
-	    _MapLayer.prototype.componentWillMount.call(this);
-	    this.leafletElement = this.createLeafletElement(this.props);
-	  };
-
 	  Path.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
 	    _MapLayer.prototype.componentDidUpdate.call(this, prevProps);
 	    this.setStyleIfChanged(prevProps, this.props);
@@ -6518,6 +6513,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	  Tooltip.prototype.componentWillMount = function componentWillMount() {
 	    _MapComponent.prototype.componentWillMount.call(this);
+	    this.leafletElement = this.createLeafletElement(this.props);
+
 	    this.context.popupContainer.on({
 	      tooltipopen: this.onTooltipOpen,
 	      tooltipclose: this.onTooltipClose
