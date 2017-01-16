@@ -34,6 +34,7 @@ export default class Map extends MapComponent {
     style: PropTypes.object,
     useFlyTo: PropTypes.bool,
     zoom: PropTypes.number,
+    onMapStateChange: PropTypes.func,
   }
 
   static defaultProps = {
@@ -108,6 +109,7 @@ export default class Map extends MapComponent {
     const props = omit(this.props, ['children', 'className', 'id', 'style'])
     this.leafletElement = this.createLeafletElement(props)
     super.componentDidMount()
+    this.handleMapStateChange()
     this.setState({map: this.leafletElement})
     if (!isUndefined(props.bounds)) {
       this.leafletElement.fitBounds(props.bounds, props.boundsOptions)
@@ -125,6 +127,23 @@ export default class Map extends MapComponent {
 
   bindContainer = (container: HTMLDivElement): void => {
     this.container = container
+  }
+
+  handleMapStateChange = (): void => {
+    const {onMapStateChange} = this.props
+    if (onMapStateChange) {
+      const handleEvent = ():void => {
+        onMapStateChange({
+          bounds: this.leafletElement.getBounds(),
+          center: this.leafletElement.getCenter(),
+          size: this.leafletElement.getSize(),
+          zoom: this.leafletElement.getZoom(),
+        })
+      }
+      this.leafletElement.on('moveend', handleEvent)
+      this.leafletElement.on('resize', handleEvent)
+      this.leafletElement.on('zoomend', handleEvent)
+    }
   }
 
   shouldUpdateCenter (next: LatLngType, prev: LatLngType): boolean {

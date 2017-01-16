@@ -5150,6 +5150,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (!(0, _isUndefined3.default)(props.bounds)) {
 	      this.leafletElement.fitBounds(props.bounds, props.boundsOptions);
 	    }
+	    this.leafletElement.on('zoom', function (value) {
+	      console.log(value);
+	    });
 	  };
 
 	  Map.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
@@ -5208,7 +5211,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  minZoom: _react.PropTypes.number,
 	  style: _react.PropTypes.object,
 	  useFlyTo: _react.PropTypes.bool,
-	  zoom: _react.PropTypes.number
+	  zoom: _react.PropTypes.number,
+	  onChange: _react.PropTypes.func
 	};
 	Map.defaultProps = {
 	  animate: false,
