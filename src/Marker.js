@@ -54,6 +54,8 @@ export default class Marker extends MapLayer {
   }
 
   render (): null | React.Element<*> {
-    return this.props.children || null
+    return Array.isArray(this.props.children)
+      ? <div>{this.props.children}</div>
+      : (this.props.children || null)
   }
 }
