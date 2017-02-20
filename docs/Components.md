@@ -66,7 +66,7 @@ Base class extending [`MapLayer`](#maplayer) with the following methods:
 
 ## Map
 
-This is the top-level component that must be mounted for children ones to be rendered. Refer to [Leaflet documentation](http://leafletjs.com/reference-1.0.0.html#map-options) for more information about the properties.
+This is the top-level component that must be mounted for child compnents to be rendered. Refer to [Leaflet documentation](http://leafletjs.com/reference-1.0.0.html#map-options) for more information about the properties.
 
 **Dynamic properties**
 - `animate: boolean` (optional): If `true`, panning will always be animated if possible. Defaults to `false`.
