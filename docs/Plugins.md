@@ -5,6 +5,7 @@ A non-exhaustive list of plugins adding functionalities to React-Leaflet. Please
 - [`react-leaflet-bing`](https://www.npmjs.com/package/react-leaflet-bing)
 - [`react-leaflet-choropleth`](https://www.npmjs.com/package/react-leaflet-choropleth)
 - [`react-leaflet-cluster-layer`](https://www.npmjs.com/package/react-leaflet-cluster-layer)
+- [`react-leaflet-markercluster`](https://www.npmjs.com/package/react-leaflet-markercluster)
 - [`react-leaflet-control`](https://www.npmjs.com/package/react-leaflet-control)
 - [`react-leaflet-div-icon`](https://www.npmjs.com/package/react-leaflet-div-icon)
 - [`react-leaflet-draw`](https://www.npmjs.com/package/react-leaflet-draw)
