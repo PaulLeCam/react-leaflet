@@ -112,6 +112,12 @@ export default class Map extends MapComponent {
     if (!isUndefined(props.bounds)) {
       this.leafletElement.fitBounds(props.bounds, props.boundsOptions)
     }
+    if(this.props.style && prevProps.style){
+      if((this.props.style.width && prevProps.style.width && this.props.style.width !== prevProps.style.width)||
+        (this.props.style.height && prevProps.style.height && this.props.style.height !== prevProps.style.height)){
+          this.leafletElement.invalidateSize();
+      }     
+    }
   }
 
   componentDidUpdate (prevProps: Object) {
