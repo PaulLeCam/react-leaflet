@@ -6139,11 +6139,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	      if (popup === _this.leafletElement) {
 	        _this.renderPopupContent();
 	      }
+	      if (_this.props.onPopupOpen) {
+	        _this.props.onPopupOpen();
+	      }
 	    }, _this.onPopupClose = function (_ref2) {
 	      var popup = _ref2.popup;
 
 	      if (popup === _this.leafletElement) {
 	        _this.removePopupContent();
+	      }
+	      if (_this.props.onPopupClose) {
+	        _this.props.onPopupClose();
 	      }
 	    }, _this.renderPopupContent = function () {
 	      if (_this.props.children) {
@@ -6228,7 +6234,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	Popup.propTypes = {
 	  children: _react.PropTypes.node,
-	  position: _latlng2.default
+	  position: _latlng2.default,
+	  onPopupOpen: _react.PropTypes.func,
+	  onPopupClose: _react.PropTypes.func
 	};
 	Popup.contextTypes = {
 	  map: _map2.default,

@@ -12,6 +12,8 @@ export default class Popup extends MapComponent {
   static propTypes = {
     children: PropTypes.node,
     position: latlngType,
+    onPopupOpen: PropTypes.func,
+    onPopupClose: PropTypes.func,
   }
 
   static contextTypes = {
@@ -79,11 +81,17 @@ export default class Popup extends MapComponent {
     if (popup === this.leafletElement) {
       this.renderPopupContent()
     }
+    if (this.props.onPopupOpen) {
+      this.props.onPopupOpen()
+    }
   }
 
   onPopupClose = ({ popup }: Object): void => {
     if (popup === this.leafletElement) {
       this.removePopupContent()
+    }
+    if (this.props.onPopupClose) {
+      this.props.onPopupClose()
     }
   }
 
