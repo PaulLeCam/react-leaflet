@@ -2,18 +2,17 @@ import path from 'path'
 import webpack from 'webpack'
 
 export default {
-  debug: true,
   devtool: 'source-map',
   entry: {
     app: path.join(__dirname, 'components/index.js'),
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel',
-        query: {
+        loader: 'babel-loader',
+        options: {
           plugins: [
             ['react-transform', {
               transforms: [{
@@ -33,22 +32,23 @@ export default {
     publicPath: 'http://localhost:8000/build',
   },
   plugins: [
+    new webpack.LoaderOptionsPlugin({
+      debug: true,
+    }),
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': '"development"',
+        'NODE_ENV': JSON.stringify('development'),
       },
     }),
-    new webpack.NoErrorsPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
     new webpack.HotModuleReplacementPlugin(),
   ],
   devServer: {
-    colors: true,
     contentBase: __dirname,
     historyApiFallback: true,
     hot: true,
     inline: true,
     port: 8000,
-    progress: true,
     stats: {
       cached: false,
     },

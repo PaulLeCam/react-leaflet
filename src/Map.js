@@ -1,5 +1,4 @@
 // @flow
-/* eslint-disable react/no-did-mount-set-state */
 
 import Leaflet from 'leaflet'
 import type { LatLng, LatLngBounds } from 'leaflet'
@@ -9,8 +8,12 @@ import React, { PropTypes } from 'react'
 import boundsType from './types/bounds'
 import childrenType from './types/children'
 import latlngType from './types/latlng'
+import layerContainerType from './types/layerContainer'
+import mapType from './types/map'
 
 import MapComponent from './MapComponent'
+
+const OTHER_PROPS = ['children', 'className', 'id', 'style', 'useFlyTo']
 
 type LatLngType = LatLng | Array<number> | Object
 type LatLngBoundsType = LatLngBounds | Array<LatLngType>
@@ -42,14 +45,12 @@ export default class Map extends MapComponent {
   }
 
   static childContextTypes = {
-    map: PropTypes.instanceOf(Leaflet.Map),
+    layerContainer: layerContainerType,
+    map: mapType,
   }
 
   className: ?string
   container: HTMLDivElement
-  state: {
-    map?: Leaflet.Map,
-  }
 
   constructor (props: Object, context: Object) {
     super(props, context)
@@ -58,6 +59,7 @@ export default class Map extends MapComponent {
 
   getChildContext (): {map: Object} {
     return {
+      layerContainer: this.leafletElement,
       map: this.leafletElement,
     }
   }
@@ -105,13 +107,13 @@ export default class Map extends MapComponent {
   }
 
   componentDidMount () {
-    const props = omit(this.props, ['children', 'className', 'id', 'style'])
+    const props = omit(this.props, OTHER_PROPS)
     this.leafletElement = this.createLeafletElement(props)
-    super.componentDidMount()
-    this.setState({map: this.leafletElement})
     if (!isUndefined(props.bounds)) {
       this.leafletElement.fitBounds(props.bounds, props.boundsOptions)
     }
+    super.componentDidMount()
+    this.forceUpdate() // Re-render now that leafletElement is created
   }
 
   componentDidUpdate (prevProps: Object) {
@@ -143,9 +145,7 @@ export default class Map extends MapComponent {
 
   render (): React.Element<*> {
     const map = this.leafletElement
-    const children = map ? React.Children.map(this.props.children, child => {
-      return child ? React.cloneElement(child, {map, layerContainer: map}) : null
-    }) : null
+    const children = map ? this.props.children : null
 
     return (
       <div

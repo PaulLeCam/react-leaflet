@@ -1,3 +1,9 @@
+## v1.2.0 (IN PROGRESS)
+
+- The UMD build is now created using Webpack 2.
+- [internal] Updated Webpack to v2.
+- [internal] Small refactoring of the `Map` component.
+
 ## v1.1.0 (2017-01-11)
 
 - Added support for `Popup` and `Tooltip` children to `ImageOverlay` [PR #270](https://github.com/PaulLeCam/react-leaflet/pull/270) by *rjdestigter*.

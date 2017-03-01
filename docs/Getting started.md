@@ -62,13 +62,13 @@ All components are React wrappers for Leaflet elements and layers, they need a m
 ### Using npm
 
 ```bash
-npm install react-leaflet@next
+npm install react-leaflet
 ```
 
 React, ReactDOM and Leaflet are peer dependencies, if you haven't already installed them you can use:
 
 ```bash
-npm install leaflet@1.0.0-rc.2 react react-dom react-leaflet@next
+npm install leaflet react react-dom react-leaflet
 ```
 
 ### UMD
