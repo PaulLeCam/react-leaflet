@@ -2522,6 +2522,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _leaflet = __webpack_require__(1);
 
 var _react = __webpack_require__(0);
@@ -2560,15 +2562,18 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 
-var controlledLayerPropTypes = {
-  addBaseLayer: _react.PropTypes.func,
-  addOverlay: _react.PropTypes.func,
+var baseControlledLayerPropTypes = {
   checked: _react.PropTypes.bool,
   children: _react.PropTypes.node.isRequired,
-  name: _react.PropTypes.string.isRequired,
   removeLayer: _react.PropTypes.func,
   removeLayerControl: _react.PropTypes.func
 };
+
+var controlledLayerPropTypes = _extends({}, baseControlledLayerPropTypes, {
+  addBaseLayer: _react.PropTypes.func,
+  addOverlay: _react.PropTypes.func,
+  name: _react.PropTypes.string.isRequired
+});
 
 // Abtract class for layer container, extended by BaseLayer and Overlay
 
@@ -2620,7 +2625,7 @@ var ControlledLayer = function (_Component) {
   return ControlledLayer;
 }(_react.Component);
 
-ControlledLayer.propTypes = controlledLayerPropTypes;
+ControlledLayer.propTypes = baseControlledLayerPropTypes;
 ControlledLayer.contextTypes = {
   map: _map2.default
 };
@@ -2996,8 +3001,6 @@ var _leaflet = __webpack_require__(1);
 
 var _react = __webpack_require__(0);
 
-var _react2 = _interopRequireDefault(_react);
-
 var _children = __webpack_require__(2);
 
 var _children2 = _interopRequireDefault(_children);
@@ -3064,10 +3067,6 @@ var Marker = function (_MapLayer) {
         this.leafletElement.dragging.disable();
       }
     }
-  };
-
-  Marker.prototype.render = function render() {
-    return this.props.children || null;
   };
 
   return Marker;

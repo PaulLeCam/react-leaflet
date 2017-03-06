@@ -1,8 +1,10 @@
-## v1.2.0 (IN PROGRESS)
+## v1.1.1 (2017-03-06)
 
 - The UMD build is now created using Webpack 2.
+- Fixed supporting multiple children in `Marker`.
 - [internal] Updated Webpack to v2.
 - [internal] Small refactoring of the `Map` component.
+- [doc] Various improvements, including PRs [#280](https://github.com/PaulLeCam/react-leaflet/pull/280) by *h4*, [#282](https://github.com/PaulLeCam/react-leaflet/pull/282) by *cwalv* and [#283](https://github.com/PaulLeCam/react-leaflet/pull/283) by *YUzhva*.
 
 ## v1.1.0 (2017-01-11)
 

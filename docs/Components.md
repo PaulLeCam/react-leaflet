@@ -45,7 +45,7 @@ These components are base classes used by other components. They can be extended
 
 ### MapComponent
 
-Base class extending `React.Component` and handling events binding and unbind.  
+Base class extending `React.Component` and handling events bindings.  
 It exposes a `leafletElement` property to access the `Leaflet` object created for the component.
 
 ### MapControl
@@ -66,7 +66,7 @@ Base class extending [`MapLayer`](#maplayer) with the following methods:
 
 ## Map
 
-This is the top-level component that must be mounted for child compnents to be rendered. Refer to [Leaflet documentation](http://leafletjs.com/reference-1.0.0.html#map-options) for more information about the properties.
+This is the top-level component that must be mounted for child components to be rendered. Refer to [Leaflet documentation](http://leafletjs.com/reference-1.0.0.html#map-options) for more information about the properties.
 
 **Dynamic properties**
 - `animate: boolean` (optional): If `true`, panning will always be animated if possible. Defaults to `false`.

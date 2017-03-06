@@ -1,7 +1,7 @@
 // @flow
 
 import { Icon, marker } from 'leaflet'
-import React, { PropTypes } from 'react'
+import { PropTypes } from 'react'
 
 import childrenType from './types/children'
 import latlngType from './types/latlng'
@@ -51,9 +51,5 @@ export default class Marker extends MapLayer {
         this.leafletElement.dragging.disable()
       }
     }
-  }
-
-  render (): null | React.Element<*> {
-    return this.props.children || null
   }
 }

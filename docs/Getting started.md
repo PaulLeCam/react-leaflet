@@ -4,7 +4,8 @@
 
 This library provides an abstraction of [Leaflet](http://leafletjs.com/) as [React components](https://facebook.github.io/react/).  
 It does not replace Leaflet, only leverages [React's lifecycle methods](https://facebook.github.io/react/docs/component-specs.html#lifecycle-methods) to call the relevant Leaflet handlers. You can read more information about the lifecycle process in the [How it works](How%20it%20works.md) page of this documentation.
-Please make sure you understand all the [core concepts](How%20it%20works.md#core-concepts) and [limitations](How%20it%20works.md#limitations) to evaluate if this library is appropriate for your needs.
+Please make sure you understand all the [core concepts](How%20it%20works.md#core-concepts) and [limitations](How%20it%20works.md#limitations) to evaluate if this library is appropriate for your needs.  
+This documentation only presents concepts specific to React-Leaflet, you should already be familiar with both React and Leaflet to use this library. Otherwise, please make sure to go through React and Leaflet's getting started guides and examples first.
 
 React-Leaflet allows to convert this [sample code from Leaflet documentation](http://leafletjs.com/):
 
@@ -59,16 +60,18 @@ All components are React wrappers for Leaflet elements and layers, they need a m
 
 ## Installation
 
-### Using npm
+### Using npm or Yarn
 
 ```bash
-npm install react-leaflet
+npm install react-leaflet # npm
+yarn add react-leaflet # Yarn
 ```
 
 React, ReactDOM and Leaflet are peer dependencies, if you haven't already installed them you can use:
 
 ```bash
-npm install leaflet react react-dom react-leaflet
+npm install leaflet react react-dom react-leaflet # npm
+yarn add leaflet react react-dom react-leaflet # Yarn
 ```
 
 ### UMD
@@ -80,3 +83,8 @@ An UMD build is available on [unpkg](https://unpkg.com/):
 ```
 
 The library is injected as `window.ReactLeaflet`.
+
+## Examples
+
+Different examples are available in the [example folder](../example).  
+These examples can be run locally by cloning the repository, installing the dependencies and running `npm run examples` or `yarn run examples` if you're using Yarn.

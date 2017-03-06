@@ -5,6 +5,7 @@
 - [About React-Leaflet](Getting%20started.md#about-react-leaflet)
 - [Leaflet setup](Getting%20started.md#leaflet-setup)
 - [Installation](Getting%20started.md#installation)
+- [Examples](Getting%20started.md#examples)
 
 ## [How it works](How%20it%20works.md)
 

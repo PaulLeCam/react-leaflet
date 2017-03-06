@@ -10,19 +10,23 @@ import mapType from './types/map'
 
 import MapControl from './MapControl'
 
-const controlledLayerPropTypes = {
-  addBaseLayer: PropTypes.func,
-  addOverlay: PropTypes.func,
+const baseControlledLayerPropTypes = {
   checked: PropTypes.bool,
   children: PropTypes.node.isRequired,
-  name: PropTypes.string.isRequired,
   removeLayer: PropTypes.func,
   removeLayerControl: PropTypes.func,
 }
 
+const controlledLayerPropTypes = {
+  ...baseControlledLayerPropTypes,
+  addBaseLayer: PropTypes.func,
+  addOverlay: PropTypes.func,
+  name: PropTypes.string.isRequired,
+}
+
 // Abtract class for layer container, extended by BaseLayer and Overlay
 class ControlledLayer extends Component {
-  static propTypes = controlledLayerPropTypes
+  static propTypes = baseControlledLayerPropTypes
 
   static contextTypes = {
     map: mapType,

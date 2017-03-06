@@ -3,7 +3,9 @@ import {
   Circle,
   CircleMarker,
   Map,
+  Marker,
   Polygon,
+  Popup,
   Rectangle,
   TileLayer,
   Tooltip,
@@ -51,6 +53,14 @@ export default class TooltipExample extends Component {
             <span>Tooltip for CircleMarker</span>
           </Tooltip>
         </CircleMarker>
+        <Marker position={[51.510, -0.09]}>
+          <Popup>
+            <span>Popup for Marker</span>
+          </Popup>
+          <Tooltip>
+            <span>Tooltip for Marker</span>
+          </Tooltip>
+        </Marker>
         <Polygon color='purple' positions={multiPolygon}>
           <Tooltip sticky>
             <span>sticky Tooltip for Polygon</span>
