@@ -11,41 +11,41 @@
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
-
+/******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
-
+/******/
 /******/ 		// Check if module is in cache
 /******/ 		if(installedModules[moduleId])
 /******/ 			return installedModules[moduleId].exports;
-
+/******/
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			i: moduleId,
 /******/ 			l: false,
 /******/ 			exports: {}
 /******/ 		};
-
+/******/
 /******/ 		// Execute the module function
 /******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-
+/******/
 /******/ 		// Flag the module as loaded
 /******/ 		module.l = true;
-
+/******/
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-
-
+/******/
+/******/
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
-
+/******/
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
-
+/******/
 /******/ 	// identity function for calling harmony imports with the correct context
 /******/ 	__webpack_require__.i = function(value) { return value; };
-
+/******/
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
 /******/ 		if(!__webpack_require__.o(exports, name)) {
@@ -56,7 +56,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 			});
 /******/ 		}
 /******/ 	};
-
+/******/
 /******/ 	// getDefaultExport function for compatibility with non-harmony modules
 /******/ 	__webpack_require__.n = function(module) {
 /******/ 		var getter = module && module.__esModule ?
@@ -65,13 +65,13 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 		__webpack_require__.d(getter, 'a', getter);
 /******/ 		return getter;
 /******/ 	};
-
+/******/
 /******/ 	// Object.prototype.hasOwnProperty.call
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-
+/******/
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
-
+/******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(__webpack_require__.s = 160);
 /******/ })
@@ -105,6 +105,23 @@ exports.default = _react.PropTypes.oneOfType([_react.PropTypes.arrayOf(_react.Pr
 
 /***/ }),
 /* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _leaflet = __webpack_require__(1);
+
+var _react = __webpack_require__(0);
+
+exports.default = _react.PropTypes.instanceOf(_leaflet.Map);
+
+/***/ }),
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -191,23 +208,6 @@ Path.childContextTypes = {
 exports.default = Path;
 
 /***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _leaflet = __webpack_require__(1);
-
-var _react = __webpack_require__(0);
-
-exports.default = _react.PropTypes.instanceOf(_leaflet.Map);
-
-/***/ }),
 /* 5 */
 /***/ (function(module, exports) {
 
@@ -291,7 +291,7 @@ var _layerContainer = __webpack_require__(9);
 
 var _layerContainer2 = _interopRequireDefault(_layerContainer);
 
-var _map = __webpack_require__(4);
+var _map = __webpack_require__(3);
 
 var _map2 = _interopRequireDefault(_map);
 
@@ -585,7 +585,7 @@ var _controlPosition = __webpack_require__(8);
 
 var _controlPosition2 = _interopRequireDefault(_controlPosition);
 
-var _map = __webpack_require__(4);
+var _map = __webpack_require__(3);
 
 var _map2 = _interopRequireDefault(_map);
 
@@ -928,6 +928,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _leaflet = __webpack_require__(1);
 
 var _react = __webpack_require__(0);
@@ -935,6 +937,10 @@ var _react = __webpack_require__(0);
 var _children = __webpack_require__(2);
 
 var _children2 = _interopRequireDefault(_children);
+
+var _map = __webpack_require__(3);
+
+var _map2 = _interopRequireDefault(_map);
 
 var _MapLayer2 = __webpack_require__(7);
 
@@ -958,6 +964,13 @@ var GridLayer = function (_MapLayer) {
 
     return _possibleConstructorReturn(this, _MapLayer.apply(this, arguments));
   }
+
+  GridLayer.prototype.getOptions = function getOptions(props) {
+    return _extends({
+      maxZoom: this.context.map.options.maxZoom,
+      minZoom: this.context.map.options.minZoom
+    }, _MapLayer.prototype.getOptions.call(this, props));
+  };
 
   GridLayer.prototype.createLeafletElement = function createLeafletElement(props) {
     return (0, _leaflet.gridLayer)(this.getOptions(props));
@@ -986,6 +999,9 @@ GridLayer.propTypes = {
   children: _children2.default,
   opacity: _react.PropTypes.number,
   zIndex: _react.PropTypes.number
+};
+GridLayer.contextTypes = {
+  map: _map2.default
 };
 exports.default = GridLayer;
 
@@ -2097,7 +2113,7 @@ var _latlng = __webpack_require__(6);
 
 var _latlng2 = _interopRequireDefault(_latlng);
 
-var _Path2 = __webpack_require__(3);
+var _Path2 = __webpack_require__(4);
 
 var _Path3 = _interopRequireDefault(_Path2);
 
@@ -2172,7 +2188,7 @@ var _latlng = __webpack_require__(6);
 
 var _latlng2 = _interopRequireDefault(_latlng);
 
-var _Path2 = __webpack_require__(3);
+var _Path2 = __webpack_require__(4);
 
 var _Path3 = _interopRequireDefault(_Path2);
 
@@ -2246,7 +2262,7 @@ var _layerContainer = __webpack_require__(9);
 
 var _layerContainer2 = _interopRequireDefault(_layerContainer);
 
-var _Path2 = __webpack_require__(3);
+var _Path2 = __webpack_require__(4);
 
 var _Path3 = _interopRequireDefault(_Path2);
 
@@ -2318,7 +2334,7 @@ var _children = __webpack_require__(2);
 
 var _children2 = _interopRequireDefault(_children);
 
-var _Path2 = __webpack_require__(3);
+var _Path2 = __webpack_require__(4);
 
 var _Path3 = _interopRequireDefault(_Path2);
 
@@ -2542,7 +2558,7 @@ var _layerContainer = __webpack_require__(9);
 
 var _layerContainer2 = _interopRequireDefault(_layerContainer);
 
-var _map = __webpack_require__(4);
+var _map = __webpack_require__(3);
 
 var _map2 = _interopRequireDefault(_map);
 
@@ -2816,7 +2832,7 @@ var _layerContainer = __webpack_require__(9);
 
 var _layerContainer2 = _interopRequireDefault(_layerContainer);
 
-var _map = __webpack_require__(4);
+var _map = __webpack_require__(3);
 
 var _map2 = _interopRequireDefault(_map);
 
@@ -3119,7 +3135,7 @@ var _children = __webpack_require__(2);
 
 var _children2 = _interopRequireDefault(_children);
 
-var _map = __webpack_require__(4);
+var _map = __webpack_require__(3);
 
 var _map2 = _interopRequireDefault(_map);
 
@@ -3315,7 +3331,7 @@ var _latlngList = __webpack_require__(15);
 
 var _latlngList2 = _interopRequireDefault(_latlngList);
 
-var _Path2 = __webpack_require__(3);
+var _Path2 = __webpack_require__(4);
 
 var _Path3 = _interopRequireDefault(_Path2);
 
@@ -3389,7 +3405,7 @@ var _latlngList = __webpack_require__(15);
 
 var _latlngList2 = _interopRequireDefault(_latlngList);
 
-var _Path2 = __webpack_require__(3);
+var _Path2 = __webpack_require__(4);
 
 var _Path3 = _interopRequireDefault(_Path2);
 
@@ -3458,7 +3474,7 @@ var _latlng = __webpack_require__(6);
 
 var _latlng2 = _interopRequireDefault(_latlng);
 
-var _map = __webpack_require__(4);
+var _map = __webpack_require__(3);
 
 var _map2 = _interopRequireDefault(_map);
 
@@ -3617,7 +3633,7 @@ var _children = __webpack_require__(2);
 
 var _children2 = _interopRequireDefault(_children);
 
-var _Path2 = __webpack_require__(3);
+var _Path2 = __webpack_require__(4);
 
 var _Path3 = _interopRequireDefault(_Path2);
 
@@ -3809,7 +3825,7 @@ var _react = __webpack_require__(0);
 
 var _reactDom = __webpack_require__(54);
 
-var _map = __webpack_require__(4);
+var _map = __webpack_require__(3);
 
 var _map2 = _interopRequireDefault(_map);
 
@@ -4099,7 +4115,7 @@ var _layerContainer2 = __webpack_require__(9);
 
 var _layerContainer3 = _interopRequireDefault(_layerContainer2);
 
-var _map2 = __webpack_require__(4);
+var _map2 = __webpack_require__(3);
 
 var _map3 = _interopRequireDefault(_map2);
 
@@ -6861,7 +6877,7 @@ var _Pane2 = __webpack_require__(65);
 
 var _Pane3 = _interopRequireDefault(_Pane2);
 
-var _Path2 = __webpack_require__(3);
+var _Path2 = __webpack_require__(4);
 
 var _Path3 = _interopRequireDefault(_Path2);
 

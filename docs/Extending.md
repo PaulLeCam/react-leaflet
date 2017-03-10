@@ -20,7 +20,6 @@ Make sure to read the [how it works page](How%20it%20works.md) of this documenta
     - [`Map`](Components.md#map): top-level component instantiating a Leaflet map and providing it to its children.
     - [`MapLayer`](Components.md#maplayer): base class for all map layers, handling adding and removing the layer from the map.
       - [`GridLayer`](Components.md#gridlayer): base class for tile layers, handles opacity and z-index.
-        - [`CanvasTileLayer`](Components.md#canvastilelayer)
         - [`TileLayer`](Components.md#tilelayer)
         - [`WMSTileLayer`](Components.md#wmstilelayer)
       - [`ImageOverlay`](Components.md#imageoverlay)
