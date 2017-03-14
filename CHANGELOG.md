@@ -1,3 +1,7 @@
+## v1.1.2 (2017-03-14)
+
+Make `GridLayer` inherit `maxZoom` and `minZoom` properties from `Map`.
+
 ## v1.1.1 (2017-03-06)
 
 - The UMD build is now created using Webpack 2.
