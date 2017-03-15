@@ -114,23 +114,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _leaflet = __webpack_require__(1);
-
-var _react = __webpack_require__(0);
-
-exports.default = _react.PropTypes.instanceOf(_leaflet.Map);
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
 var _pick2 = __webpack_require__(154);
 
 var _pick3 = _interopRequireDefault(_pick2);
@@ -206,6 +189,23 @@ Path.childContextTypes = {
   popupContainer: _react.PropTypes.object
 };
 exports.default = Path;
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _leaflet = __webpack_require__(1);
+
+var _react = __webpack_require__(0);
+
+exports.default = _react.PropTypes.instanceOf(_leaflet.Map);
 
 /***/ }),
 /* 5 */
@@ -291,7 +291,7 @@ var _layerContainer = __webpack_require__(9);
 
 var _layerContainer2 = _interopRequireDefault(_layerContainer);
 
-var _map = __webpack_require__(3);
+var _map = __webpack_require__(4);
 
 var _map2 = _interopRequireDefault(_map);
 
@@ -585,7 +585,7 @@ var _controlPosition = __webpack_require__(8);
 
 var _controlPosition2 = _interopRequireDefault(_controlPosition);
 
-var _map = __webpack_require__(3);
+var _map = __webpack_require__(4);
 
 var _map2 = _interopRequireDefault(_map);
 
@@ -938,10 +938,6 @@ var _children = __webpack_require__(2);
 
 var _children2 = _interopRequireDefault(_children);
 
-var _map = __webpack_require__(3);
-
-var _map2 = _interopRequireDefault(_map);
-
 var _MapLayer2 = __webpack_require__(7);
 
 var _MapLayer3 = _interopRequireDefault(_MapLayer2);
@@ -966,10 +962,12 @@ var GridLayer = function (_MapLayer) {
   }
 
   GridLayer.prototype.getOptions = function getOptions(props) {
-    return _extends({
-      maxZoom: this.context.map.options.maxZoom,
-      minZoom: this.context.map.options.minZoom
-    }, _MapLayer.prototype.getOptions.call(this, props));
+    var options = _MapLayer.prototype.getOptions.call(this, props);
+    var map = this.context.map;
+    return map ? _extends({
+      maxZoom: map.options.maxZoom,
+      minZoom: map.options.minZoom
+    }, options) : options;
   };
 
   GridLayer.prototype.createLeafletElement = function createLeafletElement(props) {
@@ -999,9 +997,6 @@ GridLayer.propTypes = {
   children: _children2.default,
   opacity: _react.PropTypes.number,
   zIndex: _react.PropTypes.number
-};
-GridLayer.contextTypes = {
-  map: _map2.default
 };
 exports.default = GridLayer;
 
@@ -2113,7 +2108,7 @@ var _latlng = __webpack_require__(6);
 
 var _latlng2 = _interopRequireDefault(_latlng);
 
-var _Path2 = __webpack_require__(4);
+var _Path2 = __webpack_require__(3);
 
 var _Path3 = _interopRequireDefault(_Path2);
 
@@ -2188,7 +2183,7 @@ var _latlng = __webpack_require__(6);
 
 var _latlng2 = _interopRequireDefault(_latlng);
 
-var _Path2 = __webpack_require__(4);
+var _Path2 = __webpack_require__(3);
 
 var _Path3 = _interopRequireDefault(_Path2);
 
@@ -2262,7 +2257,7 @@ var _layerContainer = __webpack_require__(9);
 
 var _layerContainer2 = _interopRequireDefault(_layerContainer);
 
-var _Path2 = __webpack_require__(4);
+var _Path2 = __webpack_require__(3);
 
 var _Path3 = _interopRequireDefault(_Path2);
 
@@ -2334,7 +2329,7 @@ var _children = __webpack_require__(2);
 
 var _children2 = _interopRequireDefault(_children);
 
-var _Path2 = __webpack_require__(4);
+var _Path2 = __webpack_require__(3);
 
 var _Path3 = _interopRequireDefault(_Path2);
 
@@ -2558,7 +2553,7 @@ var _layerContainer = __webpack_require__(9);
 
 var _layerContainer2 = _interopRequireDefault(_layerContainer);
 
-var _map = __webpack_require__(3);
+var _map = __webpack_require__(4);
 
 var _map2 = _interopRequireDefault(_map);
 
@@ -2832,7 +2827,7 @@ var _layerContainer = __webpack_require__(9);
 
 var _layerContainer2 = _interopRequireDefault(_layerContainer);
 
-var _map = __webpack_require__(3);
+var _map = __webpack_require__(4);
 
 var _map2 = _interopRequireDefault(_map);
 
@@ -3135,7 +3130,7 @@ var _children = __webpack_require__(2);
 
 var _children2 = _interopRequireDefault(_children);
 
-var _map = __webpack_require__(3);
+var _map = __webpack_require__(4);
 
 var _map2 = _interopRequireDefault(_map);
 
@@ -3331,7 +3326,7 @@ var _latlngList = __webpack_require__(15);
 
 var _latlngList2 = _interopRequireDefault(_latlngList);
 
-var _Path2 = __webpack_require__(4);
+var _Path2 = __webpack_require__(3);
 
 var _Path3 = _interopRequireDefault(_Path2);
 
@@ -3405,7 +3400,7 @@ var _latlngList = __webpack_require__(15);
 
 var _latlngList2 = _interopRequireDefault(_latlngList);
 
-var _Path2 = __webpack_require__(4);
+var _Path2 = __webpack_require__(3);
 
 var _Path3 = _interopRequireDefault(_Path2);
 
@@ -3474,7 +3469,7 @@ var _latlng = __webpack_require__(6);
 
 var _latlng2 = _interopRequireDefault(_latlng);
 
-var _map = __webpack_require__(3);
+var _map = __webpack_require__(4);
 
 var _map2 = _interopRequireDefault(_map);
 
@@ -3633,7 +3628,7 @@ var _children = __webpack_require__(2);
 
 var _children2 = _interopRequireDefault(_children);
 
-var _Path2 = __webpack_require__(4);
+var _Path2 = __webpack_require__(3);
 
 var _Path3 = _interopRequireDefault(_Path2);
 
@@ -3825,7 +3820,7 @@ var _react = __webpack_require__(0);
 
 var _reactDom = __webpack_require__(54);
 
-var _map = __webpack_require__(3);
+var _map = __webpack_require__(4);
 
 var _map2 = _interopRequireDefault(_map);
 
@@ -4115,7 +4110,7 @@ var _layerContainer2 = __webpack_require__(9);
 
 var _layerContainer3 = _interopRequireDefault(_layerContainer2);
 
-var _map2 = __webpack_require__(3);
+var _map2 = __webpack_require__(4);
 
 var _map3 = _interopRequireDefault(_map2);
 
@@ -6877,7 +6872,7 @@ var _Pane2 = __webpack_require__(65);
 
 var _Pane3 = _interopRequireDefault(_Pane2);
 
-var _Path2 = __webpack_require__(4);
+var _Path2 = __webpack_require__(3);
 
 var _Path3 = _interopRequireDefault(_Path2);
 

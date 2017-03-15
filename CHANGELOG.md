@@ -1,3 +1,7 @@
+## v1.1.3 (2017-03-15)
+
+Fixed regressions in `GridLayer` and Babel configuration.
+
 ## v1.1.2 (2017-03-14)
 
 Make `GridLayer` inherit `maxZoom` and `minZoom` properties from `Map`.

@@ -3,5 +3,10 @@
     "es2015",
     "react",
     "stage-1"
-  ]
+  ],
+  "plugins": [
+    "dev-expression",
+    "lodash",
+    "transform-proto-to-assign",
+  ],
 }

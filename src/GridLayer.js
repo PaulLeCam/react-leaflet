@@ -4,7 +4,6 @@ import { gridLayer } from 'leaflet'
 import { PropTypes } from 'react'
 
 import childrenType from './types/children'
-import mapType from './types/map'
 import MapLayer from './MapLayer'
 
 export default class GridLayer extends MapLayer {
@@ -14,16 +13,14 @@ export default class GridLayer extends MapLayer {
     zIndex: PropTypes.number,
   }
 
-  static contextTypes = {
-    map: mapType,
-  }
-
   getOptions (props?: Object): Object {
-    return {
-      maxZoom: this.context.map.options.maxZoom,
-      minZoom: this.context.map.options.minZoom,
-      ...super.getOptions(props),
-    }
+    const options = super.getOptions(props)
+    const map = this.context.map
+    return map ? {
+      maxZoom: map.options.maxZoom,
+      minZoom: map.options.minZoom,
+      ...options,
+    } : options
   }
 
   createLeafletElement (props: Object): Object {
