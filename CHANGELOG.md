@@ -1,3 +1,7 @@
+## v1.1.4 (2017-03-22)
+
+Fixed updating some properties in `TileLayer` and `WMSTileLayer`.
+
 ## v1.1.3 (2017-03-15)
 
 Fixed regressions in `GridLayer` and Babel configuration.

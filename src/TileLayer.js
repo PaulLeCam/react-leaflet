@@ -20,6 +20,7 @@ export default class TileLayer extends GridLayer {
   }
 
   updateLeafletElement (fromProps: Object, toProps: Object) {
+    super.updateLeafletElement(fromProps, toProps)
     if (toProps.url !== fromProps.url) {
       this.leafletElement.setUrl(toProps.url)
     }

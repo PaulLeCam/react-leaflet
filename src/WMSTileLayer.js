@@ -21,6 +21,8 @@ export default class WMSTileLayer extends GridLayer {
   }
 
   updateLeafletElement (fromProps: Object, toProps: Object) {
+    super.updateLeafletElement(fromProps, toProps)
+
     const { url: prevUrl, opacity: _po, zIndex: _pz, ...prevParams } = fromProps
     const { url, opacity: _o, zIndex: _z, ...params } = toProps
 
