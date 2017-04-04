@@ -42,7 +42,9 @@ export default class MapComponent extends Component<any, any, any> {
     return reduce(keys(props), (res, prop) => {
       if (EVENTS_RE.test(prop)) {
         const key = prop.replace(EVENTS_RE, (match, p) => p.toLowerCase())
-        res[ key ] = props[ prop ]
+        if (props[ prop ]) {
+          res[ key ] = props[ prop ]
+        }
       }
       return res
     }, {})
