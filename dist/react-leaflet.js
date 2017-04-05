@@ -518,7 +518,9 @@ var MapComponent = function (_Component) {
         var _key = prop.replace(EVENTS_RE, function (match, p) {
           return p.toLowerCase();
         });
-        res[_key] = props[prop];
+        if (props[prop]) {
+          res[_key] = props[prop];
+        }
       }
       return res;
     }, {});

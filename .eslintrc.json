@@ -3,7 +3,11 @@
     "browser": true,
     "es6": true
   },
-  "extends": ["standard", "standard-react"],
+  "extends": [
+    "plugin:flowtype/recommended",
+    "standard",
+    "standard-react"
+  ],
   "parser": "babel-eslint",
   "parserOptions": {
     "ecmaVersion": 7,
@@ -11,13 +15,12 @@
     "sourceType": "module"
   },
   "plugins": [
+    "flowtype",
     "react"
   ],
   "rules": {
     "comma-dangle": [1, "always-multiline"],
     "jsx-quotes": [2, "prefer-single"],
-    "no-duplicate-imports": [0],
-    "no-unused-vars": [2, { "varsIgnorePattern": "^_" }],
-    "space-infix-ops": [0]
+    "no-unused-vars": [2, { "varsIgnorePattern": "^_" }]
   }
 }

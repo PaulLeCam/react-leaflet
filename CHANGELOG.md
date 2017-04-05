@@ -1,3 +1,7 @@
+## v1.1.5 (2017-04-05)
+
+Filter falsy values as event handlers, [PR #308](https://github.com/PaulLeCam/react-leaflet/pull/308) by *awinograd*.
+
 ## v1.1.4 (2017-03-22)
 
 Fixed updating some properties in `TileLayer` and `WMSTileLayer`.
