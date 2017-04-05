@@ -1,6 +1,6 @@
 // @flow
 
-import { geoJSON } from 'leaflet'
+import { geoJson } from 'leaflet'
 import { isFunction } from 'lodash'
 import { PropTypes } from 'react'
 
@@ -15,7 +15,7 @@ export default class GeoJSON extends Path {
 
   createLeafletElement (props: Object): Object {
     const { data, ...options } = props
-    return geoJSON(data, this.getOptions(options))
+    return geoJson(data, this.getOptions(options))
   }
 
   updateLeafletElement (fromProps: Object, toProps: Object) {
