@@ -1,3 +1,8 @@
+## v1.1.6 (2017-04-10)
+
+- Added support for React v15.5, fixes PropTypes warning.
+- [internal] Use Prettier code formatting.
+
 ## v1.1.5 (2017-04-05)
 
 Filter falsy values as event handlers, [PR #308](https://github.com/PaulLeCam/react-leaflet/pull/308) by *awinograd*.

@@ -1,13 +1,14 @@
 // @flow
 
-import { polygon } from 'leaflet'
-import { PropTypes } from 'react'
+import { polygon } from 'leaflet';
+import PropTypes from 'prop-types';
 
-import childrenType from './types/children'
-import latlngListType from './types/latlngList'
-import Path from './Path'
+import childrenType from './propTypes/children';
+import latlngListType from './propTypes/latlngList';
 
-const multiLatLngListType = PropTypes.arrayOf(latlngListType)
+import Path from './Path';
+
+const multiLatLngListType = PropTypes.arrayOf(latlngListType);
 
 export default class Polygon extends Path {
   static propTypes = {
@@ -18,17 +19,17 @@ export default class Polygon extends Path {
       multiLatLngListType,
       PropTypes.arrayOf(multiLatLngListType),
     ]).isRequired,
+  };
+
+  createLeafletElement(props: Object): Object {
+    const { positions, ...options } = props;
+    return polygon(positions, this.getOptions(options));
   }
 
-  createLeafletElement (props: Object): Object {
-    const { positions, ...options } = props
-    return polygon(positions, this.getOptions(options))
-  }
-
-  updateLeafletElement (fromProps: Object, toProps: Object) {
+  updateLeafletElement(fromProps: Object, toProps: Object) {
     if (toProps.positions !== fromProps.positions) {
-      this.leafletElement.setLatLngs(toProps.positions)
+      this.leafletElement.setLatLngs(toProps.positions);
     }
-    this.setStyleIfChanged(fromProps, toProps)
+    this.setStyleIfChanged(fromProps, toProps);
   }
 }

@@ -1,28 +1,29 @@
 // @flow
 
-import { rectangle } from 'leaflet'
-import { PropTypes } from 'react'
+import { rectangle } from 'leaflet';
+import PropTypes from 'prop-types';
 
-import boundsType from './types/bounds'
-import childrenType from './types/children'
-import Path from './Path'
+import boundsType from './propTypes/bounds';
+import childrenType from './propTypes/children';
+
+import Path from './Path';
 
 export default class Rectangle extends Path {
   static propTypes = {
     children: childrenType,
     bounds: boundsType.isRequired,
     popupContainer: PropTypes.object,
+  };
+
+  createLeafletElement(props: Object): Object {
+    const { bounds, ...options } = props;
+    return rectangle(bounds, this.getOptions(options));
   }
 
-  createLeafletElement (props: Object): Object {
-    const { bounds, ...options } = props
-    return rectangle(bounds, this.getOptions(options))
-  }
-
-  updateLeafletElement (fromProps: Object, toProps: Object) {
+  updateLeafletElement(fromProps: Object, toProps: Object) {
     if (toProps.bounds !== fromProps.bounds) {
-      this.leafletElement.setBounds(toProps.bounds)
+      this.leafletElement.setBounds(toProps.bounds);
     }
-    this.setStyleIfChanged(fromProps, toProps)
+    this.setStyleIfChanged(fromProps, toProps);
   }
 }

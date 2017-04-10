@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { Map, TileLayer, WMSTileLayer } from '../../src'
+import React, { Component } from 'react';
+import { Map, TileLayer, WMSTileLayer } from '../../src';
 
 export default class WMSTileLayerExample extends Component {
   state = {
@@ -7,29 +7,29 @@ export default class WMSTileLayerExample extends Component {
     lng: -0.09,
     zoom: 5,
     bluemarble: false,
-  }
+  };
 
   onClick = () => {
     this.setState({
       bluemarble: !this.state.bluemarble,
-    })
-  }
+    });
+  };
 
-  render () {
+  render() {
     return (
       <Map
         center={[this.state.lat, this.state.lng]}
         zoom={this.state.zoom}
         onClick={this.onClick}>
         <TileLayer
-          attribution='&copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+          attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
+          url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
         />
         <WMSTileLayer
           layers={this.state.bluemarble ? 'nasa:bluemarble' : 'ne:ne'}
-          url='http://demo.opengeo.org/geoserver/ows?'
+          url="http://demo.opengeo.org/geoserver/ows?"
         />
       </Map>
-    )
+    );
   }
 }

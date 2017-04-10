@@ -1,5 +1,5 @@
-import path from 'path'
-import webpack from 'webpack'
+import path from 'path';
+import webpack from 'webpack';
 
 export default {
   devtool: 'source-map',
@@ -14,13 +14,18 @@ export default {
         loader: 'babel-loader',
         options: {
           plugins: [
-            ['react-transform', {
-              transforms: [{
-                transform: 'react-transform-hmr',
-                imports: ['react'],
-                locals: ['module'],
-              }],
-            }],
+            [
+              'react-transform',
+              {
+                transforms: [
+                  {
+                    transform: 'react-transform-hmr',
+                    imports: ['react'],
+                    locals: ['module'],
+                  },
+                ],
+              },
+            ],
           ],
         },
       },
@@ -37,7 +42,7 @@ export default {
     }),
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': JSON.stringify('development'),
+        NODE_ENV: JSON.stringify('development'),
       },
     }),
     new webpack.NoEmitOnErrorsPlugin(),
@@ -53,4 +58,4 @@ export default {
       cached: false,
     },
   },
-}
+};

@@ -1,22 +1,22 @@
-import Leaflet from 'leaflet'
-import React from 'react'
-import { render } from 'react-dom'
+import Leaflet from 'leaflet';
+import React from 'react';
+import { render } from 'react-dom';
 
-import SimpleExample from './simple'
-import EventsExample from './events'
-import VectorLayersExample from './vector-layers'
-import OtherLayersExample from './other-layers'
-import ZoomControlExample from './zoom-control'
-import LayersControlExample from './layers-control'
-import DraggableExample from './draggable-marker'
-import BoundsExample from './bounds'
-import CustomComponentExample from './custom-component'
-import AnimateExample from './animate'
-import TooltipExample from './tooltip'
-import PaneExample from './pane'
-import WMSTileLayerExample from './wms-tile-layer'
+import SimpleExample from './simple';
+import EventsExample from './events';
+import VectorLayersExample from './vector-layers';
+import OtherLayersExample from './other-layers';
+import ZoomControlExample from './zoom-control';
+import LayersControlExample from './layers-control';
+import DraggableExample from './draggable-marker';
+import BoundsExample from './bounds';
+import CustomComponentExample from './custom-component';
+import AnimateExample from './animate';
+import TooltipExample from './tooltip';
+import PaneExample from './pane';
+import WMSTileLayerExample from './wms-tile-layer';
 
-Leaflet.Icon.Default.imagePath = '//cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.0/images/'
+Leaflet.Icon.Default.imagePath = '//cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/images/';
 
 const examples = (
   <div>
@@ -51,6 +51,6 @@ const examples = (
     <h2>WMS tile layer</h2>
     <WMSTileLayerExample />
   </div>
-)
+);
 
-render(examples, document.getElementById('app'))
+render(examples, document.getElementById('app'));

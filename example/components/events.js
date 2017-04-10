@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { Map, TileLayer, Marker, Popup } from '../../src'
+import React, { Component } from 'react';
+import { Map, TileLayer, Marker, Popup } from '../../src';
 
 export default class EventsExample extends Component {
   state = {
@@ -8,27 +8,27 @@ export default class EventsExample extends Component {
       lat: 51.505,
       lng: -0.09,
     },
-  }
+  };
 
   handleClick = () => {
-    this.refs.map.leafletElement.locate()
-  }
+    this.refs.map.leafletElement.locate();
+  };
 
-  handleLocationFound = (e) => {
+  handleLocationFound = e => {
     this.setState({
       hasLocation: true,
       latlng: e.latlng,
-    })
-  }
+    });
+  };
 
-  render () {
-    const marker = this.state.hasLocation ? (
-      <Marker position={this.state.latlng}>
-        <Popup>
-          <span>You are here</span>
-        </Popup>
-      </Marker>
-    ) : null
+  render() {
+    const marker = this.state.hasLocation
+      ? <Marker position={this.state.latlng}>
+          <Popup>
+            <span>You are here</span>
+          </Popup>
+        </Marker>
+      : null;
 
     return (
       <Map
@@ -36,14 +36,14 @@ export default class EventsExample extends Component {
         length={4}
         onClick={this.handleClick}
         onLocationfound={this.handleLocationFound}
-        ref='map'
+        ref="map"
         zoom={13}>
         <TileLayer
-          attribution='&copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+          attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
+          url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
         />
         {marker}
       </Map>
-    )
+    );
   }
 }

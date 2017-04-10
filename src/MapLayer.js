@@ -1,58 +1,59 @@
 // @flow
 
-import React from 'react'
+import PropTypes from 'prop-types';
+import React from 'react';
 
-import childrenType from './types/children'
-import layerContainerType from './types/layerContainer'
-import mapType from './types/map'
+import childrenType from './propTypes/children';
+import layerContainerType from './propTypes/layerContainer';
+import mapType from './propTypes/map';
 
-import MapComponent from './MapComponent'
+import MapComponent from './MapComponent';
 
 export default class MapLayer extends MapComponent {
   static propTypes = {
     children: childrenType,
-  }
+  };
 
   static contextTypes = {
     layerContainer: layerContainerType,
     map: mapType,
-    pane: React.PropTypes.string,
-  }
+    pane: PropTypes.string,
+  };
 
-  get layerContainer (): Object {
-    return this.context.layerContainer || this.context.map
-  }
-
-  // eslint-disable-next-line no-unused-vars
-  createLeafletElement (props: Object): Object {
-    throw new Error('createLeafletElement() must be implemented')
+  get layerContainer(): Object {
+    return this.context.layerContainer || this.context.map;
   }
 
   // eslint-disable-next-line no-unused-vars
-  updateLeafletElement (fromProps: Object, toProps: Object) {}
-
-  componentWillMount () {
-    super.componentWillMount()
-    this.leafletElement = this.createLeafletElement(this.props)
+  createLeafletElement(props: Object): Object {
+    throw new Error('createLeafletElement() must be implemented');
   }
 
-  componentDidMount () {
-    super.componentDidMount()
-    this.layerContainer.addLayer(this.leafletElement)
+  // eslint-disable-next-line no-unused-vars
+  updateLeafletElement(fromProps: Object, toProps: Object) {}
+
+  componentWillMount() {
+    super.componentWillMount();
+    this.leafletElement = this.createLeafletElement(this.props);
   }
 
-  componentDidUpdate (prevProps: Object) {
-    this.updateLeafletElement(prevProps, this.props)
+  componentDidMount() {
+    super.componentDidMount();
+    this.layerContainer.addLayer(this.leafletElement);
   }
 
-  componentWillUnmount () {
-    super.componentWillUnmount()
-    this.layerContainer.removeLayer(this.leafletElement)
+  componentDidUpdate(prevProps: Object) {
+    this.updateLeafletElement(prevProps, this.props);
   }
 
-  render (): React.Element<*> | null {
+  componentWillUnmount() {
+    super.componentWillUnmount();
+    this.layerContainer.removeLayer(this.leafletElement);
+  }
+
+  render(): React.Element<*> | null {
     return Array.isArray(this.props.children)
-      ? <div style={{display: 'none'}}>{this.props.children}</div>
-      : (this.props.children || null)
+      ? <div style={{ display: 'none' }}>{this.props.children}</div>
+      : this.props.children || null;
   }
 }

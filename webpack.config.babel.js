@@ -1,13 +1,13 @@
-import path from 'path'
-import webpack from 'webpack'
-import LodashModuleReplacementPlugin from 'lodash-webpack-plugin'
+import path from 'path';
+import webpack from 'webpack';
+import LodashModuleReplacementPlugin from 'lodash-webpack-plugin';
 
-const outputPath = path.resolve(__dirname, 'dist')
+const outputPath = path.resolve(__dirname, 'dist');
 
 const lodashFeatures = {
   caching: true,
   collections: true,
-}
+};
 
 const config = {
   entry: {
@@ -40,28 +40,29 @@ const config = {
     },
   ],
   module: {
-    rules: [{
-      test: /\.js$/,
-      exclude: /node_modules/,
-      loader: 'babel-loader',
-      options: {
-        plugins: [
-          'dev-expression',
-          'lodash',
-          'transform-proto-to-assign',
-        ],
-        presets: [
-          ['es2015', {
-            loose: true,
-            modules: false,
-          }],
-          'react',
-          'stage-1',
-        ],
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        options: {
+          plugins: ['dev-expression', 'lodash', 'transform-proto-to-assign'],
+          presets: [
+            [
+              'es2015',
+              {
+                loose: true,
+                modules: false,
+              },
+            ],
+            'react',
+            'stage-1',
+          ],
+        },
       },
-    }],
+    ],
   },
-}
+};
 
 export default [
   {
@@ -103,4 +104,4 @@ export default [
       }),
     ],
   },
-]
+];
