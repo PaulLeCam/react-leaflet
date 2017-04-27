@@ -8,6 +8,8 @@ import latlngListType from './propTypes/latlngList';
 
 import Path from './Path';
 
+import { isEqual } from 'lodash';
+
 const multiLatLngListType = PropTypes.arrayOf(latlngListType);
 
 export default class Polygon extends Path {
@@ -27,7 +29,7 @@ export default class Polygon extends Path {
   }
 
   updateLeafletElement(fromProps: Object, toProps: Object) {
-    if (toProps.positions !== fromProps.positions) {
+    if (!isEqual(toProps.positions, fromProps.positions)) {
       this.leafletElement.setLatLngs(toProps.positions);
     }
     this.setStyleIfChanged(fromProps, toProps);

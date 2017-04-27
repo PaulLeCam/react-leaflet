@@ -16,9 +16,9 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	function __webpack_require__(moduleId) {
 /******/
 /******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId])
+/******/ 		if(installedModules[moduleId]) {
 /******/ 			return installedModules[moduleId].exports;
-/******/
+/******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			i: moduleId,
@@ -89,20 +89,27 @@ return /******/ (function(modules) { // webpackBootstrap
  * of patent rights can be found in the PATENTS file in the same directory.
  */
 
-var factory = __webpack_require__(164);
+if (true) {
+  var REACT_ELEMENT_TYPE = (typeof Symbol === 'function' &&
+    Symbol.for &&
+    Symbol.for('react.element')) ||
+    0xeac7;
 
-var REACT_ELEMENT_TYPE = (typeof Symbol === 'function' &&
-  Symbol.for &&
-  Symbol.for('react.element')) ||
-  0xeac7;
+  var isValidElement = function(object) {
+    return typeof object === 'object' &&
+      object !== null &&
+      object.$$typeof === REACT_ELEMENT_TYPE;
+  };
 
-function isValidElement(object) {
-  return typeof object === 'object' &&
-    object !== null &&
-    object.$$typeof === REACT_ELEMENT_TYPE;
+  // By explicitly using `prop-types` you are opting into new development behavior.
+  // http://fb.me/prop-types-in-prod
+  var throwOnDirectAccess = true;
+  module.exports = __webpack_require__(164)(isValidElement, throwOnDirectAccess);
+} else {
+  // By explicitly using `prop-types` you are opting into new production behavior.
+  // http://fb.me/prop-types-in-prod
+  module.exports = require('./factoryWithThrowingShims')();
 }
-
-module.exports = factory(isValidElement);
 
 
 /***/ }),
@@ -145,7 +152,7 @@ var _pick2 = __webpack_require__(160);
 
 var _pick3 = _interopRequireDefault(_pick2);
 
-var _isEqual2 = __webpack_require__(52);
+var _isEqual2 = __webpack_require__(29);
 
 var _isEqual3 = _interopRequireDefault(_isEqual2);
 
@@ -509,7 +516,7 @@ var _keys2 = __webpack_require__(23);
 
 var _keys3 = _interopRequireDefault(_keys2);
 
-var _forEach2 = __webpack_require__(50);
+var _forEach2 = __webpack_require__(51);
 
 var _forEach3 = _interopRequireDefault(_forEach2);
 
@@ -712,7 +719,7 @@ exports.default = MapControl;
 /***/ (function(module, exports, __webpack_require__) {
 
 var assignValue = __webpack_require__(25),
-    baseAssignValue = __webpack_require__(38);
+    baseAssignValue = __webpack_require__(39);
 
 /**
  * Copies properties of `source` to `object`.
@@ -843,7 +850,7 @@ module.exports = ListCache;
 /* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var eq = __webpack_require__(49);
+var eq = __webpack_require__(50);
 
 /**
  * Gets the index at which the `key` is found in `array` of key-value pairs.
@@ -906,7 +913,7 @@ module.exports = nativeCreate;
 /* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isSymbol = __webpack_require__(29);
+var isSymbol = __webpack_require__(30);
 
 /** Used as references for various `Number` constants. */
 var INFINITY = 1 / 0;
@@ -1067,8 +1074,8 @@ exports.default = GridLayer;
 /* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseAssignValue = __webpack_require__(38),
-    eq = __webpack_require__(49);
+var baseAssignValue = __webpack_require__(39),
+    eq = __webpack_require__(50);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -1154,6 +1161,47 @@ module.exports = root;
 
 /***/ }),
 /* 29 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var baseIsEqual = __webpack_require__(93);
+
+/**
+ * Performs a deep comparison between two values to determine if they are
+ * equivalent.
+ *
+ * **Note:** This method supports comparing arrays, array buffers, booleans,
+ * date objects, error objects, maps, numbers, `Object` objects, regexes,
+ * sets, strings, symbols, and typed arrays. `Object` objects are compared
+ * by their own, not inherited, enumerable properties. Functions and DOM
+ * nodes are compared by strict equality, i.e. `===`.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to compare.
+ * @param {*} other The other value to compare.
+ * @returns {boolean} Returns `true` if the values are equivalent, else `false`.
+ * @example
+ *
+ * var object = { 'a': 1 };
+ * var other = { 'a': 1 };
+ *
+ * _.isEqual(object, other);
+ * // => true
+ *
+ * object === other;
+ * // => false
+ */
+function isEqual(value, other) {
+  return baseIsEqual(value, other);
+}
+
+module.exports = isEqual;
+
+
+/***/ }),
+/* 30 */
 /***/ (function(module, exports) {
 
 /**
@@ -1177,7 +1225,7 @@ module.exports = stubFalse;
 
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1221,7 +1269,7 @@ emptyFunction.thatReturnsArgument = function (arg) {
 module.exports = emptyFunction;
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1282,7 +1330,7 @@ function invariant(condition, format, a, b, c, d, e, f) {
 module.exports = invariant;
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1298,7 +1346,7 @@ module.exports = invariant;
 
 
 
-var emptyFunction = __webpack_require__(30);
+var emptyFunction = __webpack_require__(31);
 
 /**
  * Similar to invariant but only logs a warning if the condition is not met.
@@ -1354,7 +1402,7 @@ if (true) {
 module.exports = warning;
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(26),
@@ -1367,7 +1415,7 @@ module.exports = Map;
 
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var mapCacheClear = __webpack_require__(136),
@@ -1405,7 +1453,7 @@ module.exports = MapCache;
 
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var ListCache = __webpack_require__(17),
@@ -1438,7 +1486,7 @@ module.exports = Stack;
 
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports) {
 
 /**
@@ -1466,7 +1514,7 @@ module.exports = arrayEach;
 
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports) {
 
 /**
@@ -1493,7 +1541,7 @@ module.exports = arrayMap;
 
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var defineProperty = __webpack_require__(112);
@@ -1524,11 +1572,11 @@ module.exports = baseAssignValue;
 
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Stack = __webpack_require__(35),
-    arrayEach = __webpack_require__(36),
+var Stack = __webpack_require__(36),
+    arrayEach = __webpack_require__(37),
     assignValue = __webpack_require__(25),
     baseAssign = __webpack_require__(87),
     baseAssignIn = __webpack_require__(88),
@@ -1536,14 +1584,14 @@ var Stack = __webpack_require__(35),
     copyArray = __webpack_require__(106),
     copySymbols = __webpack_require__(107),
     copySymbolsIn = __webpack_require__(108),
-    getAllKeys = __webpack_require__(44),
-    getAllKeysIn = __webpack_require__(45),
-    getTag = __webpack_require__(47),
+    getAllKeys = __webpack_require__(45),
+    getAllKeysIn = __webpack_require__(46),
+    getTag = __webpack_require__(48),
     initCloneArray = __webpack_require__(125),
     initCloneByTag = __webpack_require__(126),
     initCloneObject = __webpack_require__(127),
     isArray = __webpack_require__(5),
-    isBuffer = __webpack_require__(51),
+    isBuffer = __webpack_require__(52),
     isObject = __webpack_require__(22),
     keys = __webpack_require__(23);
 
@@ -1683,7 +1731,7 @@ module.exports = baseClone;
 
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseForOwn = __webpack_require__(91),
@@ -1703,7 +1751,7 @@ module.exports = baseEach;
 
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var castPath = __webpack_require__(11),
@@ -1733,7 +1781,7 @@ module.exports = baseGet;
 
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, exports) {
 
 /** Used for built-in method references. */
@@ -1761,7 +1809,7 @@ module.exports = objectToString;
 
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports) {
 
 /**
@@ -1788,7 +1836,7 @@ module.exports = identity;
 
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var overArg = __webpack_require__(27);
@@ -1800,7 +1848,7 @@ module.exports = nativeKeys;
 
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports) {
 
 /**
@@ -1826,7 +1874,7 @@ module.exports = nativeKeysIn;
 
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var overArg = __webpack_require__(27);
@@ -1838,7 +1886,7 @@ module.exports = getPrototype;
 
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports) {
 
 /** Used for built-in method references. */
@@ -1866,7 +1914,7 @@ module.exports = objectToString;
 
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports) {
 
 /** Used as references for various `Number` constants. */
@@ -1894,7 +1942,7 @@ module.exports = isIndex;
 
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports) {
 
 /**
@@ -1937,11 +1985,11 @@ module.exports = eq;
 
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayEach = __webpack_require__(36),
-    baseEach = __webpack_require__(40),
+var arrayEach = __webpack_require__(37),
+    baseEach = __webpack_require__(41),
     castFunction = __webpack_require__(104),
     isArray = __webpack_require__(5);
 
@@ -1984,7 +2032,7 @@ module.exports = forEach;
 
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports) {
 
 /**
@@ -2008,51 +2056,10 @@ module.exports = stubFalse;
 
 
 /***/ }),
-/* 52 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var baseIsEqual = __webpack_require__(93);
-
-/**
- * Performs a deep comparison between two values to determine if they are
- * equivalent.
- *
- * **Note:** This method supports comparing arrays, array buffers, booleans,
- * date objects, error objects, maps, numbers, `Object` objects, regexes,
- * sets, strings, symbols, and typed arrays. `Object` objects are compared
- * by their own, not inherited, enumerable properties. Functions and DOM
- * nodes are compared by strict equality, i.e. `===`.
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Lang
- * @param {*} value The value to compare.
- * @param {*} other The other value to compare.
- * @returns {boolean} Returns `true` if the values are equivalent, else `false`.
- * @example
- *
- * var object = { 'a': 1 };
- * var other = { 'a': 1 };
- *
- * _.isEqual(object, other);
- * // => true
- *
- * object === other;
- * // => false
- */
-function isEqual(value, other) {
-  return baseIsEqual(value, other);
-}
-
-module.exports = isEqual;
-
-
-/***/ }),
 /* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGetTag = __webpack_require__(42),
+var baseGetTag = __webpack_require__(43),
     isObject = __webpack_require__(22);
 
 /** `Object#toString` result references. */
@@ -2171,14 +2178,14 @@ module.exports = isObjectLike;
 /* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayMap = __webpack_require__(37),
-    baseClone = __webpack_require__(39),
+var arrayMap = __webpack_require__(38),
+    baseClone = __webpack_require__(40),
     baseUnset = __webpack_require__(102),
     castPath = __webpack_require__(11),
     copyObject = __webpack_require__(14),
     customOmitClone = __webpack_require__(111),
-    flatRest = __webpack_require__(43),
-    getAllKeysIn = __webpack_require__(45);
+    flatRest = __webpack_require__(44),
+    getAllKeysIn = __webpack_require__(46);
 
 /** Used to compose bitmasks for cloning. */
 var CLONE_DEEP_FLAG = 1,
@@ -3397,7 +3404,7 @@ var _omit2 = __webpack_require__(56);
 
 var _omit3 = _interopRequireDefault(_omit2);
 
-var _forEach2 = __webpack_require__(50);
+var _forEach2 = __webpack_require__(51);
 
 var _forEach3 = _interopRequireDefault(_forEach2);
 
@@ -3601,6 +3608,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _isEqual2 = __webpack_require__(29);
+
+var _isEqual3 = _interopRequireDefault(_isEqual2);
+
 var _leaflet = __webpack_require__(1);
 
 var _propTypes = __webpack_require__(0);
@@ -3650,7 +3661,7 @@ var Polygon = function (_Path) {
   };
 
   Polygon.prototype.updateLeafletElement = function updateLeafletElement(fromProps, toProps) {
-    if (toProps.positions !== fromProps.positions) {
+    if (!(0, _isEqual3.default)(toProps.positions, fromProps.positions)) {
       this.leafletElement.setLatLngs(toProps.positions);
     }
     this.setStyleIfChanged(fromProps, toProps);
@@ -4248,7 +4259,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _isEqual2 = __webpack_require__(52);
+var _isEqual2 = __webpack_require__(29);
 
 var _isEqual3 = _interopRequireDefault(_isEqual2);
 
@@ -4625,7 +4636,7 @@ module.exports = Hash;
 /* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var MapCache = __webpack_require__(34),
+var MapCache = __webpack_require__(35),
     setCacheAdd = __webpack_require__(143),
     setCacheHas = __webpack_require__(144);
 
@@ -4910,13 +4921,13 @@ module.exports = baseIsEqual;
 /* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Stack = __webpack_require__(35),
+var Stack = __webpack_require__(36),
     equalArrays = __webpack_require__(113),
     equalByTag = __webpack_require__(114),
     equalObjects = __webpack_require__(115),
-    getTag = __webpack_require__(47),
+    getTag = __webpack_require__(48),
     isArray = __webpack_require__(5),
-    isBuffer = __webpack_require__(51),
+    isBuffer = __webpack_require__(52),
     isTypedArray = __webpack_require__(156);
 
 /** Used to compose bitmasks for value comparisons. */
@@ -5051,7 +5062,7 @@ module.exports = basePick;
 /* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGet = __webpack_require__(41),
+var baseGet = __webpack_require__(42),
     baseSet = __webpack_require__(99),
     castPath = __webpack_require__(11);
 
@@ -5118,7 +5129,7 @@ module.exports = baseReduce;
 
 var assignValue = __webpack_require__(25),
     castPath = __webpack_require__(11),
-    isIndex = __webpack_require__(48),
+    isIndex = __webpack_require__(49),
     isObject = __webpack_require__(22),
     toKey = __webpack_require__(21);
 
@@ -5207,9 +5218,9 @@ module.exports = baseSlice;
 /***/ (function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(84),
-    arrayMap = __webpack_require__(37),
+    arrayMap = __webpack_require__(38),
     isArray = __webpack_require__(5),
-    isSymbol = __webpack_require__(29);
+    isSymbol = __webpack_require__(30);
 
 /** Used as references for various `Number` constants. */
 var INFINITY = 1 / 0;
@@ -5673,7 +5684,7 @@ module.exports = eq;
 /* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getAllKeys = __webpack_require__(44);
+var getAllKeys = __webpack_require__(45);
 
 /** Used to compose bitmasks for value comparisons. */
 var COMPARE_PARTIAL_FLAG = 1;
@@ -5840,7 +5851,7 @@ module.exports = stubArray;
 var castPath = __webpack_require__(11),
     isArguments = __webpack_require__(153),
     isArray = __webpack_require__(5),
-    isIndex = __webpack_require__(48),
+    isIndex = __webpack_require__(49),
     isLength = __webpack_require__(54),
     toKey = __webpack_require__(21);
 
@@ -6080,7 +6091,7 @@ module.exports = identity;
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseCreate = __webpack_require__(89),
-    getPrototype = __webpack_require__(46),
+    getPrototype = __webpack_require__(47),
     isPrototype = __webpack_require__(130);
 
 /**
@@ -6104,7 +6115,7 @@ module.exports = initCloneObject;
 /***/ (function(module, exports, __webpack_require__) {
 
 var isArray = __webpack_require__(5),
-    isSymbol = __webpack_require__(29);
+    isSymbol = __webpack_require__(30);
 
 /** Used to match property names within property paths. */
 var reIsDeepProp = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/,
@@ -6324,7 +6335,7 @@ module.exports = listCacheSet;
 
 var Hash = __webpack_require__(82),
     ListCache = __webpack_require__(17),
-    Map = __webpack_require__(33);
+    Map = __webpack_require__(34);
 
 /**
  * Removes all key-value entries from the map.
@@ -6472,7 +6483,7 @@ module.exports = identity;
 /* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGet = __webpack_require__(41),
+var baseGet = __webpack_require__(42),
     baseSlice = __webpack_require__(100);
 
 /**
@@ -6625,8 +6636,8 @@ module.exports = stackHas;
 /***/ (function(module, exports, __webpack_require__) {
 
 var ListCache = __webpack_require__(17),
-    Map = __webpack_require__(33),
-    MapCache = __webpack_require__(34);
+    Map = __webpack_require__(34),
+    MapCache = __webpack_require__(35);
 
 /** Used as the size to enable large array optimizations. */
 var LARGE_ARRAY_SIZE = 200;
@@ -6698,7 +6709,7 @@ module.exports = stringToPath;
 /* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseClone = __webpack_require__(39);
+var baseClone = __webpack_require__(40);
 
 /** Used to compose bitmasks for cloning. */
 var CLONE_SYMBOLS_FLAG = 4;
@@ -6843,8 +6854,8 @@ module.exports = isArrayLike;
 /* 155 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGetTag = __webpack_require__(42),
-    getPrototype = __webpack_require__(46),
+var baseGetTag = __webpack_require__(43),
+    getPrototype = __webpack_require__(47),
     isObjectLike = __webpack_require__(55);
 
 /** `Object#toString` result references. */
@@ -7016,7 +7027,7 @@ module.exports = last;
 /***/ (function(module, exports, __webpack_require__) {
 
 var basePick = __webpack_require__(96),
-    flatRest = __webpack_require__(43);
+    flatRest = __webpack_require__(44);
 
 /**
  * Creates an object composed of the picked `object` properties.
@@ -7047,7 +7058,7 @@ module.exports = pick;
 /***/ (function(module, exports, __webpack_require__) {
 
 var arrayReduce = __webpack_require__(85),
-    baseEach = __webpack_require__(40),
+    baseEach = __webpack_require__(41),
     baseIteratee = __webpack_require__(95),
     baseReduce = __webpack_require__(98),
     isArray = __webpack_require__(5);
@@ -7149,12 +7160,12 @@ module.exports = uniqueId;
 
 
 
-var invariant = __webpack_require__(31);
-var warning = __webpack_require__(32);
-
-var ReactPropTypesSecret = __webpack_require__(58);
-
-var loggedTypeFailures = {};
+if (true) {
+  var invariant = __webpack_require__(32);
+  var warning = __webpack_require__(33);
+  var ReactPropTypesSecret = __webpack_require__(58);
+  var loggedTypeFailures = {};
+}
 
 /**
  * Assert that the values match with the type specs.
@@ -7183,7 +7194,7 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
         } catch (ex) {
           error = ex;
         }
-         true ? warning(!error || error instanceof Error, '%s: type specification of %s `%s` is invalid; the type checker ' + 'function must return `null` or an `Error` but returned a %s. ' + 'You may have forgotten to pass an argument to the type checker ' + 'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' + 'shape all require an argument).', componentName || 'React class', location, typeSpecName, typeof error) : void 0;
+        warning(!error || error instanceof Error, '%s: type specification of %s `%s` is invalid; the type checker ' + 'function must return `null` or an `Error` but returned a %s. ' + 'You may have forgotten to pass an argument to the type checker ' + 'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' + 'shape all require an argument).', componentName || 'React class', location, typeSpecName, typeof error);
         if (error instanceof Error && !(error.message in loggedTypeFailures)) {
           // Only monitor this failure once because there tends to be a lot of the
           // same error.
@@ -7191,7 +7202,7 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
 
           var stack = getStack ? getStack() : '';
 
-           true ? warning(false, 'Failed %s type: %s%s', location, error.message, stack != null ? stack : '') : void 0;
+          warning(false, 'Failed %s type: %s%s', location, error.message, stack != null ? stack : '');
         }
       }
     }
@@ -7217,14 +7228,14 @@ module.exports = checkPropTypes;
 
 
 
-var emptyFunction = __webpack_require__(30);
-var invariant = __webpack_require__(31);
-var warning = __webpack_require__(32);
+var emptyFunction = __webpack_require__(31);
+var invariant = __webpack_require__(32);
+var warning = __webpack_require__(33);
 
 var ReactPropTypesSecret = __webpack_require__(58);
 var checkPropTypes = __webpack_require__(163);
 
-module.exports = function (isValidElement) {
+module.exports = function(isValidElement, throwOnDirectAccess) {
   /* global Symbol */
   var ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
   var FAUX_ITERATOR_SYMBOL = '@@iterator'; // Before Symbol spec.
@@ -7299,58 +7310,27 @@ module.exports = function (isValidElement) {
 
   var ANONYMOUS = '<<anonymous>>';
 
-  var ReactPropTypes;
+  // Important!
+  // Keep this list in sync with production version in `./factoryWithThrowingShims.js`.
+  var ReactPropTypes = {
+    array: createPrimitiveTypeChecker('array'),
+    bool: createPrimitiveTypeChecker('boolean'),
+    func: createPrimitiveTypeChecker('function'),
+    number: createPrimitiveTypeChecker('number'),
+    object: createPrimitiveTypeChecker('object'),
+    string: createPrimitiveTypeChecker('string'),
+    symbol: createPrimitiveTypeChecker('symbol'),
 
-  if (true) {
-    // Keep in sync with production version below
-    ReactPropTypes = {
-      array: createPrimitiveTypeChecker('array'),
-      bool: createPrimitiveTypeChecker('boolean'),
-      func: createPrimitiveTypeChecker('function'),
-      number: createPrimitiveTypeChecker('number'),
-      object: createPrimitiveTypeChecker('object'),
-      string: createPrimitiveTypeChecker('string'),
-      symbol: createPrimitiveTypeChecker('symbol'),
-
-      any: createAnyTypeChecker(),
-      arrayOf: createArrayOfTypeChecker,
-      element: createElementTypeChecker(),
-      instanceOf: createInstanceTypeChecker,
-      node: createNodeChecker(),
-      objectOf: createObjectOfTypeChecker,
-      oneOf: createEnumTypeChecker,
-      oneOfType: createUnionTypeChecker,
-      shape: createShapeTypeChecker
-    };
-  } else {
-    var productionTypeChecker = function () {
-      invariant(false, 'React.PropTypes type checking code is stripped in production.');
-    };
-    productionTypeChecker.isRequired = productionTypeChecker;
-    var getProductionTypeChecker = function () {
-      return productionTypeChecker;
-    };
-    // Keep in sync with development version above
-    ReactPropTypes = {
-      array: productionTypeChecker,
-      bool: productionTypeChecker,
-      func: productionTypeChecker,
-      number: productionTypeChecker,
-      object: productionTypeChecker,
-      string: productionTypeChecker,
-      symbol: productionTypeChecker,
-
-      any: productionTypeChecker,
-      arrayOf: getProductionTypeChecker,
-      element: productionTypeChecker,
-      instanceOf: getProductionTypeChecker,
-      node: productionTypeChecker,
-      objectOf: getProductionTypeChecker,
-      oneOf: getProductionTypeChecker,
-      oneOfType: getProductionTypeChecker,
-      shape: getProductionTypeChecker
-    };
-  }
+    any: createAnyTypeChecker(),
+    arrayOf: createArrayOfTypeChecker,
+    element: createElementTypeChecker(),
+    instanceOf: createInstanceTypeChecker,
+    node: createNodeChecker(),
+    objectOf: createObjectOfTypeChecker,
+    oneOf: createEnumTypeChecker,
+    oneOfType: createUnionTypeChecker,
+    shape: createShapeTypeChecker
+  };
 
   /**
    * inlined Object.is polyfill to avoid requiring consumers ship their own
@@ -7387,16 +7367,41 @@ module.exports = function (isValidElement) {
   function createChainableTypeChecker(validate) {
     if (true) {
       var manualPropTypeCallCache = {};
+      var manualPropTypeWarningCount = 0;
     }
     function checkType(isRequired, props, propName, componentName, location, propFullName, secret) {
       componentName = componentName || ANONYMOUS;
       propFullName = propFullName || propName;
-      if (true) {
-        if (secret !== ReactPropTypesSecret && typeof console !== 'undefined') {
+
+      if (secret !== ReactPropTypesSecret) {
+        if (throwOnDirectAccess) {
+          // New behavior only for users of `prop-types` package
+          invariant(
+            false,
+            'Calling PropTypes validators directly is not supported by the `prop-types` package. ' +
+            'Use `PropTypes.checkPropTypes()` to call them. ' +
+            'Read more at http://fb.me/use-check-prop-types'
+          );
+        } else if ("development" !== 'production' && typeof console !== 'undefined') {
+          // Old behavior for people using React.PropTypes
           var cacheKey = componentName + ':' + propName;
-          if (!manualPropTypeCallCache[cacheKey]) {
-             true ? warning(false, 'You are manually calling a React.PropTypes validation ' + 'function for the `%s` prop on `%s`. This is deprecated ' + 'and will not work in production with the next major version. ' + 'You may be seeing this warning due to a third-party PropTypes ' + 'library. See https://fb.me/react-warning-dont-call-proptypes ' + 'for details.', propFullName, componentName) : void 0;
+          if (
+            !manualPropTypeCallCache[cacheKey] &&
+            // Avoid spamming the console because they are often not actionable except for lib authors
+            manualPropTypeWarningCount < 3
+          ) {
+            warning(
+              false,
+              'You are manually calling a React.PropTypes validation ' +
+              'function for the `%s` prop on `%s`. This is deprecated ' +
+              'and will throw in the standalone `prop-types` package. ' +
+              'You may be seeing this warning due to a third-party PropTypes ' +
+              'library. See https://fb.me/react-warning-dont-call-proptypes ' + 'for details.',
+              propFullName,
+              componentName
+            );
             manualPropTypeCallCache[cacheKey] = true;
+            manualPropTypeWarningCount++;
           }
         }
       }
