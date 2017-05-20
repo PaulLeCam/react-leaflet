@@ -69,13 +69,14 @@ export default class Popup extends MapComponent {
   }
 
   componentWillUnmount() {
-    this.removePopupContent();
+    this.removePopupContent()
 
     this.context.map.off({
       popupopen: this.onPopupOpen,
       popupclose: this.onPopupClose,
     })
     this.context.map.removeLayer(this.leafletElement)
+
     super.componentWillUnmount()
   }
 

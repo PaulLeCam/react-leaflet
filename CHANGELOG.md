@@ -1,3 +1,10 @@
+## v1.1.7 (2017-05-20)
+
+- Fixed DOM leak when unmounting an unclosed popup, [PR #326](https://github.com/PaulLeCam/react-leaflet/pull/326) by *DirtyHairy*.
+- Updated Leaflet documentation links, [PR #324](https://github.com/PaulLeCam/react-leaflet/pull/324) by *Chris-Petty*.
+- Fixed "quick start" link, [PR #321](https://github.com/PaulLeCam/react-leaflet/pull/321) by *mojo5000*.
+- Added react-leaflet-ant-path to the plugins documentation, [PR #318](https://github.com/PaulLeCam/react-leaflet/pull/318) by *rubenspgcavalcante*.
+
 ## v1.1.6 (2017-04-10)
 
 - Added support for React v15.5, fixes PropTypes warning.

@@ -3882,11 +3882,14 @@ var Popup = function (_MapComponent) {
   };
 
   Popup.prototype.componentWillUnmount = function componentWillUnmount() {
+    this.removePopupContent();
+
     this.context.map.off({
       popupopen: this.onPopupOpen,
       popupclose: this.onPopupClose
     });
     this.context.map.removeLayer(this.leafletElement);
+
     _MapComponent.prototype.componentWillUnmount.call(this);
   };
 
