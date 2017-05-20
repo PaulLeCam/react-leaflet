@@ -1,13 +1,13 @@
-import path from 'path';
-import webpack from 'webpack';
-import LodashModuleReplacementPlugin from 'lodash-webpack-plugin';
+import path from 'path'
+import webpack from 'webpack'
+import LodashModuleReplacementPlugin from 'lodash-webpack-plugin'
 
-const outputPath = path.resolve(__dirname, 'dist');
+const outputPath = path.resolve(__dirname, 'dist')
 
 const lodashFeatures = {
   caching: true,
   collections: true,
-};
+}
 
 const config = {
   entry: {
@@ -62,7 +62,7 @@ const config = {
       },
     ],
   },
-};
+}
 
 export default [
   {
@@ -104,4 +104,4 @@ export default [
       }),
     ],
   },
-];
+]

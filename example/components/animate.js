@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Map, TileLayer, Marker, Popup } from '../../src';
+import React, { Component } from 'react'
+import { Map, TileLayer, Marker, Popup } from '../../src'
 
 export default class AnimateExample extends Component {
   state = {
@@ -8,19 +8,19 @@ export default class AnimateExample extends Component {
       lat: 51.505,
       lng: -0.09,
     },
-  };
+  }
 
   handleClick = e => {
     this.setState({
       latlng: e.latlng,
-    });
-  };
+    })
+  }
 
   toggleAnimate = () => {
     this.setState({
       animate: !this.state.animate,
-    });
-  };
+    })
+  }
 
   render() {
     const marker = this.state.hasLocation
@@ -29,7 +29,7 @@ export default class AnimateExample extends Component {
             <span>You are here</span>
           </Popup>
         </Marker>
-      : null;
+      : null
 
     return (
       <div style={{ textAlign: 'center' }}>
@@ -55,6 +55,6 @@ export default class AnimateExample extends Component {
           {marker}
         </Map>
       </div>
-    );
+    )
   }
 }

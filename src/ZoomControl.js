@@ -1,11 +1,11 @@
 // @flow
 
-import { control } from 'leaflet';
-import PropTypes from 'prop-types';
+import { control } from 'leaflet'
+import PropTypes from 'prop-types'
 
-import controlPositionType from './propTypes/controlPosition';
+import controlPositionType from './propTypes/controlPosition'
 
-import MapControl from './MapControl';
+import MapControl from './MapControl'
 
 export default class ZoomControl extends MapControl {
   static propTypes = {
@@ -14,9 +14,9 @@ export default class ZoomControl extends MapControl {
     zoomInTitle: PropTypes.string,
     zoomOutText: PropTypes.string,
     zoomOutTitle: PropTypes.string,
-  };
+  }
 
   createLeafletElement(props: Object): Object {
-    return control.zoom(props);
+    return control.zoom(props)
   }
 }

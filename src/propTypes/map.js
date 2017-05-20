@@ -1,6 +1,6 @@
 // @flow
 
-import { Map } from 'leaflet';
-import PropTypes from 'prop-types';
+import { Map } from 'leaflet'
+import PropTypes from 'prop-types'
 
-export default PropTypes.instanceOf(Map);
+export default PropTypes.instanceOf(Map)

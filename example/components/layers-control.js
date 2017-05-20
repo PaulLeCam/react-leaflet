@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import {
   Circle,
   FeatureGroup,
@@ -9,13 +9,13 @@ import {
   Popup,
   Rectangle,
   TileLayer,
-} from '../../src';
-const { BaseLayer, Overlay } = LayersControl;
+} from '../../src'
+const { BaseLayer, Overlay } = LayersControl
 
 export default class LayersControlExample extends Component {
   render() {
-    const center = [51.505, -0.09];
-    const rectangle = [[51.49, -0.08], [51.5, -0.06]];
+    const center = [51.505, -0.09]
+    const rectangle = [[51.49, -0.08], [51.5, -0.06]]
 
     return (
       <Map center={center} zoom={13}>
@@ -69,6 +69,6 @@ export default class LayersControlExample extends Component {
           </Overlay>
         </LayersControl>
       </Map>
-    );
+    )
   }
 }

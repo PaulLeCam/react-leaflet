@@ -1,6 +1,6 @@
 // @flow
 
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 
 export default PropTypes.oneOfType([
   // [Number, Number]
@@ -15,4 +15,4 @@ export default PropTypes.oneOfType([
     lat: PropTypes.number,
     lon: PropTypes.number,
   }),
-]);
+])

@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Map, TileLayer, Marker, Popup } from '../../src';
+import React, { Component } from 'react'
+import { Map, TileLayer, Marker, Popup } from '../../src'
 
 export default class DraggableExample extends Component {
   state = {
@@ -13,22 +13,22 @@ export default class DraggableExample extends Component {
     },
     zoom: 13,
     draggable: true,
-  };
+  }
 
   toggleDraggable = () => {
-    this.setState({ draggable: !this.state.draggable });
-  };
+    this.setState({ draggable: !this.state.draggable })
+  }
 
   updatePosition = () => {
-    const { lat, lng } = this.refs.marker.leafletElement.getLatLng();
+    const { lat, lng } = this.refs.marker.leafletElement.getLatLng()
     this.setState({
       marker: { lat, lng },
-    });
-  };
+    })
+  }
 
   render() {
-    const position = [this.state.center.lat, this.state.center.lng];
-    const markerPosition = [this.state.marker.lat, this.state.marker.lng];
+    const position = [this.state.center.lat, this.state.center.lng]
+    const markerPosition = [this.state.marker.lat, this.state.marker.lng]
 
     return (
       <Map center={position} zoom={this.state.zoom}>
@@ -48,6 +48,6 @@ export default class DraggableExample extends Component {
           </Popup>
         </Marker>
       </Map>
-    );
+    )
   }
 }

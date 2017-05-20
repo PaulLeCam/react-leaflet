@@ -1,7 +1,7 @@
 // @flow
 
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 
-import latlng from './latlng';
+import latlng from './latlng'
 
-export default PropTypes.arrayOf(latlng);
+export default PropTypes.arrayOf(latlng)

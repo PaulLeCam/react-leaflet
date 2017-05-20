@@ -1,5 +1,5 @@
-import React from 'react';
-import { Map, TileLayer, ZoomControl } from '../../src';
+import React from 'react'
+import { Map, TileLayer, ZoomControl } from '../../src'
 
 const ZoomControlExample = () => (
   <Map center={[51.505, -0.09]} zoom={13} zoomControl={false}>
@@ -9,6 +9,6 @@ const ZoomControlExample = () => (
     />
     <ZoomControl position="topright" />
   </Map>
-);
+)
 
-export default ZoomControlExample;
+export default ZoomControlExample

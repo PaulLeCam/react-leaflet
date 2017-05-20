@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Map, TileLayer, Marker, Popup } from '../../src';
+import React, { Component } from 'react'
+import { Map, TileLayer, Marker, Popup } from '../../src'
 
 export default class EventsExample extends Component {
   state = {
@@ -8,18 +8,18 @@ export default class EventsExample extends Component {
       lat: 51.505,
       lng: -0.09,
     },
-  };
+  }
 
   handleClick = () => {
-    this.refs.map.leafletElement.locate();
-  };
+    this.refs.map.leafletElement.locate()
+  }
 
   handleLocationFound = e => {
     this.setState({
       hasLocation: true,
       latlng: e.latlng,
-    });
-  };
+    })
+  }
 
   render() {
     const marker = this.state.hasLocation
@@ -28,7 +28,7 @@ export default class EventsExample extends Component {
             <span>You are here</span>
           </Popup>
         </Marker>
-      : null;
+      : null
 
     return (
       <Map
@@ -44,6 +44,6 @@ export default class EventsExample extends Component {
         />
         {marker}
       </Map>
-    );
+    )
   }
 }

@@ -1,12 +1,12 @@
 // @flow
 
-import { polyline } from 'leaflet';
-import PropTypes from 'prop-types';
+import { polyline } from 'leaflet'
+import PropTypes from 'prop-types'
 
-import childrenType from './propTypes/children';
-import latlngListType from './propTypes/latlngList';
+import childrenType from './propTypes/children'
+import latlngListType from './propTypes/latlngList'
 
-import Path from './Path';
+import Path from './Path'
 
 export default class Polyline extends Path {
   static propTypes = {
@@ -15,17 +15,17 @@ export default class Polyline extends Path {
       latlngListType,
       PropTypes.arrayOf(latlngListType),
     ]).isRequired,
-  };
+  }
 
   createLeafletElement(props: Object): Object {
-    const { positions, ...options } = props;
-    return polyline(positions, this.getOptions(options));
+    const { positions, ...options } = props
+    return polyline(positions, this.getOptions(options))
   }
 
   updateLeafletElement(fromProps: Object, toProps: Object) {
     if (toProps.positions !== fromProps.positions) {
-      this.leafletElement.setLatLngs(toProps.positions);
+      this.leafletElement.setLatLngs(toProps.positions)
     }
-    this.setStyleIfChanged(fromProps, toProps);
+    this.setStyleIfChanged(fromProps, toProps)
   }
 }

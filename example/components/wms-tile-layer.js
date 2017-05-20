@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Map, TileLayer, WMSTileLayer } from '../../src';
+import React, { Component } from 'react'
+import { Map, TileLayer, WMSTileLayer } from '../../src'
 
 export default class WMSTileLayerExample extends Component {
   state = {
@@ -7,13 +7,13 @@ export default class WMSTileLayerExample extends Component {
     lng: -0.09,
     zoom: 5,
     bluemarble: false,
-  };
+  }
 
   onClick = () => {
     this.setState({
       bluemarble: !this.state.bluemarble,
-    });
-  };
+    })
+  }
 
   render() {
     return (
@@ -30,6 +30,6 @@ export default class WMSTileLayerExample extends Component {
           url="http://demo.opengeo.org/geoserver/ows?"
         />
       </Map>
-    );
+    )
   }
 }
