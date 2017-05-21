@@ -39,5 +39,8 @@ export default class ImageOverlay extends MapLayer {
     if (toProps.opacity !== fromProps.opacity) {
       this.leafletElement.setOpacity(toProps.opacity)
     }
+    if (toProps.bounds !== fromProps.bounds) {
+      this.leafletElement.setBounds(L.latLngBounds(toProps.bounds))
+    }
   }
 }
