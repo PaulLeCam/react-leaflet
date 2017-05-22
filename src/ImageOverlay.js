@@ -1,6 +1,6 @@
 // @flow
 
-import { imageOverlay } from 'leaflet'
+import { imageOverlay, latLngBounds } from 'leaflet'
 import PropTypes from 'prop-types'
 
 import boundsType from './propTypes/bounds'
@@ -38,6 +38,9 @@ export default class ImageOverlay extends MapLayer {
     }
     if (toProps.opacity !== fromProps.opacity) {
       this.leafletElement.setOpacity(toProps.opacity)
+    }
+    if (toProps.bounds !== fromProps.bounds) {
+      this.leafletElement.setBounds(latLngBounds(toProps.bounds))
     }
   }
 }
