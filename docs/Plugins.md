@@ -2,6 +2,7 @@
 
 A non-exhaustive list of plugins adding functionalities to React-Leaflet. Please open pull requests to update this list!
 
+- [`react-leaflet-ant-path`](https://www.npmjs.com/package/react-leaflet-ant-path)
 - [`react-leaflet-bing`](https://www.npmjs.com/package/react-leaflet-bing)
 - [`react-leaflet-choropleth`](https://www.npmjs.com/package/react-leaflet-choropleth)
 - [`react-leaflet-cluster-layer`](https://www.npmjs.com/package/react-leaflet-cluster-layer)
@@ -15,6 +16,5 @@ A non-exhaustive list of plugins adding functionalities to React-Leaflet. Please
 - [`react-leaflet-marker-layer`](https://www.npmjs.com/package/react-leaflet-marker-layer)
 - [`react-leaflet-pane`](https://www.npmjs.com/package/react-leaflet-pane)
 - [`react-leaflet-shapefile`](https://www.npmjs.com/package/react-leaflet-shapefile)
-- [`react-mapbox-components`](https://www.npmjs.com/package/react-mapbox-components)
 - [`react-leaflet-zoom-display`](https://www.npmjs.com/package/react-leaflet-zoom-display)
-- [`react-leaflet-ant-path`](https://www.npmjs.com/package/react-leaflet-ant-path)
+- [`react-mapbox-components`](https://www.npmjs.com/package/react-mapbox-components)

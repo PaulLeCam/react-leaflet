@@ -6,16 +6,16 @@ const L = require.requireActual('leaflet')
 const LeafletMock = jest.genMockFromModule('leaflet')
 
 class ControlMock extends LeafletMock.Control {
-  constructor (options) {
+  constructor(options) {
     super()
-    this.options = {...L.Control.prototype.options, ...options}
+    this.options = { ...L.Control.prototype.options, ...options }
   }
 
-  getPosition () {
+  getPosition() {
     return this.options.position
   }
 
-  setPosition (position) {
+  setPosition(position) {
     this.options.position = position
     return this
   }
@@ -24,7 +24,7 @@ class ControlMock extends LeafletMock.Control {
 const controlMock = options => new ControlMock(options)
 
 class LayersControlMock extends ControlMock {
-  constructor (baseLayers = [], overlays = [], options) {
+  constructor(baseLayers = [], overlays = [], options) {
     super(options)
     this._layers = []
 
@@ -36,21 +36,21 @@ class LayersControlMock extends ControlMock {
     })
   }
 
-  _addLayer (layer, name, overlay) {
-    this._layers.push({layer, name, overlay})
+  _addLayer(layer, name, overlay) {
+    this._layers.push({ layer, name, overlay })
   }
 
-  addBaseLayer (layer, name) {
+  addBaseLayer(layer, name) {
     this._addLayer(layer, name)
     return this
   }
 
-  addOverlay (layer, name) {
+  addOverlay(layer, name) {
     this._addLayer(layer, name, true)
     return this
   }
 
-  removeLayer (obj) {
+  removeLayer(obj) {
     this._layers.splice(this._layers.indexOf(obj), 1)
   }
 }
@@ -61,11 +61,11 @@ controlMock.layers = (baseLayers, overlays, options) => {
 }
 
 class MapMock extends LeafletMock.Map {
-  constructor (id, options = {}) {
+  constructor(id, options = {}) {
     super()
     assign(this, L.Evented.prototype)
 
-    this.options = {...L.Map.prototype.options, ...options}
+    this.options = { ...L.Map.prototype.options, ...options }
     this._container = id
 
     if (options.bounds) {
@@ -81,73 +81,73 @@ class MapMock extends LeafletMock.Map {
     }
   }
 
-  _limitZoom (zoom) {
+  _limitZoom(zoom) {
     const min = this.getMinZoom()
     const max = this.getMaxZoom()
     return Math.max(min, Math.min(max, zoom))
   }
 
-  _resetView (center, zoom) {
+  _resetView(center, zoom) {
     this._initialCenter = center
     this._zoom = zoom
   }
 
-  fitBounds (bounds, options) {
+  fitBounds(bounds, options) {
     this._bounds = bounds
     this._boundsOptions = options
   }
 
-  getBounds () {
+  getBounds() {
     return this._bounds
   }
 
-  getCenter () {
+  getCenter() {
     return this._initialCenter
   }
 
-  getMaxZoom () {
+  getMaxZoom() {
     return this.options.maxZoom === undefined ? Infinity : this.options.maxZoom
   }
 
-  getMinZoom () {
+  getMinZoom() {
     return this.options.minZoom === undefined ? 0 : this.options.minZoom
   }
 
-  getZoom () {
+  getZoom() {
     return this._zoom
   }
 
-  setMaxBounds (bounds) {
+  setMaxBounds(bounds) {
     bounds = L.latLngBounds(bounds)
     this.options.maxBounds = bounds
     return this
   }
 
-  setView (center, zoom) {
+  setView(center, zoom) {
     zoom = zoom === undefined ? this.getZoom() : zoom
     this._resetView(L.latLng(center), this._limitZoom(zoom))
     return this
   }
 
-  setZoom (zoom) {
+  setZoom(zoom) {
     return this.setView(this.getCenter(), zoom)
   }
 }
 
 class PopupMock extends LeafletMock.Popup {
-  constructor (options, source) {
+  constructor(options, source) {
     super()
     assign(this, L.Evented.prototype)
 
-    this.options = {...L.Popup.prototype.options, ...options}
+    this.options = { ...L.Popup.prototype.options, ...options }
     this._source = source
   }
 
-  getContent () {
+  getContent() {
     return this._content
   }
 
-  setContent (content) {
+  setContent(content) {
     this._content = content
   }
 }

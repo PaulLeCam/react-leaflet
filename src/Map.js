@@ -14,7 +14,14 @@ import mapType from './propTypes/map'
 
 import MapComponent from './MapComponent'
 
-const OTHER_PROPS = ['children', 'className', 'id', 'style', 'useFlyTo']
+const OTHER_PROPS = [
+  'children',
+  'className',
+  'id',
+  'style',
+  'useFlyTo',
+  'whenReady',
+]
 
 type LatLngType = LatLng | Array<number> | Object
 type LatLngBoundsType = LatLngBounds | Array<LatLngType>
@@ -120,9 +127,15 @@ export default class Map extends MapComponent {
   componentDidMount() {
     const props = omit(this.props, OTHER_PROPS)
     this.leafletElement = this.createLeafletElement(props)
+
     if (!isUndefined(props.bounds)) {
       this.leafletElement.fitBounds(props.bounds, props.boundsOptions)
     }
+
+    if (this.props.whenReady) {
+      this.leafletElement.whenReady(this.props.whenReady)
+    }
+
     super.componentDidMount()
     this.forceUpdate() // Re-render now that leafletElement is created
   }

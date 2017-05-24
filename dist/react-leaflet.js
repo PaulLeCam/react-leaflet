@@ -2727,6 +2727,9 @@ var ImageOverlay = function (_MapLayer) {
     if (toProps.opacity !== fromProps.opacity) {
       this.leafletElement.setOpacity(toProps.opacity);
     }
+    if (toProps.bounds !== fromProps.bounds) {
+      this.leafletElement.setBounds((0, _leaflet.latLngBounds)(toProps.bounds));
+    }
   };
 
   return ImageOverlay;
@@ -3133,7 +3136,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : _defaults(subClass, superClass); }
 
-var OTHER_PROPS = ['children', 'className', 'id', 'style', 'useFlyTo'];
+var OTHER_PROPS = ['children', 'className', 'id', 'style', 'useFlyTo', 'whenReady'];
 
 var normalizeCenter = function normalizeCenter(pos) {
   return Array.isArray(pos) ? pos : [pos.lat, pos.lon ? pos.lon : pos.lng];
@@ -3212,9 +3215,15 @@ var Map = function (_MapComponent) {
   Map.prototype.componentDidMount = function componentDidMount() {
     var props = (0, _omit3.default)(this.props, OTHER_PROPS);
     this.leafletElement = this.createLeafletElement(props);
+
     if (!(0, _isUndefined3.default)(props.bounds)) {
       this.leafletElement.fitBounds(props.bounds, props.boundsOptions);
     }
+
+    if (this.props.whenReady) {
+      this.leafletElement.whenReady(this.props.whenReady);
+    }
+
     _MapComponent.prototype.componentDidMount.call(this);
     this.forceUpdate(); // Re-render now that leafletElement is created
   };

@@ -1,9 +1,14 @@
+## v1.2.0 (2017-05-24)
+
+- Added support for dynamic `bounds` property in `ImageOverlay`, [PR #326](https://github.com/PaulLeCam/react-leaflet/pull/328) by *Gjum*.
+- Added `whenReady` property to `Map`, running the provided function according to [Leaflet's documentation](http://leafletjs.com/reference-1.0.3.html#map-whenready).
+
 ## v1.1.7 (2017-05-20)
 
 - Fixed DOM leak when unmounting an unclosed popup, [PR #326](https://github.com/PaulLeCam/react-leaflet/pull/326) by *DirtyHairy*.
-- Updated Leaflet documentation links, [PR #324](https://github.com/PaulLeCam/react-leaflet/pull/324) by *Chris-Petty*.
-- Fixed "quick start" link, [PR #321](https://github.com/PaulLeCam/react-leaflet/pull/321) by *mojo5000*.
-- Added react-leaflet-ant-path to the plugins documentation, [PR #318](https://github.com/PaulLeCam/react-leaflet/pull/318) by *rubenspgcavalcante*.
+- [doc] Updated Leaflet documentation links, [PR #324](https://github.com/PaulLeCam/react-leaflet/pull/324) by *Chris-Petty*.
+- [doc] Fixed "quick start" link, [PR #321](https://github.com/PaulLeCam/react-leaflet/pull/321) by *mojo5000*.
+- [doc] Added react-leaflet-ant-path to the plugins documentation, [PR #318](https://github.com/PaulLeCam/react-leaflet/pull/318) by *rubenspgcavalcante*.
 
 ## v1.1.6 (2017-04-10)
 

@@ -81,6 +81,7 @@ This is the top-level component that must be mounted for child components to be 
 
 **Other properties**
 - `id: string` (optional): The ID of the `<div>` container for the map.
+- `whenReady: Function` (optional): A function called as soon as the map is ready, see [Leaflet's documentation](http://leafletjs.com/reference-1.0.3.html#map-whenready) for more information.
 
 ## Pane
 
@@ -137,6 +138,7 @@ The Tooltip children will be rendered using `ReactDOM.render()`, they must be va
 **Dynamic properties**
 - `url: string` (required)
 - `opacity: number` (optional)
+- `bounds: bounds` (optional)
 
 ### WMSTileLayer
 
@@ -233,7 +235,7 @@ This component exposes two children container components, `LayersControl.BaseLay
 See the `layers-control` example for a more advanced usage.
 
 Example usage:
-```jsx
+```js
 <LayersControl position='topright'>
   <LayersControl.BaseLayer name='OpenStreetMap.BlackAndWhite'>
     <TileLayer
