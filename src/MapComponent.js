@@ -72,7 +72,10 @@ export default class MapComponent extends Component<any, any, any> {
     forEach(next, (cb, ev) => {
       if (!prev[ev] || cb !== prev[ev]) {
         diff[ev] = cb
-        el.on(ev, cb)
+        if (ev == 'load')
+          el.whenReady(cb);
+        else
+          el.on(ev, cb)
       }
     })
 
