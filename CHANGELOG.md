@@ -1,3 +1,7 @@
+## v1.2.1 (2017-06-01)
+
+Removed leftover `console.log()` in `Polygon`.
+
 ## v1.2.0 (2017-05-24)
 
 - Added support for dynamic `bounds` property in `ImageOverlay`, [PR #326](https://github.com/PaulLeCam/react-leaflet/pull/328) by *Gjum*.

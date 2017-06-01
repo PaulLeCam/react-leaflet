@@ -27,12 +27,6 @@ export default class Polygon extends Path {
   }
 
   updateLeafletElement(fromProps: Object, toProps: Object) {
-    console.log(
-      'positions',
-      toProps.positions !== fromProps.positions,
-      fromProps.positions,
-      toProps.positions,
-    )
     if (toProps.positions !== fromProps.positions) {
       this.leafletElement.setLatLngs(toProps.positions)
     }

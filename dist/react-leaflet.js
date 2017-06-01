@@ -2871,10 +2871,9 @@ var controlledLayerPropTypes = _extends({}, baseControlledLayerPropTypes, {
   addBaseLayer: _propTypes2.default.func,
   addOverlay: _propTypes2.default.func,
   name: _propTypes2.default.string.isRequired
+
+  // Abtract class for layer container, extended by BaseLayer and Overlay
 });
-
-// Abtract class for layer container, extended by BaseLayer and Overlay
-
 var ControlledLayer = function (_Component) {
   _inherits(ControlledLayer, _Component);
 
@@ -3225,7 +3224,8 @@ var Map = function (_MapComponent) {
     }
 
     _MapComponent.prototype.componentDidMount.call(this);
-    this.forceUpdate(); // Re-render now that leafletElement is created
+    this.forceUpdate // Re-render now that leafletElement is created
+    ();
   };
 
   Map.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
@@ -3666,7 +3666,6 @@ var Polygon = function (_Path) {
   };
 
   Polygon.prototype.updateLeafletElement = function updateLeafletElement(fromProps, toProps) {
-    console.log('positions', toProps.positions !== fromProps.positions, fromProps.positions, toProps.positions);
     if (toProps.positions !== fromProps.positions) {
       this.leafletElement.setLatLngs(toProps.positions);
     }
