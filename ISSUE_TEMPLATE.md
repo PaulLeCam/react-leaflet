@@ -18,4 +18,4 @@ Please describe.
 
 ### Steps to reproduce
 
-Please provide the simplest example possible to reproduce the issue, based on [this jsfiddle](https://jsfiddle.net/paul_lecam/vfa15L8c/).
+Please provide the simplest example possible to reproduce the issue, based on [this WebpackBin](https://www.webpackbin.com/bins/-Kl_ZeUx4I05ETYoT26O).

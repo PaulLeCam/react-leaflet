@@ -24,4 +24,4 @@ If you are looking for implementations of features provided by plugins, they wil
 
 Please check among existing issues (open **and** closed) if the problem you encounter has not been solved before.  
 If you have questions about React or Leaflet not directly related to this library, please ask them using their respective support platforms.  
-For any other issue, please provide a simple description, if relevant with codes examples. You can use [this jsfiddle](https://jsfiddle.net/paul_lecam/vfa15L8c/) as a starting example.
+For any other issue, please provide a simple description, if relevant with codes examples. You can use [this WebpackBin](https://www.webpackbin.com/bins/-Kl_ZeUx4I05ETYoT26O) as a starting example.

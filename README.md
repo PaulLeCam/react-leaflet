@@ -10,6 +10,11 @@ React components for Leaflet maps.
 - [Extending](docs/Extending.md)
 - [Plugins](docs/Plugins.md)
 
+## Examples
+
+Run a simple example using [WebpackBin](https://www.webpackbin.com/bins/-Kl_ZeUx4I05ETYoT26O).  
+Other examples are available in the [example](example) folder of this project.
+
 ## Changes
 
 See the [CHANGELOG](CHANGELOG.md) and [UPGRADING](UPGRADING.md) files.

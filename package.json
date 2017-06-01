@@ -16,7 +16,7 @@
     "flow": "flow",
     "start": "npm run lint && npm run flow && npm run test && npm run build",
     "dev": "npm run watch & npm run onchange",
-    "prepublish": "npm start",
+    "prepublishOnly": "npm start",
     "examples": "webpack-dev-server --config ./example/webpack.config.babel.js"
   },
   "repository": {
