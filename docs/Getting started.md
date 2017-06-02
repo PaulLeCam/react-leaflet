@@ -74,6 +74,13 @@ npm install leaflet react react-dom react-leaflet # npm
 yarn add leaflet react react-dom react-leaflet # Yarn
 ```
 
+### CSS
+Don't forget to include the styles in your app as well:
+
+```html
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css">
+```
+
 ### UMD
 
 An UMD build is available on [unpkg](https://unpkg.com/):
