@@ -104,7 +104,11 @@ export default class Map extends MapComponent {
         this.leafletElement.setView(center, zoom, { animate })
       }
     } else if (zoom && zoom !== fromProps.zoom) {
-      this.leafletElement.setZoom(zoom)
+      if (fromProps.zoom) {
+        this.leafletElement.setZoom(zoom)
+      } else {
+        this.leafletElement.setView(center, zoom)
+      }
     }
 
     if (maxBounds && this.shouldUpdateBounds(maxBounds, fromProps.maxBounds)) {

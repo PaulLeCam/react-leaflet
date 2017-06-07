@@ -1,3 +1,7 @@
+## v1.2.2 (2017-06-07)
+
+Fixed updating the Map's `zoom` when not previously set.
+
 ## v1.2.1 (2017-06-01)
 
 Removed leftover `console.log()` in `Polygon`.
