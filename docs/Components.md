@@ -71,17 +71,85 @@ This is the top-level component that must be mounted for child components to be 
 **Dynamic properties**
 - `animate: boolean` (optional): If `true`, panning will always be animated if possible. Defaults to `false`.
 - `bounds: bounds` (optional): A rectangle for the map to contain. It will be centered, and the map will zoom in as close as it can while still showing the full bounds. This property is dynamic, if you change it it will be reflected on the map.
-- `boundsOptions: object` (optional): Options passed to the `fitBounds()` method.
+- `boundsOptions: Object` (optional): Options passed to the `fitBounds()` method.
 - `center: latLng` (optional): Center of the map. This property is dynamic, if you change it it will be reflected in the map.
 - `className: string` (optional): className property of the `<div>` container for the map.
 - `maxBounds: bounds` (optional)
-- `style: object` (optional): style property of the `<div>` container for the map.
+- `onViewportChange: (viewport: {center: ?[number, number], zoom: ?number}) => void`  (optional): fired continuously as the viewport changes.
+- `onViewportChanged: (viewport: {center: ?[number, number], zoom: ?number}) => void`  (optional): fired after the viewport changed.
+- `style: Object` (optional): style property of the `<div>` container for the map.
 - `useFlyTo: boolean` (optional): boolean to control whether to use flyTo functions for bounds and center. If false `map.fitBounds` and `map.setView` will be used. If true `map.flyToBounds` and `map.flyTo` will be used. Defaults to false.
+- `viewport: viewport` (optional): sets the viewport based on the provided value or the `center` and `zoom` properties.
 - `zoom: number` (optional)
 
 **Other properties**
 - `id: string` (optional): The ID of the `<div>` container for the map.
-- `whenReady: Function` (optional): A function called as soon as the map is ready, see [Leaflet's documentation](http://leafletjs.com/reference-1.0.3.html#map-whenready) for more information.
+- `whenReady: () => void` (optional): A function called as soon as the map is ready, see [Leaflet's documentation](http://leafletjs.com/reference-1.0.3.html#map-whenready) for more information.
+
+**Manipulating the viewport**
+
+React-Leaflet provides two different ways of manipulating the viewport (the map's center and zoom), either setting the `center` and `zoom` properties, or the `viewport` one. These properties are not exclusive, for example providing both the `center` and a `viewport` containing the zoom value would work as expected.
+
+The `center` and `zoom` properties are compared by values. This means for React-Leaflet setting the center to `[51, 0]` is the same as `{lat: 51, lng: 0}`, if you change the `center` property from one to the other, it would have no effect, because the values are the same. This is a technical choice made to support common use cases when layers are added to the map, but the map's viewport shouldn't be reset to its original position, the viewport will only change when the provided `center` or `zoom` values are different from the ones previously provided, *whatever the current map viewport is*.  
+These changes can be tracked using the `move` and `moveend` events, so your component can store the current `center` and `zoom` values as the user interacts with the map, and render these updated values so that the state of your component matches the viewport of the map. This means you can reset the map to any position by updating the state of your component.  
+The `viewport`, on the other hand, is compared by reference, meaning providing a different object, whatever its values, will trigger the viewport change logic. It is for example possible the do `<Map center={[51,0]} zoom={10} viewport={{}}>` to reset the viewport to the provided `center` and `zoom`, because the `viewport` is a newly created object, and being empty will default it to the `center` and `zoom` properties. Providing `<Map center={[51,0]} zoom={10} viewport={null}>` is equivalent to not providing the `viewport` property and will perform no change.
+
+React-Leaflet provides the `onViewportChange` and `onViewportChanged` callbacks to help apply this behavior, you can see an example usage below:
+
+```js
+type Viewport = {
+  center: [number, number],
+  zoom: number,
+}
+
+type Props = {
+  viewport: Viewport,
+}
+
+class MyMap extends Component {
+  props: Props
+  state: {
+    viewport: Viewport,
+  }
+
+  constructor(props: Props) {
+    // Initialize the viewport to the one provided in props
+    this.state = {
+      viewport: props.viewport,
+    }
+  }
+
+  componentWillReceiveProps({ viewport }: Props) {
+    // When the provided viewport changes, apply it
+    if (viewport !== this.props.viewport) {
+      this.setState({ viewport })
+    }
+  }
+
+  onClickReset = () => {
+    // Reset to position provided in props
+    this.setState({ viewport: this.props.viewport })
+  }
+
+  onViewportChanged = (viewport: Viewport) => {
+    // The viewport got changed by the user, keep track in state
+    this.setState({ viewport })
+  }
+
+  render() {
+    return (
+      <Map
+        onClick={this.onClickReset}
+        onViewportChanged={this.onViewportChanged}
+        viewport={this.state.viewport}>
+        ...
+      </Map>
+    )
+  }
+}
+
+```
+See the [viewport example](../example/components/viewport.js) for a more complete implementation.
 
 ## Pane
 
@@ -89,7 +157,7 @@ This is the top-level component that must be mounted for child components to be 
 
 **Dynamic properties**
 - `name: string` (optional): Unique name for the pane. Existing Leaflet panes are blacklisted.
-- `style: object` (optional): style property of the pane's `<div>`
+- `style: Object` (optional): style property of the pane's `<div>`
 - `className: string` (optional):  className property of the pane's `<div>`
 
 ## UI Layers
@@ -112,6 +180,8 @@ This is the top-level component that must be mounted for child components to be 
 The Popup children will be rendered using `ReactDOM.render()`, they must be valid React elements.
 
 **Dynamic properties**
+- `onClose: () => void` (optional)
+- `onOpen: () => void` (optional)
 - `position: latLng` (optional)
 
 ### Tooltip
@@ -119,6 +189,10 @@ The Popup children will be rendered using `ReactDOM.render()`, they must be vali
 [Leaflet reference](http://leafletjs.com/reference-1.0.3.html#tooltip)
 
 The Tooltip children will be rendered using `ReactDOM.render()`, they must be valid React elements.
+
+**Dynamic properties**
+- `onClose: () => void` (optional)
+- `onOpen: () => void` (optional)
 
 ## Raster Layers
 

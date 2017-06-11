@@ -4,6 +4,7 @@ import { render } from 'react-dom'
 
 import SimpleExample from './simple'
 import EventsExample from './events'
+import ViewportExample from './viewport'
 import VectorLayersExample from './vector-layers'
 import OtherLayersExample from './other-layers'
 import ZoomControlExample from './zoom-control'
@@ -27,6 +28,9 @@ const examples = (
     <h2>Events</h2>
     <p>Click the map to show a marker at your detected location</p>
     <EventsExample />
+    <h2>Viewport</h2>
+    <p>Click the map to reset it to its original position</p>
+    <ViewportExample />
     <h2>Vector layers</h2>
     <VectorLayersExample />
     <h2>Other layers</h2>

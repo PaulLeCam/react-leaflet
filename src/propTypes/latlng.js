@@ -3,14 +3,14 @@
 import PropTypes from 'prop-types'
 
 export default PropTypes.oneOfType([
-  // [Number, Number]
+  // [number, number]
   PropTypes.arrayOf(PropTypes.number),
-  // {lat: Number, lng: Number}
+  // {lat: number, lng: number}
   PropTypes.shape({
     lat: PropTypes.number,
     lng: PropTypes.number,
   }),
-  // {lat: Number, lon: Number}
+  // {lat: number, lon: number}
   PropTypes.shape({
     lat: PropTypes.number,
     lon: PropTypes.number,

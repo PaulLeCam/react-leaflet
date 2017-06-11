@@ -54,7 +54,7 @@ export default class TooltipExample extends Component {
             <span>Tooltip for CircleMarker</span>
           </Tooltip>
         </CircleMarker>
-        <Marker position={[51.510, -0.09]}>
+        <Marker position={[51.51, -0.09]}>
           <Popup>
             <span>Popup for Marker</span>
           </Popup>

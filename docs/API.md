@@ -8,13 +8,15 @@ The following PropTypes are exported in the `PropTypes` object.
 
 **latLng**: One of `[number, number]`, `{lat: number, lng: number}` or `{lat: number, lon: number}`.
 
-**latLngList**: An Array of *LatLng*.
+**latLngList**: An Array of *latLng*.
 
-**bounds**: An instance of *Leaflet.LatLngBounds* or a *LatLngList*.
+**bounds**: An instance of *Leaflet.LatLngBounds* or a *latLngList*.
 
 **controlPosition**: One of `topleft`, `topright`, `bottomleft` or `bottomright`.
 
 **layerContainer**: An object containing `addLayer()` and `removeLayer()` functions.
+
+**viewport**: An Object having an optional `center` of type *latLng* and optional `zoom` of type *number*.
 
 ## Events
 

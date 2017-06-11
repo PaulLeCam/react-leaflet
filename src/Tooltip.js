@@ -12,6 +12,8 @@ import MapComponent from './MapComponent'
 export default class Tooltip extends MapComponent {
   static propTypes = {
     children: PropTypes.node,
+    onClose: PropTypes.func,
+    onOpen: PropTypes.func,
   }
 
   static contextTypes = {
@@ -57,12 +59,18 @@ export default class Tooltip extends MapComponent {
   onTooltipOpen = ({ tooltip }: Object): void => {
     if (tooltip === this.leafletElement) {
       this.renderTooltipContent()
+      if (this.props.onOpen) {
+        this.props.onOpen()
+      }
     }
   }
 
   onTooltipClose = ({ tooltip }: Object): void => {
     if (tooltip === this.leafletElement) {
       this.removeTooltipContent()
+      if (this.props.onClose) {
+        this.props.onClose()
+      }
     }
   }
 

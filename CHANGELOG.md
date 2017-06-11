@@ -1,3 +1,10 @@
+## v1.3.0 (2017-06-11)
+
+- Added `viewport` property to `Map`, as an alternative and complementary way to manipulate the map's viewport.
+- Added `onViewportChange` and `onViewportChanged` callbacks to `Map` as a simplified way to track the map's viewport changes.
+- Added `onClose` and `onOpen` callbacks to `Popup`.
+- Added `onClose` and `onOpen` callbacks to `Tooltip`.
+
 ## v1.2.2 (2017-06-07)
 
 Fixed updating the Map's `zoom` when not previously set.
