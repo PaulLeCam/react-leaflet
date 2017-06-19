@@ -3310,8 +3310,7 @@ var Map = function (_MapComponent) {
     }
 
     _MapComponent.prototype.componentDidMount.call(this);
-    this.forceUpdate // Re-render now that leafletElement is created
-    ();
+    this.forceUpdate(); // Re-render now that leafletElement is created
   };
 
   Map.prototype.componentDidUpdate = function componentDidUpdate(prevProps) {
