@@ -1,3 +1,7 @@
+## v1.3.1 (2017-06-20)
+
+Fixed Popup auto-panning.
+
 ## v1.3.0 (2017-06-11)
 
 - Added `viewport` property to `Map`, as an alternative and complementary way to manipulate the map's viewport.

@@ -24,6 +24,13 @@ export default class Popup extends MapComponent {
     pane: PropTypes.string,
   }
 
+  getOptions(props: Object = {}): Object {
+    return {
+      ...super.getOptions(props),
+      autoPan: false,
+    }
+  }
+
   createLeafletElement(props: Object): Object {
     const { children: _children, ...options } = props
     return createPopup(this.getOptions(options), this.context.popupContainer)
@@ -38,6 +45,7 @@ export default class Popup extends MapComponent {
   componentWillMount() {
     super.componentWillMount()
     this.leafletElement = this.createLeafletElement(this.props)
+    this.leafletElement.options.autoPan = this.props.autoPan !== false
 
     this.context.map.on({
       popupopen: this.onPopupOpen,
@@ -107,6 +115,12 @@ export default class Popup extends MapComponent {
         this.leafletElement._contentNode,
       )
       this.leafletElement.update()
+      if (this.props.autoPan !== false) {
+        if (this.leafletElement._map && this.leafletElement._map._panAnim) {
+          this.leafletElement._map._panAnim = undefined
+        }
+        this.leafletElement._adjustPan()
+      }
     } else {
       this.removePopupContent()
     }

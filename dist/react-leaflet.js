@@ -3855,6 +3855,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _leaflet = __webpack_require__(1);
 
 var _propTypes = __webpack_require__(0);
@@ -3923,6 +3925,12 @@ var Popup = function (_MapComponent) {
       if (_this.props.children) {
         (0, _reactDom.render)(_react.Children.only(_this.props.children), _this.leafletElement._contentNode);
         _this.leafletElement.update();
+        if (_this.props.autoPan !== false) {
+          if (_this.leafletElement._map && _this.leafletElement._map._panAnim) {
+            _this.leafletElement._map._panAnim = undefined;
+          }
+          _this.leafletElement._adjustPan();
+        }
       } else {
         _this.removePopupContent();
       }
@@ -3932,6 +3940,14 @@ var Popup = function (_MapComponent) {
       }
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
+
+  Popup.prototype.getOptions = function getOptions() {
+    var props = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+    return _extends({}, _MapComponent.prototype.getOptions.call(this, props), {
+      autoPan: false
+    });
+  };
 
   Popup.prototype.createLeafletElement = function createLeafletElement(props) {
     var _children = props.children,
@@ -3949,6 +3965,7 @@ var Popup = function (_MapComponent) {
   Popup.prototype.componentWillMount = function componentWillMount() {
     _MapComponent.prototype.componentWillMount.call(this);
     this.leafletElement = this.createLeafletElement(this.props);
+    this.leafletElement.options.autoPan = this.props.autoPan !== false;
 
     this.context.map.on({
       popupopen: this.onPopupOpen,
