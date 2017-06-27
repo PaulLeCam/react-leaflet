@@ -1,5 +1,9 @@
 # Upgrading
 
+## v1.4
+
+This release requires [Leaflet v1.1](http://leafletjs.com/2017/06/27/leaflet-1.1.0.html) in order to support the newly added features such as dynamic z-index in `ImageOverlay` and the `VideoOverlay` layer, exposed by React-Leaflet as a component.
+
 ## v1.1
 
 This release changes the way Leaflet elements are created and updated internally. If you are only using public APIs, nothing should change, however if you are extending or creating custom components, you should now use the added `createLeafletElement()` and `updateLeafletElement()` methods described in the [Extending](https://github.com/PaulLeCam/react-leaflet/blob/master/docs/Extending.md#extending) section of the documentation rather than overriding the lifecycle hooks directly.  

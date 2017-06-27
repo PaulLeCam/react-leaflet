@@ -8,5 +8,6 @@
     "dev-expression",
     "lodash",
     "transform-proto-to-assign",
-  ],
+    "transform-runtime"
+  ]
 }

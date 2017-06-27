@@ -46,7 +46,12 @@ const config = {
         exclude: /node_modules/,
         loader: 'babel-loader',
         options: {
-          plugins: ['dev-expression', 'lodash', 'transform-proto-to-assign'],
+          plugins: [
+            'dev-expression',
+            'lodash',
+            'transform-proto-to-assign',
+            'transform-runtime',
+          ],
           presets: [
             [
               'es2015',
@@ -89,9 +94,6 @@ export default [
       path: outputPath,
     },
     plugins: [
-      new webpack.LoaderOptionsPlugin({
-        minimize: true,
-      }),
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify('production'),
       }),

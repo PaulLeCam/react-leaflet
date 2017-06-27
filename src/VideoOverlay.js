@@ -1,36 +1,35 @@
 // @flow
 
-import { imageOverlay, latLngBounds } from 'leaflet'
+import { videoOverlay, latLngBounds } from 'leaflet'
 import PropTypes from 'prop-types'
 
 import boundsType from './propTypes/bounds'
-import childrenType from './propTypes/children'
 
 import MapLayer from './MapLayer'
 
-export default class ImageOverlay extends MapLayer {
+export default class VideoOverlay extends MapLayer {
   static propTypes = {
     attribution: PropTypes.string,
     bounds: boundsType.isRequired,
-    children: childrenType,
     opacity: PropTypes.number,
-    url: PropTypes.string.isRequired,
+    play: PropTypes.bool,
+    url: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.arrayOf(PropTypes.string),
+    ]).isRequired,
     zIndex: PropTypes.number,
-  }
-
-  static childContextTypes = {
-    popupContainer: PropTypes.object,
-  }
-
-  getChildContext(): { popupContainer: Object } {
-    return {
-      popupContainer: this.leafletElement,
-    }
   }
 
   createLeafletElement(props: Object): Object {
     const { bounds, url, ...options } = props
-    return imageOverlay(url, bounds, this.getOptions(options))
+    return videoOverlay(url, bounds, this.getOptions(options))
+  }
+
+  componentDidMount() {
+    super.componentDidMount()
+    if (this.props.play) {
+      this.leafletElement.getElement().play()
+    }
   }
 
   updateLeafletElement(fromProps: Object, toProps: Object) {
@@ -45,6 +44,11 @@ export default class ImageOverlay extends MapLayer {
     }
     if (toProps.zIndex !== fromProps.zIndex) {
       this.leafletElement.setZIndex(toProps.zIndex)
+    }
+    if (toProps.play && !fromProps.play) {
+      this.leafletElement.getElement().play()
+    } else if (!toProps.play && fromProps.play) {
+      this.leafletElement.getElement().pause()
     }
   }
 }

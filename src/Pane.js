@@ -159,7 +159,9 @@ export default class Pane extends Component {
 
   render(): any {
     return this.state.name
-      ? <div style={paneStyles}>{this.props.children}</div>
+      ? <div style={paneStyles}>
+          {this.props.children}
+        </div>
       : null
   }
 }

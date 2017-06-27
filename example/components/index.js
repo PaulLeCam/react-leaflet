@@ -16,9 +16,10 @@ import AnimateExample from './animate'
 import TooltipExample from './tooltip'
 import PaneExample from './pane'
 import WMSTileLayerExample from './wms-tile-layer'
+import VideoOverlayExample from './video-overlay'
 
 Leaflet.Icon.Default.imagePath =
-  '//cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/images/'
+  '//cdnjs.cloudflare.com/ajax/libs/leaflet/1.1.0/images/'
 
 const examples = (
   <div>
@@ -55,6 +56,8 @@ const examples = (
     <AnimateExample />
     <h2>WMS tile layer</h2>
     <WMSTileLayerExample />
+    <h2>Video overlay</h2>
+    <VideoOverlayExample />
   </div>
 )
 

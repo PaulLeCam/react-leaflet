@@ -53,7 +53,9 @@ export default class MapLayer extends MapComponent {
 
   render(): React.Element<*> | null {
     return Array.isArray(this.props.children)
-      ? <div style={{ display: 'none' }}>{this.props.children}</div>
+      ? <div style={{ display: 'none' }}>
+          {this.props.children}
+        </div>
       : this.props.children || null
   }
 }

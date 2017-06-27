@@ -1,0 +1,28 @@
+import React, { Component } from 'react'
+import { Map, TileLayer, VideoOverlay } from '../../src'
+
+export default class VideoOverlayExample extends Component {
+  state = {
+    play: true,
+  }
+
+  onTogglePlay = () => {
+    this.setState({ play: !this.state.play })
+  }
+
+  render() {
+    return (
+      <Map center={[25, -100]} onClick={this.onTogglePlay} zoom={4}>
+        <TileLayer
+          attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
+          url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
+        />
+        <VideoOverlay
+          bounds={[[32, -130], [13, -100]]}
+          play={this.state.play}
+          url="https://www.mapbox.com/bites/00188/patricia_nasa.webm"
+        />
+      </Map>
+    )
+  }
+}
