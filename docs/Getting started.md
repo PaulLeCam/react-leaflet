@@ -67,11 +67,11 @@ npm install react-leaflet # npm
 yarn add react-leaflet # Yarn
 ```
 
-React, ReactDOM and Leaflet are peer dependencies, if you haven't already installed them you can use:
+React, ReactDOM, PropTypes and Leaflet are peer dependencies, if you haven't already installed them you can use:
 
 ```bash
-npm install leaflet react react-dom react-leaflet # npm
-yarn add leaflet react react-dom react-leaflet # Yarn
+npm install leaflet prop-types react react-dom react-leaflet # npm
+yarn add leaflet prop-types react react-dom react-leaflet # Yarn
 ```
 
 ### UMD

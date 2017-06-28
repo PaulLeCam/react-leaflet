@@ -1,9 +1,12 @@
-## v1.4.0 (in progress)
+## v1.4.0 (2017-06-28)
 
 This release now requires Leaflet v1.1+ as a peer dependency in order to add support for the [new features introduced by Leaflet in this release](http://leafletjs.com/2017/06/27/leaflet-1.1.0.html):
 
 - Added support for dynamic `zIndex` property to `ImageOverlay`.
 - Added [`VideoOverlay` component]((https://github.com/PaulLeCam/react-leaflet/blob/master/docs/Components.md#videooverlay).
+- Moved the `prop-types` dependency to `peerDependencies`.
+
+See the [relevant section of the upgrading guide](https://github.com/PaulLeCam/react-leaflet/blob/master/UPGRADING.md#v14) for more information.
 
 ## v1.3.1 (2017-06-20)
 
