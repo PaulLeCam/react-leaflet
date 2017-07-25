@@ -1,3 +1,7 @@
+## v1.4.1 (2017-07-25)
+
+Fixed allowing a `zoom` value of `0` in `Map`.
+
 ## v1.4.0 (2017-06-28)
 
 This release now requires Leaflet v1.1+ as a peer dependency in order to add support for the [new features introduced by Leaflet in this release](http://leafletjs.com/2017/06/27/leaflet-1.1.0.html):

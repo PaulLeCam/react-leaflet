@@ -35,7 +35,9 @@ export default class LayersControlExample extends Component {
           <Overlay name="Marker with popup">
             <Marker position={center}>
               <Popup>
-                <span>A pretty CSS3 popup. <br /> Easily customizable.</span>
+                <span>
+                  A pretty CSS3 popup. <br /> Easily customizable.
+                </span>
               </Popup>
             </Marker>
           </Overlay>

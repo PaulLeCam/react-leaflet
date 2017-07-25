@@ -8033,7 +8033,7 @@ var Map = function (_MapComponent) {
       if (viewport.center) {
         options.center = viewport.center;
       }
-      if (viewport.zoom) {
+      if (typeof viewport.zoom === 'number') {
         options.zoom = viewport.zoom;
       }
     }
@@ -8077,7 +8077,7 @@ var Map = function (_MapComponent) {
       } else {
         this.leafletElement.setView(center, zoom, { animate: animate });
       }
-    } else if (zoom && zoom !== fromProps.zoom) {
+    } else if (typeof zoom === 'number' && zoom !== fromProps.zoom) {
       if (fromProps.zoom) {
         this.leafletElement.setZoom(zoom);
       } else {

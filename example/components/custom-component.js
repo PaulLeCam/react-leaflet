@@ -8,23 +8,28 @@ import {
   PropTypes as MapPropTypes,
 } from '../../src'
 
-const MyPopupMarker = ({ children, position }) => (
+const MyPopupMarker = ({ children, position }) =>
   <Marker position={position}>
     <Popup>
-      <span>{children}</span>
+      <span>
+        {children}
+      </span>
     </Popup>
   </Marker>
-)
 MyPopupMarker.propTypes = {
   children: MapPropTypes.children,
   position: MapPropTypes.latlng,
 }
 
 const MyMarkersList = ({ markers }) => {
-  const items = markers.map(({ key, ...props }) => (
-    <MyPopupMarker key={key} {...props} />
-  ))
-  return <div style={{ display: 'none' }}>{items}</div>
+  const items = markers.map(({ key, ...props }) =>
+    <MyPopupMarker key={key} {...props} />,
+  )
+  return (
+    <div style={{ display: 'none' }}>
+      {items}
+    </div>
+  )
 }
 MyMarkersList.propTypes = {
   markers: PropTypes.array.isRequired,

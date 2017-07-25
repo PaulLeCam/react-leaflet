@@ -1,6 +1,6 @@
 {
   "name": "react-leaflet",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "React components for Leaflet maps",
   "main": "lib/index.js",
   "scripts": {
@@ -11,7 +11,7 @@
     "build": "npm run build:lib && npm run build:dist",
     "test": "jest",
     "lint": "eslint ./src",
-    "flow": "flow",
+    "flow": "flow check",
     "start": "npm run lint && npm run flow && npm run test && npm run build",
     "prepublishOnly": "npm start",
     "examples": "webpack-dev-server --config ./example/webpack.config.babel.js --progress"
@@ -20,12 +20,7 @@
     "type": "git",
     "url": "https://github.com/PaulLeCam/react-leaflet.git"
   },
-  "keywords": [
-    "react-component",
-    "react",
-    "leaflet",
-    "map"
-  ],
+  "keywords": ["react-component", "react", "leaflet", "map"],
   "author": "Paul Le Cam <paul@ulem.net>",
   "license": "MIT",
   "bugs": {
@@ -57,25 +52,25 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-1": "^6.24.1",
-    "eslint": "^4.1.1",
-    "eslint-config-prettier": "^2.2.0",
-    "eslint-plugin-flowtype": "^2.33.0",
-    "eslint-plugin-import": "^2.6.0",
-    "eslint-plugin-node": "^5.1.0",
+    "eslint": "^4.3.0",
+    "eslint-config-prettier": "^2.3.0",
+    "eslint-plugin-flowtype": "^2.35.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.1.1",
     "eslint-plugin-prettier": "^2.1.2",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-react": "^7.1.0",
-    "flow-bin": "^0.49.1",
+    "flow-bin": "^0.51.0",
     "jest-cli": "^20.0.3",
     "leaflet": "^1.1.0",
     "lodash-webpack-plugin": "^0.11.3",
-    "prettier": "^1.5.2",
+    "prettier": "^1.5.3",
     "prop-types": "^15.5.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-transform-hmr": "^1.0.4",
-    "webpack": "^3.0.0",
-    "webpack-dev-server": "^2.5.0"
+    "webpack": "^3.3.0",
+    "webpack-dev-server": "^2.6.1"
   },
   "jest": {
     "collectCoverage": true,

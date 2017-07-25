@@ -30,9 +30,10 @@ export default class TooltipExample extends Component {
 
     const rectangle = [[51.49, -0.08], [51.5, -0.06]]
 
-    const clickedText = this.state.clicked === 0
-      ? 'Click this Circle to change the Tooltip text'
-      : `Circle click: ${this.state.clicked}`
+    const clickedText =
+      this.state.clicked === 0
+        ? 'Click this Circle to change the Tooltip text'
+        : `Circle click: ${this.state.clicked}`
 
     return (
       <Map center={center} zoom={13}>
@@ -46,7 +47,9 @@ export default class TooltipExample extends Component {
           onClick={this.onClickCircle}
           radius={200}>
           <Tooltip>
-            <span>{clickedText}</span>
+            <span>
+              {clickedText}
+            </span>
           </Tooltip>
         </Circle>
         <CircleMarker center={[51.51, -0.12]} color="red" radius={20}>
