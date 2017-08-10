@@ -1,4 +1,5 @@
 // @flow
+// flowlint sketchy-null-string:off
 
 import { forEach, omit, uniqueId } from 'lodash'
 import React, { Component } from 'react'

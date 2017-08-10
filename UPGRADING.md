@@ -1,5 +1,9 @@
 # Upgrading
 
+## v1.5
+
+This release requires [Leaflet v1.2](http://leafletjs.com/2017/08/08/leaflet-1.2.0.html) as peer dependency.
+
 ## v1.4
 
 This release requires [Leaflet v1.1](http://leafletjs.com/2017/06/27/leaflet-1.1.0.html) in order to support the newly added features such as dynamic z-index in `ImageOverlay` and the `VideoOverlay` layer, exposed by React-Leaflet as a component.

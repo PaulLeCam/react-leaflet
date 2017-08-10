@@ -1,3 +1,7 @@
+## v1.5.0 (2017-08-10)
+
+Updated documentation and dependency to [Leaflet v1.2](http://leafletjs.com/2017/08/08/leaflet-1.2.0.html).
+
 ## v1.4.1 (2017-07-25)
 
 Fixed allowing a `zoom` value of `0` in `Map`.

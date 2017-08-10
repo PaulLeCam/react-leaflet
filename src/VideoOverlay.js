@@ -16,6 +16,7 @@ export default class VideoOverlay extends MapLayer {
     url: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.arrayOf(PropTypes.string),
+      PropTypes.instanceOf(HTMLVideoElement),
     ]).isRequired,
     zIndex: PropTypes.number,
   }

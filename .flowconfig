@@ -4,9 +4,14 @@
 [include]
 ./node_modules/react
 
-[libs]
+[lints]
+all=warn
 
 [options]
+include_warnings=true
+
 esproposal.class_instance_fields=enable
 esproposal.class_static_fields=enable
+esproposal.export_star_as=enable
+
 unsafe.enable_getters_and_setters=true
