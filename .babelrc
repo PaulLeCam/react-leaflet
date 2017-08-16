@@ -19,7 +19,8 @@
         "stage-1"
       ],
       "plugins": [
-        "external-helpers"
+        "external-helpers",
+        "./build/use-lodash-es"
       ]
     },
     "jsnext": {
@@ -27,6 +28,9 @@
         ["es2015", { "modules": false, "loose": true }],
         "react",
         "stage-1"
+      ],
+      "plugins": [
+        "./build/use-lodash-es"
       ]
     }
   }

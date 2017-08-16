@@ -33,6 +33,7 @@
   "dependencies": {
     "babel-runtime": "^6.25.0",
     "lodash": "^4.0.0",
+    "lodash-es": "^4.0.0",
     "warning": "^3.0.0"
   },
   "devDependencies": {
