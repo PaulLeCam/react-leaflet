@@ -12,6 +12,16 @@
         "stage-1"
       ]
     },
+    "rollup": {
+      "presets": [
+        ["es2015", { "modules": false, "loose": true }],
+        "react",
+        "stage-1"
+      ],
+      "plugins": [
+        "external-helpers"
+      ]
+    },
     "jsnext": {
       "presets": [
         ["es2015", { "modules": false, "loose": true }],
