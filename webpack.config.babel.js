@@ -50,7 +50,6 @@ const config = {
             'dev-expression',
             'lodash',
             'transform-proto-to-assign',
-            'transform-runtime',
           ],
           presets: [
             [
