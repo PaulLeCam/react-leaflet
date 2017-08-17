@@ -3,6 +3,7 @@ __tests__
 coverage
 docs
 example
+src
 .editorconfig
 .eslintignore
 .eslintrc.json
