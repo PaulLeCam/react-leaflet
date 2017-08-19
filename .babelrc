@@ -1,37 +1,58 @@
 {
-  "plugins": [
-    "dev-expression",
-    "lodash",
-    "transform-proto-to-assign"
-  ],
+  "plugins": ["dev-expression", "lodash", "transform-proto-to-assign"],
   "env": {
     "development": {
       "presets": [
-        ["es2015", { "modules": "commonjs", "loose": true }],
+        [
+          "env",
+          {
+            "targets": {
+              "node": "current",
+              "browsers": ["last 2 versions", "ie >= 9"]
+            },
+            "modules": "commonjs",
+            "loose": true
+          }
+        ],
         "react",
         "stage-1"
       ]
     },
     "rollup": {
       "presets": [
-        ["es2015", { "modules": false, "loose": true }],
+        [
+          "env",
+          {
+            "targets": {
+              "node": "current",
+              "browsers": ["last 2 versions", "ie >= 9"]
+            },
+            "modules": false,
+            "loose": true
+          }
+        ],
         "react",
         "stage-1"
       ],
-      "plugins": [
-        "external-helpers",
-        "./build/use-lodash-es"
-      ]
+      "plugins": ["external-helpers", "./build/use-lodash-es"]
     },
     "jsnext": {
       "presets": [
-        ["es2015", { "modules": false, "loose": true }],
+        [
+          "env",
+          {
+            "targets": {
+              "node": "current",
+              "browsers": ["last 2 versions", "ie >= 9"]
+            },
+            "modules": false,
+            "loose": true
+          }
+        ],
         "react",
         "stage-1"
       ],
-      "plugins": [
-        "./build/use-lodash-es"
-      ]
+      "plugins": ["./build/use-lodash-es"]
     }
   }
 }
