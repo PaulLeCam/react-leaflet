@@ -1,3 +1,8 @@
+## v1.6.0 (master - unreleased)
+
+- Updated build process ([PR #359](https://github.com/PaulLeCam/react-leaflet/pull/359) by *tusbar*) - see the [UPGRADING guide](UPGRADING.md) for more information if you're relying on internals.
+- Updated Flow types to support Flow v0.53.
+
 ## v1.5.0 (2017-08-10)
 
 Updated documentation and dependency to [Leaflet v1.2](http://leafletjs.com/2017/08/08/leaflet-1.2.0.html).

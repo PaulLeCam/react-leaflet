@@ -1,8 +1,10 @@
 __mocks__
 __tests__
+build
 coverage
 docs
 example
+flow-typed
 src
 .editorconfig
 .eslintignore

@@ -1,5 +1,12 @@
 # Upgrading
 
+## v1.6
+
+This release makes internal changes to the folders exposed:
+
+- The `src` folder is not longer exported in the npm package, the added `es` one should be consumed instead if you want to support modules.
+- The `lib` and  `dist` folders are not longer exported in the GitHub repository, use the npm package instead if you need to access them.
+
 ## v1.5
 
 This release requires [Leaflet v1.2](http://leafletjs.com/2017/08/08/leaflet-1.2.0.html) as peer dependency.
