@@ -1,23 +1,26 @@
 // @flow
 
-import { layerGroup } from 'leaflet'
-
-import layerContainerType from './propTypes/layerContainer'
+import { LayerGroup as LeafletLayerGroup } from 'leaflet'
 
 import MapLayer from './MapLayer'
+import layerContainer from './propTypes/layerContainer'
+import type { MapLayerProps } from './types'
 
-export default class LayerGroup extends MapLayer {
+export default class LayerGroup<
+  LeafletElement: LeafletLayerGroup,
+  Props: MapLayerProps,
+> extends MapLayer<LeafletElement, Props> {
   static childContextTypes = {
-    layerContainer: layerContainerType,
+    layerContainer: layerContainer,
   }
 
-  getChildContext(): { layerContainer: Object } {
+  getChildContext(): { layerContainer: LeafletElement } {
     return {
       layerContainer: this.leafletElement,
     }
   }
 
-  createLeafletElement(): Object {
-    return layerGroup(this.getOptions())
+  createLeafletElement(): LeafletElement {
+    return new LeafletLayerGroup(this.getOptions(this.props))
   }
 }

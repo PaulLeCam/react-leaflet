@@ -1,32 +1,35 @@
 // @flow
 
-import { polygon } from 'leaflet'
+import { Polygon as LeafletPolygon } from 'leaflet'
 import PropTypes from 'prop-types'
 
-import childrenType from './propTypes/children'
-import latlngListType from './propTypes/latlngList'
-
 import Path from './Path'
+import children from './propTypes/children'
+import latlngList from './propTypes/latlngList'
+import type { LatLng, PathProps } from './types'
 
-const multiLatLngListType = PropTypes.arrayOf(latlngListType)
+const multiLatLngList = PropTypes.arrayOf(latlngList)
 
-export default class Polygon extends Path {
+type LeafletElement = LeafletPolygon
+type Props = {
+  positions: LatLng[] | LatLng[][] | LatLng[][][],
+} & PathProps
+
+export default class Polygon extends Path<LeafletElement, Props> {
   static propTypes = {
-    children: childrenType,
-    popupContainer: PropTypes.object,
+    children: children,
     positions: PropTypes.oneOfType([
-      latlngListType,
-      multiLatLngListType,
-      PropTypes.arrayOf(multiLatLngListType),
+      latlngList,
+      multiLatLngList,
+      PropTypes.arrayOf(multiLatLngList),
     ]).isRequired,
   }
 
-  createLeafletElement(props: Object): Object {
-    const { positions, ...options } = props
-    return polygon(positions, this.getOptions(options))
+  createLeafletElement(props: Props): LeafletElement {
+    return new LeafletPolygon(props.positions, this.getOptions(props))
   }
 
-  updateLeafletElement(fromProps: Object, toProps: Object) {
+  updateLeafletElement(fromProps: Props, toProps: Props) {
     if (toProps.positions !== fromProps.positions) {
       this.leafletElement.setLatLngs(toProps.positions)
     }

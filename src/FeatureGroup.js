@@ -1,34 +1,36 @@
 // @flow
 
-import { featureGroup } from 'leaflet'
-import PropTypes from 'prop-types'
-
-import childrenType from './propTypes/children'
-import layerContainerType from './propTypes/layerContainer'
+import { FeatureGroup as LeafletFeatureGroup, type Layer } from 'leaflet'
 
 import Path from './Path'
+import children from './propTypes/children'
+import layer from './propTypes/layer'
+import layerContainer from './propTypes/layerContainer'
+import type { PathProps } from './types'
 
-type FGChild = {
-  layerContainer: Object,
-  popupContainer: Object,
+type LeafletElement = LeafletFeatureGroup
+type Props = PathProps
+type ChildContext = {
+  layerContainer: Layer,
+  popupContainer: Layer,
 }
 
-export default class FeatureGroup extends Path {
+export default class FeatureGroup extends Path<LeafletElement, Props> {
   static childContextTypes = {
-    children: childrenType,
-    layerContainer: layerContainerType,
-    popupContainer: PropTypes.object,
+    children: children,
+    layerContainer: layerContainer,
+    popupContainer: layer,
   }
 
-  getChildContext(): FGChild {
+  getChildContext(): ChildContext {
     return {
       layerContainer: this.leafletElement,
       popupContainer: this.leafletElement,
     }
   }
 
-  createLeafletElement(props: Object) {
-    return featureGroup(this.getOptions(props))
+  createLeafletElement(props: Props): LeafletElement {
+    return new LeafletFeatureGroup(this.getOptions(props))
   }
 
   componentDidMount() {

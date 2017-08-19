@@ -1,55 +1,62 @@
 // @flow
 
+import type { Path as PathType } from 'leaflet'
 import { isEqual, pick } from 'lodash'
-import PropTypes from 'prop-types'
-
-import childrenType from './propTypes/children'
 
 import MapLayer from './MapLayer'
+import children from './propTypes/children'
+import layer from './propTypes/layer'
+import type { PathOptions, PathProps } from './types'
 
 const OPTIONS = [
   'stroke',
   'color',
   'weight',
   'opacity',
+  'lineCap',
+  'lineJoin',
+  'dashArray',
+  'dashOffset',
   'fill',
   'fillColor',
   'fillOpacity',
   'fillRule',
-  'dashArray',
-  'lineCap',
-  'lineJoin',
   'clickable',
   'pointerEvents',
   'className',
 ]
 
-export default class Path extends MapLayer {
+export default class Path<
+  LeafletElement: PathType,
+  Props: PathProps,
+> extends MapLayer<LeafletElement, Props> {
   static childContextTypes = {
-    children: childrenType,
-    popupContainer: PropTypes.object,
+    children: children,
+    popupContainer: layer,
   }
 
-  componentDidUpdate(prevProps: Object) {
+  leafletElement: LeafletElement
+
+  componentDidUpdate(prevProps: Props) {
     super.componentDidUpdate(prevProps)
     this.setStyleIfChanged(prevProps, this.props)
   }
 
-  getChildContext(): { popupContainer: Object } {
+  getChildContext(): { popupContainer: LeafletElement } {
     return {
       popupContainer: this.leafletElement,
     }
   }
 
-  getPathOptions(props: Object): Object {
+  getPathOptions(props: Props): PathOptions {
     return pick(props, OPTIONS)
   }
 
-  setStyle(options: Object = {}) {
+  setStyle(options: PathOptions = {}) {
     this.leafletElement.setStyle(options)
   }
 
-  setStyleIfChanged(fromProps: Object, toProps: Object) {
+  setStyleIfChanged(fromProps: Props, toProps: Props) {
     const nextStyle = this.getPathOptions(toProps)
     if (!isEqual(nextStyle, this.getPathOptions(fromProps))) {
       this.setStyle(nextStyle)

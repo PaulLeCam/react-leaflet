@@ -1,20 +1,23 @@
 // @flow
 
-import { gridLayer } from 'leaflet'
+import { GridLayer as LeafletGridLayer } from 'leaflet'
 import PropTypes from 'prop-types'
 
-import childrenType from './propTypes/children'
-
 import MapLayer from './MapLayer'
+import children from './propTypes/children'
+import type { GridLayerProps } from './types'
 
-export default class GridLayer extends MapLayer {
+export default class GridLayer<
+  LeafletElement: LeafletGridLayer,
+  Props: GridLayerProps,
+> extends MapLayer<LeafletElement, Props> {
   static propTypes = {
-    children: childrenType,
+    children: children,
     opacity: PropTypes.number,
     zIndex: PropTypes.number,
   }
 
-  getOptions(props?: Object): Object {
+  getOptions(props: Props): Props {
     const options = super.getOptions(props)
     const map = this.context.map
     return map
@@ -26,11 +29,11 @@ export default class GridLayer extends MapLayer {
       : options
   }
 
-  createLeafletElement(props: Object): Object {
-    return gridLayer(this.getOptions(props))
+  createLeafletElement(props: Props): LeafletElement {
+    return new LeafletGridLayer(this.getOptions(props))
   }
 
-  updateLeafletElement(fromProps: Object, toProps: Object) {
+  updateLeafletElement(fromProps: Props, toProps: Props) {
     const { opacity, zIndex } = toProps
     if (opacity !== fromProps.opacity) {
       this.leafletElement.setOpacity(opacity)
@@ -40,7 +43,7 @@ export default class GridLayer extends MapLayer {
     }
   }
 
-  render(): null {
+  render() {
     return null
   }
 }

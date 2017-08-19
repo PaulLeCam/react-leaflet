@@ -1,13 +1,22 @@
 // @flow
 
-import { control } from 'leaflet'
+import { Control } from 'leaflet'
 import PropTypes from 'prop-types'
 
-import controlPositionType from './propTypes/controlPosition'
-
 import MapControl from './MapControl'
+import controlPositionType from './propTypes/controlPosition'
+import type { ControlPosition } from './types'
 
-export default class ScaleControl extends MapControl {
+type LeafletElement = Control.Scale
+type Props = {
+  imperial?: boolean,
+  maxWidth?: number,
+  metric?: boolean,
+  position?: ControlPosition,
+  updateWhenIdle?: boolean,
+}
+
+export default class ScaleControl extends MapControl<LeafletElement, Props> {
   static propTypes = {
     imperial: PropTypes.bool,
     maxWidth: PropTypes.number,
@@ -16,7 +25,7 @@ export default class ScaleControl extends MapControl {
     updateWhenIdle: PropTypes.bool,
   }
 
-  createLeafletElement(props: Object): Object {
-    return control.scale(props)
+  createLeafletElement(props: Props): LeafletElement {
+    return Control.Scale(props)
   }
 }

@@ -1,6 +1,7 @@
 // @flow
 
 export * as PropTypes from './propTypes'
+export * from './types'
 
 export { default as AttributionControl } from './AttributionControl'
 export { default as Circle } from './Circle'

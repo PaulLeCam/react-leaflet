@@ -8,7 +8,7 @@ import { Map, Marker, TileLayer } from '../src/'
 
 describe('Marker', () => {
   it('adds the marker to the map', () => {
-    Leaflet.marker = jest.fn()
+    Leaflet.Marker = jest.fn()
     const position = [0, 0]
 
     renderIntoDocument(
@@ -18,6 +18,6 @@ describe('Marker', () => {
       </Map>,
     )
 
-    expect(Leaflet.marker.mock.calls[0][0]).toBe(position)
+    expect(Leaflet.Marker.mock.calls[0][0]).toBe(position)
   })
 })

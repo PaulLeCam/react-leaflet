@@ -1,27 +1,29 @@
 // @flow
 
-import { tileLayer } from 'leaflet'
+import { TileLayer } from 'leaflet'
 import { isEqual } from 'lodash'
 import PropTypes from 'prop-types'
 
-import childrenType from './propTypes/children'
-
 import GridLayer from './GridLayer'
+import children from './propTypes/children'
+import type { GridLayerProps } from './types'
 
-export default class WMSTileLayer extends GridLayer {
+type LeafletElement = TileLayer.WMS
+type Props = { url: string } & GridLayerProps
+
+export default class WMSTileLayer extends GridLayer<LeafletElement, Props> {
   static propTypes = {
-    children: childrenType,
+    children: children,
     opacity: PropTypes.number,
     url: PropTypes.string.isRequired,
     zIndex: PropTypes.number,
   }
 
-  createLeafletElement(props: Object): Object {
-    const { url, ...options } = props
-    return tileLayer.wms(url, this.getOptions(options))
+  createLeafletElement(props: Props): LeafletElement {
+    return new TileLayer.WMS(props.url, this.getOptions(props))
   }
 
-  updateLeafletElement(fromProps: Object, toProps: Object) {
+  updateLeafletElement(fromProps: Props, toProps: Props) {
     super.updateLeafletElement(fromProps, toProps)
 
     const { url: prevUrl, opacity: _po, zIndex: _pz, ...prevParams } = fromProps

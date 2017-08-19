@@ -1,16 +1,26 @@
 // @flow
 
-import { videoOverlay, latLngBounds } from 'leaflet'
+import { VideoOverlay as LeafletVideoOverlay, latLngBounds } from 'leaflet'
 import PropTypes from 'prop-types'
 
-import boundsType from './propTypes/bounds'
-
 import MapLayer from './MapLayer'
+import bounds from './propTypes/bounds'
+import type { LatLngBounds, MapLayerProps } from './types'
 
-export default class VideoOverlay extends MapLayer {
+type LeafletElement = LeafletVideoOverlay
+type Props = {
+  attribution?: string,
+  bounds: LatLngBounds,
+  opacity?: number,
+  play?: boolean,
+  url: string | string[] | HTMLVideoElement,
+  zIndex?: number,
+} & MapLayerProps
+
+export default class VideoOverlay extends MapLayer<LeafletElement, Props> {
   static propTypes = {
     attribution: PropTypes.string,
-    bounds: boundsType.isRequired,
+    bounds: bounds.isRequired,
     opacity: PropTypes.number,
     play: PropTypes.bool,
     url: PropTypes.oneOfType([
@@ -21,19 +31,22 @@ export default class VideoOverlay extends MapLayer {
     zIndex: PropTypes.number,
   }
 
-  createLeafletElement(props: Object): Object {
-    const { bounds, url, ...options } = props
-    return videoOverlay(url, bounds, this.getOptions(options))
+  createLeafletElement(props: Props): LeafletElement {
+    return new LeafletVideoOverlay(
+      props.url,
+      props.bounds,
+      this.getOptions(props),
+    )
   }
 
   componentDidMount() {
     super.componentDidMount()
-    if (this.props.play) {
+    if (this.props.play === true) {
       this.leafletElement.getElement().play()
     }
   }
 
-  updateLeafletElement(fromProps: Object, toProps: Object) {
+  updateLeafletElement(fromProps: Props, toProps: Props) {
     if (toProps.url !== fromProps.url) {
       this.leafletElement.setUrl(toProps.url)
     }
@@ -46,9 +59,11 @@ export default class VideoOverlay extends MapLayer {
     if (toProps.zIndex !== fromProps.zIndex) {
       this.leafletElement.setZIndex(toProps.zIndex)
     }
-    if (toProps.play && !fromProps.play) {
+    // flowlint-next-line sketchy-null-bool:off
+    if (toProps.play === true && !fromProps.play) {
       this.leafletElement.getElement().play()
-    } else if (!toProps.play && fromProps.play) {
+      // flowlint-next-line sketchy-null-bool:off
+    } else if (!toProps.play && fromProps.play === true) {
       this.leafletElement.getElement().pause()
     }
   }

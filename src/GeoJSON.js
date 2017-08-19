@@ -1,25 +1,37 @@
 // @flow
 
-import { geoJSON } from 'leaflet'
+import { GeoJSON as LeafletGeoJSON, type LatLng, type Layer } from 'leaflet'
 import { isFunction } from 'lodash'
 import PropTypes from 'prop-types'
 
-import childrenType from './propTypes/children'
-
 import Path from './Path'
+import children from './propTypes/children'
+import type { PathProps } from './types'
 
-export default class GeoJSON extends Path {
+type LeafletElement = LeafletGeoJSON
+
+type GeoJSONdata = Object | Array<any>
+
+type Props = {
+  data: GeoJSONdata,
+  pointToLayer?: (point: GeoJSONdata, latlng: LatLng) => Layer,
+  style?: (feature: GeoJSONdata) => Object,
+  onEachFeature?: (feature: GeoJSONdata, layer: Layer) => void,
+  filter?: (feature: GeoJSONdata) => boolean,
+  coordsToLatLng?: (coords: GeoJSONdata) => LatLng,
+} & PathProps
+
+export default class GeoJSON extends Path<LeafletElement, Props> {
   static propTypes = {
-    children: childrenType,
+    children: children,
     data: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
   }
 
-  createLeafletElement(props: Object): Object {
-    const { data, ...options } = props
-    return geoJSON(data, this.getOptions(options))
+  createLeafletElement(props: Props): LeafletElement {
+    return new LeafletGeoJSON(props.data, this.getOptions(props))
   }
 
-  updateLeafletElement(fromProps: Object, toProps: Object) {
+  updateLeafletElement(fromProps: Props, toProps: Props) {
     if (isFunction(toProps.style)) {
       this.setStyle(toProps.style)
     } else {

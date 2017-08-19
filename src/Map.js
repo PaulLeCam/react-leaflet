@@ -1,19 +1,30 @@
 // @flow
 
-import Leaflet from 'leaflet'
-import type { LatLng, LatLngBounds } from 'leaflet'
+import {
+  latLngBounds,
+  DomUtil,
+  Map as LeafletMap,
+  type CRS,
+  type Renderer,
+} from 'leaflet'
 import { isUndefined, omit } from 'lodash'
 import PropTypes from 'prop-types'
-import React from 'react'
-
-import boundsType from './propTypes/bounds'
-import childrenType from './propTypes/children'
-import latlngType from './propTypes/latlng'
-import layerContainerType from './propTypes/layerContainer'
-import mapType from './propTypes/map'
-import viewportType from './propTypes/viewport'
+import React, { type Node } from 'react'
 
 import MapComponent from './MapComponent'
+import bounds from './propTypes/bounds'
+import children from './propTypes/children'
+import latlng from './propTypes/latlng'
+import layerContainer from './propTypes/layerContainer'
+import map from './propTypes/map'
+import viewport from './propTypes/viewport'
+import type {
+  LatLng,
+  LatLngBounds,
+  MapComponentProps,
+  Point,
+  Viewport,
+} from './types'
 
 const OTHER_PROPS = [
   'children',
@@ -24,48 +35,99 @@ const OTHER_PROPS = [
   'whenReady',
 ]
 
-type LatLngType = LatLng | Array<number> | Object
-type LatLngBoundsType = LatLngBounds | Array<LatLngType>
-type Viewport = {
-  center: ?[number, number],
-  zoom: ?number,
+const normalizeCenter = (pos: LatLng): [number, number] => {
+  return Array.isArray(pos)
+    ? [pos[0], pos[1]]
+    : [pos.lat, pos.lon ? pos.lon : pos.lng]
 }
 
-const normalizeCenter = (pos: LatLngType): Array<number> => {
-  return Array.isArray(pos) ? pos : [pos.lat, pos.lon ? pos.lon : pos.lng]
-}
+type LeafletElement = LeafletMap
 
-export default class Map extends MapComponent {
+type ZoomOption = boolean | 'center'
+type Props = {
+  [key: string]: any,
+  // Leaflet options
+  preferCanvas?: boolean,
+  attributionControl?: boolean,
+  zoomControl?: boolean,
+  closePopupOnClick?: boolean,
+  zoomSnap?: number,
+  zoomDelta?: number,
+  trackResize?: boolean,
+  boxZoom?: boolean,
+  doubleClickZoom: ZoomOption,
+  dragging?: boolean,
+  crs?: CRS,
+  center?: LatLng,
+  zoom?: number,
+  minZoom?: number,
+  maxZoom?: number,
+  maxBounds?: LatLngBounds,
+  renderer?: Renderer,
+  zoomAnimation?: boolean,
+  zoomAnimationThreshold?: number,
+  fadeAnimation?: boolean,
+  markerZoomAnimation?: boolean,
+  transform3DLimit?: number,
+  inertia?: boolean,
+  inertiaDeceleration?: number,
+  inertiaMaxSpeed?: number,
+  easeLinearity?: number,
+  worldCopyJump?: boolean,
+  maxBoundsViscosity?: number,
+  keyboard?: boolean,
+  keyboardPanDelta?: number,
+  scrollWheelZoom?: ZoomOption,
+  wheelDebounceTime?: number,
+  wheelPxPerZoomLevel?: number,
+  tap?: boolean,
+  tapTolerance?: number,
+  touchZoom?: ZoomOption,
+  bounceAtZoomLimits?: boolean,
+  // Additional options
+  animate?: boolean,
+  bounds?: LatLngBounds,
+  boundsOptions?: {
+    paddingTopLeft?: Point,
+    paddingBottomRight?: Point,
+    padding?: Point,
+    maxZoom?: number,
+  },
+  children: Node,
+  className?: string,
+  id?: string,
+  style?: Object,
+  useFlyTo?: boolean,
+  viewport?: Viewport,
+  whenReady?: () => void,
+} & MapComponentProps
+
+export default class Map extends MapComponent<LeafletElement, Props> {
   static propTypes = {
     animate: PropTypes.bool,
-    bounds: boundsType,
+    bounds: bounds,
     boundsOptions: PropTypes.object,
-    center: latlngType,
-    children: childrenType,
+    center: latlng,
+    children: children,
     className: PropTypes.string,
     id: PropTypes.string,
-    maxBounds: boundsType,
+    maxBounds: bounds,
     maxZoom: PropTypes.number,
     minZoom: PropTypes.number,
     style: PropTypes.object,
     useFlyTo: PropTypes.bool,
-    viewport: viewportType,
+    viewport: viewport,
     whenReady: PropTypes.func,
     zoom: PropTypes.number,
   }
 
-  static defaultProps = {
-    animate: false,
-    useFlyTo: false,
-  }
-
   static childContextTypes = {
-    layerContainer: layerContainerType,
-    map: mapType,
+    layerContainer: layerContainer,
+    map: map,
   }
 
   className: ?string
-  container: HTMLDivElement
+  container: ?HTMLDivElement
   viewport: Viewport = {
     center: undefined,
     zoom: undefined,
@@ -73,19 +135,19 @@ export default class Map extends MapComponent {
 
   _updating: boolean = false
 
-  constructor(props: Object, context: Object) {
+  constructor(props: Props, context: Object) {
     super(props, context)
     this.className = props.className
   }
 
-  getChildContext(): { map: Object } {
+  getChildContext(): { map: LeafletElement } {
     return {
       layerContainer: this.leafletElement,
       map: this.leafletElement,
     }
   }
 
-  createLeafletElement(props: Object): Object {
+  createLeafletElement(props: Props): LeafletElement {
     const { viewport, ...options } = props
     if (viewport) {
       if (viewport.center) {
@@ -95,10 +157,10 @@ export default class Map extends MapComponent {
         options.zoom = viewport.zoom
       }
     }
-    return Leaflet.map(this.container, options)
+    return new LeafletMap(this.container, options)
   }
 
-  updateLeafletElement(fromProps: Object, toProps: Object) {
+  updateLeafletElement(fromProps: Props, toProps: Props) {
     this._updating = true
 
     const {
@@ -114,33 +176,33 @@ export default class Map extends MapComponent {
     } = toProps
 
     if (className !== fromProps.className) {
-      if (fromProps.className) {
-        Leaflet.DomUtil.removeClass(this.container, fromProps.className)
+      if (fromProps.className != null) {
+        DomUtil.removeClass(this.container, fromProps.className)
       }
-      if (className) {
-        Leaflet.DomUtil.addClass(this.container, className)
+      if (className != null) {
+        DomUtil.addClass(this.container, className)
       }
     }
 
     if (viewport && viewport !== fromProps.viewport) {
       const c = viewport.center ? viewport.center : center
-      const z = viewport.zoom ? viewport.zoom : zoom
-      if (useFlyTo) {
+      const z = viewport.zoom == null ? zoom : viewport.zoom
+      if (useFlyTo === true) {
         this.leafletElement.flyTo(c, z, { animate })
       } else {
         this.leafletElement.setView(c, z, { animate })
       }
     } else if (center && this.shouldUpdateCenter(center, fromProps.center)) {
-      if (useFlyTo) {
+      if (useFlyTo === true) {
         this.leafletElement.flyTo(center, zoom, { animate })
       } else {
         this.leafletElement.setView(center, zoom, { animate })
       }
     } else if (typeof zoom === 'number' && zoom !== fromProps.zoom) {
-      if (fromProps.zoom) {
-        this.leafletElement.setZoom(zoom)
-      } else {
+      if (fromProps.zoom == null) {
         this.leafletElement.setView(center, zoom)
+      } else {
+        this.leafletElement.setZoom(zoom)
       }
     }
 
@@ -153,7 +215,7 @@ export default class Map extends MapComponent {
       (this.shouldUpdateBounds(bounds, fromProps.bounds) ||
         boundsOptions !== fromProps.boundsOptions)
     ) {
-      if (useFlyTo) {
+      if (useFlyTo === true) {
         this.leafletElement.flyToBounds(bounds, boundsOptions)
       } else {
         this.leafletElement.fitBounds(bounds, boundsOptions)
@@ -199,7 +261,7 @@ export default class Map extends MapComponent {
     this.forceUpdate() // Re-render now that leafletElement is created
   }
 
-  componentDidUpdate(prevProps: Object) {
+  componentDidUpdate(prevProps: Props) {
     this.updateLeafletElement(prevProps, this.props)
   }
 
@@ -210,25 +272,22 @@ export default class Map extends MapComponent {
     this.leafletElement.remove()
   }
 
-  bindContainer = (container: HTMLDivElement): void => {
+  bindContainer = (container: ?HTMLDivElement): void => {
     this.container = container
   }
 
-  shouldUpdateCenter(next: LatLngType, prev: LatLngType): boolean {
+  shouldUpdateCenter(next: LatLng, prev: LatLng) {
     if (!prev) return true
     next = normalizeCenter(next)
     prev = normalizeCenter(prev)
     return next[0] !== prev[0] || next[1] !== prev[1]
   }
 
-  shouldUpdateBounds(next: LatLngBoundsType, prev: LatLngBoundsType): boolean {
-    if (!prev) return true
-    next = Leaflet.latLngBounds(next)
-    prev = Leaflet.latLngBounds(prev)
-    return !next.equals(prev)
+  shouldUpdateBounds(next: LatLngBounds, prev: LatLngBounds) {
+    return prev ? !latLngBounds(next).equals(latLngBounds(prev)) : true
   }
 
-  render(): React.Element<*> {
+  render() {
     const map = this.leafletElement
     const children = map ? this.props.children : null
 

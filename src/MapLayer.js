@@ -1,36 +1,40 @@
 // @flow
 
+import type { Layer } from 'leaflet'
 import PropTypes from 'prop-types'
-import React from 'react'
-
-import childrenType from './propTypes/children'
-import layerContainerType from './propTypes/layerContainer'
-import mapType from './propTypes/map'
+import React, { Children } from 'react'
 
 import MapComponent from './MapComponent'
+import children from './propTypes/children'
+import layerContainer from './propTypes/layerContainer'
+import map from './propTypes/map'
+import type { MapLayerProps } from './types'
 
-export default class MapLayer extends MapComponent {
+export default class MapLayer<
+  LeafletElement: Layer,
+  Props: MapLayerProps,
+> extends MapComponent<LeafletElement, Props> {
   static propTypes = {
-    children: childrenType,
+    children: children,
   }
 
   static contextTypes = {
-    layerContainer: layerContainerType,
-    map: mapType,
+    layerContainer: layerContainer,
+    map: map,
     pane: PropTypes.string,
   }
 
-  get layerContainer(): Object {
+  get layerContainer(): Layer {
     return this.context.layerContainer || this.context.map
   }
 
   // eslint-disable-next-line no-unused-vars
-  createLeafletElement(props: Object): Object {
+  createLeafletElement(props: Props): LeafletElement {
     throw new Error('createLeafletElement() must be implemented')
   }
 
   // eslint-disable-next-line no-unused-vars
-  updateLeafletElement(fromProps: Object, toProps: Object) {}
+  updateLeafletElement(fromProps: Props, toProps: Props) {}
 
   componentWillMount() {
     super.componentWillMount()
@@ -42,7 +46,7 @@ export default class MapLayer extends MapComponent {
     this.layerContainer.addLayer(this.leafletElement)
   }
 
-  componentDidUpdate(prevProps: Object) {
+  componentDidUpdate(prevProps: Props) {
     this.updateLeafletElement(prevProps, this.props)
   }
 
@@ -51,11 +55,15 @@ export default class MapLayer extends MapComponent {
     this.layerContainer.removeLayer(this.leafletElement)
   }
 
-  render(): React.Element<*> | null {
-    return Array.isArray(this.props.children)
-      ? <div style={{ display: 'none' }}>
-          {this.props.children}
+  render() {
+    const { children } = this.props
+    if (Children.count(children) > 1) {
+      return (
+        <div style={{ display: 'none' }}>
+          {children}
         </div>
-      : this.props.children || null
+      )
+    }
+    return children == null ? null : children
   }
 }

@@ -2,12 +2,13 @@
 // flowlint sketchy-null-string:off
 
 import { forEach, omit, uniqueId } from 'lodash'
-import React, { Component } from 'react'
+import type { Map } from 'leaflet'
+import React, { Component, type Node } from 'react'
 import PropTypes from 'prop-types'
 import warning from 'warning'
 
-import childrenType from './propTypes/children'
-import mapType from './propTypes/map'
+import children from './propTypes/children'
+import map from './propTypes/map'
 
 const LEAFLET_PANES = [
   'tile',
@@ -31,18 +32,31 @@ const paneStyles = {
   left: 0,
 }
 
-export default class Pane extends Component {
+type Props = {
+  children: Node,
+  className?: string,
+  map?: Map,
+  name?: string,
+  pane?: string,
+  style?: Object,
+}
+
+type State = {
+  name: ?string,
+}
+
+export default class Pane extends Component<Props, State> {
   static propTypes = {
     name: PropTypes.string,
-    children: childrenType,
-    map: mapType,
+    children: children,
+    map: map,
     className: PropTypes.string,
     style: PropTypes.object,
     pane: PropTypes.string,
   }
 
   static contextTypes = {
-    map: mapType,
+    map: map,
     pane: PropTypes.string,
   }
 
@@ -50,9 +64,7 @@ export default class Pane extends Component {
     pane: PropTypes.string,
   }
 
-  state: {
-    name: ?string,
-  } = {
+  state: State = {
     name: undefined,
   }
 
@@ -66,7 +78,7 @@ export default class Pane extends Component {
     this.createPane(this.props)
   }
 
-  componentWillReceiveProps(nextProps: Object) {
+  componentWillReceiveProps(nextProps: Props) {
     if (!this.state.name) {
       // Do nothing if this.state.name is undefined due to errors or
       // an invalid props.name value
@@ -86,7 +98,8 @@ export default class Pane extends Component {
         nextProps.className !== this.props.className
       ) {
         const pane = this.getPane()
-        if (pane) pane.classList.remove(this.props.className)
+        if (pane && this.props.className)
+          pane.classList.remove(this.props.className)
       }
 
       // Update the pane's DOM node style and class
@@ -98,7 +111,7 @@ export default class Pane extends Component {
     this.removePane()
   }
 
-  createPane(props: Object) {
+  createPane(props: Props) {
     const map = this.context.map
     const name = props.name || `pane-${uniqueId()}`
 
@@ -136,7 +149,7 @@ export default class Pane extends Component {
     }
   }
 
-  setStyle = ({ style, className }: Object = this.props): void => {
+  setStyle = ({ style, className }: Props = this.props) => {
     const pane = this.getPane(this.state.name)
     if (pane) {
       if (className) {
@@ -150,15 +163,15 @@ export default class Pane extends Component {
     }
   }
 
-  getParentPane(): ?Object {
+  getParentPane(): ?HTMLElement {
     return this.getPane(this.props.pane || this.context.pane)
   }
 
-  getPane(name: ?string): ?Object {
+  getPane(name: ?string): ?HTMLElement {
     return name ? this.context.map.getPane(name) : undefined
   }
 
-  render(): any {
+  render() {
     return this.state.name
       ? <div style={paneStyles}>
           {this.props.children}

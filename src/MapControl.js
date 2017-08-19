@@ -1,27 +1,32 @@
 // @flow
 
-import React, { Component } from 'react'
+import { Control } from 'leaflet'
+import { Component, type Element } from 'react'
 
-import controlPositionType from './propTypes/controlPosition'
-import mapType from './propTypes/map'
+import controlPosition from './propTypes/controlPosition'
+import map from './propTypes/map'
+import type { ControlPosition } from './types'
 
-export default class MapControl extends Component {
+export default class MapControl<
+  LeafletElement: Control,
+  Props: { position?: ControlPosition },
+> extends Component<Props> {
   static propTypes = {
-    position: controlPositionType,
+    position: controlPosition,
   }
 
   static contextTypes = {
-    map: mapType,
+    map: map,
   }
 
-  leafletElement: Object
+  leafletElement: LeafletElement
 
   // eslint-disable-next-line no-unused-vars
-  createLeafletElement(props: Object): Object {
+  createLeafletElement(props: Props): LeafletElement {
     throw new Error('createLeafletElement() must be implemented')
   }
 
-  updateLeafletElement(fromProps: Object, toProps: Object): void {
+  updateLeafletElement(fromProps: Props, toProps: Props): void {
     if (toProps.position !== fromProps.position) {
       this.leafletElement.setPosition(toProps.position)
     }
@@ -35,7 +40,7 @@ export default class MapControl extends Component {
     this.leafletElement.addTo(this.context.map)
   }
 
-  componentDidUpdate(prevProps: Object) {
+  componentDidUpdate(prevProps: Props) {
     this.updateLeafletElement(prevProps, this.props)
   }
 
@@ -43,7 +48,7 @@ export default class MapControl extends Component {
     this.leafletElement.remove()
   }
 
-  render(): null | React.Element<*> {
+  render(): ?Element<any> {
     return null
   }
 }

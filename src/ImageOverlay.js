@@ -1,39 +1,52 @@
 // @flow
 
-import { imageOverlay, latLngBounds } from 'leaflet'
+import { ImageOverlay as LeafletImageOverlay, latLngBounds } from 'leaflet'
 import PropTypes from 'prop-types'
 
-import boundsType from './propTypes/bounds'
-import childrenType from './propTypes/children'
-
 import MapLayer from './MapLayer'
+import bounds from './propTypes/bounds'
+import children from './propTypes/children'
+import layer from './propTypes/layer'
+import type { LatLngBounds, MapLayerProps } from './types'
 
-export default class ImageOverlay extends MapLayer {
+type LeafletElement = LeafletImageOverlay
+type Props = {
+  attribution?: string,
+  bounds?: LatLngBounds,
+  opacity?: number,
+  url: string,
+  zIndex?: number,
+} & MapLayerProps
+
+export default class ImageOverlay extends MapLayer<LeafletElement, Props> {
   static propTypes = {
     attribution: PropTypes.string,
-    bounds: boundsType.isRequired,
-    children: childrenType,
+    bounds: bounds.isRequired,
+    children: children,
     opacity: PropTypes.number,
     url: PropTypes.string.isRequired,
     zIndex: PropTypes.number,
   }
 
   static childContextTypes = {
-    popupContainer: PropTypes.object,
+    popupContainer: layer,
   }
 
-  getChildContext(): { popupContainer: Object } {
+  getChildContext(): { popupContainer: LeafletElement } {
     return {
       popupContainer: this.leafletElement,
     }
   }
 
-  createLeafletElement(props: Object): Object {
-    const { bounds, url, ...options } = props
-    return imageOverlay(url, bounds, this.getOptions(options))
+  createLeafletElement(props: Props): LeafletElement {
+    return new LeafletImageOverlay(
+      props.url,
+      props.bounds,
+      this.getOptions(props),
+    )
   }
 
-  updateLeafletElement(fromProps: Object, toProps: Object) {
+  updateLeafletElement(fromProps: Props, toProps: Props) {
     if (toProps.url !== fromProps.url) {
       this.leafletElement.setUrl(toProps.url)
     }

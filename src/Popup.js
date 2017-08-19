@@ -1,42 +1,52 @@
 // @flow
 
-import { popup as createPopup } from 'leaflet'
+import { Popup as LeafletPopup } from 'leaflet'
 import PropTypes from 'prop-types'
-import { Children } from 'react'
+import { Children, type Element } from 'react'
 import { render, unmountComponentAtNode } from 'react-dom'
 
-import latlngType from './propTypes/latlng'
-import mapType from './propTypes/map'
-
 import MapComponent from './MapComponent'
+import latlng from './propTypes/latlng'
+import layer from './propTypes/layer'
+import map from './propTypes/map'
+import type { LatLng } from './types'
 
-export default class Popup extends MapComponent {
+type LeafletElement = LeafletPopup
+type Props = {
+  autoPan?: boolean,
+  children: Element<any>,
+  onClose?: () => void,
+  onOpen?: () => void,
+  pane?: string,
+  position: LatLng,
+}
+
+export default class Popup extends MapComponent<LeafletElement, Props> {
   static propTypes = {
     children: PropTypes.node,
     onClose: PropTypes.func,
     onOpen: PropTypes.func,
-    position: latlngType,
+    position: latlng,
   }
 
   static contextTypes = {
-    map: mapType,
-    popupContainer: PropTypes.object,
+    map: map,
+    popupContainer: layer,
     pane: PropTypes.string,
   }
 
-  getOptions(props: Object = {}): Object {
+  getOptions(props: Props): Props {
     return {
       ...super.getOptions(props),
       autoPan: false,
     }
   }
 
-  createLeafletElement(props: Object): Object {
-    const { children: _children, ...options } = props
-    return createPopup(this.getOptions(options), this.context.popupContainer)
+  createLeafletElement(props: Props): LeafletElement {
+    return new LeafletPopup(this.getOptions(props), this.context.popupContainer)
   }
 
-  updateLeafletElement(fromProps: Object, toProps: Object) {
+  updateLeafletElement(fromProps: Props, toProps: Props) {
     if (toProps.position !== fromProps.position) {
       this.leafletElement.setLatLng(toProps.position)
     }
@@ -70,7 +80,7 @@ export default class Popup extends MapComponent {
     }
   }
 
-  componentDidUpdate(prevProps: Object) {
+  componentDidUpdate(prevProps: Props) {
     this.updateLeafletElement(prevProps, this.props)
 
     if (this.leafletElement.isOpen()) {
@@ -90,7 +100,7 @@ export default class Popup extends MapComponent {
     super.componentWillUnmount()
   }
 
-  onPopupOpen = ({ popup }: Object): void => {
+  onPopupOpen = ({ popup }: { popup: LeafletElement }) => {
     if (popup === this.leafletElement) {
       this.renderPopupContent()
       if (this.props.onOpen) {
@@ -99,7 +109,7 @@ export default class Popup extends MapComponent {
     }
   }
 
-  onPopupClose = ({ popup }: Object): void => {
+  onPopupClose = ({ popup }: { popup: LeafletElement }) => {
     if (popup === this.leafletElement) {
       this.removePopupContent()
       if (this.props.onClose) {
@@ -108,8 +118,10 @@ export default class Popup extends MapComponent {
     }
   }
 
-  renderPopupContent = (): void => {
-    if (this.props.children) {
+  renderPopupContent = () => {
+    if (this.props.children == null) {
+      this.removePopupContent()
+    } else {
       render(
         Children.only(this.props.children),
         this.leafletElement._contentNode,
@@ -121,18 +133,16 @@ export default class Popup extends MapComponent {
         }
         this.leafletElement._adjustPan()
       }
-    } else {
-      this.removePopupContent()
     }
   }
 
-  removePopupContent = (): void => {
+  removePopupContent = () => {
     if (this.leafletElement._contentNode) {
       unmountComponentAtNode(this.leafletElement._contentNode)
     }
   }
 
-  render(): null {
+  render() {
     return null
   }
 }

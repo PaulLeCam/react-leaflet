@@ -1,26 +1,28 @@
 // @flow
 
-import { tileLayer } from 'leaflet'
+import { TileLayer as LeafletTileLayer } from 'leaflet'
 import PropTypes from 'prop-types'
 
-import childrenType from './propTypes/children'
-
 import GridLayer from './GridLayer'
+import children from './propTypes/children'
+import type { GridLayerProps } from './types'
 
-export default class TileLayer extends GridLayer {
+type LeafletElement = LeafletTileLayer
+type Props = { url: string } & GridLayerProps
+
+export default class TileLayer extends GridLayer<LeafletElement, Props> {
   static propTypes = {
-    children: childrenType,
+    children: children,
     opacity: PropTypes.number,
     url: PropTypes.string.isRequired,
     zIndex: PropTypes.number,
   }
 
-  createLeafletElement(props: Object): Object {
-    const { url, ...options } = props
-    return tileLayer(url, this.getOptions(options))
+  createLeafletElement(props: Props): LeafletElement {
+    return new LeafletTileLayer(props.url, this.getOptions(props))
   }
 
-  updateLeafletElement(fromProps: Object, toProps: Object) {
+  updateLeafletElement(fromProps: Props, toProps: Props) {
     super.updateLeafletElement(fromProps, toProps)
     if (toProps.url !== fromProps.url) {
       this.leafletElement.setUrl(toProps.url)

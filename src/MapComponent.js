@@ -1,17 +1,24 @@
 // @flow
 
 import { clone, forEach, keys, reduce } from 'lodash'
+import type { Evented } from 'leaflet'
 import { Component } from 'react'
+
+import type { MapComponentProps } from './types'
 
 const EVENTS_RE = /^on(.+)$/i
 
-type EventsObject = { [key: string]: Function }
+type EventHandler = (event: Event) => void
+type EventsObject = { [key: string]: EventHandler }
 
-export default class MapComponent extends Component<any, any, any> {
+export default class MapComponent<
+  LeafletElement: Evented,
+  Props: MapComponentProps,
+> extends Component<Props> {
   _leafletEvents: EventsObject
-  leafletElement: Object
+  leafletElement: LeafletElement
 
-  constructor(props: Object, context: Object) {
+  constructor(props: Props, context: Object) {
     super(props, context)
     this._leafletEvents = {}
   }
@@ -24,7 +31,7 @@ export default class MapComponent extends Component<any, any, any> {
     this.bindLeafletEvents(this._leafletEvents)
   }
 
-  componentWillReceiveProps(nextProps: Object) {
+  componentWillReceiveProps(nextProps: Props) {
     const next = this.extractLeafletEvents(nextProps)
     this._leafletEvents = this.bindLeafletEvents(next, this._leafletEvents)
   }
@@ -38,7 +45,7 @@ export default class MapComponent extends Component<any, any, any> {
     })
   }
 
-  extractLeafletEvents(props: Object): EventsObject {
+  extractLeafletEvents(props: Props): EventsObject {
     return reduce(
       keys(props),
       (res, prop) => {
@@ -59,7 +66,7 @@ export default class MapComponent extends Component<any, any, any> {
     prev: EventsObject = {},
   ): EventsObject {
     const el = this.leafletElement
-    if (!el || !el.on) return {}
+    if (el == null || el.on == null) return {}
 
     const diff = clone(prev)
     forEach(prev, (cb, ev) => {
@@ -84,8 +91,8 @@ export default class MapComponent extends Component<any, any, any> {
     if (el) el.fire(type, data)
   }
 
-  getOptions(props: Object = {}): Object {
-    const pane = props.pane || this.context.pane
+  getOptions(props: Props): Props {
+    const pane = props.pane == null ? this.context.pane : props.pane
     return pane ? { ...props, pane } : props
   }
 }

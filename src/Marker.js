@@ -1,37 +1,48 @@
 // @flow
 
-import { Icon, marker } from 'leaflet'
+import { Icon, Marker as LeafletMarker, type Layer } from 'leaflet'
 import PropTypes from 'prop-types'
 
-import childrenType from './propTypes/children'
-import latlngType from './propTypes/latlng'
 import MapLayer from './MapLayer'
+import children from './propTypes/children'
+import latlng from './propTypes/latlng'
+import layer from './propTypes/layer'
+import type { LatLng, MapLayerProps } from './types'
 
-export default class Marker extends MapLayer {
+type LeafletElement = LeafletMarker
+type Props = {
+  icon?: Icon,
+  draggable?: boolean,
+  opacity?: number,
+  position: LatLng,
+  zIndexOffset?: number,
+} & MapLayerProps
+
+export default class Marker extends MapLayer<LeafletElement, Props> {
   static propTypes = {
-    children: childrenType,
+    children: children,
+    draggable: PropTypes.bool,
     icon: PropTypes.instanceOf(Icon),
     opacity: PropTypes.number,
-    position: latlngType.isRequired,
+    position: latlng.isRequired,
     zIndexOffset: PropTypes.number,
   }
 
   static childContextTypes = {
-    popupContainer: PropTypes.object,
+    popupContainer: layer,
   }
 
-  getChildContext(): { popupContainer: Object } {
+  getChildContext(): { popupContainer: Layer } {
     return {
       popupContainer: this.leafletElement,
     }
   }
 
-  createLeafletElement(props: Object): Object {
-    const { position, ...options } = props
-    return marker(position, this.getOptions(options))
+  createLeafletElement(props: Props): LeafletElement {
+    return new LeafletMarker(props.position, this.getOptions(props))
   }
 
-  updateLeafletElement(fromProps: Object, toProps: Object) {
+  updateLeafletElement(fromProps: Props, toProps: Props) {
     if (toProps.position !== fromProps.position) {
       this.leafletElement.setLatLng(toProps.position)
     }
@@ -45,7 +56,7 @@ export default class Marker extends MapLayer {
       this.leafletElement.setOpacity(toProps.opacity)
     }
     if (toProps.draggable !== fromProps.draggable) {
-      if (toProps.draggable) {
+      if (toProps.draggable === true) {
         this.leafletElement.dragging.enable()
       } else {
         this.leafletElement.dragging.disable()

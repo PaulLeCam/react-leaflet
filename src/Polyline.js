@@ -1,28 +1,30 @@
 // @flow
 
-import { polyline } from 'leaflet'
+import { Polyline as LeafletPolyline } from 'leaflet'
 import PropTypes from 'prop-types'
 
-import childrenType from './propTypes/children'
-import latlngListType from './propTypes/latlngList'
-
 import Path from './Path'
+import children from './propTypes/children'
+import latlngList from './propTypes/latlng'
+import type { LatLng, PathProps } from './types'
 
-export default class Polyline extends Path {
+type LeafletElement = LeafletPolyline
+type Props = {
+  positions: LatLng[] | LatLng[][],
+} & PathProps
+
+export default class Polyline extends Path<LeafletElement, Props> {
   static propTypes = {
-    children: childrenType,
-    positions: PropTypes.oneOfType([
-      latlngListType,
-      PropTypes.arrayOf(latlngListType),
-    ]).isRequired,
+    children: children,
+    positions: PropTypes.oneOfType([latlngList, PropTypes.arrayOf(latlngList)])
+      .isRequired,
   }
 
-  createLeafletElement(props: Object): Object {
-    const { positions, ...options } = props
-    return polyline(positions, this.getOptions(options))
+  createLeafletElement(props: Props): LeafletElement {
+    return new LeafletPolyline(props.positions, this.getOptions(props))
   }
 
-  updateLeafletElement(fromProps: Object, toProps: Object) {
+  updateLeafletElement(fromProps: Props, toProps: Props) {
     if (toProps.positions !== fromProps.positions) {
       this.leafletElement.setLatLngs(toProps.positions)
     }
