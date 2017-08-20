@@ -17,7 +17,7 @@
     "flow": "flow check",
     "test": "npm run lint && npm run flow && npm run jest",
     "start": "npm run test && npm run build",
-    "prepublishOnly": "npm start",
+    "prepublishOnly": "npm run build",
     "examples": "webpack-dev-server --config ./example/webpack.config.babel.js --progress"
   },
   "repository": {

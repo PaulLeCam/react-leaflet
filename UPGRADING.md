@@ -4,8 +4,8 @@
 
 This release makes internal changes to the folders exposed:
 
-- The `src` folder is not longer exported in the npm package, the added `es` one should be consumed instead if you want to support modules.
-- The `lib` and  `dist` folders are not longer exported in the GitHub repository, use the npm package instead if you need to access them.
+- The `src` folder is no longer exported in the npm package, the added `es` one should be consumed instead if you want to support modules.
+- The `lib` and  `dist` folders are no longer exported in the GitHub repository, use the npm package instead if you need to access them.
 
 ## v1.5
 

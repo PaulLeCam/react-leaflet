@@ -1,6 +1,7 @@
-## v1.6.0 (master - unreleased)
+## v1.6.0 (2017-08-20)
 
 - Updated build process ([PR #359](https://github.com/PaulLeCam/react-leaflet/pull/359) by *tusbar*) - see the [UPGRADING guide](UPGRADING.md) for more information if you're relying on internals.
+- Fixed hot module reloading in examples ([PR #360](https://github.com/PaulLeCam/react-leaflet/pull/360) by *tusbar*).
 - Updated Flow types to support Flow v0.53.
 
 ## v1.5.0 (2017-08-10)
