@@ -24,12 +24,7 @@
     "type": "git",
     "url": "https://github.com/PaulLeCam/react-leaflet.git"
   },
-  "keywords": [
-    "react-component",
-    "react",
-    "leaflet",
-    "map"
-  ],
+  "keywords": ["react-component", "react", "leaflet", "map"],
   "author": "Paul Le Cam <paul@ulem.net>",
   "license": "MIT",
   "bugs": {

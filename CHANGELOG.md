@@ -1,3 +1,8 @@
+## v1.6.1 (2017-08-20)
+
+- Fixed `GridLayer` inheriting `maxZoom` and `minZoom` from `Map`.
+- Fixed regression introduced in v1.6.0 with `ScaleControl`.
+
 ## v1.6.0 (2017-08-20)
 
 - Updated build process ([PR #359](https://github.com/PaulLeCam/react-leaflet/pull/359) by *tusbar*) - see the [UPGRADING guide](UPGRADING.md) for more information if you're relying on internals.

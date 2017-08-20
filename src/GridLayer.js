@@ -17,18 +17,6 @@ export default class GridLayer<
     zIndex: PropTypes.number,
   }
 
-  getOptions(props: Props): Props {
-    const options = super.getOptions(props)
-    const map = this.context.map
-    return map
-      ? {
-          maxZoom: map.options.maxZoom,
-          minZoom: map.options.minZoom,
-          ...options,
-        }
-      : options
-  }
-
   createLeafletElement(props: Props): LeafletElement {
     return new LeafletGridLayer(this.getOptions(props))
   }
