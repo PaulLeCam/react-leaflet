@@ -1,6 +1,5 @@
 import Leaflet from 'leaflet'
 import React from 'react'
-import { render } from 'react-dom'
 
 import SimpleExample from './simple'
 import EventsExample from './events'
@@ -21,7 +20,7 @@ import VideoOverlayExample from './video-overlay'
 Leaflet.Icon.Default.imagePath =
   '//cdnjs.cloudflare.com/ajax/libs/leaflet/1.1.0/images/'
 
-const examples = (
+const App = () =>
   <div>
     <h1>React-Leaflet examples</h1>
     <h2>Popup with Marker</h2>
@@ -59,6 +58,5 @@ const examples = (
     <h2>Video overlay</h2>
     <VideoOverlayExample />
   </div>
-)
 
-render(examples, document.getElementById('app'))
+export default App

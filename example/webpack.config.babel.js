@@ -4,7 +4,7 @@ import webpack from 'webpack'
 export default {
   devtool: 'source-map',
   entry: {
-    app: path.join(__dirname, 'components/index.js'),
+    app: path.join(__dirname, 'index.js'),
   },
   module: {
     rules: [
@@ -12,22 +12,6 @@ export default {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
-        options: {
-          plugins: [
-            [
-              'react-transform',
-              {
-                transforms: [
-                  {
-                    transform: 'react-transform-hmr',
-                    imports: ['react'],
-                    locals: ['module'],
-                  },
-                ],
-              },
-            ],
-          ],
-        },
       },
     ],
   },
