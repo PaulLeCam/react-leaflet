@@ -1,6 +1,6 @@
 {
   "name": "react-leaflet",
-  "version": "1.6.2",
+  "version": "1.6.3",
   "description": "React components for Leaflet maps",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -25,7 +25,12 @@
     "type": "git",
     "url": "https://github.com/PaulLeCam/react-leaflet.git"
   },
-  "keywords": ["react-component", "react", "leaflet", "map"],
+  "keywords": [
+    "react-component",
+    "react",
+    "leaflet",
+    "map"
+  ],
   "author": "Paul Le Cam <paul@ulem.net>",
   "license": "MIT",
   "bugs": {
