@@ -1,12 +1,5 @@
 {
-  "plugins": [
-    "dev-expression",
-    "lodash",
-    "syntax-jsx",
-    "transform-proto-to-assign",
-    "transform-react-display-name",
-    "transform-react-jsx"
-  ],
+  "plugins": ["dev-expression", "lodash", "transform-proto-to-assign"],
   "env": {
     "development": {
       "presets": [
@@ -21,9 +14,9 @@
             "loose": true
           }
         ],
+        "react",
         "stage-1"
-      ],
-      "plugins": ["transform-flow-comments"]
+      ]
     },
     "rollup": {
       "presets": [
@@ -38,13 +31,10 @@
             "loose": true
           }
         ],
+        "react",
         "stage-1"
       ],
-      "plugins": [
-        "external-helpers",
-        "transform-flow-strip-types",
-        "./build/use-lodash-es"
-      ]
+      "plugins": ["external-helpers", "./build/use-lodash-es"]
     },
     "jsnext": {
       "presets": [
@@ -59,9 +49,10 @@
             "loose": true
           }
         ],
+        "react",
         "stage-1"
       ],
-      "plugins": ["transform-flow-comments", "./build/use-lodash-es"]
+      "plugins": ["./build/use-lodash-es"]
     }
   }
 }

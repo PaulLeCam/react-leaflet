@@ -1,3 +1,7 @@
+## v1.6.3 (2017-08-21)
+
+Fixed support for Flow types.
+
 ## v1.6.2 (2017-08-21)
 
 Added support for Flow types in CommonJS and ESM builds as Flow comments.

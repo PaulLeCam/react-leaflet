@@ -1,7 +1,20 @@
 // @flow
 
 export * as PropTypes from './propTypes'
-export * from './types'
+export type {
+  LatLng,
+  LatLngBounds,
+  ControlPosition,
+  Point,
+  Viewport,
+  GridLayerOptions,
+  PathOptions,
+  MapControlProps,
+  MapComponentProps,
+  MapLayerProps,
+  GridLayerProps,
+  PathProps,
+} from './types'
 
 export { default as AttributionControl } from './AttributionControl'
 export { default as Circle } from './Circle'
