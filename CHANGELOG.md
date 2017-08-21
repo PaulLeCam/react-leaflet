@@ -1,3 +1,7 @@
+## v1.6.2 (2017-08-21)
+
+Added support for Flow types in CommonJS and ESM builds as Flow comments.
+
 ## v1.6.1 (2017-08-20)
 
 - Fixed `GridLayer` inheriting `maxZoom` and `minZoom` from `Map`.
