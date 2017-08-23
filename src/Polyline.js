@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 
 import Path from './Path'
 import children from './propTypes/children'
-import latlngList from './propTypes/latlng'
+import latlngList from './propTypes/latlngList'
 import type { LatLng, PathProps } from './types'
 
 type LeafletElement = LeafletPolyline
