@@ -16,13 +16,9 @@
     "jsx": true,
     "sourceType": "module"
   },
-  "plugins": [
-    "flowtype",
-    "prettier",
-    "react"
-  ],
+  "plugins": ["flowtype", "prettier", "react"],
   "rules": {
-    "no-unused-vars": ["error", {"varsIgnorePattern": "^_"}],
+    "no-unused-vars": ["error", { "varsIgnorePattern": "^_" }],
     "prettier/prettier": [
       "error",
       {

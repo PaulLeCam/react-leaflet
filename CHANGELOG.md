@@ -1,3 +1,7 @@
+## v1.6.4 (2017-08-24)
+
+Fixed `positions` proptype in `Polyline`.
+
 ## v1.6.3 (2017-08-21)
 
 Fixed support for Flow types.
