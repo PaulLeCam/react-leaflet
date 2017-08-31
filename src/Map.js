@@ -55,7 +55,7 @@ type Props = {
   zoomDelta?: number,
   trackResize?: boolean,
   boxZoom?: boolean,
-  doubleClickZoom: ZoomOption,
+  doubleClickZoom?: ZoomOption,
   dragging?: boolean,
   crs?: CRS,
   center?: LatLng,

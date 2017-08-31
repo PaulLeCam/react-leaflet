@@ -18,7 +18,7 @@ type Props = {
   onClose?: () => void,
   onOpen?: () => void,
   pane?: string,
-  position: LatLng,
+  position?: LatLng,
 }
 
 export default class Popup extends MapComponent<LeafletElement, Props> {

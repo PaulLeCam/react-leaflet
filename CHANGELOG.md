@@ -1,3 +1,8 @@
+## v1.6.5 (2017-08-31)
+
+- Added `react-leaflet-sidebarv2` to the plugins documentation ([PR #369](https://github.com/PaulLeCam/react-leaflet/pull/369) by *markhepburn*).
+- Fixed Flow types in `Map` and `Popup`.
+
 ## v1.6.4 (2017-08-24)
 
 Fixed `positions` proptype in `Polyline`.
