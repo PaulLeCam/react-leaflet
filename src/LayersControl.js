@@ -198,11 +198,7 @@ export default class LayersControl extends MapControl<
     const children = Children.map(this.props.children, child => {
       return child ? cloneElement(child, this.controlProps) : null
     })
-    return (
-      <div style={{ display: 'none' }}>
-        {children}
-      </div>
-    )
+    return <div style={{ display: 'none' }}>{children}</div>
   }
 }
 

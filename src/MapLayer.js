@@ -58,11 +58,7 @@ export default class MapLayer<
   render() {
     const { children } = this.props
     if (Children.count(children) > 1) {
-      return (
-        <div style={{ display: 'none' }}>
-          {children}
-        </div>
-      )
+      return <div style={{ display: 'none' }}>{children}</div>
     }
     return children == null ? null : children
   }
