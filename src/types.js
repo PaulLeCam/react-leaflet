@@ -55,8 +55,12 @@ export type PathOptions = {
   fillColor?: string,
   fillOpacity?: number,
   fillRule?: 'nonzero' | 'evenodd' | 'inherit',
+  bubblingMouseEvents?: boolean,
   renderer?: Renderer,
   className?: string,
+  interactive?: boolean,
+  pane?: string,
+  attribution?: string,
 }
 
 export type MapControlProps = { position?: ControlPosition }

@@ -27,7 +27,7 @@ export default class WMSTileLayerExample extends Component {
         />
         <WMSTileLayer
           layers={this.state.bluemarble ? 'nasa:bluemarble' : 'ne:ne'}
-          url="http://demo.opengeo.org/geoserver/ows?"
+          url="https://demo.boundlessgeo.com/geoserver/ows"
         />
       </Map>
     )

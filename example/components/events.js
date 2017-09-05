@@ -22,13 +22,13 @@ export default class EventsExample extends Component {
   }
 
   render() {
-    const marker = this.state.hasLocation
-      ? <Marker position={this.state.latlng}>
-          <Popup>
-            <span>You are here</span>
-          </Popup>
-        </Marker>
-      : null
+    const marker = this.state.hasLocation ? (
+      <Marker position={this.state.latlng}>
+        <Popup>
+          <span>You are here</span>
+        </Popup>
+      </Marker>
+    ) : null
 
     return (
       <Map

@@ -23,13 +23,13 @@ export default class AnimateExample extends Component {
   }
 
   render() {
-    const marker = this.state.hasLocation
-      ? <Marker position={this.state.latlng}>
-          <Popup>
-            <span>You are here</span>
-          </Popup>
-        </Marker>
-      : null
+    const marker = this.state.hasLocation ? (
+      <Marker position={this.state.latlng}>
+        <Popup>
+          <span>You are here</span>
+        </Popup>
+      </Marker>
+    ) : null
 
     return (
       <div style={{ textAlign: 'center' }}>

@@ -47,9 +47,7 @@ export default class TooltipExample extends Component {
           onClick={this.onClickCircle}
           radius={200}>
           <Tooltip>
-            <span>
-              {clickedText}
-            </span>
+            <span>{clickedText}</span>
           </Tooltip>
         </Circle>
         <CircleMarker center={[51.51, -0.12]} color="red" radius={20}>

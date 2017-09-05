@@ -7,15 +7,21 @@ import uglify from 'rollup-plugin-uglify'
 const env = process.env.NODE_ENV
 
 const config = {
-  entry: 'src/index.js',
+  input: 'src/index.js',
+  output: {
+    file:
+      env === 'production'
+        ? 'dist/react-leaflet.min.js'
+        : 'dist/react-leaflet.js',
+    format: 'umd',
+    name: 'ReactLeaflet',
+  },
   external: ['leaflet', 'react', 'react-dom'],
   globals: {
     leaflet: 'L',
     react: 'React',
     'react-dom': 'ReactDOM',
   },
-  format: 'umd',
-  moduleName: 'ReactLeaflet',
   plugins: [
     nodeResolve(),
     babel({

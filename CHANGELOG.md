@@ -1,3 +1,8 @@
+## v1.6.6 (2017-09-05)
+
+- Fixed `Path` options.
+- Fixed `WMSTileLayer` options.
+
 ## v1.6.5 (2017-08-31)
 
 - Added `react-leaflet-sidebarv2` to the plugins documentation ([PR #369](https://github.com/PaulLeCam/react-leaflet/pull/369) by *markhepburn*).

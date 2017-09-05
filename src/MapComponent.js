@@ -6,7 +6,7 @@ import { Component } from 'react'
 
 import type { MapComponentProps } from './types'
 
-const EVENTS_RE = /^on(.+)$/i
+export const EVENTS_RE = /^on(.+)$/i
 
 type EventHandler = (event: Event) => void
 type EventsObject = { [key: string]: EventHandler }

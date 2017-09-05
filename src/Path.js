@@ -21,9 +21,14 @@ const OPTIONS = [
   'fillColor',
   'fillOpacity',
   'fillRule',
-  'clickable',
-  'pointerEvents',
+  'bubblingMouseEvents',
+  'renderer',
   'className',
+  // Interactive Layer
+  'interactive',
+  // Layer
+  'pane',
+  'attribution',
 ]
 
 export default class Path<

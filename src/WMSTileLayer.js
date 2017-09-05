@@ -1,10 +1,11 @@
 // @flow
 
 import { TileLayer } from 'leaflet'
-import { isEqual } from 'lodash'
+import { isEqual, reduce } from 'lodash'
 import PropTypes from 'prop-types'
 
 import GridLayer from './GridLayer'
+import { EVENTS_RE } from './MapComponent'
 import children from './propTypes/children'
 import type { GridLayerProps } from './types'
 
@@ -20,7 +21,8 @@ export default class WMSTileLayer extends GridLayer<LeafletElement, Props> {
   }
 
   createLeafletElement(props: Props): LeafletElement {
-    return new TileLayer.WMS(props.url, this.getOptions(props))
+    const { url, opacity: _o, zIndex: _z, ...params } = props
+    return new TileLayer.WMS(url, this.getOptions(params))
   }
 
   updateLeafletElement(fromProps: Props, toProps: Props) {
@@ -35,5 +37,18 @@ export default class WMSTileLayer extends GridLayer<LeafletElement, Props> {
     if (!isEqual(params, prevParams)) {
       this.leafletElement.setParams(params)
     }
+  }
+
+  getOptions(params: Object): Object {
+    return reduce(
+      super.getOptions(params),
+      (options, value, key) => {
+        if (!EVENTS_RE.test(key)) {
+          options[key] = value
+        }
+        return options
+      },
+      {},
+    )
   }
 }

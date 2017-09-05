@@ -18,9 +18,9 @@ import WMSTileLayerExample from './wms-tile-layer'
 import VideoOverlayExample from './video-overlay'
 
 Leaflet.Icon.Default.imagePath =
-  '//cdnjs.cloudflare.com/ajax/libs/leaflet/1.1.0/images/'
+  '//cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/images/'
 
-const App = () =>
+const App = () => (
   <div>
     <h1>React-Leaflet examples</h1>
     <h2>Popup with Marker</h2>
@@ -58,5 +58,6 @@ const App = () =>
     <h2>Video overlay</h2>
     <VideoOverlayExample />
   </div>
+)
 
 export default App
