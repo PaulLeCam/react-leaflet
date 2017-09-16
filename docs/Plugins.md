@@ -9,6 +9,7 @@ A non-exhaustive list of plugins adding functionalities to React-Leaflet. Please
 - [`react-leaflet-markercluster`](https://www.npmjs.com/package/react-leaflet-markercluster)
 - [`react-leaflet-control`](https://www.npmjs.com/package/react-leaflet-control)
 - [`react-leaflet-div-icon`](https://www.npmjs.com/package/react-leaflet-div-icon)
+- [`react-leaflet-draggable-polyline`](https://www.npmjs.com/package/react-leaflet-draggable-polyline)
 - [`react-leaflet-draw`](https://www.npmjs.com/package/react-leaflet-draw)
 - [`react-leaflet-geojson-cluster`](https://www.npmjs.com/package/react-leaflet-geojson-cluster)
 - [`react-leaflet-google`](https://www.npmjs.com/package/react-leaflet-google)
