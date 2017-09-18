@@ -73,7 +73,7 @@ This is the top-level component that must be mounted for child components to be 
 - `animate: boolean` (optional): If `true`, panning will always be animated if possible. Defaults to `false`.
 - `bounds: bounds` (optional): A rectangle for the map to contain. It will be centered, and the map will zoom in as close as it can while still showing the full bounds. This property is dynamic, if you change it it will be reflected on the map.
 - `boundsOptions: Object` (optional): Options passed to the `fitBounds()` method.
-- `center: latLng` (optional): Center of the map. This property is dynamic, if you change it it will be reflected in the map.
+- `center: latLng` (optional if `viewport` is provided with a center value): Center of the map.
 - `className: string` (optional): className property of the `<div>` container for the map.
 - `maxBounds: bounds` (optional)
 - `onViewportChange: (viewport: {center: ?[number, number], zoom: ?number}) => void`  (optional): fired continuously as the viewport changes.
@@ -81,7 +81,7 @@ This is the top-level component that must be mounted for child components to be 
 - `style: Object` (optional): style property of the `<div>` container for the map.
 - `useFlyTo: boolean` (optional): boolean to control whether to use flyTo functions for bounds and center. If false `map.fitBounds` and `map.setView` will be used. If true `map.flyToBounds` and `map.flyTo` will be used. Defaults to false.
 - `viewport: viewport` (optional): sets the viewport based on the provided value or the `center` and `zoom` properties.
-- `zoom: number` (optional)
+- `zoom: number` (optional if `viewport` is provided with a zoom value)
 
 **Other properties**
 - `id: string` (optional): The ID of the `<div>` container for the map.
@@ -107,12 +107,11 @@ type Props = {
   viewport: Viewport,
 }
 
-class MyMap extends Component {
-  props: Props
-  state: {
-    viewport: Viewport,
-  }
+type State = {
+  viewport: Viewport,
+}
 
+class MyMap extends Component<Props, State> {
   constructor(props: Props) {
     // Initialize the viewport to the one provided in props
     this.state = {
@@ -289,6 +288,9 @@ Extended `LayerGroup` supporting a `Popup` child.
 
 **Properties**
 - `data: GeoJSON` (required). This property will *not* be updated if it is changed after the component is mounted.
+
+**Dynamic properties**
+- `style: Function` (optional).
 
 ### GridLayer
 
