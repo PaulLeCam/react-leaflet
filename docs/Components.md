@@ -71,9 +71,9 @@ This is the top-level component that must be mounted for child components to be 
 
 **Dynamic properties**
 - `animate: boolean` (optional): If `true`, panning will always be animated if possible. Defaults to `false`.
-- `bounds: bounds` (optional): A rectangle for the map to contain. It will be centered, and the map will zoom in as close as it can while still showing the full bounds. This property is dynamic, if you change it it will be reflected on the map.
+- `bounds: bounds` (optional): A rectangle for the map to contain. It will be centered, and the map will zoom in as close as it can while still showing the full bounds. Changes are compared using the [`equals() method of LatLngBounds`](http://leafletjs.com/reference-1.2.0.html#latlngbounds-equals).
 - `boundsOptions: Object` (optional): Options passed to the `fitBounds()` method.
-- `center: latLng` (optional if `viewport` is provided with a center value): Center of the map.
+- `center: latLng` (optional if `viewport` is provided with a center value): Center of the map. Changes are compared by value, so `[51.0, 0.0]` is considered the same as `{lat: 51, lng: 0}`.
 - `className: string` (optional): className property of the `<div>` container for the map.
 - `maxBounds: bounds` (optional)
 - `onViewportChange: (viewport: {center: ?[number, number], zoom: ?number}) => void`  (optional): fired continuously as the viewport changes.

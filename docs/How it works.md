@@ -11,7 +11,8 @@ React only renders the map container for the [Map component](Components.md#map) 
 
 ### Component properties
 
-The properties passed to the components are used to create the relevant Leaflet instance when the component will mount. When adding a component, all these properties should be supported as they are by Leaflet, **however they will not be updated in the UI when they change** unless they are referenced in the documentation as *dynamic*, which are the ones handled by the components to call the relevant Leaflet method to update it.
+The properties passed to the components are used to create the relevant Leaflet instance when the component will mount. When adding a component, all these properties should be supported as they are by Leaflet, **however they will not be updated in the UI when they change** unless they are referenced in the documentation as *dynamic*, which are the ones handled by the components to call the relevant Leaflet method to update it.  
+Dynamic properties changes are compared by reference, except for properties documenting how their changes are compared in other ways.
 
 ### Component context
 
