@@ -46,7 +46,11 @@ export default class Marker extends MapLayer<LeafletElement, Props> {
     if (toProps.position !== fromProps.position) {
       this.leafletElement.setLatLng(toProps.position)
     }
-    if (toProps.icon !== fromProps.icon) {
+    const toPropsIconOptions = toProps.icon.options;
+    const fromPropsIconOption = fromProps.icon.options;
+    const isIconEqual=Object.keys(toPropsIconOptions).every(key: string=>fromPropsIconOptions[key]===toPropsIconOptions[key]) 
+      && Object.keys(fromPropsIconOptions).every(key: string=>fromPropsIconOptions[key]===toPropsIconOptions[key]);
+    if (!isIconEqual) {
       this.leafletElement.setIcon(toProps.icon)
     }
     if (toProps.zIndexOffset !== fromProps.zIndexOffset) {
