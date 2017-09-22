@@ -7,7 +7,7 @@ import MapLayer from './MapLayer'
 import children from './propTypes/children'
 import latlng from './propTypes/latlng'
 import layer from './propTypes/layer'
-import type { LatLng, MapLayerProps } from './types'
+import type { LatLng, MapLayerProps, Point } from './types'
 
 type LeafletElement = LeafletMarker
 type Props = {
@@ -17,6 +17,18 @@ type Props = {
   position: LatLng,
   zIndexOffset?: number,
 } & MapLayerProps
+type IconOptions = {
+  iconUrl: string,
+  iconRetinaUrl?: string,
+  iconSize?: Point,
+  iconAnchor?: Point,
+  popupAnchor?: Point,
+  shadowUrl?: string,
+  shadowRetinaUrl?: string,
+  shadowSize?: Point,
+  shadowAnchor?: Point,
+  className?: string,
+}
 
 export default class Marker extends MapLayer<LeafletElement, Props> {
   static propTypes = {
@@ -46,14 +58,18 @@ export default class Marker extends MapLayer<LeafletElement, Props> {
     if (toProps.position !== fromProps.position) {
       this.leafletElement.setLatLng(toProps.position)
     }
-    const toPropsIconOptions = toProps.icon.options
-    const fromPropsIconOptions = fromProps.icon.options
-    const isIconEqual =
+    const toPropsIcon: Icon = fromProps.icon
+    const toPropsIconOptions: IconOptions = toPropsIcon.options
+    const fromPropsIcon: Icon = fromProps.icon
+    const fromPropsIconOptions: IconOptions = fromPropsIcon.options
+    const isIconEqual: boolean =
       Object.keys(toPropsIconOptions).every(
-        (key: string) => fromPropsIconOptions[key] === toPropsIconOptions[key],
+        (key: string): boolean =>
+          fromPropsIconOptions[key] === toPropsIconOptions[key],
       ) &&
       Object.keys(fromPropsIconOptions).every(
-        (key: string) => fromPropsIconOptions[key] === toPropsIconOptions[key],
+        (key: string): boolean =>
+          fromPropsIconOptions[key] === toPropsIconOptions[key],
       )
     if (!isIconEqual) {
       this.leafletElement.setIcon(toProps.icon)
