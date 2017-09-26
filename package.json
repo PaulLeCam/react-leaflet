@@ -1,6 +1,6 @@
 {
   "name": "react-leaflet",
-  "version": "1.6.6",
+  "version": "1.7.0",
   "description": "React components for Leaflet maps",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -12,22 +12,25 @@
     "build:umd": "cross-env BABEL_ENV=rollup NODE_ENV=development rollup -c",
     "build:umd:min": "cross-env BABEL_ENV=rollup NODE_ENV=production rollup -c",
     "build:flow": "flow-copy-source src lib && flow-copy-source src es",
-    "build":
-      "npm run clean && npm run build:cjs && npm run build:es && npm run build:flow && npm run build:umd && npm run build:umd:min",
+    "build": "npm run clean && npm run build:cjs && npm run build:es && npm run build:flow && npm run build:umd && npm run build:umd:min",
     "jest": "cross-env BABEL_ENV=development NODE_ENV=test jest",
     "lint": "eslint ./src",
     "flow": "flow check",
     "test": "npm run lint && npm run flow && npm run jest",
     "start": "npm run test && npm run build",
     "prepublishOnly": "npm run build",
-    "examples":
-      "webpack-dev-server --config ./example/webpack.config.babel.js --progress"
+    "examples": "webpack-dev-server --config ./example/webpack.config.babel.js --progress"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/PaulLeCam/react-leaflet.git"
   },
-  "keywords": ["react-component", "react", "leaflet", "map"],
+  "keywords": [
+    "react-component",
+    "react",
+    "leaflet",
+    "map"
+  ],
   "author": "Paul Le Cam <paul@ulem.net>",
   "license": "MIT",
   "bugs": {
