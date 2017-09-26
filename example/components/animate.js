@@ -46,7 +46,6 @@ export default class AnimateExample extends Component {
           center={this.state.latlng}
           length={4}
           onClick={this.handleClick}
-          ref="map"
           zoom={13}>
           <TileLayer
             attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"

@@ -1,3 +1,8 @@
+## v1.7.0 (2017-09-26)
+
+- [internal] Added support for building the library using node 6 ([PR #376](https://github.com/PaulLeCam/react-leaflet/pull/376) by *tusbar*).
+- Added support for React v16 as peer dependency.
+
 ## v1.6.6 (2017-09-05)
 
 - Fixed `Path` options.
@@ -5,7 +10,7 @@
 
 ## v1.6.5 (2017-08-31)
 
-- Added `react-leaflet-sidebarv2` to the plugins documentation ([PR #369](https://github.com/PaulLeCam/react-leaflet/pull/369) by *markhepburn*).
+- [doc] Added `react-leaflet-sidebarv2` to the plugins documentation ([PR #369](https://github.com/PaulLeCam/react-leaflet/pull/369) by *markhepburn*).
 - Fixed Flow types in `Map` and `Popup`.
 
 ## v1.6.4 (2017-08-24)
@@ -27,8 +32,8 @@ Added support for Flow types in CommonJS and ESM builds as Flow comments.
 
 ## v1.6.0 (2017-08-20)
 
-- Updated build process ([PR #359](https://github.com/PaulLeCam/react-leaflet/pull/359) by *tusbar*) - see the [UPGRADING guide](UPGRADING.md) for more information if you're relying on internals.
-- Fixed hot module reloading in examples ([PR #360](https://github.com/PaulLeCam/react-leaflet/pull/360) by *tusbar*).
+- [internal] Updated build process ([PR #359](https://github.com/PaulLeCam/react-leaflet/pull/359) by *tusbar*) - see the [UPGRADING guide](UPGRADING.md) for more information if you're relying on internals.
+- [internal] Fixed hot module reloading in examples ([PR #360](https://github.com/PaulLeCam/react-leaflet/pull/360) by *tusbar*).
 - Updated Flow types to support Flow v0.53.
 
 ## v1.5.0 (2017-08-10)

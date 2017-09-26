@@ -1,7 +1,10 @@
-Please make sure to check the following boxes before submitting an issue. Thanks!
+**Before** opening an issue, make sure to read the [contributing guide](https://github.com/PaulLeCam/react-leaflet/blob/master/docs/CONTRIBUTING.md) and understand this is a bug tracker, not a support platform.
+
+Please make sure to check the following boxes before submitting an issue.  
+**Issues opened without using this template will be closed unless they have a good reason not to follow this template.**
 
 - [ ] All peer dependencies are installed: React, ReactDOM and Leaflet.
-- [ ] Using a supported version of React and ReactDOM (v15.x).
+- [ ] Using a supported version of React and ReactDOM (v15.x or v16.x).
 - [ ] Using the supported version of Leaflet (v1.2.x) and its corresponding CSS file is loaded.
 - [ ] Using the [latest stable version of React-Leaflet](https://github.com/PaulLeCam/react-leaflet/releases).
 - [ ] The issue has not already been reported.

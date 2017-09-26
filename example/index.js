@@ -5,7 +5,6 @@ const MOUNT_NODE = document.getElementById('app')
 
 const render = () => {
   const App = require('./components/app').default
-
   ReactDOM.render(<App />, MOUNT_NODE)
 }
 

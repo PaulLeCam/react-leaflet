@@ -28,7 +28,7 @@
 const { Map, TileLayer, Marker, Popup } = window.ReactLeaflet
 
 const position = [51.505, -0.09]
-const Example = () =>
+const Example = () => (
   <Map center={position} zoom={13}>
     <TileLayer
       attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
@@ -42,6 +42,7 @@ const Example = () =>
       </Popup>
     </Marker>
   </Map>
+)
 
 window.ReactDOM.render(<Example />, document.getElementById('container'))
 </script>
