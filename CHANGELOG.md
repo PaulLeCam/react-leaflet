@@ -1,3 +1,7 @@
+## master (unreleased)
+
+Added UMD build to CDNJS ([PR #11863 in cdnjs/cdnjs](https://github.com/cdnjs/cdnjs/pull/11863) and [#390](https://github.com/PaulLeCam/react-leaflet/pull/390) by *extend1994*).
+
 ## v1.7.0 (2017-09-26)
 
 - [internal] Added support for building the library using node 6 ([PR #376](https://github.com/PaulLeCam/react-leaflet/pull/376) by *tusbar*).
