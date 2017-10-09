@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Map, Pane, TileLayer, Rectangle } from '../../src'
+import { Map, Pane, Rectangle, TileLayer } from '../../src'
 
 const outer = [[50.505, -29.09], [52.505, 29.09]]
 const inner = [[49.505, -2.09], [53.505, 2.09]]

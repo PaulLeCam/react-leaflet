@@ -1,6 +1,7 @@
-## master (unreleased)
+## v1.7.1 (2017-10-09)
 
-Added UMD build to CDNJS ([PR #11863 in cdnjs/cdnjs](https://github.com/cdnjs/cdnjs/pull/11863) and [#390](https://github.com/PaulLeCam/react-leaflet/pull/390) by *extend1994*).
+- Added UMD build to CDNJS ([PR #11863 in cdnjs/cdnjs](https://github.com/cdnjs/cdnjs/pull/11863) and [#390](https://github.com/PaulLeCam/react-leaflet/pull/390) by *extend1994*).
+- Fixed setting the default pane for `Popup` and `Tooltip` ([PR #394](https://github.com/PaulLeCam/react-leaflet/pull/394) by *RichardWithnell*).
 
 ## v1.7.0 (2017-09-26)
 
