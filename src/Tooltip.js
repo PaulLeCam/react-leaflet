@@ -30,6 +30,10 @@ export default class Tooltip extends MapComponent<LeafletElement, Props> {
     pane: PropTypes.string,
   }
 
+  static defaultProps = {
+    pane: 'tooltipPane',
+  }
+
   createLeafletElement(props: Props): LeafletElement {
     return new LeafletTooltip(
       this.getOptions(props),
