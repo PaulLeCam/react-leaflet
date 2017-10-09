@@ -35,6 +35,10 @@ export default class Popup extends MapComponent<LeafletElement, Props> {
     pane: PropTypes.string,
   }
 
+  static defaultProps = {
+    pane: 'popupPane',
+  }
+
   getOptions(props: Props): Props {
     return {
       ...super.getOptions(props),
