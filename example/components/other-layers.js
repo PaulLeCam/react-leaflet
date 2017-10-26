@@ -18,7 +18,7 @@ export default class OtherLayersExample extends Component {
       <Map center={center} zoom={13}>
         <TileLayer
           attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
-          url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <LayerGroup>
           <Circle center={center} fillColor="blue" radius={200} />

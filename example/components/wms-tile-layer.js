@@ -23,7 +23,7 @@ export default class WMSTileLayerExample extends Component {
         onClick={this.onClick}>
         <TileLayer
           attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
-          url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <WMSTileLayer
           layers={this.state.bluemarble ? 'nasa:bluemarble' : 'ne:ne'}

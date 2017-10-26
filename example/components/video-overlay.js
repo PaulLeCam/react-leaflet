@@ -15,7 +15,7 @@ export default class VideoOverlayExample extends Component {
       <Map center={[25, -100]} onClick={this.onTogglePlay} zoom={4}>
         <TileLayer
           attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
-          url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <VideoOverlay
           bounds={[[32, -130], [13, -100]]}

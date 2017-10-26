@@ -23,13 +23,13 @@ export default class LayersControlExample extends Component {
           <BaseLayer checked name="OpenStreetMap.Mapnik">
             <TileLayer
               attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
-              url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
           </BaseLayer>
           <BaseLayer name="OpenStreetMap.BlackAndWhite">
             <TileLayer
               attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
-              url="http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png"
+              url="https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png"
             />
           </BaseLayer>
           <Overlay name="Marker with popup">

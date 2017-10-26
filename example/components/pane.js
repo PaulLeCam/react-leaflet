@@ -26,7 +26,7 @@ export default class PaneExample extends Component {
       <Map bounds={outer}>
         <TileLayer
           attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
-          url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         {this.state.render ? (
           <Pane name="cyan-rectangle" style={{ zIndex: 500 }}>
