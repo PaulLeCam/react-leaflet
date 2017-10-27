@@ -34,7 +34,7 @@ export default class VectorLayersExample extends Component {
       <Map center={center} zoom={13}>
         <TileLayer
           attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
-          url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <Circle center={center} fillColor="blue" radius={200} />
         <CircleMarker center={[51.51, -0.12]} color="red" radius={20}>

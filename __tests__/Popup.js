@@ -14,7 +14,7 @@ describe('Popup', () => {
 
     renderIntoDocument(
       <Map center={position} zoom={10}>
-        <TileLayer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png" />
+        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
         <Popup
           position={position}
           ref={function(e) {
@@ -72,7 +72,7 @@ describe('Popup', () => {
 
         return (
           <Map center={position} ref="map" zoom={10}>
-            <TileLayer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png" />
+            <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
             {popup}
           </Map>
         )

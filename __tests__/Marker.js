@@ -13,7 +13,7 @@ describe('Marker', () => {
 
     renderIntoDocument(
       <Map center={position} zoom={10}>
-        <TileLayer url="http://{s}.tile.osm.org/{z}/{x}/{y}.png" />
+        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
         <Marker position={position} />
       </Map>,
     )
