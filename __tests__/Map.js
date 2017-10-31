@@ -1,5 +1,6 @@
 /* global describe, expect, it */
 
+import ReactDOM from 'react-dom'
 import React, { Component } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { renderIntoDocument } from 'react-dom/test-utils'
@@ -106,5 +107,86 @@ describe('Map', () => {
     expect(mapLeaflet.getBounds()).toEqual(firstBounds)
     component.updatePosition()
     expect(mapLeaflet.getBounds()).toEqual(secondBounds)
+  })
+
+  it('passes viewport options', () => {
+    const firstBounds = [[0, 0], [2, 2]]
+    const secondBounds = [[0, 0], [-2, -2]]
+
+    class TestComponent extends Component {
+      constructor() {
+        super()
+        this.state = {
+          bounds: firstBounds,
+        }
+      }
+      getLeafletMap() {
+        return this.refs.map.leafletElement
+      }
+
+      updatePosition() {
+        this.setState({
+          bounds: secondBounds,
+        })
+      }
+      render() {
+        const viewport = {
+          center: [2.1, 4.3],
+          zoom: 5,
+        }
+
+        return (
+          <Map
+            bounds={this.state.bounds}
+            viewport={viewport}
+            ref="map"
+          />
+        )
+      }
+    }
+
+    const component = renderIntoDocument(<TestComponent />)
+    const mapLeaflet = component.getLeafletMap()
+
+    expect(mapLeaflet.getBounds()).toEqual(firstBounds)
+    expect(mapLeaflet.getCenter().lat).toBe(2.1)
+    expect(mapLeaflet.getCenter().lng).toBe(4.3)
+    expect(mapLeaflet.getZoom()).toBe(5)
+    component.updatePosition()
+  })
+  it('removes leaflet element on close', () => {
+    const firstBounds = [[0, 0], [2, 2]]
+
+    class TestComponent extends Component {
+      constructor() {
+        super()
+        this.state = {
+          bounds: firstBounds,
+        }
+      }
+      getLeafletMap() {
+        return this.refs.map.leafletElement
+      }
+
+      render() {
+        return (
+          <Map
+            bounds={this.state.bounds}
+            ref="map"
+          />
+        )
+      }
+    }
+
+    const component = renderIntoDocument(<TestComponent />)
+    const mapLeaflet = component.getLeafletMap()
+
+    expect(mapLeaflet.getBounds()).toEqual(firstBounds)
+    // eslint-disable-next-line react/no-find-dom-node
+    ReactDOM.unmountComponentAtNode(ReactDOM.findDOMNode(component).parentNode)
+    // slight timeout to ensure teardown.
+    setTimeout(() => {
+      expect(mapLeaflet).toBe(null)
+    })
   })
 })

@@ -14,9 +14,11 @@
     "build:flow": "flow-copy-source src lib && flow-copy-source src es",
     "build": "npm run clean && npm run build:cjs && npm run build:es && npm run build:flow && npm run build:umd && npm run build:umd:min",
     "jest": "cross-env BABEL_ENV=development NODE_ENV=test jest",
+    "jestwatch": "cross-env BABEL_ENV=development NODE_ENV=test jest --watch",
     "lint": "eslint ./src",
     "flow": "flow check",
     "test": "npm run lint && npm run flow && npm run jest",
+    "testwatch": "npm run lint && npm run flow && npm run jestwatch",
     "start": "npm run test && npm run build",
     "prepublishOnly": "npm run build",
     "examples": "webpack-dev-server --config ./example/webpack.config.babel.js --progress"
