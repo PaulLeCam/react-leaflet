@@ -2,7 +2,7 @@
 
 - Updated docs to use `https` for URLs ([PR #403](https://github.com/PaulLeCam/react-leaflet/pull/403) by *sehaas*).
 - Fixed initial props in `WMSTileLayer` ([PR #405](https://github.com/PaulLeCam/react-leaflet/pull/405) by *markhepburn*).
-- Added tests for viewport and teardown logic in the `Map` component ([PR #405](https://github.com/PaulLeCam/react-leaflet/pull/406) by *uxtx*).
+- Added tests for viewport and teardown logic in the `Map` component ([PR #406](https://github.com/PaulLeCam/react-leaflet/pull/406) by *uxtx*).
 
 ## v1.7.1 (2017-10-09)
 
