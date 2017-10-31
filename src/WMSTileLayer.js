@@ -21,7 +21,7 @@ export default class WMSTileLayer extends GridLayer<LeafletElement, Props> {
   }
 
   createLeafletElement(props: Props): LeafletElement {
-    const { url, opacity: _o, zIndex: _z, ...params } = props
+    const { url, ...params } = props
     return new TileLayer.WMS(url, this.getOptions(params))
   }
 
