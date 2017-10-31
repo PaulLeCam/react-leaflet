@@ -1,3 +1,9 @@
+## v1.7.2 (2017-10-31)
+
+- Updated docs to use `https` for URLs ([PR #403](https://github.com/PaulLeCam/react-leaflet/pull/403) by *sehaas*).
+- Fixed initial props in `WMSTileLayer` ([PR #405](https://github.com/PaulLeCam/react-leaflet/pull/405) by *markhepburn*).
+- Added tests for viewport and teardown logic in the `Map` component ([PR #405](https://github.com/PaulLeCam/react-leaflet/pull/406) by *uxtx*).
+
 ## v1.7.1 (2017-10-09)
 
 - Added UMD build to CDNJS ([PR #11863 in cdnjs/cdnjs](https://github.com/cdnjs/cdnjs/pull/11863) and [#390](https://github.com/PaulLeCam/react-leaflet/pull/390) by *extend1994*).
