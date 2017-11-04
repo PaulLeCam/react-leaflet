@@ -62,11 +62,15 @@ export default class Tooltip extends MapComponent<LeafletElement, Props> {
   }
 
   componentWillUnmount() {
-    this.context.popupContainer.off({
+    const { popupContainer } = this.context
+
+    this.removeTooltipContent()
+    popupContainer.off({
       tooltipopen: this.onTooltipOpen,
       tooltipclose: this.onTooltipClose,
     })
-    this.context.map.removeLayer(this.leafletElement)
+    popupContainer.unbindTooltip(this.leafletElement)
+
     super.componentWillUnmount()
   }
 

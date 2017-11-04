@@ -12,7 +12,8 @@
     "build:umd": "cross-env BABEL_ENV=rollup NODE_ENV=development rollup -c",
     "build:umd:min": "cross-env BABEL_ENV=rollup NODE_ENV=production rollup -c",
     "build:flow": "flow-copy-source src lib && flow-copy-source src es",
-    "build": "npm run clean && npm run build:cjs && npm run build:es && npm run build:flow && npm run build:umd && npm run build:umd:min",
+    "build":
+      "npm run clean && npm run build:cjs && npm run build:es && npm run build:flow && npm run build:umd && npm run build:umd:min",
     "jest": "cross-env BABEL_ENV=development NODE_ENV=test jest",
     "jest:watch": "cross-env BABEL_ENV=development NODE_ENV=test jest --watch",
     "lint": "eslint ./src",
@@ -21,18 +22,14 @@
     "test:watch": "npm run lint && npm run flow && npm run jest:watch",
     "start": "npm run test && npm run build",
     "prepublishOnly": "npm run build",
-    "examples": "webpack-dev-server --config ./example/webpack.config.babel.js --progress"
+    "examples":
+      "webpack-dev-server --config ./example/webpack.config.babel.js --progress"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/PaulLeCam/react-leaflet.git"
   },
-  "keywords": [
-    "react-component",
-    "react",
-    "leaflet",
-    "map"
-  ],
+  "keywords": ["react-component", "react", "leaflet", "map"],
   "author": "Paul Le Cam <paul@ulem.net>",
   "license": "MIT",
   "bugs": {
@@ -65,14 +62,14 @@
     "babel-preset-stage-1": "^6.24.1",
     "cross-env": "^5.1.1",
     "eslint": "^4.10.0",
-    "eslint-config-prettier": "^2.6.0",
+    "eslint-config-prettier": "^2.7.0",
     "eslint-plugin-flowtype": "^2.39.1",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-node": "^5.2.1",
     "eslint-plugin-prettier": "^2.3.1",
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-react": "^7.4.0",
-    "flow-bin": "^0.57.3",
+    "flow-bin": "^0.58.0",
     "flow-copy-source": "^1.2.1",
     "jest-cli": "^21.2.1",
     "leaflet": "^1.2.0",
@@ -90,13 +87,11 @@
     "rollup-plugin-replace": "^2.0.0",
     "rollup-plugin-uglify": "^2.0.1",
     "webpack": "^3.8.1",
-    "webpack-dev-server": "^2.9.3"
+    "webpack-dev-server": "^2.9.4"
   },
   "jest": {
     "collectCoverage": true,
-    "setupFiles": [
-      "raf/polyfill"
-    ],
+    "setupFiles": ["raf/polyfill"],
     "transform": {
       ".*": "<rootDir>/node_modules/babel-jest"
     }

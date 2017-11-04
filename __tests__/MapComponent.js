@@ -47,9 +47,11 @@ describe('MapComponent', () => {
       }
 
       render() {
-        return this.state.bindEvent
-          ? <TestComponent onClick={callback} ref="c" />
-          : <TestComponent ref="c" />
+        return this.state.bindEvent ? (
+          <TestComponent onClick={callback} ref="c" />
+        ) : (
+          <TestComponent ref="c" />
+        )
       }
     }
 

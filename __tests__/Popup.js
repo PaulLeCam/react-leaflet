@@ -64,11 +64,11 @@ describe('Popup', () => {
 
       render() {
         const position = [0, 0]
-        const popup = this.state.show
-          ? <Popup position={position}>
-              <span>Test Popup</span>
-            </Popup>
-          : null
+        const popup = this.state.show ? (
+          <Popup position={position}>
+            <span>Test Popup</span>
+          </Popup>
+        ) : null
 
         return (
           <Map center={position} ref="map" zoom={10}>

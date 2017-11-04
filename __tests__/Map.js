@@ -14,7 +14,11 @@ describe('Map', () => {
         return <span>test</span>
       }
     }
-    const component = <Map><TestComponent /></Map>
+    const component = (
+      <Map>
+        <TestComponent />
+      </Map>
+    )
     const html = renderToStaticMarkup(component)
 
     expect(html).toBe('<div></div>')
@@ -135,13 +139,7 @@ describe('Map', () => {
           zoom: 5,
         }
 
-        return (
-          <Map
-            bounds={this.state.bounds}
-            viewport={viewport}
-            ref="map"
-          />
-        )
+        return <Map bounds={this.state.bounds} viewport={viewport} ref="map" />
       }
     }
 
@@ -169,12 +167,7 @@ describe('Map', () => {
       }
 
       render() {
-        return (
-          <Map
-            bounds={this.state.bounds}
-            ref="map"
-          />
-        )
+        return <Map bounds={this.state.bounds} ref="map" />
       }
     }
 

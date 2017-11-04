@@ -1,3 +1,7 @@
+## v1.7.3 (2017-11-04)
+
+Fixed `Tooltip` teardown logic.
+
 ## v1.7.2 (2017-10-31)
 
 - Updated docs to use `https` for URLs ([PR #403](https://github.com/PaulLeCam/react-leaflet/pull/403) by *sehaas*).
