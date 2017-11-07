@@ -220,7 +220,7 @@ All other properties are passed as parameters and dynamic, they will cause the l
 
 **Dynamic properties**
 - `url: string` (required)
-- `bounds: bounds` (optional)
+- `bounds: bounds` (required)
 - `opacity: number` (optional)
 - `zIndex: number` (optional)
 
@@ -230,7 +230,7 @@ All other properties are passed as parameters and dynamic, they will cause the l
 
 **Dynamic properties**
 - `url: string | string[] | HTMLVideoElement` (required)
-- `bounds: bounds` (optional)
+- `bounds: bounds` (required)
 - `opacity: number` (optional)
 - `play: boolean` (optional): can be used to declaratively play and pause the video.
 - `zIndex: number` (optional)

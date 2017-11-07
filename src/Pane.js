@@ -123,7 +123,9 @@ export default class Pane extends Component<Props, State> {
         map.createPane(name, this.getParentPane())
       } else {
         const message = isDefault
-          ? `You must use a unique name for a pane that is not a default leaflet pane (${name})`
+          ? `You must use a unique name for a pane that is not a default leaflet pane (${
+              name
+            })`
           : `A pane with this name already exists. (${name})`
         warning(false, message)
       }
