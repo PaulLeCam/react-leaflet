@@ -102,7 +102,7 @@ class ControlledLayer extends Component<ControlledLayerProps> {
 class BaseLayer extends ControlledLayer {
   static propTypes = controlledLayerPropTypes
 
-  addLayer(layer) {
+  addLayer(layer: Layer) {
     this.layer = layer // Keep layer reference to handle dynamic changes of props
     const { addBaseLayer, checked, name } = this.props
     addBaseLayer(layer, name, checked)
@@ -112,7 +112,7 @@ class BaseLayer extends ControlledLayer {
 class Overlay extends ControlledLayer {
   static propTypes = controlledLayerPropTypes
 
-  addLayer(layer) {
+  addLayer(layer: Layer) {
     this.layer = layer // Keep layer reference to handle dynamic changes of props
     const { addOverlay, checked, name } = this.props
     addOverlay(layer, name, checked)
