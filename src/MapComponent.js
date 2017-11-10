@@ -51,7 +51,7 @@ export default class MapComponent<
       (res, prop) => {
         if (EVENTS_RE.test(prop)) {
           const key = prop.replace(EVENTS_RE, (match, p) => p.toLowerCase())
-          if (props[prop]) {
+          if (props[prop] != null) {
             res[key] = props[prop]
           }
         }

@@ -1,5 +1,7 @@
 [ignore]
 .*/node_modules/fbjs/.*
+.*/es/.*
+.*/lib/.*
 
 [include]
 

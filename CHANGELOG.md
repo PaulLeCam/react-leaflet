@@ -1,3 +1,7 @@
+## v1.7.4 (2017-11-10)
+
+Updated Flow types for Flow v0.59 ([PR #412](https://github.com/PaulLeCam/react-leaflet/pull/412) by *rsolomon*).
+
 ## v1.7.3 (2017-11-04)
 
 Fixed `Tooltip` teardown logic.
