@@ -1,11 +1,12 @@
 // @flow
 
-import { CircleMarker as LeafletCircleMarker } from 'leaflet'
+import { CircleMarker as LeafletCircleMarker, type Layer } from 'leaflet'
 import PropTypes from 'prop-types'
 
 import Path from './Path'
 import children from './propTypes/children'
 import latlng from './propTypes/latlng'
+import layer from './propTypes/layer'
 import type { LatLng, PathProps } from './types'
 
 type LeafletElement = LeafletCircleMarker
@@ -19,6 +20,16 @@ export default class CircleMarker extends Path<LeafletElement, Props> {
     center: latlng.isRequired,
     children: children,
     radius: PropTypes.number,
+  }
+
+  static childContextTypes = {
+    popupContainer: layer,
+  }
+
+  getChildContext(): { popupContainer: Layer } {
+    return {
+      popupContainer: this.leafletElement,
+    }
   }
 
   createLeafletElement(props: Props): LeafletElement {

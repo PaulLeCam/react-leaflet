@@ -4,15 +4,16 @@ React components for Leaflet maps.
 
 ## [Documentation](docs/README.md)
 
-- [Getting started](docs/Getting%20started.md)
-- [How it works](docs/How%20it%20works.md)
-- [API](docs/API.md)
-- [Extending](docs/Extending.md)
-- [Plugins](docs/Plugins.md)
+* [Getting started](docs/Getting%20started.md)
+* [How it works](docs/How%20it%20works.md)
+* [API](docs/API.md)
+* [Extending](docs/Extending.md)
+* [Plugins](docs/Plugins.md)
 
 ## Examples
 
-Run a simple example using [WebpackBin](https://www.webpackbin.com/bins/-Kl_ZeUx4I05ETYoT26O).  
+Run a simple example using
+[WebpackBin](https://www.webpackbin.com/bins/-Kl_ZeUx4I05ETYoT26O).\
 Other examples are available in the [example](example) folder of this project.
 
 ## Changes
@@ -25,9 +26,11 @@ See [CONTRIBUTING](CONTRIBUTING.md) file.
 
 ## Support
 
-Please **do not** use GitHub issues for support, but instead post your questions on [StackOverflow](https://stackoverflow.com/) using the [`react-leaflet` tag](https://stackoverflow.com/questions/tagged/react-leaflet).
+Please **do not** use GitHub issues for support, but instead post your questions
+on [StackOverflow](https://stackoverflow.com/) using the
+[`react-leaflet` tag](https://stackoverflow.com/questions/tagged/react-leaflet).
 
 ## License
 
-MIT  
+MIT\
 See [LICENSE](LICENSE) file.

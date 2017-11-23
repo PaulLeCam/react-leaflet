@@ -7,7 +7,7 @@ import {
   type CRS,
   type Renderer,
 } from 'leaflet'
-import { isUndefined, omit } from 'lodash'
+import { forEach, isUndefined, omit } from 'lodash'
 import PropTypes from 'prop-types'
 import React, { type Node } from 'react'
 
@@ -176,11 +176,15 @@ export default class Map extends MapComponent<LeafletElement, Props> {
     } = toProps
 
     if (className !== fromProps.className) {
-      if (fromProps.className != null) {
-        DomUtil.removeClass(this.container, fromProps.className)
+      if (fromProps.className != null && fromProps.className.length > 0) {
+        forEach(fromProps.className.split(' '), cls => {
+          DomUtil.removeClass(this.container, cls)
+        })
       }
-      if (className != null) {
-        DomUtil.addClass(this.container, className)
+      if (className != null && className.length > 0) {
+        forEach(className.split(' '), cls => {
+          DomUtil.addClass(this.container, cls)
+        })
       }
     }
 

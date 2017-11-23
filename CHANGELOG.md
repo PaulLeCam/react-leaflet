@@ -1,3 +1,8 @@
+## v1.7.6 (2017-11-23)
+
+* Fixed supporting `Popup` children in `CircleMarker`.
+* Fixed updating multiple classes in the `className` prop of `Map`.
+
 ## v1.7.5 (2017-11-20)
 
 Fixed unmounting `Tooltip` with `interactive` prop.
