@@ -1,3 +1,7 @@
+## v1.7.7 (2017-11-27)
+
+* More permissive support for the `className` prop of `Map`.
+
 ## v1.7.6 (2017-11-23)
 
 * Fixed supporting `Popup` children in `CircleMarker`.

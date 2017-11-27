@@ -35,11 +35,11 @@ const OTHER_PROPS = [
   'whenReady',
 ]
 
-const normalizeCenter = (pos: LatLng): [number, number] => {
-  return Array.isArray(pos)
-    ? [pos[0], pos[1]]
-    : [pos.lat, pos.lon ? pos.lon : pos.lng]
-}
+const normalizeCenter = (pos: LatLng): [number, number] =>
+  Array.isArray(pos) ? [pos[0], pos[1]] : [pos.lat, pos.lon ? pos.lon : pos.lng]
+
+const splitClassName = (className: string = ''): Array<string> =>
+  className.split(' ').filter(Boolean)
 
 type LeafletElement = LeafletMap
 
@@ -177,12 +177,12 @@ export default class Map extends MapComponent<LeafletElement, Props> {
 
     if (className !== fromProps.className) {
       if (fromProps.className != null && fromProps.className.length > 0) {
-        forEach(fromProps.className.split(' '), cls => {
+        forEach(splitClassName(fromProps.className), cls => {
           DomUtil.removeClass(this.container, cls)
         })
       }
       if (className != null && className.length > 0) {
-        forEach(className.split(' '), cls => {
+        forEach(splitClassName(className), cls => {
           DomUtil.addClass(this.container, cls)
         })
       }
