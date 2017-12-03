@@ -12,7 +12,8 @@
     "build:umd": "cross-env BABEL_ENV=rollup NODE_ENV=development rollup -c",
     "build:umd:min": "cross-env BABEL_ENV=rollup NODE_ENV=production rollup -c",
     "build:flow": "flow-copy-source src lib && flow-copy-source src es",
-    "build": "npm run clean && npm run build:cjs && npm run build:es && npm run build:flow && npm run build:umd && npm run build:umd:min",
+    "build":
+      "npm run clean && npm run build:cjs && npm run build:es && npm run build:flow && npm run build:umd && npm run build:umd:min",
     "jest": "cross-env BABEL_ENV=development NODE_ENV=test jest",
     "jest:watch": "cross-env BABEL_ENV=development NODE_ENV=test jest --watch",
     "lint": "eslint ./src",
@@ -21,18 +22,14 @@
     "test:watch": "npm run lint && npm run flow && npm run jest:watch",
     "start": "npm run test && npm run build",
     "prepublishOnly": "npm run build",
-    "examples": "webpack-dev-server --config ./example/webpack.config.babel.js --progress"
+    "examples":
+      "webpack-dev-server --config ./example/webpack.config.babel.js --progress"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/PaulLeCam/react-leaflet.git"
   },
-  "keywords": [
-    "react-component",
-    "react",
-    "leaflet",
-    "map"
-  ],
+  "keywords": ["react-component", "react", "leaflet", "map"],
   "author": "Paul Le Cam <paul@ulem.net>",
   "license": "MIT",
   "bugs": {
@@ -53,7 +50,7 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
-    "babel-eslint": "^8.0.2",
+    "babel-eslint": "^8.0.3",
     "babel-jest": "^21.2.0",
     "babel-loader": "^7.1.2",
     "babel-plugin-dev-expression": "^0.2.1",
@@ -64,7 +61,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-1": "^6.24.1",
     "cross-env": "^5.1.1",
-    "eslint": "^4.12.0",
+    "eslint": "^4.12.1",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-flowtype": "^2.39.1",
     "eslint-plugin-import": "^2.8.0",
@@ -72,7 +69,7 @@
     "eslint-plugin-prettier": "^2.3.1",
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-react": "^7.5.1",
-    "flow-bin": "^0.59.0",
+    "flow-bin": "^0.60.1",
     "flow-copy-source": "^1.2.1",
     "jest-cli": "^21.2.1",
     "leaflet": "^1.2.0",
@@ -80,8 +77,8 @@
     "prettier-eslint": "^8.2.2",
     "prop-types": "^15.6.0",
     "raf": "^3.4.0",
-    "react": "^16.1.1",
-    "react-dom": "^16.1.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
     "rimraf": "^2.6.2",
     "rollup": "^0.52.0",
     "rollup-plugin-babel": "^3.0.2",
@@ -89,14 +86,12 @@
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-replace": "^2.0.0",
     "rollup-plugin-uglify": "^2.0.1",
-    "webpack": "^3.8.1",
+    "webpack": "^3.9.1",
     "webpack-dev-server": "^2.9.5"
   },
   "jest": {
     "collectCoverage": true,
-    "setupFiles": [
-      "raf/polyfill"
-    ],
+    "setupFiles": ["raf/polyfill"],
     "transform": {
       ".*": "<rootDir>/node_modules/babel-jest"
     }

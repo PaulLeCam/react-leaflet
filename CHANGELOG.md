@@ -1,6 +1,11 @@
+## v1.7.8 (2017-12-03)
+
+Update `Popup` and `Tooltip` layout after render
+([PR #423](https://github.com/PaulLeCam/react-leaflet/pull/423) by _jeffchan_).
+
 ## v1.7.7 (2017-11-27)
 
-* More permissive support for the `className` prop of `Map`.
+More permissive support for the `className` prop of `Map`.
 
 ## v1.7.6 (2017-11-23)
 

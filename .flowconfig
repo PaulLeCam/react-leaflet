@@ -7,6 +7,7 @@
 
 [lints]
 all=warn
+unclear-type=off
 
 [options]
 include_warnings=true

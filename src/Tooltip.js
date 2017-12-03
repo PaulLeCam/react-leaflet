@@ -102,8 +102,10 @@ export default class Tooltip extends MapComponent<LeafletElement, Props> {
       render(
         Children.only(this.props.children),
         this.leafletElement._contentNode,
+        () => {
+          this.leafletElement.update()
+        },
       )
-      this.leafletElement.update()
     }
   }
 
