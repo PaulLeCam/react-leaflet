@@ -6,6 +6,7 @@ import React, {
   cloneElement,
   Component,
   Children,
+  Fragment,
   type ChildrenArray,
   type Element,
 } from 'react'
@@ -198,7 +199,7 @@ export default class LayersControl extends MapControl<
     const children = Children.map(this.props.children, child => {
       return child ? cloneElement(child, this.controlProps) : null
     })
-    return <div style={{ display: 'none' }}>{children}</div>
+    return <Fragment>{children}</Fragment>
   }
 }
 

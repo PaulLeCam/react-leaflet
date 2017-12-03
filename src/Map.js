@@ -292,16 +292,13 @@ export default class Map extends MapComponent<LeafletElement, Props> {
   }
 
   render() {
-    const map = this.leafletElement
-    const children = map ? this.props.children : null
-
     return (
       <div
         className={this.className}
         id={this.props.id}
         ref={this.bindContainer}
         style={this.props.style}>
-        {children}
+        {this.leafletElement ? this.props.children : null}
       </div>
     )
   }

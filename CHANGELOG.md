@@ -1,3 +1,8 @@
+## v2 (WIP)
+
+* Updated React dependency to v16.2.0.
+* Replaced wrapping `div` elements with `Fragment`.
+
 ## v1.7.8 (2017-12-03)
 
 Update `Popup` and `Tooltip` layout after render

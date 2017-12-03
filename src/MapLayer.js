@@ -2,7 +2,7 @@
 
 import type { Layer } from 'leaflet'
 import PropTypes from 'prop-types'
-import React, { Children } from 'react'
+import React, { Children, Fragment } from 'react'
 
 import MapComponent from './MapComponent'
 import children from './propTypes/children'
@@ -58,7 +58,7 @@ export default class MapLayer<
   render() {
     const { children } = this.props
     if (Children.count(children) > 1) {
-      return <div style={{ display: 'none' }}>{children}</div>
+      return <Fragment>{children}</Fragment>
     }
     return children == null ? null : children
   }
