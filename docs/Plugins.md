@@ -17,6 +17,7 @@ open pull requests to update this list!
 * [`react-leaflet-heatmap-layer`](https://www.npmjs.com/package/react-leaflet-heatmap-layer)
 * [`react-leaflet-marker-layer`](https://www.npmjs.com/package/react-leaflet-marker-layer)
 * [`react-leaflet-pane`](https://www.npmjs.com/package/react-leaflet-pane)
+* [`react-leaflet-rotatedmarker`](https://www.npmjs.com/package/react-leaflet-rotatedmarker)
 * [`react-leaflet-shapefile`](https://www.npmjs.com/package/react-leaflet-shapefile)
 * [`react-leaflet-zoom-display`](https://www.npmjs.com/package/react-leaflet-zoom-display)
 * [`react-leaflet-sidebarv2`](https://www.npmjs.com/package/react-leaflet-sidebarv2)
