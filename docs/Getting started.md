@@ -21,6 +21,8 @@ React-Leaflet allows to convert this
 ```js
 import L from 'leaflet'
 
+import 'leaflet/dist/leaflet.css'
+
 const position = [51.505, -0.09]
 const map = L.map('map').setView(position, 13)
 
@@ -40,6 +42,8 @@ to React components:
 import React from 'react'
 import { render } from 'react-dom'
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet'
+
+import 'leaflet/dist/leaflet.css'
 
 const position = [51.505, -0.09]
 const map = (
