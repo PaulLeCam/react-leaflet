@@ -9,6 +9,7 @@
 [lints]
 all=warn
 unclear-type=off
+unsafe-getters-setters=off
 
 [options]
 include_warnings=true

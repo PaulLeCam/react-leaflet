@@ -14,14 +14,14 @@ const config = {
         ? 'dist/react-leaflet.min.js'
         : 'dist/react-leaflet.js',
     format: 'umd',
+    globals: {
+      leaflet: 'L',
+      react: 'React',
+      'react-dom': 'ReactDOM',
+    },
     name: 'ReactLeaflet',
   },
   external: ['leaflet', 'react', 'react-dom'],
-  globals: {
-    leaflet: 'L',
-    react: 'React',
-    'react-dom': 'ReactDOM',
-  },
   plugins: [
     nodeResolve(),
     babel({
