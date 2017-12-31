@@ -44,6 +44,7 @@ const siteConfig = {
   },
   scripts: ['https://buttons.github.io/buttons.js'],
   repoUrl: 'https://github.com/PaulLeCam/react-leaflet',
+  cname: 'react-leaflet.js.org',
 }
 
 module.exports = siteConfig
