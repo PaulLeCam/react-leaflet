@@ -1,0 +1,58 @@
+<html lang="en"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Class hierarchy · React-Leaflet</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta property="og:title" content="Class hierarchy · React-Leaflet"/><meta property="og:type" content="website"/><meta property="og:url" content="https://PaulLeCam.github.io/react-leaflet/index.html"/><meta property="og:description" content="The components exposed by React-Leaflet inherit from the following hierarchy:"/><link rel="shortcut icon" href="/react-leaflet/img/favicon.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/react-leaflet/css/main.css"/></head><body class="sideNavVisible"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/react-leaflet/"><h2 class="headerTitle">React-Leaflet</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li><a href="/react-leaflet/docs/en/intro.html" target="_self">Getting started</a></li><li><a href="/react-leaflet/docs/en/prop-types.html" target="_self">API</a></li><li><a href="/react-leaflet/en/help.html" target="_self">Help</a></li><li><a href="https://github.com/PaulLeCam/react-leaflet" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Guides</span></h2></div><div class="navGroups"><div class="navGroup navGroupActive"><h3>Getting started</h3><ul><li class="navListItem"><a class="navItem" href="/react-leaflet/docs/en/intro.html">Introduction</a></li><li class="navListItem"><a class="navItem" href="/react-leaflet/docs/en/setup.html">Leaflet setup</a></li><li class="navListItem"><a class="navItem" href="/react-leaflet/docs/en/installation.html">Installation</a></li><li class="navListItem"><a class="navItem" href="/react-leaflet/docs/en/examples.html">Examples</a></li></ul></div><div class="navGroup navGroupActive"><h3>API</h3><ul><li class="navListItem"><a class="navItem" href="/react-leaflet/docs/en/prop-types.html">PropTypes</a></li><li class="navListItem"><a class="navItem" href="/react-leaflet/docs/en/events.html">Events</a></li><li class="navListItem"><a class="navItem" href="/react-leaflet/docs/en/components.html">Components</a></li></ul></div><div class="navGroup navGroupActive"><h3>Guides</h3><ul><li class="navListItem"><a class="navItem" href="/react-leaflet/docs/en/custom-components.html">Creating custom components</a></li><li class="navListItem navListItemActive"><a class="navItem navItemActive" href="/react-leaflet/docs/en/class-hierarchy.html">Class hierarchy</a></li></ul></div><div class="navGroup navGroupActive"><h3>Extra</h3><ul><li class="navListItem"><a class="navItem" href="/react-leaflet/docs/en/plugins.html">Third-party plugins</a></li></ul></div></div></section></div><script>
+          var toggler = document.getElementById('navToggler');
+          var nav = document.getElementById('docsNav');
+          toggler.onclick = function() {
+            nav.classList.toggle('docsSliderActive');
+          };
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/PaulLeCam/react-leaflet/edit/master/docs/class-hierarchy.md" target="_blank">Edit</a><h1>Class hierarchy</h1></header><article><div><span><p>The components exposed by React-Leaflet inherit from the following hierarchy:</p>
+<ul>
+<li><code>React.Component</code>
+<ul>
+<li><code>ControlledLayer</code>: base class used by <code>LayersControl</code> to handle adding and
+removing its layers.
+<ul>
+<li><a href="/react-leaflet/docs/en/components.html#layerscontrolbaselayer"><code>LayersControl.BaseLayer</code></a></li>
+<li><a href="/react-leaflet/docs/en/components.html#layerscontroloverlay"><code>LayersControl.Overlay</code></a></li>
+</ul></li>
+<li><a href="/react-leaflet/docs/en/components.html#mapcomponent"><code>MapComponent</code></a>: base class handling extracting
+and updating Leaflet events.
+<ul>
+<li><a href="/react-leaflet/docs/en/components.html#map"><code>Map</code></a>: top-level component instantiating a Leaflet
+map and providing it to its children.</li>
+<li><a href="/react-leaflet/docs/en/components.html#maplayer"><code>MapLayer</code></a>: base class for all map layers,
+handling adding and removing the layer from the map.
+<ul>
+<li><a href="/react-leaflet/docs/en/components.html#gridlayer"><code>GridLayer</code></a>: base class for tile layers,
+handles opacity and z-index.
+<ul>
+<li><a href="/react-leaflet/docs/en/components.html#tilelayer"><code>TileLayer</code></a></li>
+<li><a href="/react-leaflet/docs/en/components.html#wmstilelayer"><code>WMSTileLayer</code></a></li>
+</ul></li>
+<li><a href="/react-leaflet/docs/en/components.html#imageoverlay"><code>ImageOverlay</code></a></li>
+<li><a href="/react-leaflet/docs/en/components.html#layergroup"><code>LayerGroup</code></a></li>
+<li><a href="/react-leaflet/docs/en/components.html#marker"><code>Marker</code></a></li>
+<li><a href="/react-leaflet/docs/en/components.html#path"><code>Path</code></a>: handles styling of vector layers.
+<ul>
+<li><a href="/react-leaflet/docs/en/components.html#circle"><code>Circle</code></a></li>
+<li><a href="/react-leaflet/docs/en/components.html#circlemarker"><code>CircleMarker</code></a></li>
+<li><a href="/react-leaflet/docs/en/components.html#featuregroup"><code>FeatureGroup</code></a></li>
+<li><a href="/react-leaflet/docs/en/components.html#geojson"><code>GeoJSON</code></a></li>
+<li><a href="/react-leaflet/docs/en/components.html#polygon"><code>Polygon</code></a></li>
+<li><a href="/react-leaflet/docs/en/components.html#polyline"><code>Polyline</code></a></li>
+<li><a href="/react-leaflet/docs/en/components.html#rectangle"><code>Rectangle</code></a></li>
+</ul></li>
+</ul></li>
+<li><a href="/react-leaflet/docs/en/components.html#popup"><code>Popup</code></a></li>
+<li><a href="/react-leaflet/docs/en/components.html#tooltip"><code>Tooltip</code></a></li>
+</ul></li>
+<li><a href="/react-leaflet/docs/en/components.html#mapcontrol"><code>MapControl</code></a>: base class for all controls,
+handles positioning.
+<ul>
+<li><a href="/react-leaflet/docs/en/components.html#attributioncontrol"><code>AttributionControl</code></a></li>
+<li><a href="/react-leaflet/docs/en/components.html#layerscontrol"><code>LayersControl</code></a></li>
+<li><a href="/react-leaflet/docs/en/components.html#scalecontrol"><code>ScaleControl</code></a></li>
+<li><a href="/react-leaflet/docs/en/components.html#zoomcontrol"><code>ZoomControl</code></a></li>
+</ul></li>
+</ul></li>
+</ul>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="custom-components.html">← Creating custom components</a><a class="docs-next button" href="plugins.html">Third-party plugins →</a></div></div></div></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/react-leaflet/" class="nav-home"></a><div><h5>Docs</h5><a href="/react-leaflet/docs/en/about.html">Getting started</a><a href="/react-leaflet/docs/en/proptypes.html">API reference</a><a href="/react-leaflet/docs/en/custom-components.html">Guides</a></div><div><h5>Community</h5><a href="https://stackoverflow.com/questions/tagged/react-leaflet">Stack Overflow</a><a href="https://github.com/PaulLeCam/react-leaflet">GitHub</a><a class="github-button" href="https://github.com/PaulLeCam/react-leaflet" data-icon="octicon-star" data-count-href="/PaulLeCam/react-leaflet/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2017 Paul Le Cam and <a href="https://github.com/PaulLeCam/react-leaflet/graphs/contributors">contributors</a>.</section></footer></div></body></html>

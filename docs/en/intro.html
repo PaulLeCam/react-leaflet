@@ -1,0 +1,64 @@
+<html lang="en"><head><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Introduction · React-Leaflet</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta property="og:title" content="Introduction · React-Leaflet"/><meta property="og:type" content="website"/><meta property="og:url" content="https://PaulLeCam.github.io/react-leaflet/index.html"/><meta property="og:description" content="## Core concepts"/><link rel="shortcut icon" href="/react-leaflet/img/favicon.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/react-leaflet/css/main.css"/></head><body class="sideNavVisible"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/react-leaflet/"><h2 class="headerTitle">React-Leaflet</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li><a href="/react-leaflet/docs/en/intro.html" target="_self">Getting started</a></li><li><a href="/react-leaflet/docs/en/prop-types.html" target="_self">API</a></li><li><a href="/react-leaflet/en/help.html" target="_self">Help</a></li><li><a href="https://github.com/PaulLeCam/react-leaflet" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Getting started</span></h2></div><div class="navGroups"><div class="navGroup navGroupActive"><h3>Getting started</h3><ul><li class="navListItem navListItemActive"><a class="navItem navItemActive" href="/react-leaflet/docs/en/intro.html">Introduction</a></li><li class="navListItem"><a class="navItem" href="/react-leaflet/docs/en/setup.html">Leaflet setup</a></li><li class="navListItem"><a class="navItem" href="/react-leaflet/docs/en/installation.html">Installation</a></li><li class="navListItem"><a class="navItem" href="/react-leaflet/docs/en/examples.html">Examples</a></li></ul></div><div class="navGroup navGroupActive"><h3>API</h3><ul><li class="navListItem"><a class="navItem" href="/react-leaflet/docs/en/prop-types.html">PropTypes</a></li><li class="navListItem"><a class="navItem" href="/react-leaflet/docs/en/events.html">Events</a></li><li class="navListItem"><a class="navItem" href="/react-leaflet/docs/en/components.html">Components</a></li></ul></div><div class="navGroup navGroupActive"><h3>Guides</h3><ul><li class="navListItem"><a class="navItem" href="/react-leaflet/docs/en/custom-components.html">Creating custom components</a></li><li class="navListItem"><a class="navItem" href="/react-leaflet/docs/en/class-hierarchy.html">Class hierarchy</a></li></ul></div><div class="navGroup navGroupActive"><h3>Extra</h3><ul><li class="navListItem"><a class="navItem" href="/react-leaflet/docs/en/plugins.html">Third-party plugins</a></li></ul></div></div></section></div><script>
+          var toggler = document.getElementById('navToggler');
+          var nav = document.getElementById('docsNav');
+          toggler.onclick = function() {
+            nav.classList.toggle('docsSliderActive');
+          };
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/PaulLeCam/react-leaflet/edit/master/docs/intro.md" target="_blank">Edit</a><h1>Introduction</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" name="core-concepts"></a><a href="#core-concepts" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Core concepts</h2>
+<p>React-Leaflet uses
+<a href="https://facebook.github.io/react/docs/component-specs.html#lifecycle-methods">⚛️ React's lifecycle methods</a>
+to call the relevant Leaflet handlers, which has a few consequences:</p>
+<h3><a class="anchor" aria-hidden="true" name="dom-rendering"></a><a href="#dom-rendering" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>DOM rendering</h3>
+<p>React <strong>does not</strong> render Leaflet layers to the DOM, this rendering is done by
+Leaflet itself.<br>
+React only renders the map container for the <a href="/react-leaflet/docs/en/components.html#map">Map component</a> and
+potentially empty <code>&lt;div&gt;</code> elements for components having multiple children.</p>
+<h3><a class="anchor" aria-hidden="true" name="component-properties"></a><a href="#component-properties" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Component properties</h3>
+<p>The properties passed to the components are used to create the relevant Leaflet
+instance when the component will mount. When adding a component, all these
+properties should be supported as they are by Leaflet, <strong>however they will not
+be updated in the UI when they change</strong> unless they are referenced in the
+documentation as <em>dynamic</em>, which are the ones handled by the components to call
+the relevant Leaflet method to update it.<br>
+Dynamic properties changes are compared by reference, except for properties documenting
+how their changes are compared in other ways.</p>
+<h3><a class="anchor" aria-hidden="true" name="component-context"></a><a href="#component-context" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Component context</h3>
+<p>React-Leaflet uses <a href="https://facebook.github.io/react/docs/context.html">⚛️ React's context API</a> to make
+Leaflet elements available to other element that need it.<br>
+If you create custom components, you may need to access the following instances from
+the context:</p>
+<ul>
+<li><code>map</code>: The <code>Leaflet.Map</code> instance created by the <code>&lt;Map&gt;</code> component.</li>
+<li><code>layerContainer</code>: The containing layer, for example a <code>LayerGroup</code> instance.
+Defaults to the <code>map</code> value if no other container is set.</li>
+<li><code>popupContainer</code>: The layer that could contain a popup.</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" name="lifecycle-process"></a><a href="#lifecycle-process" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Lifecycle process</h2>
+<ol>
+<li>The top-level <code>Map</code> renders an empty <code>&lt;div&gt;</code> to contain the map.</li>
+<li>The <code>Map</code>'s <code>componentDidMount()</code> handler instantiates a <code>Leaflet.Map()</code> for
+the created <code>&lt;div&gt;</code> with the component properties and sets this instance in
+state. This instance is made available in the context.</li>
+<li>The <code>Map</code>'s <code>render()</code> handler is executed again, this time rendering its
+children components.</li>
+<li>For each child component, the <code>componentWillMount()</code> handler is called and
+instantiates the relevant Leaflet instance for this element using the
+component properties and context.</li>
+<li>The <code>render()</code> handler for each child is called, either returning <code>null</code> or
+rendering its own children.</li>
+<li>When the <code>componentDidUpdate()</code> handler of a component is called, it updates
+its Leaflet instance according to its supported <em>dynamic</em> properties.</li>
+<li>When the <code>componentWillUnmount()</code> handler of a component is called, it
+removes its layer from the map if relevant.</li>
+</ol>
+<h2><a class="anchor" aria-hidden="true" name="limitations"></a><a href="#limitations" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Limitations</h2>
+<ul>
+<li>Leaflet makes direct calls to the DOM when it is loaded, therefore this
+library is not compatible with server-side rendering.</li>
+<li>The components exposed are abstractions for Leaflet layers, not DOM elements.
+Some of them have properties that can be updated directly by calling the
+setters exposed by Leaflet while others should be completely replaced, by
+setting an unique value on their <code>key</code> property so that they are properly
+handled by React's algorithm.</li>
+</ul>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-next button" href="setup.html">Leaflet setup →</a></div></div></div></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/react-leaflet/" class="nav-home"></a><div><h5>Docs</h5><a href="/react-leaflet/docs/en/about.html">Getting started</a><a href="/react-leaflet/docs/en/proptypes.html">API reference</a><a href="/react-leaflet/docs/en/custom-components.html">Guides</a></div><div><h5>Community</h5><a href="https://stackoverflow.com/questions/tagged/react-leaflet">Stack Overflow</a><a href="https://github.com/PaulLeCam/react-leaflet">GitHub</a><a class="github-button" href="https://github.com/PaulLeCam/react-leaflet" data-icon="octicon-star" data-count-href="/PaulLeCam/react-leaflet/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div></section><section class="copyright">Copyright © 2017 Paul Le Cam and <a href="https://github.com/PaulLeCam/react-leaflet/graphs/contributors">contributors</a>.</section></footer></div></body></html>
