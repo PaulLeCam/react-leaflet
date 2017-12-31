@@ -1,4 +1,7 @@
-# Third-party plugins
+---
+id: plugins
+title: Third-party plugins
+---
 
 A non-exhaustive list of plugins adding functionalities to React-Leaflet. Please
 open pull requests to update this list!

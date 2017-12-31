@@ -1,16 +1,19 @@
-# How it works
+---
+id: intro
+title: Introduction
+---
 
 ## Core concepts
 
 React-Leaflet uses
-[React's lifecycle methods](https://facebook.github.io/react/docs/component-specs.html#lifecycle-methods)
+[⚛️ React's lifecycle methods](https://facebook.github.io/react/docs/component-specs.html#lifecycle-methods)
 to call the relevant Leaflet handlers, which has a few consequences:
 
 ### DOM rendering
 
 React **does not** render Leaflet layers to the DOM, this rendering is done by
 Leaflet itself.\
-React only renders the map container for the [Map component](Components.md#map) and
+React only renders the map container for the [Map component](components.md#map) and
 potentially empty `<div>` elements for components having multiple children.
 
 ### Component properties
@@ -26,8 +29,7 @@ how their changes are compared in other ways.
 
 ### Component context
 
-React-Leaflet uses React's
-[context API](https://facebook.github.io/react/docs/context.html) to make
+React-Leaflet uses [⚛️ React's context API](https://facebook.github.io/react/docs/context.html) to make
 Leaflet elements available to other element that need it.\
 If you create custom components, you may need to access the following instances from
 the context:
