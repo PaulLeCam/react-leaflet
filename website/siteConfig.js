@@ -17,9 +17,8 @@
 const siteConfig = {
   title: 'React-Leaflet',
   tagline: '⚛️ React components for 🍃 Leaflet maps',
-  url: 'https://PaulLeCam.github.io',
-  baseUrl: '/react-leaflet/',
-  projectName: 'react-leaflet',
+  url: 'https://react-leaflet.js.org',
+  baseUrl: '/',
   useEnglishUrl: true,
   headerLinks: [
     { doc: 'intro', label: 'Getting started' },

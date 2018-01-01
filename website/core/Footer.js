@@ -22,6 +22,8 @@ class Footer extends React.Component {
 
   render() {
     const currentYear = new Date().getFullYear()
+    const language = this.props.language || 'en'
+
     return (
       <footer className="nav-footer" id="footer">
         <section className="sitemap">
@@ -37,16 +39,9 @@ class Footer extends React.Component {
           </a>
           <div>
             <h5>Docs</h5>
-            <a href={this.docUrl('about.html', this.props.language)}>
-              Getting started
-            </a>
-            <a href={this.docUrl('proptypes.html', this.props.language)}>
-              API reference
-            </a>
-            <a
-              href={this.docUrl('custom-components.html', this.props.language)}>
-              Guides
-            </a>
+            <a href={this.docUrl('intro.html', language)}>Getting started</a>
+            <a href={this.docUrl('prop-types.html', language)}>API reference</a>
+            <a href={this.docUrl('custom-components.html', language)}>Guides</a>
           </div>
           <div>
             <h5>Community</h5>

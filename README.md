@@ -1,20 +1,11 @@
 # React-Leaflet [![Build Status](https://img.shields.io/travis/PaulLeCam/react-leaflet/master.svg)](https://travis-ci.org/PaulLeCam/react-leaflet) [![npm version](https://img.shields.io/npm/v/react-leaflet.svg)](https://www.npmjs.com/package/react-leaflet) [![CDNJS version](https://img.shields.io/cdnjs/v/react-leaflet.svg)](https://cdnjs.com/libraries/react-leaflet)
 
-React components for Leaflet maps.
+⚛️ React components for 🍃 Leaflet maps.
 
-## [Documentation](docs/README.md)
+## [Documentation](http://react-leaflet.js.org)
 
-* [Getting started](docs/Getting%20started.md)
-* [How it works](docs/How%20it%20works.md)
-* [API](docs/API.md)
-* [Extending](docs/Extending.md)
-* [Plugins](docs/Plugins.md)
-
-## Examples
-
-Run a simple example using
-[WebpackBin](https://www.webpackbin.com/bins/-Kl_ZeUx4I05ETYoT26O).\
-Other examples are available in the [example](example) folder of this project.
+* [Getting started](https://react-leaflet.js.org/docs/en/intro.html)
+* [API reference](https://react-leaflet.js.org/docs/en/prop-types.html)
 
 ## Changes
 

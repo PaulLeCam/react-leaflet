@@ -18,7 +18,7 @@ class Help extends React.Component {
     const supportLinks = [
       {
         content:
-          'Learn more using the [documentation on this site](/react-leaflet/docs/en/intro.html).',
+          'Learn more using the [documentation on this site](/docs/en/intro.html).',
         title: 'Browse docs',
       },
       {
