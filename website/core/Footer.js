@@ -60,6 +60,16 @@ class Footer extends React.Component {
               Star
             </a>
           </div>
+          <div>
+            <h5>Built with...</h5>
+            <a href="https://docusaurus.io/">
+              Docusaurus for website generation
+            </a>
+            <a href="https://dns.js.org/">JS.org for the domain name</a>
+            <a href="https://community.algolia.com/docsearch/">
+              Algolia for search
+            </a>
+          </div>
         </section>
         <section className="copyright">
           Copyright &copy; {currentYear} Paul Le Cam and{' '}

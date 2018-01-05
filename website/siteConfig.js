@@ -24,7 +24,7 @@ const siteConfig = {
     { doc: 'intro', label: 'Getting started' },
     { doc: 'prop-types', label: 'API' },
     { page: 'help', label: 'Help' },
-    // { search: true },
+    { search: true },
     { href: 'https://github.com/PaulLeCam/react-leaflet', label: 'GitHub' },
   ],
   users: [],
@@ -44,6 +44,10 @@ const siteConfig = {
   scripts: ['https://buttons.github.io/buttons.js'],
   repoUrl: 'https://github.com/PaulLeCam/react-leaflet',
   cname: 'react-leaflet.js.org',
+  algolia: {
+    apiKey: '5ec5ae3523b2e316c32bbe5e948cb48d',
+    indexName: 'react-leaflet',
+  },
 }
 
 module.exports = siteConfig
