@@ -24,6 +24,7 @@ const siteConfig = {
     { doc: 'intro', label: 'Getting started' },
     { doc: 'prop-types', label: 'API' },
     { page: 'help', label: 'Help' },
+    { languages: true },
     { search: true },
     { href: 'https://github.com/PaulLeCam/react-leaflet', label: 'GitHub' },
   ],
@@ -48,6 +49,7 @@ const siteConfig = {
     apiKey: '5ec5ae3523b2e316c32bbe5e948cb48d',
     indexName: 'react-leaflet',
   },
+  translationRecruitingLink: 'https://crwd.in/react-leaflet',
 }
 
 module.exports = siteConfig

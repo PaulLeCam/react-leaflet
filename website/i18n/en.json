@@ -22,6 +22,14 @@
     "Extra": "Extra"
   },
   "pages-strings": {
+    "Learn more using the [documentation on this site](/docs/en/intro.html).|no description given": "Learn more using the [documentation on this site](/docs/en/intro.html).",
+    "Browse docs|no description given": "Browse docs",
+    "You can use the [react-leaflet tag on Stack Overflow](https://stackoverflow.com/questions/tagged/react-leaflet).|no description given": "You can use the [react-leaflet tag on Stack Overflow](https://stackoverflow.com/questions/tagged/react-leaflet).",
+    "Ask questions|no description given": "Ask questions",
+    "Found a bug? Please [open an issue in GitHub](https://github.com/PaulLeCam/react-leaflet/issues).|no description given": "Found a bug? Please [open an issue in GitHub](https://github.com/PaulLeCam/react-leaflet/issues).",
+    "Report issues|no description given": "Report issues",
+    "Need help?|no description given": "Need help?",
+    "Here are some options depending on your needs.|no description given": "Here are some options depending on your needs.",
     "Help Translate|recruit community translators for your project": "Help Translate",
     "Edit this Doc|recruitment message asking to edit the doc source": "Edit",
     "Translate this Doc|recruitment message asking to translate the docs": "Translate"

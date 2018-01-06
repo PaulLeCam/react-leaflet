@@ -1,3 +1,8 @@
+## master
+
+* [website] Setup Docusaurus.
+* [website] Fix links to examples ([PR #430](https://github.com/PaulLeCam/react-leaflet/pull/430) by _subelsky_).
+
 ## v1.7.8 (2017-12-03)
 
 Update `Popup` and `Tooltip` layout after render

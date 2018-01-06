@@ -11,25 +11,39 @@ const CompLibrary = require('../../core/CompLibrary.js')
 const Container = CompLibrary.Container
 const GridBlock = CompLibrary.GridBlock
 
+const translate = require('../../server/translate.js').translate
+
 // const siteConfig = require(process.cwd() + '/siteConfig.js')
 
 class Help extends React.Component {
   render() {
     const supportLinks = [
       {
-        content:
-          'Learn more using the [documentation on this site](/docs/en/intro.html).',
-        title: 'Browse docs',
+        content: (
+          <translate>
+            Learn more using the [documentation on this
+            site](/docs/en/intro.html).
+          </translate>
+        ),
+        title: <translate>Browse docs</translate>,
       },
       {
-        content:
-          'You can use the ["react-leaflet" tag on Stack Overflow](https://stackoverflow.com/questions/tagged/react-leaflet).',
-        title: 'Ask questions',
+        content: (
+          <translate>
+            You can use the [react-leaflet tag on Stack
+            Overflow](https://stackoverflow.com/questions/tagged/react-leaflet).
+          </translate>
+        ),
+        title: <translate>Ask questions</translate>,
       },
       {
-        content:
-          'Found a bug? Please [open an issue in GitHub](https://github.com/PaulLeCam/react-leaflet/issues).',
-        title: 'Report issues',
+        content: (
+          <translate>
+            Found a bug? Please [open an issue in
+            GitHub](https://github.com/PaulLeCam/react-leaflet/issues).
+          </translate>
+        ),
+        title: <translate>Report issues</translate>,
       },
     ]
 
@@ -40,9 +54,15 @@ class Help extends React.Component {
           padding={['bottom']}>
           <div className="post">
             <header className="postHeader">
-              <h2>Need help?</h2>
+              <h2>
+                <translate>Need help?</translate>
+              </h2>
             </header>
-            <p>Here are some options depending on your needs.</p>
+            <p>
+              <translate>
+                Here are some options depending on your needs.
+              </translate>
+            </p>
             <GridBlock contents={supportLinks} layout="threeColumn" />
           </div>
         </Container>

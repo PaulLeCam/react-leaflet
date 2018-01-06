@@ -168,7 +168,7 @@ render(map, document.getElementById('map-container'))`}
     </p>
     <p>
       The example code above is only meant to present the syntax change, it will
-      no work as-is.<br />
+      not work as-is.<br />
       You can run an example code using React-Leaflet in{' '}
       <a href="https://www.webpackbin.com/bins/-Kl_ZeUx4I05ETYoT26O">
         ▶️ this WebpackBin
