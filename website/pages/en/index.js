@@ -170,9 +170,7 @@ render(map, document.getElementById('map-container'))`}
       The example code above is only meant to present the syntax change, it will
       not work as-is.<br />
       You can run an example code using React-Leaflet in{' '}
-      <a href="https://www.webpackbin.com/bins/-Kl_ZeUx4I05ETYoT26O">
-        ▶️ this WebpackBin
-      </a>.
+      <a href="https://codepen.io/PaulLeCam/pen/XVPmmj">▶️ this CodePen</a>.
     </p>
     <PromoSection>
       <Button href={docUrl('intro.html', props.language)}>Get started</Button>

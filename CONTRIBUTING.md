@@ -38,5 +38,5 @@ If you have questions about React or Leaflet not directly related to this librar
 please ask them using their respective support platforms.\
 For any other issue, please provide a simple description, if relevant with codes
 examples. You can use
-[this WebpackBin](https://www.webpackbin.com/bins/-Kl_ZeUx4I05ETYoT26O) as a
+[this CodePen](https://codepen.io/PaulLeCam/pen/XVPmmj) as a
 starting example.

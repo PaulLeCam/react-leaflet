@@ -20,7 +20,7 @@ npm install leaflet prop-types react react-dom react-leaflet # npm
 yarn add leaflet prop-types react react-dom react-leaflet # Yarn
 ```
 
-You can then use the API as presented in the [example WebpackBin](https://www.webpackbin.com/bins/-Kl_ZeUx4I05ETYoT26O).
+You can then use the API as presented in the [example CodePen](https://codepen.io/PaulLeCam/pen/XVPmmj).
 
 ## UMD
 
