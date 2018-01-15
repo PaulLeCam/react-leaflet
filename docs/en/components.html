@@ -12,9 +12,9 @@ All other properties are passed as the <code>options</code> argument to their co
 Leaflet element and should work fine for static maps, it is however unlikely that
 they would get updated if you change them afterwards.</p>
 <p>ℹ️ You can directly access the Leaflet element created by a component using
-<code>this.leafletElement</code> in this component. This leaflet element is usually created
-in <code>componentWillMount()</code>, except for the <code>Map</code> component where it can only be
-created after the <code>&lt;div&gt;</code> container is rendered.</p>
+<code>this.leafletElement</code> in the component. This leaflet element is usually created
+in <code>componentWillMount()</code> and therefore accessible in <code>componentDirMount()</code>, except for the <code>Map</code> component where it can only be created after the <code>&lt;div&gt;</code> container is rendered.<br>
+You can check out the <a href="https://github.com/PaulLeCam/react-leaflet/blob/master/example/components/events.js">event handling example</a> to see how to interact with methods exposed by the Leaflet element.</p>
 <ul>
 <li><a href="#base-components">Base components</a>
 <ul>
@@ -79,32 +79,32 @@ the component.</p>
 <p>Base class extending <code>React.Component</code> for controls.<br>
 It exposes a <code>leafletElement</code> property to access the <code>Leaflet</code> object created for
 the control.</p>
-<p><a href="https://github.com/PaulLeCam/react-leaflet/blob/master/src/MapControl.js">🔍 Source</a></p>
+<p><a href="http://leafletjs.com/reference-1.3.0.html#control">🍃 Leaflet Control reference</a> • <a href="https://github.com/PaulLeCam/react-leaflet/blob/master/src/MapControl.js">🔍 Source</a></p>
 <h3><a class="anchor" aria-hidden="true" name="maplayer"></a><a href="#maplayer" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>MapLayer</h3>
 <p>Base class extending <a href="#mapcomponent"><code>MapComponent</code></a>, handling adding the layer
 to the map and removing it when relevant. It exposes the <code>layerContainer</code>
 property, to be used by extending classes to access their containing layer.</p>
-<p><a href="https://github.com/PaulLeCam/react-leaflet/blob/master/src/MapLayer.js">🔍 Source</a></p>
+<p><a href="http://leafletjs.com/reference-1.3.0.html#layer">🍃 Leaflet Layer reference</a> • <a href="https://github.com/PaulLeCam/react-leaflet/blob/master/src/MapLayer.js">🔍 Source</a></p>
 <h3><a class="anchor" aria-hidden="true" name="path"></a><a href="#path" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Path</h3>
 <p>Base class extending <a href="#maplayer"><code>MapLayer</code></a> with the following methods:</p>
 <ul>
 <li><code>getPathOptions(object props): object</code>: filters the input <code>props</code> and return a
 new object of
-<a href="http://leafletjs.com/reference-1.2.0.html#path-options">Path options</a>
+<a href="http://leafletjs.com/reference-1.3.0.html#path-options">Path options</a>
 properties.</li>
 <li><code>setStyle(object options = {}): void</code>: alias to the Leaflet element
-<a href="http://leafletjs.com/reference-1.2.0.html#path-setstyle"><code>setStyle()</code></a>.</li>
+<a href="http://leafletjs.com/reference-1.3.0.html#path-setstyle"><code>setStyle()</code></a>.</li>
 <li><code>setStyleIfChanged(object fromProps, object toProps): void</code>: extracts the Path
 options of the two arguments, and calls <code>setStyle()</code> with the new options if
 different from the previous ones.</li>
 </ul>
-<p><a href="https://github.com/PaulLeCam/react-leaflet/blob/master/src/Path.js">🔍 Source</a></p>
+<p><a href="http://leafletjs.com/reference-1.3.0.html#path">🍃 Leaflet reference</a> • <a href="https://github.com/PaulLeCam/react-leaflet/blob/master/src/Path.js">🔍 Source</a></p>
 <h2><a class="anchor" aria-hidden="true" name="map"></a><a href="#map" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Map</h2>
 <p>This is the top-level component that must be mounted for child components to be
 rendered. Refer to
-<a href="http://leafletjs.com/reference-1.2.0.html#map-options">🍃 Leaflet's documentation</a>
+<a href="http://leafletjs.com/reference-1.3.0.html#map-options">🍃 Leaflet's documentation</a>
 for more information about the properties.</p>
-<p><a href="https://github.com/PaulLeCam/react-leaflet/blob/master/src/Map.js">🔍 Source</a></p>
+<p><a href="http://leafletjs.com/reference-1.3.0.html#map">🍃 Leaflet reference</a> • <a href="https://github.com/PaulLeCam/react-leaflet/blob/master/src/Map.js">🔍 Source</a></p>
 <p><strong>Dynamic properties</strong></p>
 <ul>
 <li><code>animate: boolean</code> (optional): If <code>true</code>, panning will always be animated if
@@ -112,7 +112,7 @@ possible. Defaults to <code>false</code>.</li>
 <li><code>bounds: bounds</code> (optional): A rectangle for the map to contain. It will be
 centered, and the map will zoom in as close as it can while still showing the
 full bounds. Changes are compared using the
-<a href="http://leafletjs.com/reference-1.2.0.html#latlngbounds-equals"><code>🍃 equals() method of LatLngBounds</code></a>.</li>
+<a href="http://leafletjs.com/reference-1.3.0.html#latlngbounds-equals"><code>🍃 equals() method of LatLngBounds</code></a>.</li>
 <li><code>boundsOptions: Object</code> (optional): Options passed to the <code>fitBounds()</code>
 method.</li>
 <li><code>center: latLng</code> (optional if <code>viewport</code> is provided with a center value):
@@ -138,7 +138,7 @@ or the <code>center</code> and <code>zoom</code> properties.</li>
 <li><code>id: string</code> (optional): The ID of the <code>&lt;div&gt;</code> container for the map.</li>
 <li><code>whenReady: () =&gt; void</code> (optional): A function called as soon as the map is
 ready, see
-<a href="http://leafletjs.com/reference-1.2.0.html#map-whenready">🍃 Leaflet's documentation</a>
+<a href="http://leafletjs.com/reference-1.3.0.html#map-whenready">🍃 Leaflet's documentation</a>
 for more information.</li>
 </ul>
 <p><strong>Manipulating the viewport</strong></p>
@@ -220,7 +220,7 @@ type State = {
 <p>See the <a href="../example/components/viewport.js">viewport example</a> for a more
 complete implementation.</p>
 <h2><a class="anchor" aria-hidden="true" name="pane"></a><a href="#pane" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Pane</h2>
-<p><a href="http://leafletjs.com/reference-1.2.0.html#map-pane">🍃 Leaflet reference</a> • <a href="https://github.com/PaulLeCam/react-leaflet/blob/master/src/Pane.js">🔍 Source</a></p>
+<p><a href="http://leafletjs.com/reference-1.3.0.html#map-pane">🍃 Leaflet reference</a> • <a href="https://github.com/PaulLeCam/react-leaflet/blob/master/src/Pane.js">🔍 Source</a></p>
 <p><strong>Dynamic properties</strong></p>
 <ul>
 <li><code>name: string</code> (optional): Unique name for the pane. Existing Leaflet panes
@@ -230,7 +230,7 @@ are blacklisted.</li>
 </ul>
 <h2><a class="anchor" aria-hidden="true" name="ui-layers"></a><a href="#ui-layers" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>UI Layers</h2>
 <h3><a class="anchor" aria-hidden="true" name="marker"></a><a href="#marker" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Marker</h3>
-<p><a href="http://leafletjs.com/reference-1.2.0.html#marker">🍃 Leaflet reference</a> • <a href="https://github.com/PaulLeCam/react-leaflet/blob/master/src/Marker.js">🔍 Source</a></p>
+<p><a href="http://leafletjs.com/reference-1.3.0.html#marker">🍃 Leaflet reference</a> • <a href="https://github.com/PaulLeCam/react-leaflet/blob/master/src/Marker.js">🔍 Source</a></p>
 <p><strong>Dynamic properties</strong></p>
 <ul>
 <li><code>position: latLng</code> (required)</li>
@@ -240,7 +240,7 @@ are blacklisted.</li>
 <li><code>opacity: number</code> (optional)</li>
 </ul>
 <h3><a class="anchor" aria-hidden="true" name="popup"></a><a href="#popup" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Popup</h3>
-<p><a href="http://leafletjs.com/reference-1.2.0.html#popup">🍃 Leaflet reference</a> • <a href="https://github.com/PaulLeCam/react-leaflet/blob/master/src/Popup.js">🔍 Source</a></p>
+<p><a href="http://leafletjs.com/reference-1.3.0.html#popup">🍃 Leaflet reference</a> • <a href="https://github.com/PaulLeCam/react-leaflet/blob/master/src/Popup.js">🔍 Source</a></p>
 <p>⚠️ The Popup children will be rendered using <code>ReactDOM.render()</code>, they must be
 valid React elements.</p>
 <p><strong>Dynamic properties</strong></p>
@@ -250,7 +250,7 @@ valid React elements.</p>
 <li><code>position: latLng</code> (optional)</li>
 </ul>
 <h3><a class="anchor" aria-hidden="true" name="tooltip"></a><a href="#tooltip" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tooltip</h3>
-<p><a href="http://leafletjs.com/reference-1.2.0.html#tooltip">🍃 Leaflet reference</a> • <a href="https://github.com/PaulLeCam/react-leaflet/blob/master/src/Tooltip.js">🔍 Source</a></p>
+<p><a href="http://leafletjs.com/reference-1.3.0.html#tooltip">🍃 Leaflet reference</a> • <a href="https://github.com/PaulLeCam/react-leaflet/blob/master/src/Tooltip.js">🔍 Source</a></p>
 <p>⚠️ The Tooltip children will be rendered using <code>ReactDOM.render()</code>, they must be
 valid React elements.</p>
 <p><strong>Dynamic properties</strong></p>
@@ -260,7 +260,7 @@ valid React elements.</p>
 </ul>
 <h2><a class="anchor" aria-hidden="true" name="raster-layers"></a><a href="#raster-layers" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Raster Layers</h2>
 <h3><a class="anchor" aria-hidden="true" name="tilelayer"></a><a href="#tilelayer" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>TileLayer</h3>
-<p><a href="http://leafletjs.com/reference-1.2.0.html#tilelayer">🍃 Leaflet reference</a> • <a href="https://github.com/PaulLeCam/react-leaflet/blob/master/src/TileLayer.js">🔍 Source</a></p>
+<p><a href="http://leafletjs.com/reference-1.3.0.html#tilelayer">🍃 Leaflet reference</a> • <a href="https://github.com/PaulLeCam/react-leaflet/blob/master/src/TileLayer.js">🔍 Source</a></p>
 <p><strong>Dynamic properties</strong></p>
 <ul>
 <li><code>url: string</code> (required)</li>
@@ -268,7 +268,7 @@ valid React elements.</p>
 <li><code>zIndex: number</code> (optional)</li>
 </ul>
 <h3><a class="anchor" aria-hidden="true" name="wmstilelayer"></a><a href="#wmstilelayer" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>WMSTileLayer</h3>
-<p><a href="http://leafletjs.com/reference-1.2.0.html#tilelayer-wms">🍃 Leaflet reference</a> • <a href="https://github.com/PaulLeCam/react-leaflet/blob/master/src/WMSTileLayer.js">🔍 Source</a></p>
+<p><a href="http://leafletjs.com/reference-1.3.0.html#tilelayer-wms">🍃 Leaflet reference</a> • <a href="https://github.com/PaulLeCam/react-leaflet/blob/master/src/WMSTileLayer.js">🔍 Source</a></p>
 <p><strong>Dynamic properties</strong></p>
 <ul>
 <li><code>url: string</code> (required)</li>
@@ -276,16 +276,16 @@ valid React elements.</p>
 <p>ℹ️ All other properties are passed as parameters and dynamic, they will cause the
 layer to redraw if they change.</p>
 <h3><a class="anchor" aria-hidden="true" name="imageoverlay"></a><a href="#imageoverlay" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ImageOverlay</h3>
-<p><a href="http://leafletjs.com/reference-1.2.0.html#imageoverlay">🍃 Leaflet reference</a> • <a href="https://github.com/PaulLeCam/react-leaflet/blob/master/src/ImageOverlay.js">🔍 Source</a></p>
+<p><a href="http://leafletjs.com/reference-1.3.0.html#imageoverlay">🍃 Leaflet reference</a> • <a href="https://github.com/PaulLeCam/react-leaflet/blob/master/src/ImageOverlay.js">🔍 Source</a></p>
 <p><strong>Dynamic properties</strong></p>
 <ul>
-<li><code>url: string</code> (required)</li>
+<li><code>url: string | HTMLImageElement</code> (required)</li>
 <li><code>bounds: bounds</code> (required)</li>
 <li><code>opacity: number</code> (optional)</li>
 <li><code>zIndex: number</code> (optional)</li>
 </ul>
 <h3><a class="anchor" aria-hidden="true" name="videooverlay"></a><a href="#videooverlay" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>VideoOverlay</h3>
-<p><a href="http://leafletjs.com/reference-1.2.0.html#videooverlay">🍃 Leaflet reference</a> • <a href="https://github.com/PaulLeCam/react-leaflet/blob/master/src/VideoOverlay.js">🔍 Source</a></p>
+<p><a href="http://leafletjs.com/reference-1.3.0.html#videooverlay">🍃 Leaflet reference</a> • <a href="https://github.com/PaulLeCam/react-leaflet/blob/master/src/VideoOverlay.js">🔍 Source</a></p>
 <p><strong>Dynamic properties</strong></p>
 <ul>
 <li><code>url: string | string[] | HTMLVideoElement</code> (required)</li>
@@ -296,46 +296,47 @@ video.</li>
 <li><code>zIndex: number</code> (optional)</li>
 </ul>
 <h2><a class="anchor" aria-hidden="true" name="vector-layers"></a><a href="#vector-layers" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Vector Layers</h2>
-<p>All vector layers extend the <strong>Path</strong> component and therefore accept dynamic
-<a href="http://leafletjs.com/reference-1.2.0.html#path-options">🍃 Path options</a>
+<p>All vector layers extend the <a href="#path">Path component</a> and therefore accept dynamic
+<a href="http://leafletjs.com/reference-1.3.0.html#path-options">🍃 Path options</a>
 properties.</p>
 <h3><a class="anchor" aria-hidden="true" name="circle"></a><a href="#circle" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Circle</h3>
-<p><a href="http://leafletjs.com/reference-1.2.0.html#circle">🍃 Leaflet reference</a> • <a href="https://github.com/PaulLeCam/react-leaflet/blob/master/src/Circle.js">🔍 Source</a></p>
+<p><a href="http://leafletjs.com/reference-1.3.0.html#circle">🍃 Leaflet reference</a> • <a href="https://github.com/PaulLeCam/react-leaflet/blob/master/src/Circle.js">🔍 Source</a></p>
 <p><strong>Dynamic properties</strong></p>
 <ul>
 <li><code>center: latLng</code> (required)</li>
 <li><code>radius: number</code> (required)</li>
 </ul>
 <h3><a class="anchor" aria-hidden="true" name="circlemarker"></a><a href="#circlemarker" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CircleMarker</h3>
-<p><a href="http://leafletjs.com/reference-1.2.0.html#circlemarker">🍃 Leaflet reference</a> • <a href="https://github.com/PaulLeCam/react-leaflet/blob/master/src/CircleMarker.js">🔍 Source</a></p>
+<p><a href="http://leafletjs.com/reference-1.3.0.html#circlemarker">🍃 Leaflet reference</a> • <a href="https://github.com/PaulLeCam/react-leaflet/blob/master/src/CircleMarker.js">🔍 Source</a></p>
 <p><strong>Dynamic properties</strong></p>
 <ul>
 <li><code>center: latLng</code> (required)</li>
 <li><code>radius: number</code> (optional)</li>
 </ul>
 <h3><a class="anchor" aria-hidden="true" name="polyline"></a><a href="#polyline" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Polyline</h3>
-<p><a href="http://leafletjs.com/reference-1.2.0.html#polyline">🍃 Leaflet reference</a> • <a href="https://github.com/PaulLeCam/react-leaflet/blob/master/src/Polyline.js">🔍 Source</a></p>
+<p><a href="http://leafletjs.com/reference-1.3.0.html#polyline">🍃 Leaflet reference</a> • <a href="https://github.com/PaulLeCam/react-leaflet/blob/master/src/Polyline.js">🔍 Source</a></p>
 <p><strong>Dynamic properties</strong></p>
 <ul>
 <li><code>positions: latLngList | latLngList[]</code> (required)</li>
 </ul>
 <h3><a class="anchor" aria-hidden="true" name="polygon"></a><a href="#polygon" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Polygon</h3>
-<p><a href="http://leafletjs.com/reference-1.2.0.html#polygon">🍃 Leaflet reference</a> • <a href="https://github.com/PaulLeCam/react-leaflet/blob/master/src/Polygon.js">🔍 Source</a></p>
+<p><a href="http://leafletjs.com/reference-1.3.0.html#polygon">🍃 Leaflet reference</a> • <a href="https://github.com/PaulLeCam/react-leaflet/blob/master/src/Polygon.js">🔍 Source</a></p>
 <p><strong>Dynamic properties</strong></p>
 <ul>
 <li><code>positions: latLngList | latLngList[] | latLngList[][]</code> (required)</li>
 </ul>
 <h3><a class="anchor" aria-hidden="true" name="rectangle"></a><a href="#rectangle" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Rectangle</h3>
-<p><a href="http://leafletjs.com/reference-1.2.0.html#rectangle">🍃 Leaflet reference</a> • <a href="https://github.com/PaulLeCam/react-leaflet/blob/master/src/Rectangle.js">🔍 Source</a></p>
+<p><a href="http://leafletjs.com/reference-1.3.0.html#rectangle">🍃 Leaflet reference</a> • <a href="https://github.com/PaulLeCam/react-leaflet/blob/master/src/Rectangle.js">🔍 Source</a></p>
 <p><strong>Dynamic properties</strong></p>
 <ul>
 <li><code>bounds: bounds</code> (required)</li>
 </ul>
 <h2><a class="anchor" aria-hidden="true" name="other-layers"></a><a href="#other-layers" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Other Layers</h2>
 <h3><a class="anchor" aria-hidden="true" name="featuregroup"></a><a href="#featuregroup" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>FeatureGroup</h3>
-<p>Extended <code>LayerGroup</code> supporting a <code>Popup</code> child.</p>
+<p>Extended <a href="#layergroup">LayerGroup</a> supporting a <a href="#popup">Popup</a> child.</p>
+<p><a href="http://leafletjs.com/reference-1.3.0.html#featuregroup">🍃 Leaflet reference</a> • <a href="https://github.com/PaulLeCam/react-leaflet/blob/master/src/FeatureGroup.js">🔍 Source</a></p>
 <h3><a class="anchor" aria-hidden="true" name="geojson"></a><a href="#geojson" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GeoJSON</h3>
-<p><a href="http://leafletjs.com/reference-1.2.0.html#geojson">🍃 Leaflet reference</a> • <a href="https://github.com/PaulLeCam/react-leaflet/blob/master/src/GeoJSON.js">🔍 Source</a></p>
+<p><a href="http://leafletjs.com/reference-1.3.0.html#geojson">🍃 Leaflet reference</a> • <a href="https://github.com/PaulLeCam/react-leaflet/blob/master/src/GeoJSON.js">🔍 Source</a></p>
 <p><strong>Properties</strong></p>
 <ul>
 <li><code>data: GeoJSON</code> (required). This property will <em>not</em> be updated if it is
@@ -346,7 +347,7 @@ changed after the component is mounted.</li>
 <li><code>style: Function</code> (optional).</li>
 </ul>
 <h3><a class="anchor" aria-hidden="true" name="gridlayer"></a><a href="#gridlayer" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GridLayer</h3>
-<p><a href="http://leafletjs.com/reference-1.2.0.html#gridlayer">🍃 Leaflet reference</a> • <a href="https://github.com/PaulLeCam/react-leaflet/blob/master/src/GridLayer.js">🔍 Source</a></p>
+<p><a href="http://leafletjs.com/reference-1.3.0.html#gridlayer">🍃 Leaflet reference</a> • <a href="https://github.com/PaulLeCam/react-leaflet/blob/master/src/GridLayer.js">🔍 Source</a></p>
 <p><strong>Dynamic properties</strong></p>
 <ul>
 <li><code>opacity: number</code> (optional)</li>
@@ -354,16 +355,16 @@ changed after the component is mounted.</li>
 </ul>
 <h3><a class="anchor" aria-hidden="true" name="layergroup"></a><a href="#layergroup" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>LayerGroup</h3>
 <p>Use the <code>LayerGroup</code> wrapper component to group children layers together.</p>
-<p><a href="https://github.com/PaulLeCam/react-leaflet/blob/master/src/LayerGroup.js">🔍 Source</a></p>
+<p><a href="http://leafletjs.com/reference-1.3.0.html#layergroup">🍃 Leaflet reference</a> • <a href="https://github.com/PaulLeCam/react-leaflet/blob/master/src/LayerGroup.js">🔍 Source</a></p>
 <h2><a class="anchor" aria-hidden="true" name="controls"></a><a href="#controls" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Controls</h2>
 <h3><a class="anchor" aria-hidden="true" name="attributioncontrol"></a><a href="#attributioncontrol" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>AttributionControl</h3>
-<p><a href="http://leafletjs.com/reference-1.2.0.html#control-attribution">🍃 Leaflet reference</a> • <a href="https://github.com/PaulLeCam/react-leaflet/blob/master/src/AttributionControl.js">🔍 Source</a></p>
+<p><a href="http://leafletjs.com/reference-1.3.0.html#control-attribution">🍃 Leaflet reference</a> • <a href="https://github.com/PaulLeCam/react-leaflet/blob/master/src/AttributionControl.js">🔍 Source</a></p>
 <p><strong>Dynamic properties</strong></p>
 <ul>
 <li><code>position: controlPosition</code> (optional)</li>
 </ul>
 <h3><a class="anchor" aria-hidden="true" name="layerscontrol"></a><a href="#layerscontrol" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>LayersControl</h3>
-<p><a href="http://leafletjs.com/reference-1.2.0.html#control-layers">🍃 Leaflet reference</a> • <a href="https://github.com/PaulLeCam/react-leaflet/blob/master/src/LayersControl.js">🔍 Source</a></p>
+<p><a href="http://leafletjs.com/reference-1.3.0.html#control-layers">🍃 Leaflet reference</a> • <a href="https://github.com/PaulLeCam/react-leaflet/blob/master/src/LayersControl.js">🔍 Source</a></p>
 <p><strong>Dynamic properties</strong></p>
 <ul>
 <li><code>position: controlPosition</code> (optional)</li>
@@ -429,13 +430,13 @@ associated to the layer should be checked or not. The layer will be displayed
 in the map accordingly.</li>
 </ul>
 <h3><a class="anchor" aria-hidden="true" name="scalecontrol"></a><a href="#scalecontrol" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ScaleControl</h3>
-<p><a href="http://leafletjs.com/reference-1.2.0.html#control-scale">🍃 Leaflet reference</a> • <a href="https://github.com/PaulLeCam/react-leaflet/blob/master/src/ScaleControl.js">🔍 Source</a></p>
+<p><a href="http://leafletjs.com/reference-1.3.0.html#control-scale">🍃 Leaflet reference</a> • <a href="https://github.com/PaulLeCam/react-leaflet/blob/master/src/ScaleControl.js">🔍 Source</a></p>
 <p><strong>Dynamic properties</strong></p>
 <ul>
 <li><code>position: controlPosition</code> (optional)</li>
 </ul>
 <h3><a class="anchor" aria-hidden="true" name="zoomcontrol"></a><a href="#zoomcontrol" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ZoomControl</h3>
-<p><a href="http://leafletjs.com/reference-1.2.0.html#control-zoom">🍃 Leaflet reference</a> • <a href="https://github.com/PaulLeCam/react-leaflet/blob/master/src/ZoomControl.js">🔍 Source</a></p>
+<p><a href="http://leafletjs.com/reference-1.3.0.html#control-zoom">🍃 Leaflet reference</a> • <a href="https://github.com/PaulLeCam/react-leaflet/blob/master/src/ZoomControl.js">🔍 Source</a></p>
 <p><strong>Dynamic properties</strong></p>
 <ul>
 <li><code>position: controlPosition</code> (optional)</li>
