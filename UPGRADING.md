@@ -1,5 +1,11 @@
 # Upgrading
 
+## v1.8
+
+This release requires
+[Leaflet v1.3](http://leafletjs.com/2018/01/15/leaflet-1.3.0.html) as peer
+dependency.
+
 ## v1.6
 
 This release makes internal changes to the folders exposed:

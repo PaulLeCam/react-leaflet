@@ -6,14 +6,15 @@ docs
 example
 flow-typed
 src
+website
 .editorconfig
 .eslintignore
 .eslintrc.json
 .flowconfig
 .travis.yml
-bower.json
 CHANGELOG.md
 CONTRIBUTING.md
+crowdin.yaml
 ISSUE_TEMPLATE.md
+rollup.config.js
 UPGRADING.md
-webpack.config.babel.js

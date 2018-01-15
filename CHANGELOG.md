@@ -1,6 +1,12 @@
-## master
+## v1.8.0 (2018-01-15)
 
-* [website] Setup Docusaurus.
+React-Leaflet now has a website! Check out [react-leaflet.js.org](https://react-leaflet.js.org/) to browse the documentation.\
+If you wish to help out improving the website, [this issue is a good starting point](https://github.com/PaulLeCam/react-leaflet/issues/434)!
+
+* Updated documentation and dependency to
+  [Leaflet v1.3](http://leafletjs.com/2018/01/15/leaflet-1.3.0.html).
+* Add `HTMLImageElement` support to `ImageOverlay` (new in Leaflet v1.3).
+* [website] Setup the website.
 * [website] Fix links to examples ([PR #430](https://github.com/PaulLeCam/react-leaflet/pull/430) by _subelsky_).
 
 ## v1.7.8 (2017-12-03)

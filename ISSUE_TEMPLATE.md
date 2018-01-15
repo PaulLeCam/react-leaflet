@@ -8,7 +8,7 @@ reason not to follow this template.**
 
 * [ ] All peer dependencies are installed: React, ReactDOM and Leaflet.
 * [ ] Using a supported version of React and ReactDOM (v15.x or v16.x).
-* [ ] Using the supported version of Leaflet (v1.2.x) and its corresponding CSS
+* [ ] Using the supported version of Leaflet (v1.3.x) and its corresponding CSS
       file is loaded.
 * [ ] Using the
       [latest stable version of React-Leaflet](https://github.com/PaulLeCam/react-leaflet/releases).

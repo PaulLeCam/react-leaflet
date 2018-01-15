@@ -1,4 +1,5 @@
 {
+  "license": "MIT",
   "scripts": {
     "examples": "docusaurus-examples",
     "start": "docusaurus-start",
@@ -15,6 +16,6 @@
     "highlight.js": "^9.12.0"
   },
   "devDependencies": {
-    "docusaurus": "^1.0.4"
+    "docusaurus": "^1.0.5"
   }
 }

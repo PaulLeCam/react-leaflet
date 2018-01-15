@@ -822,9 +822,9 @@ detect-indent@^4.0.0:
   dependencies:
     repeating "^2.0.0"
 
-docusaurus@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/docusaurus/-/docusaurus-1.0.4.tgz#4f88e15043cbcadca840f84066fee98ea470bd48"
+docusaurus@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/docusaurus/-/docusaurus-1.0.5.tgz#a2d75690e8dde50987a44cc836d6375b6130c8b7"
   dependencies:
     babel-preset-env "^1.6.0"
     babel-preset-react "^6.24.1"

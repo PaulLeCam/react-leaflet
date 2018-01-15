@@ -7,7 +7,7 @@ React-Leaflet aims to provide all the controls and layers provided by Leaflet,
 but it does not support any Leaflet plugin.
 
 The [plugins page](plugins.md) offers a non-exhaustive list of third-party plugins.\
-If these plugins do not match your needs, adding layers and behaviors provided by plugins in your application should be relatively easy by extending one of the components provided by React-Leaflet (see the class hierarchy below to find the most relevant component to extend) and implementing the relevant methods:
+If these plugins do not match your needs, adding layers and behaviors provided by plugins in your application should be relatively easy by extending one of the components provided by React-Leaflet (see the [class hierarchy](class-hierarchy.md) to find the most relevant component to extend) and implementing the relevant methods:
 
 * `createLeafletElement (props: Object): Object` (mandatory): create and return
   the relevant Leaflet element instance. this instance will be stored in the

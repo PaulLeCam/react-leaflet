@@ -25,7 +25,7 @@ You can then use the API as presented in the [example WebpackBin](https://www.we
 ## UMD
 
 UMD builds are available on [unpkg](https://unpkg.com/) and
-[CDNJS](https://cdnjs.com/libraries/react-leaflet) (replace `1.7.0` by the
+[CDNJS](https://cdnjs.com/libraries/react-leaflet) (replace `1.8.0` by the
 version you need):
 
 ```html
@@ -34,9 +34,9 @@ version you need):
 <!-- unpkg, development -->
 <script src="https://unpkg.com/react-leaflet/dist/react-leaflet.js"></script>
 <!-- CDNJS, production (minified) -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react-leaflet/1.7.0/react-leaflet.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-leaflet/1.8.0/react-leaflet.min.js"></script>
 <!-- CDNJS, development -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react-leaflet/1.7.0/react-leaflet.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-leaflet/1.8.0/react-leaflet.js"></script>
 ```
 
 The library is injected as `window.ReactLeaflet`.\

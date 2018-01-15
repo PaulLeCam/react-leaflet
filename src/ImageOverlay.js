@@ -14,7 +14,7 @@ type Props = {
   attribution?: string,
   bounds?: LatLngBounds,
   opacity?: number,
-  url: string,
+  url: string | HTMLImageElement,
   zIndex?: number,
 } & MapLayerProps
 
@@ -24,7 +24,10 @@ export default class ImageOverlay extends MapLayer<LeafletElement, Props> {
     bounds: bounds.isRequired,
     children: children,
     opacity: PropTypes.number,
-    url: PropTypes.string.isRequired,
+    url: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.instanceOf(HTMLImageElement),
+    ]).isRequired,
     zIndex: PropTypes.number,
   }
 
