@@ -224,8 +224,7 @@ class MyMap extends Component<Props, State> {
 }
 ```
 
-See the [viewport example](../example/components/viewport.js) for a more
-complete implementation.
+See the [viewport example](https://github.com/PaulLeCam/react-leaflet/blob/master/example/components/viewport.js) for a more complete implementation.
 
 ## Pane
 
