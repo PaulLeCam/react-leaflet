@@ -14,7 +14,7 @@ they would get updated if you change them afterwards.
 
 ℹ️ You can directly access the Leaflet element created by a component using
 `this.leafletElement` in the component. This leaflet element is usually created
-in `componentWillMount()` and therefore accessible in `componentDirMount()`, except for the `Map` component where it can only be created after the `<div>` container is rendered.\
+in `componentWillMount()` and therefore accessible in `componentDidMount()`, except for the `Map` component where it can only be created after the `<div>` container is rendered.\
 You can check out the [event handling example](https://github.com/PaulLeCam/react-leaflet/blob/master/example/components/events.js) to see how to interact with methods exposed by the Leaflet element.
 
 * [Base components](#base-components)
