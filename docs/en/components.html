@@ -13,7 +13,7 @@ Leaflet element and should work fine for static maps, it is however unlikely tha
 they would get updated if you change them afterwards.</p>
 <p>ℹ️ You can directly access the Leaflet element created by a component using
 <code>this.leafletElement</code> in the component. This leaflet element is usually created
-in <code>componentWillMount()</code> and therefore accessible in <code>componentDirMount()</code>, except for the <code>Map</code> component where it can only be created after the <code>&lt;div&gt;</code> container is rendered.<br>
+in <code>componentWillMount()</code> and therefore accessible in <code>componentDidMount()</code>, except for the <code>Map</code> component where it can only be created after the <code>&lt;div&gt;</code> container is rendered.<br>
 You can check out the <a href="https://github.com/PaulLeCam/react-leaflet/blob/master/example/components/events.js">event handling example</a> to see how to interact with methods exposed by the Leaflet element.</p>
 <ul>
 <li><a href="#base-components">Base components</a>
