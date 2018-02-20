@@ -25,3 +25,6 @@ open pull requests to update this list!
 * [`react-leaflet-zoom-display`](https://www.npmjs.com/package/react-leaflet-zoom-display)
 * [`react-leaflet-sidebarv2`](https://www.npmjs.com/package/react-leaflet-sidebarv2)
 * [`react-mapbox-components`](https://www.npmjs.com/package/react-mapbox-components)
+* [`react-leaflet-deflate`](https://www.npmjs.com/package/react-leaflet-deflate)
+* [`react-leaflet-measure`](https://www.npmjs.com/package/react-leaflet-measure)
+* [`react-leaflet-easyprint`](https://www.npmjs.com/package/react-leaflet-easyprint)
