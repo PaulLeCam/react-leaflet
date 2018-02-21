@@ -16,7 +16,7 @@ type ChildContext = {
 }
 
 export default class FeatureGroup extends Path<LeafletElement, Props> {
-  static childContextTypes = {
+  static childContextTypes: Object = {
     children: children,
     layerContainer: layerContainer,
     popupContainer: layer,
