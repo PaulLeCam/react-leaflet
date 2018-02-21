@@ -152,6 +152,7 @@ describe('Map', () => {
     expect(mapLeaflet.getZoom()).toBe(5)
     component.updatePosition()
   })
+
   it('removes leaflet element on close', () => {
     const firstBounds = [[0, 0], [2, 2]]
 
@@ -162,6 +163,7 @@ describe('Map', () => {
           bounds: firstBounds,
         }
       }
+
       getLeafletMap() {
         return this.refs.map.leafletElement
       }

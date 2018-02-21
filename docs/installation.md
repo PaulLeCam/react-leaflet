@@ -41,3 +41,5 @@ version you need):
 
 The library is injected as `window.ReactLeaflet`.\
 See the [UMD example](https://github.com/PaulLeCam/react-leaflet/blob/master/example/umd.html) to get started.
+
+⚠️ When using Object destructuring with the UMD build, prefer aliasing the `Map` class to avoid shadowing the browser's `Map`, using `const { Map: LeafletMap } = window.ReactLeaflet` rather than `const { Map } = window.ReactLeaflet` for example.

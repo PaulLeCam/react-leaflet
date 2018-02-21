@@ -70,7 +70,7 @@ export default class Tooltip extends MapComponent<LeafletElement, Props> {
       tooltipopen: this.onTooltipOpen,
       tooltipclose: this.onTooltipClose,
     })
-    if (this.props.interactive !== true) {
+    if (popupContainer._map != null) {
       popupContainer.unbindTooltip(this.leafletElement)
     }
 
