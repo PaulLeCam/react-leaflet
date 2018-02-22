@@ -37,7 +37,7 @@
     "url": "https://github.com/PaulLeCam/react-leaflet/issues"
   },
   "homepage": "https://github.com/PaulLeCam/react-leaflet",
-  "files": [".babelrc", "dist/*", "lib/*", "src/*"],
+  "files": [".babelrc", "dist/*", "es/*", "lib/*", "src/*"],
   "dependencies": {
     "lodash": "^4.0.0",
     "lodash-es": "^4.0.0",
