@@ -1,3 +1,10 @@
+## v1.8.2 (2018-02-26)
+
+* Fixed `Map` unmounting when `preferCanvas` is set.
+* Added `es` folder to npm package ([PR #449](https://github.com/PaulLeCam/react-leaflet/pull/449) by _jonathanchrisp_).
+* [website] Fixed link in examples page.
+* [internal] Updated examples to webpack 4.
+
 ## v1.8.1 (2018-02-21)
 
 * Fixed `Tooltip` component unmounting.

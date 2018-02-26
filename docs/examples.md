@@ -17,7 +17,7 @@ Different examples are available in the [example folder](https://github.com/Paul
 * [Draggable marker toggle](https://github.com/PaulLeCam/react-leaflet/blob/master/example/components/draggable-marker.js)
 * [Map with bounds](https://github.com/PaulLeCam/react-leaflet/blob/master/example/components/bounds.js)
 * [Custom component: a list of markers](https://github.com/PaulLeCam/react-leaflet/blob/master/example/components/custom-component.js)
-* [Animated map](https://github.com/PaulLeCam/react-leaflet/blob/master/example/components/animated.js)
+* [Animated map](https://github.com/PaulLeCam/react-leaflet/blob/master/example/components/animate.js)
 * [WMS tile layer](https://github.com/PaulLeCam/react-leaflet/blob/master/example/components/wms-tile-layer.js)
 * [Video overlay](https://github.com/PaulLeCam/react-leaflet/blob/master/example/components/video-overlay.js)
 

@@ -271,9 +271,14 @@ export default class Map extends MapComponent<LeafletElement, Props> {
 
   componentWillUnmount() {
     super.componentWillUnmount()
-    this.leafletElement.off('move', this.onViewportChange)
-    this.leafletElement.off('moveend', this.onViewportChanged)
-    this.leafletElement.remove()
+    // The canvas renderer uses requestAnimationFrame, making a deferred call to a deleted object
+    // When preferCanvas is set, use simpler teardown logic
+    if (this.props.preferCanvas === true) {
+      this.leafletElement._initEvents(true)
+      this.leafletElement._stop()
+    } else {
+      this.leafletElement.remove()
+    }
   }
 
   bindContainer = (container: ?HTMLDivElement): void => {
