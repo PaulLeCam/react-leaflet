@@ -173,6 +173,7 @@ export default class Map extends MapComponent<LeafletElement, Props> {
       useFlyTo,
       viewport,
       zoom,
+      scrollWheelZoom,
     } = toProps
 
     if (className !== fromProps.className) {
@@ -212,6 +213,14 @@ export default class Map extends MapComponent<LeafletElement, Props> {
 
     if (maxBounds && this.shouldUpdateBounds(maxBounds, fromProps.maxBounds)) {
       this.leafletElement.setMaxBounds(maxBounds)
+    }
+
+    if (scrollWheelZoom !== fromProps.scrollWheelZoom) {
+      if (scrollWheelZoom) {
+        this.leafletElement.scrollWheelZoom.enable();
+      } else {
+        this.leafletElement.scrollWheelZoom.disable();
+      }
     }
 
     if (
