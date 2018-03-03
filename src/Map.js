@@ -267,6 +267,7 @@ export default class Map extends MapComponent<LeafletElement, Props> {
 
     if (scrollWheelZoom !== fromProps.scrollWheelZoom) {
       if (scrollWheelZoom === true || typeof scrollWheelZoom === 'string') {
+        this.leafletElement.options.scrollWheelZoom = scrollWheelZoom
         this.leafletElement.scrollWheelZoom.enable()
       } else {
         this.leafletElement.scrollWheelZoom.disable()
@@ -283,6 +284,7 @@ export default class Map extends MapComponent<LeafletElement, Props> {
 
     if (touchZoom !== fromProps.touchZoom) {
       if (touchZoom === true || typeof touchZoom === 'string') {
+        this.leafletElement.options.touchZoom = touchZoom
         this.leafletElement.touchZoom.enable()
       } else {
         this.leafletElement.touchZoom.disable()
