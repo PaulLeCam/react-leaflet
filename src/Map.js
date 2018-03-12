@@ -273,6 +273,9 @@ export default class Map extends MapComponent<LeafletElement, Props> {
     super.componentWillUnmount()
     // The canvas renderer uses requestAnimationFrame, making a deferred call to a deleted object
     // When preferCanvas is set, use simpler teardown logic
+    this.leafletElement.off('move', this.onViewportChange);
+    this.leafletElement.off('moveend', this.onViewportChanged);
+
     if (this.props.preferCanvas === true) {
       this.leafletElement._initEvents(true)
       this.leafletElement._stop()
