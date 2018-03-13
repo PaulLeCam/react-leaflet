@@ -130,12 +130,17 @@ export default class Popup extends MapComponent<LeafletElement, Props> {
         Children.only(this.props.children),
         this.leafletElement._contentNode,
         () => {
-          this.leafletElement.update()
-          if (this.props.autoPan !== false) {
-            if (this.leafletElement._map && this.leafletElement._map._panAnim) {
-              this.leafletElement._map._panAnim = undefined
+          if (this.leafletElement.isOpen()) {
+            this.leafletElement.update()
+            if (this.props.autoPan !== false) {
+              if (
+                this.leafletElement._map &&
+                this.leafletElement._map._panAnim
+              ) {
+                this.leafletElement._map._panAnim = undefined
+              }
+              this.leafletElement._adjustPan()
             }
-            this.leafletElement._adjustPan()
           }
         },
       )
