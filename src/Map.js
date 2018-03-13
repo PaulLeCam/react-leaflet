@@ -167,9 +167,16 @@ export default class Map extends MapComponent<LeafletElement, Props> {
       animate,
       bounds,
       boundsOptions,
+      boxZoom,
       center,
       className,
+      doubleClickZoom,
+      dragging,
+      keyboard,
       maxBounds,
+      scrollWheelZoom,
+      tap,
+      touchZoom,
       useFlyTo,
       viewport,
       zoom,
@@ -223,6 +230,64 @@ export default class Map extends MapComponent<LeafletElement, Props> {
         this.leafletElement.flyToBounds(bounds, boundsOptions)
       } else {
         this.leafletElement.fitBounds(bounds, boundsOptions)
+      }
+    }
+
+    if (boxZoom !== fromProps.boxZoom) {
+      if (boxZoom === true) {
+        this.leafletElement.boxZoom.enable()
+      } else {
+        this.leafletElement.boxZoom.disable()
+      }
+    }
+
+    if (doubleClickZoom !== fromProps.doubleClickZoom) {
+      if (doubleClickZoom === true) {
+        this.leafletElement.doubleClickZoom.enable()
+      } else {
+        this.leafletElement.doubleClickZoom.disable()
+      }
+    }
+
+    if (dragging !== fromProps.dragging) {
+      if (dragging === true) {
+        this.leafletElement.dragging.enable()
+      } else {
+        this.leafletElement.dragging.disable()
+      }
+    }
+
+    if (keyboard !== fromProps.keyboard) {
+      if (keyboard === true) {
+        this.leafletElement.keyboard.enable()
+      } else {
+        this.leafletElement.keyboard.disable()
+      }
+    }
+
+    if (scrollWheelZoom !== fromProps.scrollWheelZoom) {
+      if (scrollWheelZoom === true || typeof scrollWheelZoom === 'string') {
+        this.leafletElement.options.scrollWheelZoom = scrollWheelZoom
+        this.leafletElement.scrollWheelZoom.enable()
+      } else {
+        this.leafletElement.scrollWheelZoom.disable()
+      }
+    }
+
+    if (tap !== fromProps.tap) {
+      if (tap === true) {
+        this.leafletElement.tap.enable()
+      } else {
+        this.leafletElement.tap.disable()
+      }
+    }
+
+    if (touchZoom !== fromProps.touchZoom) {
+      if (touchZoom === true || typeof touchZoom === 'string') {
+        this.leafletElement.options.touchZoom = touchZoom
+        this.leafletElement.touchZoom.enable()
+      } else {
+        this.leafletElement.touchZoom.disable()
       }
     }
 

@@ -116,20 +116,33 @@ for more information about the properties.
   [`🍃 equals() method of LatLngBounds`](http://leafletjs.com/reference-1.3.0.html#latlngbounds-equals).
 * `boundsOptions: Object` (optional): Options passed to the `fitBounds()`
   method.
+* `boxZoom: boolean` (optional): If `true`, the map can be zoomed to a rectangular area specified by
+  dragging the mouse while pressing the shift key. Defaults to true.
 * `center: latLng` (optional if `viewport` is provided with a center value):
   Center of the map. Changes are compared by value, so `[51.0, 0.0]` is
   considered the same as `{lat: 51, lng: 0}`.
 * `className: string` (optional): className property of the `<div>` container
   for the map.
+* `doubleClickZoom: boolean | string` (optional): If `true`, the map can be zoomed in by double clicking
+  on it and zoomed out by double clicking while holding shift. If passed 'center', double-click zoom will
+  zoom to the center of the view regardless of where the mouse was. Defaults to true.
+* `dragging: boolean` (optional): If `true`, allows the map to be draggable with mouse/touch or not. Defaults to true.
+* `keyboard: boolean` (optional): If `true`, allows users to navigate the map with keyboard arrows and +/- keys. Defaults to true.
 * `maxBounds: bounds` (optional)
 * `onViewportChange: (viewport: {center: ?[number, number], zoom: ?number}) => void` (optional): fired continuously as the viewport changes.
 * `onViewportChanged: (viewport: {center: ?[number, number], zoom: ?number}) => void` (optional): fired after the viewport changed.
 * `style: Object` (optional): style property of the `<div>` container for the
   map.
+* `scrollWheelZoom: boolean | string` (optional): If `true` or `center`, allows the map to be zoomed by using the mouse wheel. If passed 'center',
+  it will zoom to the center of the view regardless of where the mouse was. Defaults to true.
 * `useFlyTo: boolean` (optional): boolean to control whether to use flyTo
   functions for bounds and center. If false `map.fitBounds` and `map.setView`
   will be used. If true `map.flyToBounds` and `map.flyTo` will be used. Defaults
   to false.
+* `tap: boolean` (optional): If `true`, enables mobile hacks for supporting instant taps (fixing 200ms click delay on iOS/Android) and touch
+  holds (fired as contextmenu events). Defaults to true.
+* `touchZoom: boolean | string` (optional): If `true` or `center`, allows the map to be zoomed by touch-dragging with two fingers. If passed 'center', it will zoom to the center
+  of the view regardless of where the touch events (fingers) were. Enabled for touch-capable web browsers except for old Androids.
 * `viewport: viewport` (optional): sets the viewport based on the provided value
   or the `center` and `zoom` properties.
 * `zoom: number` (optional if `viewport` is provided with a zoom value)
