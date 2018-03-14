@@ -42,6 +42,7 @@ const siteConfig = {
   highlight: {
     theme: 'default',
   },
+  onPageNav: 'separate',
   scripts: ['https://buttons.github.io/buttons.js'],
   repoUrl: 'https://github.com/PaulLeCam/react-leaflet',
   cname: 'react-leaflet.js.org',

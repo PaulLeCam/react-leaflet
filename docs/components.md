@@ -18,6 +18,7 @@ in `componentWillMount()` and therefore accessible in `componentDidMount()`, exc
 You can check out the [event handling example](https://github.com/PaulLeCam/react-leaflet/blob/master/example/components/events.js) to see how to interact with methods exposed by the Leaflet element.
 
 * [Base components](#base-components)
+  * [DivOverlay](#divoverlay)
   * [MapComponent](#mapcomponent)
   * [MapControl](#mapcontrol)
   * [MapLayer](#maplayer)
@@ -56,6 +57,12 @@ You can check out the [event handling example](https://github.com/PaulLeCam/reac
 
 These components are base classes used by other components. They can be extended
 to create custom components but should not be used directly.
+
+### DivOverlay
+
+Base class extending [`MapComponent`](#mapcomponent), handling shared logic for the [`Popup`](#popup) and [`Tooltip`](#tooltip) components.
+
+[🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/DivOverlay.js)
 
 ### MapComponent
 

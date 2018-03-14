@@ -12,6 +12,9 @@ The components exposed by React-Leaflet inherit from the following hierarchy:
     * [`LayersControl.Overlay`](components.md#layerscontroloverlay)
   * [`MapComponent`](components.md#mapcomponent): base class handling extracting
     and updating Leaflet events.
+    * [`DivOverlay`](components.md#divoverlay)
+      * [`Popup`](components.md#popup)
+      * [`Tooltip`](components.md#tooltip)
     * [`Map`](components.md#map): top-level component instantiating a Leaflet
       map and providing it to its children.
     * [`MapLayer`](components.md#maplayer): base class for all map layers,
@@ -31,8 +34,6 @@ The components exposed by React-Leaflet inherit from the following hierarchy:
         * [`Polygon`](components.md#polygon)
         * [`Polyline`](components.md#polyline)
         * [`Rectangle`](components.md#rectangle)
-    * [`Popup`](components.md#popup)
-    * [`Tooltip`](components.md#tooltip)
   * [`MapControl`](components.md#mapcontrol): base class for all controls,
     handles positioning.
     * [`AttributionControl`](components.md#attributioncontrol)

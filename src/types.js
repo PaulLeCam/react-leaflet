@@ -6,7 +6,7 @@ import type {
   Point as LeafletPoint,
   Renderer,
 } from 'leaflet'
-import type { Node } from 'react'
+import type { Element, Node } from 'react'
 
 export type LatLng = LeafletLatLng | Array<number> | Object
 
@@ -63,9 +63,19 @@ export type PathOptions = {
   attribution?: string,
 }
 
+export type DivOverlayOptions = {
+  children: Element<any>,
+  className?: string,
+  offset?: LeafletPoint,
+  onClose?: () => void,
+  onOpen?: () => void,
+}
+
 export type MapControlProps = { position?: ControlPosition }
 
 export type MapComponentProps = { pane?: string }
+
+export type DivOverlayProps = MapComponentProps & DivOverlayOptions
 
 export type MapLayerProps = { children?: Node } & MapComponentProps
 

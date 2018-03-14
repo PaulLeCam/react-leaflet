@@ -1,3 +1,10 @@
+## v1.9.0 (2018-03-14)
+
+* Fixed event listeners removal in `Map` ([PR #459](https://github.com/PaulLeCam/react-leaflet/pull/459) by _andersonveiga_).
+* Added support for dynamic handlers in `Map` ([PR #452](https://github.com/PaulLeCam/react-leaflet/pull/452) by _jonathanchrisp_).
+* Added `DivOverlay` component as base class for `Popup` and `Tooltip`, now supporting dynamic `className` prop.
+* [website] Updated Docusaurus, with added on-page navigation sidebar.
+
 ## v1.8.2 (2018-02-26)
 
 * Fixed `Map` unmounting when `preferCanvas` is set.
