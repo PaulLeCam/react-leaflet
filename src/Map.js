@@ -2,12 +2,11 @@
 
 import {
   latLngBounds,
-  DomUtil,
   Map as LeafletMap,
   type CRS,
   type Renderer,
 } from 'leaflet'
-import { forEach, isUndefined, omit } from 'lodash'
+import { isUndefined, omit } from 'lodash'
 import PropTypes from 'prop-types'
 import React, { type Node } from 'react'
 
@@ -18,6 +17,7 @@ import latlng from './propTypes/latlng'
 import layerContainer from './propTypes/layerContainer'
 import map from './propTypes/map'
 import viewport from './propTypes/viewport'
+import updateClassName from './utils/updateClassName'
 import type {
   LatLng,
   LatLngBounds,
@@ -37,9 +37,6 @@ const OTHER_PROPS = [
 
 const normalizeCenter = (pos: LatLng): [number, number] =>
   Array.isArray(pos) ? [pos[0], pos[1]] : [pos.lat, pos.lon ? pos.lon : pos.lng]
-
-const splitClassName = (className: string = ''): Array<string> =>
-  className.split(' ').filter(Boolean)
 
 type LeafletElement = LeafletMap
 
@@ -182,18 +179,7 @@ export default class Map extends MapComponent<LeafletElement, Props> {
       zoom,
     } = toProps
 
-    if (className !== fromProps.className) {
-      if (fromProps.className != null && fromProps.className.length > 0) {
-        forEach(splitClassName(fromProps.className), cls => {
-          DomUtil.removeClass(this.container, cls)
-        })
-      }
-      if (className != null && className.length > 0) {
-        forEach(splitClassName(className), cls => {
-          DomUtil.addClass(this.container, cls)
-        })
-      }
-    }
+    updateClassName(this.container, fromProps.className, className)
 
     if (viewport && viewport !== fromProps.viewport) {
       const c = viewport.center ? viewport.center : center
@@ -336,6 +322,10 @@ export default class Map extends MapComponent<LeafletElement, Props> {
 
   componentWillUnmount() {
     super.componentWillUnmount()
+
+    this.leafletElement.off('move', this.onViewportChange)
+    this.leafletElement.off('moveend', this.onViewportChanged)
+
     // The canvas renderer uses requestAnimationFrame, making a deferred call to a deleted object
     // When preferCanvas is set, use simpler teardown logic
     if (this.props.preferCanvas === true) {

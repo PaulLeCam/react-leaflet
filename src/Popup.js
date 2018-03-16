@@ -2,26 +2,20 @@
 
 import { Popup as LeafletPopup } from 'leaflet'
 import PropTypes from 'prop-types'
-import { Children, type Element } from 'react'
-import { render, unmountComponentAtNode } from 'react-dom'
 
-import MapComponent from './MapComponent'
+import DivOverlay from './DivOverlay'
 import latlng from './propTypes/latlng'
 import layer from './propTypes/layer'
 import map from './propTypes/map'
-import type { LatLng } from './types'
+import type { LatLng, DivOverlayProps } from './types'
 
 type LeafletElement = LeafletPopup
 type Props = {
   autoPan?: boolean,
-  children: Element<any>,
-  onClose?: () => void,
-  onOpen?: () => void,
-  pane?: string,
   position?: LatLng,
-}
+} & DivOverlayProps
 
-export default class Popup extends MapComponent<LeafletElement, Props> {
+export default class Popup extends DivOverlay<LeafletElement, Props> {
   static propTypes = {
     children: PropTypes.node,
     onClose: PropTypes.func,
@@ -84,16 +78,8 @@ export default class Popup extends MapComponent<LeafletElement, Props> {
     }
   }
 
-  componentDidUpdate(prevProps: Props) {
-    this.updateLeafletElement(prevProps, this.props)
-
-    if (this.leafletElement.isOpen()) {
-      this.renderPopupContent()
-    }
-  }
-
   componentWillUnmount() {
-    this.removePopupContent()
+    this.removeContent()
 
     this.context.map.off({
       popupopen: this.onPopupOpen,
@@ -106,21 +92,16 @@ export default class Popup extends MapComponent<LeafletElement, Props> {
 
   onPopupOpen = ({ popup }: { popup: LeafletElement }) => {
     if (popup === this.leafletElement) {
-      this.renderPopupContent()
-      if (this.props.onOpen) {
-        this.props.onOpen()
-      }
+      this.onOpen()
     }
   }
 
   onPopupClose = ({ popup }: { popup: LeafletElement }) => {
     if (popup === this.leafletElement) {
-      this.removePopupContent()
-      if (this.props.onClose) {
-        this.props.onClose()
-      }
+      this.onClose()
     }
   }
+
 
   renderPopupContent = () => {
     if (this.props.children == null) {
@@ -151,9 +132,5 @@ export default class Popup extends MapComponent<LeafletElement, Props> {
     if (this.leafletElement._contentNode) {
       unmountComponentAtNode(this.leafletElement._contentNode)
     }
-  }
-
-  render() {
-    return null
   }
 }
