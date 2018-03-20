@@ -12,6 +12,7 @@ import type { LatLng, MapLayerProps } from './types'
 type LeafletElement = LeafletMarker
 type Props = {
   icon?: Icon,
+  animated?: boolean,
   draggable?: boolean,
   opacity?: number,
   position: LatLng,
