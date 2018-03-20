@@ -1,6 +1,6 @@
 // @flow
 
-import { Icon, Marker as LeafletMarker, type Layer } from 'leaflet'
+import { Icon, L, Marker as LeafletMarker, type Layer } from 'leaflet'
 import PropTypes from 'prop-types'
 
 import MapLayer from './MapLayer'
@@ -12,6 +12,7 @@ import type { LatLng, MapLayerProps } from './types'
 type LeafletElement = LeafletMarker
 type Props = {
   icon?: Icon,
+  animated?: boolean,
   draggable?: boolean,
   opacity?: number,
   position: LatLng,
@@ -21,6 +22,7 @@ type Props = {
 export default class Marker extends MapLayer<LeafletElement, Props> {
   static propTypes = {
     children: children,
+    animated: PropTypes.bool,
     draggable: PropTypes.bool,
     icon: PropTypes.instanceOf(Icon),
     opacity: PropTypes.number,
@@ -35,6 +37,33 @@ export default class Marker extends MapLayer<LeafletElement, Props> {
   getChildContext(): { popupContainer: Layer } {
     return {
       popupContainer: this.leafletElement,
+    }
+  }
+
+  componentDidUpdate() {
+    if (this.props.animated) return false;
+    super.componentDidUpdate();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(
+      this.props.animated && (
+      JSON.stringify(this.props.position.lat.toString().substring(8, 3)) !==
+      JSON.stringify(nextProps.position.lat.toString().substring(8, 3))
+    )){
+        let position;
+        let movingInterval;
+        let curLat = this.props.position.lat;
+        let curLng = this.props.position.lng;
+        let newLat = nextProps.position.lat;
+        let newLng = nextProps.position.lng;
+        let threshold = 0.01;
+        movingInterval = setInterval(() => {
+          if (threshold >= 1) clearInterval(movingInterval);
+          position = new L.LatLng((curLat + (newLat - curLat) * threshold), (curLng + (newLng - curLng) * threshold));
+          this.leafletElement.setLatLng(position);
+          threshold += 0.1;
+        }, 400);
     }
   }
 
