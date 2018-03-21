@@ -102,7 +102,6 @@ export default class Popup extends DivOverlay<LeafletElement, Props> {
     }
   }
 
-
   renderPopupContent = () => {
     if (this.props.children == null) {
       this.removePopupContent()
