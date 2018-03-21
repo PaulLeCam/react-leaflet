@@ -102,12 +102,34 @@ export default class Popup extends DivOverlay<LeafletElement, Props> {
     }
   }
 
-  onRender = () => {
-    if (this.props.autoPan !== false) {
-      if (this.leafletElement._map && this.leafletElement._map._panAnim) {
-        this.leafletElement._map._panAnim = undefined
-      }
-      this.leafletElement._adjustPan()
+  renderPopupContent = () => {
+    if (this.props.children == null) {
+      this.removePopupContent()
+    } else {
+      render(
+        Children.only(this.props.children),
+        this.leafletElement._contentNode,
+        () => {
+          if (this.leafletElement.isOpen()) {
+            this.leafletElement.update()
+            if (this.props.autoPan !== false) {
+              if (
+                this.leafletElement._map &&
+                this.leafletElement._map._panAnim
+              ) {
+                this.leafletElement._map._panAnim = undefined
+              }
+              this.leafletElement._adjustPan()
+            }
+          }
+        },
+      )
+    }
+  }
+
+  removePopupContent = () => {
+    if (this.leafletElement._contentNode) {
+      unmountComponentAtNode(this.leafletElement._contentNode)
     }
   }
 }
