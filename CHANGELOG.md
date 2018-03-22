@@ -1,3 +1,8 @@
+## v1.9.1 (2018-03-22)
+
+* Added check for open popup to rendering logic ([PR #464](https://github.com/PaulLeCam/react-leaflet/pull/464) by _olabalboa_).
+* [website] Added plugins ([PR #463](https://github.com/PaulLeCam/react-leaflet/pull/463) by _mhasbie_).
+
 ## v1.9.0 (2018-03-14)
 
 * Fixed event listeners removal in `Map` ([PR #459](https://github.com/PaulLeCam/react-leaflet/pull/459) by _andersonveiga_).
