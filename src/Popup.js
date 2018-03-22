@@ -103,7 +103,7 @@ export default class Popup extends DivOverlay<LeafletElement, Props> {
   }
 
   onRender = () => {
-    if (this.props.autoPan !== false) {
+    if (this.props.autoPan !== false && this.leafletElement.isOpen()) {
       if (this.leafletElement._map && this.leafletElement._map._panAnim) {
         this.leafletElement._map._panAnim = undefined
       }
