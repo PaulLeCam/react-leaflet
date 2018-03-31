@@ -2,12 +2,14 @@
 .*/node_modules/fbjs/.*
 .*/es/.*
 .*/lib/.*
+.*/website/.*
 
 [include]
 
 [lints]
 all=warn
 unclear-type=off
+unsafe-getters-setters=off
 
 [options]
 include_warnings=true
@@ -15,5 +17,3 @@ include_warnings=true
 esproposal.class_instance_fields=enable
 esproposal.class_static_fields=enable
 esproposal.export_star_as=enable
-
-unsafe.enable_getters_and_setters=true

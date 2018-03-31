@@ -2,12 +2,11 @@
 
 import {
   latLngBounds,
-  DomUtil,
   Map as LeafletMap,
   type CRS,
   type Renderer,
 } from 'leaflet'
-import { forEach, isUndefined, omit } from 'lodash'
+import { isUndefined, omit } from 'lodash'
 import PropTypes from 'prop-types'
 import React, { type Node } from 'react'
 
@@ -18,6 +17,7 @@ import latlng from './propTypes/latlng'
 import layerContainer from './propTypes/layerContainer'
 import map from './propTypes/map'
 import viewport from './propTypes/viewport'
+import updateClassName from './utils/updateClassName'
 import type {
   LatLng,
   LatLngBounds,
@@ -37,9 +37,6 @@ const OTHER_PROPS = [
 
 const normalizeCenter = (pos: LatLng): [number, number] =>
   Array.isArray(pos) ? [pos[0], pos[1]] : [pos.lat, pos.lon ? pos.lon : pos.lng]
-
-const splitClassName = (className: string = ''): Array<string> =>
-  className.split(' ').filter(Boolean)
 
 type LeafletElement = LeafletMap
 
@@ -167,26 +164,22 @@ export default class Map extends MapComponent<LeafletElement, Props> {
       animate,
       bounds,
       boundsOptions,
+      boxZoom,
       center,
       className,
+      doubleClickZoom,
+      dragging,
+      keyboard,
       maxBounds,
+      scrollWheelZoom,
+      tap,
+      touchZoom,
       useFlyTo,
       viewport,
       zoom,
     } = toProps
 
-    if (className !== fromProps.className) {
-      if (fromProps.className != null && fromProps.className.length > 0) {
-        forEach(splitClassName(fromProps.className), cls => {
-          DomUtil.removeClass(this.container, cls)
-        })
-      }
-      if (className != null && className.length > 0) {
-        forEach(splitClassName(className), cls => {
-          DomUtil.addClass(this.container, cls)
-        })
-      }
-    }
+    updateClassName(this.container, fromProps.className, className)
 
     if (viewport && viewport !== fromProps.viewport) {
       const c = viewport.center ? viewport.center : center
@@ -223,6 +216,64 @@ export default class Map extends MapComponent<LeafletElement, Props> {
         this.leafletElement.flyToBounds(bounds, boundsOptions)
       } else {
         this.leafletElement.fitBounds(bounds, boundsOptions)
+      }
+    }
+
+    if (boxZoom !== fromProps.boxZoom) {
+      if (boxZoom === true) {
+        this.leafletElement.boxZoom.enable()
+      } else {
+        this.leafletElement.boxZoom.disable()
+      }
+    }
+
+    if (doubleClickZoom !== fromProps.doubleClickZoom) {
+      if (doubleClickZoom === true) {
+        this.leafletElement.doubleClickZoom.enable()
+      } else {
+        this.leafletElement.doubleClickZoom.disable()
+      }
+    }
+
+    if (dragging !== fromProps.dragging) {
+      if (dragging === true) {
+        this.leafletElement.dragging.enable()
+      } else {
+        this.leafletElement.dragging.disable()
+      }
+    }
+
+    if (keyboard !== fromProps.keyboard) {
+      if (keyboard === true) {
+        this.leafletElement.keyboard.enable()
+      } else {
+        this.leafletElement.keyboard.disable()
+      }
+    }
+
+    if (scrollWheelZoom !== fromProps.scrollWheelZoom) {
+      if (scrollWheelZoom === true || typeof scrollWheelZoom === 'string') {
+        this.leafletElement.options.scrollWheelZoom = scrollWheelZoom
+        this.leafletElement.scrollWheelZoom.enable()
+      } else {
+        this.leafletElement.scrollWheelZoom.disable()
+      }
+    }
+
+    if (tap !== fromProps.tap) {
+      if (tap === true) {
+        this.leafletElement.tap.enable()
+      } else {
+        this.leafletElement.tap.disable()
+      }
+    }
+
+    if (touchZoom !== fromProps.touchZoom) {
+      if (touchZoom === true || typeof touchZoom === 'string') {
+        this.leafletElement.options.touchZoom = touchZoom
+        this.leafletElement.touchZoom.enable()
+      } else {
+        this.leafletElement.touchZoom.disable()
       }
     }
 
@@ -271,9 +322,18 @@ export default class Map extends MapComponent<LeafletElement, Props> {
 
   componentWillUnmount() {
     super.componentWillUnmount()
+
     this.leafletElement.off('move', this.onViewportChange)
     this.leafletElement.off('moveend', this.onViewportChanged)
-    this.leafletElement.remove()
+
+    // The canvas renderer uses requestAnimationFrame, making a deferred call to a deleted object
+    // When preferCanvas is set, use simpler teardown logic
+    if (this.props.preferCanvas === true) {
+      this.leafletElement._initEvents(true)
+      this.leafletElement._stop()
+    } else {
+      this.leafletElement.remove()
+    }
   }
 
   bindContainer = (container: ?HTMLDivElement): void => {

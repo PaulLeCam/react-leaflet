@@ -25,10 +25,10 @@ for this.
 
 This library aims only to support the features provided by Leaflet. If any of
 these features is not implemented yet, please submit a feature request to add
-it. If you are looking for implementations of features provided by plugins, they
-will not be provided by this library. Please read the
-[extending](https://github.com/PaulLeCam/react-leaflet/blob/master/docs/Extending.md)
-section of the documentation to see how to implement plugins in your own code.
+it.\
+If you are looking for implementations of features provided by plugins, they
+will not be provided by this library, but a [list of third-party plugins is available in the documentation](https://react-leaflet.js.org/docs/en/plugins.html).\
+You can also read the [documentation on custom components](https://react-leaflet.js.org/docs/en/custom-components.html) to see how to implement plugins in your own code.
 
 ## Other issues
 
@@ -38,5 +38,5 @@ If you have questions about React or Leaflet not directly related to this librar
 please ask them using their respective support platforms.\
 For any other issue, please provide a simple description, if relevant with codes
 examples. You can use
-[this WebpackBin](https://www.webpackbin.com/bins/-Kl_ZeUx4I05ETYoT26O) as a
+[this CodePen](https://codepen.io/PaulLeCam/pen/XVPmmj) as a
 starting example.

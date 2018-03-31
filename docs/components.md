@@ -1,18 +1,24 @@
-# Components
+---
+id: components
+title: Components
+---
+
+⚠️ Before starting to use the following components, make sure to understand the difference between the **static** and **dynamic** properties documented in this page.
 
 The properties documented as **dynamic properties** are updated using the
-relevant Leaflet setter, other properties will _not_ update the component when
+relevant Leaflet setter, other properties **will not update** the component when
 they are changed after the component is mounted.\
 All other properties are passed as the `options` argument to their corresponding
 Leaflet element and should work fine for static maps, it is however unlikely that
-they would updated if you change them afterwards.
+they would get updated if you change them afterwards.
 
-You can directly access the Leaflet element created by a component using
-`this.leafletElement` in this component. This leaflet element is usually created
-in `componentWillMount()`, except for the `Map` component where it can only be
-created after the `<div>` container is rendered.
+ℹ️ You can directly access the Leaflet element created by a component using
+`this.leafletElement` in the component. This leaflet element is usually created
+in `componentWillMount()` and therefore accessible in `componentDidMount()`, except for the `Map` component where it can only be created after the `<div>` container is rendered.\
+You can check out the [event handling example](https://github.com/PaulLeCam/react-leaflet/blob/master/example/components/events.js) to see how to interact with methods exposed by the Leaflet element.
 
 * [Base components](#base-components)
+  * [DivOverlay](#divoverlay)
   * [MapComponent](#mapcomponent)
   * [MapControl](#mapcontrol)
   * [MapLayer](#maplayer)
@@ -52,11 +58,19 @@ created after the `<div>` container is rendered.
 These components are base classes used by other components. They can be extended
 to create custom components but should not be used directly.
 
+### DivOverlay
+
+Base class extending [`MapComponent`](#mapcomponent), handling shared logic for the [`Popup`](#popup) and [`Tooltip`](#tooltip) components.
+
+[🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/DivOverlay.js)
+
 ### MapComponent
 
 Base class extending `React.Component` and handling events bindings.\
 It exposes a `leafletElement` property to access the `Leaflet` object created for
 the component.
+
+[🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/MapComponent.js)
 
 ### MapControl
 
@@ -64,11 +78,15 @@ Base class extending `React.Component` for controls.\
 It exposes a `leafletElement` property to access the `Leaflet` object created for
 the control.
 
+[🍃 Leaflet Control reference](http://leafletjs.com/reference-1.3.0.html#control) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/MapControl.js)
+
 ### MapLayer
 
 Base class extending [`MapComponent`](#mapcomponent), handling adding the layer
 to the map and removing it when relevant. It exposes the `layerContainer`
 property, to be used by extending classes to access their containing layer.
+
+[🍃 Leaflet Layer reference](http://leafletjs.com/reference-1.3.0.html#layer) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/MapLayer.js)
 
 ### Path
 
@@ -76,20 +94,24 @@ Base class extending [`MapLayer`](#maplayer) with the following methods:
 
 * `getPathOptions(object props): object`: filters the input `props` and return a
   new object of
-  [Path options](http://leafletjs.com/reference-1.2.0.html#path-options)
+  [Path options](http://leafletjs.com/reference-1.3.0.html#path-options)
   properties.
 * `setStyle(object options = {}): void`: alias to the Leaflet element
-  [`setStyle()`](http://leafletjs.com/reference-1.2.0.html#path-setstyle).
+  [`setStyle()`](http://leafletjs.com/reference-1.3.0.html#path-setstyle).
 * `setStyleIfChanged(object fromProps, object toProps): void`: extracts the Path
   options of the two arguments, and calls `setStyle()` with the new options if
   different from the previous ones.
+
+[🍃 Leaflet reference](http://leafletjs.com/reference-1.3.0.html#path) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/Path.js)
 
 ## Map
 
 This is the top-level component that must be mounted for child components to be
 rendered. Refer to
-[Leaflet documentation](http://leafletjs.com/reference-1.2.0.html#map-options)
+[🍃 Leaflet's documentation](http://leafletjs.com/reference-1.3.0.html#map-options)
 for more information about the properties.
+
+[🍃 Leaflet reference](http://leafletjs.com/reference-1.3.0.html#map) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/Map.js)
 
 **Dynamic properties**
 
@@ -98,25 +120,36 @@ for more information about the properties.
 * `bounds: bounds` (optional): A rectangle for the map to contain. It will be
   centered, and the map will zoom in as close as it can while still showing the
   full bounds. Changes are compared using the
-  [`equals() method of LatLngBounds`](http://leafletjs.com/reference-1.2.0.html#latlngbounds-equals).
+  [`🍃 equals() method of LatLngBounds`](http://leafletjs.com/reference-1.3.0.html#latlngbounds-equals).
 * `boundsOptions: Object` (optional): Options passed to the `fitBounds()`
   method.
+* `boxZoom: boolean` (optional): If `true`, the map can be zoomed to a rectangular area specified by
+  dragging the mouse while pressing the shift key. Defaults to true.
 * `center: latLng` (optional if `viewport` is provided with a center value):
   Center of the map. Changes are compared by value, so `[51.0, 0.0]` is
   considered the same as `{lat: 51, lng: 0}`.
 * `className: string` (optional): className property of the `<div>` container
   for the map.
+* `doubleClickZoom: boolean | string` (optional): If `true`, the map can be zoomed in by double clicking
+  on it and zoomed out by double clicking while holding shift. If passed 'center', double-click zoom will
+  zoom to the center of the view regardless of where the mouse was. Defaults to true.
+* `dragging: boolean` (optional): If `true`, allows the map to be draggable with mouse/touch or not. Defaults to true.
+* `keyboard: boolean` (optional): If `true`, allows users to navigate the map with keyboard arrows and +/- keys. Defaults to true.
 * `maxBounds: bounds` (optional)
-* `onViewportChange: (viewport: {center: ?[number, number], zoom: ?number}) =>
-  void` (optional): fired continuously as the viewport changes.
-* `onViewportChanged: (viewport: {center: ?[number, number], zoom: ?number}) =>
-  void` (optional): fired after the viewport changed.
+* `onViewportChange: (viewport: {center: ?[number, number], zoom: ?number}) => void` (optional): fired continuously as the viewport changes.
+* `onViewportChanged: (viewport: {center: ?[number, number], zoom: ?number}) => void` (optional): fired after the viewport changed.
 * `style: Object` (optional): style property of the `<div>` container for the
   map.
+* `scrollWheelZoom: boolean | string` (optional): If `true` or `center`, allows the map to be zoomed by using the mouse wheel. If passed 'center',
+  it will zoom to the center of the view regardless of where the mouse was. Defaults to true.
 * `useFlyTo: boolean` (optional): boolean to control whether to use flyTo
   functions for bounds and center. If false `map.fitBounds` and `map.setView`
   will be used. If true `map.flyToBounds` and `map.flyTo` will be used. Defaults
   to false.
+* `tap: boolean` (optional): If `true`, enables mobile hacks for supporting instant taps (fixing 200ms click delay on iOS/Android) and touch
+  holds (fired as contextmenu events). Defaults to true.
+* `touchZoom: boolean | string` (optional): If `true` or `center`, allows the map to be zoomed by touch-dragging with two fingers. If passed 'center', it will zoom to the center
+  of the view regardless of where the touch events (fingers) were. Enabled for touch-capable web browsers except for old Androids.
 * `viewport: viewport` (optional): sets the viewport based on the provided value
   or the `center` and `zoom` properties.
 * `zoom: number` (optional if `viewport` is provided with a zoom value)
@@ -126,7 +159,7 @@ for more information about the properties.
 * `id: string` (optional): The ID of the `<div>` container for the map.
 * `whenReady: () => void` (optional): A function called as soon as the map is
   ready, see
-  [Leaflet's documentation](http://leafletjs.com/reference-1.2.0.html#map-whenready)
+  [🍃 Leaflet's documentation](http://leafletjs.com/reference-1.3.0.html#map-whenready)
   for more information.
 
 **Manipulating the viewport**
@@ -138,8 +171,7 @@ both the `center` and a `viewport` containing the zoom value would work as
 expected.
 
 The `center` and `zoom` properties are compared by values. This means for
-React-Leaflet setting the center to `[51, 0]` is the same as `{lat: 51, lng:
-0}`, if you change the `center` property from one to the other, it would have no
+React-Leaflet setting the center to `[51, 0]` is the same as `{lat: 51, lng: 0}`, if you change the `center` property from one to the other, it would have no
 effect, because the values are the same. This is a technical choice made to
 support common use cases when layers are added to the map, but the map's
 viewport shouldn't be reset to its original position, the viewport will only
@@ -152,17 +184,15 @@ of the map. This means you can reset the map to any position by updating the sta
 of your component.\
 The `viewport`, on the other hand, is compared by reference, meaning providing a
 different object, whatever its values, will trigger the viewport change logic.
-It is for example possible the do `<Map center={[51,0]} zoom={10}
-viewport={{}}>` to reset the viewport to the provided `center` and `zoom`,
+It is for example possible the do `<Map center={[51,0]} zoom={10} viewport={{}}>` to reset the viewport to the provided `center` and `zoom`,
 because the `viewport` is a newly created object, and being empty will default
-it to the `center` and `zoom` properties. Providing `<Map center={[51,0]}
-zoom={10} viewport={null}>` is equivalent to not providing the `viewport`
+it to the `center` and `zoom` properties. Providing `<Map center={[51,0]} zoom={10} viewport={null}>` is equivalent to not providing the `viewport`
 property and will perform no change.
 
 React-Leaflet provides the `onViewportChange` and `onViewportChanged` callbacks
 to help apply this behavior, you can see an example usage below:
 
-```js
+```javascript
 type Viewport = {
   center: [number, number],
   zoom: number,
@@ -206,8 +236,7 @@ class MyMap extends Component<Props, State> {
       <Map
         onClick={this.onClickReset}
         onViewportChanged={this.onViewportChanged}
-        viewport={this.state.viewport}
-      >
+        viewport={this.state.viewport}>
         ...
       </Map>
     )
@@ -215,12 +244,11 @@ class MyMap extends Component<Props, State> {
 }
 ```
 
-See the [viewport example](../example/components/viewport.js) for a more
-complete implementation.
+See the [viewport example](https://github.com/PaulLeCam/react-leaflet/blob/master/example/components/viewport.js) for a more complete implementation.
 
 ## Pane
 
-[Leaflet reference](http://leafletjs.com/reference-1.2.0.html#map-pane)
+[🍃 Leaflet reference](http://leafletjs.com/reference-1.3.0.html#map-pane) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/Pane.js)
 
 **Dynamic properties**
 
@@ -233,7 +261,7 @@ complete implementation.
 
 ### Marker
 
-[Leaflet reference](http://leafletjs.com/reference-1.2.0.html#marker)
+[🍃 Leaflet reference](http://leafletjs.com/reference-1.3.0.html#marker) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/Marker.js)
 
 **Dynamic properties**
 
@@ -245,26 +273,28 @@ complete implementation.
 
 ### Popup
 
-[Leaflet reference](http://leafletjs.com/reference-1.2.0.html#popup)
+[🍃 Leaflet reference](http://leafletjs.com/reference-1.3.0.html#popup) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/Popup.js)
 
-The Popup children will be rendered using `ReactDOM.render()`, they must be
+⚠️ The Popup children will be rendered using `ReactDOM.render()`, they must be
 valid React elements.
 
 **Dynamic properties**
 
+* `className: string` (optional)
 * `onClose: () => void` (optional)
 * `onOpen: () => void` (optional)
 * `position: latLng` (optional)
 
 ### Tooltip
 
-[Leaflet reference](http://leafletjs.com/reference-1.2.0.html#tooltip)
+[🍃 Leaflet reference](http://leafletjs.com/reference-1.3.0.html#tooltip) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/Tooltip.js)
 
-The Tooltip children will be rendered using `ReactDOM.render()`, they must be
+⚠️ The Tooltip children will be rendered using `ReactDOM.render()`, they must be
 valid React elements.
 
 **Dynamic properties**
 
+* `className: string` (optional)
 * `onClose: () => void` (optional)
 * `onOpen: () => void` (optional)
 
@@ -272,7 +302,7 @@ valid React elements.
 
 ### TileLayer
 
-[Leaflet reference](http://leafletjs.com/reference-1.2.0.html#tilelayer)
+[🍃 Leaflet reference](http://leafletjs.com/reference-1.3.0.html#tilelayer) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/TileLayer.js)
 
 **Dynamic properties**
 
@@ -282,29 +312,29 @@ valid React elements.
 
 ### WMSTileLayer
 
-[Leaflet reference](http://leafletjs.com/reference-1.2.0.html#tilelayer-wms)
+[🍃 Leaflet reference](http://leafletjs.com/reference-1.3.0.html#tilelayer-wms) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/WMSTileLayer.js)
 
 **Dynamic properties**
 
 * `url: string` (required)
 
-All other properties are passed as parameters and dynamic, they will cause the
+ℹ️ All other properties are passed as parameters and dynamic, they will cause the
 layer to redraw if they change.
 
 ### ImageOverlay
 
-[Leaflet reference](http://leafletjs.com/reference-1.2.0.html#imageoverlay)
+[🍃 Leaflet reference](http://leafletjs.com/reference-1.3.0.html#imageoverlay) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/ImageOverlay.js)
 
 **Dynamic properties**
 
-* `url: string` (required)
+* `url: string | HTMLImageElement` (required)
 * `bounds: bounds` (required)
 * `opacity: number` (optional)
 * `zIndex: number` (optional)
 
 ### VideoOverlay
 
-[Leaflet reference](http://leafletjs.com/reference-1.2.0.html#videooverlay)
+[🍃 Leaflet reference](http://leafletjs.com/reference-1.3.0.html#videooverlay) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/VideoOverlay.js)
 
 **Dynamic properties**
 
@@ -317,13 +347,13 @@ layer to redraw if they change.
 
 ## Vector Layers
 
-All vector layers extend the **Path** component and therefore accept dynamic
-[Path options](http://leafletjs.com/reference-1.2.0.html#path-options)
+All vector layers extend the [Path component](#path) and therefore accept dynamic
+[🍃 Path options](http://leafletjs.com/reference-1.3.0.html#path-options)
 properties.
 
 ### Circle
 
-[Leaflet reference](http://leafletjs.com/reference-1.2.0.html#circle)
+[🍃 Leaflet reference](http://leafletjs.com/reference-1.3.0.html#circle) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/Circle.js)
 
 **Dynamic properties**
 
@@ -332,7 +362,7 @@ properties.
 
 ### CircleMarker
 
-[Leaflet reference](http://leafletjs.com/reference-1.2.0.html#circlemarker)
+[🍃 Leaflet reference](http://leafletjs.com/reference-1.3.0.html#circlemarker) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/CircleMarker.js)
 
 **Dynamic properties**
 
@@ -341,7 +371,7 @@ properties.
 
 ### Polyline
 
-[Leaflet reference](http://leafletjs.com/reference-1.2.0.html#polyline)
+[🍃 Leaflet reference](http://leafletjs.com/reference-1.3.0.html#polyline) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/Polyline.js)
 
 **Dynamic properties**
 
@@ -349,7 +379,7 @@ properties.
 
 ### Polygon
 
-[Leaflet reference](http://leafletjs.com/reference-1.2.0.html#polygon)
+[🍃 Leaflet reference](http://leafletjs.com/reference-1.3.0.html#polygon) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/Polygon.js)
 
 **Dynamic properties**
 
@@ -357,7 +387,7 @@ properties.
 
 ### Rectangle
 
-[Leaflet reference](http://leafletjs.com/reference-1.2.0.html#rectangle)
+[🍃 Leaflet reference](http://leafletjs.com/reference-1.3.0.html#rectangle) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/Rectangle.js)
 
 **Dynamic properties**
 
@@ -367,11 +397,13 @@ properties.
 
 ### FeatureGroup
 
-Extended `LayerGroup` supporting a `Popup` child.
+Extended [LayerGroup](#layergroup) supporting a [Popup](#popup) child.
+
+[🍃 Leaflet reference](http://leafletjs.com/reference-1.3.0.html#featuregroup) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/FeatureGroup.js)
 
 ### GeoJSON
 
-[Leaflet reference](http://leafletjs.com/reference-1.2.0.html#geojson)
+[🍃 Leaflet reference](http://leafletjs.com/reference-1.3.0.html#geojson) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/GeoJSON.js)
 
 **Properties**
 
@@ -384,7 +416,7 @@ Extended `LayerGroup` supporting a `Popup` child.
 
 ### GridLayer
 
-[Leaflet reference](http://leafletjs.com/reference-1.2.0.html#gridlayer)
+[🍃 Leaflet reference](http://leafletjs.com/reference-1.3.0.html#gridlayer) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/GridLayer.js)
 
 **Dynamic properties**
 
@@ -395,11 +427,13 @@ Extended `LayerGroup` supporting a `Popup` child.
 
 Use the `LayerGroup` wrapper component to group children layers together.
 
+[🍃 Leaflet reference](http://leafletjs.com/reference-1.3.0.html#layergroup) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/LayerGroup.js)
+
 ## Controls
 
 ### AttributionControl
 
-[Leaflet reference](http://leafletjs.com/reference-1.2.0.html#control-attribution)
+[🍃 Leaflet reference](http://leafletjs.com/reference-1.3.0.html#control-attribution) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/AttributionControl.js)
 
 **Dynamic properties**
 
@@ -407,7 +441,7 @@ Use the `LayerGroup` wrapper component to group children layers together.
 
 ### LayersControl
 
-[Leaflet reference](http://leafletjs.com/reference-1.2.0.html#control-layers)
+[🍃 Leaflet reference](http://leafletjs.com/reference-1.3.0.html#control-layers) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/LayersControl.js)
 
 **Dynamic properties**
 
@@ -419,8 +453,8 @@ See the `layers-control` example for a more advanced usage.
 
 Example usage:
 
-```js
-;<LayersControl position="topright">
+```javascript
+<LayersControl position="topright">
   <LayersControl.BaseLayer name="OpenStreetMap.BlackAndWhite">
     <TileLayer
       attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
@@ -481,7 +515,7 @@ Example usage:
 
 ### ScaleControl
 
-[Leaflet reference](http://leafletjs.com/reference-1.2.0.html#control-scale)
+[🍃 Leaflet reference](http://leafletjs.com/reference-1.3.0.html#control-scale) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/ScaleControl.js)
 
 **Dynamic properties**
 
@@ -489,7 +523,7 @@ Example usage:
 
 ### ZoomControl
 
-[Leaflet reference](http://leafletjs.com/reference-1.2.0.html#control-zoom)
+[🍃 Leaflet reference](http://leafletjs.com/reference-1.3.0.html#control-zoom) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/ZoomControl.js)
 
 **Dynamic properties**
 

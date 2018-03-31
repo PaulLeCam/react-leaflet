@@ -1,7 +1,44 @@
-## v2 (WIP)
+## v2 (in progress)
 
-* Updated React dependency to v16.2.0.
+* Updated React dependency to v16.3.0.
 * Replaced wrapping `div` elements with `Fragment`.
+
+## v1.9.1 (2018-03-22)
+
+* Added check for open popup to rendering logic ([PR #464](https://github.com/PaulLeCam/react-leaflet/pull/464) by _olabalboa_).
+* [website] Added plugins ([PR #463](https://github.com/PaulLeCam/react-leaflet/pull/463) by _mhasbie_).
+
+## v1.9.0 (2018-03-14)
+
+* Fixed event listeners removal in `Map` ([PR #459](https://github.com/PaulLeCam/react-leaflet/pull/459) by _andersonveiga_).
+* Added support for dynamic handlers in `Map` ([PR #452](https://github.com/PaulLeCam/react-leaflet/pull/452) by _jonathanchrisp_).
+* Added `DivOverlay` component as base class for `Popup` and `Tooltip`, now supporting dynamic `className` prop.
+* [website] Updated Docusaurus, with added on-page navigation sidebar.
+
+## v1.8.2 (2018-02-26)
+
+* Fixed `Map` unmounting when `preferCanvas` is set.
+* Added `es` folder to npm package ([PR #449](https://github.com/PaulLeCam/react-leaflet/pull/449) by _jonathanchrisp_).
+* [website] Fixed link in examples page.
+* [internal] Updated examples to webpack 4.
+
+## v1.8.1 (2018-02-21)
+
+* Fixed `Tooltip` component unmounting.
+* Updated Flow support for v0.66 ([PR #447](https://github.com/PaulLeCam/react-leaflet/pull/447) by _slek22_).
+* [website] Fixed typo ([PR #440](https://github.com/PaulLeCam/react-leaflet/pull/440) by _BartWaardenburg_).
+* [website] Added plugins ([PR #446](https://github.com/PaulLeCam/react-leaflet/pull/446) by _mhasbie_).
+
+## v1.8.0 (2018-01-15)
+
+React-Leaflet now has a website! Check out [react-leaflet.js.org](https://react-leaflet.js.org/) to browse the documentation.\
+If you wish to help out improving the website, [this issue is a good starting point](https://github.com/PaulLeCam/react-leaflet/issues/434)!
+
+* Updated documentation and dependency to
+  [Leaflet v1.3](http://leafletjs.com/2018/01/15/leaflet-1.3.0.html).
+* Added `HTMLImageElement` support to `ImageOverlay` (new in Leaflet v1.3).
+* [website] Setup using Docusaurus.
+* [website] Fixed links to examples ([PR #430](https://github.com/PaulLeCam/react-leaflet/pull/430) by _subelsky_).
 
 ## v1.7.8 (2017-12-03)
 

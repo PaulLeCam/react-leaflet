@@ -140,7 +140,7 @@ export default class LayersControl extends MapControl<
     position: controlPosition,
   }
 
-  static contextTypes = {
+  static contextTypes: Object = {
     layerContainer: layerContainer,
     map: map,
   }

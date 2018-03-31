@@ -4,11 +4,11 @@
     <meta charset="utf-8">
     <title>React-Leaflet UMD example</title>
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/leaflet.css">
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/leaflet.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react-dom.js"></script>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/react/16.2.0/umd/react.production.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/react-dom/16.2.0/umd/react-dom.production.min.js"></script>
     <script src="../dist/react-leaflet.min.js"></script>
     <style>
       body {
@@ -25,11 +25,11 @@
     <div id="container"></div>
     <script type="text/babel" data-presets="es2015,react">
     const React = window.React
-const { Map, TileLayer, Marker, Popup } = window.ReactLeaflet
+const { Map: LeafletMap, TileLayer, Marker, Popup } = window.ReactLeaflet
 
 const position = [51.505, -0.09]
 const Example = () => (
-  <Map center={position} zoom={13}>
+  <LeafletMap center={position} zoom={13}>
     <TileLayer
       attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -41,7 +41,7 @@ const Example = () => (
         </span>
       </Popup>
     </Marker>
-  </Map>
+  </LeafletMap>
 )
 
 window.ReactDOM.render(<Example />, document.getElementById('container'))

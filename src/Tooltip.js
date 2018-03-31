@@ -2,22 +2,16 @@
 
 import { Tooltip as LeafletTooltip } from 'leaflet'
 import PropTypes from 'prop-types'
-import { Children, type Element } from 'react'
-import { render, unmountComponentAtNode } from 'react-dom'
 
-import MapComponent from './MapComponent'
+import DivOverlay from './DivOverlay'
 import layer from './propTypes/layer'
 import map from './propTypes/map'
+import type { DivOverlayProps } from './types'
 
 type LeafletElement = LeafletTooltip
-type Props = {
-  children: Element<any>,
-  onClose?: () => void,
-  onOpen?: () => void,
-  pane?: string,
-}
+type Props = DivOverlayProps
 
-export default class Tooltip extends MapComponent<LeafletElement, Props> {
+export default class Tooltip extends DivOverlay<LeafletElement, Props> {
   static propTypes = {
     children: PropTypes.node,
     onClose: PropTypes.func,
@@ -55,22 +49,16 @@ export default class Tooltip extends MapComponent<LeafletElement, Props> {
     this.context.popupContainer.bindTooltip(this.leafletElement)
   }
 
-  componentDidUpdate() {
-    if (this.leafletElement.isOpen()) {
-      this.renderTooltipContent()
-    }
-  }
-
   componentWillUnmount() {
     const { popupContainer } = this.context
 
-    this.removeTooltipContent()
+    this.removeContent()
 
     popupContainer.off({
       tooltipopen: this.onTooltipOpen,
       tooltipclose: this.onTooltipClose,
     })
-    if (this.props.interactive !== true) {
+    if (popupContainer._map != null) {
       popupContainer.unbindTooltip(this.leafletElement)
     }
 
@@ -79,43 +67,13 @@ export default class Tooltip extends MapComponent<LeafletElement, Props> {
 
   onTooltipOpen = ({ tooltip }: { tooltip: LeafletElement }) => {
     if (tooltip === this.leafletElement) {
-      this.renderTooltipContent()
-      if (this.props.onOpen) {
-        this.props.onOpen()
-      }
+      this.onOpen()
     }
   }
 
   onTooltipClose = ({ tooltip }: { tooltip: LeafletElement }) => {
     if (tooltip === this.leafletElement) {
-      this.removeTooltipContent()
-      if (this.props.onClose) {
-        this.props.onClose()
-      }
+      this.onClose()
     }
-  }
-
-  renderTooltipContent = () => {
-    if (this.props.children == null) {
-      this.removeTooltipContent()
-    } else {
-      render(
-        Children.only(this.props.children),
-        this.leafletElement._contentNode,
-        () => {
-          this.leafletElement.update()
-        },
-      )
-    }
-  }
-
-  removeTooltipContent = () => {
-    if (this.leafletElement._contentNode) {
-      unmountComponentAtNode(this.leafletElement._contentNode)
-    }
-  }
-
-  render() {
-    return null
   }
 }

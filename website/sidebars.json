@@ -1,0 +1,8 @@
+{
+  "docs": {
+    "Getting started": ["intro", "setup", "installation", "examples"],
+    "API": ["prop-types", "events", "components"],
+    "Guides": ["custom-components", "class-hierarchy"],
+    "Extra": ["plugins"]
+  }
+}

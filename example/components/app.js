@@ -18,7 +18,7 @@ import WMSTileLayerExample from './wms-tile-layer'
 import VideoOverlayExample from './video-overlay'
 
 Leaflet.Icon.Default.imagePath =
-  '//cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/images/'
+  '//cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/images/'
 
 const App = () => (
   <div>
