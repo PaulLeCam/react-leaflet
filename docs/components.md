@@ -280,6 +280,7 @@ valid React elements.
 
 **Dynamic properties**
 
+* `className: string` (optional)
 * `onClose: () => void` (optional)
 * `onOpen: () => void` (optional)
 * `position: latLng` (optional)
@@ -293,6 +294,7 @@ valid React elements.
 
 **Dynamic properties**
 
+* `className: string` (optional)
 * `onClose: () => void` (optional)
 * `onOpen: () => void` (optional)
 
