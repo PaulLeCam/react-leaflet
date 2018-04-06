@@ -14,13 +14,14 @@ export default class DraggableExample extends Component {
     zoom: 13,
     draggable: true,
   }
+  refmarker = React.createRef()
 
   toggleDraggable = () => {
     this.setState({ draggable: !this.state.draggable })
   }
 
   updatePosition = () => {
-    const { lat, lng } = this.refs.marker.leafletElement.getLatLng()
+    const { lat, lng } = this.refmarker.current.leafletElement.getLatLng()
     this.setState({
       marker: { lat, lng },
     })
@@ -40,7 +41,7 @@ export default class DraggableExample extends Component {
           draggable={this.state.draggable}
           onDragend={this.updatePosition}
           position={markerPosition}
-          ref="marker">
+          ref={this.refmarker}>
           <Popup minWidth={90}>
             <span onClick={this.toggleDraggable}>
               {this.state.draggable ? 'DRAG MARKER' : 'MARKER FIXED'}
