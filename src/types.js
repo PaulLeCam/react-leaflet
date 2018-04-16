@@ -3,10 +3,31 @@
 import type {
   LatLng as LeafletLatLng,
   LatLngBounds as LeafletLatLngBounds,
+  Layer,
+  Map,
   Point as LeafletPoint,
   Renderer,
 } from 'leaflet'
 import type { Element, Node } from 'react'
+
+export type AddLayerHandler = (
+  layer: Layer,
+  name: string,
+  checked?: boolean,
+) => void
+export type RemoveLayerHandler = (layer: Layer) => void
+
+export type LayerContainer = {
+  addLayer: AddLayerHandler,
+  removeLayer: RemoveLayerHandler,
+}
+
+export type LeafletContext = {
+  map?: Map,
+  pane?: ?string,
+  layerContainer?: ?LayerContainer,
+  popupContainer?: ?Layer,
+}
 
 export type LatLng = LeafletLatLng | Array<number> | Object
 
@@ -64,16 +85,19 @@ export type PathOptions = {
 }
 
 export type DivOverlayOptions = {
-  children: Element<any>,
+  children: Element<*>,
   className?: string,
   offset?: LeafletPoint,
   onClose?: () => void,
   onOpen?: () => void,
 }
 
-export type MapControlProps = { position?: ControlPosition }
+export type MapControlProps = {
+  leaflet: LeafletContext,
+  position?: ControlPosition,
+}
 
-export type MapComponentProps = { pane?: string }
+export type MapComponentProps = { leaflet: LeafletContext, pane?: string }
 
 export type DivOverlayProps = MapComponentProps & DivOverlayOptions
 

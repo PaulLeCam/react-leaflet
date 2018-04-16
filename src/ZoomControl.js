@@ -1,31 +1,23 @@
 // @flow
 
 import { Control } from 'leaflet'
-import PropTypes from 'prop-types'
 
+import { withLeaflet } from './context'
 import MapControl from './MapControl'
-import controlPositionType from './propTypes/controlPosition'
-import type { ControlPosition } from './types'
+import type { MapControlProps } from './types'
 
 type LeafletElement = Control.Zoom
 type Props = {
-  position?: ControlPosition,
   zoomInText?: string,
   zoomInTitle?: string,
   zoomOutText?: string,
   zoomOutTitle?: string,
-}
+} & MapControlProps
 
-export default class ZoomControl extends MapControl<LeafletElement, Props> {
-  static propTypes = {
-    position: controlPositionType,
-    zoomInText: PropTypes.string,
-    zoomInTitle: PropTypes.string,
-    zoomOutText: PropTypes.string,
-    zoomOutTitle: PropTypes.string,
-  }
-
+class ZoomControl extends MapControl<LeafletElement, Props> {
   createLeafletElement(props: Props): LeafletElement {
     return new Control.Zoom(props)
   }
 }
+
+export default withLeaflet(ZoomControl)

@@ -2,30 +2,26 @@
 /* eslint-disable react/no-did-mount-set-state, react/no-did-update-set-state */
 
 import Leaflet from 'leaflet'
-import React, { Component } from 'react'
+import React, { createRef, Component } from 'react'
 import { renderIntoDocument } from 'react-dom/test-utils'
 
-import { Map, Popup, TileLayer } from '../src/'
+import { Map, Popup, TileLayer } from '../src'
 
 describe('Popup', () => {
   it('adds the popup to the map', () => {
-    let popup
+    const popupRef = createRef()
     const position = [0, 0]
 
     renderIntoDocument(
       <Map center={position} zoom={10}>
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-        <Popup
-          position={position}
-          ref={function(e) {
-            popup = e
-          }}>
-          <span>Test Popup</span>
+        <Popup position={position} ref={popupRef}>
+          Test Popup
         </Popup>
       </Map>,
     )
 
-    expect(popup.leafletElement.options.position).toEqual(position)
+    expect(popupRef.current.leafletElement.options.position).toEqual(position)
   })
 
   it('adds and removes the popup on the map', () => {
@@ -36,12 +32,13 @@ describe('Popup', () => {
     Leaflet.Popup.prototype.openOn = openOn
 
     class TestComponent extends Component {
-      constructor() {
-        super()
+      constructor(props) {
+        super(props)
         this.state = {
           show: false,
           test: true,
         }
+        this.mapRef = createRef()
       }
 
       componentDidMount() {
@@ -52,7 +49,9 @@ describe('Popup', () => {
 
       componentDidUpdate() {
         if (this.state.test) {
-          expect(openOn.mock.calls[0][0]).toBe(this.refs.map.leafletElement)
+          expect(openOn.mock.calls[0][0]).toBe(
+            this.mapRef.current.leafletElement,
+          )
           this.setState({
             show: false,
             test: false,
@@ -65,13 +64,11 @@ describe('Popup', () => {
       render() {
         const position = [0, 0]
         const popup = this.state.show ? (
-          <Popup position={position}>
-            <span>Test Popup</span>
-          </Popup>
+          <Popup position={position}>Test Popup</Popup>
         ) : null
 
         return (
-          <Map center={position} ref="map" zoom={10}>
+          <Map center={position} ref={this.mapRef} zoom={10}>
             <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
             {popup}
           </Map>

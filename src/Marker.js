@@ -1,12 +1,10 @@
 // @flow
 
-import { Icon, Marker as LeafletMarker, type Layer } from 'leaflet'
-import PropTypes from 'prop-types'
+import { type Icon, Marker as LeafletMarker } from 'leaflet'
+import React from 'react'
 
+import { LeafletProvider, withLeaflet } from './context'
 import MapLayer from './MapLayer'
-import children from './propTypes/children'
-import latlng from './propTypes/latlng'
-import layer from './propTypes/layer'
 import type { LatLng, MapLayerProps } from './types'
 
 type LeafletElement = LeafletMarker
@@ -18,28 +16,11 @@ type Props = {
   zIndexOffset?: number,
 } & MapLayerProps
 
-export default class Marker extends MapLayer<LeafletElement, Props> {
-  static propTypes = {
-    children: children,
-    draggable: PropTypes.bool,
-    icon: PropTypes.instanceOf(Icon),
-    opacity: PropTypes.number,
-    position: latlng.isRequired,
-    zIndexOffset: PropTypes.number,
-  }
-
-  static childContextTypes = {
-    popupContainer: layer,
-  }
-
-  getChildContext(): { popupContainer: Layer } {
-    return {
-      popupContainer: this.leafletElement,
-    }
-  }
-
+class Marker extends MapLayer<LeafletElement, Props> {
   createLeafletElement(props: Props): LeafletElement {
-    return new LeafletMarker(props.position, this.getOptions(props))
+    const el = new LeafletMarker(props.position, this.getOptions(props))
+    this.contextValue = { ...props.leaflet, popupContainer: el }
+    return el
   }
 
   updateLeafletElement(fromProps: Props, toProps: Props) {
@@ -63,4 +44,13 @@ export default class Marker extends MapLayer<LeafletElement, Props> {
       }
     }
   }
+
+  render() {
+    const { children } = this.props
+    return children == null || this.contextValue == null ? null : (
+      <LeafletProvider value={this.contextValue}>{children}</LeafletProvider>
+    )
+  }
 }
+
+export default withLeaflet(Marker)

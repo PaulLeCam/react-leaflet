@@ -2,10 +2,9 @@
 
 import { GeoJSON as LeafletGeoJSON, type LatLng, type Layer } from 'leaflet'
 import { isFunction } from 'lodash'
-import PropTypes from 'prop-types'
 
+import { withLeaflet } from './context'
 import Path from './Path'
-import children from './propTypes/children'
 import type { PathProps } from './types'
 
 type LeafletElement = LeafletGeoJSON
@@ -21,12 +20,7 @@ type Props = {
   coordsToLatLng?: (coords: GeoJSONdata) => LatLng,
 } & PathProps
 
-export default class GeoJSON extends Path<LeafletElement, Props> {
-  static propTypes = {
-    children: children,
-    data: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
-  }
-
+class GeoJSON extends Path<LeafletElement, Props> {
   createLeafletElement(props: Props): LeafletElement {
     return new LeafletGeoJSON(props.data, this.getOptions(props))
   }
@@ -39,3 +33,5 @@ export default class GeoJSON extends Path<LeafletElement, Props> {
     }
   }
 }
+
+export default withLeaflet(GeoJSON)

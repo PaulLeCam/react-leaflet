@@ -1,7 +1,6 @@
 // @flow
 
-import PropTypes from 'prop-types'
-import { Children } from 'react'
+import React, { Fragment } from 'react'
 import { render, unmountComponentAtNode } from 'react-dom'
 
 import MapComponent from './MapComponent'
@@ -19,13 +18,18 @@ export default class DivOverlay<
   LeafletElement,
   Props: DivOverlayProps,
 > extends MapComponent<LeafletElement & DivOverlayTypes, Props> {
-  static propTypes = {
-    children: PropTypes.node,
-    onClose: PropTypes.func,
-    onOpen: PropTypes.func,
+  constructor(props: Props) {
+    super(props)
+    this.leafletElement = this.createLeafletElement(props)
   }
 
-  updateLeafletElement(prevProps: Props, props: Props) {} // eslint-disable-line
+  // eslint-disable-next-line no-unused-vars
+  createLeafletElement(props: Props) {
+    throw new Error('createLeafletElement() must be implemented')
+  }
+
+  // eslint-disable-next-line no-unused-vars
+  updateLeafletElement(prevProps: Props, props: Props) {}
 
   componentDidUpdate(prevProps: Props) {
     updateClassName(
@@ -62,7 +66,7 @@ export default class DivOverlay<
       this.removeContent()
     } else {
       render(
-        Children.only(this.props.children),
+        <Fragment>{this.props.children}</Fragment>,
         this.leafletElement._contentNode,
         () => {
           this.leafletElement.update()

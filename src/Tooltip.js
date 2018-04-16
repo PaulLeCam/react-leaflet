@@ -1,29 +1,15 @@
 // @flow
 
 import { Tooltip as LeafletTooltip } from 'leaflet'
-import PropTypes from 'prop-types'
 
+import { withLeaflet } from './context'
 import DivOverlay from './DivOverlay'
-import layer from './propTypes/layer'
-import map from './propTypes/map'
 import type { DivOverlayProps } from './types'
 
 type LeafletElement = LeafletTooltip
 type Props = DivOverlayProps
 
-export default class Tooltip extends DivOverlay<LeafletElement, Props> {
-  static propTypes = {
-    children: PropTypes.node,
-    onClose: PropTypes.func,
-    onOpen: PropTypes.func,
-  }
-
-  static contextTypes = {
-    map: map,
-    popupContainer: layer,
-    pane: PropTypes.string,
-  }
-
+class Tooltip extends DivOverlay<LeafletElement, Props> {
   static defaultProps = {
     pane: 'tooltipPane',
   }
@@ -31,28 +17,26 @@ export default class Tooltip extends DivOverlay<LeafletElement, Props> {
   createLeafletElement(props: Props): LeafletElement {
     return new LeafletTooltip(
       this.getOptions(props),
-      this.context.popupContainer,
+      props.leaflet.popupContainer,
     )
   }
 
-  componentWillMount() {
-    super.componentWillMount()
-    this.leafletElement = this.createLeafletElement(this.props)
+  componentDidMount() {
+    const { popupContainer } = this.props.leaflet
+    if (popupContainer == null) return
 
-    this.context.popupContainer.on({
+    popupContainer.on({
       tooltipopen: this.onTooltipOpen,
       tooltipclose: this.onTooltipClose,
     })
-  }
-
-  componentDidMount() {
-    this.context.popupContainer.bindTooltip(this.leafletElement)
+    popupContainer.bindTooltip(this.leafletElement)
   }
 
   componentWillUnmount() {
-    const { popupContainer } = this.context
-
     this.removeContent()
+
+    const { popupContainer } = this.props.leaflet
+    if (popupContainer == null) return
 
     popupContainer.off({
       tooltipopen: this.onTooltipOpen,
@@ -61,8 +45,6 @@ export default class Tooltip extends DivOverlay<LeafletElement, Props> {
     if (popupContainer._map != null) {
       popupContainer.unbindTooltip(this.leafletElement)
     }
-
-    super.componentWillUnmount()
   }
 
   onTooltipOpen = ({ tooltip }: { tooltip: LeafletElement }) => {
@@ -77,3 +59,5 @@ export default class Tooltip extends DivOverlay<LeafletElement, Props> {
     }
   }
 }
+
+export default withLeaflet(Tooltip)

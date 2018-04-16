@@ -1,33 +1,17 @@
-import PropTypes from 'prop-types'
 import React, { Component } from 'react'
-import {
-  Map,
-  TileLayer,
-  Marker,
-  Popup,
-  PropTypes as MapPropTypes,
-} from '../../src'
+import { Map, TileLayer, Marker, Popup } from '../../src'
 
 const MyPopupMarker = ({ children, position }) => (
   <Marker position={position}>
-    <Popup>
-      <span>{children}</span>
-    </Popup>
+    <Popup>{children}</Popup>
   </Marker>
 )
-MyPopupMarker.propTypes = {
-  children: MapPropTypes.children,
-  position: MapPropTypes.latlng,
-}
 
 const MyMarkersList = ({ markers }) => {
   const items = markers.map(({ key, ...props }) => (
     <MyPopupMarker key={key} {...props} />
   ))
   return <div style={{ display: 'none' }}>{items}</div>
-}
-MyMarkersList.propTypes = {
-  markers: PropTypes.array.isRequired,
 }
 
 export default class CustomComponent extends Component {

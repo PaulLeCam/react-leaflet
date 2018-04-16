@@ -1,17 +1,18 @@
 /* global describe, expect, it, jest */
 
 import Leaflet from 'leaflet'
-import React, { Component } from 'react'
+import React, { createRef, Component } from 'react'
 import { renderIntoDocument } from 'react-dom/test-utils'
 
 import MapComponent from '../src/MapComponent'
 
 describe('MapComponent', () => {
   class TestComponent extends MapComponent {
-    componentWillMount() {
-      super.componentWillMount()
+    constructor(props) {
+      super(props)
       this.leafletElement = Leaflet.map('test')
     }
+
     render() {
       return null
     }
@@ -33,9 +34,10 @@ describe('MapComponent', () => {
     const callback = jest.fn()
 
     class EventComponent extends Component {
-      constructor() {
-        super()
+      constructor(props) {
+        super(props)
         this.state = { bindEvent: true }
+        this.ref = createRef()
       }
 
       dontBind() {
@@ -43,14 +45,14 @@ describe('MapComponent', () => {
       }
 
       fire() {
-        this.refs.c.fireLeafletEvent('click')
+        this.ref.current.fireLeafletEvent('click')
       }
 
       render() {
         return this.state.bindEvent ? (
-          <TestComponent onClick={callback} ref="c" />
+          <TestComponent onClick={callback} ref={this.ref} />
         ) : (
-          <TestComponent ref="c" />
+          <TestComponent ref={this.ref} />
         )
       }
     }
@@ -70,9 +72,10 @@ describe('MapComponent', () => {
     const callback2 = jest.fn()
 
     class EventComponent extends Component {
-      constructor() {
-        super()
+      constructor(props) {
+        super(props)
         this.state = { cb: callback1 }
+        this.ref = createRef()
       }
 
       replaceCallback() {
@@ -80,11 +83,11 @@ describe('MapComponent', () => {
       }
 
       fire() {
-        this.refs.c.fireLeafletEvent('click')
+        this.ref.current.fireLeafletEvent('click')
       }
 
       render() {
-        return <TestComponent onClick={this.state.cb} ref="c" />
+        return <TestComponent onClick={this.state.cb} ref={this.ref} />
       }
     }
 

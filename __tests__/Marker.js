@@ -4,7 +4,7 @@ import Leaflet from 'leaflet'
 import React from 'react'
 import { renderIntoDocument } from 'react-dom/test-utils'
 
-import { Map, Marker, TileLayer } from '../src/'
+import { Map, Marker, TileLayer } from '../src'
 
 describe('Marker', () => {
   it('adds the marker to the map', () => {

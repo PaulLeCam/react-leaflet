@@ -1,28 +1,20 @@
 // @flow
 
 import { Control } from 'leaflet'
-import PropTypes from 'prop-types'
 
+import { withLeaflet } from './context'
 import MapControl from './MapControl'
-import controlPosition from './propTypes/controlPosition'
-import type { ControlPosition } from './types'
+import type { MapControlProps } from './types'
 
 type LeafletElement = Control.Attribution
 type Props = {
-  position?: ControlPosition,
   prefix?: string,
-}
+} & MapControlProps
 
-export default class AttributionControl extends MapControl<
-  LeafletElement,
-  Props,
-> {
-  static propTypes = {
-    position: controlPosition,
-    prefix: PropTypes.string,
-  }
-
+class AttributionControl extends MapControl<LeafletElement, Props> {
   createLeafletElement(props: Props): LeafletElement {
     return new Control.Attribution(props)
   }
 }
+
+export default withLeaflet(AttributionControl)

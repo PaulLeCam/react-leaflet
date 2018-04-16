@@ -2,13 +2,11 @@
 // flowlint sketchy-null-string:off
 
 import { forEach, omit, uniqueId } from 'lodash'
-import type { Map } from 'leaflet'
 import React, { Component, type Node } from 'react'
-import PropTypes from 'prop-types'
 import warning from 'warning'
 
-import children from './propTypes/children'
-import map from './propTypes/map'
+import { LeafletProvider, withLeaflet } from './context'
+import type { LeafletContext } from './types'
 
 const LEAFLET_PANES = [
   'tile',
@@ -20,8 +18,10 @@ const LEAFLET_PANES = [
   'popup',
 ]
 
+const PANE_RE = /-*pane/gi
+
 const isLeafletPane = (name: string): boolean => {
-  return LEAFLET_PANES.indexOf(name.replace(/-*pane/gi, '')) !== -1
+  return LEAFLET_PANES.indexOf(name.replace(PANE_RE, '')) !== -1
 }
 
 const paneStyles = {
@@ -35,7 +35,7 @@ const paneStyles = {
 type Props = {
   children: Node,
   className?: string,
-  map?: Map,
+  leaflet: LeafletContext,
   name?: string,
   pane?: string,
   style?: Object,
@@ -43,42 +43,20 @@ type Props = {
 
 type State = {
   name: ?string,
+  context: ?LeafletContext,
 }
 
-export default class Pane extends Component<Props, State> {
-  static propTypes = {
-    name: PropTypes.string,
-    children: children,
-    map: map,
-    className: PropTypes.string,
-    style: PropTypes.object,
-    pane: PropTypes.string,
-  }
-
-  static contextTypes = {
-    map: map,
-    pane: PropTypes.string,
-  }
-
-  static childContextTypes = {
-    pane: PropTypes.string,
-  }
-
-  state: State = {
+class Pane extends Component<Props, State> {
+  state = {
     name: undefined,
-  }
-
-  getChildContext(): { pane: ?string } {
-    return {
-      pane: this.state.name,
-    }
+    context: undefined,
   }
 
   componentDidMount() {
     this.createPane(this.props)
   }
 
-  componentWillReceiveProps(nextProps: Props) {
+  componentDidUpdate(prevProps: Props) {
     if (!this.state.name) {
       // Do nothing if this.state.name is undefined due to errors or
       // an invalid props.name value
@@ -87,23 +65,21 @@ export default class Pane extends Component<Props, State> {
 
     // If the 'name' prop has changed the current pane is unmounted and a new
     // pane is created.
-    if (nextProps.name !== this.props.name) {
+    if (this.props.name !== prevProps.name) {
       this.removePane()
-      this.createPane(nextProps)
+      this.createPane(this.props)
     } else {
       // Remove the previous css class name from the pane if it has changed.
-      // setStyle will take care of adding in the updated className
-      if (
-        this.props.className &&
-        nextProps.className !== this.props.className
-      ) {
+      // setStyle() will take care of adding in the updated className
+      if (prevProps.className && this.props.className !== prevProps.className) {
         const pane = this.getPane()
-        if (pane && this.props.className)
-          pane.classList.remove(this.props.className)
+        if (pane != null && prevProps.className != null) {
+          pane.classList.remove(prevProps.className)
+        }
       }
 
       // Update the pane's DOM node style and class
-      this.setStyle(nextProps)
+      this.setStyle(this.props)
     }
   }
 
@@ -112,14 +88,14 @@ export default class Pane extends Component<Props, State> {
   }
 
   createPane(props: Props) {
-    const map = this.context.map
+    const { map } = props.leaflet
     const name = props.name || `pane-${uniqueId()}`
 
-    if (map && map.createPane) {
+    if (map != null && map.createPane != null) {
       const isDefault = isLeafletPane(name)
       const existing = isDefault || this.getPane(name)
 
-      if (!existing) {
+      if (existing == null) {
         map.createPane(name, this.getParentPane())
       } else {
         const message = isDefault
@@ -128,24 +104,25 @@ export default class Pane extends Component<Props, State> {
         warning(false, message)
       }
 
-      this.setState({ name }, this.setStyle)
+      this.setState(
+        { name, context: { ...props.leaflet, pane: name } },
+        this.setStyle,
+      )
     }
   }
 
   removePane() {
     // Remove the created pane
     const { name } = this.state
-    if (name) {
+    if (name != null) {
       const pane = this.getPane(name)
-      if (pane && pane.remove) pane.remove()
+      if (pane != null && pane.remove) pane.remove()
 
-      const map = this.context.map
-      if (map && map._panes) {
+      const { map } = this.props.leaflet
+      if (map != null && map._panes != null) {
         map._panes = omit(map._panes, name)
         map._paneRenderers = omit(map._paneRenderers, name)
       }
-
-      this.setState({ name: undefined })
     }
   }
 
@@ -164,16 +141,23 @@ export default class Pane extends Component<Props, State> {
   }
 
   getParentPane(): ?HTMLElement {
-    return this.getPane(this.props.pane || this.context.pane)
+    return this.getPane(this.props.pane || this.props.leaflet.pane)
   }
 
   getPane(name: ?string): ?HTMLElement {
-    return name ? this.context.map.getPane(name) : undefined
+    if (name != null && this.props.leaflet.map != null) {
+      return this.props.leaflet.map.getPane(name)
+    }
   }
 
   render() {
-    return this.state.name ? (
-      <div style={paneStyles}>{this.props.children}</div>
+    const { context } = this.state
+    return context ? (
+      <LeafletProvider value={context}>
+        <div style={paneStyles}>{this.props.children}</div>
+      </LeafletProvider>
     ) : null
   }
 }
+
+export default withLeaflet(Pane)

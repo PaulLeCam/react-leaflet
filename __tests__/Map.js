@@ -1,7 +1,7 @@
 /* global describe, expect, it */
 
 import ReactDOM from 'react-dom'
-import React, { Component } from 'react'
+import React, { createRef, Component } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { renderIntoDocument } from 'react-dom/test-utils'
 
@@ -9,11 +9,8 @@ import Map from '../src/Map'
 
 describe('Map', () => {
   it('only renders the container div server-side', () => {
-    class TestComponent extends Component {
-      render() {
-        return <span>test</span>
-      }
-    }
+    const TestComponent = () => <span>test</span>
+
     const component = (
       <Map>
         <TestComponent />
@@ -51,19 +48,27 @@ describe('Map', () => {
           center: [1.2, 3.4],
           zoom: 10,
         }
+        this.mapRef = createRef()
       }
+
       getLeafletMap() {
-        return this.refs.map.leafletElement
+        return this.mapRef.current.leafletElement
       }
+
       updatePosition() {
         this.setState({
           center: [2.3, 4.5],
           zoom: 12,
         })
       }
+
       render() {
         return (
-          <Map center={this.state.center} ref="map" zoom={this.state.zoom} />
+          <Map
+            center={this.state.center}
+            ref={this.mapRef}
+            zoom={this.state.zoom}
+          />
         )
       }
     }
@@ -91,17 +96,21 @@ describe('Map', () => {
         this.state = {
           bounds: firstBounds,
         }
+        this.mapRef = createRef()
       }
+
       getLeafletMap() {
-        return this.refs.map.leafletElement
+        return this.mapRef.current.leafletElement
       }
+
       updatePosition() {
         this.setState({
           bounds: secondBounds,
         })
       }
+
       render() {
-        return <Map bounds={this.state.bounds} ref="map" />
+        return <Map bounds={this.state.bounds} ref={this.mapRef} />
       }
     }
 
@@ -118,14 +127,16 @@ describe('Map', () => {
     const secondBounds = [[0, 0], [-2, -2]]
 
     class TestComponent extends Component {
-      constructor() {
-        super()
+      constructor(props) {
+        super(props)
         this.state = {
           bounds: firstBounds,
         }
+        this.mapRef = createRef()
       }
+
       getLeafletMap() {
-        return this.refs.map.leafletElement
+        return this.mapRef.current.leafletElement
       }
 
       updatePosition() {
@@ -133,13 +144,20 @@ describe('Map', () => {
           bounds: secondBounds,
         })
       }
+
       render() {
         const viewport = {
           center: [2.1, 4.3],
           zoom: 5,
         }
 
-        return <Map bounds={this.state.bounds} viewport={viewport} ref="map" />
+        return (
+          <Map
+            bounds={this.state.bounds}
+            viewport={viewport}
+            ref={this.mapRef}
+          />
+        )
       }
     }
 
@@ -157,19 +175,20 @@ describe('Map', () => {
     const firstBounds = [[0, 0], [2, 2]]
 
     class TestComponent extends Component {
-      constructor() {
-        super()
+      constructor(props) {
+        super(props)
         this.state = {
           bounds: firstBounds,
         }
+        this.mapRef = createRef()
       }
 
       getLeafletMap() {
-        return this.refs.map.leafletElement
+        return this.mapRef.current.leafletElement
       }
 
       render() {
-        return <Map bounds={this.state.bounds} ref="map" />
+        return <Map bounds={this.state.bounds} ref={this.mapRef} />
       }
     }
 

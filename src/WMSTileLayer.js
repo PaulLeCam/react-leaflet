@@ -2,24 +2,16 @@
 
 import { TileLayer } from 'leaflet'
 import { isEqual, reduce } from 'lodash'
-import PropTypes from 'prop-types'
 
+import { withLeaflet } from './context'
 import GridLayer from './GridLayer'
 import { EVENTS_RE } from './MapComponent'
-import children from './propTypes/children'
 import type { GridLayerProps } from './types'
 
 type LeafletElement = TileLayer.WMS
 type Props = { url: string } & GridLayerProps
 
-export default class WMSTileLayer extends GridLayer<LeafletElement, Props> {
-  static propTypes = {
-    children: children,
-    opacity: PropTypes.number,
-    url: PropTypes.string.isRequired,
-    zIndex: PropTypes.number,
-  }
-
+class WMSTileLayer extends GridLayer<LeafletElement, Props> {
   createLeafletElement(props: Props): LeafletElement {
     const { url, ...params } = props
     return new TileLayer.WMS(url, this.getOptions(params))
@@ -52,3 +44,5 @@ export default class WMSTileLayer extends GridLayer<LeafletElement, Props> {
     )
   }
 }
+
+export default withLeaflet(WMSTileLayer)

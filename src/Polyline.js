@@ -1,11 +1,9 @@
 // @flow
 
 import { Polyline as LeafletPolyline } from 'leaflet'
-import PropTypes from 'prop-types'
 
+import { withLeaflet } from './context'
 import Path from './Path'
-import children from './propTypes/children'
-import latlngList from './propTypes/latlngList'
 import type { LatLng, PathProps } from './types'
 
 type LeafletElement = LeafletPolyline
@@ -13,13 +11,7 @@ type Props = {
   positions: LatLng[] | LatLng[][],
 } & PathProps
 
-export default class Polyline extends Path<LeafletElement, Props> {
-  static propTypes = {
-    children: children,
-    positions: PropTypes.oneOfType([latlngList, PropTypes.arrayOf(latlngList)])
-      .isRequired,
-  }
-
+class Polyline extends Path<LeafletElement, Props> {
   createLeafletElement(props: Props): LeafletElement {
     return new LeafletPolyline(props.positions, this.getOptions(props))
   }
@@ -31,3 +23,5 @@ export default class Polyline extends Path<LeafletElement, Props> {
     this.setStyleIfChanged(fromProps, toProps)
   }
 }
+
+export default withLeaflet(Polyline)

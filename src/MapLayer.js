@@ -1,31 +1,25 @@
 // @flow
 
 import type { Layer } from 'leaflet'
-import PropTypes from 'prop-types'
-import React, { Children, Fragment } from 'react'
+import React, { Fragment } from 'react'
 
+import { LeafletProvider } from './context'
 import MapComponent from './MapComponent'
-import children from './propTypes/children'
-import layerContainer from './propTypes/layerContainer'
-import map from './propTypes/map'
-import type { MapLayerProps } from './types'
+import type { LeafletContext, MapLayerProps } from './types'
 
 export default class MapLayer<
   LeafletElement: Layer,
   Props: MapLayerProps,
 > extends MapComponent<LeafletElement, Props> {
-  static propTypes = {
-    children: children,
-  }
+  contextValue: ?LeafletContext
 
-  static contextTypes = {
-    layerContainer: layerContainer,
-    map: map,
-    pane: PropTypes.string,
+  constructor(props: Props) {
+    super(props)
+    this.leafletElement = this.createLeafletElement(props)
   }
 
   get layerContainer(): Layer {
-    return this.context.layerContainer || this.context.map
+    return this.props.leaflet.layerContainer || this.props.leaflet.map
   }
 
   // eslint-disable-next-line no-unused-vars
@@ -36,17 +30,13 @@ export default class MapLayer<
   // eslint-disable-next-line no-unused-vars
   updateLeafletElement(fromProps: Props, toProps: Props) {}
 
-  componentWillMount() {
-    super.componentWillMount()
-    this.leafletElement = this.createLeafletElement(this.props)
-  }
-
   componentDidMount() {
     super.componentDidMount()
     this.layerContainer.addLayer(this.leafletElement)
   }
 
   componentDidUpdate(prevProps: Props) {
+    super.componentDidUpdate(prevProps)
     this.updateLeafletElement(prevProps, this.props)
   }
 
@@ -57,9 +47,13 @@ export default class MapLayer<
 
   render() {
     const { children } = this.props
-    if (Children.count(children) > 1) {
-      return <Fragment>{children}</Fragment>
+    if (children == null) {
+      return null
     }
-    return children == null ? null : children
+    return this.contextValue == null ? (
+      <Fragment>{children}</Fragment>
+    ) : (
+      <LeafletProvider value={this.contextValue}>{children}</LeafletProvider>
+    )
   }
 }

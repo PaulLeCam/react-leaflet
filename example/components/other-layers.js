@@ -33,9 +33,7 @@ export default class OtherLayersExample extends Component {
           </LayerGroup>
         </LayerGroup>
         <FeatureGroup color="purple">
-          <Popup>
-            <span>Popup in FeatureGroup</span>
-          </Popup>
+          <Popup>Popup in FeatureGroup</Popup>
           <Circle center={[51.51, -0.06]} radius={200} />
           <Rectangle bounds={rectangle} />
         </FeatureGroup>

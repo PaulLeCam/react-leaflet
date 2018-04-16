@@ -1,12 +1,9 @@
 // @flow
 
 import { Popup as LeafletPopup } from 'leaflet'
-import PropTypes from 'prop-types'
 
+import { withLeaflet } from './context'
 import DivOverlay from './DivOverlay'
-import latlng from './propTypes/latlng'
-import layer from './propTypes/layer'
-import map from './propTypes/map'
 import type { LatLng, DivOverlayProps } from './types'
 
 type LeafletElement = LeafletPopup
@@ -15,20 +12,7 @@ type Props = {
   position?: LatLng,
 } & DivOverlayProps
 
-export default class Popup extends DivOverlay<LeafletElement, Props> {
-  static propTypes = {
-    children: PropTypes.node,
-    onClose: PropTypes.func,
-    onOpen: PropTypes.func,
-    position: latlng,
-  }
-
-  static contextTypes = {
-    map: map,
-    popupContainer: layer,
-    pane: PropTypes.string,
-  }
-
+class Popup extends DivOverlay<LeafletElement, Props> {
   static defaultProps = {
     pane: 'popupPane',
   }
@@ -41,7 +25,9 @@ export default class Popup extends DivOverlay<LeafletElement, Props> {
   }
 
   createLeafletElement(props: Props): LeafletElement {
-    return new LeafletPopup(this.getOptions(props), this.context.popupContainer)
+    const options = this.getOptions(props)
+    options.autoPan = props.autoPan !== false
+    return new LeafletPopup(options, props.leaflet.popupContainer)
   }
 
   updateLeafletElement(fromProps: Props, toProps: Props) {
@@ -50,21 +36,17 @@ export default class Popup extends DivOverlay<LeafletElement, Props> {
     }
   }
 
-  componentWillMount() {
-    super.componentWillMount()
-    this.leafletElement = this.createLeafletElement(this.props)
-    this.leafletElement.options.autoPan = this.props.autoPan !== false
-
-    this.context.map.on({
-      popupopen: this.onPopupOpen,
-      popupclose: this.onPopupClose,
-    })
-  }
-
   componentDidMount() {
     const { position } = this.props
-    const { map, popupContainer } = this.context
+    const { map, popupContainer } = this.props.leaflet
     const el = this.leafletElement
+
+    if (map != null) {
+      map.on({
+        popupopen: this.onPopupOpen,
+        popupclose: this.onPopupClose,
+      })
+    }
 
     if (popupContainer) {
       // Attach to container component
@@ -80,12 +62,15 @@ export default class Popup extends DivOverlay<LeafletElement, Props> {
 
   componentWillUnmount() {
     this.removeContent()
+    const { map } = this.props.leaflet
 
-    this.context.map.off({
-      popupopen: this.onPopupOpen,
-      popupclose: this.onPopupClose,
-    })
-    this.context.map.removeLayer(this.leafletElement)
+    if (map != null) {
+      map.off({
+        popupopen: this.onPopupOpen,
+        popupclose: this.onPopupClose,
+      })
+      map.removeLayer(this.leafletElement)
+    }
 
     super.componentWillUnmount()
   }
@@ -111,3 +96,5 @@ export default class Popup extends DivOverlay<LeafletElement, Props> {
     }
   }
 }
+
+export default withLeaflet(Popup)

@@ -18,9 +18,7 @@ export default class SimpleExample extends Component {
         />
         <Marker position={position}>
           <Popup>
-            <span>
-              A pretty CSS3 popup. <br /> Easily customizable.
-            </span>
+            A pretty CSS3 popup. <br /> Easily customizable.
           </Popup>
         </Marker>
       </Map>

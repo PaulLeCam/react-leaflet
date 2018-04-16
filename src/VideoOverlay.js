@@ -1,10 +1,9 @@
 // @flow
 
 import { VideoOverlay as LeafletVideoOverlay, latLngBounds } from 'leaflet'
-import PropTypes from 'prop-types'
 
+import { withLeaflet } from './context'
 import MapLayer from './MapLayer'
-import bounds from './propTypes/bounds'
 import type { LatLngBounds, MapLayerProps } from './types'
 
 type LeafletElement = LeafletVideoOverlay
@@ -17,20 +16,7 @@ type Props = {
   zIndex?: number,
 } & MapLayerProps
 
-export default class VideoOverlay extends MapLayer<LeafletElement, Props> {
-  static propTypes = {
-    attribution: PropTypes.string,
-    bounds: bounds.isRequired,
-    opacity: PropTypes.number,
-    play: PropTypes.bool,
-    url: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.arrayOf(PropTypes.string),
-      PropTypes.instanceOf(HTMLVideoElement),
-    ]).isRequired,
-    zIndex: PropTypes.number,
-  }
-
+class VideoOverlay extends MapLayer<LeafletElement, Props> {
   createLeafletElement(props: Props): LeafletElement {
     return new LeafletVideoOverlay(
       props.url,
@@ -68,3 +54,5 @@ export default class VideoOverlay extends MapLayer<LeafletElement, Props> {
     }
   }
 }
+
+export default withLeaflet(VideoOverlay)

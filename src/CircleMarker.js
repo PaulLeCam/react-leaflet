@@ -1,12 +1,9 @@
 // @flow
 
-import { CircleMarker as LeafletCircleMarker, type Layer } from 'leaflet'
-import PropTypes from 'prop-types'
+import { CircleMarker as LeafletCircleMarker } from 'leaflet'
 
+import { withLeaflet } from './context'
 import Path from './Path'
-import children from './propTypes/children'
-import latlng from './propTypes/latlng'
-import layer from './propTypes/layer'
 import type { LatLng, PathProps } from './types'
 
 type LeafletElement = LeafletCircleMarker
@@ -15,25 +12,11 @@ type Props = {
   radius: number,
 } & PathProps
 
-export default class CircleMarker extends Path<LeafletElement, Props> {
-  static propTypes = {
-    center: latlng.isRequired,
-    children: children,
-    radius: PropTypes.number,
-  }
-
-  static childContextTypes = {
-    popupContainer: layer,
-  }
-
-  getChildContext(): { popupContainer: Layer } {
-    return {
-      popupContainer: this.leafletElement,
-    }
-  }
-
+class CircleMarker extends Path<LeafletElement, Props> {
   createLeafletElement(props: Props): LeafletElement {
-    return new LeafletCircleMarker(props.center, this.getOptions(props))
+    const el = new LeafletCircleMarker(props.center, this.getOptions(props))
+    this.contextValue = { ...props.leaflet, popupContainer: el }
+    return el
   }
 
   updateLeafletElement(fromProps: Props, toProps: Props) {
@@ -45,3 +28,5 @@ export default class CircleMarker extends Path<LeafletElement, Props> {
     }
   }
 }
+
+export default withLeaflet(CircleMarker)

@@ -1,7 +1,9 @@
 // @flow
 
-export * as PropTypes from './propTypes'
+export { LeafletConsumer, LeafletProvider, withLeaflet } from './context'
+
 export type {
+  LeafletContext,
   LatLng,
   LatLngBounds,
   ControlPosition,

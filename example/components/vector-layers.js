@@ -38,9 +38,7 @@ export default class VectorLayersExample extends Component {
         />
         <Circle center={center} fillColor="blue" radius={200} />
         <CircleMarker center={[51.51, -0.12]} color="red" radius={20}>
-          <Popup>
-            <span>Popup in CircleMarker</span>
-          </Popup>
+          <Popup>Popup in CircleMarker</Popup>
         </CircleMarker>
         <Polyline color="lime" positions={polyline} />
         <Polyline color="lime" positions={multiPolyline} />

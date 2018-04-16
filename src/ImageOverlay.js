@@ -1,12 +1,9 @@
 // @flow
 
 import { ImageOverlay as LeafletImageOverlay, latLngBounds } from 'leaflet'
-import PropTypes from 'prop-types'
 
+import { withLeaflet } from './context'
 import MapLayer from './MapLayer'
-import bounds from './propTypes/bounds'
-import children from './propTypes/children'
-import layer from './propTypes/layer'
 import type { LatLngBounds, MapLayerProps } from './types'
 
 type LeafletElement = LeafletImageOverlay
@@ -18,35 +15,15 @@ type Props = {
   zIndex?: number,
 } & MapLayerProps
 
-export default class ImageOverlay extends MapLayer<LeafletElement, Props> {
-  static propTypes = {
-    attribution: PropTypes.string,
-    bounds: bounds.isRequired,
-    children: children,
-    opacity: PropTypes.number,
-    url: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.instanceOf(HTMLImageElement),
-    ]).isRequired,
-    zIndex: PropTypes.number,
-  }
-
-  static childContextTypes = {
-    popupContainer: layer,
-  }
-
-  getChildContext(): { popupContainer: LeafletElement } {
-    return {
-      popupContainer: this.leafletElement,
-    }
-  }
-
+class ImageOverlay extends MapLayer<LeafletElement, Props> {
   createLeafletElement(props: Props): LeafletElement {
-    return new LeafletImageOverlay(
+    const el = new LeafletImageOverlay(
       props.url,
       props.bounds,
       this.getOptions(props),
     )
+    this.contextValue = { ...props.leaflet, popupContainer: el }
+    return el
   }
 
   updateLeafletElement(fromProps: Props, toProps: Props) {
@@ -64,3 +41,5 @@ export default class ImageOverlay extends MapLayer<LeafletElement, Props> {
     }
   }
 }
+
+export default withLeaflet(ImageOverlay)

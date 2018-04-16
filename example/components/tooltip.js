@@ -46,31 +46,21 @@ export default class TooltipExample extends Component {
           fillColor="blue"
           onClick={this.onClickCircle}
           radius={200}>
-          <Tooltip>
-            <span>{clickedText}</span>
-          </Tooltip>
+          <Tooltip>{clickedText}</Tooltip>
         </Circle>
         <CircleMarker center={[51.51, -0.12]} color="red" radius={20}>
-          <Tooltip>
-            <span>Tooltip for CircleMarker</span>
-          </Tooltip>
+          <Tooltip>Tooltip for CircleMarker</Tooltip>
         </CircleMarker>
         <Marker position={[51.51, -0.09]}>
-          <Popup>
-            <span>Popup for Marker</span>
-          </Popup>
-          <Tooltip>
-            <span>Tooltip for Marker</span>
-          </Tooltip>
+          <Popup>Popup for Marker</Popup>
+          <Tooltip>Tooltip for Marker</Tooltip>
         </Marker>
         <Polygon color="purple" positions={multiPolygon}>
-          <Tooltip sticky>
-            <span>sticky Tooltip for Polygon</span>
-          </Tooltip>
+          <Tooltip sticky>sticky Tooltip for Polygon</Tooltip>
         </Polygon>
         <Rectangle bounds={rectangle} color="black">
           <Tooltip direction="bottom" offset={[0, 20]} opacity={1} permanent>
-            <span>permanent Tooltip for Rectangle</span>
+            permanent Tooltip for Rectangle
           </Tooltip>
         </Rectangle>
       </Map>

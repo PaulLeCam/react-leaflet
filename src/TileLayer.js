@@ -1,23 +1,15 @@
 // @flow
 
 import { TileLayer as LeafletTileLayer } from 'leaflet'
-import PropTypes from 'prop-types'
 
+import { withLeaflet } from './context'
 import GridLayer from './GridLayer'
-import children from './propTypes/children'
 import type { GridLayerProps } from './types'
 
 type LeafletElement = LeafletTileLayer
 type Props = { url: string } & GridLayerProps
 
-export default class TileLayer extends GridLayer<LeafletElement, Props> {
-  static propTypes = {
-    children: children,
-    opacity: PropTypes.number,
-    url: PropTypes.string.isRequired,
-    zIndex: PropTypes.number,
-  }
-
+class TileLayer extends GridLayer<LeafletElement, Props> {
   createLeafletElement(props: Props): LeafletElement {
     return new LeafletTileLayer(props.url, this.getOptions(props))
   }
@@ -29,3 +21,5 @@ export default class TileLayer extends GridLayer<LeafletElement, Props> {
     }
   }
 }
+
+export default withLeaflet(TileLayer)

@@ -2,25 +2,19 @@
 
 import { LayerGroup as LeafletLayerGroup } from 'leaflet'
 
+import { withLeaflet } from './context'
 import MapLayer from './MapLayer'
-import layerContainer from './propTypes/layerContainer'
 import type { MapLayerProps } from './types'
 
-export default class LayerGroup<
+class LayerGroup<
   LeafletElement: LeafletLayerGroup,
   Props: MapLayerProps,
 > extends MapLayer<LeafletElement, Props> {
-  static childContextTypes = {
-    layerContainer: layerContainer,
-  }
-
-  getChildContext(): { layerContainer: LeafletElement } {
-    return {
-      layerContainer: this.leafletElement,
-    }
-  }
-
-  createLeafletElement(): LeafletElement {
-    return new LeafletLayerGroup(this.getOptions(this.props))
+  createLeafletElement(props: Props): LeafletElement {
+    const el = new LeafletLayerGroup(this.getOptions(props))
+    this.contextValue = { ...props.leaflet, layerContainer: el }
+    return el
   }
 }
+
+export default withLeaflet(LayerGroup)

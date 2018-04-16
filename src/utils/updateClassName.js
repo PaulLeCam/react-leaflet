@@ -1,7 +1,6 @@
 // @flow
 
 import { DomUtil } from 'leaflet'
-import { forEach } from 'lodash'
 
 const splitClassName = (className: string = ''): Array<string> =>
   className.split(' ').filter(Boolean)
@@ -13,12 +12,12 @@ export default (
 ) => {
   if (container != null && nextClassName !== prevClassName) {
     if (prevClassName != null && prevClassName.length > 0) {
-      forEach(splitClassName(prevClassName), cls => {
+      splitClassName(prevClassName).forEach(cls => {
         DomUtil.removeClass(container, cls)
       })
     }
     if (nextClassName != null && nextClassName.length > 0) {
-      forEach(splitClassName(nextClassName), cls => {
+      splitClassName(nextClassName).forEach(cls => {
         DomUtil.addClass(container, cls)
       })
     }

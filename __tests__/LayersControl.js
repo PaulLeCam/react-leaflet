@@ -1,34 +1,29 @@
 /* global describe, expect, it */
 
-import Leaflet from 'leaflet'
-import PropTypes from 'prop-types'
 import React, { Component } from 'react'
 import { renderIntoDocument } from 'react-dom/test-utils'
 
-import LayersControl from '../src/LayersControl'
-import Map from '../src/Map'
+import { LayersControl, Map, withLeaflet } from '../src'
 
 describe('LayersControl', () => {
-  it('passes its `map` context to its children', () => {
+  it('injects the `layerContainer` object to the leaflet context', () => {
     class ChildComponent extends Component {
-      static contextTypes = {
-        map: PropTypes.instanceOf(Leaflet.Map),
-      }
-
-      componentWillMount() {
-        expect(this.context.map).toBeDefined()
+      constructor(props) {
+        super(props)
+        expect(props.leaflet.layerContainer).toBeDefined()
       }
 
       render() {
         return null
       }
     }
+    const Child = withLeaflet(ChildComponent)
 
     renderIntoDocument(
       <Map>
         <LayersControl>
           <LayersControl.Overlay checked name="test">
-            <ChildComponent />
+            <Child />
           </LayersControl.Overlay>
         </LayersControl>
       </Map>,

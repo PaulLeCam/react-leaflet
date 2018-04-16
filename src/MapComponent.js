@@ -1,6 +1,6 @@
 // @flow
 
-import { clone, forEach, keys, reduce } from 'lodash'
+import { forEach } from 'lodash'
 import type { Evented } from 'leaflet'
 import { Component } from 'react'
 
@@ -18,22 +18,21 @@ export default class MapComponent<
   _leafletEvents: EventsObject
   leafletElement: LeafletElement
 
-  constructor(props: Props, context: Object) {
-    super(props, context)
-    this._leafletEvents = {}
-  }
-
-  componentWillMount() {
-    this._leafletEvents = this.extractLeafletEvents(this.props)
+  constructor(props: Props) {
+    super(props)
+    this._leafletEvents = this.extractLeafletEvents(props)
   }
 
   componentDidMount() {
     this.bindLeafletEvents(this._leafletEvents)
   }
 
-  componentWillReceiveProps(nextProps: Props) {
-    const next = this.extractLeafletEvents(nextProps)
-    this._leafletEvents = this.bindLeafletEvents(next, this._leafletEvents)
+  // eslint-disable-next-line no-unused-vars
+  componentDidUpdate(prevProps: Props) {
+    this._leafletEvents = this.bindLeafletEvents(
+      this.extractLeafletEvents(this.props),
+      this._leafletEvents,
+    )
   }
 
   componentWillUnmount() {
@@ -46,19 +45,15 @@ export default class MapComponent<
   }
 
   extractLeafletEvents(props: Props): EventsObject {
-    return reduce(
-      keys(props),
-      (res, prop) => {
-        if (EVENTS_RE.test(prop)) {
+    return Object.keys(props).reduce((res, prop) => {
+      if (EVENTS_RE.test(prop)) {
+        if (props[prop] != null) {
           const key = prop.replace(EVENTS_RE, (match, p) => p.toLowerCase())
-          if (props[prop] != null) {
-            res[key] = props[prop]
-          }
+          res[key] = props[prop]
         }
-        return res
-      },
-      {},
-    )
+      }
+      return res
+    }, {})
   }
 
   bindLeafletEvents(
@@ -68,16 +63,16 @@ export default class MapComponent<
     const el = this.leafletElement
     if (el == null || el.on == null) return {}
 
-    const diff = clone(prev)
+    const diff = { ...prev }
     forEach(prev, (cb, ev) => {
-      if (!next[ev] || cb !== next[ev]) {
+      if (next[ev] == null || cb !== next[ev]) {
         delete diff[ev]
         el.off(ev, cb)
       }
     })
 
     forEach(next, (cb, ev) => {
-      if (!prev[ev] || cb !== prev[ev]) {
+      if (prev[ev] == null || cb !== prev[ev]) {
         diff[ev] = cb
         el.on(ev, cb)
       }
@@ -92,7 +87,12 @@ export default class MapComponent<
   }
 
   getOptions(props: Props): Props {
-    const pane = props.pane == null ? this.context.pane : props.pane
-    return pane ? { ...props, pane } : props
+    if (props.pane != null) {
+      return props
+    }
+    if (props.leaflet != null && props.leaflet.pane != null) {
+      return { ...props, pane: props.leaflet.pane }
+    }
+    return props
   }
 }

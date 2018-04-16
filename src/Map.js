@@ -6,21 +6,16 @@ import {
   type CRS,
   type Renderer,
 } from 'leaflet'
-import { isUndefined, omit } from 'lodash'
-import PropTypes from 'prop-types'
+import { omit } from 'lodash'
 import React, { type Node } from 'react'
 
+import { LeafletProvider } from './context'
 import MapComponent from './MapComponent'
-import bounds from './propTypes/bounds'
-import children from './propTypes/children'
-import latlng from './propTypes/latlng'
-import layerContainer from './propTypes/layerContainer'
-import map from './propTypes/map'
-import viewport from './propTypes/viewport'
 import updateClassName from './utils/updateClassName'
 import type {
   LatLng,
   LatLngBounds,
+  LeafletContext,
   MapComponentProps,
   Point,
   Viewport,
@@ -100,30 +95,8 @@ type Props = {
 } & MapComponentProps
 
 export default class Map extends MapComponent<LeafletElement, Props> {
-  static propTypes = {
-    animate: PropTypes.bool,
-    bounds: bounds,
-    boundsOptions: PropTypes.object,
-    center: latlng,
-    children: children,
-    className: PropTypes.string,
-    id: PropTypes.string,
-    maxBounds: bounds,
-    maxZoom: PropTypes.number,
-    minZoom: PropTypes.number,
-    style: PropTypes.object,
-    useFlyTo: PropTypes.bool,
-    viewport: viewport,
-    whenReady: PropTypes.func,
-    zoom: PropTypes.number,
-  }
-
-  static childContextTypes = {
-    layerContainer: layerContainer,
-    map: map,
-  }
-
   className: ?string
+  contextValue: ?LeafletContext
   container: ?HTMLDivElement
   viewport: Viewport = {
     center: undefined,
@@ -132,17 +105,11 @@ export default class Map extends MapComponent<LeafletElement, Props> {
 
   _updating: boolean = false
 
-  constructor(props: Props, context: Object) {
-    super(props, context)
-    this.className = props.className
-  }
-
-  getChildContext(): { map: LeafletElement } {
-    return {
-      layerContainer: this.leafletElement,
-      map: this.leafletElement,
-    }
-  }
+  // TODO: check using this.props.className works as expected
+  // constructor(props: Props, context: Object) {
+  //   super(props, context)
+  //   this.className = props.className
+  // }
 
   createLeafletElement(props: Props): LeafletElement {
     const { viewport, ...options } = props
@@ -304,12 +271,17 @@ export default class Map extends MapComponent<LeafletElement, Props> {
     this.leafletElement.on('move', this.onViewportChange)
     this.leafletElement.on('moveend', this.onViewportChanged)
 
-    if (!isUndefined(props.bounds)) {
+    if (props.bounds != null) {
       this.leafletElement.fitBounds(props.bounds, props.boundsOptions)
     }
 
     if (this.props.whenReady) {
       this.leafletElement.whenReady(this.props.whenReady)
+    }
+
+    this.contextValue = {
+      layerContainer: this.leafletElement,
+      map: this.leafletElement,
     }
 
     super.componentDidMount()
@@ -354,11 +326,15 @@ export default class Map extends MapComponent<LeafletElement, Props> {
   render() {
     return (
       <div
-        className={this.className}
+        className={this.props.className}
         id={this.props.id}
         ref={this.bindContainer}
         style={this.props.style}>
-        {this.leafletElement ? this.props.children : null}
+        {this.contextValue ? (
+          <LeafletProvider value={this.contextValue}>
+            {this.props.children}
+          </LeafletProvider>
+        ) : null}
       </div>
     )
   }

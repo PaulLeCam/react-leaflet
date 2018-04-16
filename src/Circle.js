@@ -1,11 +1,9 @@
 // @flow
 
 import { Circle as LeafletCircle } from 'leaflet'
-import PropTypes from 'prop-types'
 
+import { withLeaflet } from './context'
 import Path from './Path'
-import children from './propTypes/children'
-import latlng from './propTypes/latlng'
 import type { LatLng, MapLayerProps, PathOptions } from './types'
 
 type LeafletElement = LeafletCircle
@@ -16,13 +14,7 @@ type Props = {
   PathOptions &
   Object
 
-export default class Circle extends Path<LeafletElement, Props> {
-  static propTypes = {
-    center: latlng.isRequired,
-    children: children,
-    radius: PropTypes.number.isRequired,
-  }
-
+class Circle extends Path<LeafletElement, Props> {
   createLeafletElement(props: Props): LeafletElement {
     const { center, radius, ...options } = props
     return new LeafletCircle(center, radius, this.getOptions(options))
@@ -37,3 +29,5 @@ export default class Circle extends Path<LeafletElement, Props> {
     }
   }
 }
+
+export default withLeaflet(Circle)
