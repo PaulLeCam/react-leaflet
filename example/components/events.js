@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { createRef, Component } from 'react'
 import { Map, TileLayer, Marker, Popup } from '../../src'
 
 export default class EventsExample extends Component {
@@ -10,8 +10,10 @@ export default class EventsExample extends Component {
     },
   }
 
+  mapRef = createRef()
+
   handleClick = () => {
-    this.refs.map.leafletElement.locate()
+    this.mapRef.current.leafletElement.locate()
   }
 
   handleLocationFound = e => {
@@ -36,7 +38,7 @@ export default class EventsExample extends Component {
         length={4}
         onClick={this.handleClick}
         onLocationfound={this.handleLocationFound}
-        ref="map"
+        ref={this.mapRef}
         zoom={13}>
         <TileLayer
           attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
