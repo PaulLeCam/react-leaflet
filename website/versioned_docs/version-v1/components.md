@@ -1,5 +1,5 @@
 ---
-id: version-v1.9.1-components
+id: version-v1-components
 title: Components
 original_id: components
 ---

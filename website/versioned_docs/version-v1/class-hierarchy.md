@@ -1,5 +1,5 @@
 ---
-id: version-v1.9.1-class-hierarchy
+id: version-v1-class-hierarchy
 title: Class hierarchy
 original_id: class-hierarchy
 ---

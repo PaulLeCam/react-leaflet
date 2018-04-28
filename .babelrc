@@ -8,7 +8,7 @@
           {
             "targets": {
               "node": "current",
-              "browsers": ["last 2 versions", "ie >= 9"]
+              "browsers": ["last 2 versions", "ie >= 11"]
             },
             "modules": "commonjs",
             "loose": true
@@ -25,7 +25,7 @@
           {
             "targets": {
               "node": "current",
-              "browsers": ["last 2 versions", "ie >= 9"]
+              "browsers": ["last 2 versions", "ie >= 11"]
             },
             "modules": false,
             "loose": true
@@ -43,7 +43,7 @@
           {
             "targets": {
               "node": "current",
-              "browsers": ["last 2 versions", "ie >= 9"]
+              "browsers": ["last 2 versions", "ie >= 11"]
             },
             "modules": false,
             "loose": true

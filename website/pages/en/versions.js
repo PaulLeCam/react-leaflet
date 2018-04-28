@@ -15,41 +15,64 @@ const CWD = process.cwd()
 const siteConfig = require(CWD + '/siteConfig.js')
 const versions = require(CWD + '/versions.json')
 
+function docUrl(doc, language) {
+  return siteConfig.baseUrl + 'docs/' + (language ? language + '/' : '') + doc
+}
+
 class Versions extends React.Component {
   render() {
-    const latestVersion = versions[0]
+    const language = this.props.language || 'en'
+    const [v2, v1] = versions
+
     return (
       <div className="docMainWrapper wrapper">
         <Container className="mainContainer versionsContainer">
           <div className="post">
             <header className="postHeader">
-              <h2>{siteConfig.title + ' Versions'}</h2>
+              <h2>{siteConfig.title + ' versions'}</h2>
             </header>
             <p>New versions of this project are released every so often.</p>
-            <h3 id="latest">Current version (Stable)</h3>
+            <h3 id="latest">Current version (stable)</h3>
+            <p>
+              This is the version that is configured automatically when you
+              first install this project.
+            </p>
             <table className="versions">
               <tbody>
                 <tr>
-                  <th>{latestVersion}</th>
+                  <th>{v1}</th>
                   <td>
-                    <a href={siteConfig.baseUrl}>Documentation</a>
+                    <a href={docUrl('v1/intro.html', language)}>
+                      Documentation
+                    </a>
                   </td>
                   <td>
-                    <a
-                      href={
-                        'https://github.com/PaulLeCam/react-leaflet/releases/tag/' +
-                        latestVersion
-                      }>
+                    <a href="https://github.com/PaulLeCam/react-leaflet/releases/tag/v1.9.1">
                       Release Notes
                     </a>
                   </td>
                 </tr>
               </tbody>
             </table>
+            <h3 id="latest">Next version (beta)</h3>
             <p>
-              This is the version that is configured automatically when you
-              first install this project.
+              This version can be installed using the <code>next</code> tag.
             </p>
+            <table className="versions">
+              <tbody>
+                <tr>
+                  <th>{v2}</th>
+                  <td>
+                    <a href={docUrl('intro.html', language)}>Documentation</a>
+                  </td>
+                  <td>
+                    <a href="https://github.com/PaulLeCam/react-leaflet/releases/tag/v2.0.0-beta.1">
+                      Release Notes
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
             {/* <h3 id="rc">Pre-release versions</h3>
             <table className="versions">
               <tbody>
@@ -64,7 +87,7 @@ class Versions extends React.Component {
                 </tr>
               </tbody>
             </table> */}
-            <h3 id="archive">Past Versions</h3>
+            <h3 id="archive">Past versions</h3>
             {/* <table className="versions">
               <tbody>
                 {versions.map(

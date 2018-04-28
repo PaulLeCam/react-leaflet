@@ -1,5 +1,5 @@
-// flow-typed signature: 2d6372509af898546ea7b44735f2557d
-// flow-typed version: 8c150a1c24/lodash_v4.x.x/flow_>=v0.63.x
+// flow-typed signature: 213ae107c05372e2489e50a054136496
+// flow-typed version: 08e518e6e8/lodash_v4.x.x/flow_>=v0.63.x
 
 declare module "lodash" {
   declare type __CurriedFunction1<A, R, AA: A> = (...r: [AA]) => R;
@@ -1622,7 +1622,7 @@ declare module "lodash/fp" {
     // Array
     chunk<T>(size: number): (array: Array<T>) => Array<Array<T>>;
     chunk<T>(size: number, array: Array<T>): Array<Array<T>>;
-    compact<T, N: T>(array: Array<N>): Array<T>;
+    compact<T, N: ?T>(array?: ?$ReadOnlyArray<N>): Array<T>;
     concat<T, U, A: Array<T> | T, B: Array<U> | U>(
       base: A
     ): (elements: B) => Array<T | U>;
@@ -2980,12 +2980,12 @@ declare module "lodash/fp" {
       accumulator: any,
       collection: Object | $ReadOnlyArray<any>
     ): any;
-    unset(path: Array<string> | string): (object: Object) => boolean;
-    unset(path: Array<string> | string, object: Object): boolean;
-    dissoc(path: Array<string> | string): (object: Object) => boolean;
-    dissoc(path: Array<string> | string, object: Object): boolean;
-    dissocPath(path: Array<string> | string): (object: Object) => boolean;
-    dissocPath(path: Array<string> | string, object: Object): boolean;
+    unset(path: Array<string> | string): (object: Object) => Object;
+    unset(path: Array<string> | string, object: Object): Object;
+    dissoc(path: Array<string> | string): (object: Object) => Object;
+    dissoc(path: Array<string> | string, object: Object): Object;
+    dissocPath(path: Array<string> | string): (object: Object) => Object;
+    dissocPath(path: Array<string> | string, object: Object): Object;
     update(
       path: string[] | string
     ): ((updater: Function) => (object: Object) => Object) &

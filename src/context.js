@@ -1,5 +1,6 @@
 // @flow
 
+import hoistNonReactStatics from 'hoist-non-react-statics'
 import React, {
   createContext,
   // $FlowFixMe: import
@@ -29,7 +30,10 @@ export const withLeaflet = (WrappedComponent: ComponentType<*>) => {
 
   // flowlint-next-line sketchy-null-string:off
   const name = WrappedComponent.displayName || WrappedComponent.name
-  WithLeafletComponent.displayName = `withLeaflet(${name})`
+  WithLeafletComponent.displayName = `Leaflet(${name})`
 
-  return forwardRef(WithLeafletComponent)
+  const LeafletComponent = forwardRef(WithLeafletComponent)
+  hoistNonReactStatics(LeafletComponent, WrappedComponent)
+
+  return LeafletComponent
 }

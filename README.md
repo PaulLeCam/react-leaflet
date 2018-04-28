@@ -5,7 +5,7 @@
 ## [Documentation](http://react-leaflet.js.org)
 
 * [Getting started](https://react-leaflet.js.org/docs/en/intro.html)
-* [API reference](https://react-leaflet.js.org/docs/en/prop-types.html)
+* [API reference](https://react-leaflet.js.org/docs/en/context.html)
 
 ## Changes
 

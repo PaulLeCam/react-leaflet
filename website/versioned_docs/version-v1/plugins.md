@@ -1,5 +1,5 @@
 ---
-id: version-v1.9.1-plugins
+id: version-v1-plugins
 title: Third-party plugins
 original_id: plugins
 ---

@@ -1,6 +1,7 @@
 ---
-id: plugins
+id: version-v2-beta-plugins
 title: Third-party plugins
+original_id: plugins
 ---
 
 A non-exhaustive list of plugins adding functionalities to React-Leaflet. Please

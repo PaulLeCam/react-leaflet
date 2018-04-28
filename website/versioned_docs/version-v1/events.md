@@ -1,5 +1,5 @@
 ---
-id: version-v1.9.1-events
+id: version-v1-events
 title: Events
 original_id: events
 ---

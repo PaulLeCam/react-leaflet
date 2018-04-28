@@ -1,5 +1,5 @@
 ---
-id: version-v1.9.1-examples
+id: version-v1-examples
 title: Examples
 original_id: examples
 ---

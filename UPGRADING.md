@@ -1,5 +1,9 @@
 # Upgrading
 
+## v2 (in progress)
+
+This release requires [React v16.3.0+](https://reactjs.org/blog/2018/03/29/react-v-16-3.html) and brings breaking changes in the way the necessary context is propagated. Most third-party plugins and custom components will likely need to be updated in order to access the context.
+
 ## v1.8
 
 This release requires

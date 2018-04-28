@@ -1,5 +1,5 @@
 ---
-id: version-v1.9.1-setup
+id: version-v1-setup
 title: Leaflet setup
 original_id: setup
 ---

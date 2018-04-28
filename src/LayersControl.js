@@ -114,8 +114,8 @@ type LayersControlProps = {
 } & MapControlProps
 
 class LayersControl extends MapControl<LeafletElement, LayersControlProps> {
-  static BaseLayer: typeof BaseLayer
-  static Overlay: typeof Overlay
+  static BaseLayer = BaseLayer
+  static Overlay = Overlay
 
   controlProps: {
     addBaseLayer: AddLayerHandler,
@@ -178,9 +178,4 @@ class LayersControl extends MapControl<LeafletElement, LayersControlProps> {
   }
 }
 
-const LayersControlWithLeaflet = withLeaflet(LayersControl)
-
-LayersControlWithLeaflet.BaseLayer = BaseLayer
-LayersControlWithLeaflet.Overlay = Overlay
-
-export default LayersControlWithLeaflet
+export default withLeaflet(LayersControl)

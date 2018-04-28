@@ -2,6 +2,12 @@
   max-width: none;
 }
 
+.promoSection h2 {
+  line-height: 42px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
 @media only screen and (min-device-width: 360px) and (max-device-width: 736px) {
 }
 

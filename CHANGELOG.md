@@ -1,7 +1,10 @@
 ## v2 (in progress)
 
-* Updated React dependency to v16.3.0.
+* Updated React dependency to v16.3.
+* Replaced React context usage with new APIs introduced in React v16.3.
 * Replaced wrapping `div` elements with `Fragment`.
+* Removed PropTypes.
+* Dropped support for IE < 11.
 
 ## v1.9.1 (2018-03-22)
 

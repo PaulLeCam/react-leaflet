@@ -1,6 +1,7 @@
 ---
-id: custom-components
+id: version-v2-beta-custom-components
 title: Creating custom components
+original_id: custom-components
 ---
 
 React-Leaflet aims to provide all the controls and layers provided by Leaflet,

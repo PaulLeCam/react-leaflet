@@ -69,10 +69,20 @@ class HomeSplash extends React.Component {
         <div className="inner">
           <ProjectTitle />
           <PromoSection>
+            <h2>v1 (stable):</h2>
+            <Button href={docUrl('v1/intro.html', this.props.language)}>
+              Getting started
+            </Button>
+            <Button href={docUrl('v1/prop-types.html', this.props.language)}>
+              API reference
+            </Button>
+          </PromoSection>
+          <PromoSection>
+            <h2>v2 (beta):</h2>
             <Button href={docUrl('intro.html', this.props.language)}>
               Getting started
             </Button>
-            <Button href={docUrl('prop-types.html', this.props.language)}>
+            <Button href={docUrl('context.html', this.props.language)}>
               API reference
             </Button>
           </PromoSection>
@@ -91,7 +101,7 @@ const Description = props => (
     </p>
     <p>
       It <strong>does not</strong> replace Leaflet, only leverages{' '}
-      <a href="https://facebook.github.io/react/docs/component-specs.html#lifecycle-methods">
+      <a href="https://reactjs.org/docs/react-component.html#the-component-lifecycle">
         ⚛️ React&apos;s lifecycle methods
       </a>{' '}
       to call the relevant Leaflet handlers. You can read more information about
@@ -152,9 +162,7 @@ const map = (
       attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
     />
     <Marker position={position}>
-      <Popup>
-        <span>A pretty CSS3 popup.<br />Easily customizable.</span>
-      </Popup>
+      <Popup>A pretty CSS3 popup.<br />Easily customizable.</Popup>
     </Marker>
   </Map>
 )

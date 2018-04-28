@@ -1,6 +1,7 @@
 ---
-id: intro
+id: version-v2-beta-intro
 title: Introduction
+original_id: intro
 ---
 
 ## Core concepts

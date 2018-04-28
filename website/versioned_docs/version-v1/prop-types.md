@@ -1,6 +1,7 @@
 ---
-id: prop-types
+id: version-v1-prop-types
 title: PropTypes
+original_id: prop-types
 ---
 
 The following PropTypes are exported in the `PropTypes` object.
