@@ -1,7 +1,6 @@
 // @flow
 
-import React, { Fragment } from 'react'
-import { render, unmountComponentAtNode } from 'react-dom'
+import { createPortal } from 'react-dom'
 
 import MapComponent from './MapComponent'
 import updateClassName from './utils/updateClassName'
@@ -41,19 +40,19 @@ export default class DivOverlay<
     this.updateLeafletElement(prevProps, this.props)
 
     if (this.leafletElement.isOpen()) {
-      this.renderContent()
+      this.leafletElement.update()
+      this.onRender()
     }
   }
 
   onClose = () => {
-    this.removeContent()
     if (this.props.onClose) {
       this.props.onClose()
     }
   }
 
   onOpen = () => {
-    this.renderContent()
+    this.forceUpdate() // Re-render now that leafletElement is created
     if (this.props.onOpen) {
       this.props.onOpen()
     }
@@ -61,28 +60,10 @@ export default class DivOverlay<
 
   onRender() {}
 
-  renderContent = () => {
-    if (this.props.children == null) {
-      this.removeContent()
-    } else {
-      render(
-        <Fragment>{this.props.children}</Fragment>,
-        this.leafletElement._contentNode,
-        () => {
-          this.leafletElement.update()
-          this.onRender()
-        },
-      )
-    }
-  }
-
-  removeContent = () => {
-    if (this.leafletElement._contentNode) {
-      unmountComponentAtNode(this.leafletElement._contentNode)
-    }
-  }
-
   render() {
+    if (this.leafletElement._contentNode) {
+      return createPortal(this.props.children, this.leafletElement._contentNode)
+    }
     return null
   }
 }
