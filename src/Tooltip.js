@@ -33,8 +33,6 @@ class Tooltip extends DivOverlay<LeafletElement, Props> {
   }
 
   componentWillUnmount() {
-    this.removeContent()
-
     const { popupContainer } = this.props.leaflet
     if (popupContainer == null) return
 

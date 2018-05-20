@@ -61,7 +61,6 @@ class Popup extends DivOverlay<LeafletElement, Props> {
   }
 
   componentWillUnmount() {
-    this.removeContent()
     const { map } = this.props.leaflet
 
     if (map != null) {
