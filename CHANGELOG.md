@@ -1,10 +1,11 @@
 ## v2 (in progress)
 
-* Updated React dependency to v16.3.
-* Replaced React context usage with new APIs introduced in React v16.3.
+* [BREAKING] Updated React dependency to v16.3.
+* [BREAKING] Replaced React context usage with new APIs introduced in React v16.3.
+* [BREAKING] Removed PropTypes.
+* [BREAKING] Dropped support for IE < 11.
+* [React Portals](https://reactjs.org/docs/portals.html) are now used to render the `DivOverlay` and therefore `Popup` and `Tooltip` components, enabling context propagation ([PR #475](https://github.com/PaulLeCam/react-leaflet/pull/475) by _hannesj_).
 * Replaced wrapping `div` elements with `Fragment`.
-* Removed PropTypes.
-* Dropped support for IE < 11.
 
 ## v1.9.1 (2018-03-22)
 

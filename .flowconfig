@@ -8,6 +8,7 @@
 
 [lints]
 all=warn
+deprecated-type=off
 unclear-type=off
 unsafe-getters-setters=off
 
