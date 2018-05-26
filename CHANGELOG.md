@@ -1,4 +1,4 @@
-## v2 (in progress)
+## v2.0.0-beta.1 (2018-05-26)
 
 * [BREAKING] Updated React dependency to v16.3.
 * [BREAKING] Replaced React context usage with new APIs introduced in React v16.3.

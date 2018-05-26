@@ -22,7 +22,7 @@ const siteConfig = {
   useEnglishUrl: true,
   headerLinks: [
     { doc: 'intro', label: 'Getting started' },
-    { doc: 'prop-types', label: 'API' },
+    { doc: 'components', label: 'API' },
     { page: 'help', label: 'Help' },
     { languages: true },
     { href: 'https://github.com/PaulLeCam/react-leaflet', label: 'GitHub' },
