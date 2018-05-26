@@ -18,42 +18,6 @@ they would get updated if you change them afterwards.
 in `componentWillMount()` and therefore accessible in `componentDidMount()`, except for the `Map` component where it can only be created after the `<div>` container is rendered.\
 You can check out the [event handling example](https://github.com/PaulLeCam/react-leaflet/blob/master/example/components/events.js) to see how to interact with methods exposed by the Leaflet element.
 
-* [Base components](#base-components)
-  * [DivOverlay](#divoverlay)
-  * [MapComponent](#mapcomponent)
-  * [MapControl](#mapcontrol)
-  * [MapLayer](#maplayer)
-  * [Path](#path)
-* [Map](#map)
-  * [Pane](#pane)
-* [UI Layers](#ui-layers)
-  * [Marker](#marker)
-  * [Popup](#popup)
-  * [Tooltip](#tooltip)
-* [Raster Layers](#raster-layers)
-  * [TileLayer](#tilelayer)
-  * [WMSTileLayer](#wmstilelayer)
-  * [ImageOverlay](#imageoverlay)
-  * [VideoOverlay](#videooverlay)
-* [Vector Layers](#vector-layers)
-  * [Circle](#circle)
-  * [CircleMarker](#circlemarker)
-  * [Polyline](#polyline)
-  * [Polygon](#polygon)
-  * [Rectangle](#rectangle)
-* [Other Layers](#other-layers)
-  * [FeatureGroup](#featuregroup)
-  * [GeoJSON](#geojson)
-  * [GridLayer](#gridlayer)
-  * [LayerGroup](#layergroup)
-* [Controls](#controls)
-  * [AttributionControl](#attributioncontrol)
-  * [LayersControl](#layerscontrol)
-    * [LayersControl.BaseLayer](#layerscontrolbaselayer)
-    * [LayersControl.Overlay](#layerscontroloverlay)
-  * [ScaleControl](#scalecontrol)
-  * [ZoomControl](#zoomcontrol)
-
 ## Base components
 
 These components are base classes used by other components. They can be extended
@@ -247,7 +211,7 @@ class MyMap extends Component<Props, State> {
 
 See the [viewport example](https://github.com/PaulLeCam/react-leaflet/blob/master/example/components/viewport.js) for a more complete implementation.
 
-## Pane
+### Pane
 
 [🍃 Leaflet reference](http://leafletjs.com/reference-1.3.0.html#map-pane) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/Pane.js)
 

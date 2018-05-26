@@ -2,6 +2,8 @@
 
 ⚛️ React components for 🍃 Leaflet maps.
 
+⚠️ The master branch contains the code for version 2 of the library, currently in beta. For the stable version, use the [v1 branch](https://github.com/PaulLeCam/react-leaflet/tree/v1).
+
 ## [Documentation](http://react-leaflet.js.org)
 
 * [Getting started](https://react-leaflet.js.org/docs/en/intro.html)
