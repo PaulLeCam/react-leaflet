@@ -1,6 +1,7 @@
 ---
-id: components
+id: version-v2-beta-components
 title: Components
+original_id: components
 ---
 
 ⚠️ Before starting to use the following components, make sure to understand the difference between the **static** and **dynamic** properties documented in this page.

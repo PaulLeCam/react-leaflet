@@ -1,6 +1,7 @@
 ---
-id: setup
+id: version-v2-beta-setup
 title: Leaflet setup
+original_id: setup
 ---
 
 If you are not familiar with Leaflet, make sure to read and **follow the installation instructions** from its [🍃 quick start guide](http://leafletjs.com/examples/quick-start/) before using this library.\

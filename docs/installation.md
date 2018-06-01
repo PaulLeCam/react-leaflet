@@ -8,35 +8,28 @@ title: Installation
 ## Using npm or Yarn
 
 ```bash
-npm install react-leaflet # npm
-yarn add react-leaflet # Yarn
+npm install react-leaflet@next # npm
+yarn add react-leaflet@next # Yarn
 ```
 
-React, ReactDOM, PropTypes and Leaflet are peer dependencies, if you haven't
-already installed them you can use:
+React, ReactDOM and Leaflet are peer dependencies, if you haven't already installed them you can use:
 
 ```bash
-npm install leaflet prop-types react react-dom react-leaflet # npm
-yarn add leaflet prop-types react react-dom react-leaflet # Yarn
+npm install leaflet react react-dom # npm
+yarn add leaflet react react-dom # Yarn
 ```
 
-You can then use the API as presented in the [example CodePen](https://codepen.io/PaulLeCam/pen/XVPmmj).
+You can then use the API as presented in the [example CodePen](https://codepen.io/PaulLeCam/pen/gzVmGw).
 
 ## UMD
 
-UMD builds are available on [unpkg](https://unpkg.com/) and
-[CDNJS](https://cdnjs.com/libraries/react-leaflet) (replace `1.8.0` by the
-version you need):
+UMD builds are available on [unpkg](https://unpkg.com/):
 
 ```html
 <!-- unpkg, production (minified) -->
-<script src="https://unpkg.com/react-leaflet/dist/react-leaflet.min.js"></script>
+<script src="https://unpkg.com/react-leaflet@next/dist/react-leaflet.min.js"></script>
 <!-- unpkg, development -->
-<script src="https://unpkg.com/react-leaflet/dist/react-leaflet.js"></script>
-<!-- CDNJS, production (minified) -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react-leaflet/1.8.0/react-leaflet.min.js"></script>
-<!-- CDNJS, development -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react-leaflet/1.8.0/react-leaflet.js"></script>
+<script src="https://unpkg.com/react-leaflet@next/dist/react-leaflet.js"></script>
 ```
 
 The library is injected as `window.ReactLeaflet`.\

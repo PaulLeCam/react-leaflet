@@ -1,6 +1,7 @@
 ---
-id: events
+id: version-v2-beta-events
 title: Events
+original_id: events
 ---
 
 Leaflet exposes its own events, different from React. You can listen to them using React-Leaflet by adding a callback to a property prefixed by `on`. Ex: `<Map onMoveend={this.handleMoveend}>...</Map>`.\

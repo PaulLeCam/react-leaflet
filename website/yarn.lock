@@ -1411,9 +1411,9 @@ diacritics-map@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/diacritics-map/-/diacritics-map-0.1.0.tgz#6dfc0ff9d01000a2edf2865371cac316e94977af"
 
-docusaurus@^1.1.4:
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/docusaurus/-/docusaurus-1.1.4.tgz#dff598d8eb208077fcc6529a7aa54cb1a9ad757f"
+docusaurus@^1.1.5:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/docusaurus/-/docusaurus-1.1.5.tgz#66f7f55185b61946e0bc5eaa73a389f0f5ae2616"
   dependencies:
     babel-plugin-transform-class-properties "^6.24.1"
     babel-plugin-transform-object-rest-spread "^6.26.0"
@@ -1444,6 +1444,7 @@ docusaurus@^1.1.4:
     markdown-toc "^1.2.0"
     mkdirp "^0.5.1"
     react "^16.3.2"
+    react-dev-utils "^5.0.1"
     react-dom "^16.3.2"
     remarkable "^1.7.1"
     request "^2.87.0"

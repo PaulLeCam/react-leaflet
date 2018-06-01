@@ -1,6 +1,7 @@
 ---
-id: examples
+id: version-v2-beta-examples
 title: Examples
+original_id: examples
 ---
 
 Different examples are available in the [example folder](https://github.com/PaulLeCam/react-leaflet/tree/master/example) to present various use cases:

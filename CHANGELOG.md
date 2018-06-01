@@ -1,3 +1,7 @@
+## master
+
+* [website] Added `react-leaflet-nmscale` plugin ([PR #479](https://github.com/PaulLeCam/react-leaflet/pull/479) by _anajavi_).
+
 ## v2.0.0-beta.1 (2018-05-26)
 
 * [BREAKING] Updated React dependency to v16.3.

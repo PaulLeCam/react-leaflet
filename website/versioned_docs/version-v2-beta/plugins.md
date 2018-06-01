@@ -28,6 +28,7 @@ open pull requests to update this list!
 | [`react-leaflet-markercluster`](https://www.npmjs.com/package/react-leaflet-markercluster) | unknown
 | [`react-leaflet-marker-layer`](https://www.npmjs.com/package/react-leaflet-marker-layer) | unknown
 | [`react-leaflet-measure`](https://www.npmjs.com/package/react-leaflet-measure) | unknown
+| [`react-leaflet-nmscale`](https://www.npmjs.com/package/@marfle/react-leaflet-nmscale) | **yes**
 | [`react-leaflet-pane`](https://www.npmjs.com/package/react-leaflet-pane) | unknown
 | [`react-leaflet-rotatedmarker`](https://www.npmjs.com/package/react-leaflet-rotatedmarker) | unknown
 | [`react-leaflet-shapefile`](https://www.npmjs.com/package/react-leaflet-shapefile) | unknown
