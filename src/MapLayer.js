@@ -36,8 +36,8 @@ export default class MapLayer<
   // eslint-disable-next-line no-unused-vars
   updateLeafletElement(fromProps: Props, toProps: Props) {}
 
-  componentWillMount() {
-    super.componentWillMount()
+  constructor(props: Props, context: Object) {
+    super(props, context)
     this.leafletElement = this.createLeafletElement(this.props)
   }
 

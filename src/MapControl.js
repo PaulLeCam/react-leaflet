@@ -21,6 +21,12 @@ export default class MapControl<
 
   leafletElement: LeafletElement
 
+  constructor(props: Props) {
+    super(props)
+
+    this.leafletElement = this.createLeafletElement(this.props)
+  }
+
   // eslint-disable-next-line no-unused-vars
   createLeafletElement(props: Props): LeafletElement {
     throw new Error('createLeafletElement() must be implemented')
@@ -30,10 +36,6 @@ export default class MapControl<
     if (toProps.position !== fromProps.position) {
       this.leafletElement.setPosition(toProps.position)
     }
-  }
-
-  componentWillMount() {
-    this.leafletElement = this.createLeafletElement(this.props)
   }
 
   componentDidMount() {

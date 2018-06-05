@@ -78,8 +78,8 @@ export default class Pane extends Component<Props, State> {
     this.createPane(this.props)
   }
 
-  componentWillReceiveProps(nextProps: Props) {
-    if (!this.state.name) {
+  componentDidUpdate(prevProps: Props, prevState: State) {
+    if (!prevState.name) {
       // Do nothing if this.state.name is undefined due to errors or
       // an invalid props.name value
       return
@@ -87,23 +87,20 @@ export default class Pane extends Component<Props, State> {
 
     // If the 'name' prop has changed the current pane is unmounted and a new
     // pane is created.
-    if (nextProps.name !== this.props.name) {
+    if (this.props.name !== prevProps.name) {
       this.removePane()
-      this.createPane(nextProps)
+      this.createPane(this.props)
     } else {
       // Remove the previous css class name from the pane if it has changed.
       // setStyle will take care of adding in the updated className
-      if (
-        this.props.className &&
-        nextProps.className !== this.props.className
-      ) {
+      if (prevProps.className && this.props.className !== prevProps.className) {
         const pane = this.getPane()
-        if (pane && this.props.className)
-          pane.classList.remove(this.props.className)
+        if (pane && prevProps.className)
+          pane.classList.remove(prevProps.className)
       }
 
       // Update the pane's DOM node style and class
-      this.setStyle(nextProps)
+      this.setStyle(this.props)
     }
   }
 

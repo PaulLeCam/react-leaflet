@@ -50,8 +50,8 @@ export default class Popup extends DivOverlay<LeafletElement, Props> {
     }
   }
 
-  componentWillMount() {
-    super.componentWillMount()
+  constructor(props: Props, context: Object) {
+    super(props, context)
     this.leafletElement = this.createLeafletElement(this.props)
     this.leafletElement.options.autoPan = this.props.autoPan !== false
 
