@@ -323,6 +323,8 @@ export default class Map extends MapComponent<LeafletElement, Props> {
   componentWillUnmount() {
     super.componentWillUnmount()
 
+    if (!this.leafletElement) return
+
     this.leafletElement.off('move', this.onViewportChange)
     this.leafletElement.off('moveend', this.onViewportChanged)
 
