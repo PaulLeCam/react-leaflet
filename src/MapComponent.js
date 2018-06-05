@@ -20,10 +20,6 @@ export default class MapComponent<
 
   constructor(props: Props, context: Object) {
     super(props, context)
-    this._leafletEvents = {}
-  }
-
-  componentWillMount() {
     this._leafletEvents = this.extractLeafletEvents(this.props)
   }
 
@@ -31,8 +27,9 @@ export default class MapComponent<
     this.bindLeafletEvents(this._leafletEvents)
   }
 
-  componentWillReceiveProps(nextProps: Props) {
-    const next = this.extractLeafletEvents(nextProps)
+  // eslint-disable-next-line no-unused-vars
+  componentDidUpdate(prevProps: Props) {
+    const next = this.extractLeafletEvents(this.props)
     this._leafletEvents = this.bindLeafletEvents(next, this._leafletEvents)
   }
 

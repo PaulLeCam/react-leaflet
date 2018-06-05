@@ -15,7 +15,7 @@ describe('LayersControl', () => {
         map: PropTypes.instanceOf(Leaflet.Map),
       }
 
-      componentWillMount() {
+      componentDidMount() {
         expect(this.context.map).toBeDefined()
       }
 

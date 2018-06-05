@@ -8,8 +8,8 @@ import MapComponent from '../src/MapComponent'
 
 describe('MapComponent', () => {
   class TestComponent extends MapComponent {
-    componentWillMount() {
-      super.componentWillMount()
+    constructor(props, context) {
+      super(props, context);
       this.leafletElement = Leaflet.map('test')
     }
     render() {

@@ -19,8 +19,8 @@ describe('MapLayer', () => {
         return Leaflet.marker([0, 0])
       }
 
-      componentWillMount() {
-        super.componentWillMount()
+      componentDidMount() {
+        super.componentDidMount()
         expect(this.context.map).toBeDefined()
       }
 

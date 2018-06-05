@@ -67,7 +67,8 @@ class ControlledLayer extends Component<ControlledLayerProps> {
     }
   }
 
-  componentWillReceiveProps({ checked }: ControlledLayerProps) {
+  componentDidUpdate() {
+    const { checked } = this.props
     // Handle dynamically (un)checking the layer => adding/removing from the map
     if (
       checked === true &&
@@ -156,8 +157,8 @@ export default class LayersControl extends MapControl<
     return new Control.Layers(undefined, undefined, options)
   }
 
-  componentWillMount() {
-    super.componentWillMount()
+  constructor(props: any) {
+    super(props)
     this.controlProps = {
       addBaseLayer: this.addBaseLayer.bind(this),
       addOverlay: this.addOverlay.bind(this),

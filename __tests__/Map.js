@@ -184,4 +184,32 @@ describe('Map', () => {
       expect(mapLeaflet).toBe(null)
     })
   })
+
+  it('doesnt fail if leafletElement is falsy upon unmount', () => {
+    const firstBounds = [[0, 0], [2, 2]]
+
+    class TestComponent extends Component {
+      constructor() {
+        super()
+        this.state = {
+          bounds: firstBounds,
+        }
+      }
+
+      getLeafletMap() {
+        return this.refs.map.leafletElement
+      }
+
+      render() {
+        return <Map bounds={this.state.bounds} ref="map" />
+      }
+    }
+
+    const component = renderIntoDocument(<TestComponent />)
+    const mapLeaflet = component.getLeafletMap()
+
+    component.refs.map.leafletElement = null
+    // eslint-disable-next-line react/no-find-dom-node
+    expect(() => ReactDOM.unmountComponentAtNode(ReactDOM.findDOMNode(component).parentNode)).not.toThrow();
+  })
 })
