@@ -30,8 +30,11 @@ const OTHER_PROPS = [
   'whenReady',
 ]
 
-const normalizeCenter = (pos: LatLng): [number, number] =>
-  Array.isArray(pos) ? [pos[0], pos[1]] : [pos.lat, pos.lon ? pos.lon : pos.lng]
+const normalizeCenter = (pos: LatLng): [number, number] => {
+  return Array.isArray(pos)
+    ? [pos[0], pos[1]]
+    : [pos.lat, pos.lon ? pos.lon : pos.lng]
+}
 
 type LeafletElement = LeafletMap
 
@@ -104,12 +107,6 @@ export default class Map extends MapComponent<LeafletElement, Props> {
   }
 
   _updating: boolean = false
-
-  // TODO: check using this.props.className works as expected
-  // constructor(props: Props, context: Object) {
-  //   super(props, context)
-  //   this.className = props.className
-  // }
 
   createLeafletElement(props: Props): LeafletElement {
     const { viewport, ...options } = props

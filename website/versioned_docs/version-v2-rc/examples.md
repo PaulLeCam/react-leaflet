@@ -1,5 +1,5 @@
 ---
-id: version-v2-beta-examples
+id: version-v2-rc-examples
 title: Examples
 original_id: examples
 ---

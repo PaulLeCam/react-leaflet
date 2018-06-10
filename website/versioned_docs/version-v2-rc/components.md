@@ -1,5 +1,5 @@
 ---
-id: version-v2-beta-components
+id: version-v2-rc-components
 title: Components
 original_id: components
 ---

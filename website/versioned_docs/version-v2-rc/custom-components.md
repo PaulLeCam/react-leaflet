@@ -1,5 +1,5 @@
 ---
-id: version-v2-beta-custom-components
+id: version-v2-rc-custom-components
 title: Creating custom components
 original_id: custom-components
 ---

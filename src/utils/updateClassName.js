@@ -2,8 +2,9 @@
 
 import { DomUtil } from 'leaflet'
 
-const splitClassName = (className: string = ''): Array<string> =>
-  className.split(' ').filter(Boolean)
+const splitClassName = (className: string = ''): Array<string> => {
+  return className.split(' ').filter(Boolean)
+}
 
 export default (
   container: ?HTMLElement,

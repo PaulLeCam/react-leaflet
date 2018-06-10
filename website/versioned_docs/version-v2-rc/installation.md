@@ -1,5 +1,5 @@
 ---
-id: version-v2-beta-installation
+id: version-v2-rc-installation
 title: Installation
 original_id: installation
 ---

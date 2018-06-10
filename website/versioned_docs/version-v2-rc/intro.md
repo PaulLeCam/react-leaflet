@@ -1,5 +1,5 @@
 ---
-id: version-v2-beta-intro
+id: version-v2-rc-intro
 title: Introduction
 original_id: intro
 ---

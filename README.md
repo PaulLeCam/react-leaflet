@@ -2,12 +2,12 @@
 
 ⚛️ React components for 🍃 Leaflet maps.
 
-⚠️ The master branch contains the code for version 2 of the library, currently in beta. For the stable version, use the [v1 branch](https://github.com/PaulLeCam/react-leaflet/tree/v1).
+⚠️ The master branch contains the code for version 2 of the library, currently published in as release candidate. For the stable version, use the [v1 branch](https://github.com/PaulLeCam/react-leaflet/tree/v1).
 
 ## [Documentation](http://react-leaflet.js.org)
 
-* [Getting started](https://react-leaflet.js.org/docs/en/intro.html)
-* [API reference](https://react-leaflet.js.org/docs/en/context.html)
+- [Getting started](https://react-leaflet.js.org/docs/en/intro.html)
+- [API reference](https://react-leaflet.js.org/docs/en/context.html)
 
 ## Changes
 
@@ -19,9 +19,7 @@ See [CONTRIBUTING](CONTRIBUTING.md) file.
 
 ## Support
 
-Please **do not** use GitHub issues for support, but instead post your questions
-on [StackOverflow](https://stackoverflow.com/) using the
-[`react-leaflet` tag](https://stackoverflow.com/questions/tagged/react-leaflet).
+Please **do not** use GitHub issues for support, but instead post your questions on [StackOverflow](https://stackoverflow.com/) using the [`react-leaflet` tag](https://stackoverflow.com/questions/tagged/react-leaflet).
 
 ## License
 

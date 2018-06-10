@@ -1,0 +1,20 @@
+{
+  "version-v2-rc-docs": {
+    "Getting started": [
+      "version-v2-rc-intro",
+      "version-v2-rc-setup",
+      "version-v2-rc-installation",
+      "version-v2-rc-examples"
+    ],
+    "API": [
+      "version-v2-rc-context",
+      "version-v2-rc-events",
+      "version-v2-rc-components"
+    ],
+    "Guides": [
+      "version-v2-rc-custom-components",
+      "version-v2-rc-class-hierarchy"
+    ],
+    "Extra": ["version-v2-rc-plugins"]
+  }
+}

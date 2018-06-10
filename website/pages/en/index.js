@@ -78,7 +78,7 @@ class HomeSplash extends React.Component {
             </Button>
           </PromoSection>
           <PromoSection>
-            <h2>v2 (beta):</h2>
+            <h2>v2 (release candidate):</h2>
             <Button href={docUrl('intro.html', this.props.language)}>
               Getting started
             </Button>
@@ -182,9 +182,7 @@ render(map, document.getElementById('map-container'))`}
         ▶️ this CodePen (v1 - stable)
       </a>{' '}
       or{' '}
-      <a href="https://codepen.io/PaulLeCam/pen/gzVmGw">
-        the v2 (beta) version
-      </a>.
+      <a href="https://codepen.io/PaulLeCam/pen/gzVmGw">the v2 (RC) version</a>.
     </p>
     <PromoSection>
       <Button href={docUrl('intro.html', props.language)}>Get started</Button>
