@@ -28,8 +28,8 @@ export const withLeaflet = (WrappedComponent: ComponentType<*>) => {
     </Consumer>
   )
 
-  // flowlint-next-line sketchy-null-string:off
-  const name = WrappedComponent.displayName || WrappedComponent.name
+  const name = typeof WrappedComponent.displayName === 'string' ?
+  WrappedComponent.displayName : WrappedComponent.name
   WithLeafletComponent.displayName = `Leaflet(${name})`
 
   const LeafletComponent = forwardRef(WithLeafletComponent)

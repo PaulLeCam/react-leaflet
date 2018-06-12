@@ -1,5 +1,4 @@
 // @flow
-// flowlint sketchy-null-string:off
 
 import { forEach, omit, uniqueId } from 'lodash'
 import React, { Component, type Node } from 'react'
@@ -57,7 +56,7 @@ class Pane extends Component<Props, State> {
   }
 
   componentDidUpdate(prevProps: Props) {
-    if (!this.state.name) {
+    if (typeof this.state.name !== 'string' || this.state.name.length === 0) {
       // Do nothing if this.state.name is undefined due to errors or
       // an invalid props.name value
       return
@@ -71,7 +70,7 @@ class Pane extends Component<Props, State> {
     } else {
       // Remove the previous css class name from the pane if it has changed.
       // setStyle() will take care of adding in the updated className
-      if (prevProps.className && this.props.className !== prevProps.className) {
+      if (typeof prevProps.className === 'string' && this.props.className !== prevProps.className) {
         const pane = this.getPane()
         if (pane != null && prevProps.className != null) {
           pane.classList.remove(prevProps.className)
@@ -89,7 +88,7 @@ class Pane extends Component<Props, State> {
 
   createPane(props: Props) {
     const { map } = props.leaflet
-    const name = props.name || `pane-${uniqueId()}`
+    const name = typeof props.name === 'string' ? props.name : `pane-${uniqueId()}`
 
     if (map != null && map.createPane != null) {
       const isDefault = isLeafletPane(name)
@@ -129,7 +128,7 @@ class Pane extends Component<Props, State> {
   setStyle = ({ style, className }: Props = this.props) => {
     const pane = this.getPane(this.state.name)
     if (pane) {
-      if (className) {
+      if (typeof className === 'string') {
         pane.classList.add(className)
       }
       if (style) {
@@ -141,7 +140,7 @@ class Pane extends Component<Props, State> {
   }
 
   getParentPane(): ?HTMLElement {
-    return this.getPane(this.props.pane || this.props.leaflet.pane)
+    return this.getPane(typeof this.props.pane === 'string' ? this.props.pane : this.props.leaflet.pane)
   }
 
   getPane(name: ?string): ?HTMLElement {
