@@ -70,7 +70,10 @@ class Pane extends Component<Props, State> {
     } else {
       // Remove the previous css class name from the pane if it has changed.
       // setStyle() will take care of adding in the updated className
-      if (typeof prevProps.className === 'string' && this.props.className !== prevProps.className) {
+      if (
+        typeof prevProps.className === 'string' &&
+        this.props.className !== prevProps.className
+      ) {
         const pane = this.getPane()
         if (pane != null && prevProps.className != null) {
           pane.classList.remove(prevProps.className)
@@ -88,7 +91,8 @@ class Pane extends Component<Props, State> {
 
   createPane(props: Props) {
     const { map } = props.leaflet
-    const name = typeof props.name === 'string' ? props.name : `pane-${uniqueId()}`
+    const name =
+      typeof props.name === 'string' ? props.name : `pane-${uniqueId()}`
 
     if (map != null && map.createPane != null) {
       const isDefault = isLeafletPane(name)
@@ -140,7 +144,11 @@ class Pane extends Component<Props, State> {
   }
 
   getParentPane(): ?HTMLElement {
-    return this.getPane(typeof this.props.pane === 'string' ? this.props.pane : this.props.leaflet.pane)
+    return this.getPane(
+      typeof this.props.pane === 'string'
+        ? this.props.pane
+        : this.props.leaflet.pane,
+    )
   }
 
   getPane(name: ?string): ?HTMLElement {
