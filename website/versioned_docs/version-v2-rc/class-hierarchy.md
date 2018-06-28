@@ -1,6 +1,7 @@
 ---
-id: class-hierarchy
+id: version-v2-rc-class-hierarchy
 title: Class hierarchy
+original_id: class-hierarchy
 ---
 
 The components exposed by React-Leaflet inherit from the following hierarchy.\

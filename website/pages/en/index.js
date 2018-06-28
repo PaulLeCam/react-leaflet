@@ -69,19 +69,19 @@ class HomeSplash extends React.Component {
         <div className="inner">
           <ProjectTitle />
           <PromoSection>
-            <h2>v1 (stable):</h2>
+            <h2>v1 (stable):</h2>&nbsp;
             <Button href={docUrl('v1/intro.html', this.props.language)}>
               Getting started
-            </Button>
+            </Button>&nbsp;
             <Button href={docUrl('v1/prop-types.html', this.props.language)}>
               API reference
             </Button>
           </PromoSection>
           <PromoSection>
-            <h2>v2 (release candidate):</h2>
+            <h2>v2 (release candidate):</h2>&nbsp;
             <Button href={docUrl('intro.html', this.props.language)}>
               Getting started
-            </Button>
+            </Button>&nbsp;
             <Button href={docUrl('context.html', this.props.language)}>
               API reference
             </Button>
@@ -125,7 +125,7 @@ const Description = props => (
 )
 
 const CodeSample = (props = {}) => (
-  <Container padding={['bottom', 'top']}>
+  <Container padding={['top']}>
     <p>
       React-Leaflet allows to convert this{' '}
       <a href="http://leafletjs.com/">
@@ -207,7 +207,7 @@ const Showcase = props => {
     })
 
   return (
-    <div className="productShowcaseSection paddingBottom">
+    <div className="productShowcaseSection">
       <h2>{"Who's Using This?"}</h2>
       <p>This project is used by all these people</p>
       <div className="logos">{showcase}</div>

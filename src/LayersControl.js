@@ -31,7 +31,7 @@ type ControlledLayerProps = {
 }
 
 // Abtract class for layer container, extended by BaseLayer and Overlay
-class ControlledLayer extends Component<ControlledLayerProps> {
+export class ControlledLayer extends Component<ControlledLayerProps> {
   contextValue: LeafletContext
   layer: ?Layer
 

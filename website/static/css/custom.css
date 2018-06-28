@@ -1,11 +1,21 @@
+h2.headerTitle {
+  margin-top: 0.5em;
+}
+
+.container.paddingBottom {
+  padding-bottom: 30px;
+}
+.container.paddingTop {
+  padding-top: 30px;
+}
+
 .mainContainer .wrapper p {
   max-width: none;
 }
 
 .promoSection h2 {
-  line-height: 42px;
   font-size: 18px;
-  font-weight: bold;
+  margin-top: 0.5em;
 }
 
 @media only screen and (min-device-width: 360px) and (max-device-width: 736px) {

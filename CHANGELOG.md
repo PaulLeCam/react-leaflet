@@ -1,3 +1,8 @@
+## v2.0.0-rc.2 (2018-06-28)
+
+- Added `ControlledLayer` abstract class export.
+- [website] Updated docs for abstract classes and usage for custom components.
+
 ## v2.0.0-rc.1 (2018-06-10)
 
 - [website] Added `react-leaflet-nmscale` plugin ([PR #479](https://github.com/PaulLeCam/react-leaflet/pull/479) by _anajavi_).
