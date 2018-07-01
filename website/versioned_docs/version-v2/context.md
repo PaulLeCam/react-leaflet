@@ -1,5 +1,5 @@
 ---
-id: version-v2-rc-context
+id: version-v2-context
 title: Context
 original_id: context
 ---

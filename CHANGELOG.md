@@ -1,3 +1,18 @@
+## v2.0.0 (to be released)
+
+Changes from v1.9.1:
+
+- [BREAKING] Updated React dependency to v16.3.
+- [BREAKING] Replaced React context usage with new APIs introduced in React v16.3.
+- [BREAKING] Removed PropTypes.
+- [BREAKING] Dropped support for IE < 11.
+- [React Portals](https://reactjs.org/docs/portals.html) are now used to render the `DivOverlay` and therefore `Popup` and `Tooltip` components, enabling context propagation ([PR #475](https://github.com/PaulLeCam/react-leaflet/pull/475) by _hannesj_).
+- Replaced wrapping `div` elements with `Fragment`.
+- Added `ControlledLayer` abstract class export.
+- [website] Added `react-leaflet-nmscale` plugin ([PR #479](https://github.com/PaulLeCam/react-leaflet/pull/479) by _anajavi_).
+- [website] Added 3 plugins ([PR #482](https://github.com/PaulLeCam/react-leaflet/pull/482) by _fullhdpixel_).
+- [website] Updated docs for abstract classes and usage for custom components.
+
 ## v2.0.0-rc.2 (2018-06-28)
 
 - Added `ControlledLayer` abstract class export.

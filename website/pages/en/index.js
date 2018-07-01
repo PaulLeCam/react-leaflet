@@ -69,16 +69,6 @@ class HomeSplash extends React.Component {
         <div className="inner">
           <ProjectTitle />
           <PromoSection>
-            <h2>v1 (stable):</h2>&nbsp;
-            <Button href={docUrl('v1/intro.html', this.props.language)}>
-              Getting started
-            </Button>&nbsp;
-            <Button href={docUrl('v1/prop-types.html', this.props.language)}>
-              API reference
-            </Button>
-          </PromoSection>
-          <PromoSection>
-            <h2>v2 (release candidate):</h2>&nbsp;
             <Button href={docUrl('intro.html', this.props.language)}>
               Getting started
             </Button>&nbsp;
@@ -178,11 +168,7 @@ render(map, document.getElementById('map-container'))`}
       The example code above is only meant to present the syntax change, it will
       not work as-is.<br />
       You can run an example code using React-Leaflet in{' '}
-      <a href="https://codepen.io/PaulLeCam/pen/XVPmmj">
-        ▶️ this CodePen (v1 - stable)
-      </a>{' '}
-      or{' '}
-      <a href="https://codepen.io/PaulLeCam/pen/gzVmGw">the v2 (RC) version</a>.
+      <a href="https://codepen.io/PaulLeCam/pen/gzVmGw">▶️ this CodePen</a>.
     </p>
     <PromoSection>
       <Button href={docUrl('intro.html', props.language)}>Get started</Button>

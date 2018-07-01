@@ -32,11 +32,27 @@ class Versions extends React.Component {
               <h2>{siteConfig.title + ' versions'}</h2>
             </header>
             <p>New versions of this project are released every so often.</p>
-            <h3 id="latest">Current version (stable)</h3>
+            <h3 id="latest">Current version</h3>
             <p>
               This is the version that is configured automatically when you
               first install this project.
             </p>
+            <table className="versions">
+              <tbody>
+                <tr>
+                  <th>{v2}</th>
+                  <td>
+                    <a href={docUrl('intro.html', language)}>Documentation</a>
+                  </td>
+                  <td>
+                    <a href="https://github.com/PaulLeCam/react-leaflet/releases/latest">
+                      Release Notes
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <h3 id="latest">Previous major version</h3>
             <table className="versions">
               <tbody>
                 <tr>
@@ -48,25 +64,6 @@ class Versions extends React.Component {
                   </td>
                   <td>
                     <a href="https://github.com/PaulLeCam/react-leaflet/releases/tag/v1.9.1">
-                      Release Notes
-                    </a>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <h3 id="latest">Next version (beta)</h3>
-            <p>
-              This version can be installed using the <code>next</code> tag.
-            </p>
-            <table className="versions">
-              <tbody>
-                <tr>
-                  <th>{v2}</th>
-                  <td>
-                    <a href={docUrl('intro.html', language)}>Documentation</a>
-                  </td>
-                  <td>
-                    <a href="https://github.com/PaulLeCam/react-leaflet/releases/tag/v2.0.0-beta.1">
                       Release Notes
                     </a>
                   </td>

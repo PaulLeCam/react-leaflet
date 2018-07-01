@@ -1,5 +1,5 @@
 ---
-id: version-v2-rc-events
+id: version-v2-events
 title: Events
 original_id: events
 ---

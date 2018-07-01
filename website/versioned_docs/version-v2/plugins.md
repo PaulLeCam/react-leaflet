@@ -1,5 +1,5 @@
 ---
-id: version-v2-rc-plugins
+id: version-v2-plugins
 title: Third-party plugins
 original_id: plugins
 ---

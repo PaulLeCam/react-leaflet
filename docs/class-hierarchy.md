@@ -22,7 +22,7 @@ Classes indicated as _abstract_ can be extended to create custom components, whi
       - [`ImageOverlay`](components.md#imageoverlay)
       - [`LayerGroup`](components.md#layergroup)
       - [`Marker`](components.md#marker)
-      - [`Path`](components.md#path): handles styling of vector layers.
+      - [`Path`](components.md#path) (abstract): handles styling of vector layers.
         - [`Circle`](components.md#circle)
         - [`CircleMarker`](components.md#circlemarker)
         - [`FeatureGroup`](components.md#featuregroup)

@@ -1,5 +1,5 @@
 ---
-id: version-v2-rc-intro
+id: version-v2-intro
 title: Introduction
 original_id: intro
 ---
@@ -28,12 +28,12 @@ If you create [custom components](custom-components.md), make sure to learn abou
 1.  The top-level `Map` renders an empty `<div>` to contain the map.
 1.  The `Map`'s `componentDidMount()` handler instantiates a `Leaflet.Map()` for the created `<div>` with the component properties and sets this instance in state. This instance is made available in the context.
 1.  The `Map`'s `render()` handler is executed again, this time rendering its children components.
-1.  For each child component, the `componentWillMount()` handler is called and instantiates the relevant Leaflet instance for this element using the component properties and context.
+1.  For each child component, the `componentDidMount()` handler is called and instantiates the relevant Leaflet instance for this element using the component properties and context.
 1.  The `render()` handler for each child is called, either returning `null` or rendering its own children.
 1.  When the `componentDidUpdate()` handler of a component is called, it updates its Leaflet instance according to its supported _dynamic_ properties.
 1.  When the `componentWillUnmount()` handler of a component is called, it removes its layer from the map if relevant.
 
 ## Limitations
 
-* Leaflet makes direct calls to the DOM when it is loaded, therefore this library is not compatible with server-side rendering.
-* The components exposed are abstractions for Leaflet layers, not DOM elements. Some of them have properties that can be updated directly by calling the setters exposed by Leaflet while others should be completely replaced, by setting an unique value on their `key` property so that they are properly handled by React's algorithm.
+- Leaflet makes direct calls to the DOM when it is loaded, therefore this library is not compatible with server-side rendering.
+- The components exposed are abstractions for Leaflet layers, not DOM elements. Some of them have properties that can be updated directly by calling the setters exposed by Leaflet while others should be completely replaced, by setting an unique value on their `key` property so that they are properly handled by React's algorithm.
