@@ -8,45 +8,44 @@ title: Components
 The properties documented as **dynamic properties** are updated using the relevant Leaflet setter, other properties **will not update** the component when they are changed after the component is mounted.\
 All other properties are passed as the `options` argument to their corresponding Leaflet element and should work fine for static maps, it is however unlikely that they would get updated if you change them afterwards.
 
-ℹ️ You can directly access the Leaflet element created by a component using `this.leafletElement` in the component. This leaflet element is usually created
-in `componentWillMount()` and therefore accessible in `componentDidMount()`, except for the `Map` component where it can only be created after the `<div>` container is rendered.\
+ℹ️ You can directly access the Leaflet element created by a component using `this.leafletElement` in the component. This leaflet element is usually created in `componentWillMount()` and therefore accessible in `componentDidMount()`, except for the `Map` component where it can only be created after the `<div>` container is rendered.\
 You can check out the [event handling example](https://github.com/PaulLeCam/react-leaflet/blob/master/example/components/events.js) to see how to interact with methods exposed by the Leaflet element.
 
-* [Base components](#base-components)
-  * [DivOverlay](#divoverlay)
-  * [MapComponent](#mapcomponent)
-  * [MapControl](#mapcontrol)
-  * [MapLayer](#maplayer)
-  * [Path](#path)
-* [Map](#map)
-  * [Pane](#pane)
-* [UI Layers](#ui-layers)
-  * [Marker](#marker)
-  * [Popup](#popup)
-  * [Tooltip](#tooltip)
-* [Raster Layers](#raster-layers)
-  * [TileLayer](#tilelayer)
-  * [WMSTileLayer](#wmstilelayer)
-  * [ImageOverlay](#imageoverlay)
-  * [VideoOverlay](#videooverlay)
-* [Vector Layers](#vector-layers)
-  * [Circle](#circle)
-  * [CircleMarker](#circlemarker)
-  * [Polyline](#polyline)
-  * [Polygon](#polygon)
-  * [Rectangle](#rectangle)
-* [Other Layers](#other-layers)
-  * [FeatureGroup](#featuregroup)
-  * [GeoJSON](#geojson)
-  * [GridLayer](#gridlayer)
-  * [LayerGroup](#layergroup)
-* [Controls](#controls)
-  * [AttributionControl](#attributioncontrol)
-  * [LayersControl](#layerscontrol)
-    * [LayersControl.BaseLayer](#layerscontrolbaselayer)
-    * [LayersControl.Overlay](#layerscontroloverlay)
-  * [ScaleControl](#scalecontrol)
-  * [ZoomControl](#zoomcontrol)
+- [Base components](#base-components)
+  - [DivOverlay](#divoverlay)
+  - [MapComponent](#mapcomponent)
+  - [MapControl](#mapcontrol)
+  - [MapLayer](#maplayer)
+  - [Path](#path)
+- [Map](#map)
+  - [Pane](#pane)
+- [UI Layers](#ui-layers)
+  - [Marker](#marker)
+  - [Popup](#popup)
+  - [Tooltip](#tooltip)
+- [Raster Layers](#raster-layers)
+  - [TileLayer](#tilelayer)
+  - [WMSTileLayer](#wmstilelayer)
+  - [ImageOverlay](#imageoverlay)
+  - [VideoOverlay](#videooverlay)
+- [Vector Layers](#vector-layers)
+  - [Circle](#circle)
+  - [CircleMarker](#circlemarker)
+  - [Polyline](#polyline)
+  - [Polygon](#polygon)
+  - [Rectangle](#rectangle)
+- [Other Layers](#other-layers)
+  - [FeatureGroup](#featuregroup)
+  - [GeoJSON](#geojson)
+  - [GridLayer](#gridlayer)
+  - [LayerGroup](#layergroup)
+- [Controls](#controls)
+  - [AttributionControl](#attributioncontrol)
+  - [LayersControl](#layerscontrol)
+    - [LayersControl.BaseLayer](#layerscontrolbaselayer)
+    - [LayersControl.Overlay](#layerscontroloverlay)
+  - [ScaleControl](#scalecontrol)
+  - [ZoomControl](#zoomcontrol)
 
 ## Base components
 
@@ -82,9 +81,9 @@ Base class extending [`MapComponent`](#mapcomponent), handling adding the layer 
 
 Base class extending [`MapLayer`](#maplayer) with the following methods:
 
-* `getPathOptions(object props): object`: filters the input `props` and return a new object of [Path options](http://leafletjs.com/reference-1.3.0.html#path-options) properties.
-* `setStyle(object options = {}): void`: alias to the Leaflet element [`setStyle()`](http://leafletjs.com/reference-1.3.0.html#path-setstyle).
-* `setStyleIfChanged(object fromProps, object toProps): void`: extracts the Path options of the two arguments, and calls `setStyle()` with the new options if different from the previous ones.
+- `getPathOptions(object props): object`: filters the input `props` and return a new object of [Path options](http://leafletjs.com/reference-1.3.0.html#path-options) properties.
+- `setStyle(object options = {}): void`: alias to the Leaflet element [`setStyle()`](http://leafletjs.com/reference-1.3.0.html#path-setstyle).
+- `setStyleIfChanged(object fromProps, object toProps): void`: extracts the Path options of the two arguments, and calls `setStyle()` with the new options if different from the previous ones.
 
 [🍃 Leaflet reference](http://leafletjs.com/reference-1.3.0.html#path) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/Path.js)
 
@@ -96,32 +95,30 @@ This is the top-level component that must be mounted for child components to be 
 
 **Dynamic properties**
 
-* `animate: boolean` (optional): If `true`, panning will always be animated if
-  possible. Defaults to `false`.
-* `bounds: bounds` (optional): A rectangle for the map to contain. It will be centered, and the map will zoom in as close as it can while still showing the full bounds. Changes are compared using the [`🍃 equals() method of LatLngBounds`](http://leafletjs.com/reference-1.3.0.html#latlngbounds-equals).
-* `boundsOptions: Object` (optional): Options passed to the `fitBounds()` method.
-* `boxZoom: boolean` (optional): If `true`, the map can be zoomed to a rectangular area specified by dragging the mouse while pressing the shift key. Defaults to true.
-* `center: latLng` (optional if `viewport` is provided with a center value): Center of the map. Changes are compared by value, so `[51.0, 0.0]` is considered the same as `{lat: 51, lng: 0}`.
-* `className: string` (optional): className property of the `<div>` container for the map.
-* `doubleClickZoom: boolean | string` (optional): If `true`, the map can be zoomed in by double clicking on it and zoomed out by double clicking while holding shift. If passed 'center', double-click zoom will zoom to the center of the view regardless of where the mouse was. Defaults to true.
-* `dragging: boolean` (optional): If `true`, allows the map to be draggable with mouse/touch or not. Defaults to true.
-* `keyboard: boolean` (optional): If `true`, allows users to navigate the map with keyboard arrows and +/- keys. Defaults to true.
-* `maxBounds: bounds` (optional)
-* `onViewportChange: (viewport: {center: ?[number, number], zoom: ?number}) => void` (optional): fired continuously as the viewport changes.
-* `onViewportChanged: (viewport: {center: ?[number, number], zoom: ?number}) => void` (optional): fired after the viewport changed.
-* `style: Object` (optional): style property of the `<div>` container for the
-  map.
-* `scrollWheelZoom: boolean | string` (optional): If `true` or `center`, allows the map to be zoomed by using the mouse wheel. If passed 'center', it will zoom to the center of the view regardless of where the mouse was. Defaults to true.
-* `useFlyTo: boolean` (optional): boolean to control whether to use flyTo functions for bounds and center. If false `map.fitBounds` and `map.setView` will be used. If true `map.flyToBounds` and `map.flyTo` will be used. Defaults to false.
-* `tap: boolean` (optional): If `true`, enables mobile hacks for supporting instant taps (fixing 200ms click delay on iOS/Android) and touch holds (fired as contextmenu events). Defaults to true.
-* `touchZoom: boolean | string` (optional): If `true` or `center`, allows the map to be zoomed by touch-dragging with two fingers. If passed 'center', it will zoom to the center of the view regardless of where the touch events (fingers) were. Enabled fo touch-capable web browsers except for old Androids.
-* `viewport: viewport` (optional): sets the viewport based on the provided value or the `center` and `zoom` properties.
-* `zoom: number` (optional if `viewport` is provided with a zoom value)
+- `animate: boolean` (optional): If `true`, panning will always be animated if possible. Defaults to `false`.
+- `bounds: bounds` (optional): A rectangle for the map to contain. It will be centered, and the map will zoom in as close as it can while still showing the full bounds. Changes are compared using the [`🍃 equals() method of LatLngBounds`](http://leafletjs.com/reference-1.3.0.html#latlngbounds-equals).
+- `boundsOptions: Object` (optional): Options passed to the `fitBounds()` method.
+- `boxZoom: boolean` (optional): If `true`, the map can be zoomed to a rectangular area specified by dragging the mouse while pressing the shift key. Defaults to true.
+- `center: latLng` (optional if `viewport` is provided with a center value): Center of the map. Changes are compared by value, so `[51.0, 0.0]` is considered the same as `{lat: 51, lng: 0}`.
+- `className: string` (optional): className property of the `<div>` container for the map.
+- `doubleClickZoom: boolean | string` (optional): If `true`, the map can be zoomed in by double clicking on it and zoomed out by double clicking while holding shift. If passed 'center', double-click zoom will zoom to the center of the view regardless of where the mouse was. Defaults to true.
+- `dragging: boolean` (optional): If `true`, allows the map to be draggable with mouse/touch or not. Defaults to true.
+- `keyboard: boolean` (optional): If `true`, allows users to navigate the map with keyboard arrows and +/- keys. Defaults to true.
+- `maxBounds: bounds` (optional)
+- `onViewportChange: (viewport: {center: ?[number, number], zoom: ?number}) => void` (optional): fired continuously as the viewport changes.
+- `onViewportChanged: (viewport: {center: ?[number, number], zoom: ?number}) => void` (optional): fired after the viewport changed.
+- `style: Object` (optional): style property of the `<div>` container for the map.
+- `scrollWheelZoom: boolean | string` (optional): If `true` or `center`, allows the map to be zoomed by using the mouse wheel. If passed 'center', it will zoom to the center of the view regardless of where the mouse was. Defaults to true.
+- `useFlyTo: boolean` (optional): boolean to control whether to use flyTo functions for bounds and center. If false `map.fitBounds` and `map.setView` will be used. If true `map.flyToBounds` and `map.flyTo` will be used. Defaults to false.
+- `tap: boolean` (optional): If `true`, enables mobile hacks for supporting instant taps (fixing 200ms click delay on iOS/Android) and touch holds (fired as contextmenu events). Defaults to true.
+- `touchZoom: boolean | string` (optional): If `true` or `center`, allows the map to be zoomed by touch-dragging with two fingers. If passed 'center', it will zoom to the center of the view regardless of where the touch events (fingers) were. Enabled fo touch-capable web browsers except for old Androids.
+- `viewport: viewport` (optional): sets the viewport based on the provided value or the `center` and `zoom` properties.
+- `zoom: number` (optional if `viewport` is provided with a zoom value)
 
 **Other properties**
 
-* `id: string` (optional): The ID of the `<div>` container for the map.
-* `whenReady: () => void` (optional): A function called as soon as the map is ready, see [🍃 Leaflet's documentation](http://leafletjs.com/reference-1.3.0.html#map-whenready) for more information.
+- `id: string` (optional): The ID of the `<div>` container for the map.
+- `whenReady: () => void` (optional): A function called as soon as the map is ready, see [🍃 Leaflet's documentation](http://leafletjs.com/reference-1.3.0.html#map-whenready) for more information.
 
 **Manipulating the viewport**
 
@@ -193,9 +190,9 @@ See the [viewport example](https://github.com/PaulLeCam/react-leaflet/blob/maste
 
 **Dynamic properties**
 
-* `name: string` (optional): Unique name for the pane. Existing Leaflet panes are blacklisted.
-* `style: Object` (optional): style property of the pane's `<div>`
-* `className: string` (optional): className property of the pane's `<div>`
+- `name: string` (optional): Unique name for the pane. Existing Leaflet panes are blacklisted.
+- `style: Object` (optional): style property of the pane's `<div>`
+- `className: string` (optional): className property of the pane's `<div>`
 
 ## UI Layers
 
@@ -205,11 +202,11 @@ See the [viewport example](https://github.com/PaulLeCam/react-leaflet/blob/maste
 
 **Dynamic properties**
 
-* `position: latLng` (required)
-* `draggable: boolean` (optional)
-* `icon: Leaflet.Icon` (optional)
-* `zIndexOffset: number` (optional)
-* `opacity: number` (optional)
+- `position: latLng` (required)
+- `draggable: boolean` (optional)
+- `icon: Leaflet.Icon` (optional)
+- `zIndexOffset: number` (optional)
+- `opacity: number` (optional)
 
 ### Popup
 
@@ -217,10 +214,10 @@ See the [viewport example](https://github.com/PaulLeCam/react-leaflet/blob/maste
 
 **Dynamic properties**
 
-* `className: string` (optional)
-* `onClose: () => void` (optional)
-* `onOpen: () => void` (optional)
-* `position: latLng` (optional)
+- `className: string` (optional)
+- `onClose: () => void` (optional)
+- `onOpen: () => void` (optional)
+- `position: latLng` (optional)
 
 ### Tooltip
 
@@ -228,9 +225,9 @@ See the [viewport example](https://github.com/PaulLeCam/react-leaflet/blob/maste
 
 **Dynamic properties**
 
-* `className: string` (optional)
-* `onClose: () => void` (optional)
-* `onOpen: () => void` (optional)
+- `className: string` (optional)
+- `onClose: () => void` (optional)
+- `onOpen: () => void` (optional)
 
 ## Raster Layers
 
@@ -240,9 +237,9 @@ See the [viewport example](https://github.com/PaulLeCam/react-leaflet/blob/maste
 
 **Dynamic properties**
 
-* `url: string` (required)
-* `opacity: number` (optional)
-* `zIndex: number` (optional)
+- `url: string` (required)
+- `opacity: number` (optional)
+- `zIndex: number` (optional)
 
 ### WMSTileLayer
 
@@ -250,7 +247,7 @@ See the [viewport example](https://github.com/PaulLeCam/react-leaflet/blob/maste
 
 **Dynamic properties**
 
-* `url: string` (required)
+- `url: string` (required)
 
 ℹ️ All other properties are passed as parameters and dynamic, they will cause the layer to redraw if they change.
 
@@ -260,10 +257,10 @@ See the [viewport example](https://github.com/PaulLeCam/react-leaflet/blob/maste
 
 **Dynamic properties**
 
-* `url: string | HTMLImageElement` (required)
-* `bounds: bounds` (required)
-* `opacity: number` (optional)
-* `zIndex: number` (optional)
+- `url: string | HTMLImageElement` (required)
+- `bounds: bounds` (required)
+- `opacity: number` (optional)
+- `zIndex: number` (optional)
 
 ### VideoOverlay
 
@@ -271,12 +268,11 @@ See the [viewport example](https://github.com/PaulLeCam/react-leaflet/blob/maste
 
 **Dynamic properties**
 
-* `url: string | string[] | HTMLVideoElement` (required)
-* `bounds: bounds` (required)
-* `opacity: number` (optional)
-* `play: boolean` (optional): can be used to declaratively play and pause the
-  video.
-* `zIndex: number` (optional)
+- `url: string | string[] | HTMLVideoElement` (required)
+- `bounds: bounds` (required)
+- `opacity: number` (optional)
+- `play: boolean` (optional): can be used to declaratively play and pause the video.
+- `zIndex: number` (optional)
 
 ## Vector Layers
 
@@ -290,8 +286,8 @@ properties.
 
 **Dynamic properties**
 
-* `center: latLng` (required)
-* `radius: number` (required)
+- `center: latLng` (required)
+- `radius: number` (required)
 
 ### CircleMarker
 
@@ -299,8 +295,8 @@ properties.
 
 **Dynamic properties**
 
-* `center: latLng` (required)
-* `radius: number` (optional)
+- `center: latLng` (required)
+- `radius: number` (optional)
 
 ### Polyline
 
@@ -308,7 +304,7 @@ properties.
 
 **Dynamic properties**
 
-* `positions: latLngList | latLngList[]` (required)
+- `positions: latLngList | latLngList[]` (required)
 
 ### Polygon
 
@@ -316,7 +312,7 @@ properties.
 
 **Dynamic properties**
 
-* `positions: latLngList | latLngList[] | latLngList[][]` (required)
+- `positions: latLngList | latLngList[] | latLngList[][]` (required)
 
 ### Rectangle
 
@@ -324,7 +320,7 @@ properties.
 
 **Dynamic properties**
 
-* `bounds: bounds` (required)
+- `bounds: bounds` (required)
 
 ## Other Layers
 
@@ -340,11 +336,11 @@ Extended [LayerGroup](#layergroup) supporting a [Popup](#popup) child.
 
 **Properties**
 
-* `data: GeoJSON` (required). This property will _not_ be updated if it is changed after the component is mounted.
+- `data: GeoJSON` (required). This property will _not_ be updated if it is changed after the component is mounted.
 
 **Dynamic properties**
 
-* `style: Function` (optional).
+- `style: Function` (optional).
 
 ### GridLayer
 
@@ -352,8 +348,8 @@ Extended [LayerGroup](#layergroup) supporting a [Popup](#popup) child.
 
 **Dynamic properties**
 
-* `opacity: number` (optional)
-* `zIndex: number` (optional)
+- `opacity: number` (optional)
+- `zIndex: number` (optional)
 
 ### LayerGroup
 
@@ -369,7 +365,7 @@ Use the `LayerGroup` wrapper component to group children layers together.
 
 **Dynamic properties**
 
-* `position: controlPosition` (optional)
+- `position: controlPosition` (optional)
 
 ### LayersControl
 
@@ -377,7 +373,8 @@ Use the `LayerGroup` wrapper component to group children layers together.
 
 **Dynamic properties**
 
-* `position: controlPosition` (optional)
+- `collapsed: boolean` (optional)
+- `position: controlPosition` (optional)
 
 This component exposes two children container components, `LayersControl.BaseLayer` and `LayersControl.Overlay` documented below.\
 See the `layers-control` example for a more advanced usage.
@@ -422,21 +419,21 @@ Example usage:
 
 **Properties**
 
-* `name: string` (required). The name of the layer as appearing in the `LayersControl`.
+- `name: string` (required). The name of the layer as appearing in the `LayersControl`.
 
 **Dynamic properties**
 
-* `checked: boolean` (optional, defaults to `false`). Whether the radio button associated to the layer should be checked or not. The layer will be displayed in the map accordingly.
+- `checked: boolean` (optional, defaults to `false`). Whether the radio button associated to the layer should be checked or not. The layer will be displayed in the map accordingly.
 
 ### LayersControl.Overlay
 
 **Properties**
 
-* `name: string` (required). The name of the layer as appearing in the `LayersControl`.
+- `name: string` (required). The name of the layer as appearing in the `LayersControl`.
 
 **Dynamic properties**
 
-* `checked: boolean` (optional, defaults to `false`). Whether the checkbox associated to the layer should be checked or not. The layer will be displayed in the map accordingly.
+- `checked: boolean` (optional, defaults to `false`). Whether the checkbox associated to the layer should be checked or not. The layer will be displayed in the map accordingly.
 
 ### ScaleControl
 
@@ -444,7 +441,7 @@ Example usage:
 
 **Dynamic properties**
 
-* `position: controlPosition` (optional)
+- `position: controlPosition` (optional)
 
 ### ZoomControl
 
@@ -452,4 +449,4 @@ Example usage:
 
 **Dynamic properties**
 
-* `position: controlPosition` (optional)
+- `position: controlPosition` (optional)

@@ -1,3 +1,7 @@
+## v2.0.0-rc.3 (2018-07-02)
+
+Added `collapsed` as dynamic property to `LayersControl`.
+
 ## v2.0.0-rc.2 (2018-06-28)
 
 - Added `ControlledLayer` abstract class export.

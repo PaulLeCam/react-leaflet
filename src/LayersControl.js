@@ -111,6 +111,7 @@ class Overlay extends ControlledLayer {
 type LeafletElement = Control.Layers
 type LayersControlProps = {
   children: ChildrenArray<*>,
+  collapsed?: boolean,
 } & MapControlProps
 
 class LayersControl extends MapControl<LeafletElement, LayersControlProps> {
@@ -138,6 +139,20 @@ class LayersControl extends MapControl<LeafletElement, LayersControlProps> {
   createLeafletElement(props: LayersControlProps): LeafletElement {
     const { children: _children, ...options } = props
     return new Control.Layers(undefined, undefined, options)
+  }
+
+  updateLeafletElement(
+    fromProps: LayersControlProps,
+    toProps: LayersControlProps,
+  ) {
+    super.updateLeafletElement(fromProps, toProps)
+    if (toProps.collapsed !== fromProps.collapsed) {
+      if (toProps.collapsed === true) {
+        this.leafletElement.collapse()
+      } else {
+        this.leafletElement.expand()
+      }
+    }
   }
 
   componentWillUnmount() {

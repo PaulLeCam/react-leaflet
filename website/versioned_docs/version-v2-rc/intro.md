@@ -35,5 +35,5 @@ If you create [custom components](custom-components.md), make sure to learn abou
 
 ## Limitations
 
-* Leaflet makes direct calls to the DOM when it is loaded, therefore this library is not compatible with server-side rendering.
-* The components exposed are abstractions for Leaflet layers, not DOM elements. Some of them have properties that can be updated directly by calling the setters exposed by Leaflet while others should be completely replaced, by setting an unique value on their `key` property so that they are properly handled by React's algorithm.
+- Leaflet makes direct calls to the DOM when it is loaded, therefore this library is not compatible with server-side rendering.
+- The components exposed are abstractions for Leaflet layers, not DOM elements. Some of them have properties that can be updated directly by calling the setters exposed by Leaflet while others should be completely replaced, by setting an unique value on their `key` property so that they are properly handled by React's algorithm.
