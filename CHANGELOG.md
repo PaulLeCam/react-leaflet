@@ -1,4 +1,4 @@
-## v2.0.0 (to be released)
+## v2.0.0 (2018-07-05)
 
 Changes from v1.9.1:
 
