@@ -43,6 +43,9 @@ class Marker extends MapLayer<LeafletElement, Props> {
         this.leafletElement.dragging.disable()
       }
     }
+    if (toProps.title !== fromProps.title) {
+      this.leafletElement.setTitle(toProps.title);
+    }
   }
 
   render() {
