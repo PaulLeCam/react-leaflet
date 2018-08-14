@@ -38,3 +38,5 @@ open pull requests to update this list!
 | [`react-leaflet-vectorgrid`](https://www.npmjs.com/package/react-leaflet-vectorgrid) | unknown
 | [`react-leaflet-zoom-display`](https://www.npmjs.com/package/react-leaflet-zoom-display) | unknown
 | [`react-mapbox-components`](https://www.npmjs.com/package/react-mapbox-components) | unknown
+| [`react-leaflet-search`](https://www.npmjs.com/package/react-leaflet-search) | **yes**
+| [`react-leaflet-zoom-indicator`](https://www.npmjs.com/package/react-leaflet-zoom-indicator) | unknown
