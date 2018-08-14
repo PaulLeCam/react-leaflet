@@ -23,6 +23,18 @@ export default class GridLayer<
     }
   }
 
+  getOptions(props: Props): Props {
+    const options = super.getOptions(props)
+    return props.leaflet.map == null
+      ? options
+      : // $FlowFixMe: object spread type
+        {
+          maxZoom: props.leaflet.map.options.maxZoom,
+          minZoom: props.leaflet.map.options.minZoom,
+          ...options,
+        }
+  }
+
   render() {
     return null
   }

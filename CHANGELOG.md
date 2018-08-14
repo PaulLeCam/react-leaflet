@@ -1,3 +1,8 @@
+## v2.0.1 (2018-08-14)
+
+- Fixed setting `maxZoom` and `minZoom` options to `GridLayer` using `Map` options.
+- [website] Added `react-leaflet-search` and `react-leaflet-zoom-indicator` plugins ([PR #501](https://github.com/PaulLeCam/react-leaflet/pull/501) by _tumerorkun_).
+
 ## v2.0.0 (2018-07-05)
 
 Changes from v1.9.1:
