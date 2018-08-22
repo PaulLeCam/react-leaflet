@@ -22,6 +22,7 @@ open pull requests to update this list!
 | [`react-leaflet-draggable-polyline`](https://www.npmjs.com/package/react-leaflet-draggable-polyline) | unknown            |
 | [`react-leaflet-draw`](https://www.npmjs.com/package/react-leaflet-draw)                             | unknown            |
 | [`react-leaflet-easyprint`](https://www.npmjs.com/package/react-leaflet-easyprint)                   | unknown            |
+| [`react-leaflet-freedraw`](https://www.npmjs.com/package/react-leaflet-freedraw)                     | **yes**            |
 | [`react-leaflet-fullscreen-control`](https://www.npmjs.com/package/react-leaflet-fullscreen-control) | unknown            |
 | [`react-leaflet-geojson-cluster`](https://www.npmjs.com/package/react-leaflet-geojson-cluster)       | unknown            |
 | [`react-leaflet-google`](https://www.npmjs.com/package/react-leaflet-google)                         | unknown            |
