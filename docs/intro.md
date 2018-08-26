@@ -27,8 +27,9 @@ If you create [custom components](custom-components.md), make sure to learn abou
 1.  The top-level `Map` renders an empty `<div>` to contain the map.
 1.  The `Map`'s `componentDidMount()` handler instantiates a `Leaflet.Map()` for the created `<div>` with the component properties and sets this instance in state. This instance is made available in the context.
 1.  The `Map`'s `render()` handler is executed again, this time rendering its children components.
-1.  For each child component, the `componentDidMount()` handler is called and instantiates the relevant Leaflet instance for this element using the component properties and context.
+1.  When each child component is instantiated, its `constructor()` uses the Leaflet API to create the appropriate Leaflet element using the properties passed to the component.
 1.  The `render()` handler for each child is called, either returning `null` or rendering its own children.
+1.  The `componentDidMount()` handler for each child is called. This is usually when the component's Leaflet element is added to map, usually via `map.addLayer(...)` or `leafletElement.addTo(...)`.
 1.  When the `componentDidUpdate()` handler of a component is called, it updates its Leaflet instance according to its supported _dynamic_ properties.
 1.  When the `componentWillUnmount()` handler of a component is called, it removes its layer from the map if relevant.
 
