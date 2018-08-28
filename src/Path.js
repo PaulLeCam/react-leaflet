@@ -37,6 +37,7 @@ export default class Path<
 
   constructor(props: Props) {
     super(props)
+    this.leafletElement = this.createLeafletElement(props)
     if (this.contextValue == null) {
       this.contextValue = {
         ...props.leaflet,

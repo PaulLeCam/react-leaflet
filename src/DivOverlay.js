@@ -22,13 +22,11 @@ export default class DivOverlay<
     this.leafletElement = this.createLeafletElement(props)
   }
 
-  // eslint-disable-next-line no-unused-vars
-  createLeafletElement(props: Props) {
+  createLeafletElement(_props: Props) {
     throw new Error('createLeafletElement() must be implemented')
   }
 
-  // eslint-disable-next-line no-unused-vars
-  updateLeafletElement(prevProps: Props, props: Props) {}
+  updateLeafletElement(_prevProps: Props, _props: Props) {}
 
   componentDidUpdate(prevProps: Props) {
     updateClassName(

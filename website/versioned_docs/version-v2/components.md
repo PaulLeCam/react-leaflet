@@ -189,6 +189,8 @@ See the [viewport example](https://github.com/PaulLeCam/react-leaflet/blob/maste
 
 [🍃 Leaflet reference](http://leafletjs.com/reference-1.3.0.html#map-pane) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/Pane.js)
 
+Only children components of the `Pane` component will be added to the corresponding pane. This does not affect the behavior of other Leaflet factories used in these children.
+
 **Dynamic properties**
 
 - `name: string` (optional): Unique name for the pane. Existing Leaflet panes are blacklisted.

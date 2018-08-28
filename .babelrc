@@ -1,10 +1,18 @@
 {
-  "plugins": ["dev-expression", "lodash", "transform-proto-to-assign"],
+  "plugins": [
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-proposal-export-default-from",
+    "@babel/plugin-transform-proto-to-assign",
+    "@babel/plugin-transform-runtime",
+    "@babel/plugin-transform-strict-mode",
+    "dev-expression",
+    "lodash"
+  ],
   "env": {
     "development": {
       "presets": [
         [
-          "env",
+          "@babel/preset-env",
           {
             "targets": {
               "node": "current",
@@ -14,32 +22,31 @@
             "loose": true
           }
         ],
-        "react",
-        "stage-1"
+        "@babel/preset-flow",
+        "@babel/preset-react"
       ]
     },
     "rollup": {
       "presets": [
         [
-          "env",
+          "@babel/preset-env",
           {
             "targets": {
               "node": "current",
               "browsers": ["last 2 versions", "ie >= 11"]
             },
-            "modules": false,
-            "loose": true
+            "modules": false
           }
         ],
-        "react",
-        "stage-1"
+        "@babel/preset-flow",
+        "@babel/preset-react"
       ],
-      "plugins": ["external-helpers", "./build/use-lodash-es"]
+      "plugins": ["./build/use-lodash-es"]
     },
     "jsnext": {
       "presets": [
         [
-          "env",
+          "@babel/preset-env",
           {
             "targets": {
               "node": "current",
@@ -49,8 +56,8 @@
             "loose": true
           }
         ],
-        "react",
-        "stage-1"
+        "@babel/preset-flow",
+        "@babel/preset-react"
       ],
       "plugins": ["./build/use-lodash-es"]
     }

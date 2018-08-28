@@ -1,3 +1,10 @@
+## master
+
+- [website] Added `react-leaflet-freedraw` plugin ([PR #508](https://github.com/PaulLeCam/react-leaflet/pull/508) by _elangobharathi_).
+- [website] Updated "Lifecycle process" overview ([PR #509](https://github.com/PaulLeCam/react-leaflet/pull/509) by _clintharris_).
+- [website] Added `react-leaflet-distortable-imageoverlay` plugin ([PR #511](https://github.com/PaulLeCam/react-leaflet/pull/511) by _ChrisLowe-Takor_).
+- [internal] Updated Babel dependency to v7.
+
 ## v2.0.1 (2018-08-14)
 
 - Fixed setting `maxZoom` and `minZoom` options to `GridLayer` using `Map` options.

@@ -27,8 +27,7 @@ export default class MapComponent<
     this.bindLeafletEvents(this._leafletEvents)
   }
 
-  // eslint-disable-next-line no-unused-vars
-  componentDidUpdate(prevProps: Props) {
+  componentDidUpdate(_prevProps: Props) {
     this._leafletEvents = this.bindLeafletEvents(
       this.extractLeafletEvents(this.props),
       this._leafletEvents,

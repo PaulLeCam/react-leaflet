@@ -26,6 +26,7 @@ const config = {
     nodeResolve(),
     babel({
       exclude: '**/node_modules/**',
+      runtimeHelpers: true,
     }),
     replace({
       'process.env.NODE_ENV': JSON.stringify(env),

@@ -16,8 +16,7 @@ export default class MapControl<
     this.leafletElement = this.createLeafletElement(this.props)
   }
 
-  // eslint-disable-next-line no-unused-vars
-  createLeafletElement(props: Props): LeafletElement {
+  createLeafletElement(_props: Props): LeafletElement {
     throw new Error('createLeafletElement() must be implemented')
   }
 
