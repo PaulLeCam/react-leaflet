@@ -18,6 +18,7 @@ open pull requests to update this list!
 | [`react-leaflet-d3`](https://www.npmjs.com/package/react-leaflet-d3)                                 | unknown            |
 | [`react-leaflet-deflate`](https://www.npmjs.com/package/react-leaflet-deflate)                       | unknown            |
 | [`react-leaflet-distance-marker`](https://www.npmjs.com/package/react-leaflet-distance-marker)       | unknown            |
+| [`react-leaflet-distortable-imageoverlay`](https://www.npmjs.com/package/react-leaflet-distortable-imageoverlay)       | **yes**            |
 | [`react-leaflet-div-icon`](https://www.npmjs.com/package/react-leaflet-div-icon)                     | unknown            |
 | [`react-leaflet-draggable-polyline`](https://www.npmjs.com/package/react-leaflet-draggable-polyline) | unknown            |
 | [`react-leaflet-draw`](https://www.npmjs.com/package/react-leaflet-draw)                             | unknown            |
