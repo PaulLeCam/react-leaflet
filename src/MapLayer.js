@@ -19,7 +19,12 @@ export default class MapLayer<
   }
 
   get layerContainer(): Layer {
-    return this.props.leaflet.layerContainer || this.props.leaflet.map
+    const { leaflet } = this.props;
+    if(!leaflet) {
+      throw new Error("Can't find leaflet on context. Please wrap you component using 'withLeaflet' HOC")
+    }
+    
+    return leaflet.layerContainer || leaflet.map
   }
 
   createLeafletElement(_props: Props): LeafletElement {
