@@ -7,10 +7,6 @@
 [include]
 
 [lints]
-all=warn
-deprecated-type=off
-unclear-type=off
-unsafe-getters-setters=off
 
 [options]
 include_warnings=true

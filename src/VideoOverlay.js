@@ -45,11 +45,9 @@ class VideoOverlay extends MapLayer<LeafletElement, Props> {
     if (toProps.zIndex !== fromProps.zIndex) {
       this.leafletElement.setZIndex(toProps.zIndex)
     }
-    // flowlint-next-line sketchy-null-bool:off
-    if (toProps.play === true && !fromProps.play) {
+    if (toProps.play === true && fromProps.play !== true) {
       this.leafletElement.getElement().play()
-      // flowlint-next-line sketchy-null-bool:off
-    } else if (!toProps.play && fromProps.play === true) {
+    } else if (toProps.play !== true && fromProps.play === true) {
       this.leafletElement.getElement().pause()
     }
   }
