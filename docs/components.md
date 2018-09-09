@@ -111,7 +111,7 @@ This is the top-level component that must be mounted for child components to be 
 - `scrollWheelZoom: boolean | string` (optional): If `true` or `center`, allows the map to be zoomed by using the mouse wheel. If passed 'center', it will zoom to the center of the view regardless of where the mouse was. Defaults to true.
 - `useFlyTo: boolean` (optional): boolean to control whether to use flyTo functions for bounds and center. If false `map.fitBounds` and `map.setView` will be used. If true `map.flyToBounds` and `map.flyTo` will be used. Defaults to false.
 - `tap: boolean` (optional): If `true`, enables mobile hacks for supporting instant taps (fixing 200ms click delay on iOS/Android) and touch holds (fired as contextmenu events). Defaults to true.
-- `touchZoom: boolean | string` (optional): If `true` or `center`, allows the map to be zoomed by touch-dragging with two fingers. If passed 'center', it will zoom to the center of the view regardless of where the touch events (fingers) were. Enabled fo touch-capable web browsers except for old Androids.
+- `touchZoom: boolean | string` (optional): If `true` or `center`, allows the map to be zoomed by touch-dragging with two fingers. If passed 'center', it will zoom to the center of the view regardless of where the touch events (fingers) were. Enabled for touch-capable web browsers except for old Androids.
 - `viewport: viewport` (optional): sets the viewport based on the provided value or the `center` and `zoom` properties.
 - `zoom: number` (optional if `viewport` is provided with a zoom value)
 
