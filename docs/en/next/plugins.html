@@ -14,6 +14,10 @@
                 var toggler = document.querySelector(togglerSelector);
                 var target = document.querySelector(targetSelector);
 
+                if (!toggler) {
+                  return;
+                }
+
                 toggler.onclick = function(event) {
                   event.preventDefault();
 
@@ -21,7 +25,7 @@
                 };
               }
             });
-        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/PaulLeCam/react-leaflet/edit/master/docs/plugins.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 class="postHeaderTitle">Third-party plugins</h1></header><article><div><span><p>A non-exhaustive list of plugins adding functionalities to React-Leaflet. Please
+        </script></nav></div><div class="container mainContainer docMainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/PaulLeCam/react-leaflet/edit/master/docs/plugins.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 class="postHeaderTitle">Third-party plugins</h1></header><article><div><span><p>A non-exhaustive list of plugins adding functionalities to React-Leaflet. Please
 open pull requests to update this list!</p>
 <p>⚠️ These plugins may not be compatible with React-Leaflet v2, make sure to check their documentation.</p>
 <table>
@@ -37,10 +41,12 @@ open pull requests to update this list!</p>
 <tr><td><a href="https://www.npmjs.com/package/react-leaflet-d3"><code>react-leaflet-d3</code></a></td><td>unknown</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/react-leaflet-deflate"><code>react-leaflet-deflate</code></a></td><td>unknown</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/react-leaflet-distance-marker"><code>react-leaflet-distance-marker</code></a></td><td>unknown</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-leaflet-distortable-imageoverlay"><code>react-leaflet-distortable-imageoverlay</code></a></td><td><strong>yes</strong></td></tr>
 <tr><td><a href="https://www.npmjs.com/package/react-leaflet-div-icon"><code>react-leaflet-div-icon</code></a></td><td>unknown</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/react-leaflet-draggable-polyline"><code>react-leaflet-draggable-polyline</code></a></td><td>unknown</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/react-leaflet-draw"><code>react-leaflet-draw</code></a></td><td>unknown</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/react-leaflet-easyprint"><code>react-leaflet-easyprint</code></a></td><td>unknown</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-leaflet-freedraw"><code>react-leaflet-freedraw</code></a></td><td><strong>yes</strong></td></tr>
 <tr><td><a href="https://www.npmjs.com/package/react-leaflet-fullscreen-control"><code>react-leaflet-fullscreen-control</code></a></td><td>unknown</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/react-leaflet-geojson-cluster"><code>react-leaflet-geojson-cluster</code></a></td><td>unknown</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/react-leaflet-google"><code>react-leaflet-google</code></a></td><td>unknown</td></tr>
@@ -55,13 +61,14 @@ open pull requests to update this list!</p>
 <tr><td><a href="https://www.npmjs.com/package/react-leaflet-search"><code>react-leaflet-search</code></a></td><td><strong>yes</strong></td></tr>
 <tr><td><a href="https://www.npmjs.com/package/react-leaflet-shapefile"><code>react-leaflet-shapefile</code></a></td><td>unknown</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/react-leaflet-sidebarv2"><code>react-leaflet-sidebarv2</code></a></td><td>unknown</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-leaflet-sidetabs"><code>react-leaflet-sidetabs</code></a></td><td><strong>yes</strong></td></tr>
 <tr><td><a href="https://www.npmjs.com/package/react-leaflet-vectorgrid"><code>react-leaflet-vectorgrid</code></a></td><td>unknown</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/react-leaflet-zoom-display"><code>react-leaflet-zoom-display</code></a></td><td>unknown</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/react-leaflet-zoom-indicator"><code>react-leaflet-zoom-indicator</code></a></td><td>unknown</td></tr>
 <tr><td><a href="https://www.npmjs.com/package/react-mapbox-components"><code>react-mapbox-components</code></a></td><td>unknown</td></tr>
 </tbody>
 </table>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/en/next/class-hierarchy.html">← Class hierarchy</a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"></a><div><h5>Docs</h5><a href="/docs/en/intro.html">Getting started</a><a href="/docs/en/prop-types.html">API reference</a><a href="/docs/en/custom-components.html">Guides</a></div><div><h5>Community</h5><a href="https://crwd.in/react-leaflet">Help translate this website</a><a href="https://stackoverflow.com/questions/tagged/react-leaflet">Stack Overflow</a><a href="https://github.com/PaulLeCam/react-leaflet">GitHub</a><a class="github-button" href="https://github.com/PaulLeCam/react-leaflet" data-icon="octicon-star" data-count-href="/PaulLeCam/react-leaflet/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div><div><h5>Built with...</h5><a href="https://docusaurus.io/">Docusaurus for website generation</a><a href="https://dns.js.org/">JS.org for the domain name</a><a href="https://community.algolia.com/docsearch/">Algolia for search</a><a href="https://crowdin.com/page/open-source-project-setup-request">Crowdin for translations</a></div></section><section class="copyright">Copyright © 2018 Paul Le Cam and <a href="https://github.com/PaulLeCam/react-leaflet/graphs/contributors">contributors</a>.</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/en/next/class-hierarchy.html"><span class="arrow-prev">← </span><span>Previous</span></a></div></div></div><nav class="onPageNav docOnPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"></a><div><h5>Docs</h5><a href="/docs/en/intro.html">Getting started</a><a href="/docs/en/prop-types.html">API reference</a><a href="/docs/en/custom-components.html">Guides</a></div><div><h5>Community</h5><a href="https://crwd.in/react-leaflet">Help translate this website</a><a href="https://stackoverflow.com/questions/tagged/react-leaflet">Stack Overflow</a><a href="https://github.com/PaulLeCam/react-leaflet">GitHub</a><a class="github-button" href="https://github.com/PaulLeCam/react-leaflet" data-icon="octicon-star" data-count-href="/PaulLeCam/react-leaflet/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div><div><h5>Built with...</h5><a href="https://docusaurus.io/">Docusaurus for website generation</a><a href="https://dns.js.org/">JS.org for the domain name</a><a href="https://community.algolia.com/docsearch/">Algolia for search</a><a href="https://crowdin.com/page/open-source-project-setup-request">Crowdin for translations</a></div></section><section class="copyright">Copyright © 2018 Paul Le Cam and <a href="https://github.com/PaulLeCam/react-leaflet/graphs/contributors">contributors</a>.</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
               var search = docsearch({
                 
                 apiKey: '5ec5ae3523b2e316c32bbe5e948cb48d',
