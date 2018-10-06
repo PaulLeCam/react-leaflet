@@ -1,7 +1,16 @@
+// @flow
+
 import React, { Component } from 'react'
 import { Map, TileLayer, WMSTileLayer } from '../../src'
 
-export default class WMSTileLayerExample extends Component {
+type State = {
+  lat: number,
+  lng: number,
+  zoom: number,
+  bluemarble: boolean,
+}
+
+export default class WMSTileLayerExample extends Component<{}, State> {
   state = {
     lat: 51.505,
     lng: -0.09,

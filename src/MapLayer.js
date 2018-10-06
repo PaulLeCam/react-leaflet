@@ -35,6 +35,15 @@ export default class MapLayer<
 
   componentDidUpdate(prevProps: Props) {
     super.componentDidUpdate(prevProps)
+
+    if (this.props.attribution !== prevProps.attribution) {
+      const { map } = this.props.leaflet
+      if (map != null && map.attributionControl != null) {
+        map.attributionControl.removeAttribution(prevProps.attribution)
+        map.attributionControl.addAttribution(this.props.attribution)
+      }
+    }
+
     this.updateLeafletElement(prevProps, this.props)
   }
 

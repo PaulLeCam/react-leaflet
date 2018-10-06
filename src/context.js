@@ -6,7 +6,6 @@ import React, {
   // $FlowFixMe: import
   forwardRef,
   type ComponentType,
-  type ElementProps,
 } from 'react'
 
 import type { LeafletContext } from './types'
@@ -16,11 +15,10 @@ const { Consumer, Provider } = createContext({})
 export const LeafletConsumer = Consumer
 export const LeafletProvider = Provider
 
-export const withLeaflet = (WrappedComponent: ComponentType<*>) => {
-  const WithLeafletComponent = (
-    props: ElementProps<typeof WrappedComponent>,
-    ref,
-  ) => (
+export const withLeaflet = <Props: Object>(
+  WrappedComponent: ComponentType<Props>,
+): ComponentType<$Diff<Props, { leaflet: LeafletContext }>> => {
+  const WithLeafletComponent = (props, ref) => (
     <Consumer>
       {(leaflet: LeafletContext) => (
         <WrappedComponent {...props} leaflet={leaflet} ref={ref} />

@@ -1,7 +1,17 @@
+// @flow
+
 import React, { createRef, Component } from 'react'
 import { Map, TileLayer, Marker, Popup } from '../../src'
 
-export default class EventsExample extends Component {
+type State = {
+  hasLocation: boolean,
+  latlng: {
+    lat: number,
+    lng: number,
+  },
+}
+
+export default class EventsExample extends Component<{}, State> {
   state = {
     hasLocation: false,
     latlng: {
@@ -13,10 +23,13 @@ export default class EventsExample extends Component {
   mapRef = createRef()
 
   handleClick = () => {
-    this.mapRef.current.leafletElement.locate()
+    const map = this.mapRef.current
+    if (map != null) {
+      map.leafletElement.locate()
+    }
   }
 
-  handleLocationFound = e => {
+  handleLocationFound = (e: Object) => {
     this.setState({
       hasLocation: true,
       latlng: e.latlng,
@@ -26,9 +39,7 @@ export default class EventsExample extends Component {
   render() {
     const marker = this.state.hasLocation ? (
       <Marker position={this.state.latlng}>
-        <Popup>
-          <span>You are here</span>
-        </Popup>
+        <Popup>You are here</Popup>
       </Marker>
     ) : null
 

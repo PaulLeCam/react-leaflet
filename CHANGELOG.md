@@ -1,8 +1,14 @@
-## master
+## v2.1.0 (2018-10-06)
 
+- Added support for dynamic `attribution` prop in layers.
+- Added `MapEvented` abstract class used by `MapComponent` and `Map`.
 - [website] Added `react-leaflet-freedraw` plugin ([PR #508](https://github.com/PaulLeCam/react-leaflet/pull/508) by _elangobharathi_).
 - [website] Updated "Lifecycle process" overview ([PR #509](https://github.com/PaulLeCam/react-leaflet/pull/509) by _clintharris_).
 - [website] Added `react-leaflet-distortable-imageoverlay` plugin ([PR #511](https://github.com/PaulLeCam/react-leaflet/pull/511) by _ChrisLowe-Takor_).
+- [website] Fixed typo in docs ([PR #513](https://github.com/PaulLeCam/react-leaflet/pull/513) by _Roconda_).
+- [website] Added `react-leaflet-sidetabs` plugin ([PR #517](https://github.com/PaulLeCam/react-leaflet/pull/517) by _eferhatg_).
+- [website] Added `leaflet-react-track-player` plugin ([PR #523](https://github.com/PaulLeCam/react-leaflet/pull/523) by _argonavt11_).
+- [website] Added `react-leaflet-wmts` plugin ([PR #524](https://github.com/PaulLeCam/react-leaflet/pull/523) by _mpivaa_).
 - [internal] Updated Babel dependency to v7.
 
 ## v2.0.1 (2018-08-14)

@@ -5,7 +5,7 @@ import { isEqual, reduce } from 'lodash'
 
 import { withLeaflet } from './context'
 import GridLayer from './GridLayer'
-import { EVENTS_RE } from './MapComponent'
+import { EVENTS_RE } from './MapEvented'
 import type { GridLayerProps } from './types'
 
 type LeafletElement = TileLayer.WMS

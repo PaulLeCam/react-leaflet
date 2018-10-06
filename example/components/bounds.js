@@ -1,10 +1,16 @@
+// @flow
+
 import React, { Component } from 'react'
 import { Map, TileLayer, Rectangle } from '../../src'
 
 const outer = [[50.505, -29.09], [52.505, 29.09]]
 const inner = [[49.505, -2.09], [53.505, 2.09]]
 
-export default class BoundsExample extends Component {
+type State = {
+  bounds: Array<[number, number]>,
+}
+
+export default class BoundsExample extends Component<{}, State> {
   state = {
     bounds: outer,
   }

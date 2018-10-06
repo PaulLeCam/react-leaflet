@@ -1,7 +1,18 @@
+// @flow
+
 import React, { Component } from 'react'
 import { Map, TileLayer, Marker, Popup } from '../../src'
 
-export default class DraggableExample extends Component {
+type Position = { lat: number, lng: number }
+
+type State = {
+  center: Position,
+  marker: Position,
+  zoom: number,
+  draggable: boolean,
+}
+
+export default class DraggableExample extends Component<{}, State> {
   state = {
     center: {
       lat: 51.505,
@@ -21,10 +32,12 @@ export default class DraggableExample extends Component {
   }
 
   updatePosition = () => {
-    const { lat, lng } = this.refmarker.current.leafletElement.getLatLng()
-    this.setState({
-      marker: { lat, lng },
-    })
+    const marker = this.refmarker.current
+    if (marker != null) {
+      this.setState({
+        marker: marker.leafletElement.getLatLng(),
+      })
+    }
   }
 
   render() {

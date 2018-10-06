@@ -1,4 +1,7 @@
+// @flow
+
 import Leaflet from 'leaflet'
+// $FlowFixMe: missing definition
 import React, { StrictMode } from 'react'
 
 import SimpleExample from './simple'

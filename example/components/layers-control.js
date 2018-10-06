@@ -1,3 +1,5 @@
+// @flow
+
 import React, { Component } from 'react'
 import {
   Circle,
@@ -12,11 +14,11 @@ import {
 } from '../../src'
 const { BaseLayer, Overlay } = LayersControl
 
-export default class LayersControlExample extends Component {
-  render() {
-    const center = [51.505, -0.09]
-    const rectangle = [[51.49, -0.08], [51.5, -0.06]]
+const center = [51.505, -0.09]
+const rectangle = [[51.49, -0.08], [51.5, -0.06]]
 
+export default class LayersControlExample extends Component<{}> {
+  render() {
     return (
       <Map center={center} zoom={13}>
         <LayersControl position="topright">
@@ -35,9 +37,7 @@ export default class LayersControlExample extends Component {
           <Overlay name="Marker with popup">
             <Marker position={center}>
               <Popup>
-                <span>
-                  A pretty CSS3 popup. <br /> Easily customizable.
-                </span>
+                A pretty CSS3 popup. <br /> Easily customizable.
               </Popup>
             </Marker>
           </Overlay>
@@ -62,9 +62,7 @@ export default class LayersControlExample extends Component {
           </Overlay>
           <Overlay name="Feature group">
             <FeatureGroup color="purple">
-              <Popup>
-                <span>Popup in FeatureGroup</span>
-              </Popup>
+              <Popup>Popup in FeatureGroup</Popup>
               <Circle center={[51.51, -0.06]} radius={200} />
               <Rectangle bounds={rectangle} />
             </FeatureGroup>

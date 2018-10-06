@@ -1,7 +1,7 @@
 // @flow
 
 import { Control } from 'leaflet'
-import { Component, type Element } from 'react'
+import { Component } from 'react'
 
 import type { MapControlProps } from './types'
 
@@ -38,7 +38,7 @@ export default class MapControl<
     this.leafletElement.remove()
   }
 
-  render(): ?Element<any> {
+  render(): * {
     return null
   }
 }

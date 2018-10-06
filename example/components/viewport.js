@@ -1,12 +1,17 @@
+// @flow
+
 import React, { Component } from 'react'
-import { Map, TileLayer } from '../../src'
+import { Map, TileLayer, type Viewport } from '../../src'
 
 const DEFAULT_VIEWPORT = {
   center: [51.505, -0.09],
   zoom: 13,
 }
 
-export default class ViewportExample extends Component {
+export default class ViewportExample extends Component<
+  {},
+  { viewport: Viewport },
+> {
   state = {
     viewport: DEFAULT_VIEWPORT,
   }
@@ -15,7 +20,7 @@ export default class ViewportExample extends Component {
     this.setState({ viewport: DEFAULT_VIEWPORT })
   }
 
-  onViewportChanged = viewport => {
+  onViewportChanged = (viewport: Viewport) => {
     this.setState({ viewport })
   }
 

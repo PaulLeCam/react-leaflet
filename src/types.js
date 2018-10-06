@@ -8,7 +8,7 @@ import type {
   Point as LeafletPoint,
   Renderer,
 } from 'leaflet'
-import type { Element, Node } from 'react'
+import type { Node } from 'react'
 
 export type AddLayerHandler = (
   layer: Layer,
@@ -85,12 +85,14 @@ export type PathOptions = {
 }
 
 export type DivOverlayOptions = {
-  children: Element<*>,
+  children: Node,
   className?: string,
   offset?: LeafletPoint,
   onClose?: () => void,
   onOpen?: () => void,
 }
+
+export type LeafletProps = { leaflet: LeafletContext }
 
 export type MapControlProps = {
   leaflet: LeafletContext,
@@ -101,7 +103,10 @@ export type MapComponentProps = { leaflet: LeafletContext, pane?: string }
 
 export type DivOverlayProps = MapComponentProps & DivOverlayOptions
 
-export type MapLayerProps = { children?: Node } & MapComponentProps
+export type MapLayerProps = {
+  attribution?: string,
+  children?: Node,
+} & MapComponentProps
 
 export type GridLayerProps = MapLayerProps & GridLayerOptions
 

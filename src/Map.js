@@ -10,13 +10,12 @@ import { omit } from 'lodash'
 import React, { type Node } from 'react'
 
 import { LeafletProvider } from './context'
-import MapComponent from './MapComponent'
+import MapEvented from './MapEvented'
 import updateClassName from './utils/updateClassName'
 import type {
   LatLng,
   LatLngBounds,
   LeafletContext,
-  MapComponentProps,
   Point,
   Viewport,
 } from './types'
@@ -95,9 +94,9 @@ type Props = {
   useFlyTo?: boolean,
   viewport?: Viewport,
   whenReady?: () => void,
-} & MapComponentProps
+}
 
-export default class Map extends MapComponent<LeafletElement, Props> {
+export default class Map extends MapEvented<LeafletElement, Props> {
   className: ?string
   contextValue: ?LeafletContext
   container: ?HTMLDivElement

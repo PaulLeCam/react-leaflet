@@ -1,3 +1,5 @@
+// @flow
+
 import React, { Component } from 'react'
 import {
   Circle,
@@ -9,11 +11,11 @@ import {
   TileLayer,
 } from '../../src'
 
-export default class OtherLayersExample extends Component {
-  render() {
-    const center = [51.505, -0.09]
-    const rectangle = [[51.49, -0.08], [51.5, -0.06]]
+const center = [51.505, -0.09]
+const rectangle = [[51.49, -0.08], [51.5, -0.06]]
 
+export default class OtherLayersExample extends Component<{}> {
+  render() {
     return (
       <Map center={center} zoom={13}>
         <TileLayer

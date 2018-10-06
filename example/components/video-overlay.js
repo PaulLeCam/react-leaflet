@@ -1,7 +1,12 @@
+// @flow
+
 import React, { Component } from 'react'
 import { Map, TileLayer, VideoOverlay } from '../../src'
 
-export default class VideoOverlayExample extends Component {
+export default class VideoOverlayExample extends Component<
+  {},
+  { play: boolean },
+> {
   state = {
     play: true,
   }

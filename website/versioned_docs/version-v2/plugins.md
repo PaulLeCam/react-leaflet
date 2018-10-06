@@ -11,6 +11,7 @@ open pull requests to update this list!
 
 | Plugin                                                                                                           | Compatible with v2 |
 | ---------------------------------------------------------------------------------------------------------------- | ------------------ |
+| [`leaflet-react-track-player`](https://www.npmjs.com/package/leaflet-react-track-player)                         | unknown            |
 | [`react-leaflet-ant-path`](https://www.npmjs.com/package/react-leaflet-ant-path)                                 | unknown            |
 | [`react-leaflet-bing`](https://www.npmjs.com/package/react-leaflet-bing)                                         | unknown            |
 | [`react-leaflet-choropleth`](https://www.npmjs.com/package/react-leaflet-choropleth)                             | unknown            |
@@ -39,7 +40,9 @@ open pull requests to update this list!
 | [`react-leaflet-search`](https://www.npmjs.com/package/react-leaflet-search)                                     | **yes**            |
 | [`react-leaflet-shapefile`](https://www.npmjs.com/package/react-leaflet-shapefile)                               | unknown            |
 | [`react-leaflet-sidebarv2`](https://www.npmjs.com/package/react-leaflet-sidebarv2)                               | unknown            |
+| [`react-leaflet-sidetabs`](https://www.npmjs.com/package/react-leaflet-sidetabs)                                 | **yes**            |
 | [`react-leaflet-vectorgrid`](https://www.npmjs.com/package/react-leaflet-vectorgrid)                             | unknown            |
+| [`react-leaflet-wmts`](https://www.npmjs.com/package/react-leaflet-wmts)                                         | **yes**            |
 | [`react-leaflet-zoom-display`](https://www.npmjs.com/package/react-leaflet-zoom-display)                         | unknown            |
 | [`react-leaflet-zoom-indicator`](https://www.npmjs.com/package/react-leaflet-zoom-indicator)                     | unknown            |
 | [`react-mapbox-components`](https://www.npmjs.com/package/react-mapbox-components)                               | unknown            |

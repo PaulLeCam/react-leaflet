@@ -1,7 +1,15 @@
+// @flow
+
 import React, { Component } from 'react'
 import { Map, TileLayer, Marker, Popup } from '../../src'
 
-export default class SimpleExample extends Component {
+type State = {
+  lat: number,
+  lng: number,
+  zoom: number,
+}
+
+export default class SimpleExample extends Component<{}, State> {
   state = {
     lat: 51.505,
     lng: -0.09,
