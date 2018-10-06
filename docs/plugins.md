@@ -44,3 +44,4 @@ open pull requests to update this list!
 | [`react-mapbox-components`](https://www.npmjs.com/package/react-mapbox-components)                               | unknown            |
 | [`react-leaflet-sidetabs`](https://www.npmjs.com/package/react-leaflet-sidetabs)                               | **yes**            |
 | [`leaflet-react-track-player`](https://www.npmjs.com/package/leaflet-react-track-player)                         | unknown            |
+| [`react-leaflet-wmts`](https://www.npmjs.com/package/react-leaflet-wmts)                             | **yes**            |
