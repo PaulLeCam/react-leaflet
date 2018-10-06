@@ -35,14 +35,23 @@ Classes indicated as <em>abstract</em> can be extended to create custom componen
 <li><a href="/docs/en/components.html#layerscontrolbaselayer"><code>LayersControl.BaseLayer</code></a></li>
 <li><a href="/docs/en/components.html#layerscontroloverlay"><code>LayersControl.Overlay</code></a></li>
 </ul></li>
-<li><a href="/docs/en/components.html#mapcomponent"><code>MapComponent</code></a> (abstract): base class handling extracting and updating Leaflet events.
+<li><a href="/docs/en/components.html#mapcontrol"><code>MapControl</code></a> (abstract): base class for all controls, handles positioning.
+<ul>
+<li><a href="/docs/en/components.html#attributioncontrol"><code>AttributionControl</code></a></li>
+<li><a href="/docs/en/components.html#layerscontrol"><code>LayersControl</code></a></li>
+<li><a href="/docs/en/components.html#scalecontrol"><code>ScaleControl</code></a></li>
+<li><a href="/docs/en/components.html#zoomcontrol"><code>ZoomControl</code></a></li>
+</ul></li>
+<li><a href="/docs/en/components.html#mapevented"><code>MapEvented</code></a> (abstract): base class handling extracting and updating Leaflet events.
+<ul>
+<li><a href="/docs/en/components.html#map"><code>Map</code></a>: top-level component instantiating a Leaflet map and providing it to its children.</li>
+<li><a href="/docs/en/components.html#mapcomponent"><code>MapComponent</code></a> (abstract): base class handling map panes.
 <ul>
 <li><a href="/docs/en/components.html#divoverlay"><code>DivOverlay</code></a> (abstract)
 <ul>
 <li><a href="/docs/en/components.html#popup"><code>Popup</code></a></li>
 <li><a href="/docs/en/components.html#tooltip"><code>Tooltip</code></a></li>
 </ul></li>
-<li><a href="/docs/en/components.html#map"><code>Map</code></a>: top-level component instantiating a Leaflet map and providing it to its children.</li>
 <li><a href="/docs/en/components.html#maplayer"><code>MapLayer</code></a> (abstract): base class for all map layers, handling adding and removing the layer from the map.
 <ul>
 <li><a href="/docs/en/components.html#gridlayer"><code>GridLayer</code></a> (abstract): base class for tile layers, handles opacity and z-index.
@@ -65,12 +74,6 @@ Classes indicated as <em>abstract</em> can be extended to create custom componen
 </ul></li>
 </ul></li>
 </ul></li>
-<li><a href="/docs/en/components.html#mapcontrol"><code>MapControl</code></a> (abstract): base class for all controls, handles positioning.
-<ul>
-<li><a href="/docs/en/components.html#attributioncontrol"><code>AttributionControl</code></a></li>
-<li><a href="/docs/en/components.html#layerscontrol"><code>LayersControl</code></a></li>
-<li><a href="/docs/en/components.html#scalecontrol"><code>ScaleControl</code></a></li>
-<li><a href="/docs/en/components.html#zoomcontrol"><code>ZoomControl</code></a></li>
 </ul></li>
 </ul></li>
 </ul>
