@@ -12,7 +12,7 @@ open pull requests to update this list!
 | ---------------------------------------------------------------------------------------------------------------- | ------------------ |
 | [`leaflet-react-track-player`](https://www.npmjs.com/package/leaflet-react-track-player)                         | unknown            |
 | [`react-leaflet-ant-path`](https://www.npmjs.com/package/react-leaflet-ant-path)                                 | unknown            |
-| [`react-leaflet-bing`](https://www.npmjs.com/package/react-leaflet-bing)                                         | unknown            |
+| [`react-leaflet-bing`](https://www.npmjs.com/package/react-leaflet-bing)                                         | **yes**            |
 | [`react-leaflet-choropleth`](https://www.npmjs.com/package/react-leaflet-choropleth)                             | unknown            |
 | [`react-leaflet-cluster-layer`](https://www.npmjs.com/package/react-leaflet-cluster-layer)                       | unknown            |
 | [`react-leaflet-control`](https://www.npmjs.com/package/react-leaflet-control)                                   | unknown            |
@@ -27,7 +27,7 @@ open pull requests to update this list!
 | [`react-leaflet-freedraw`](https://www.npmjs.com/package/react-leaflet-freedraw)                                 | **yes**            |
 | [`react-leaflet-fullscreen-control`](https://www.npmjs.com/package/react-leaflet-fullscreen-control)             | unknown            |
 | [`react-leaflet-geojson-cluster`](https://www.npmjs.com/package/react-leaflet-geojson-cluster)                   | unknown            |
-| [`react-leaflet-google`](https://www.npmjs.com/package/react-leaflet-google)                                     | unknown            |
+| [`react-leaflet-google`](https://www.npmjs.com/package/react-leaflet-google)                                     | **yes**            |
 | [`react-leaflet-heatmap-layer`](https://www.npmjs.com/package/react-leaflet-heatmap-layer)                       | unknown            |
 | [`react-leaflet-locate-control`](https://www.npmjs.com/package/react-leaflet-locate-control)                     | unknown            |
 | [`react-leaflet-markercluster`](https://www.npmjs.com/package/react-leaflet-markercluster)                       | unknown            |
@@ -37,7 +37,7 @@ open pull requests to update this list!
 | [`react-leaflet-pane`](https://www.npmjs.com/package/react-leaflet-pane)                                         | unknown            |
 | [`react-leaflet-rotatedmarker`](https://www.npmjs.com/package/react-leaflet-rotatedmarker)                       | unknown            |
 | [`react-leaflet-search`](https://www.npmjs.com/package/react-leaflet-search)                                     | **yes**            |
-| [`react-leaflet-shapefile`](https://www.npmjs.com/package/react-leaflet-shapefile)                               | unknown            |
+| [`react-leaflet-shapefile`](https://www.npmjs.com/package/react-leaflet-shapefile)                               | **no**             |
 | [`react-leaflet-sidebarv2`](https://www.npmjs.com/package/react-leaflet-sidebarv2)                               | unknown            |
 | [`react-leaflet-sidetabs`](https://www.npmjs.com/package/react-leaflet-sidetabs)                                 | **yes**            |
 | [`react-leaflet-vectorgrid`](https://www.npmjs.com/package/react-leaflet-vectorgrid)                             | unknown            |
