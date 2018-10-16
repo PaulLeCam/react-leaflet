@@ -3,7 +3,6 @@
     "@babel/plugin-proposal-class-properties",
     "@babel/plugin-proposal-export-default-from",
     "@babel/plugin-transform-proto-to-assign",
-    "@babel/plugin-transform-runtime",
     "@babel/plugin-transform-strict-mode",
     "dev-expression",
     "lodash"
@@ -24,7 +23,8 @@
         ],
         "@babel/preset-flow",
         "@babel/preset-react"
-      ]
+      ],
+      "plugins": ["@babel/plugin-transform-runtime"]
     },
     "rollup": {
       "presets": [
@@ -41,7 +41,10 @@
         "@babel/preset-flow",
         "@babel/preset-react"
       ],
-      "plugins": ["./build/use-lodash-es"]
+      "plugins": [
+        "./build/use-lodash-es",
+        "@babel/plugin-transform-runtime"
+      ]
     },
     "jsnext": {
       "presets": [
@@ -59,7 +62,10 @@
         "@babel/preset-flow",
         "@babel/preset-react"
       ],
-      "plugins": ["./build/use-lodash-es"]
+      "plugins": [
+        "./build/use-lodash-es",
+        ["@babel/plugin-transform-runtime", { "useESModules": true }]
+      ]
     }
   }
 }
