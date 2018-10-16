@@ -29,7 +29,8 @@ open pull requests to update this list!
 | [`react-leaflet-geojson-cluster`](https://www.npmjs.com/package/react-leaflet-geojson-cluster)                   | unknown            |
 | [`react-leaflet-google`](https://www.npmjs.com/package/react-leaflet-google)                                     | **yes**            |
 | [`react-leaflet-heatmap-layer`](https://www.npmjs.com/package/react-leaflet-heatmap-layer)                       | unknown            |
-| [`react-leaflet-locate-control`](https://www.npmjs.com/package/react-leaflet-locate-control)                     | unknown            |
+| [`react-leaflet-locate-control`](https://www.npmjs.com/package/react-leaflet-locate-control)                     | **no**
+|
 | [`react-leaflet-markercluster`](https://www.npmjs.com/package/react-leaflet-markercluster)                       | unknown            |
 | [`react-leaflet-marker-layer`](https://www.npmjs.com/package/react-leaflet-marker-layer)                         | unknown            |
 | [`react-leaflet-measure`](https://www.npmjs.com/package/react-leaflet-measure)                                   | unknown            |
