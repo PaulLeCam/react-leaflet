@@ -1,3 +1,9 @@
+## v2.1.1 (2018-10-22)
+
+- Fixed regression when updating the `className` prop of the `Map` component.
+- [internal] Use ESM babel runtime ([PR #527](https://github.com/PaulLeCam/react-leaflet/pull/527) by _eanajavi_).
+- [website] Indicate `react-leaflet-locate-control` as not compatible with v2 ([PR #528](https://github.com/PaulLeCam/react-leaflet/pull/528) by _eanajavi_).
+
 ## v2.1.0 (2018-10-06)
 
 - Added support for dynamic `attribution` prop in layers.

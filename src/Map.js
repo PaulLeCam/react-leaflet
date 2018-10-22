@@ -107,6 +107,11 @@ export default class Map extends MapEvented<LeafletElement, Props> {
 
   _updating: boolean = false
 
+  constructor(props: Props) {
+    super(props)
+    this.className = props.className
+  }
+
   createLeafletElement(props: Props): LeafletElement {
     const { viewport, ...options } = props
     if (viewport) {
@@ -322,7 +327,7 @@ export default class Map extends MapEvented<LeafletElement, Props> {
   render() {
     return (
       <div
-        className={this.props.className}
+        className={this.className}
         id={this.props.id}
         ref={this.bindContainer}
         style={this.props.style}>
