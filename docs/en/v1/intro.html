@@ -83,6 +83,17 @@ setting an unique value on their <code>key</code> property so that they are prop
 handled by React's algorithm.</li>
 </ul>
 </span></div></article></div><div class="docs-prevnext"><a class="docs-next button" href="/docs/en/v1/setup.html"><span>Next</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav docOnPageNav"><ul class="toc-headings"><li><a href="#core-concepts">Core concepts</a><ul class="toc-headings"><li><a href="#dom-rendering">DOM rendering</a></li><li><a href="#component-properties">Component properties</a></li><li><a href="#component-context">Component context</a></li></ul></li><li><a href="#lifecycle-process">Lifecycle process</a></li><li><a href="#limitations">Limitations</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"></a><div><h5>Docs</h5><a href="/docs/en/intro.html">Getting started</a><a href="/docs/en/prop-types.html">API reference</a><a href="/docs/en/custom-components.html">Guides</a></div><div><h5>Community</h5><a href="https://crwd.in/react-leaflet">Help translate this website</a><a href="https://stackoverflow.com/questions/tagged/react-leaflet">Stack Overflow</a><a href="https://github.com/PaulLeCam/react-leaflet">GitHub</a><a class="github-button" href="https://github.com/PaulLeCam/react-leaflet" data-icon="octicon-star" data-count-href="/PaulLeCam/react-leaflet/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div><div><h5>Built with...</h5><a href="https://docusaurus.io/">Docusaurus for website generation</a><a href="https://dns.js.org/">JS.org for the domain name</a><a href="https://community.algolia.com/docsearch/">Algolia for search</a><a href="https://crowdin.com/page/open-source-project-setup-request">Crowdin for translations</a></div></section><section class="copyright">Copyright © 2018 Paul Le Cam and <a href="https://github.com/PaulLeCam/react-leaflet/graphs/contributors">contributors</a>.</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script><script>
               var search = docsearch({
                 
                 apiKey: '5ec5ae3523b2e316c32bbe5e948cb48d',
