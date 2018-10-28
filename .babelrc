@@ -41,7 +41,10 @@
         "@babel/preset-flow",
         "@babel/preset-react"
       ],
-      "plugins": ["@babel/plugin-transform-runtime"]
+      "plugins": [
+        "./build/use-lodash-es",
+        "@babel/plugin-transform-runtime"
+      ]
     },
     "jsnext": {
       "presets": [
@@ -59,7 +62,10 @@
         "@babel/preset-flow",
         "@babel/preset-react"
       ],
-      "plugins": [["@babel/plugin-transform-runtime", { "useESModules": true }]]
+      "plugins": [
+        "./build/use-lodash-es",
+        ["@babel/plugin-transform-runtime", { "useESModules": true }]
+      ]
     }
   }
 }
