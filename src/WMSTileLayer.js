@@ -1,7 +1,7 @@
 // @flow
 
 import { TileLayer } from 'leaflet'
-import { isEqual, reduce } from 'lodash'
+import { isEqual } from 'lodash'
 
 import { withLeaflet } from './context'
 import GridLayer from './GridLayer'
@@ -32,9 +32,8 @@ class WMSTileLayer extends GridLayer<LeafletElement, Props> {
   }
 
   getOptions(params: Object): Object {
-    return reduce(
-      super.getOptions(params),
-      (options, value, key) => {
+    return Object.entries(super.getOptions(params)).reduce(
+      (options, [key, value]) => {
         if (!EVENTS_RE.test(key)) {
           options[key] = value
         }
