@@ -1,7 +1,5 @@
 /* global jest, module, require */
 
-import { assign } from 'lodash'
-
 const L = require.requireActual('leaflet')
 const LeafletMock = jest.genMockFromModule('leaflet')
 
@@ -63,7 +61,7 @@ controlMock.layers = (baseLayers, overlays, options) => {
 class MapMock extends LeafletMock.Map {
   constructor(id, options = {}) {
     super()
-    assign(this, L.Evented.prototype)
+    Object.assign(this, L.Evented.prototype)
 
     this.options = { ...L.Map.prototype.options, ...options }
     this._container = id
@@ -137,7 +135,7 @@ class MapMock extends LeafletMock.Map {
 class PopupMock extends LeafletMock.Popup {
   constructor(options, source) {
     super()
-    assign(this, L.Evented.prototype)
+    Object.assign(this, L.Evented.prototype)
 
     this.options = { ...L.Popup.prototype.options, ...options }
     this._source = source
