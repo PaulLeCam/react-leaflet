@@ -32,15 +32,13 @@ class WMSTileLayer extends GridLayer<LeafletElement, Props> {
   }
 
   getOptions(params: Object): Object {
-    return Object.entries(super.getOptions(params)).reduce(
-      (options, [key, value]) => {
-        if (!EVENTS_RE.test(key)) {
-          options[key] = value
-        }
-        return options
-      },
-      {},
-    )
+    const superOptions = super.getOptions(params)
+    return Object.keys(superOptions).reduce((options, key) => {
+      if (!EVENTS_RE.test(key)) {
+        options[key] = superOptions[key]
+      }
+      return options
+    }, {})
   }
 }
 
