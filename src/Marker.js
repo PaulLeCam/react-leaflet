@@ -1,6 +1,7 @@
 // @flow
 
 import { type Icon, Marker as LeafletMarker } from 'leaflet'
+import { isEqual } from 'lodash'
 import React from 'react'
 
 import { LeafletProvider, withLeaflet } from './context'
@@ -24,7 +25,7 @@ class Marker extends MapLayer<LeafletElement, Props> {
   }
 
   updateLeafletElement(fromProps: Props, toProps: Props) {
-    if (toProps.position !== fromProps.position) {
+    if (!isEqual(toProps.position, fromProps.position)) {
       this.leafletElement.setLatLng(toProps.position)
     }
     if (toProps.icon !== fromProps.icon) {
