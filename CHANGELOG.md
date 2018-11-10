@@ -1,3 +1,9 @@
+## v2.1.2 (2018-11-10)
+
+- Fixed support for multiple classes in the `Pane` component.
+- [internal] Replaced some lodash functions ([PR #533](https://github.com/PaulLeCam/react-leaflet/pull/533) by *radeno*).
+- [website] Added `react-leaflet-geojson-patterns` plugin ([PR #536](https://github.com/PaulLeCam/react-leaflet/pull/536) by *lkazberova*).
+
 ## v2.1.1 (2018-10-22)
 
 - Fixed regression when updating the `className` prop of the `Map` component.

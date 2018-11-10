@@ -42,7 +42,7 @@ export default class CustomComponent extends Component<{}, State> {
     return (
       <Map center={[51.505, -0.09]} zoom={13}>
         <TileLayer
-          attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
+          attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <MyMarkersList markers={this.state.markers} />

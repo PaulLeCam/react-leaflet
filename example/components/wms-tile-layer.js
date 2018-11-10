@@ -31,7 +31,7 @@ export default class WMSTileLayerExample extends Component<{}, State> {
         zoom={this.state.zoom}
         onClick={this.onClick}>
         <TileLayer
-          attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
+          attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <WMSTileLayer

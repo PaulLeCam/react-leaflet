@@ -10,7 +10,7 @@ import React, {
 
 import type { LeafletContext } from './types'
 
-const { Consumer, Provider } = createContext({})
+const { Consumer, Provider } = createContext<LeafletContext>({})
 
 export const LeafletConsumer = Consumer
 export const LeafletProvider = Provider
