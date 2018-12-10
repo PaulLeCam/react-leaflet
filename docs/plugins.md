@@ -11,6 +11,7 @@ open pull requests to update this list!
 | Plugin                                                                                               | Compatible with v2 |
 | ---------------------------------------------------------------------------------------------------- | ------------------ |
 | [`react-leaflet-ant-path`](https://www.npmjs.com/package/react-leaflet-ant-path)                     | unknown            |
+| [`react-leaflet-box-zoom`](https://www.npmjs.com/package/react-leaflet-box-zoom)                     | **yes**            |
 | [`react-leaflet-bing`](https://www.npmjs.com/package/react-leaflet-bing)                             | unknown            |
 | [`react-leaflet-choropleth`](https://www.npmjs.com/package/react-leaflet-choropleth)                 | unknown            |
 | [`react-leaflet-cluster-layer`](https://www.npmjs.com/package/react-leaflet-cluster-layer)           | unknown            |
