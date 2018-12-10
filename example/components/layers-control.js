@@ -1,3 +1,5 @@
+// @flow
+
 import React, { Component } from 'react'
 import {
   Circle,
@@ -12,32 +14,30 @@ import {
 } from '../../src'
 const { BaseLayer, Overlay } = LayersControl
 
-export default class LayersControlExample extends Component {
-  render() {
-    const center = [51.505, -0.09]
-    const rectangle = [[51.49, -0.08], [51.5, -0.06]]
+const center = [51.505, -0.09]
+const rectangle = [[51.49, -0.08], [51.5, -0.06]]
 
+export default class LayersControlExample extends Component<{}> {
+  render() {
     return (
       <Map center={center} zoom={13}>
         <LayersControl position="topright">
           <BaseLayer checked name="OpenStreetMap.Mapnik">
             <TileLayer
-              attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
+              attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
           </BaseLayer>
           <BaseLayer name="OpenStreetMap.BlackAndWhite">
             <TileLayer
-              attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
+              attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
               url="https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png"
             />
           </BaseLayer>
           <Overlay name="Marker with popup">
             <Marker position={center}>
               <Popup>
-                <span>
-                  A pretty CSS3 popup. <br /> Easily customizable.
-                </span>
+                A pretty CSS3 popup. <br /> Easily customizable.
               </Popup>
             </Marker>
           </Overlay>
@@ -62,9 +62,7 @@ export default class LayersControlExample extends Component {
           </Overlay>
           <Overlay name="Feature group">
             <FeatureGroup color="purple">
-              <Popup>
-                <span>Popup in FeatureGroup</span>
-              </Popup>
+              <Popup>Popup in FeatureGroup</Popup>
               <Circle center={[51.51, -0.06]} radius={200} />
               <Rectangle bounds={rectangle} />
             </FeatureGroup>

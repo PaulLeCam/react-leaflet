@@ -4,22 +4,110 @@
     "next": "Next",
     "previous": "Previous",
     "tagline": "⚛️ React components for 🍃 Leaflet maps",
-    "class-hierarchy": "Class hierarchy",
-    "components": "Components",
-    "context": "Context",
-    "custom-components": "Creating custom components",
-    "events": "Events",
-    "examples": "Examples",
-    "installation": "Installation",
-    "intro": "Introduction",
-    "plugins": "Third-party plugins",
-    "setup": "Leaflet setup",
-    "Getting started": "Getting started",
-    "API": "API",
-    "Help": "Help",
-    "GitHub": "GitHub",
-    "Guides": "Guides",
-    "Extra": "Extra"
+    "docs": {
+      "class-hierarchy": {
+        "title": "Class hierarchy"
+      },
+      "components": {
+        "title": "Components"
+      },
+      "context": {
+        "title": "Context"
+      },
+      "custom-components": {
+        "title": "Creating custom components"
+      },
+      "events": {
+        "title": "Events"
+      },
+      "examples": {
+        "title": "Examples"
+      },
+      "installation": {
+        "title": "Installation"
+      },
+      "intro": {
+        "title": "Introduction"
+      },
+      "plugins": {
+        "title": "Third-party plugins"
+      },
+      "setup": {
+        "title": "Leaflet setup"
+      },
+      "version-v1-class-hierarchy": {
+        "title": "Class hierarchy"
+      },
+      "version-v1-components": {
+        "title": "Components"
+      },
+      "version-v1-custom-components": {
+        "title": "Creating custom components"
+      },
+      "version-v1-events": {
+        "title": "Events"
+      },
+      "version-v1-examples": {
+        "title": "Examples"
+      },
+      "version-v1-installation": {
+        "title": "Installation"
+      },
+      "version-v1-intro": {
+        "title": "Introduction"
+      },
+      "version-v1-plugins": {
+        "title": "Third-party plugins"
+      },
+      "version-v1-prop-types": {
+        "title": "PropTypes"
+      },
+      "version-v1-setup": {
+        "title": "Leaflet setup"
+      },
+      "version-v2-class-hierarchy": {
+        "title": "Class hierarchy"
+      },
+      "version-v2-components": {
+        "title": "Components"
+      },
+      "version-v2-context": {
+        "title": "Context"
+      },
+      "version-v2-custom-components": {
+        "title": "Creating custom components"
+      },
+      "version-v2-events": {
+        "title": "Events"
+      },
+      "version-v2-examples": {
+        "title": "Examples"
+      },
+      "version-v2-installation": {
+        "title": "Installation"
+      },
+      "version-v2-intro": {
+        "title": "Introduction"
+      },
+      "version-v2-plugins": {
+        "title": "Third-party plugins"
+      },
+      "version-v2-setup": {
+        "title": "Leaflet setup"
+      }
+    },
+    "links": {
+      "Getting started": "Getting started",
+      "API": "API",
+      "Help": "Help",
+      "GitHub": "GitHub"
+    },
+    "categories": {
+      "Getting started": "Getting started",
+      "API": "API",
+      "Guides": "Guides",
+      "Extra": "Extra"
+    }
   },
   "pages-strings": {
     "Learn more using the [documentation on this site](/docs/en/intro.html).|no description given": "Learn more using the [documentation on this site](/docs/en/intro.html).",

@@ -22,13 +22,11 @@ export default class MapLayer<
     return this.props.leaflet.layerContainer || this.props.leaflet.map
   }
 
-  // eslint-disable-next-line no-unused-vars
-  createLeafletElement(props: Props): LeafletElement {
+  createLeafletElement(_props: Props): LeafletElement {
     throw new Error('createLeafletElement() must be implemented')
   }
 
-  // eslint-disable-next-line no-unused-vars
-  updateLeafletElement(fromProps: Props, toProps: Props) {}
+  updateLeafletElement(_fromProps: Props, _toProps: Props) {}
 
   componentDidMount() {
     super.componentDidMount()
@@ -37,6 +35,15 @@ export default class MapLayer<
 
   componentDidUpdate(prevProps: Props) {
     super.componentDidUpdate(prevProps)
+
+    if (this.props.attribution !== prevProps.attribution) {
+      const { map } = this.props.leaflet
+      if (map != null && map.attributionControl != null) {
+        map.attributionControl.removeAttribution(prevProps.attribution)
+        map.attributionControl.addAttribution(this.props.attribution)
+      }
+    }
+
     this.updateLeafletElement(prevProps, this.props)
   }
 

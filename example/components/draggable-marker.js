@@ -1,7 +1,18 @@
-import React, { Component } from 'react'
+// @flow
+
+import React, { Component, createRef } from 'react'
 import { Map, TileLayer, Marker, Popup } from '../../src'
 
-export default class DraggableExample extends Component {
+type Position = { lat: number, lng: number }
+
+type State = {
+  center: Position,
+  marker: Position,
+  zoom: number,
+  draggable: boolean,
+}
+
+export default class DraggableExample extends Component<{}, State> {
   state = {
     center: {
       lat: 51.505,
@@ -14,17 +25,19 @@ export default class DraggableExample extends Component {
     zoom: 13,
     draggable: true,
   }
-  refmarker = React.createRef()
+  refmarker = createRef()
 
   toggleDraggable = () => {
     this.setState({ draggable: !this.state.draggable })
   }
 
   updatePosition = () => {
-    const { lat, lng } = this.refmarker.current.leafletElement.getLatLng()
-    this.setState({
-      marker: { lat, lng },
-    })
+    const marker = this.refmarker.current
+    if (marker != null) {
+      this.setState({
+        marker: marker.leafletElement.getLatLng(),
+      })
+    }
   }
 
   render() {
@@ -34,13 +47,14 @@ export default class DraggableExample extends Component {
     return (
       <Map center={position} zoom={this.state.zoom}>
         <TileLayer
-          attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
+          attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <Marker
           draggable={this.state.draggable}
           onDragend={this.updatePosition}
           position={markerPosition}
+          // $FlowFixMe: no idea why it's complaining about this
           ref={this.refmarker}>
           <Popup minWidth={90}>
             <span onClick={this.toggleDraggable}>

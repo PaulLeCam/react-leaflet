@@ -1,13 +1,17 @@
+// @flow
+
 import React, { Component } from 'react'
 import { Map, Pane, Rectangle, TileLayer } from '../../src'
 
 const outer = [[50.505, -29.09], [52.505, 29.09]]
 const inner = [[49.505, -2.09], [53.505, 2.09]]
 
-export default class PaneExample extends Component {
+export default class PaneExample extends Component<{}, { render: boolean }> {
   state = {
     render: true,
   }
+
+  interval: IntervalID
 
   componentDidMount() {
     this.interval = setInterval(() => {
@@ -25,7 +29,7 @@ export default class PaneExample extends Component {
     return (
       <Map bounds={outer}>
         <TileLayer
-          attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
+          attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         {this.state.render ? (

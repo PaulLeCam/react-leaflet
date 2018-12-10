@@ -1,7 +1,16 @@
+// @flow
+
 import React, { Component } from 'react'
 import { Map, TileLayer, WMSTileLayer } from '../../src'
 
-export default class WMSTileLayerExample extends Component {
+type State = {
+  lat: number,
+  lng: number,
+  zoom: number,
+  bluemarble: boolean,
+}
+
+export default class WMSTileLayerExample extends Component<{}, State> {
   state = {
     lat: 51.505,
     lng: -0.09,
@@ -22,7 +31,7 @@ export default class WMSTileLayerExample extends Component {
         zoom={this.state.zoom}
         onClick={this.onClick}>
         <TileLayer
-          attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
+          attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <WMSTileLayer

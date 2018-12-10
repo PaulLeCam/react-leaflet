@@ -1,7 +1,12 @@
+// @flow
+
 import React, { Component } from 'react'
 import { Map, TileLayer, VideoOverlay } from '../../src'
 
-export default class VideoOverlayExample extends Component {
+export default class VideoOverlayExample extends Component<
+  {},
+  { play: boolean },
+> {
   state = {
     play: true,
   }
@@ -14,7 +19,7 @@ export default class VideoOverlayExample extends Component {
     return (
       <Map center={[25, -100]} onClick={this.onTogglePlay} zoom={4}>
         <TileLayer
-          attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
+          attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <VideoOverlay

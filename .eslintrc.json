@@ -12,13 +12,16 @@
   ],
   "parser": "babel-eslint",
   "parserOptions": {
-    "ecmaVersion": 2016,
+    "ecmaVersion": 2018,
     "jsx": true,
     "sourceType": "module"
   },
   "plugins": ["flowtype", "prettier", "react"],
   "rules": {
-    "no-unused-vars": ["error", { "varsIgnorePattern": "^_" }],
+    "no-unused-vars": [
+      "error",
+      { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }
+    ],
     "prettier/prettier": [
       "error",
       {
@@ -32,7 +35,7 @@
   "settings": {
     "react": {
       "version": "16.3",
-      "flowVersion": "0.78"
+      "flowVersion": "0.86"
     }
   }
 }
