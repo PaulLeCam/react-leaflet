@@ -18,6 +18,7 @@ import TooltipExample from './tooltip'
 import PaneExample from './pane'
 import WMSTileLayerExample from './wms-tile-layer'
 import VideoOverlayExample from './video-overlay'
+import CustomIcons from './custom-icons'
 
 Leaflet.Icon.Default.imagePath =
   '//cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.4/images/'
@@ -59,6 +60,8 @@ const App = () => (
     <WMSTileLayerExample />
     <h2>Video overlay</h2>
     <VideoOverlayExample />
+    <h2>Custom Icons</h2>
+    <CustomIcons />
   </StrictMode>
 )
 
