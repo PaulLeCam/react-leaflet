@@ -8,10 +8,12 @@ open pull requests to update this list!
 
 ⚠️ These plugins may not be compatible with React-Leaflet v2, make sure to check their documentation.
 
+
 | Plugin                                                                                                           | Compatible with v2 |
 | ---------------------------------------------------------------------------------------------------------------- | ------------------ |
 | [`leaflet-react-track-player`](https://www.npmjs.com/package/leaflet-react-track-player)                         | unknown            |
 | [`react-leaflet-ant-path`](https://www.npmjs.com/package/react-leaflet-ant-path)                                 | unknown            |
+| [`react-leaflet-box-zoom`](https://www.npmjs.com/package/react-leaflet-box-zoom)                                 | **yes**            |
 | [`react-leaflet-bing`](https://www.npmjs.com/package/react-leaflet-bing)                                         | **yes**            |
 | [`react-leaflet-choropleth`](https://www.npmjs.com/package/react-leaflet-choropleth)                             | unknown            |
 | [`react-leaflet-cluster-layer`](https://www.npmjs.com/package/react-leaflet-cluster-layer)                       | unknown            |
