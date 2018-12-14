@@ -33,7 +33,7 @@ export default class CustomIcons extends Component<{}, State> {
       iconUrl: require('../assets/suitcaseIcon.svg'),
       iconRetinaUrl: require('../assets/suitcaseIcon.svg'),
       iconAnchor: [20, 40],
-      popupAnchor: [0, 0],
+      popupAnchor: [0, -35],
       iconSize: [40, 40],
       shadowUrl: '../assets/marker-shadow.png',
       shadowSize: [29, 40],
