@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react'
 import { Map, TileLayer, Marker, Popup } from '../../src'
-import L from 'leaflet'
+import { pointerIcon, suitcasePoint } from './icons'
 
 type State = {
   lat: number,
@@ -18,27 +18,6 @@ export default class CustomIcons extends Component<{}, State> {
   }
 
   render() {
-    const pointerIcon = new L.Icon({
-      iconUrl: require('../assets/pointerIcon.svg'),
-      iconRetinaUrl: require('../assets/pointerIcon.svg'),
-      iconAnchor: [5, 55],
-      popupAnchor: [10, -44],
-      iconSize: [25, 55],
-      shadowUrl: '../assets/marker-shadow.png',
-      shadowSize: [68, 95],
-      shadowAnchor: [20, 92],
-    })
-
-    const suitcasePoint = new L.Icon({
-      iconUrl: require('../assets/suitcaseIcon.svg'),
-      iconRetinaUrl: require('../assets/suitcaseIcon.svg'),
-      iconAnchor: [20, 40],
-      popupAnchor: [0, -35],
-      iconSize: [40, 40],
-      shadowUrl: '../assets/marker-shadow.png',
-      shadowSize: [29, 40],
-      shadowAnchor: [7, 40],
-    })
     const position = [this.state.lat, this.state.lng]
     const position2 = [51.50503625326346, -0.10088324546813966]
     return (
