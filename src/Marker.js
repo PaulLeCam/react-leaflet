@@ -53,4 +53,4 @@ class Marker extends MapLayer<LeafletElement, Props> {
   }
 }
 
-export default withLeaflet(Marker)
+export default withLeaflet<Props, Marker>(Marker)

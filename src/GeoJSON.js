@@ -33,4 +33,4 @@ class GeoJSON extends Path<LeafletElement, Props> {
   }
 }
 
-export default withLeaflet(GeoJSON)
+export default withLeaflet<Props, GeoJSON>(GeoJSON)

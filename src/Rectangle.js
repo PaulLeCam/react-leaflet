@@ -22,4 +22,4 @@ class Rectangle extends Path<LeafletElement, Props> {
   }
 }
 
-export default withLeaflet(Rectangle)
+export default withLeaflet<Props, Rectangle>(Rectangle)

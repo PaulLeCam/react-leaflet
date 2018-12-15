@@ -42,4 +42,4 @@ class WMSTileLayer extends GridLayer<LeafletElement, Props> {
   }
 }
 
-export default withLeaflet(WMSTileLayer)
+export default withLeaflet<Props, WMSTileLayer>(WMSTileLayer)

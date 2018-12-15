@@ -55,4 +55,4 @@ class VideoOverlay extends MapLayer<LeafletElement, Props> {
   }
 }
 
-export default withLeaflet(VideoOverlay)
+export default withLeaflet<Props, VideoOverlay>(VideoOverlay)

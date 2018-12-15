@@ -20,4 +20,4 @@ class ScaleControl extends MapControl<LeafletElement, Props> {
   }
 }
 
-export default withLeaflet(ScaleControl)
+export default withLeaflet<Props, ScaleControl>(ScaleControl)

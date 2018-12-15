@@ -1,8 +1,15 @@
+## v2.1.3 (2018-12-15)
+
+- [website] Added `react-leaflet-figure-editor` plugin ([PR #542](https://github.com/PaulLeCam/react-leaflet/pull/542) by _argonavt11_).
+- [website] Added `react-leaflet-box-zoom` plugin ([PR #543](https://github.com/PaulLeCam/react-leaflet/pull/543) by _ChrisLowe-Takor_).
+- Added example for custom icons usage ([PR #545](https://github.com/PaulLeCam/react-leaflet/pull/545) by _rlahoda_).
+- Updated Flow types support for Flow v0.89.
+
 ## v2.1.2 (2018-11-10)
 
 - Fixed support for multiple classes in the `Pane` component.
-- [internal] Replaced some lodash functions ([PR #533](https://github.com/PaulLeCam/react-leaflet/pull/533) by *radeno*).
-- [website] Added `react-leaflet-geojson-patterns` plugin ([PR #536](https://github.com/PaulLeCam/react-leaflet/pull/536) by *lkazberova*).
+- [internal] Replaced some lodash functions ([PR #533](https://github.com/PaulLeCam/react-leaflet/pull/533) by _radeno_).
+- [website] Added `react-leaflet-geojson-patterns` plugin ([PR #536](https://github.com/PaulLeCam/react-leaflet/pull/536) by _lkazberova_).
 
 ## v2.1.1 (2018-10-22)
 

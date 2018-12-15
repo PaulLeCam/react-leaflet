@@ -22,4 +22,4 @@ class TileLayer extends GridLayer<LeafletElement, Props> {
   }
 }
 
-export default withLeaflet(TileLayer)
+export default withLeaflet<Props, TileLayer>(TileLayer)

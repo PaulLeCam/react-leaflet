@@ -26,4 +26,4 @@ class FeatureGroup extends Path<LeafletElement, Props> {
   }
 }
 
-export default withLeaflet(FeatureGroup)
+export default withLeaflet<Props, FeatureGroup>(FeatureGroup)

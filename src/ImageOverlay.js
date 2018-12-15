@@ -42,4 +42,4 @@ class ImageOverlay extends MapLayer<LeafletElement, Props> {
   }
 }
 
-export default withLeaflet(ImageOverlay)
+export default withLeaflet<Props, ImageOverlay>(ImageOverlay)

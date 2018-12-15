@@ -20,7 +20,7 @@ export default class EventsExample extends Component<{}, State> {
     },
   }
 
-  mapRef = createRef()
+  mapRef = createRef<Map>()
 
   handleClick = () => {
     const map = this.mapRef.current

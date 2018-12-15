@@ -30,4 +30,4 @@ class Circle extends Path<LeafletElement, Props> {
   }
 }
 
-export default withLeaflet(Circle)
+export default withLeaflet<Props, Circle>(Circle)

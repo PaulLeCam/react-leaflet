@@ -161,4 +161,4 @@ class Pane extends Component<Props, State> {
   }
 }
 
-export default withLeaflet(Pane)
+export default withLeaflet<Props, Pane>(Pane)

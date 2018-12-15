@@ -24,4 +24,4 @@ class Polygon extends Path<LeafletElement, Props> {
   }
 }
 
-export default withLeaflet(Polygon)
+export default withLeaflet<Props, Polygon>(Polygon)

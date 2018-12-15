@@ -25,7 +25,8 @@ export default class DraggableExample extends Component<{}, State> {
     zoom: 13,
     draggable: true,
   }
-  refmarker = createRef()
+  // $FlowFixMe: ref
+  refmarker = createRef<Marker>()
 
   toggleDraggable = () => {
     this.setState({ draggable: !this.state.draggable })
@@ -54,7 +55,6 @@ export default class DraggableExample extends Component<{}, State> {
           draggable={this.state.draggable}
           onDragend={this.updatePosition}
           position={markerPosition}
-          // $FlowFixMe: no idea why it's complaining about this
           ref={this.refmarker}>
           <Popup minWidth={90}>
             <span onClick={this.toggleDraggable}>
