@@ -290,6 +290,7 @@ export default class Map extends MapEvented<LeafletElement, Props> {
   }
 
   componentDidUpdate(prevProps: Props) {
+    super.componentDidUpdate(prevProps)
     this.updateLeafletElement(prevProps, this.props)
   }
 

@@ -1,3 +1,7 @@
+## v2.1.4 (2018-12-22)
+
+Fixed event handlers changes in `Map` component.
+
 ## v2.1.3 (2018-12-15)
 
 - [website] Added `react-leaflet-figure-editor` plugin ([PR #542](https://github.com/PaulLeCam/react-leaflet/pull/542) by _argonavt11_).
