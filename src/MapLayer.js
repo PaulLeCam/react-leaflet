@@ -12,6 +12,7 @@ export default class MapLayer<
   Props: MapLayerProps,
 > extends MapComponent<LeafletElement, Props> {
   contextValue: ?LeafletContext
+  leafletElement: LeafletElement
 
   constructor(props: Props) {
     super(props)
