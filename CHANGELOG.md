@@ -1,3 +1,11 @@
+## v2.2.0 (2019-01-12)
+
+- Updated Leaflet dependency to v1.4.
+- Fixed duplicate element creation in `Path` ([PR #549](https://github.com/PaulLeCam/react-leaflet/pull/549) by _vadzim_).
+- Changed `whenReady` logic in `Map` to get triggered after React reference is bound.
+- [internal] Replaced `lodash` with `fast-deep-equal` and vanilla JS implementations ([PR #554](https://github.com/PaulLeCam/react-leaflet/pull/554) by _jtfell_).
+- [website] Added `react-leaflet-semicircle` plugin ([PR #552](https://github.com/PaulLeCam/react-leaflet/pull/552) by _clementallen_).
+
 ## v2.1.4 (2018-12-22)
 
 Fixed event handlers changes in `Map` component.

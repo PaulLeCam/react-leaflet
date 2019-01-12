@@ -41,6 +41,7 @@ open pull requests to update this list!
 | [`react-leaflet-pane`](https://www.npmjs.com/package/react-leaflet-pane)                                         | unknown            |
 | [`react-leaflet-rotatedmarker`](https://www.npmjs.com/package/react-leaflet-rotatedmarker)                       | unknown            |
 | [`react-leaflet-search`](https://www.npmjs.com/package/react-leaflet-search)                                     | **yes**            |
+| [`react-leaflet-semicircle`](https://www.npmjs.com/package/react-leaflet-semicircle)                             | **yes**            |
 | [`react-leaflet-shapefile`](https://www.npmjs.com/package/react-leaflet-shapefile)                               | **no**             |
 | [`react-leaflet-sidebarv2`](https://www.npmjs.com/package/react-leaflet-sidebarv2)                               | unknown            |
 | [`react-leaflet-sidetabs`](https://www.npmjs.com/package/react-leaflet-sidetabs)                                 | **yes**            |

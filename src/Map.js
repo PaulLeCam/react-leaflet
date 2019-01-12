@@ -105,6 +105,7 @@ export default class Map extends MapEvented<LeafletElement, Props> {
     zoom: undefined,
   }
 
+  _ready: boolean = false
   _updating: boolean = false
 
   constructor(props: Props) {
@@ -276,10 +277,6 @@ export default class Map extends MapEvented<LeafletElement, Props> {
       this.leafletElement.fitBounds(props.bounds, props.boundsOptions)
     }
 
-    if (this.props.whenReady) {
-      this.leafletElement.whenReady(this.props.whenReady)
-    }
-
     this.contextValue = {
       layerContainer: this.leafletElement,
       map: this.leafletElement,
@@ -290,6 +287,13 @@ export default class Map extends MapEvented<LeafletElement, Props> {
   }
 
   componentDidUpdate(prevProps: Props) {
+    if (this._ready === false) {
+      this._ready = true
+      if (this.props.whenReady) {
+        this.leafletElement.whenReady(this.props.whenReady)
+      }
+    }
+
     super.componentDidUpdate(prevProps)
     this.updateLeafletElement(prevProps, this.props)
   }
