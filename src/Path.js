@@ -1,10 +1,11 @@
 // @flow
 
 import type { Path as PathType } from 'leaflet'
-import { isEqual, pick } from 'lodash'
+import isEqual from 'fast-deep-equal'
 
 import MapLayer from './MapLayer'
 import type { PathOptions, PathProps } from './types'
+import pick from './utils/pick'
 
 const OPTIONS = [
   'stroke',

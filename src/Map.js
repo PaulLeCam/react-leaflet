@@ -6,12 +6,12 @@ import {
   type CRS,
   type Renderer,
 } from 'leaflet'
-import { omit } from 'lodash'
 import React, { type Node } from 'react'
 
 import { LeafletProvider } from './context'
 import MapEvented from './MapEvented'
 import updateClassName from './utils/updateClassName'
+import omit from './utils/omit'
 import type {
   LatLng,
   LatLngBounds,
@@ -266,7 +266,7 @@ export default class Map extends MapEvented<LeafletElement, Props> {
   }
 
   componentDidMount() {
-    const props = omit(this.props, OTHER_PROPS)
+    const props = omit(this.props, ...OTHER_PROPS)
     this.leafletElement = this.createLeafletElement(props)
 
     this.leafletElement.on('move', this.onViewportChange)

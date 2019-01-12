@@ -1,13 +1,16 @@
 // @flow
 // flowlint sketchy-null-string:off
 
-import { forEach, omit, uniqueId } from 'lodash'
 import React, { Component, type Node } from 'react'
 import warning from 'warning'
 
 import { LeafletProvider, withLeaflet } from './context'
 import type { LeafletContext } from './types'
 import { addClassName, removeClassName } from './utils/updateClassName'
+import omit from './utils/omit'
+
+let idCounter = 0
+const uniqueId = () => ++idCounter
 
 const LEAFLET_PANES = [
   'tile',
@@ -134,8 +137,11 @@ class Pane extends Component<Props, State> {
         addClassName(pane, className)
       }
       if (style) {
-        forEach(style, (value, key) => {
-          pane.style[key] = value
+        // Without the cast, Flow throws this error:
+        //   Cannot assign style[key] to pane.style[key] because string
+        //   is incompatible with number.
+        Object.keys(style).forEach((key: any) => {
+          pane.style[key] = style[key]
         })
       }
     }

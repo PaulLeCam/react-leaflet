@@ -4,8 +4,7 @@
     "@babel/plugin-proposal-export-default-from",
     "@babel/plugin-transform-proto-to-assign",
     "@babel/plugin-transform-strict-mode",
-    "dev-expression",
-    "lodash"
+    "dev-expression"
   ],
   "env": {
     "development": {
@@ -42,7 +41,6 @@
         "@babel/preset-react"
       ],
       "plugins": [
-        "./build/use-lodash-es",
         "@babel/plugin-transform-runtime"
       ]
     },
@@ -63,7 +61,6 @@
         "@babel/preset-react"
       ],
       "plugins": [
-        "./build/use-lodash-es",
         ["@babel/plugin-transform-runtime", { "useESModules": true }]
       ]
     }

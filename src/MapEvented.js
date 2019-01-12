@@ -1,7 +1,6 @@
 // @flow
 
 import type { Evented } from 'leaflet'
-import { forEach } from 'lodash'
 import { Component } from 'react'
 
 export const EVENTS_RE = /^on(.+)$/i
@@ -36,8 +35,8 @@ export default class MapEvented<
     const el = this.leafletElement
     if (!el) return
 
-    forEach(this._leafletEvents, (cb, ev) => {
-      el.off(ev, cb)
+    Object.keys(this._leafletEvents).forEach(ev => {
+      el.off(ev, this._leafletEvents[ev])
     })
   }
 
@@ -61,17 +60,17 @@ export default class MapEvented<
     if (el == null || el.on == null) return {}
 
     const diff = { ...prev }
-    forEach(prev, (cb, ev) => {
-      if (next[ev] == null || cb !== next[ev]) {
+    Object.keys(prev).forEach(ev => {
+      if (next[ev] == null || prev[ev] !== next[ev]) {
         delete diff[ev]
-        el.off(ev, cb)
+        el.off(ev, prev[ev])
       }
     })
 
-    forEach(next, (cb, ev) => {
-      if (prev[ev] == null || cb !== prev[ev]) {
-        diff[ev] = cb
-        el.on(ev, cb)
+    Object.keys(next).forEach(ev => {
+      if (prev[ev] == null || next[ev] !== prev[ev]) {
+        diff[ev] = next[ev]
+        el.on(ev, next[ev])
       }
     })
 
