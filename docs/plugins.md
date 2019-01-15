@@ -44,6 +44,7 @@ open pull requests to update this list!
 | [`react-leaflet-shapefile`](https://www.npmjs.com/package/react-leaflet-shapefile)                               | **no**             |
 | [`react-leaflet-sidebarv2`](https://www.npmjs.com/package/react-leaflet-sidebarv2)                               | unknown            |
 | [`react-leaflet-sidetabs`](https://www.npmjs.com/package/react-leaflet-sidetabs)                                 | **yes**            |
+| [`react-leaflet-textpath`](https://www.npmjs.com/package/react-leaflet-textpath)                                 | **yes**            |
 | [`react-leaflet-vectorgrid`](https://www.npmjs.com/package/react-leaflet-vectorgrid)                             | unknown            |
 | [`react-leaflet-wmts`](https://www.npmjs.com/package/react-leaflet-wmts)                                         | **yes**            |
 | [`react-leaflet-zoom-display`](https://www.npmjs.com/package/react-leaflet-zoom-display)                         | unknown            |
