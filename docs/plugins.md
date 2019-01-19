@@ -17,7 +17,7 @@ open pull requests to update this list!
 | [`react-leaflet-choropleth`](https://www.npmjs.com/package/react-leaflet-choropleth)                             | unknown            |
 | [`react-leaflet-cluster-layer`](https://www.npmjs.com/package/react-leaflet-cluster-layer)                       | unknown            |
 | [`react-leaflet-control`](https://www.npmjs.com/package/react-leaflet-control)                                   | unknown            |
-| [`react-leaflet-d3`](https://www.npmjs.com/package/react-leaflet-d3)                                             | unknown            |
+| [`react-leaflet-d3`](https://www.npmjs.com/package/react-leaflet-d3)                                             | **yes**            |
 | [`react-leaflet-deflate`](https://www.npmjs.com/package/react-leaflet-deflate)                                   | unknown            |
 | [`react-leaflet-distance-marker`](https://www.npmjs.com/package/react-leaflet-distance-marker)                   | unknown            |
 | [`react-leaflet-distortable-imageoverlay`](https://www.npmjs.com/package/react-leaflet-distortable-imageoverlay) | **yes**            |
@@ -35,7 +35,7 @@ open pull requests to update this list!
 | [`react-leaflet-locate-control`](https://www.npmjs.com/package/react-leaflet-locate-control)                     | **no**             |
 | [`react-leaflet-markercluster`](https://www.npmjs.com/package/react-leaflet-markercluster)                       | unknown            |
 | [`react-leaflet-marker-layer`](https://www.npmjs.com/package/react-leaflet-marker-layer)                         | unknown            |
-| [`react-leaflet-measure`](https://www.npmjs.com/package/react-leaflet-measure)                                   | unknown            |
+| [`react-leaflet-measure`](https://www.npmjs.com/package/react-leaflet-measure)                                   | **yes**            |
 | [`react-leaflet-nmscale`](https://www.npmjs.com/package/@marfle/react-leaflet-nmscale)                           | **yes**            |
 | [`react-leaflet-pane`](https://www.npmjs.com/package/react-leaflet-pane)                                         | unknown            |
 | [`react-leaflet-rotatedmarker`](https://www.npmjs.com/package/react-leaflet-rotatedmarker)                       | unknown            |
