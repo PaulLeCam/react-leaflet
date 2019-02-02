@@ -1,3 +1,9 @@
+## master
+
+- [website] Added `react-leaflet-textpath` plugin ([PR #556](https://github.com/PaulLeCam/react-leaflet/pull/556) by _clementallen_).
+- [website] Minor text fixes to components docs ([PR #558](https://github.com/PaulLeCam/react-leaflet/pull/558) by _arthurRuf_).
+- [website] Update compatibility info for 2 plugins ([PR #560](https://github.com/PaulLeCam/react-leaflet/pull/560) by _mhasbie_).
+
 ## v2.2.0 (2019-01-12)
 
 - Updated Leaflet dependency to v1.4.

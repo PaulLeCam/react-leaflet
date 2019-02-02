@@ -21,5 +21,6 @@ Different examples are available in the [example folder](https://github.com/Paul
 - [Animated map](https://github.com/PaulLeCam/react-leaflet/blob/master/example/components/animate.js)
 - [WMS tile layer](https://github.com/PaulLeCam/react-leaflet/blob/master/example/components/wms-tile-layer.js)
 - [Video overlay](https://github.com/PaulLeCam/react-leaflet/blob/master/example/components/video-overlay.js)
+- [Custom icons](https://github.com/PaulLeCam/react-leaflet/blob/master/example/components/custom-icons.js)
 
 These examples can be run locally by cloning the repository, installing the dependencies and running `npm run examples` or `yarn run examples` if you're using Yarn.
