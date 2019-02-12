@@ -16,7 +16,7 @@ open pull requests to update this list!
 | [`react-leaflet-box-zoom`](https://www.npmjs.com/package/react-leaflet-box-zoom)                                 | **yes**            |
 | [`react-leaflet-choropleth`](https://www.npmjs.com/package/react-leaflet-choropleth)                             | unknown            |
 | [`react-leaflet-cluster-layer`](https://www.npmjs.com/package/react-leaflet-cluster-layer)                       | unknown            |
-| [`react-leaflet-control`](https://www.npmjs.com/package/react-leaflet-control)                                   | unknown            |
+| [`react-leaflet-control`](https://www.npmjs.com/package/react-leaflet-control)                                   | **yes**            |
 | [`react-leaflet-d3`](https://www.npmjs.com/package/react-leaflet-d3)                                             | **yes**            |
 | [`react-leaflet-deflate`](https://www.npmjs.com/package/react-leaflet-deflate)                                   | unknown            |
 | [`react-leaflet-distance-marker`](https://www.npmjs.com/package/react-leaflet-distance-marker)                   | unknown            |
