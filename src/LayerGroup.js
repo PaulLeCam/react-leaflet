@@ -11,7 +11,7 @@ type Props = MapLayerProps
 
 class LayerGroup extends MapLayer<LeafletElement, Props> {
   createLeafletElement(props: Props): LeafletElement {
-    const el = new LeafletLayerGroup(this.getOptions(props))
+    const el = new LeafletLayerGroup([], this.getOptions(props))
     this.contextValue = { ...props.leaflet, layerContainer: el }
     return el
   }
