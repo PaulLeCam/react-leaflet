@@ -1,8 +1,11 @@
-## master
+## v2.2.1 (2019-02-17)
 
+- Fixed passing options in the `LayerGroup` component ([PR #570](https://github.com/PaulLeCam/react-leaflet/pull/570) by _failociraptor_).
 - [website] Added `react-leaflet-textpath` plugin ([PR #556](https://github.com/PaulLeCam/react-leaflet/pull/556) by _clementallen_).
 - [website] Minor text fixes to components docs ([PR #558](https://github.com/PaulLeCam/react-leaflet/pull/558) by _arthurRuf_).
-- [website] Update compatibility info for 2 plugins ([PR #560](https://github.com/PaulLeCam/react-leaflet/pull/560) by _mhasbie_).
+- [website] Updated compatibility info for 5 plugins and added 2 new plugins ([PR #560](https://github.com/PaulLeCam/react-leaflet/pull/560) and [PR #564](https://github.com/PaulLeCam/react-leaflet/pull/564) by _mhasbie_).
+- [website] Updated `react-leaflet-control` compatibility status ([PR #567](https://github.com/PaulLeCam/react-leaflet/pull/567) by _robinmetral_).
+- [website] Updated third party compatibility docs for 2 plugins ([PR #568](https://github.com/PaulLeCam/react-leaflet/pull/568) by _renanbandeira_).
 
 ## v2.2.0 (2019-01-12)
 
