@@ -1,6 +1,11 @@
 // @flow
 
-export { LeafletConsumer, LeafletProvider, withLeaflet } from './context'
+export {
+  LeafletConsumer,
+  LeafletProvider,
+  withLeaflet,
+  useLeaflet,
+} from './context'
 
 export type {
   LeafletContext,
