@@ -3,12 +3,15 @@ const path = require('path')
 module.exports = {
   mode: 'development',
   entry: {
-    index: [path.join(__dirname, 'index.js')],
+    index: [path.join(__dirname, 'index.tsx')],
+  },
+  resolve: {
+    extensions: ['.js', '.jsx', '.json', '.ts', '.tsx'],
   },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.tsx?$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
       },

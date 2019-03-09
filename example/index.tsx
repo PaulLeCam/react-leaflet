@@ -1,9 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+declare let module: any
+
 const MOUNT_NODE = document.getElementById('app')
 
-const render = () => {
+function render() {
   const App = require('./components/app').default
   ReactDOM.render(<App />, MOUNT_NODE)
 }
@@ -11,10 +13,8 @@ const render = () => {
 render()
 
 if (module.hot) {
-  module.hot.accept(['./components/app'], () =>
-    setImmediate(() => {
-      ReactDOM.unmountComponentAtNode(MOUNT_NODE)
-      render()
-    }),
-  )
+  module.hot.accept(['./components/app'], () => {
+    ReactDOM.unmountComponentAtNode(MOUNT_NODE)
+    render()
+  })
 }

@@ -4,24 +4,27 @@
     "es6": true
   },
   "extends": [
-    "plugin:flowtype/recommended",
     "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
     "prettier",
-    "prettier/flowtype",
+    "prettier/@typescript-eslint",
     "prettier/react"
   ],
-  "parser": "babel-eslint",
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 2018,
     "jsx": true,
     "sourceType": "module"
   },
-  "plugins": ["flowtype", "prettier", "react"],
+  "plugins": ["@typescript-eslint", "prettier", "react", "react-hooks"],
   "rules": {
     "no-unused-vars": [
       "error",
       { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }
     ],
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-object-literal-type-assertion": "off",
     "prettier/prettier": [
       "error",
       {
@@ -30,12 +33,13 @@
         "singleQuote": true,
         "trailingComma": "all"
       }
-    ]
+    ],
+    "react-hooks/exhaustive-deps": "warn",
+    "react-hooks/rules-of-hooks": "error"
   },
   "settings": {
     "react": {
-      "version": "16.3",
-      "flowVersion": "0.93"
+      "version": "16.8"
     }
   }
 }

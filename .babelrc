@@ -1,11 +1,6 @@
 {
-  "plugins": [
-    "@babel/plugin-proposal-class-properties",
-    "@babel/plugin-proposal-export-default-from",
-    "@babel/plugin-transform-proto-to-assign",
-    "@babel/plugin-transform-strict-mode",
-    "dev-expression"
-  ],
+  "presets": ["@babel/preset-react", "@babel/preset-typescript"],
+  "plugins": ["dev-expression"],
   "env": {
     "development": {
       "presets": [
@@ -19,9 +14,7 @@
             "modules": "commonjs",
             "loose": true
           }
-        ],
-        "@babel/preset-flow",
-        "@babel/preset-react"
+        ]
       ],
       "plugins": ["@babel/plugin-transform-runtime"]
     },
@@ -36,13 +29,9 @@
             },
             "modules": false
           }
-        ],
-        "@babel/preset-flow",
-        "@babel/preset-react"
+        ]
       ],
-      "plugins": [
-        "@babel/plugin-transform-runtime"
-      ]
+      "plugins": ["@babel/plugin-transform-runtime"]
     },
     "jsnext": {
       "presets": [
@@ -56,13 +45,9 @@
             "modules": false,
             "loose": true
           }
-        ],
-        "@babel/preset-flow",
-        "@babel/preset-react"
+        ]
       ],
-      "plugins": [
-        ["@babel/plugin-transform-runtime", { "useESModules": true }]
-      ]
+      "plugins": [["@babel/plugin-transform-runtime", { "useESModules": true }]]
     }
   }
 }
