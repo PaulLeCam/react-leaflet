@@ -53,7 +53,7 @@ export default class DraggableExample extends Component<{}, State> {
         />
         <Marker
           draggable={this.state.draggable}
-          onDragend={this.updatePosition}
+          ondragend={this.updatePosition}
           position={markerPosition}
           ref={this.refmarker}>
           <Popup minWidth={90}>
