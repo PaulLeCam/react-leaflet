@@ -2,6 +2,7 @@ import { TileLayer, TileLayerOptions } from 'leaflet'
 
 import { createLeafComponent } from './component'
 import { createUseLeafletElement } from './element'
+import { updateGridLayer } from './grid-layer'
 import { createUseLeafletLayer } from './layer'
 
 export interface TileLayerProps extends TileLayerOptions {
@@ -11,14 +12,10 @@ export interface TileLayerProps extends TileLayerOptions {
 export const useTileLayerElement = createUseLeafletElement<
   TileLayer,
   TileLayerProps
->((props, context) => {
+>(function createTileLayer(props) {
   const { url, ...options } = props
-  const el = new TileLayer(url, options)
-  if (context !== null) {
-    el.addTo(context.map)
-  }
-  return { el }
-})
+  return { el: new TileLayer(url, options) }
+}, updateGridLayer)
 
 export const useLeafletTileLayer = createUseLeafletLayer(useTileLayerElement)
 

@@ -17,7 +17,7 @@ export function createUseLeafletElement<E, P>(
     props: P,
     context: LeafletContextInterface | null,
   ) => LeafletElement<E>,
-  updateElement: (el: E, props: P, prevprops: P) => void = () => {},
+  updateElement: (el: E, props: P, prevProps: P) => void = () => {},
 ) {
   return function useLeafletElement(
     context: LeafletContextInterface | null,
@@ -31,7 +31,7 @@ export function createUseLeafletElement<E, P>(
         updateElement(elementRef.current.el, props, propsRef.current)
         propsRef.current = props
       }
-    })
+    }, [props])
 
     return elementRef
   }

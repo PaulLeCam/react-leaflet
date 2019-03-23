@@ -1,8 +1,10 @@
+import { LatLngTuple } from 'leaflet'
 import React, { useCallback, useState } from 'react'
+
 import { Map, TileLayer } from '../../src'
 
 interface Viewport {
-  center: [number, number]
+  center: LatLngTuple
   zoom: number
 }
 

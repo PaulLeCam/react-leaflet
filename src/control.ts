@@ -8,21 +8,24 @@ export function createUseLeafletControl<
   E extends Control,
   P extends ControlOptions
 >(useElement: UseLeafletElement<E, P>) {
-  return (props: P): ReturnType<UseLeafletElement<E, P>> => {
+  return function useLeafletControl(
+    props: P,
+  ): ReturnType<UseLeafletElement<E, P>> {
     const context = useLeafletContext()
     const elementRef = useElement(context, props)
     const positionRef = useRef(props.position)
 
-    // Mounting and unmounting
+    // Adding and removing
     useEffect(() => {
       if (elementRef.current === null || context == null) {
         return
       }
-      elementRef.current.el.addTo(context.map)
+      const { el } = elementRef.current
+      el.addTo(context.map)
       return () => {
-        elementRef.current.el.remove()
+        el.remove()
       }
-    }, [])
+    }, [context, elementRef])
     // Update
     useEffect(() => {
       if (
@@ -33,7 +36,7 @@ export function createUseLeafletControl<
         elementRef.current.el.setPosition(props.position)
         positionRef.current = props.position
       }
-    })
+    }, [elementRef, props])
 
     return elementRef
   }

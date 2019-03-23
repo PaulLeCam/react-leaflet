@@ -17,7 +17,7 @@ export interface TooltipProps extends TooltipOptions {
 }
 
 export const useTooltipElement = createUseLeafletElement<Tooltip, TooltipProps>(
-  (props, context) => {
+  function createTooltip(props, context) {
     const el = new Tooltip(
       props,
       context === null ? undefined : context.overlayContainer,

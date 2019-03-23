@@ -1,3 +1,4 @@
+import isEqual from 'fast-deep-equal'
 import { Evented, LeafletEventHandlerFnMap } from 'leaflet'
 import { useEffect, useRef } from 'react'
 
@@ -5,9 +6,9 @@ import { LeafletElement } from './element'
 
 const EVENTS_RE = /^on(.+)$/i
 
-export const extractLeafletEvents = (
+export function extractLeafletEvents(
   props: Record<string, any>,
-): LeafletEventHandlerFnMap => {
+): LeafletEventHandlerFnMap {
   return Object.keys(props).reduce(
     (res, prop) => {
       if (EVENTS_RE.test(prop)) {
@@ -22,11 +23,11 @@ export const extractLeafletEvents = (
   )
 }
 
-export const setLeafletEvents = (
+export function setLeafletEvents(
   el: Evented,
   next: LeafletEventHandlerFnMap = {},
   prev: LeafletEventHandlerFnMap = {},
-): LeafletEventHandlerFnMap => {
+): LeafletEventHandlerFnMap {
   const diff = { ...prev }
 
   Object.keys(prev).forEach((ev: string) => {
@@ -48,23 +49,31 @@ export const setLeafletEvents = (
   return diff
 }
 
-export const useLeafletEvents = (
+export function useLeafletEvents(
   element: LeafletElement<Evented> | null,
   props: Record<string, any>,
-) => {
+) {
   const eventsRef = useRef<LeafletEventHandlerFnMap>({})
 
   useEffect(() => {
     if (element === null) {
       return
     }
+
     const events = extractLeafletEvents(props)
-    eventsRef.current = setLeafletEvents(element.el, events, eventsRef.current)
+    if (!isEqual(events, eventsRef.current)) {
+      eventsRef.current = setLeafletEvents(
+        element.el,
+        events,
+        eventsRef.current,
+      )
+    }
 
     return () => {
       Object.keys(eventsRef.current).forEach((ev: string) => {
         element.el.off(ev, eventsRef.current[ev])
       })
+      eventsRef.current = {}
     }
-  })
+  }, [element, props])
 }

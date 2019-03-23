@@ -49,6 +49,7 @@ export function createContextComponent<E, P extends PropsWithChildren>(
       <LeafletProvider value={context}>{props.children}</LeafletProvider>
     )
   }
+
   return forwardRef(ContextComponent)
 }
 
@@ -66,12 +67,13 @@ export function createDivOverlayComponent<
       if (isOpen && el !== null) {
         el.update()
       }
-    }, [el, isOpen])
+    }, [el, isOpen, props.children])
 
     // @ts-ignore _contentNode missing in type definition
     const contentNode = el && el._contentNode
     return contentNode ? createPortal(props.children, contentNode) : null
   }
+
   return forwardRef(DivOverlayComponent)
 }
 
@@ -84,5 +86,6 @@ export function createLeafComponent<E, P>(useFunc: UseLeafletFunc<E, P>) {
 
     return null
   }
+
   return forwardRef(LeafComponent)
 }

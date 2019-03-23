@@ -1,4 +1,5 @@
 import React, { useCallback, useMemo, useRef, useState } from 'react'
+
 import { Map, TileLayer, Marker, Popup } from '../../src'
 
 const DEFAULT_POSITION = { lat: 51.505, lng: -0.09 }

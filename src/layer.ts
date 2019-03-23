@@ -18,7 +18,6 @@ export function useLeafletLayerLifecycle<E extends Layer>(
     container.addLayer(element.el)
 
     return () => {
-      // @ts-ignore no idea why it complains
       container.removeLayer(element.el)
     }
   }, [context, element])
@@ -27,7 +26,9 @@ export function useLeafletLayerLifecycle<E extends Layer>(
 export function createUseLeafletLayer<E extends Layer, P>(
   useElement: UseLeafletElement<E, P>,
 ) {
-  return (props: P): ReturnType<UseLeafletElement<E, P>> => {
+  return function useLeafletLayer(
+    props: P,
+  ): ReturnType<UseLeafletElement<E, P>> {
     const context = useLeafletContext()
     const elementRef = useElement(context, props)
 

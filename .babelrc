@@ -7,47 +7,58 @@
         [
           "@babel/preset-env",
           {
+            "corejs": 3,
+            "loose": true,
+            "modules": "commonjs",
             "targets": {
               "node": "current",
-              "browsers": ["last 2 versions", "ie >= 11"]
+              "browsers": "last 2 versions"
             },
-            "modules": "commonjs",
-            "loose": true
+            "useBuiltIns": "usage"
           }
         ]
       ],
-      "plugins": ["@babel/plugin-transform-runtime"]
+      "plugins": [["@babel/transform-runtime", { "corejs": 3 }]]
     },
     "rollup": {
       "presets": [
         [
           "@babel/preset-env",
           {
+            "corejs": 3,
+            "modules": false,
             "targets": {
               "node": "current",
-              "browsers": ["last 2 versions", "ie >= 11"]
+              "browsers": "last 2 versions"
             },
-            "modules": false
+            "useBuiltIns": "usage"
           }
         ]
       ],
-      "plugins": ["@babel/plugin-transform-runtime"]
+      "plugins": [["@babel/transform-runtime", { "corejs": 3 }]]
     },
     "jsnext": {
       "presets": [
         [
           "@babel/preset-env",
           {
+            "corejs": 3,
+            "loose": true,
+            "modules": false,
             "targets": {
               "node": "current",
-              "browsers": ["last 2 versions", "ie >= 11"]
+              "browsers": "last 2 versions"
             },
-            "modules": false,
-            "loose": true
+            "useBuiltIns": "usage"
           }
         ]
       ],
-      "plugins": [["@babel/plugin-transform-runtime", { "useESModules": true }]]
+      "plugins": [
+        [
+          "@babel/plugin-transform-runtime",
+          { "corejs": 3, "useESModules": true }
+        ]
+      ]
     }
   }
 }

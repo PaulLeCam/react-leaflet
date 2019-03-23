@@ -1,4 +1,9 @@
-import { Map, MapOptions } from 'leaflet'
+import {
+  FitBoundsOptions,
+  LatLngBoundsExpression,
+  Map,
+  MapOptions,
+} from 'leaflet'
 import React, {
   MutableRefObject,
   ReactNode,
@@ -14,39 +19,58 @@ import { LeafletProvider } from './context'
 import { useLeafletEvents } from './events'
 
 export interface MapProps extends MapOptions {
+  animate?: boolean
+  bounds?: LatLngBoundsExpression
+  boundsOptions?: FitBoundsOptions
   children?: ReactNode
+  useFlyTo?: boolean
 }
 
 export function useMapElement(
   mapRef: MutableRefObject<HTMLElement | null>,
-  options: MapOptions,
+  props: MapProps,
 ): Map | null {
-  const optionsRef = useRef<MapOptions>(options)
+  const propsRef = useRef<MapProps>(props)
   const [map, setMap] = useState<Map | null>(null)
 
-  useLeafletEvents(map ? { el: map } : null, options)
+  useLeafletEvents(map ? { el: map } : null, props)
   useEffect(() => {
     if (mapRef.current === null) {
       // Wait for map container to be rendered
       return
     }
     if (map === null) {
-      const el = new Map(mapRef.current)
-      if (options.center != null && options.zoom != null) {
-        el.setView(options.center, options.zoom)
+      const el = new Map(mapRef.current, props)
+      if (props.center != null && props.zoom != null) {
+        el.setView(props.center, props.zoom)
+      } else if (props.bounds != null) {
+        el.fitBounds(props.bounds)
       }
       setMap(el)
-    } else if (optionsRef.current !== null) {
+    } else if (propsRef.current !== null) {
       if (
-        options.center != null &&
-        options.zoom != null &&
-        (options.center !== optionsRef.current.center ||
-          options.zoom !== optionsRef.current.zoom)
+        props.center != null &&
+        props.zoom != null &&
+        (props.center !== propsRef.current.center ||
+          props.zoom !== propsRef.current.zoom)
       ) {
-        map.setView(options.center, options.zoom)
+        const opts = { animate: props.animate || false }
+        if (props.useFlyTo === true) {
+          map.flyTo(props.center, props.zoom, opts)
+        } else {
+          map.setView(props.center, props.zoom, opts)
+        }
+      }
+
+      if (props.bounds != null && props.bounds !== propsRef.current.bounds) {
+        if (props.useFlyTo) {
+          map.flyToBounds(props.bounds, props.boundsOptions)
+        } else {
+          map.fitBounds(props.bounds, props.boundsOptions)
+        }
       }
     }
-    optionsRef.current = options
+    propsRef.current = props
   })
 
   return map

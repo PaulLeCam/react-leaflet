@@ -24,7 +24,10 @@ export function createUseLeafletDivOverlay<E extends DivOverlay, P>(
   useElement: UseLeafletElement<E, P>,
   useLifecycle: UseLifecycle<E, P>,
 ) {
-  return (props: P, setOpen: SetOpen): ReturnType<UseLeafletElement<E, P>> => {
+  return function useLeafletDivOverlay(
+    props: P,
+    setOpen: SetOpen,
+  ): ReturnType<UseLeafletElement<E, P>> {
     const context = useLeafletContext()
     const elementRef = useElement(context, props)
 
