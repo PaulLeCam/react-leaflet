@@ -10,14 +10,14 @@ type LeafletElement = LeafletTileLayer
 type coords = { z: string, x: string, y: string }
 type Props = {
   url: string,
-  create?: (coords: coords, done: Promise<any>) => LeafletElement
+  create?: (coords: coords, done: Promise<any>) => LeafletElement,
 } & GridLayerProps
 
 class TileLayer extends GridLayer<LeafletElement, Props> {
   createLeafletElement(props: Props): LeafletElement {
     const leafletTile: LeafletElement = new LeafletTileLayer(
       props.url,
-      this.getOptions(props)
+      this.getOptions(props),
     )
     if (props.create) {
       leafletTile.createTile = props.create
