@@ -139,54 +139,54 @@ React-Leaflet provides the `onViewportChange` and `onViewportChanged` callbacks 
 
 ```javascript
 type Viewport = {
-	center: [number, number],
-	zoom: number,
+    center: [number, number],
+    zoom: number
 };
 
 type Props = {
-	viewport: Viewport,
+    viewport: Viewport
 };
 
 type State = {
-	viewport: Viewport,
+    viewport: Viewport
 };
 
 class MyMap extends Component<Props, State> {
-	constructor(props: Props) {
-		// Initialize the viewport to the one provided in props
-		this.state = {
-			viewport: props.viewport,
-		};
-	}
+    constructor(props: Props) {
+        // Initialize the viewport to the one provided in props
+        this.state = {
+            viewport: props.viewport
+        };
+    }
 
-	componentWillReceiveProps({ viewport }: Props) {
-		// When the provided viewport changes, apply it
-		if (viewport !== this.props.viewport) {
-			this.setState({ viewport });
-		}
-	}
+    componentWillReceiveProps({ viewport }: Props) {
+        // When the provided viewport changes, apply it
+        if (viewport !== this.props.viewport) {
+            this.setState({ viewport });
+        }
+    }
 
-	onClickReset = () => {
-		// Reset to position provided in props
-		this.setState({ viewport: this.props.viewport });
-	};
+    onClickReset = () => {
+        // Reset to position provided in props
+        this.setState({ viewport: this.props.viewport });
+    };
 
-	onViewportChanged = (viewport: Viewport) => {
-		// The viewport got changed by the user, keep track in state
-		this.setState({ viewport });
-	};
+    onViewportChanged = (viewport: Viewport) => {
+        // The viewport got changed by the user, keep track in state
+        this.setState({ viewport });
+    };
 
-	render() {
-		return (
-			<Map
-				onClick={this.onClickReset}
-				onViewportChanged={this.onViewportChanged}
-				viewport={this.state.viewport}
-			>
-				...
-			</Map>
-		);
-	}
+    render() {
+        return (
+            <Map
+                onClick={this.onClickReset}
+                onViewportChanged={this.onViewportChanged}
+                viewport={this.state.viewport}
+            >
+                ...
+            </Map>
+        );
+    }
 }
 ```
 
@@ -408,35 +408,35 @@ Example usage:
 
 ```javascript
 <LayersControl position='topright'>
-	<LayersControl.BaseLayer name='OpenStreetMap.BlackAndWhite'>
-		<TileLayer
-			attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-			url='https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png'
-		/>
-	</LayersControl.BaseLayer>
-	<LayersControl.BaseLayer name='OpenStreetMap.Mapnik'>
-		<TileLayer
-			attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-			url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-		/>
-	</LayersControl.BaseLayer>
-	<LayersControl.Overlay name='Marker with popup'>
-		<Marker position={[51.51, -0.06]}>
-			<Popup>
-				<span>
-					A pretty CSS3 popup. <br /> Easily customizable.
-				</span>
-			</Popup>
-		</Marker>
-	</LayersControl.Overlay>
-	<LayersControl.Overlay name='Feature group'>
-		<FeatureGroup color='purple'>
-			<Popup>
-				<span>Popup in FeatureGroup</span>
-			</Popup>
-			<Circle center={[51.51, -0.06]} radius={200} />
-		</FeatureGroup>
-	</LayersControl.Overlay>
+    <LayersControl.BaseLayer name='OpenStreetMap.BlackAndWhite'>
+        <TileLayer
+            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            url='https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png'
+        />
+    </LayersControl.BaseLayer>
+    <LayersControl.BaseLayer name='OpenStreetMap.Mapnik'>
+        <TileLayer
+            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+        />
+    </LayersControl.BaseLayer>
+    <LayersControl.Overlay name='Marker with popup'>
+        <Marker position={[51.51, -0.06]}>
+            <Popup>
+                <span>
+                    A pretty CSS3 popup. <br /> Easily customizable.
+                </span>
+            </Popup>
+        </Marker>
+    </LayersControl.Overlay>
+    <LayersControl.Overlay name='Feature group'>
+        <FeatureGroup color='purple'>
+            <Popup>
+                <span>Popup in FeatureGroup</span>
+            </Popup>
+            <Circle center={[51.51, -0.06]} radius={200} />
+        </FeatureGroup>
+    </LayersControl.Overlay>
 </LayersControl>
 ```
 
