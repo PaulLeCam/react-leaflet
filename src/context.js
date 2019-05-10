@@ -10,12 +10,12 @@ import React, {
 
 import type { LeafletContext } from './types'
 
-const Context = createContext<LeafletContext>({})
+const leafletContext = createContext<LeafletContext>({})
 
-export const useLeaflet = (): LeafletContext => useContext(Context)
+export const useLeaflet = (): LeafletContext => useContext(leafletContext)
 
-export const LeafletConsumer = Context.Consumer
-export const LeafletProvider = Context.Provider
+export const LeafletConsumer = leafletContext.Consumer
+export const LeafletProvider = leafletContext.Provider
 
 export const withLeaflet = <Config: { leaflet: LeafletContext }, Instance>(
   WrappedComponent: AbstractComponent<Config, Instance>,
