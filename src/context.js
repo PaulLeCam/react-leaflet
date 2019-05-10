@@ -12,7 +12,7 @@ import type { LeafletContext } from './types'
 
 const Context = createContext<LeafletContext>({})
 
-export const useLeaflet = () => useContext(Context)
+export const useLeaflet = (): LeafletContext => useContext(Context)
 
 export const LeafletConsumer = Context.Consumer
 export const LeafletProvider = Context.Provider
