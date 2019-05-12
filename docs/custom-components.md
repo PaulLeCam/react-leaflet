@@ -11,6 +11,8 @@ If these plugins do not match your needs, adding layers and behaviors provided b
 - `createLeafletElement (props: Object): Object` (mandatory): create and return the relevant Leaflet element instance. this instance will be stored in the class as `this.leafletElement` and used by other methods handling behavior such as events bindings.
 - `updateLeafletElement (fromProps: Object, toProps: Object): Object` (optional): use this method to update the `leafletElement` according to the properties changes.
 
+To access [Leaflet context object](context.md) in your custom functional component the `useLeaflet()` [hook](hooks.md) can be used.
+
 By wrapping your custom component using the `withLeaflet()` higher-order component, it will get the [Leaflet context object](context.md) injected in its props.
 
 Make sure to read the [introduction page](intro.md) of this documentation to understand what your custom component should use and eventually provide, and check the [class hierarchy](class-hierarchy.md) to see what class to extend.

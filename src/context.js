@@ -1,24 +1,31 @@
 // @flow
 
 import hoistNonReactStatics from 'hoist-non-react-statics'
-import React, { createContext, forwardRef, type AbstractComponent } from 'react'
+import React, {
+  createContext,
+  forwardRef,
+  useContext,
+  type AbstractComponent,
+} from 'react'
 
 import type { LeafletContext } from './types'
 
-const { Consumer, Provider } = createContext<LeafletContext>({})
+const leafletContext = createContext<LeafletContext>({})
 
-export const LeafletConsumer = Consumer
-export const LeafletProvider = Provider
+export const useLeaflet = (): LeafletContext => useContext(leafletContext)
+
+export const LeafletConsumer = leafletContext.Consumer
+export const LeafletProvider = leafletContext.Provider
 
 export const withLeaflet = <Config: { leaflet: LeafletContext }, Instance>(
   WrappedComponent: AbstractComponent<Config, Instance>,
 ): AbstractComponent<$Diff<Config, { leaflet: LeafletContext }>, Instance> => {
   const WithLeafletComponent = (props, ref) => (
-    <Consumer>
+    <LeafletConsumer>
       {(leaflet: LeafletContext) => (
         <WrappedComponent {...props} leaflet={leaflet} ref={ref} />
       )}
-    </Consumer>
+    </LeafletConsumer>
   )
 
   const name = // flowlint-next-line sketchy-null-string:off
