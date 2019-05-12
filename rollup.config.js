@@ -40,7 +40,6 @@ if (env === 'production') {
     uglify({
       compress: {
         dead_code: true,
-        warnings: false,
       },
     })
   )

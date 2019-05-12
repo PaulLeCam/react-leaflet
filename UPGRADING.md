@@ -1,8 +1,16 @@
 # Upgrading
 
+## v2.3
+
+This release requires [Leaflet v1.5](https://leafletjs.com/2019/05/08/leaflet-1.5.0.html) and [React v16.8](https://reactjs.org/blog/2019/02/06/react-v16.8.0.html) as peer dependencies.
+
+## v2.2
+
+This release requires [Leaflet v1.4](https://leafletjs.com/2018/12/30/leaflet-1.4.0.html) as peer dependency.
+
 ## v2
 
-This release requires [React v16.3.0+](https://reactjs.org/blog/2018/03/29/react-v-16-3.html) and brings breaking changes in the way the necessary context is propagated. Most third-party plugins and custom components will likely need to be updated in order to access the context.
+This release requires [React v16.3](https://reactjs.org/blog/2018/03/29/react-v-16-3.html) and brings breaking changes in the way the necessary context is propagated. Most third-party plugins and custom components will likely need to be updated in order to access the context.
 
 ## v1.8
 
@@ -89,7 +97,7 @@ const CustomComponent = () => {
   return (
     <Map center={[51.51, -0.1]} zoom={10}>
       <TileLayer
-        attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
+        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
       />
       <MyMarkersList markers={markers} />

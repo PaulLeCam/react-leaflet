@@ -1,3 +1,11 @@
+## v2.3.0 (2019-05-12)
+
+- Updated Leaflet dependency to v1.5.
+- Updated React dependency to v16.8.
+- Added `useLeaflet` hook ([PR #571](https://github.com/PaulLeCam/react-leaflet/pull/571) by _vadzim_).
+- [website] Added `react-leaflet-google-layer` plugin ([PR #576](https://github.com/PaulLeCam/react-leaflet/pull/576) by _aviklai_).
+- [internal] Replaced deprecated `webpack-serve` library by `webpack-dev-server` to run the examples.
+
 ## v2.2.1 (2019-02-17)
 
 - Fixed passing options in the `LayerGroup` component ([PR #570](https://github.com/PaulLeCam/react-leaflet/pull/570) by _failociraptor_).
