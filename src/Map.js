@@ -132,7 +132,6 @@ export default class Map extends MapEvented<LeafletElement, Props> {
     this._updating = true
 
     const {
-      animate,
       bounds,
       boundsOptions,
       boxZoom,
@@ -140,11 +139,8 @@ export default class Map extends MapEvented<LeafletElement, Props> {
       className,
       doubleClickZoom,
       dragging,
-      duration,
-      easeLinearity,
       keyboard,
       maxBounds,
-      noMoveStart,
       scrollWheelZoom,
       tap,
       touchZoom,
@@ -167,11 +163,19 @@ export default class Map extends MapEvented<LeafletElement, Props> {
       if (useFlyTo === true) {
         this.leafletElement.flyTo(center, zoom, this.getZoomPanOptions(toProps))
       } else {
-        this.leafletElement.setView(center, zoom, this.getZoomPanOptions(toProps))
+        this.leafletElement.setView(
+          center,
+          zoom,
+          this.getZoomPanOptions(toProps),
+        )
       }
     } else if (typeof zoom === 'number' && zoom !== fromProps.zoom) {
       if (fromProps.zoom == null) {
-        this.leafletElement.setView(center, zoom, this.getZoomPanOptions(toProps))
+        this.leafletElement.setView(
+          center,
+          zoom,
+          this.getZoomPanOptions(toProps),
+        )
       } else {
         this.leafletElement.setZoom(zoom, this.getZoomPanOptions(toProps))
       }
@@ -187,7 +191,10 @@ export default class Map extends MapEvented<LeafletElement, Props> {
         boundsOptions !== fromProps.boundsOptions)
     ) {
       if (useFlyTo === true) {
-        this.leafletElement.flyToBounds(bounds, this.getFitBoundsOptions(toProps))
+        this.leafletElement.flyToBounds(
+          bounds,
+          this.getFitBoundsOptions(toProps),
+        )
       } else {
         this.leafletElement.fitBounds(bounds, this.getFitBoundsOptions(toProps))
       }
@@ -255,21 +262,21 @@ export default class Map extends MapEvented<LeafletElement, Props> {
   }
 
   getZoomPanOptions(props: Props) {
-    const { animate, duration, easeLinearity, noMoveStart } = props; 
+    const { animate, duration, easeLinearity, noMoveStart } = props
     return {
       animate,
       duration,
       easeLinearity,
-      noMoveStart
-    };
+      noMoveStart,
+    }
   }
 
   getFitBoundsOptions(props: Props) {
-    const zoomPanOptions = this.getZoomPanOptions(props);
+    const zoomPanOptions = this.getZoomPanOptions(props)
     return {
       ...zoomPanOptions,
       ...props.boundsOptions,
-    };
+    }
   }
 
   onViewportChange = () => {
@@ -297,7 +304,10 @@ export default class Map extends MapEvented<LeafletElement, Props> {
     this.leafletElement.on('moveend', this.onViewportChanged)
 
     if (props.bounds != null) {
-      this.leafletElement.fitBounds(props.bounds, this.getFitBoundsOptions(props))
+      this.leafletElement.fitBounds(
+        props.bounds,
+        this.getFitBoundsOptions(props),
+      )
     }
 
     this.contextValue = {
