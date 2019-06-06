@@ -265,9 +265,11 @@ export default class Map extends MapEvented<LeafletElement, Props> {
   }
 
   getFitBoundsOptions(props: Props) {
-    let options = this.getZoomPanOptions(props);
-    options.boundsOptions = props.boundsOptions;
-    return options;
+    const zoomPanOptions = this.getZoomPanOptions(props);
+    return {
+      ...zoomPanOptions,
+      ...props.boundsOptions,
+    };
   }
 
   onViewportChange = () => {
