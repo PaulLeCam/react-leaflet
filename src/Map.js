@@ -80,6 +80,8 @@ type Props = {
   bounceAtZoomLimits?: boolean,
   // Additional options
   animate?: boolean,
+  duration?: number,
+  noMoveStart?: boolean,
   bounds?: LatLngBounds,
   boundsOptions?: {
     paddingTopLeft?: Point,
@@ -138,8 +140,11 @@ export default class Map extends MapEvented<LeafletElement, Props> {
       className,
       doubleClickZoom,
       dragging,
+      duration,
+      easeLinearity,
       keyboard,
       maxBounds,
+      noMoveStart,
       scrollWheelZoom,
       tap,
       touchZoom,
@@ -154,21 +159,21 @@ export default class Map extends MapEvented<LeafletElement, Props> {
       const c = viewport.center ? viewport.center : center
       const z = viewport.zoom == null ? zoom : viewport.zoom
       if (useFlyTo === true) {
-        this.leafletElement.flyTo(c, z, { animate })
+        this.leafletElement.flyTo(c, z, this.getZoomPanOptions(toProps))
       } else {
-        this.leafletElement.setView(c, z, { animate })
+        this.leafletElement.setView(c, z, this.getZoomPanOptions(toProps))
       }
     } else if (center && this.shouldUpdateCenter(center, fromProps.center)) {
       if (useFlyTo === true) {
-        this.leafletElement.flyTo(center, zoom, { animate })
+        this.leafletElement.flyTo(center, zoom, this.getZoomPanOptions(toProps))
       } else {
-        this.leafletElement.setView(center, zoom, { animate })
+        this.leafletElement.setView(center, zoom, this.getZoomPanOptions(toProps))
       }
     } else if (typeof zoom === 'number' && zoom !== fromProps.zoom) {
       if (fromProps.zoom == null) {
-        this.leafletElement.setView(center, zoom)
+        this.leafletElement.setView(center, zoom, this.getZoomPanOptions(toProps))
       } else {
-        this.leafletElement.setZoom(zoom)
+        this.leafletElement.setZoom(zoom, this.getZoomPanOptions(toProps))
       }
     }
 
@@ -182,9 +187,9 @@ export default class Map extends MapEvented<LeafletElement, Props> {
         boundsOptions !== fromProps.boundsOptions)
     ) {
       if (useFlyTo === true) {
-        this.leafletElement.flyToBounds(bounds, boundsOptions)
+        this.leafletElement.flyToBounds(bounds, this.getFitBoundsOptions(toProps))
       } else {
-        this.leafletElement.fitBounds(bounds, boundsOptions)
+        this.leafletElement.fitBounds(bounds, this.getFitBoundsOptions(toProps))
       }
     }
 
@@ -249,6 +254,22 @@ export default class Map extends MapEvented<LeafletElement, Props> {
     this._updating = false
   }
 
+  getZoomPanOptions(props: Props) {
+    const { animate, duration, easeLinearity, noMoveStart } = props; 
+    return {
+      animate,
+      duration,
+      easeLinearity,
+      noMoveStart
+    };
+  }
+
+  getFitBoundsOptions(props: Props) {
+    let options = this.getZoomPanOptions(props);
+    options.boundsOptions = props.boundsOptions;
+    return options;
+  }
+
   onViewportChange = () => {
     const center = this.leafletElement.getCenter()
     this.viewport = {
@@ -274,7 +295,7 @@ export default class Map extends MapEvented<LeafletElement, Props> {
     this.leafletElement.on('moveend', this.onViewportChanged)
 
     if (props.bounds != null) {
-      this.leafletElement.fitBounds(props.bounds, props.boundsOptions)
+      this.leafletElement.fitBounds(props.bounds, this.getFitBoundsOptions(props))
     }
 
     this.contextValue = {

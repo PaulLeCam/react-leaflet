@@ -103,6 +103,9 @@ This is the top-level component that must be mounted for child components to be 
 **Dynamic properties**
 
 - `animate: boolean` (optional): If `true`, panning will always be animated if possible. Defaults to `false`.
+- `duration: number` (optional): Duration of animated panning, in seconds. Defaults to `0.25`.
+- `easeLinearity: number` (optional): The curvature factor of panning animation easing (third parameter of the Cubic Bezier curve). 1.0 means linear animation, and the smaller this number, the more bowed the curve. Defaults to `0.25`.
+- `noMoveStart: boolean` (optional): If true, panning won't fire movestart event on start (used internally for panning inertia). Defaults to `false`.
 - `bounds: bounds` (optional): A rectangle for the map to contain. It will be centered, and the map will zoom in as close as it can while still showing the full bounds. Changes are compared using the [`🍃 equals() method of LatLngBounds`](http://leafletjs.com/reference-1.5.0.html#latlngbounds-equals).
 - `boundsOptions: Object` (optional): Options passed to the `fitBounds()` method.
 - `boxZoom: boolean` (optional): If `true`, the map can be zoomed to a rectangular area specified by dragging the mouse while pressing the shift key. Defaults to true.
