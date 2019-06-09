@@ -83,12 +83,12 @@ type Props = {
   duration?: number,
   noMoveStart?: boolean,
   bounds?: LatLngBounds,
-  boundsOptions?: {
+  boundsOptions?: {|
     paddingTopLeft?: Point,
     paddingBottomRight?: Point,
     padding?: Point,
     maxZoom?: number,
-  },
+  |},
   children: Node,
   className?: string,
   id?: string,

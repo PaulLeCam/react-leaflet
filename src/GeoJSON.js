@@ -26,7 +26,7 @@ class GeoJSON extends Path<LeafletElement, Props> {
 
   updateLeafletElement(fromProps: Props, toProps: Props) {
     if (typeof toProps.style === 'function') {
-      this.setStyle(toProps.style)
+      this.leafletElement.setStyle(toProps.style)
     } else {
       this.setStyleIfChanged(fromProps, toProps)
     }

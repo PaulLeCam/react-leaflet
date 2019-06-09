@@ -1,3 +1,9 @@
+## v2.4.0 (2019-06-09)
+
+- Added `ZoomPanOptions` and `FitBoundsOptions` to `Map` component ([PR #593](https://github.com/PaulLeCam/react-leaflet/pull/593) by _scailbc_).
+- Updated Flow types support for Flow v0.100.
+- [website] Updated Docusaurus.
+
 ## v2.3.0 (2019-05-12)
 
 - Updated Leaflet dependency to v1.5.
