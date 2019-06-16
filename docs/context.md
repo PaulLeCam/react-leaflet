@@ -19,3 +19,5 @@ type LeafletContext = {
 The context provider and consumer are exported as `LeafletProvider` and `LeafletConsumer`, along with a `withLeaflet(Component: ComponentType<*>) => ComponentType<*>` [higher-order component](https://reactjs.org/docs/higher-order-components.html) factory that can be used to wrap [custom components](custom-components.md). This wrapper injects the context as the `leaflet` prop.
 
 All the [controls and layers exported by React-Leaflet](components.md) use this wrapper, your application should only need to use these APIs in specific cases.
+
+Starting with version 2.3, the `useLeaflet()` [hook](https://reactjs.org/docs/hooks-intro.html) can also be used to access the `LeafletContext` object.

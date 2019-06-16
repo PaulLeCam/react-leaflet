@@ -2,19 +2,19 @@ export {
   createContextComponent,
   createDivOverlayComponent,
   createLeafComponent,
-} from './component'
+} from './core/component'
 export {
   LeafletContextInterface,
   LeafletContext,
   LeafletProvider,
   useLeafletContext,
-} from './context'
-export { createUseLeafletControl } from './control'
-export { createUseLeafletDivOverlay } from './div-overlay'
-export { createUseLeafletElement } from './element'
-export { useLeafletEvents } from './events'
-export { createUseLeafletLayer, useLeafletLayerLifecycle } from './layer'
-export { createUseLeafletPath, useLeafletPathOptions } from './path'
+} from './core/context'
+export { createUseLeafletControl } from './core/control'
+export { createUseLeafletDivOverlay } from './core/div-overlay'
+export { createUseLeafletElement } from './core/element'
+export { useLeafletEvents } from './core/events'
+export { createUseLeafletLayer, useLeafletLayerLifecycle } from './core/layer'
+export { createUseLeafletPath, useLeafletPathOptions } from './core/path'
 export {
   LeafletAttributionControl as AttributionControl,
   AttributionControlProps,

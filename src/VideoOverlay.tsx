@@ -1,8 +1,8 @@
 import { VideoOverlay, VideoOverlayOptions } from 'leaflet'
 
-import { createLeafComponent } from './component'
-import { createUseLeafletElement } from './element'
-import { createUseLeafletLayer } from './layer'
+import { createLeafComponent } from './core/component'
+import { createUseLeafletElement } from './core/element'
+import { createUseLeafletLayer } from './core/layer'
 
 import { MediaOverlayOptions, updateMediaOverlay } from './ImageOverlay'
 

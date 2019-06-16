@@ -8,8 +8,8 @@ import React, {
 } from 'react'
 import warning from 'warning'
 
-import { addClassName, removeClassName } from './className'
-import { LeafletProvider, useLeafletContext } from './context'
+import { addClassName, removeClassName } from './core/className'
+import { LeafletProvider, useLeafletContext } from './core/context'
 
 const LEAFLET_PANES = [
   'tile',

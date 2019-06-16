@@ -1,9 +1,9 @@
 import { Circle } from 'leaflet'
 
 import { CircleMarkerProps, updateCircle } from './CircleMarker'
-import { createContextComponent } from './component'
-import { createUseLeafletElement } from './element'
-import { createUseLeafletPath } from './path'
+import { createContextComponent } from './core/component'
+import { createUseLeafletElement } from './core/element'
+import { createUseLeafletPath } from './core/path'
 
 export interface CircleProps extends CircleMarkerProps {}
 

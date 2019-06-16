@@ -35,64 +35,64 @@
       "setup": {
         "title": "Leaflet setup"
       },
-      "version-v1-class-hierarchy": {
+      "version-v1/version-v1-class-hierarchy": {
         "title": "Class hierarchy"
       },
-      "version-v1-components": {
+      "version-v1/version-v1-components": {
         "title": "Components"
       },
-      "version-v1-custom-components": {
+      "version-v1/version-v1-custom-components": {
         "title": "Creating custom components"
       },
-      "version-v1-events": {
+      "version-v1/version-v1-events": {
         "title": "Events"
       },
-      "version-v1-examples": {
+      "version-v1/version-v1-examples": {
         "title": "Examples"
       },
-      "version-v1-installation": {
+      "version-v1/version-v1-installation": {
         "title": "Installation"
       },
-      "version-v1-intro": {
+      "version-v1/version-v1-intro": {
         "title": "Introduction"
       },
-      "version-v1-plugins": {
+      "version-v1/version-v1-plugins": {
         "title": "Third-party plugins"
       },
-      "version-v1-prop-types": {
+      "version-v1/version-v1-prop-types": {
         "title": "PropTypes"
       },
-      "version-v1-setup": {
+      "version-v1/version-v1-setup": {
         "title": "Leaflet setup"
       },
-      "version-v2-class-hierarchy": {
+      "version-v2/version-v2-class-hierarchy": {
         "title": "Class hierarchy"
       },
-      "version-v2-components": {
+      "version-v2/version-v2-components": {
         "title": "Components"
       },
-      "version-v2-context": {
+      "version-v2/version-v2-context": {
         "title": "Context"
       },
-      "version-v2-custom-components": {
+      "version-v2/version-v2-custom-components": {
         "title": "Creating custom components"
       },
-      "version-v2-events": {
+      "version-v2/version-v2-events": {
         "title": "Events"
       },
-      "version-v2-examples": {
+      "version-v2/version-v2-examples": {
         "title": "Examples"
       },
-      "version-v2-installation": {
+      "version-v2/version-v2-installation": {
         "title": "Installation"
       },
-      "version-v2-intro": {
+      "version-v2/version-v2-intro": {
         "title": "Introduction"
       },
-      "version-v2-plugins": {
+      "version-v2/version-v2-plugins": {
         "title": "Third-party plugins"
       },
-      "version-v2-setup": {
+      "version-v2/version-v2-setup": {
         "title": "Leaflet setup"
       }
     },

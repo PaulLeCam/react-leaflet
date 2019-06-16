@@ -1,9 +1,9 @@
 import { LatLngExpression, Polyline, PolylineOptions } from 'leaflet'
 import { ReactNode } from 'react'
 
-import { createContextComponent } from './component'
-import { createUseLeafletElement } from './element'
-import { createUseLeafletPath } from './path'
+import { createContextComponent } from './core/component'
+import { createUseLeafletElement } from './core/element'
+import { createUseLeafletPath } from './core/path'
 
 export interface PolylineProps extends PolylineOptions {
   children?: ReactNode

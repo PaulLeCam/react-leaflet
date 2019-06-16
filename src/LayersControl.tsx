@@ -11,10 +11,10 @@ import React, {
   useState,
 } from 'react'
 
-import { createContextComponent } from './component'
-import { LeafletProvider, useLeafletContext } from './context'
-import { createUseLeafletControl } from './control'
-import { createUseLeafletElement } from './element'
+import { createContextComponent } from './core/component'
+import { LeafletProvider, useLeafletContext } from './core/context'
+import { createUseLeafletControl } from './core/control'
+import { createUseLeafletElement } from './core/element'
 
 export interface LayersControlProps extends Control.LayersOptions {
   children?: ReactNode

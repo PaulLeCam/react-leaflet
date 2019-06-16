@@ -1,9 +1,9 @@
 import { LatLngExpression, Marker, MarkerOptions } from 'leaflet'
 import { ReactNode } from 'react'
 
-import { createContextComponent } from './component'
-import { createUseLeafletElement } from './element'
-import { createUseLeafletLayer } from './layer'
+import { createContextComponent } from './core/component'
+import { createUseLeafletElement } from './core/element'
+import { createUseLeafletLayer } from './core/layer'
 
 export interface MarkerProps extends MarkerOptions {
   children?: ReactNode

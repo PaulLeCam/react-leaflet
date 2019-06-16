@@ -1,8 +1,8 @@
 import { Control } from 'leaflet'
 
-import { createLeafComponent } from './component'
-import { createUseLeafletControl } from './control'
-import { createUseLeafletElement } from './element'
+import { createLeafComponent } from './core/component'
+import { createUseLeafletControl } from './core/control'
+import { createUseLeafletElement } from './core/element'
 
 export interface AttributionControlProps extends Control.AttributionOptions {}
 

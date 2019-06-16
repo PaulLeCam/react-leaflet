@@ -1,10 +1,10 @@
 import isEqual from 'fast-deep-equal'
 import { TileLayer, WMSOptions } from 'leaflet'
 
-import { createLeafComponent } from './component'
-import { createUseLeafletElement } from './element'
-import { updateGridLayer } from './grid-layer'
-import { createUseLeafletLayer } from './layer'
+import { createLeafComponent } from './core/component'
+import { createUseLeafletElement } from './core/element'
+import { updateGridLayer } from './core/grid-layer'
+import { createUseLeafletLayer } from './core/layer'
 
 export interface WMSTileLayerProps extends WMSOptions {
   url: string

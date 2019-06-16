@@ -33,6 +33,7 @@ open pull requests to update this list!
 | [`react-leaflet-geojson-cluster`](https://www.npmjs.com/package/react-leaflet-geojson-cluster)                   | unknown            |
 | [`react-leaflet-geojson-patterns`](https://www.npmjs.com/package/react-leaflet-geojson-patterns)                 | **yes**            |
 | [`react-leaflet-google`](https://www.npmjs.com/package/react-leaflet-google)                                     | **yes**            |
+| [`react-leaflet-google-layer`](https://www.npmjs.com/package/react-leaflet-google-layer)                         | **yes**            |
 | [`react-leaflet-heatmap-layer`](https://www.npmjs.com/package/react-leaflet-heatmap-layer)                       | **yes**            |
 | [`react-leaflet-locate-control`](https://www.npmjs.com/package/react-leaflet-locate-control)                     | **no**             |
 | [`react-leaflet-magnifying-glass`](https://www.npmjs.com/package/react-leaflet-magnifying-glass)                 | **yes**            |

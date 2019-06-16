@@ -15,8 +15,8 @@ import React, {
   useState,
 } from 'react'
 
-import { LeafletProvider } from './context'
-import { useLeafletEvents } from './events'
+import { LeafletProvider } from './core/context'
+import { useLeafletEvents } from './core/events'
 
 export interface MapProps extends MapOptions {
   animate?: boolean

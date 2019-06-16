@@ -69,7 +69,7 @@ Base class extending [`MapEvented`](#mapevented) to add support for panes.
 Base class extending `React.Component` for controls.\
 It exposes a `leafletElement` property to access the `Leaflet` object created for the control.
 
-[🍃 Leaflet Control reference](http://leafletjs.com/reference-1.4.0.html#control) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/MapControl.js)
+[🍃 Leaflet Control reference](http://leafletjs.com/reference-1.5.0.html#control) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/MapControl.js)
 
 ### MapEvented
 
@@ -82,28 +82,31 @@ It exposes a `leafletElement` property to access the `Leaflet` object created fo
 
 Base class extending [`MapComponent`](#mapcomponent), handling adding the layer to the map and removing it when relevant. It exposes the `layerContainer` property, to be used by extending classes to access their containing layer.
 
-[🍃 Leaflet Layer reference](http://leafletjs.com/reference-1.4.0.html#layer) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/MapLayer.js)
+[🍃 Leaflet Layer reference](http://leafletjs.com/reference-1.5.0.html#layer) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/MapLayer.js)
 
 ### Path
 
 Base class extending [`MapLayer`](#maplayer) with the following methods:
 
-- `getPathOptions(object props): object`: filters the input `props` and return a new object of [Path options](http://leafletjs.com/reference-1.4.0.html#path-options) properties.
-- `setStyle(object options = {}): void`: alias to the Leaflet element [`setStyle()`](http://leafletjs.com/reference-1.4.0.html#path-setstyle).
+- `getPathOptions(object props): object`: filters the input `props` and return a new object of [Path options](http://leafletjs.com/reference-1.5.0.html#path-options) properties.
+- `setStyle(object options = {}): void`: alias to the Leaflet element [`setStyle()`](http://leafletjs.com/reference-1.5.0.html#path-setstyle).
 - `setStyleIfChanged(object fromProps, object toProps): void`: extracts the Path options of the two arguments, and calls `setStyle()` with the new options if different from the previous ones.
 
-[🍃 Leaflet reference](http://leafletjs.com/reference-1.4.0.html#path) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/Path.js)
+[🍃 Leaflet reference](http://leafletjs.com/reference-1.5.0.html#path) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/Path.js)
 
 ## Map
 
-This is the top-level component that must be mounted for child components to be rendered. Refer to [🍃 Leaflet's documentation](http://leafletjs.com/reference-1.4.0.html#map-options) for more information about the properties.
+This is the top-level component that must be mounted for child components to be rendered. Refer to [🍃 Leaflet's documentation](http://leafletjs.com/reference-1.5.0.html#map-options) for more information about the properties.
 
-[🍃 Leaflet reference](http://leafletjs.com/reference-1.4.0.html#map) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/Map.js)
+[🍃 Leaflet reference](http://leafletjs.com/reference-1.5.0.html#map) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/Map.js)
 
 **Dynamic properties**
 
 - `animate: boolean` (optional): If `true`, panning will always be animated if possible. Defaults to `false`.
-- `bounds: bounds` (optional): A rectangle for the map to contain. It will be centered, and the map will zoom in as close as it can while still showing the full bounds. Changes are compared using the [`🍃 equals() method of LatLngBounds`](http://leafletjs.com/reference-1.4.0.html#latlngbounds-equals).
+- `duration: number` (optional): Duration of animated panning, in seconds. Defaults to `0.25`.
+- `easeLinearity: number` (optional): The curvature factor of panning animation easing (third parameter of the Cubic Bezier curve). 1.0 means linear animation, and the smaller this number, the more bowed the curve. Defaults to `0.25`.
+- `noMoveStart: boolean` (optional): If true, panning won't fire movestart event on start (used internally for panning inertia). Defaults to `false`.
+- `bounds: bounds` (optional): A rectangle for the map to contain. It will be centered, and the map will zoom in as close as it can while still showing the full bounds. Changes are compared using the [`🍃 equals() method of LatLngBounds`](http://leafletjs.com/reference-1.5.0.html#latlngbounds-equals).
 - `boundsOptions: Object` (optional): Options passed to the `fitBounds()` method.
 - `boxZoom: boolean` (optional): If `true`, the map can be zoomed to a rectangular area specified by dragging the mouse while pressing the shift key. Defaults to true.
 - `center: latLng` (optional if `viewport` is provided with a center value): Center of the map. Changes are compared by value, so `[51.0, 0.0]` is considered the same as `{lat: 51, lng: 0}`.
@@ -125,7 +128,7 @@ This is the top-level component that must be mounted for child components to be 
 **Other properties**
 
 - `id: string` (optional): The ID of the `<div>` container for the map.
-- `whenReady: () => void` (optional): A function called as soon as the map is ready, see [🍃 Leaflet's documentation](http://leafletjs.com/reference-1.4.0.html#map-whenready) for more information.
+- `whenReady: () => void` (optional): A function called as soon as the map is ready, see [🍃 Leaflet's documentation](http://leafletjs.com/reference-1.5.0.html#map-whenready) for more information.
 
 **Manipulating the viewport**
 
@@ -193,7 +196,7 @@ See the [viewport example](https://github.com/PaulLeCam/react-leaflet/blob/maste
 
 ### Pane
 
-[🍃 Leaflet reference](http://leafletjs.com/reference-1.4.0.html#map-pane) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/Pane.js)
+[🍃 Leaflet reference](http://leafletjs.com/reference-1.5.0.html#map-pane) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/Pane.js)
 
 Only children components of the `Pane` component will be added to the corresponding pane. This does not affect the behavior of other Leaflet factories used in these children.
 
@@ -207,7 +210,7 @@ Only children components of the `Pane` component will be added to the correspond
 
 ### Marker
 
-[🍃 Leaflet reference](http://leafletjs.com/reference-1.4.0.html#marker) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/Marker.js)
+[🍃 Leaflet reference](http://leafletjs.com/reference-1.5.0.html#marker) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/Marker.js)
 
 **Dynamic properties**
 
@@ -220,7 +223,7 @@ Only children components of the `Pane` component will be added to the correspond
 
 ### Popup
 
-[🍃 Leaflet reference](http://leafletjs.com/reference-1.4.0.html#popup) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/Popup.js)
+[🍃 Leaflet reference](http://leafletjs.com/reference-1.5.0.html#popup) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/Popup.js)
 
 **Dynamic properties**
 
@@ -232,7 +235,7 @@ Only children components of the `Pane` component will be added to the correspond
 
 ### Tooltip
 
-[🍃 Leaflet reference](http://leafletjs.com/reference-1.4.0.html#tooltip) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/Tooltip.js)
+[🍃 Leaflet reference](http://leafletjs.com/reference-1.5.0.html#tooltip) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/Tooltip.js)
 
 **Dynamic properties**
 
@@ -245,7 +248,7 @@ Only children components of the `Pane` component will be added to the correspond
 
 ### TileLayer
 
-[🍃 Leaflet reference](http://leafletjs.com/reference-1.4.0.html#tilelayer) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/TileLayer.js)
+[🍃 Leaflet reference](http://leafletjs.com/reference-1.5.0.html#tilelayer) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/TileLayer.js)
 
 **Dynamic properties**
 
@@ -256,7 +259,7 @@ Only children components of the `Pane` component will be added to the correspond
 
 ### WMSTileLayer
 
-[🍃 Leaflet reference](http://leafletjs.com/reference-1.4.0.html#tilelayer-wms) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/WMSTileLayer.js)
+[🍃 Leaflet reference](http://leafletjs.com/reference-1.5.0.html#tilelayer-wms) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/WMSTileLayer.js)
 
 **Dynamic properties**
 
@@ -267,7 +270,7 @@ Only children components of the `Pane` component will be added to the correspond
 
 ### ImageOverlay
 
-[🍃 Leaflet reference](http://leafletjs.com/reference-1.4.0.html#imageoverlay) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/ImageOverlay.js)
+[🍃 Leaflet reference](http://leafletjs.com/reference-1.5.0.html#imageoverlay) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/ImageOverlay.js)
 
 **Dynamic properties**
 
@@ -279,7 +282,7 @@ Only children components of the `Pane` component will be added to the correspond
 
 ### VideoOverlay
 
-[🍃 Leaflet reference](http://leafletjs.com/reference-1.4.0.html#videooverlay) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/VideoOverlay.js)
+[🍃 Leaflet reference](http://leafletjs.com/reference-1.5.0.html#videooverlay) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/VideoOverlay.js)
 
 **Dynamic properties**
 
@@ -293,12 +296,12 @@ Only children components of the `Pane` component will be added to the correspond
 ## Vector Layers
 
 All vector layers extend the [Path component](#path) and therefore accept dynamic
-[🍃 Path options](http://leafletjs.com/reference-1.4.0.html#path-options)
+[🍃 Path options](http://leafletjs.com/reference-1.5.0.html#path-options)
 properties.
 
 ### Circle
 
-[🍃 Leaflet reference](http://leafletjs.com/reference-1.4.0.html#circle) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/Circle.js)
+[🍃 Leaflet reference](http://leafletjs.com/reference-1.5.0.html#circle) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/Circle.js)
 
 **Dynamic properties**
 
@@ -308,7 +311,7 @@ properties.
 
 ### CircleMarker
 
-[🍃 Leaflet reference](http://leafletjs.com/reference-1.4.0.html#circlemarker) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/CircleMarker.js)
+[🍃 Leaflet reference](http://leafletjs.com/reference-1.5.0.html#circlemarker) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/CircleMarker.js)
 
 **Dynamic properties**
 
@@ -318,7 +321,7 @@ properties.
 
 ### Polyline
 
-[🍃 Leaflet reference](http://leafletjs.com/reference-1.4.0.html#polyline) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/Polyline.js)
+[🍃 Leaflet reference](http://leafletjs.com/reference-1.5.0.html#polyline) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/Polyline.js)
 
 **Dynamic properties**
 
@@ -327,7 +330,7 @@ properties.
 
 ### Polygon
 
-[🍃 Leaflet reference](http://leafletjs.com/reference-1.4.0.html#polygon) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/Polygon.js)
+[🍃 Leaflet reference](http://leafletjs.com/reference-1.5.0.html#polygon) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/Polygon.js)
 
 **Dynamic properties**
 
@@ -336,7 +339,7 @@ properties.
 
 ### Rectangle
 
-[🍃 Leaflet reference](http://leafletjs.com/reference-1.4.0.html#rectangle) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/Rectangle.js)
+[🍃 Leaflet reference](http://leafletjs.com/reference-1.5.0.html#rectangle) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/Rectangle.js)
 
 **Dynamic properties**
 
@@ -349,11 +352,11 @@ properties.
 
 Extended [LayerGroup](#layergroup) supporting a [Popup](#popup) child.
 
-[🍃 Leaflet reference](http://leafletjs.com/reference-1.4.0.html#featuregroup) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/FeatureGroup.js)
+[🍃 Leaflet reference](http://leafletjs.com/reference-1.5.0.html#featuregroup) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/FeatureGroup.js)
 
 ### GeoJSON
 
-[🍃 Leaflet reference](http://leafletjs.com/reference-1.4.0.html#geojson) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/GeoJSON.js)
+[🍃 Leaflet reference](http://leafletjs.com/reference-1.5.0.html#geojson) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/GeoJSON.js)
 
 **Properties**
 
@@ -366,7 +369,7 @@ Extended [LayerGroup](#layergroup) supporting a [Popup](#popup) child.
 
 ### GridLayer
 
-[🍃 Leaflet reference](http://leafletjs.com/reference-1.4.0.html#gridlayer) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/GridLayer.js)
+[🍃 Leaflet reference](http://leafletjs.com/reference-1.5.0.html#gridlayer) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/GridLayer.js)
 
 **Dynamic properties**
 
@@ -378,13 +381,13 @@ Extended [LayerGroup](#layergroup) supporting a [Popup](#popup) child.
 
 Use the `LayerGroup` wrapper component to group children layers together.
 
-[🍃 Leaflet reference](http://leafletjs.com/reference-1.4.0.html#layergroup) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/LayerGroup.js)
+[🍃 Leaflet reference](http://leafletjs.com/reference-1.5.0.html#layergroup) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/LayerGroup.js)
 
 ## Controls
 
 ### AttributionControl
 
-[🍃 Leaflet reference](http://leafletjs.com/reference-1.4.0.html#control-attribution) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/AttributionControl.js)
+[🍃 Leaflet reference](http://leafletjs.com/reference-1.5.0.html#control-attribution) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/AttributionControl.js)
 
 **Dynamic properties**
 
@@ -392,7 +395,7 @@ Use the `LayerGroup` wrapper component to group children layers together.
 
 ### LayersControl
 
-[🍃 Leaflet reference](http://leafletjs.com/reference-1.4.0.html#control-layers) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/LayersControl.js)
+[🍃 Leaflet reference](http://leafletjs.com/reference-1.5.0.html#control-layers) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/LayersControl.js)
 
 **Dynamic properties**
 
@@ -460,7 +463,7 @@ Example usage:
 
 ### ScaleControl
 
-[🍃 Leaflet reference](http://leafletjs.com/reference-1.4.0.html#control-scale) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/ScaleControl.js)
+[🍃 Leaflet reference](http://leafletjs.com/reference-1.5.0.html#control-scale) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/ScaleControl.js)
 
 **Dynamic properties**
 
@@ -468,7 +471,7 @@ Example usage:
 
 ### ZoomControl
 
-[🍃 Leaflet reference](http://leafletjs.com/reference-1.4.0.html#control-zoom) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/ZoomControl.js)
+[🍃 Leaflet reference](http://leafletjs.com/reference-1.5.0.html#control-zoom) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/ZoomControl.js)
 
 **Dynamic properties**
 

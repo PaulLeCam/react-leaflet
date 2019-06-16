@@ -1,9 +1,9 @@
 import { FeatureGroup, PathOptions } from 'leaflet'
 
-import { createContextComponent } from './component'
-import { createUseLeafletElement } from './element'
-import { createUseLeafletPath } from './path'
 import { LayerGroupProps } from './LayerGroup'
+import { createContextComponent } from './core/component'
+import { createUseLeafletElement } from './core/element'
+import { createUseLeafletPath } from './core/path'
 
 export interface FeatureGroupProps extends LayerGroupProps, PathOptions {}
 

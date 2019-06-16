@@ -6,10 +6,10 @@ import {
 } from 'leaflet'
 import { ReactNode } from 'react'
 
-import { createDivOverlayComponent } from './component'
-import { LeafletContextInterface } from './context'
-import { createUseLeafletDivOverlay, SetOpen } from './div-overlay'
-import { createUseLeafletElement, LeafletElement } from './element'
+import { createDivOverlayComponent } from './core/component'
+import { LeafletContextInterface } from './core/context'
+import { createUseLeafletDivOverlay, SetOpen } from './core/div-overlay'
+import { createUseLeafletElement, LeafletElement } from './core/element'
 
 export interface TooltipProps extends TooltipOptions {
   children?: ReactNode
