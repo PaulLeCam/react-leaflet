@@ -24,7 +24,7 @@ class Marker extends MapLayer<LeafletElement, Props> {
   }
 
   updateLeafletElement(fromProps: Props, toProps: Props) {
-    if (toProps.position !== fromProps.position) {
+    if (toProps.position[0] !== fromProps.position[0] || toProps.position[1] !== fromProps.position[1]) {
       this.leafletElement.setLatLng(toProps.position)
     }
     if (toProps.icon !== fromProps.icon) {
