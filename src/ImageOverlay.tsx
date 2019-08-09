@@ -9,9 +9,10 @@ import { ReactNode } from 'react'
 
 import { createContextComponent } from './core/component'
 import { createUseLeafletElement } from './core/element'
+import { EventedProps } from './core/events'
 import { createUseLeafletLayer } from './core/layer'
 
-export interface MediaOverlayOptions extends ImageOverlayOptions {
+export interface MediaOverlayOptions extends ImageOverlayOptions, EventedProps {
   bounds: LatLngBoundsExpression
 }
 

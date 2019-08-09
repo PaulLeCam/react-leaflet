@@ -2,7 +2,7 @@ import { Popup, Tooltip } from 'leaflet'
 
 import { useLeafletContext, LeafletContextInterface } from './context'
 import { UseLeafletElement, LeafletElement } from './element'
-import { useLeafletEvents } from './events'
+import { EventedProps, useLeafletEvents } from './events'
 
 export type DivOverlay = Popup | Tooltip
 
@@ -20,10 +20,10 @@ export type UseLeafletDivOverlay<E extends DivOverlay, P> = (
   useLifecycle: UseLifecycle<E, P>,
 ) => (props: P, setOpen: SetOpen) => ReturnType<UseLeafletElement<E, P>>
 
-export function createUseLeafletDivOverlay<E extends DivOverlay, P>(
-  useElement: UseLeafletElement<E, P>,
-  useLifecycle: UseLifecycle<E, P>,
-) {
+export function createUseLeafletDivOverlay<
+  E extends DivOverlay,
+  P extends EventedProps
+>(useElement: UseLeafletElement<E, P>, useLifecycle: UseLifecycle<E, P>) {
   return function useLeafletDivOverlay(
     props: P,
     setOpen: SetOpen,
@@ -31,7 +31,7 @@ export function createUseLeafletDivOverlay<E extends DivOverlay, P>(
     const context = useLeafletContext()
     const elementRef = useElement(context, props)
 
-    useLeafletEvents(elementRef.current, props)
+    useLeafletEvents(elementRef.current, props.eventHandlers)
     useLifecycle(elementRef.current, context, props, setOpen)
 
     return elementRef

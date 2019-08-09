@@ -2,10 +2,11 @@ import { TileLayer, TileLayerOptions } from 'leaflet'
 
 import { createLeafComponent } from './core/component'
 import { createUseLeafletElement } from './core/element'
+import { EventedProps } from './core/events'
 import { updateGridLayer } from './core/grid-layer'
 import { createUseLeafletLayer } from './core/layer'
 
-export interface TileLayerProps extends TileLayerOptions {
+export interface TileLayerProps extends TileLayerOptions, EventedProps {
   url: string
 }
 

@@ -15,17 +15,21 @@ export function createUseLeafletControl<
     const elementRef = useElement(context, props)
     const positionRef = useRef(props.position)
 
-    // Adding and removing
+    // Add and remove
     useEffect(() => {
       if (elementRef.current === null || context == null) {
         return
       }
+
       const { el } = elementRef.current
       el.addTo(context.map)
+      positionRef.current = props.position
+
       return () => {
         el.remove()
       }
     }, [context, elementRef])
+
     // Update
     useEffect(() => {
       if (
@@ -36,7 +40,7 @@ export function createUseLeafletControl<
         elementRef.current.el.setPosition(props.position)
         positionRef.current = props.position
       }
-    }, [elementRef, props])
+    }, [elementRef, props.position])
 
     return elementRef
   }

@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 
 import { useLeafletContext, LeafletContextInterface } from './context'
 import { UseLeafletElement, LeafletElement } from './element'
-import { useLeafletEvents } from './events'
+import { EventedProps, useLeafletEvents } from './events'
 
 export function useLeafletLayerLifecycle<E extends Layer>(
   element: LeafletElement<E> | null,
@@ -23,7 +23,7 @@ export function useLeafletLayerLifecycle<E extends Layer>(
   }, [context, element])
 }
 
-export function createUseLeafletLayer<E extends Layer, P>(
+export function createUseLeafletLayer<E extends Layer, P extends EventedProps>(
   useElement: UseLeafletElement<E, P>,
 ) {
   return function useLeafletLayer(
@@ -32,7 +32,7 @@ export function createUseLeafletLayer<E extends Layer, P>(
     const context = useLeafletContext()
     const elementRef = useElement(context, props)
 
-    useLeafletEvents(elementRef.current, props)
+    useLeafletEvents(elementRef.current, props.eventHandlers)
     useLeafletLayerLifecycle(elementRef.current, context)
 
     return elementRef

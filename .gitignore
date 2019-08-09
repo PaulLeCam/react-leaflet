@@ -2,6 +2,5 @@ node_modules
 /coverage
 /dist
 /es
-/flow-typed
 /lib
 /website/build

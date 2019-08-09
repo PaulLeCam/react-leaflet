@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react'
 
 import { useLeafletContext } from './context'
 import { LeafletElement, UseLeafletElement } from './element'
-import { useLeafletEvents } from './events'
+import { EventedProps, useLeafletEvents } from './events'
 import { useLeafletLayerLifecycle } from './layer'
 
 const OPTIONS = [
@@ -62,16 +62,17 @@ export function useLeafletPathOptions(
   }, [element, props])
 }
 
-export function createUseLeafletPath<E extends FeatureGroup | Path, P>(
-  useElement: UseLeafletElement<E, P>,
-) {
+export function createUseLeafletPath<
+  E extends FeatureGroup | Path,
+  P extends EventedProps
+>(useElement: UseLeafletElement<E, P>) {
   return function useLeafletPath(
     props: P,
   ): ReturnType<UseLeafletElement<E, P>> {
     const context = useLeafletContext()
     const elementRef = useElement(context, props)
 
-    useLeafletEvents(elementRef.current, props)
+    useLeafletEvents(elementRef.current, props.eventHandlers)
     useLeafletLayerLifecycle(elementRef.current, context)
     useLeafletPathOptions(elementRef.current, props)
 

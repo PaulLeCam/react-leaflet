@@ -16,9 +16,9 @@ import React, {
 } from 'react'
 
 import { LeafletProvider } from './core/context'
-import { useLeafletEvents } from './core/events'
+import { EventedProps, useLeafletEvents } from './core/events'
 
-export interface MapProps extends MapOptions {
+export interface MapProps extends MapOptions, EventedProps {
   animate?: boolean
   bounds?: LatLngBoundsExpression
   boundsOptions?: FitBoundsOptions
@@ -33,7 +33,7 @@ export function useMapElement(
   const propsRef = useRef<MapProps>(props)
   const [map, setMap] = useState<Map | null>(null)
 
-  useLeafletEvents(map ? { el: map } : null, props)
+  useLeafletEvents(map ? { el: map } : null, props.eventHandlers)
   useEffect(() => {
     if (mapRef.current === null) {
       // Wait for map container to be rendered

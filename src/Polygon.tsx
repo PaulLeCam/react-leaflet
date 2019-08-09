@@ -3,9 +3,10 @@ import { ReactNode } from 'react'
 
 import { createContextComponent } from './core/component'
 import { createUseLeafletElement } from './core/element'
+import { EventedProps } from './core/events'
 import { createUseLeafletPath } from './core/path'
 
-export interface PolygonProps extends PolylineOptions {
+export interface PolygonProps extends PolylineOptions, EventedProps {
   children?: ReactNode
   positions: LatLngExpression[] | LatLngExpression[][] | LatLngExpression[][][]
 }

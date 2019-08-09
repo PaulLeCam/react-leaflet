@@ -3,9 +3,10 @@ import { ReactNode } from 'react'
 
 import { createContextComponent } from './core/component'
 import { createUseLeafletElement } from './core/element'
+import { EventedProps } from './core/events'
 import { createUseLeafletPath } from './core/path'
 
-export interface RectangleProps extends PathOptions {
+export interface RectangleProps extends PathOptions, EventedProps {
   bounds: LatLngBoundsExpression
   children?: ReactNode
 }

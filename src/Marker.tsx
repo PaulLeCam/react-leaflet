@@ -3,9 +3,10 @@ import { ReactNode } from 'react'
 
 import { createContextComponent } from './core/component'
 import { createUseLeafletElement } from './core/element'
+import { EventedProps } from './core/events'
 import { createUseLeafletLayer } from './core/layer'
 
-export interface MarkerProps extends MarkerOptions {
+export interface MarkerProps extends MarkerOptions, EventedProps {
   children?: ReactNode
   position: LatLngExpression
 }

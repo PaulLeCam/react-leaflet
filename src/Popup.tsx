@@ -5,8 +5,9 @@ import { createDivOverlayComponent } from './core/component'
 import { LeafletContextInterface } from './core/context'
 import { createUseLeafletDivOverlay, SetOpen } from './core/div-overlay'
 import { createUseLeafletElement, LeafletElement } from './core/element'
+import { EventedProps } from './core/events'
 
-export interface PopupProps extends PopupOptions {
+export interface PopupProps extends PopupOptions, EventedProps {
   children?: ReactNode
   position?: LatLngExpression
 }

@@ -12,7 +12,7 @@ export {
 export { createUseLeafletControl } from './core/control'
 export { createUseLeafletDivOverlay } from './core/div-overlay'
 export { createUseLeafletElement } from './core/element'
-export { useLeafletEvents } from './core/events'
+export { EventedProps, useLeafletEvents } from './core/events'
 export { createUseLeafletLayer, useLeafletLayerLifecycle } from './core/layer'
 export { createUseLeafletPath, useLeafletPathOptions } from './core/path'
 export {

@@ -10,8 +10,9 @@ import { createDivOverlayComponent } from './core/component'
 import { LeafletContextInterface } from './core/context'
 import { createUseLeafletDivOverlay, SetOpen } from './core/div-overlay'
 import { createUseLeafletElement, LeafletElement } from './core/element'
+import { EventedProps } from './core/events'
 
-export interface TooltipProps extends TooltipOptions {
+export interface TooltipProps extends TooltipOptions, EventedProps {
   children?: ReactNode
   position?: LatLngExpression
 }

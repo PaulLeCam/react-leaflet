@@ -3,10 +3,11 @@ import { TileLayer, WMSOptions } from 'leaflet'
 
 import { createLeafComponent } from './core/component'
 import { createUseLeafletElement } from './core/element'
+import { EventedProps } from './core/events'
 import { updateGridLayer } from './core/grid-layer'
 import { createUseLeafletLayer } from './core/layer'
 
-export interface WMSTileLayerProps extends WMSOptions {
+export interface WMSTileLayerProps extends WMSOptions, EventedProps {
   url: string
 }
 

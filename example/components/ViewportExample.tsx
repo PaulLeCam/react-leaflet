@@ -1,5 +1,5 @@
 import { LatLngTuple } from 'leaflet'
-import React, { useCallback, useState } from 'react'
+import React, { useMemo, useState } from 'react'
 
 import { Map, TileLayer } from '../../src'
 
@@ -17,12 +17,20 @@ function createViewport(): Viewport {
 
 export default function ViewportExample() {
   const [viewport, setViewport] = useState<Viewport>(createViewport())
-  const onClickReset = useCallback(() => {
-    setViewport(createViewport())
-  }, [])
+  const eventHandlers = useMemo(
+    () => ({
+      click: () => {
+        setViewport(createViewport())
+      },
+    }),
+    [],
+  )
 
   return (
-    <Map center={viewport.center} zoom={viewport.zoom} onClick={onClickReset}>
+    <Map
+      center={viewport.center}
+      zoom={viewport.zoom}
+      eventHandlers={eventHandlers}>
       <TileLayer
         attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
