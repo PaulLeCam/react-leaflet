@@ -26,6 +26,7 @@ open pull requests to update this list!
 | [`react-leaflet-draggable-polyline`](https://www.npmjs.com/package/react-leaflet-draggable-polyline)             | unknown            |
 | [`react-leaflet-draw`](https://www.npmjs.com/package/react-leaflet-draw)                                         | unknown            |
 | [`react-leaflet-easyprint`](https://www.npmjs.com/package/react-leaflet-easyprint)                               | **yes**            |
+| [`react-leaflet-enhanced-marker`](https://www.npmjs.com/package/react-leaflet-enhanced-marker)                   | **yes**            |
 | [`react-leaflet-figure-editor`](https://www.npmjs.com/package/react-leaflet-figure-editor)                       | unknown            |
 | [`react-leaflet-freedraw`](https://www.npmjs.com/package/react-leaflet-freedraw)                                 | **yes**            |
 | [`react-leaflet-fullscreen-control`](https://www.npmjs.com/package/react-leaflet-fullscreen-control)             | unknown            |
@@ -53,4 +54,3 @@ open pull requests to update this list!
 | [`react-leaflet-zoom-display`](https://www.npmjs.com/package/react-leaflet-zoom-display)                         | unknown            |
 | [`react-leaflet-zoom-indicator`](https://www.npmjs.com/package/react-leaflet-zoom-indicator)                     | unknown            |
 | [`react-mapbox-components`](https://www.npmjs.com/package/react-mapbox-components)                               | unknown            |
-| [`react-leaflet-enhanced-marker`](https://www.npmjs.com/package/react-leaflet-enhanced-marker)                   | **yes** |

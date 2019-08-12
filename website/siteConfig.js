@@ -38,6 +38,8 @@ const siteConfig = {
     'Copyright © ' + new Date().getFullYear() + ' Paul Le Cam and contributors',
   organizationName: 'PaulLeCam',
   projectName: 'react-leaflet',
+  cleanUrl: true,
+  scrollToTop: true,
   editUrl: 'https://github.com/PaulLeCam/react-leaflet/edit/master/docs/',
   highlight: {
     theme: 'default',
