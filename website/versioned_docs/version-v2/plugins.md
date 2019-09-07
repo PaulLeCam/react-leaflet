@@ -11,6 +11,7 @@ open pull requests to update this list!
 
 | Plugin                                                                                                           | Compatible with v2 |
 | ---------------------------------------------------------------------------------------------------------------- | ------------------ |
+| [`leaflet-drift-marker`](https://www.npmjs.com/package/leaflet-drift-marker)                                     | **yes**            |
 | [`leaflet-react-track-player`](https://www.npmjs.com/package/leaflet-react-track-player)                         | unknown            |
 | [`react-leaflet-ant-path`](https://www.npmjs.com/package/react-leaflet-ant-path)                                 | unknown            |
 | [`react-leaflet-bing`](https://www.npmjs.com/package/react-leaflet-bing)                                         | **yes**            |
@@ -49,6 +50,7 @@ open pull requests to update this list!
 | [`react-leaflet-shapefile`](https://www.npmjs.com/package/react-leaflet-shapefile)                               | **no**             |
 | [`react-leaflet-sidebarv2`](https://www.npmjs.com/package/react-leaflet-sidebarv2)                               | unknown            |
 | [`react-leaflet-sidetabs`](https://www.npmjs.com/package/react-leaflet-sidetabs)                                 | **yes**            |
+| [`react-leaflet-street-view`](https://www.npmjs.com/package/react-leaflet-street-view)                           | **yes**            |
 | [`react-leaflet-textpath`](https://www.npmjs.com/package/react-leaflet-textpath)                                 | **yes**            |
 | [`react-leaflet-vectorgrid`](https://www.npmjs.com/package/react-leaflet-vectorgrid)                             | **yes**            |
 | [`react-leaflet-wmts`](https://www.npmjs.com/package/react-leaflet-wmts)                                         | **yes**            |

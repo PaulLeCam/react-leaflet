@@ -12,7 +12,7 @@
     "crowdin-download": "crowdin --config ../crowdin.yaml download -b master"
   },
   "dependencies": {
-    "highlight.js": "^9.15.9"
+    "highlight.js": "^9.15.10"
   },
   "devDependencies": {
     "docusaurus": "~1.12.0"
