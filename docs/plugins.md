@@ -54,4 +54,5 @@ open pull requests to update this list!
 | [`react-leaflet-zoom-display`](https://www.npmjs.com/package/react-leaflet-zoom-display)                         | unknown            |
 | [`react-leaflet-zoom-indicator`](https://www.npmjs.com/package/react-leaflet-zoom-indicator)                     | unknown            |
 | [`react-mapbox-components`](https://www.npmjs.com/package/react-mapbox-components)                               | unknown            |
-| [`leaflet-drift-marker`](https://www.npmjs.com/package/leaflet-drift-marker)                                         | **yes**            |
+| [`react-leaflet-street-view`](https://www.npmjs.com/package/react-leaflet-street-view)                           | **yes**            |
+| [`leaflet-drift-marker`](https://www.npmjs.com/package/leaflet-drift-marker)                                     | **yes**            |
