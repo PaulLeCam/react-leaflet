@@ -1,5 +1,5 @@
 import { LatLngTuple } from 'leaflet'
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useMemo, useState } from 'react'
 
 import {
   Circle,
@@ -24,9 +24,14 @@ const rectangle: LatLngTuple[] = [[51.49, -0.08], [51.5, -0.06]]
 
 export default function TooltipExample() {
   const [clickedCount, setClickedCount] = useState(0)
-  const onClickCircle = useCallback(() => {
-    setClickedCount(count => count + 1)
-  }, [])
+  const eventHandlers = useMemo(
+    () => ({
+      click() {
+        setClickedCount(count => count + 1)
+      },
+    }),
+    [],
+  )
 
   const clickedText =
     clickedCount === 0
@@ -41,8 +46,8 @@ export default function TooltipExample() {
       />
       <Circle
         center={center}
+        eventHandlers={eventHandlers}
         fillColor="blue"
-        onClick={onClickCircle}
         radius={200}>
         <Tooltip>{clickedText}</Tooltip>
       </Circle>

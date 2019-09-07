@@ -9,25 +9,32 @@ export default function AnimateExample() {
     lat: 51.505,
     lng: -0.09,
   })
-
-  const handleClick = useCallback(e => {
-    setPosition(e.latlng)
-  }, [])
-
+  const eventHandlers = useMemo(
+    () => ({
+      click(e) {
+        setPosition(e.latlng)
+      },
+    }),
+    [],
+  )
   const toggleAnimate = useCallback(() => {
     setAnimate(a => !a)
   }, [])
 
   const map = useMemo(() => {
     return (
-      <Map animate={animate} center={position} onClick={handleClick} zoom={13}>
+      <Map
+        animate={animate}
+        center={position}
+        eventHandlers={eventHandlers}
+        zoom={13}>
         <TileLayer
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
       </Map>
     )
-  }, [position])
+  }, [animate, eventHandlers, position])
 
   return (
     <div style={{ textAlign: 'center' }}>

@@ -71,7 +71,7 @@ export function useMapElement(
       }
     }
     propsRef.current = props
-  })
+  }, [mapRef, map, props])
 
   return map
 }

@@ -28,7 +28,7 @@ export function createUseLeafletControl<
       return () => {
         el.remove()
       }
-    }, [context, elementRef])
+    }, [context, elementRef, props.position])
 
     // Update
     useEffect(() => {

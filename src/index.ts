@@ -28,6 +28,8 @@ export {
   LeafletFeatureGroup as FeatureGroup,
   FeatureGroupProps,
 } from './FeatureGroup'
+export { LeafletGeoJSON as GeoJSON, GeoJSONProps } from './GeoJSON'
+export { LeafletGridLayer as GridLayer, GridLayerProps } from './GridLayer'
 export {
   LeafletImageOverlay as ImageOverlay,
   ImageOverlayProps,

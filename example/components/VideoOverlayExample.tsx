@@ -1,5 +1,5 @@
 import { LatLngTuple } from 'leaflet'
-import React, { useCallback, useState } from 'react'
+import React, { useMemo, useState } from 'react'
 
 import { Map, TileLayer, VideoOverlay } from '../../src'
 
@@ -7,13 +7,17 @@ const center: LatLngTuple = [25, -100]
 
 export default function VideoOverlayExample() {
   const [play, setPlay] = useState(true)
-
-  const onTogglePlay = useCallback(() => {
-    setPlay(p => !p)
-  }, [])
+  const eventHandlers = useMemo(
+    () => ({
+      click() {
+        setPlay(p => !p)
+      },
+    }),
+    [],
+  )
 
   return (
-    <Map center={center} onClick={onTogglePlay} zoom={4}>
+    <Map center={center} eventHandlers={eventHandlers} zoom={4}>
       <TileLayer
         attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

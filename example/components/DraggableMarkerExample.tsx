@@ -1,5 +1,5 @@
 import { LatLngExpression } from 'leaflet'
-import React, { useCallback, useRef, useState } from 'react'
+import React, { useCallback, useMemo, useRef, useState } from 'react'
 
 import { Map, TileLayer, Marker, Popup } from '../../src'
 
@@ -12,23 +12,25 @@ function DraggableMarker() {
   const [draggable, setDraggable] = useState(false)
   const [markerPosition, setMarkerPosition] = useState<LatLngExpression>(center)
   const markerRef = useRef(null)
-
+  const eventHandlers = useMemo(
+    () => ({
+      dragEnd() {
+        const marker = markerRef.current
+        if (marker != null) {
+          setMarkerPosition(marker.element.getLatLng())
+        }
+      },
+    }),
+    [],
+  )
   const toggleDraggable = useCallback(() => {
     setDraggable(d => !d)
-  }, [])
-
-  const updatePosition = useCallback(() => {
-    console.log('update position')
-    const marker = markerRef.current
-    if (marker != null) {
-      setMarkerPosition(marker.element.getLatLng())
-    }
   }, [])
 
   return (
     <Marker
       draggable={draggable}
-      onDragEnd={draggable ? updatePosition : undefined}
+      eventHandlers={draggable ? eventHandlers : undefined}
       position={markerPosition}
       ref={markerRef}>
       <Popup minWidth={90}>

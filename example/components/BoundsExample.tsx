@@ -1,5 +1,5 @@
 import { LatLngTuple } from 'leaflet'
-import React, { useCallback, useMemo, useState } from 'react'
+import React, { useMemo, useState } from 'react'
 
 import { Map, TileLayer, Rectangle } from '../../src'
 
@@ -8,14 +8,22 @@ const outer: LatLngTuple[] = [[50.505, -29.09], [52.505, 29.09]]
 
 export default function BoundsExample() {
   const [bounds, setBounds] = useState(outer)
-
-  const onClickInner = useCallback(() => {
-    setBounds(inner)
-  }, [])
-
-  const onClickOuter = useCallback(() => {
-    setBounds(outer)
-  }, [])
+  const innerHandlers = useMemo(
+    () => ({
+      click() {
+        setBounds(inner)
+      },
+    }),
+    [],
+  )
+  const outerHandlers = useMemo(
+    () => ({
+      click() {
+        setBounds(outer)
+      },
+    }),
+    [],
+  )
 
   const tileLayer = useMemo(
     () => (
@@ -33,12 +41,12 @@ export default function BoundsExample() {
       <Rectangle
         bounds={outer}
         color={bounds === outer ? 'red' : 'white'}
-        onClick={onClickOuter}
+        eventHandlers={outerHandlers}
       />
       <Rectangle
         bounds={inner}
         color={bounds === inner ? 'red' : 'white'}
-        onClick={onClickInner}
+        eventHandlers={innerHandlers}
       />
     </Map>
   )
