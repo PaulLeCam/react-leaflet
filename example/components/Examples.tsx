@@ -9,6 +9,7 @@ import DraggableExample from './DraggableMarkerExample'
 import EventsExample from './EventsExample'
 import LayersControlExample from './LayersControlExample'
 import OtherLayersExample from './OtherLayersExample'
+import GeoJSONExample from './GeoJSONExample'
 import PaneExample from './PaneExample'
 import SimpleExample from './SimpleExample'
 import TooltipExample from './TooltipExample'
@@ -37,6 +38,8 @@ export default function App() {
       <VectorLayersExample />
       <h2>Other layers</h2>
       <OtherLayersExample />
+      <h2>GeoJSON with Popup</h2>
+      <GeoJSONExample />
       <h2>Tooltips</h2>
       <TooltipExample />
       <h2>Zoom control</h2>

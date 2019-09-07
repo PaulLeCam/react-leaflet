@@ -1,3 +1,10 @@
+## master
+
+- Added a GeoJSON Popup example ([PR #608](https://github.com/PaulLeCam/react-leaflet/pull/608) by _hackleman_).
+- [website] Added `react-leaflet-enhanced-marker` plugin ([PR #610](https://github.com/PaulLeCam/react-leaflet/pull/610) by _ishaan6395_).
+- [website] Added `leaflet-drift-marker` plugin ([PR #615](https://github.com/PaulLeCam/react-leaflet/pull/615) by _hugobarragon_).
+- [website] Added `react-leaflet-street-view` plugin ([PR #616](https://github.com/PaulLeCam/react-leaflet/pull/616) by _ishaan6395_).
+
 ## v2.4.0 (2019-06-09)
 
 - Added `ZoomPanOptions` and `FitBoundsOptions` to `Map` component ([PR #593](https://github.com/PaulLeCam/react-leaflet/pull/593) by _scailbc_).
