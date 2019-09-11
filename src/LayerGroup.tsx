@@ -1,7 +1,7 @@
 import { LayerGroup, LayerOptions } from 'leaflet'
 import { ReactNode } from 'react'
 
-import { createContextComponent } from './core/component'
+import { createContainerComponent } from './core/component'
 import { createUseLeafletElement } from './core/element'
 import { EventedProps } from './core/events'
 import { createUseLeafletLayer } from './core/layer'
@@ -24,4 +24,4 @@ export const useLayerGroupElement = createUseLeafletElement<
 
 export const useLeafletLayerGroup = createUseLeafletLayer(useLayerGroupElement)
 
-export const LeafletLayerGroup = createContextComponent(useLeafletLayerGroup)
+export const LeafletLayerGroup = createContainerComponent(useLeafletLayerGroup)

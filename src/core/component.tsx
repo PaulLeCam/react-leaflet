@@ -24,10 +24,10 @@ interface PropsWithChildren {
 
 type ElementRef<E> = Ref<{ element: E | null }>
 
-export function createContextComponent<E, P extends PropsWithChildren>(
+export function createContainerComponent<E, P extends PropsWithChildren>(
   useFunc: UseLeafletFunc<E, P>,
 ) {
-  function ContextComponent(props: P, ref: ElementRef<E>) {
+  function ContainerComponent(props: P, ref: ElementRef<E>) {
     const elementRef = useFunc(props)
 
     let el: E | null = null
@@ -50,14 +50,14 @@ export function createContextComponent<E, P extends PropsWithChildren>(
     )
   }
 
-  return forwardRef(ContextComponent)
+  return forwardRef(ContainerComponent)
 }
 
-export function createDivOverlayComponent<
+export function createOverlayComponent<
   E extends DivOverlay,
   P extends PropsWithChildren
 >(useFunc: ReturnType<UseLeafletDivOverlay<E, P>>) {
-  function DivOverlayComponent(props: P, ref: ElementRef<E>) {
+  function OverlayComponent(props: P, ref: ElementRef<E>) {
     const [isOpen, setOpen] = useState(false)
     const elementRef = useFunc(props, setOpen)
     const el = elementRef.current === null ? null : elementRef.current.el
@@ -74,7 +74,7 @@ export function createDivOverlayComponent<
     return contentNode ? createPortal(props.children, contentNode) : null
   }
 
-  return forwardRef(DivOverlayComponent)
+  return forwardRef(OverlayComponent)
 }
 
 export function createLeafComponent<E, P>(useFunc: UseLeafletFunc<E, P>) {

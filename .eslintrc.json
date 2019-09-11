@@ -18,6 +18,7 @@
   },
   "plugins": ["@typescript-eslint", "prettier", "react", "react-hooks"],
   "rules": {
+    "@typescript-eslint/ban-ts-ignore": "warn",
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/no-empty-interface": "off",
     "@typescript-eslint/no-explicit-any": "off",
@@ -40,7 +41,7 @@
   },
   "settings": {
     "react": {
-      "version": "16.8"
+      "version": "16.9"
     }
   }
 }

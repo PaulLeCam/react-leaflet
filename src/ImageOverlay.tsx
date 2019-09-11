@@ -7,7 +7,7 @@ import {
 } from 'leaflet'
 import { ReactNode } from 'react'
 
-import { createContextComponent } from './core/component'
+import { createContainerComponent } from './core/component'
 import { createUseLeafletElement } from './core/element'
 import { EventedProps } from './core/events'
 import { createUseLeafletLayer } from './core/layer'
@@ -64,6 +64,6 @@ export const useLeafletImageOverlay = createUseLeafletLayer(
   useImageOverlayElement,
 )
 
-export const LeafletImageOverlay = createContextComponent(
+export const LeafletImageOverlay = createContainerComponent(
   useLeafletImageOverlay,
 )

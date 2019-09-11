@@ -11,7 +11,7 @@ import React, {
   useState,
 } from 'react'
 
-import { createContextComponent } from './core/component'
+import { createContainerComponent } from './core/component'
 import { LeafletProvider, useLeafletContext } from './core/context'
 import { createUseLeafletControl } from './core/control'
 import { createUseLeafletElement } from './core/element'
@@ -59,7 +59,7 @@ export const LeafletLayersControl: ForwardRefExoticComponent<
 > & {
   BaseLayer: StatelessComponent<ControlledLayerProps>
   Overlay: StatelessComponent<ControlledLayerProps>
-} = createContextComponent(useLeafletLayersControl)
+} = createContainerComponent(useLeafletLayersControl)
 
 type AddLayerFunc = (
   layersControl: Control.Layers,

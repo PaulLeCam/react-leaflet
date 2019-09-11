@@ -1,12 +1,11 @@
 import { LatLngExpression, CircleMarker, CircleMarkerOptions } from 'leaflet'
 import { ReactNode } from 'react'
 
-import { createContextComponent } from './core/component'
+import { createContainerComponent } from './core/component'
 import { createUseLeafletElement } from './core/element'
-import { EventedProps } from './core/events'
-import { createUseLeafletPath } from './core/path'
+import { PathProps, createUseLeafletPath } from './core/path'
 
-export interface CircleMarkerProps extends CircleMarkerOptions, EventedProps {
+export interface CircleMarkerProps extends CircleMarkerOptions, PathProps {
   center: LatLngExpression
   children?: ReactNode
 }
@@ -40,6 +39,6 @@ export const useLeafletCircleMarker = createUseLeafletPath(
   useCircleMarkerElement,
 )
 
-export const LeafletCircleMarker = createContextComponent(
+export const LeafletCircleMarker = createContainerComponent(
   useLeafletCircleMarker,
 )

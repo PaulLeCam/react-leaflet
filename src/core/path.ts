@@ -1,4 +1,3 @@
-import isEqual from 'fast-deep-equal'
 import { FeatureGroup, Path, PathOptions } from 'leaflet'
 import { useEffect, useRef } from 'react'
 
@@ -7,55 +6,23 @@ import { LeafletElement, UseLeafletElement } from './element'
 import { EventedProps, useLeafletEvents } from './events'
 import { useLeafletLayerLifecycle } from './layer'
 
-const OPTIONS = [
-  'stroke',
-  'color',
-  'weight',
-  'opacity',
-  'lineCap',
-  'lineJoin',
-  'dashArray',
-  'dashOffset',
-  'fill',
-  'fillColor',
-  'fillOpacity',
-  'fillRule',
-  'bubblingMouseEvents',
-  'renderer',
-  'className',
-  // Interactive Layer
-  'interactive',
-  // Layer
-  'pane',
-  'attribution',
-]
-
-export function getPathOptions(props: Record<string, any>): PathOptions {
-  return OPTIONS.reduce(
-    (acc, key) => {
-      if (props[key] != null) {
-        // @ts-ignore
-        acc[key] = props[key]
-      }
-      return acc
-    },
-    {} as PathOptions,
-  )
+export interface PathProps extends EventedProps {
+  pathOptions?: PathOptions
 }
 
-export function useLeafletPathOptions(
+export function useLeafletPathOptions<P extends PathProps>(
   element: LeafletElement<FeatureGroup | Path> | null,
-  props: Record<string, any>,
+  props: P,
 ) {
-  const optionsRef = useRef<PathOptions>({})
+  const optionsRef = useRef<PathOptions>(props.pathOptions || {})
 
   useEffect(() => {
     if (element === null) {
       return
     }
 
-    const options = getPathOptions(props)
-    if (!isEqual(options, optionsRef.current)) {
+    if (props.pathOptions !== optionsRef.current) {
+      const options = props.pathOptions || {}
       element.el.setStyle(options)
       optionsRef.current = options
     }
@@ -64,7 +31,7 @@ export function useLeafletPathOptions(
 
 export function createUseLeafletPath<
   E extends FeatureGroup | Path,
-  P extends EventedProps
+  P extends PathProps
 >(useElement: UseLeafletElement<E, P>) {
   return function useLeafletPath(
     props: P,
@@ -74,7 +41,7 @@ export function createUseLeafletPath<
 
     useLeafletEvents(elementRef.current, props.eventHandlers)
     useLeafletLayerLifecycle(elementRef.current, context)
-    useLeafletPathOptions(elementRef.current, props)
+    useLeafletPathOptions<P>(elementRef.current, props)
 
     return elementRef
   }

@@ -1,12 +1,11 @@
 import { LatLngBoundsExpression, Rectangle, PathOptions } from 'leaflet'
 import { ReactNode } from 'react'
 
-import { createContextComponent } from './core/component'
+import { createContainerComponent } from './core/component'
 import { createUseLeafletElement } from './core/element'
-import { EventedProps } from './core/events'
-import { createUseLeafletPath } from './core/path'
+import { PathProps, createUseLeafletPath } from './core/path'
 
-export interface RectangleProps extends PathOptions, EventedProps {
+export interface RectangleProps extends PathOptions, PathProps {
   bounds: LatLngBoundsExpression
   children?: ReactNode
 }
@@ -32,4 +31,4 @@ export const useRectangleElement = createUseLeafletElement<
 
 export const useLeafletRectangle = createUseLeafletPath(useRectangleElement)
 
-export const LeafletRectangle = createContextComponent(useLeafletRectangle)
+export const LeafletRectangle = createContainerComponent(useLeafletRectangle)

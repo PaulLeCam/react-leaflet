@@ -23,12 +23,11 @@ export function createUseLeafletControl<
 
       const { el } = elementRef.current
       el.addTo(context.map)
-      positionRef.current = props.position
 
       return () => {
         el.remove()
       }
-    }, [context, elementRef, props.position])
+    }, [context, elementRef])
 
     // Update
     useEffect(() => {

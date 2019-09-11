@@ -1,4 +1,3 @@
-import isEqual from 'fast-deep-equal'
 import { Evented, LeafletEventHandlerFnMap } from 'leaflet'
 import { useEffect, useRef } from 'react'
 
@@ -19,7 +18,7 @@ export function useLeafletEvents(
       return
     }
 
-    if (!isEqual(eventHandlers, eventHandlersRef.current)) {
+    if (eventHandlers !== eventHandlersRef.current) {
       if (eventHandlersRef.current != null) {
         element.el.off(eventHandlersRef.current)
       }

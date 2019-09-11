@@ -1,7 +1,7 @@
 import { LatLngExpression, Marker, MarkerOptions } from 'leaflet'
 import { ReactNode } from 'react'
 
-import { createContextComponent } from './core/component'
+import { createContainerComponent } from './core/component'
 import { createUseLeafletElement } from './core/element'
 import { EventedProps } from './core/events'
 import { createUseLeafletLayer } from './core/layer'
@@ -48,4 +48,4 @@ export const useMarkerElement = createUseLeafletElement<Marker, MarkerProps>(
 
 export const useLeafletMarker = createUseLeafletLayer(useMarkerElement)
 
-export const LeafletMarker = createContextComponent(useLeafletMarker)
+export const LeafletMarker = createContainerComponent(useLeafletMarker)

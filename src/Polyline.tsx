@@ -1,12 +1,11 @@
 import { LatLngExpression, Polyline, PolylineOptions } from 'leaflet'
 import { ReactNode } from 'react'
 
-import { createContextComponent } from './core/component'
+import { createContainerComponent } from './core/component'
 import { createUseLeafletElement } from './core/element'
-import { EventedProps } from './core/events'
-import { createUseLeafletPath } from './core/path'
+import { PathProps, createUseLeafletPath } from './core/path'
 
-export interface PolylineProps extends PolylineOptions, EventedProps {
+export interface PolylineProps extends PolylineOptions, PathProps {
   children?: ReactNode
   positions: LatLngExpression[] | LatLngExpression[][]
 }
@@ -35,4 +34,4 @@ export const usePolylineElement = createUseLeafletElement<
 
 export const useLeafletPolyline = createUseLeafletPath(usePolylineElement)
 
-export const LeafletPolyline = createContextComponent(useLeafletPolyline)
+export const LeafletPolyline = createContainerComponent(useLeafletPolyline)

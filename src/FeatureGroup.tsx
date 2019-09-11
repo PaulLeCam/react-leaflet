@@ -1,15 +1,11 @@
-import { FeatureGroup, PathOptions } from 'leaflet'
+import { FeatureGroup } from 'leaflet'
 
 import { LayerGroupProps } from './LayerGroup'
-import { createContextComponent } from './core/component'
+import { createContainerComponent } from './core/component'
 import { createUseLeafletElement } from './core/element'
-import { EventedProps } from './core/events'
-import { createUseLeafletPath } from './core/path'
+import { PathProps, createUseLeafletPath } from './core/path'
 
-export interface FeatureGroupProps
-  extends LayerGroupProps,
-    PathOptions,
-    EventedProps {}
+export interface FeatureGroupProps extends LayerGroupProps, PathProps {}
 
 export const useFeatureGroupElement = createUseLeafletElement<
   FeatureGroup,
@@ -30,6 +26,6 @@ export const useLeafletFeatureGroup = createUseLeafletPath(
   useFeatureGroupElement,
 )
 
-export const LeafletFeatureGroup = createContextComponent(
+export const LeafletFeatureGroup = createContainerComponent(
   useLeafletFeatureGroup,
 )

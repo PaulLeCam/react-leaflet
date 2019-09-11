@@ -2,13 +2,15 @@ import { VideoOverlay, VideoOverlayOptions } from 'leaflet'
 
 import { createLeafComponent } from './core/component'
 import { createUseLeafletElement } from './core/element'
+import { EventedProps } from './core/events'
 import { createUseLeafletLayer } from './core/layer'
 
 import { MediaOverlayOptions, updateMediaOverlay } from './ImageOverlay'
 
 export interface VideoOverlayProps
   extends MediaOverlayOptions,
-    VideoOverlayOptions {
+    VideoOverlayOptions,
+    EventedProps {
   play?: boolean
   url: string | string[] | HTMLVideoElement
 }

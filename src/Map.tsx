@@ -24,6 +24,7 @@ export interface MapProps extends MapOptions, EventedProps {
   boundsOptions?: FitBoundsOptions
   children?: ReactNode
   useFlyTo?: boolean
+  whenReady?: () => void
 }
 
 export function useMapElement(
@@ -45,6 +46,9 @@ export function useMapElement(
         el.setView(props.center, props.zoom)
       } else if (props.bounds != null) {
         el.fitBounds(props.bounds)
+      }
+      if (props.whenReady != null) {
+        el.whenReady(props.whenReady)
       }
       setMap(el)
     } else if (propsRef.current !== null) {
@@ -68,6 +72,13 @@ export function useMapElement(
         } else {
           map.fitBounds(props.bounds, props.boundsOptions)
         }
+      }
+
+      if (
+        props.whenReady != null &&
+        props.whenReady !== propsRef.current.whenReady
+      ) {
+        map.whenReady(props.whenReady)
       }
     }
     propsRef.current = props

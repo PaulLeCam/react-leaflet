@@ -1,12 +1,11 @@
 import { Circle } from 'leaflet'
 
 import { CircleMarkerProps, updateCircle } from './CircleMarker'
-import { createContextComponent } from './core/component'
+import { createContainerComponent } from './core/component'
 import { createUseLeafletElement } from './core/element'
-import { EventedProps } from './core/events'
-import { createUseLeafletPath } from './core/path'
+import { PathProps, createUseLeafletPath } from './core/path'
 
-export interface CircleProps extends CircleMarkerProps, EventedProps {}
+export interface CircleProps extends CircleMarkerProps, PathProps {}
 
 export const useCircleElement = createUseLeafletElement<Circle, CircleProps>(
   function createCircle(props, context) {
@@ -22,4 +21,4 @@ export const useCircleElement = createUseLeafletElement<Circle, CircleProps>(
 
 export const useLeafletCircle = createUseLeafletPath(useCircleElement)
 
-export const LeafletCircle = createContextComponent(useLeafletCircle)
+export const LeafletCircle = createContainerComponent(useLeafletCircle)

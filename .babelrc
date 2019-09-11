@@ -26,6 +26,7 @@
           "@babel/preset-env",
           {
             "corejs": 3,
+            "loose": true,
             "modules": false,
             "targets": {
               "node": "current",
@@ -37,7 +38,7 @@
       ],
       "plugins": [["@babel/transform-runtime", { "corejs": 3 }]]
     },
-    "jsnext": {
+    "esm": {
       "presets": [
         [
           "@babel/preset-env",

@@ -1,6 +1,10 @@
 module.exports = {
   collectCoverage: true,
-  roots: ['<rootDir>/src'],
+  globals: {
+    'ts-jest': {
+      diagnostics: false,
+    },
+  },
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
   },
