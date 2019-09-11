@@ -1,6 +1,7 @@
 // @flow
 
 import { ImageOverlay as LeafletImageOverlay, latLngBounds } from 'leaflet'
+import isEqual from 'fast-deep-equal'
 
 import { withLeaflet } from './context'
 import MapLayer from './MapLayer'
@@ -30,7 +31,7 @@ class ImageOverlay extends MapLayer<LeafletElement, Props> {
     if (toProps.url !== fromProps.url) {
       this.leafletElement.setUrl(toProps.url)
     }
-    if (toProps.bounds !== fromProps.bounds) {
+    if (!isEqual(toProps.bounds, fromProps.bounds)) {
       this.leafletElement.setBounds(latLngBounds(toProps.bounds))
     }
     if (toProps.opacity !== fromProps.opacity) {

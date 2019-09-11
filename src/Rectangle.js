@@ -1,6 +1,7 @@
 // @flow
 
 import { Rectangle as LeafletRectangle } from 'leaflet'
+import isEqual from 'fast-deep-equal'
 
 import { withLeaflet } from './context'
 import Path from './Path'
@@ -15,7 +16,7 @@ class Rectangle extends Path<LeafletElement, Props> {
   }
 
   updateLeafletElement(fromProps: Props, toProps: Props) {
-    if (toProps.bounds !== fromProps.bounds) {
+    if (!isEqual(toProps.bounds, fromProps.bounds)) {
       this.leafletElement.setBounds(toProps.bounds)
     }
     this.setStyleIfChanged(fromProps, toProps)

@@ -1,6 +1,7 @@
 // @flow
 
 import { CircleMarker as LeafletCircleMarker } from 'leaflet'
+import isEqual from 'fast-deep-equal'
 
 import { withLeaflet } from './context'
 import Path from './Path'
@@ -20,7 +21,7 @@ class CircleMarker extends Path<LeafletElement, Props> {
   }
 
   updateLeafletElement(fromProps: Props, toProps: Props) {
-    if (toProps.center !== fromProps.center) {
+    if (!isEqual(toProps.center, fromProps.center)) {
       this.leafletElement.setLatLng(toProps.center)
     }
     if (toProps.radius !== fromProps.radius) {

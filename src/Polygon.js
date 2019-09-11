@@ -1,6 +1,7 @@
 // @flow
 
 import { Polygon as LeafletPolygon } from 'leaflet'
+import isEqual from 'fast-deep-equal'
 
 import { withLeaflet } from './context'
 import Path from './Path'
@@ -17,7 +18,7 @@ class Polygon extends Path<LeafletElement, Props> {
   }
 
   updateLeafletElement(fromProps: Props, toProps: Props) {
-    if (toProps.positions !== fromProps.positions) {
+    if (!isEqual(toProps.positions, fromProps.positions)) {
       this.leafletElement.setLatLngs(toProps.positions)
     }
     this.setStyleIfChanged(fromProps, toProps)

@@ -2,6 +2,7 @@
 
 import { Control } from 'leaflet'
 import { Component } from 'react'
+import isEqual from 'fast-deep-equal'
 
 import type { MapControlProps } from './types'
 
@@ -21,7 +22,7 @@ export default class MapControl<
   }
 
   updateLeafletElement(fromProps: Props, toProps: Props): void {
-    if (toProps.position !== fromProps.position) {
+    if (!isEqual(toProps.position, fromProps.position)) {
       this.leafletElement.setPosition(toProps.position)
     }
   }

@@ -2,6 +2,7 @@
 
 import { type Icon, Marker as LeafletMarker } from 'leaflet'
 import React from 'react'
+import isEqual from 'fast-deep-equal'
 
 import { LeafletProvider, withLeaflet } from './context'
 import MapLayer from './MapLayer'
@@ -24,10 +25,10 @@ class Marker extends MapLayer<LeafletElement, Props> {
   }
 
   updateLeafletElement(fromProps: Props, toProps: Props) {
-    if (toProps.position !== fromProps.position) {
+    if (!isEqual(toProps.position, fromProps.position)) {
       this.leafletElement.setLatLng(toProps.position)
     }
-    if (toProps.icon !== fromProps.icon) {
+    if (!isEqual(toProps.icon, fromProps.icon)) {
       this.leafletElement.setIcon(toProps.icon)
     }
     if (toProps.zIndexOffset !== fromProps.zIndexOffset) {

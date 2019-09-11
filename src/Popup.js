@@ -1,6 +1,7 @@
 // @flow
 
 import { Popup as LeafletPopup } from 'leaflet'
+import isEqual from 'fast-deep-equal'
 
 import { withLeaflet } from './context'
 import DivOverlay from './DivOverlay'
@@ -31,7 +32,7 @@ class Popup extends DivOverlay<LeafletElement, Props> {
   }
 
   updateLeafletElement(fromProps: Props, toProps: Props) {
-    if (toProps.position !== fromProps.position) {
+    if (!isEqual(toProps.position, fromProps.position)) {
       this.leafletElement.setLatLng(toProps.position)
     }
   }

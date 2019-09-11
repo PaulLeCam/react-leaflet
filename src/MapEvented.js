@@ -2,6 +2,7 @@
 
 import type { Evented } from 'leaflet'
 import { Component } from 'react'
+import isEqual from 'fast-deep-equal'
 
 export const EVENTS_RE = /^on(.+)$/i
 
@@ -61,14 +62,14 @@ export default class MapEvented<
 
     const diff = { ...prev }
     Object.keys(prev).forEach(ev => {
-      if (next[ev] == null || prev[ev] !== next[ev]) {
+      if (next[ev] == null || !isEqual(prev[ev], next[ev])) {
         delete diff[ev]
         el.off(ev, prev[ev])
       }
     })
 
     Object.keys(next).forEach(ev => {
-      if (prev[ev] == null || next[ev] !== prev[ev]) {
+      if (prev[ev] == null || !isEqual(next[ev], prev[ev])) {
         diff[ev] = next[ev]
         el.on(ev, next[ev])
       }

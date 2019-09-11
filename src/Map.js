@@ -7,6 +7,7 @@ import {
   type Renderer,
 } from 'leaflet'
 import React, { type Node } from 'react'
+import isEqual from 'fast-deep-equal'
 
 import { LeafletProvider } from './context'
 import MapEvented from './MapEvented'
@@ -151,7 +152,7 @@ export default class Map extends MapEvented<LeafletElement, Props> {
 
     updateClassName(this.container, fromProps.className, className)
 
-    if (viewport && viewport !== fromProps.viewport) {
+    if (viewport && !isEqual(viewport, fromProps.viewport)) {
       const c = viewport.center ? viewport.center : center
       const z = viewport.zoom == null ? zoom : viewport.zoom
       if (useFlyTo === true) {
@@ -188,7 +189,7 @@ export default class Map extends MapEvented<LeafletElement, Props> {
     if (
       bounds &&
       (this.shouldUpdateBounds(bounds, fromProps.bounds) ||
-        boundsOptions !== fromProps.boundsOptions)
+        !isEqual(boundsOptions, fromProps.boundsOptions))
     ) {
       if (useFlyTo === true) {
         this.leafletElement.flyToBounds(
@@ -200,7 +201,7 @@ export default class Map extends MapEvented<LeafletElement, Props> {
       }
     }
 
-    if (boxZoom !== fromProps.boxZoom) {
+    if (!isEqual(boxZoom, fromProps.boxZoom)) {
       if (boxZoom === true) {
         this.leafletElement.boxZoom.enable()
       } else {
@@ -355,7 +356,7 @@ export default class Map extends MapEvented<LeafletElement, Props> {
     if (!prev) return true
     next = normalizeCenter(next)
     prev = normalizeCenter(prev)
-    return next[0] !== prev[0] || next[1] !== prev[1]
+    return !isEqual(next[0], prev[0]) || !isEqual(next[1], prev[1])
   }
 
   shouldUpdateBounds(next: LatLngBounds, prev: LatLngBounds) {
