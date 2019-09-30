@@ -3,21 +3,26 @@
 import React, { Component } from 'react'
 import { Map, TileLayer, Marker, Popup } from '../../src'
 
-type State = {
+type positionLatLng = {
   lat: number,
   lng: number,
+}
+
+type State = {
+  position: positionLatLng,
   zoom: number,
 }
 
 export default class SimpleExample extends Component<{}, State> {
   state = {
-    lat: 51.505,
-    lng: -0.09,
+    position: {
+      lat: 51.505,
+      lng: -0.09
+    },
     zoom: 13,
   }
 
   render() {
-    const position = [this.state.lat, this.state.lng]
     return (
       <Map center={position} zoom={this.state.zoom}>
         <TileLayer
