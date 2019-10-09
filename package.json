@@ -22,7 +22,7 @@
     "test": "npm run lint && npm run flow && npm run jest",
     "test:watch": "npm run lint && npm run flow && npm run jest:watch",
     "start": "npm run test && npm run build",
-    "prepublishOnly": "npm run build",
+    "prepare": "npm run build",
     "examples": "webpack-dev-server --config ./example/webpack.config.js"
   },
   "repository": {
