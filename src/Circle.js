@@ -1,6 +1,6 @@
 // @flow
 
-import { Circle as LeafletCircle } from 'leaflet'
+import { Circle as LeafletCircle, latLng } from 'leaflet'
 
 import { withLeaflet } from './context'
 import Path from './Path'
@@ -21,7 +21,7 @@ class Circle extends Path<LeafletElement, Props> {
   }
 
   updateLeafletElement(fromProps: Props, toProps: Props) {
-    if (toProps.center !== fromProps.center) {
+    if (!latLng(toProps.center).equals(fromProps.center)) {
       this.leafletElement.setLatLng(toProps.center)
     }
     if (toProps.radius !== fromProps.radius) {
