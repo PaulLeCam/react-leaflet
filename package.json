@@ -105,6 +105,9 @@
     "webpack-dev-server": "^3.8.0"
   },
   "jest": {
-    "collectCoverage": true
+    "collectCoverage": true,
+    "transform": {
+      ".*": "<rootDir>/node_modules/babel-jest"
+    }
   }
 }
