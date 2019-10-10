@@ -38,9 +38,9 @@
   "author": "Paul Le Cam <paul@ulem.net>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/PaulLeCam/react-leaflet/issues"
+    "url": "https://github.com/InTouchGPS/react-leaflet.git/issues"
   },
-  "homepage": "https://github.com/PaulLeCam/react-leaflet",
+  "homepage": "https://github.com/InTouchGPS/react-leaflet",
   "files": [
     ".babelrc",
     "dist/*",
