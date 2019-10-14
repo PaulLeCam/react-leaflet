@@ -1,4 +1,3 @@
-import '@testing-library/jest-dom/extend-expect'
 import { render } from '@testing-library/react'
 import React from 'react'
 
@@ -11,6 +10,6 @@ describe('TileLayer', () => {
         <TileLayer attribution="tiles attribution" url="http://localhost" />
       </Map>,
     )
-    expect(container).toMatchSnapshot(`<div />`)
+    expect(container).toMatchSnapshot()
   })
 })

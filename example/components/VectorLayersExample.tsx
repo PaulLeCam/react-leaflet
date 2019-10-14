@@ -36,15 +36,22 @@ export default function VectorLayersExample() {
         attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <Circle center={center} fillColor="blue" radius={200} />
-      <CircleMarker center={[51.51, -0.12]} color="red" radius={20}>
+      <Circle
+        center={center}
+        pathOptions={{ fillColor: 'blue' }}
+        radius={200}
+      />
+      <CircleMarker
+        center={[51.51, -0.12]}
+        pathOptions={{ color: 'red' }}
+        radius={20}>
         <Popup>Popup in CircleMarker</Popup>
       </CircleMarker>
-      <Polyline color="lime" positions={polyline} />
-      <Polyline color="lime" positions={multiPolyline} />
-      <Polygon color="purple" positions={polygon} />
-      <Polygon color="purple" positions={multiPolygon} />
-      <Rectangle bounds={rectangle} color="black" />
+      <Polyline pathOptions={{ color: 'lime' }} positions={polyline} />
+      <Polyline pathOptions={{ color: 'lime' }} positions={multiPolyline} />
+      <Polygon pathOptions={{ color: 'purple' }} positions={polygon} />
+      <Polygon pathOptions={{ color: 'purple' }} positions={multiPolygon} />
+      <Rectangle bounds={rectangle} pathOptions={{ color: 'black' }} />
     </Map>
   )
 }

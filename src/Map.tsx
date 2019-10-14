@@ -24,6 +24,7 @@ export interface MapProps extends MapOptions, EventedProps {
   boundsOptions?: FitBoundsOptions
   children?: ReactNode
   useFlyTo?: boolean
+  whenCreated?: (map: Map) => void
   whenReady?: () => void
 }
 
@@ -88,13 +89,19 @@ export function useMapElement(
 }
 
 function LeafletMapComponent(
-  { children, ...options }: MapProps,
+  { children, whenCreated, ...options }: MapProps,
   ref: Ref<{ element: Map | null }>,
 ) {
   const mapRef = useRef<HTMLDivElement>(null)
   const map = useMapElement(mapRef, options)
-
   useImperativeHandle(ref, () => ({ element: map }))
+
+  const createdRef = useRef<boolean>(false)
+  useEffect(() => {
+    if (map != null && createdRef.current === false && whenCreated != null) {
+      whenCreated(map)
+    }
+  }, [map, whenCreated])
 
   const contents = map ? (
     <LeafletProvider value={{ map }}>{children}</LeafletProvider>

@@ -1,6 +1,6 @@
 import { DomUtil } from 'leaflet'
 
-function splitClassName(className = ''): string[] {
+function splitClassName(className: string): string[] {
   return className.split(' ').filter(Boolean)
 }
 

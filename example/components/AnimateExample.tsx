@@ -1,5 +1,5 @@
 import { LatLngExpression } from 'leaflet'
-import React, { useCallback, useMemo, useState } from 'react'
+import React, { useMemo, useState } from 'react'
 
 import { Map, TileLayer } from '../../src'
 
@@ -17,10 +17,6 @@ export default function AnimateExample() {
     }),
     [],
   )
-  const toggleAnimate = useCallback(() => {
-    setAnimate(a => !a)
-  }, [])
-
   const map = useMemo(() => {
     return (
       <Map
@@ -39,7 +35,13 @@ export default function AnimateExample() {
   return (
     <div style={{ textAlign: 'center' }}>
       <label>
-        <input checked={animate} onChange={toggleAnimate} type="checkbox" />
+        <input
+          checked={animate}
+          onChange={() => {
+            setAnimate(a => !a)
+          }}
+          type="checkbox"
+        />
         Animate panning
       </label>
       {map}

@@ -41,25 +41,28 @@ export default function LayersControlExample() {
         </LayersControl.Overlay>
         <LayersControl.Overlay checked name="Layer group with circles">
           <LayerGroup>
-            <Circle center={center} fillColor="blue" radius={200} />
             <Circle
               center={center}
-              fillColor="red"
+              pathOptions={{ fillColor: 'blue' }}
+              radius={200}
+            />
+            <Circle
+              center={center}
+              pathOptions={{ fillColor: 'red' }}
               radius={100}
               stroke={false}
             />
             <LayerGroup>
               <Circle
                 center={[51.51, -0.08]}
-                color="green"
-                fillColor="green"
+                pathOptions={{ color: 'green', fillColor: 'green' }}
                 radius={100}
               />
             </LayerGroup>
           </LayerGroup>
         </LayersControl.Overlay>
         <LayersControl.Overlay name="Feature group">
-          <FeatureGroup color="purple">
+          <FeatureGroup pathOptions={{ color: 'purple' }}>
             <Popup>Popup in FeatureGroup</Popup>
             <Circle center={[51.51, -0.06]} radius={200} />
             <Rectangle bounds={rectangle} />

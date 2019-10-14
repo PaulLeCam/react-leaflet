@@ -12,7 +12,7 @@ const style = {
   fillOpacity: 0.5,
   fillColor: '#fff2af',
 }
-const onEachFeature = (feature: Feature<Geometry>, layer: Layer) => {
+function onEachFeature(feature: Feature<Geometry>, layer: Layer) {
   layer.bindPopup(
     `<p>Customizable Popups <br />with feature information.</p><pre>Borough: <br />${feature.properties.name}</pre>`,
   )

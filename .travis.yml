@@ -2,10 +2,7 @@ sudo: false
 language: node_js
 node_js:
   - 10
-  - 8
-install:
-  - yarn install
-  - yarn flow:install
+  - 12
 cache:
   yarn: true
   directories:

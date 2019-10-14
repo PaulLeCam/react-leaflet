@@ -2,10 +2,12 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "declaration": true,
+    "esModuleInterop": true,
     "jsx": "react",
     "lib": ["dom", "es2015"],
     "moduleResolution": "node",
-    "outDir": "./ts-lib",
+    "outDir": "./types",
+    "resolveJsonModule": true,
     "sourceMap": true,
     "strict": true,
     "target": "esnext"

@@ -14,7 +14,7 @@ export function useLeafletPathOptions<P extends PathProps>(
   element: LeafletElement<FeatureGroup | Path> | null,
   props: P,
 ) {
-  const optionsRef = useRef<PathOptions>(props.pathOptions || {})
+  const optionsRef = useRef<PathOptions | void>()
 
   useEffect(() => {
     if (element === null) {

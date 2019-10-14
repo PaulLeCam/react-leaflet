@@ -46,9 +46,9 @@ export default function PaneExample() {
       />
       <OtherPane />
       <Pane name="yellow-rectangle" style={{ zIndex: 499 }}>
-        <Rectangle bounds={inner} color="yellow" />
+        <Rectangle bounds={inner} pathOptions={{ color: 'yellow' }} />
         <Pane name="purple-rectangle" className="purplePane-purplePane">
-          <Rectangle bounds={outer} color="purple" />
+          <Rectangle bounds={outer} pathOptions={{ color: 'purple' }} />
         </Pane>
       </Pane>
     </Map>

@@ -22,18 +22,26 @@ export default function OtherLayersExample() {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <LayerGroup>
-        <Circle center={center} fillColor="blue" radius={200} />
-        <Circle center={center} fillColor="red" radius={100} stroke={false} />
+        <Circle
+          center={center}
+          pathOptions={{ fillColor: 'blue' }}
+          radius={200}
+        />
+        <Circle
+          center={center}
+          pathOptions={{ fillColor: 'red' }}
+          radius={100}
+          stroke={false}
+        />
         <LayerGroup>
           <Circle
             center={[51.51, -0.08]}
-            color="green"
-            fillColor="green"
+            pathOptions={{ color: 'green', fillColor: 'green' }}
             radius={100}
           />
         </LayerGroup>
       </LayerGroup>
-      <FeatureGroup color="purple">
+      <FeatureGroup pathOptions={{ color: 'purple' }}>
         <Popup>Popup in FeatureGroup</Popup>
         <Circle center={[51.51, -0.06]} radius={200} />
         <Rectangle bounds={rectangle} />

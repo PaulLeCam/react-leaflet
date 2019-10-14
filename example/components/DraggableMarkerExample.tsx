@@ -14,7 +14,7 @@ function DraggableMarker() {
   const markerRef = useRef(null)
   const eventHandlers = useMemo(
     () => ({
-      dragEnd() {
+      dragend() {
         const marker = markerRef.current
         if (marker != null) {
           setMarkerPosition(marker.element.getLatLng())
@@ -35,7 +35,9 @@ function DraggableMarker() {
       ref={markerRef}>
       <Popup minWidth={90}>
         <span onClick={toggleDraggable}>
-          {draggable ? 'Drag marker' : 'Click to make marker draggable'}
+          {draggable
+            ? 'Marker is draggable'
+            : 'Click here to make marker draggable'}
         </span>
       </Popup>
     </Marker>
