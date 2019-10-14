@@ -43,7 +43,6 @@ open pull requests to update this list!
 | [`react-leaflet-measure`](https://www.npmjs.com/package/react-leaflet-measure)                                   | **yes**            |
 | [`react-leaflet-nmscale`](https://www.npmjs.com/package/@marfle/react-leaflet-nmscale)                           | **yes**            |
 | [`react-leaflet-pane`](https://www.npmjs.com/package/react-leaflet-pane)                                         | unknown            |
-| [`react-leaflet-rotatedmarker`](https://www.npmjs.com/package/react-leaflet-rotatedmarker)                       | unknown            |
 | [`react-leaflet-search`](https://www.npmjs.com/package/react-leaflet-search)                                     | **yes**            |
 | [`react-leaflet-semicircle`](https://www.npmjs.com/package/react-leaflet-semicircle)                             | **yes**            |
 | [`react-leaflet-shapefile`](https://www.npmjs.com/package/react-leaflet-shapefile)                               | **no**             |
