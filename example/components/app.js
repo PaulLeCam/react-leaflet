@@ -20,6 +20,7 @@ import PaneExample from './pane'
 import WMSTileLayerExample from './wms-tile-layer'
 import VideoOverlayExample from './video-overlay'
 import CustomIcons from './custom-icons'
+import SVGOverlayExample from './svg-overlay'
 
 Leaflet.Icon.Default.imagePath =
   '//cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.4/images/'
@@ -37,6 +38,8 @@ const App = () => (
     <ViewportExample />
     <h2>Vector layers</h2>
     <VectorLayersExample />
+    <h2>SVG Overlay</h2>
+    <SVGOverlayExample />
     <h2>Other layers</h2>
     <OtherLayersExample />
     <h2>GeoJSON with Popup</h2>

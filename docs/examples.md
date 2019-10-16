@@ -9,6 +9,7 @@ Different examples are available in the [example folder](https://github.com/Paul
 - [Event handling](https://github.com/PaulLeCam/react-leaflet/blob/master/example/components/events.js)
 - [Viewport usage](https://github.com/PaulLeCam/react-leaflet/blob/master/example/components/viewport.js)
 - [Vector layers (Rectangle, Circle, etc.)](https://github.com/PaulLeCam/react-leaflet/blob/master/example/components/vector-layers.js)
+- [SVG Overlay](https://github.com/PaulLeCam/react-leaflet/blob/master/example/components/svg-overlay.js)
 - [Other layers (LayerGroup, FeatureGroup)](https://github.com/PaulLeCam/react-leaflet/blob/master/example/components/other-layers.js)
 - [Tooltips](https://github.com/PaulLeCam/react-leaflet/blob/master/example/components/tooltip.js)
 - [Custom zoom control](https://github.com/PaulLeCam/react-leaflet/blob/master/example/components/zoom-control.js)

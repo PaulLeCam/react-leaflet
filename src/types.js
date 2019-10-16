@@ -92,6 +92,19 @@ export type DivOverlayOptions = {
   onOpen?: () => void,
 }
 
+export type CrossOrigin = boolean | string
+
+export type ImageOverlayOptions = {
+  opacity?: number,
+  alt?: string,
+  interactive?: boolean,
+  attribution?: string,
+  crossOrigin?: CrossOrigin,
+  errorOverlayUrl?: string,
+  zIndex?: number,
+  className?: string,
+}
+
 export type LeafletProps = { leaflet: LeafletContext }
 
 export type MapControlProps = {
@@ -111,3 +124,9 @@ export type MapLayerProps = {
 export type GridLayerProps = MapLayerProps & GridLayerOptions
 
 export type PathProps = MapLayerProps & PathOptions
+
+export type SVGOverlayProps = MapComponentProps &
+  ImageOverlayOptions & {
+    bounds: LatLngBounds,
+    children?: Node,
+  }
