@@ -26,6 +26,9 @@ The React Leaflet logos should not be modified in any way that distorts the shap
 
 <img src="/docs/assets/react-leaflet-logo-usage.jpg" alt="React Leaflet Logo Usage" width="800"/>
 
+### License
+The React Leaflet logos and assets are licensed under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
+
 ### Download
 
 For convenience, the following are packaged up in a `.zip` to download:
