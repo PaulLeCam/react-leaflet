@@ -29,6 +29,9 @@
       "intro": {
         "title": "Introduction"
       },
+      "logo-and-branding": {
+        "title": "Logo & Branding"
+      },
       "plugins": {
         "title": "Third-party plugins"
       },
@@ -106,7 +109,8 @@
       "Getting started": "Getting started",
       "API": "API",
       "Guides": "Guides",
-      "Extra": "Extra"
+      "Extra": "Extra",
+      "Usage": "Usage"
     }
   },
   "pages-strings": {
