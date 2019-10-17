@@ -15,6 +15,7 @@
       "version-v2-custom-components",
       "version-v2-class-hierarchy"
     ],
-    "Extra": ["version-v2-plugins"]
+    "Extra": ["version-v2-plugins"],
+    "Usage": ["logo-and-branding"]
   }
 }

@@ -9,6 +9,12 @@
   max-width: none;
 }
 
+.logo {
+  width: 400px;
+  max-width: 100%;
+  height: auto;
+}
+
 @media only screen and (min-device-width: 360px) and (max-device-width: 736px) {
 }
 
