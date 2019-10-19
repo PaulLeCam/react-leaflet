@@ -11,8 +11,8 @@ Please make sure to check the following boxes before submitting an issue.\
 **Issues opened without using this template will be closed unless they have a good reason not to follow this template.**
 
 - [ ] All peer dependencies are installed: React, ReactDOM and Leaflet.
-- [ ] Using a supported version of React and ReactDOM (v16.3.0 minimum).
-- [ ] Using the supported version of Leaflet (v1.4.x) and its corresponding CSS file is loaded.
+- [ ] Using a supported version of React and ReactDOM (v16.8.0 minimum).
+- [ ] Using the supported version of Leaflet (v1.5.x) and its corresponding CSS file is loaded.
 - [ ] Using the [latest version of React-Leaflet](https://github.com/PaulLeCam/react-leaflet/releases) - **not v1.x**.
 - [ ] The issue has not already been reported.
 - [ ] Make sure you have followed the [quick start guide](http://leafletjs.com/examples/quick-start.html) for Leaflet.
