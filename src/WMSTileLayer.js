@@ -14,14 +14,17 @@ type Props = { url: string } & GridLayerProps
 class WMSTileLayer extends GridLayer<LeafletElement, Props> {
   createLeafletElement(props: Props): LeafletElement {
     const { url, ...params } = props
-    return new TileLayer.WMS(url, this.getOptions(params))
+    const { leaflet: _l, ...options } = this.getOptions(params)
+    return new TileLayer.WMS(url, options)
   }
 
   updateLeafletElement(fromProps: Props, toProps: Props) {
     super.updateLeafletElement(fromProps, toProps)
 
-    const { url: prevUrl, opacity: _po, zIndex: _pz, ...prevParams } = fromProps
-    const { url, opacity: _o, zIndex: _z, ...params } = toProps
+    const { url: prevUrl, opacity: _po, zIndex: _pz, ...prevProps } = fromProps
+    const { leaflet: _pl, ...prevParams } = this.getOptions(prevProps)
+    const { url, opacity: _o, zIndex: _z, ...props } = toProps
+    const { leaflet: _l, ...params } = this.getOptions(props)
 
     if (url !== prevUrl) {
       this.leafletElement.setUrl(url)

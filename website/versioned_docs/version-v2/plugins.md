@@ -20,6 +20,7 @@ open pull requests to update this list!
 | [`react-leaflet-cluster-layer`](https://www.npmjs.com/package/react-leaflet-cluster-layer)                       | unknown            |
 | [`react-leaflet-control`](https://www.npmjs.com/package/react-leaflet-control)                                   | **yes**            |
 | [`react-leaflet-d3`](https://www.npmjs.com/package/react-leaflet-d3)                                             | **yes**            |
+| [`react-leaflet-d3-svg-overlay`](https://www.npmjs.com/package/react-leaflet-d3-svg-overlay)                     | **yes**            |
 | [`react-leaflet-deflate`](https://www.npmjs.com/package/react-leaflet-deflate)                                   | **yes**            |
 | [`react-leaflet-dialog`](https://www.npmjs.com/package/react-leaflet-dialog)                                     | **yes**            |
 | [`react-leaflet-distance-marker`](https://www.npmjs.com/package/react-leaflet-distance-marker)                   | unknown            |
@@ -44,7 +45,6 @@ open pull requests to update this list!
 | [`react-leaflet-measure`](https://www.npmjs.com/package/react-leaflet-measure)                                   | **yes**            |
 | [`react-leaflet-nmscale`](https://www.npmjs.com/package/@marfle/react-leaflet-nmscale)                           | **yes**            |
 | [`react-leaflet-pane`](https://www.npmjs.com/package/react-leaflet-pane)                                         | unknown            |
-| [`react-leaflet-rotatedmarker`](https://www.npmjs.com/package/react-leaflet-rotatedmarker)                       | unknown            |
 | [`react-leaflet-search`](https://www.npmjs.com/package/react-leaflet-search)                                     | **yes**            |
 | [`react-leaflet-semicircle`](https://www.npmjs.com/package/react-leaflet-semicircle)                             | **yes**            |
 | [`react-leaflet-shapefile`](https://www.npmjs.com/package/react-leaflet-shapefile)                               | **no**             |

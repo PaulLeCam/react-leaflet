@@ -3,15 +3,14 @@
 import { Layer, SVGOverlay as LeafletSVGOverlay } from 'leaflet'
 import { createPortal } from 'react-dom'
 
-import type { LeafletContext, SVGOverlayProps } from './types'
+import type { SVGOverlayProps } from './types'
 import { withLeaflet } from './context'
 import MapComponent from './MapComponent'
 
 type LeafletElement = LeafletSVGOverlay
 type Props = SVGOverlayProps
 
-export class SVGOverlay extends MapComponent<LeafletElement, Props> {
-  contextValue: ?LeafletContext
+class SVGOverlay extends MapComponent<LeafletElement, Props> {
   leafletElement: LeafletElement
   container: ?Element
 
@@ -24,27 +23,27 @@ export class SVGOverlay extends MapComponent<LeafletElement, Props> {
     return this.props.leaflet.layerContainer || this.props.leaflet.map
   }
 
-  createLeafletElement(_props: Props): LeafletElement {
+  createLeafletElement(props: Props): LeafletElement {
     this.container = document.createElementNS(
       'http://www.w3.org/2000/svg',
       'svg',
     )
     return new LeafletSVGOverlay(
       this.container,
-      _props.bounds,
-      this.getOptions(_props),
+      props.bounds,
+      this.getOptions(props),
     )
   }
 
-  updateLeafletElement(_fromProps: Props, _toProps: Props) {
-    if (_toProps.bounds !== _fromProps.bounds) {
-      this.leafletElement.setBounds(_toProps.bounds)
+  updateLeafletElement(fromProps: Props, toProps: Props) {
+    if (toProps.bounds !== fromProps.bounds) {
+      this.leafletElement.setBounds(toProps.bounds)
     }
-    if (_toProps.opacity !== _fromProps.opacity) {
-      this.leafletElement.setOpacity(_toProps.opacity)
+    if (toProps.opacity !== fromProps.opacity) {
+      this.leafletElement.setOpacity(toProps.opacity)
     }
-    if (_toProps.zIndex !== _fromProps.zIndex) {
-      this.leafletElement.setZIndex(_toProps.zIndex)
+    if (toProps.zIndex !== fromProps.zIndex) {
+      this.leafletElement.setZIndex(toProps.zIndex)
     }
   }
 

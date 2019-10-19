@@ -1,9 +1,14 @@
-## master
+## v2.5.0 (2019-10-19)
 
-- Added a GeoJSON Popup example ([PR #608](https://github.com/PaulLeCam/react-leaflet/pull/608) by _hackleman_).
+- Added `SVGOverlay` component ([PR #630](https://github.com/PaulLeCam/react-leaflet/pull/630) by _fenech_).
+- Added a `GeoJSON` with `Popup` example ([PR #608](https://github.com/PaulLeCam/react-leaflet/pull/608) by _hackleman_).
+- Fixed wrongly injecting the `leaflet` parameter in the `WMSTileLayer` URL.
+- [website] Added logo and branding guidelines ([PR #629](https://github.com/PaulLeCam/react-leaflet/pull/629) by _colbyfayock_).
 - [website] Added `react-leaflet-enhanced-marker` plugin ([PR #610](https://github.com/PaulLeCam/react-leaflet/pull/610) by _ishaan6395_).
 - [website] Added `leaflet-drift-marker` plugin ([PR #615](https://github.com/PaulLeCam/react-leaflet/pull/615) by _hugobarragon_).
 - [website] Added `react-leaflet-street-view` plugin ([PR #616](https://github.com/PaulLeCam/react-leaflet/pull/616) by _ishaan6395_).
+- [website] Removed unmaintained plugin `react-leaflet-rotatedmarker` plugin ([PR #617](https://github.com/PaulLeCam/react-leaflet/pull/617) by _verdie-g_).
+- [website] Added `react-leaflet-d3-svg-overlay` plugin ([PR #628](https://github.com/PaulLeCam/react-leaflet/pull/628) by _johannesloetzsch_).
 
 ## v2.4.0 (2019-06-09)
 

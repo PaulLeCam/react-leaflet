@@ -1,6 +1,7 @@
 ---
-id: logo-and-branding
+id: version-v2-logo-and-branding
 title: Logo & Branding
+original_id: logo-and-branding
 ---
 
 The React Leaflet logo provides a way for the community to identify and communicate the technologies used in their mapping applications. While the library is open source, it's encouraged to follow the best practices defined below to upload the integrity of the logo itself and what it represents.

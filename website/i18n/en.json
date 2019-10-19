@@ -59,6 +59,9 @@
       "version-v1/version-v1-intro": {
         "title": "Introduction"
       },
+      "version-v1/version-v1-logo-and-branding": {
+        "title": "Logo & Branding"
+      },
       "version-v1/version-v1-plugins": {
         "title": "Third-party plugins"
       },
@@ -92,6 +95,9 @@
       "version-v2/version-v2-intro": {
         "title": "Introduction"
       },
+      "version-v2/version-v2-logo-and-branding": {
+        "title": "Logo & Branding"
+      },
       "version-v2/version-v2-plugins": {
         "title": "Third-party plugins"
       },
@@ -109,8 +115,7 @@
       "Getting started": "Getting started",
       "API": "API",
       "Guides": "Guides",
-      "Extra": "Extra",
-      "Usage": "Usage"
+      "Extra": "Extra"
     }
   },
   "pages-strings": {

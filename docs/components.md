@@ -32,10 +32,10 @@ You can check out the [event handling example](https://github.com/PaulLeCam/reac
 - [Vector Layers](#vector-layers)
   - [Circle](#circle)
   - [CircleMarker](#circlemarker)
-  - [SVGOverlay](#svgoverlay)
   - [Polyline](#polyline)
   - [Polygon](#polygon)
   - [Rectangle](#rectangle)
+  - [SVGOverlay](#svgoverlay)
 - [Other Layers](#other-layers)
   - [FeatureGroup](#featuregroup)
   - [GeoJSON](#geojson)
@@ -320,17 +320,6 @@ properties.
 - `radius: number` (optional)
 - `attribution: string` (optional)
 
-### SVGOverlay
-
-[🍃 Leaflet reference](https://leafletjs.com/reference-1.5.0.html#svgoverlay) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/SVGOverlay.js)
-
-**Dynamic properties**
-
-- `bounds: bounds` (required)
-- `opacity: number` (optional)
-- `zIndex: number` (optional)
-- `attribution: string` (optional)
-
 ### Polyline
 
 [🍃 Leaflet reference](http://leafletjs.com/reference-1.5.0.html#polyline) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/Polyline.js)
@@ -356,6 +345,17 @@ properties.
 **Dynamic properties**
 
 - `bounds: bounds` (required)
+- `attribution: string` (optional)
+
+### SVGOverlay
+
+[🍃 Leaflet reference](https://leafletjs.com/reference-1.5.0.html#svgoverlay) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/SVGOverlay.js)
+
+**Dynamic properties**
+
+- `bounds: bounds` (required)
+- `opacity: number` (optional)
+- `zIndex: number` (optional)
 - `attribution: string` (optional)
 
 ## Other Layers
