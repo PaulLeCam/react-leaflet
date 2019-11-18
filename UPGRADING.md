@@ -1,5 +1,9 @@
 # Upgrading
 
+## v2.6
+
+This release requires [Leaflet v1.6](https://leafletjs.com/2019/11/17/leaflet-1.6.0.html) as peer dependency.
+
 ## v2.3
 
 This release requires [Leaflet v1.5](https://leafletjs.com/2019/05/08/leaflet-1.5.0.html) and [React v16.8](https://reactjs.org/blog/2019/02/06/react-v16.8.0.html) as peer dependencies.

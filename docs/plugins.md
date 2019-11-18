@@ -18,6 +18,7 @@ open pull requests to update this list!
 | [`react-leaflet-choropleth`](https://www.npmjs.com/package/react-leaflet-choropleth)                             | unknown            |
 | [`react-leaflet-cluster-layer`](https://www.npmjs.com/package/react-leaflet-cluster-layer)                       | unknown            |
 | [`react-leaflet-control`](https://www.npmjs.com/package/react-leaflet-control)                                   | **yes**            |
+| [`react-leaflet-curve`](https://www.npmjs.com/package/react-leaflet-curve)                                       | **yes**            |
 | [`react-leaflet-d3`](https://www.npmjs.com/package/react-leaflet-d3)                                             | **yes**            |
 | [`react-leaflet-d3-svg-overlay`](https://www.npmjs.com/package/react-leaflet-d3-svg-overlay)                     | **yes**            |
 | [`react-leaflet-deflate`](https://www.npmjs.com/package/react-leaflet-deflate)                                   | **yes**            |
@@ -34,8 +35,8 @@ open pull requests to update this list!
 | [`react-leaflet-fullscreen-control`](https://www.npmjs.com/package/react-leaflet-fullscreen-control)             | unknown            |
 | [`react-leaflet-geojson-cluster`](https://www.npmjs.com/package/react-leaflet-geojson-cluster)                   | unknown            |
 | [`react-leaflet-geojson-patterns`](https://www.npmjs.com/package/react-leaflet-geojson-patterns)                 | **yes**            |
-| [`react-leaflet-google-v2`](https://www.npmjs.com/package/react-leaflet-google-v2)                               | **yes**            |
 | [`react-leaflet-google-layer`](https://www.npmjs.com/package/react-leaflet-google-layer)                         | **yes**            |
+| [`react-leaflet-google-v2`](https://www.npmjs.com/package/react-leaflet-google-v2)                               | **yes**            |
 | [`react-leaflet-heatmap-layer`](https://www.npmjs.com/package/react-leaflet-heatmap-layer)                       | **yes**            |
 | [`react-leaflet-locate-control`](https://www.npmjs.com/package/react-leaflet-locate-control)                     | **no**             |
 | [`react-leaflet-magnifying-glass`](https://www.npmjs.com/package/react-leaflet-magnifying-glass)                 | **yes**            |
@@ -56,4 +57,3 @@ open pull requests to update this list!
 | [`react-leaflet-zoom-display`](https://www.npmjs.com/package/react-leaflet-zoom-display)                         | unknown            |
 | [`react-leaflet-zoom-indicator`](https://www.npmjs.com/package/react-leaflet-zoom-indicator)                     | unknown            |
 | [`react-mapbox-components`](https://www.npmjs.com/package/react-mapbox-components)                               | unknown            |
-| [`react-leaflet-curve`](https://www.npmjs.com/package/react-leaflet-curve)                                       | **yes**             |

@@ -17,6 +17,7 @@ type Props = {
   onEachFeature?: (feature: GeoJSONdata, layer: Layer) => void,
   filter?: (feature: GeoJSONdata) => boolean,
   coordsToLatLng?: (coords: GeoJSONdata) => LatLng,
+  markersInheritOptions?: boolean,
 } & PathProps
 
 class GeoJSON extends Path<LeafletElement, Props> {

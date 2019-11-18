@@ -15,7 +15,10 @@ import {
 const { BaseLayer, Overlay } = LayersControl
 
 const center = [51.505, -0.09]
-const rectangle = [[51.49, -0.08], [51.5, -0.06]]
+const rectangle = [
+  [51.49, -0.08],
+  [51.5, -0.06],
+]
 
 export default class LayersControlExample extends Component<{}> {
   render() {

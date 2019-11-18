@@ -3,8 +3,14 @@
 import React, { Component } from 'react'
 import { Map, Pane, Rectangle, TileLayer } from '../../src'
 
-const outer = [[50.505, -29.09], [52.505, 29.09]]
-const inner = [[49.505, -2.09], [53.505, 2.09]]
+const outer = [
+  [50.505, -29.09],
+  [52.505, 29.09],
+]
+const inner = [
+  [49.505, -2.09],
+  [53.505, 2.09],
+]
 
 export default class PaneExample extends Component<{}, { render: boolean }> {
   state = {

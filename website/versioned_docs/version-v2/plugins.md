@@ -14,11 +14,12 @@ open pull requests to update this list!
 | [`leaflet-drift-marker`](https://www.npmjs.com/package/leaflet-drift-marker)                                     | **yes**            |
 | [`leaflet-react-track-player`](https://www.npmjs.com/package/leaflet-react-track-player)                         | unknown            |
 | [`react-leaflet-ant-path`](https://www.npmjs.com/package/react-leaflet-ant-path)                                 | unknown            |
-| [`react-leaflet-bing`](https://www.npmjs.com/package/react-leaflet-bing)                                         | **yes**            |
+| [`react-leaflet-bing-v2`](https://www.npmjs.com/package/react-leaflet-bing-v2)                                   | **yes**            |
 | [`react-leaflet-box-zoom`](https://www.npmjs.com/package/react-leaflet-box-zoom)                                 | **yes**            |
 | [`react-leaflet-choropleth`](https://www.npmjs.com/package/react-leaflet-choropleth)                             | unknown            |
 | [`react-leaflet-cluster-layer`](https://www.npmjs.com/package/react-leaflet-cluster-layer)                       | unknown            |
 | [`react-leaflet-control`](https://www.npmjs.com/package/react-leaflet-control)                                   | **yes**            |
+| [`react-leaflet-curve`](https://www.npmjs.com/package/react-leaflet-curve)                                       | **yes**            |
 | [`react-leaflet-d3`](https://www.npmjs.com/package/react-leaflet-d3)                                             | **yes**            |
 | [`react-leaflet-d3-svg-overlay`](https://www.npmjs.com/package/react-leaflet-d3-svg-overlay)                     | **yes**            |
 | [`react-leaflet-deflate`](https://www.npmjs.com/package/react-leaflet-deflate)                                   | **yes**            |
@@ -35,8 +36,8 @@ open pull requests to update this list!
 | [`react-leaflet-fullscreen-control`](https://www.npmjs.com/package/react-leaflet-fullscreen-control)             | unknown            |
 | [`react-leaflet-geojson-cluster`](https://www.npmjs.com/package/react-leaflet-geojson-cluster)                   | unknown            |
 | [`react-leaflet-geojson-patterns`](https://www.npmjs.com/package/react-leaflet-geojson-patterns)                 | **yes**            |
-| [`react-leaflet-google`](https://www.npmjs.com/package/react-leaflet-google)                                     | **yes**            |
 | [`react-leaflet-google-layer`](https://www.npmjs.com/package/react-leaflet-google-layer)                         | **yes**            |
+| [`react-leaflet-google-v2`](https://www.npmjs.com/package/react-leaflet-google-v2)                               | **yes**            |
 | [`react-leaflet-heatmap-layer`](https://www.npmjs.com/package/react-leaflet-heatmap-layer)                       | **yes**            |
 | [`react-leaflet-locate-control`](https://www.npmjs.com/package/react-leaflet-locate-control)                     | **no**             |
 | [`react-leaflet-magnifying-glass`](https://www.npmjs.com/package/react-leaflet-magnifying-glass)                 | **yes**            |

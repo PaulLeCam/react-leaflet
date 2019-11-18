@@ -3,8 +3,14 @@
 import React, { Component } from 'react'
 import { Map, TileLayer, Rectangle } from '../../src'
 
-const outer = [[50.505, -29.09], [52.505, 29.09]]
-const inner = [[49.505, -2.09], [53.505, 2.09]]
+const outer = [
+  [50.505, -29.09],
+  [52.505, 29.09],
+]
+const inner = [
+  [49.505, -2.09],
+  [53.505, 2.09],
+]
 
 type State = {
   bounds: Array<[number, number]>,
