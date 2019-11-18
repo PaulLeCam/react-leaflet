@@ -209,7 +209,8 @@ export default class Map extends MapEvented<LeafletElement, Props> {
     }
 
     if (doubleClickZoom !== fromProps.doubleClickZoom) {
-      if (doubleClickZoom === true) {
+      if (doubleClickZoom === true || typeof doubleClickZoom === 'string') {
+        this.leafletElement.options.doubleClickZoom = doubleClickZoom
         this.leafletElement.doubleClickZoom.enable()
       } else {
         this.leafletElement.doubleClickZoom.disable()
