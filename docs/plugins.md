@@ -56,3 +56,4 @@ open pull requests to update this list!
 | [`react-leaflet-zoom-display`](https://www.npmjs.com/package/react-leaflet-zoom-display)                         | unknown            |
 | [`react-leaflet-zoom-indicator`](https://www.npmjs.com/package/react-leaflet-zoom-indicator)                     | unknown            |
 | [`react-mapbox-components`](https://www.npmjs.com/package/react-mapbox-components)                               | unknown            |
+| [`react-leaflet-curve`](https://www.npmjs.com/package/react-leaflet-curve)                                       | **yes**             |
