@@ -56,4 +56,7 @@ open pull requests to update this list!
 | [`react-leaflet-wmts`](https://www.npmjs.com/package/react-leaflet-wmts)                                         | **yes**            |
 | [`react-leaflet-zoom-display`](https://www.npmjs.com/package/react-leaflet-zoom-display)                         | unknown            |
 | [`react-leaflet-zoom-indicator`](https://www.npmjs.com/package/react-leaflet-zoom-indicator)                     | unknown            |
-| [`react-mapbox-components`](https://www.npmjs.com/package/react-mapbox-components)                               | unknown            |
+| [`react-mapbox-components`](https://www.npmjs.com/package/react-mapbox-components)                               | unknown  
+|
+|[`react-leaflet-markercluster`](https://github.com/YUzhva/react-leaflet-markercluster)                           | **yes** 
+|
