@@ -11,8 +11,8 @@ type State = {
 }
 
 export const pointerIcon = new L.Icon({
-  iconUrl: require('../assets/pointerIcon.svg'),
-  iconRetinaUrl: require('../assets/pointerIcon.svg'),
+  iconUrl: '../assets/pointerIcon.svg',
+  iconRetinaUrl: '../assets/pointerIcon.svg',
   iconAnchor: [5, 55],
   popupAnchor: [10, -44],
   iconSize: [25, 55],
@@ -22,8 +22,8 @@ export const pointerIcon = new L.Icon({
 })
 
 export const suitcasePoint = new L.Icon({
-  iconUrl: require('../assets/suitcaseIcon.svg'),
-  iconRetinaUrl: require('../assets/suitcaseIcon.svg'),
+  iconUrl: '../assets/suitcaseIcon.svg',
+  iconRetinaUrl: '../assets/suitcaseIcon.svg',
   iconAnchor: [20, 40],
   popupAnchor: [0, -35],
   iconSize: [40, 40],

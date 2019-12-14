@@ -1,3 +1,7 @@
+## v2.6.1 (2019-12-14)
+
+Fixed catching falsy values in `utils/pick` ([PR #649](https://github.com/PaulLeCam/react-leaflet/pull/649) by _CaptainLexington_).
+
 ## v2.6.0 (2019-11-18)
 
 - Updated Leaflet dependency to v1.6.
