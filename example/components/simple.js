@@ -7,14 +7,14 @@ type State = {
   lat: number,
   lng: number,
   zoom: number,
-}
+};
 
 export default class SimpleExample extends Component<{}, State> {
   state = {
     lat: 51.505,
     lng: -0.09,
     zoom: 13,
-  }
+  }; // I propose this because when en do "react start", i have an error render()^{}
 
   render() {
     const position = [this.state.lat, this.state.lng]
