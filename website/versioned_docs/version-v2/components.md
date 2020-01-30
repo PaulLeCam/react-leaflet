@@ -4,7 +4,7 @@ title: Components
 original_id: components
 ---
 
-⚠️ Before starting to use the following components, make sure to understand the difference between the **static** and **dynamic** properties documented in this page.
+> ⚠️ Before starting to use the following components, make sure to understand the difference between the **static** and **dynamic** properties documented in this page.
 
 The properties documented as **dynamic properties** are updated using the relevant Leaflet setter, other properties **will not update** the component when they are changed after the component is mounted.\
 All other properties are passed as the `options` argument to their corresponding Leaflet element and should work fine for static maps, it is however unlikely that they would get updated if you change them afterwards.
@@ -36,6 +36,7 @@ You can check out the [event handling example](https://github.com/PaulLeCam/reac
   - [Polyline](#polyline)
   - [Polygon](#polygon)
   - [Rectangle](#rectangle)
+  - [SVGOverlay](#svgoverlay)
 - [Other Layers](#other-layers)
   - [FeatureGroup](#featuregroup)
   - [GeoJSON](#geojson)
@@ -345,6 +346,17 @@ properties.
 **Dynamic properties**
 
 - `bounds: bounds` (required)
+- `attribution: string` (optional)
+
+### SVGOverlay
+
+[🍃 Leaflet reference](https://leafletjs.com/reference-1.5.0.html#svgoverlay) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/SVGOverlay.js)
+
+**Dynamic properties**
+
+- `bounds: bounds` (required)
+- `opacity: number` (optional)
+- `zIndex: number` (optional)
 - `attribution: string` (optional)
 
 ## Other Layers

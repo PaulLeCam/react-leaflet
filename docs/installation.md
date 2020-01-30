@@ -3,7 +3,7 @@ id: installation
 title: Installation
 ---
 
-⚠️ If you have not read the [introduction](intro.md) and [Leaflet setup](setup.md) parts before accessing this page, please **read them first**. The Leaflet setup is **required** to make the following instructions work.
+> ⚠️ If you have not read the [introduction](intro.md) and [Leaflet setup](setup.md) parts before accessing this page, please **read them first**. The Leaflet setup is **required** to make the following instructions work.
 
 ## Using npm or Yarn
 

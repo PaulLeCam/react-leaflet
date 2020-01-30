@@ -3,7 +3,7 @@ id: components
 title: Components
 ---
 
-⚠️ Before starting to use the following components, make sure to understand the difference between the **static** and **dynamic** properties documented in this page.
+> ⚠️ Before starting to use the following components, make sure to understand the difference between the **static** and **dynamic** properties documented in this page.
 
 The properties documented as **dynamic properties** are updated using the relevant Leaflet setter, other properties **will not update** the component when they are changed after the component is mounted.\
 All other properties are passed as the `options` argument to their corresponding Leaflet element and should work fine for static maps, it is however unlikely that they would get updated if you change them afterwards.
