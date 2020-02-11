@@ -404,6 +404,7 @@ Use the `LayerGroup` wrapper component to group children layers together.
 **Dynamic properties**
 
 - `position: controlPosition` (optional)
+- `prefix: boolean` (optional)
 
 ### LayersControl
 
