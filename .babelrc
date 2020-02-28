@@ -23,7 +23,7 @@
         "@babel/preset-flow",
         "@babel/preset-react"
       ],
-      "plugins": ["@babel/plugin-transform-runtime"]
+      "plugins": [["@babel/plugin-transform-runtime", { "version": "^7.8.3" }]]
     },
     "rollup": {
       "presets": [
@@ -40,9 +40,7 @@
         "@babel/preset-flow",
         "@babel/preset-react"
       ],
-      "plugins": [
-        "@babel/plugin-transform-runtime"
-      ]
+      "plugins": [["@babel/plugin-transform-runtime", { "version": "^7.8.3" }]]
     },
     "jsnext": {
       "presets": [
@@ -61,7 +59,10 @@
         "@babel/preset-react"
       ],
       "plugins": [
-        ["@babel/plugin-transform-runtime", { "useESModules": true }]
+        [
+          "@babel/plugin-transform-runtime",
+          { "useESModules": true, "version": "^7.8.3" }
+        ]
       ]
     }
   }
