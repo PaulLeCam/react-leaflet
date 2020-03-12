@@ -35,6 +35,7 @@ open pull requests to update this list!
 | [`react-leaflet-figure-editor`](https://www.npmjs.com/package/react-leaflet-figure-editor)                       | unknown            |
 | [`react-leaflet-freedraw`](https://www.npmjs.com/package/react-leaflet-freedraw)                                 | **yes**            |
 | [`react-leaflet-fullscreen-control`](https://www.npmjs.com/package/react-leaflet-fullscreen-control)             | unknown            |
+| [`react-leaflet-geodesic`](https://www.npmjs.com/package/react-leaflet-geodesic)                                 | **yes**            |
 | [`react-leaflet-geojson-cluster`](https://www.npmjs.com/package/react-leaflet-geojson-cluster)                   | unknown            |
 | [`react-leaflet-geojson-patterns`](https://www.npmjs.com/package/react-leaflet-geojson-patterns)                 | **yes**            |
 | [`react-leaflet-google-layer`](https://www.npmjs.com/package/react-leaflet-google-layer)                         | **yes**            |
@@ -59,4 +60,3 @@ open pull requests to update this list!
 | [`react-leaflet-zoom-display`](https://www.npmjs.com/package/react-leaflet-zoom-display)                         | unknown            |
 | [`react-leaflet-zoom-indicator`](https://www.npmjs.com/package/react-leaflet-zoom-indicator)                     | unknown            |
 | [`react-mapbox-components`](https://www.npmjs.com/package/react-mapbox-components)                               | unknown            |
-| [`react-leaflet-geodesic`](https://www.npmjs.com/package/react-leaflet-geodesic)                                 | **yes**            |
