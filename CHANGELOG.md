@@ -1,3 +1,7 @@
+## v2.6.3 (2020-03-13)
+
+Fixed regression in v2.6.2 handling `maxZoom` and `minZoom` options in `Map` component.
+
 ## v2.6.2 (2020-03-12)
 
 - Fixed applying `maxZoom` and `minZoom` options to tile layers.

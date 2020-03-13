@@ -24,13 +24,17 @@ export default class GridLayer<
   }
 
   getOptions(props: Props): Props {
-    const options = super.getOptions(props)
+    const options = { ...super.getOptions(props) }
     const { map } = props.leaflet
     if (map != null) {
+      // $FlowFixMe: Object spread
       if (options.maxZoom == null && map.options.maxZoom != null) {
+        // $FlowFixMe: Object spread
         options.maxZoom = map.options.maxZoom
       }
+      // $FlowFixMe: Object spread
       if (options.minZoom == null && map.options.minZoom != null) {
+        // $FlowFixMe: Object spread
         options.minZoom = map.options.minZoom
       }
     }

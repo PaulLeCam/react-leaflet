@@ -1,6 +1,6 @@
 {
   "name": "react-leaflet",
-  "version": "2.6.2",
+  "version": "2.6.3",
   "description": "React components for Leaflet maps",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -93,7 +93,7 @@
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "rimraf": "^3.0.2",
-    "rollup": "^2.0.5",
+    "rollup": "^2.0.6",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
