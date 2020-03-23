@@ -3,8 +3,14 @@ import React, { useMemo, useState } from 'react'
 
 import { Map, TileLayer, Rectangle } from '../../src'
 
-const innerBounds: LatLngTuple[] = [[49.505, -2.09], [53.505, 2.09]]
-const outerBounds: LatLngTuple[] = [[50.505, -29.09], [52.505, 29.09]]
+const innerBounds: LatLngTuple[] = [
+  [49.505, -2.09],
+  [53.505, 2.09],
+]
+const outerBounds: LatLngTuple[] = [
+  [50.505, -29.09],
+  [52.505, 29.09],
+]
 
 const redColor = { color: 'red' }
 const whiteColor = { color: 'white' }

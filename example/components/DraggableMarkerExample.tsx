@@ -24,7 +24,7 @@ function DraggableMarker() {
     [],
   )
   const toggleDraggable = useCallback(() => {
-    setDraggable(d => !d)
+    setDraggable((d) => !d)
   }, [])
 
   return (

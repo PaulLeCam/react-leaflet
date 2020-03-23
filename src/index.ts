@@ -14,9 +14,7 @@ export { createUseLeafletElement } from './core/element'
 export { useLeafletEvents } from './core/events'
 export { createUseLeafletLayer, useLeafletLayerLifecycle } from './core/layer'
 export { createUseLeafletPath, useLeafletPathOptions } from './core/path'
-export {
-  LeafletAttributionControl as AttributionControl,
-} from './AttributionControl'
+export { LeafletAttributionControl as AttributionControl } from './AttributionControl'
 export { LeafletCircle as Circle } from './Circle'
 export { LeafletCircleMarker as CircleMarker } from './CircleMarker'
 export { LeafletFeatureGroup as FeatureGroup } from './FeatureGroup'

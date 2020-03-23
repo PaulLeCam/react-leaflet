@@ -10,7 +10,7 @@ export default function VideoOverlayExample() {
   const eventHandlers = useMemo(
     () => ({
       click() {
-        setPlay(p => !p)
+        setPlay((p) => !p)
       },
     }),
     [],
@@ -23,7 +23,10 @@ export default function VideoOverlayExample() {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <VideoOverlay
-        bounds={[[32, -130], [13, -100]]}
+        bounds={[
+          [32, -130],
+          [13, -100],
+        ]}
         play={play}
         url="https://www.mapbox.com/bites/00188/patricia_nasa.webm"
       />

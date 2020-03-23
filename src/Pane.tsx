@@ -65,7 +65,7 @@ export function LeafletPane(props: PaneProps) {
         addClassName(paneElement, props.className)
       }
       if (props.style != null) {
-        Object.keys(props.style).forEach(key => {
+        Object.keys(props.style).forEach((key) => {
           // @ts-ignore
           paneElement.style[key] = props.style[key]
         })

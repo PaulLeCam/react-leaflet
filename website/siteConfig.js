@@ -31,8 +31,10 @@ const siteConfig = {
   users: [],
   favicon: 'img/favicon.png',
   colors: {
-    primaryColor: '#1EB300',
-    secondaryColor: '#160',
+    logoPrimary: '#60BA9D',
+    logoSecondary: '#2A473E',
+    primaryColor: '#41957a',
+    secondaryColor: '#2C5145',
   },
   copyright:
     'Copyright © ' + new Date().getFullYear() + ' Paul Le Cam and contributors',

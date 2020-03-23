@@ -13,6 +13,7 @@ const CompLibrary = require('../../core/CompLibrary.js')
 const Container = CompLibrary.Container
 
 const Code = require(process.cwd() + '/core/Code.js')
+const Logo = require(process.cwd() + '/core/Logo.js')
 const siteConfig = require(process.cwd() + '/siteConfig.js')
 
 function docUrl(doc, language) {
@@ -49,7 +50,7 @@ const SplashContainer = props => (
 
 const ProjectTitle = () => (
   <h2 className="projectTitle">
-    {siteConfig.title}
+    <Logo />
     <small>{siteConfig.tagline}</small>
   </h2>
 )

@@ -21,8 +21,14 @@ function useInterval(callback: () => void, delay: number) {
   }, [delay])
 }
 
-const outer: LatLngTuple[] = [[50.505, -29.09], [52.505, 29.09]]
-const inner: LatLngTuple[] = [[49.505, -2.09], [53.505, 2.09]]
+const outer: LatLngTuple[] = [
+  [50.505, -29.09],
+  [52.505, 29.09],
+]
+const inner: LatLngTuple[] = [
+  [49.505, -2.09],
+  [53.505, 2.09],
+]
 
 function OtherPane() {
   const [render, setRender] = useState(true)

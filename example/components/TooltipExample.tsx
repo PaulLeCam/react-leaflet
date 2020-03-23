@@ -16,18 +16,29 @@ import {
 const center: LatLngTuple = [51.505, -0.09]
 
 const multiPolygon: LatLngTuple[][] = [
-  [[51.51, -0.12], [51.51, -0.13], [51.53, -0.13]],
-  [[51.51, -0.05], [51.51, -0.07], [51.53, -0.07]],
+  [
+    [51.51, -0.12],
+    [51.51, -0.13],
+    [51.53, -0.13],
+  ],
+  [
+    [51.51, -0.05],
+    [51.51, -0.07],
+    [51.53, -0.07],
+  ],
 ]
 
-const rectangle: LatLngTuple[] = [[51.49, -0.08], [51.5, -0.06]]
+const rectangle: LatLngTuple[] = [
+  [51.49, -0.08],
+  [51.5, -0.06],
+]
 
 function TooltipCircle() {
   const [clickedCount, setClickedCount] = useState(0)
   const eventHandlers = useMemo(
     () => ({
       click() {
-        setClickedCount(count => count + 1)
+        setClickedCount((count) => count + 1)
       },
     }),
     [],

@@ -20,7 +20,7 @@ import WMSTileLayerExample from './WMSTileLayerExample'
 import ZoomControlExample from './ZoomControlExample'
 
 Leaflet.Icon.Default.imagePath =
-  '//cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/images/'
+  '//cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/images/'
 
 export default function App() {
   return (

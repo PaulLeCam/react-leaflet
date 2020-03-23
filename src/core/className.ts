@@ -4,17 +4,14 @@ function splitClassName(className: string): string[] {
   return className.split(' ').filter(Boolean)
 }
 
-export function addClassName(container: HTMLElement, className: string): void {
-  splitClassName(className).forEach(cls => {
+export const addClassName = (container: HTMLElement, className: string) => {
+  splitClassName(className).forEach((cls) => {
     DomUtil.addClass(container, cls)
   })
 }
 
-export function removeClassName(
-  container: HTMLElement,
-  className: string,
-): void {
-  splitClassName(className).forEach(cls => {
+export const removeClassName = (container: HTMLElement, className: string) => {
+  splitClassName(className).forEach((cls) => {
     DomUtil.removeClass(container, cls)
   })
 }

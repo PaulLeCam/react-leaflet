@@ -11,7 +11,7 @@ describe('Map', () => {
     expect(container).toMatchSnapshot()
   })
 
-  it('provides the Leaflet Map element as ref once created', done => {
+  it('provides the Leaflet Map element as ref once created', (done) => {
     function TestContainer() {
       const mapRef = useRef(null)
 
@@ -20,7 +20,7 @@ describe('Map', () => {
           ref={mapRef}
           center={[0, 0]}
           zoom={10}
-          whenCreated={map => {
+          whenCreated={(map) => {
             // When this callback is called, the ref should contain the element
             expect(map).toBe(mapRef.current.element)
             done()
@@ -32,7 +32,7 @@ describe('Map', () => {
     render(<TestContainer />)
   })
 
-  it('injects the context', done => {
+  it('injects the context', (done) => {
     function TestChild(props) {
       const context = useLeafletContext()
       expect(props.map).toBe(context.map)
@@ -52,7 +52,7 @@ describe('Map', () => {
     render(<TestContainer />)
   })
 
-  it('sets center and zoom props', done => {
+  it('sets center and zoom props', (done) => {
     const center: LatLngExpression = [1.2, 3.4]
     const zoom = 10
 
@@ -60,7 +60,7 @@ describe('Map', () => {
       <Map
         center={center}
         zoom={zoom}
-        whenCreated={map => {
+        whenCreated={(map) => {
           expect(map.getCenter()).toEqual({ lat: 1.2, lng: 3.4 })
           console.log('bounds', map.getBounds().getSouthEast())
           expect(map.getZoom()).toBe(zoom)

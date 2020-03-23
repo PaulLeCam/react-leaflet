@@ -2,6 +2,10 @@ import { MutableRefObject, useEffect, useRef } from 'react'
 
 import { LeafletContextInterface } from './context'
 
+function noop(): void {
+  // Intentionally empty
+}
+
 export interface LeafletElement<T> {
   el: T
   context?: LeafletContextInterface | null
@@ -17,7 +21,7 @@ export function createUseLeafletElement<E, P>(
     props: P,
     context: LeafletContextInterface | null,
   ) => LeafletElement<E>,
-  updateElement: (el: E, props: P, prevProps: P) => void = () => {},
+  updateElement: (el: E, props: P, prevProps: P) => void = noop,
 ) {
   return function useLeafletElement(
     context: LeafletContextInterface | null,

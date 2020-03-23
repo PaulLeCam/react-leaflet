@@ -38,7 +38,7 @@ export default function AnimateExample() {
         <input
           checked={animate}
           onChange={() => {
-            setAnimate(a => !a)
+            setAnimate((a) => !a)
           }}
           type="checkbox"
         />

@@ -7,8 +7,8 @@ const center: LatLngTuple = [51.505, -0.09]
 const marker: LatLngTuple = [51.50503625326346, -0.10088324546813966]
 
 export const pointerIcon = new Icon({
-  iconUrl: require('../assets/pointerIcon.svg'),
-  iconRetinaUrl: require('../assets/pointerIcon.svg'),
+  iconUrl: '../assets/pointerIcon.svg',
+  iconRetinaUrl: '../assets/pointerIcon.svg',
   iconAnchor: [5, 55],
   popupAnchor: [10, -44],
   iconSize: [25, 55],
@@ -18,8 +18,8 @@ export const pointerIcon = new Icon({
 })
 
 export const suitcasePoint = new Icon({
-  iconUrl: require('../assets/suitcaseIcon.svg'),
-  iconRetinaUrl: require('../assets/suitcaseIcon.svg'),
+  iconUrl: '../assets/suitcaseIcon.svg',
+  iconRetinaUrl: '../assets/suitcaseIcon.svg',
   iconAnchor: [20, 40],
   popupAnchor: [0, -35],
   iconSize: [40, 40],

@@ -14,7 +14,10 @@ import {
 } from '../../src'
 
 const center: LatLngTuple = [51.505, -0.09]
-const rectangle: LatLngTuple[] = [[51.49, -0.08], [51.5, -0.06]]
+const rectangle: LatLngTuple[] = [
+  [51.49, -0.08],
+  [51.5, -0.06],
+]
 
 export default function LayersControlExample() {
   return (
