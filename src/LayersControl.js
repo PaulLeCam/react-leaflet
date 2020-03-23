@@ -183,7 +183,7 @@ class LayersControl extends MapControl<LeafletElement, LayersControlProps> {
   }
 
   render() {
-    const children = Children.map(this.props.children, child => {
+    const children = Children.map(this.props.children, (child) => {
       return child ? cloneElement(child, this.controlProps) : null
     })
     return <Fragment>{children}</Fragment>

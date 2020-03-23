@@ -1,3 +1,7 @@
+## master
+
+[website] Bump Leaflet docs links to v1.6.0 ([PR #686](https://github.com/PaulLeCam/react-leaflet/pull/686) by _moondef_).
+
 ## v2.6.3 (2020-03-13)
 
 Fixed regression in v2.6.2 handling `maxZoom` and `minZoom` options in `Map` component.

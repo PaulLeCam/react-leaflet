@@ -35,7 +35,7 @@ export default class MapEvented<
     const el = this.leafletElement
     if (!el) return
 
-    Object.keys(this._leafletEvents).forEach(ev => {
+    Object.keys(this._leafletEvents).forEach((ev) => {
       el.off(ev, this._leafletEvents[ev])
     })
   }
@@ -60,14 +60,14 @@ export default class MapEvented<
     if (el == null || el.on == null) return {}
 
     const diff = { ...prev }
-    Object.keys(prev).forEach(ev => {
+    Object.keys(prev).forEach((ev) => {
       if (next[ev] == null || prev[ev] !== next[ev]) {
         delete diff[ev]
         el.off(ev, prev[ev])
       }
     })
 
-    Object.keys(next).forEach(ev => {
+    Object.keys(next).forEach((ev) => {
       if (prev[ev] == null || next[ev] !== prev[ev]) {
         diff[ev] = next[ev]
         el.on(ev, next[ev])

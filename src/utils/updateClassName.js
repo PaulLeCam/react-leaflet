@@ -7,13 +7,13 @@ const splitClassName = (className: string = ''): Array<string> => {
 }
 
 export const addClassName = (container: HTMLElement, className: string) => {
-  splitClassName(className).forEach(cls => {
+  splitClassName(className).forEach((cls) => {
     DomUtil.addClass(container, cls)
   })
 }
 
 export const removeClassName = (container: HTMLElement, className: string) => {
-  splitClassName(className).forEach(cls => {
+  splitClassName(className).forEach((cls) => {
     DomUtil.removeClass(container, cls)
   })
 }
