@@ -10,16 +10,13 @@ export interface FeatureGroupProps extends LayerGroupProps, PathProps {}
 export const useFeatureGroupElement = createUseLeafletElement<
   FeatureGroup,
   FeatureGroupProps
->(function createFeatureGroup(props, context) {
-  const { children: _c, ...options } = props
-  const el = new FeatureGroup([], options)
-  return {
-    el,
-    context:
-      context === null
-        ? null
-        : { ...context, layerContainer: el, overlayContainer: el },
-  }
+>(function createFeatureGroup({ children: _c, ...options }, ctx) {
+  const instance = new FeatureGroup([], options)
+  const context =
+    ctx === null
+      ? null
+      : { ...ctx, layerContainer: instance, overlayContainer: instance }
+  return { instance, context }
 })
 
 export const useLeafletFeatureGroup = createUseLeafletPath(

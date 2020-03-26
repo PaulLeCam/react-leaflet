@@ -12,6 +12,7 @@ import OtherLayersExample from './OtherLayersExample'
 import GeoJSONExample from './GeoJSONExample'
 import PaneExample from './PaneExample'
 import SimpleExample from './SimpleExample'
+import SVGOverlayExample from './SVGOverlayExample'
 import TooltipExample from './TooltipExample'
 import VectorLayersExample from './VectorLayersExample'
 import VideoOverlayExample from './VideoOverlayExample'
@@ -36,6 +37,8 @@ export default function App() {
       <ViewportExample />
       <h2>Vector layers</h2>
       <VectorLayersExample />
+      <h2>SVG Overlay</h2>
+      <SVGOverlayExample />
       <h2>Other layers</h2>
       <OtherLayersExample />
       <h2>GeoJSON with Popup</h2>

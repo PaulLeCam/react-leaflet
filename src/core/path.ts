@@ -22,8 +22,8 @@ export function useLeafletPathOptions<P extends PathProps>(
     }
 
     if (props.pathOptions !== optionsRef.current) {
-      const options = props.pathOptions || {}
-      element.el.setStyle(options)
+      const options = props.pathOptions ?? {}
+      element.instance.setStyle(options)
       optionsRef.current = options
     }
   }, [element, props])

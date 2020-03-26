@@ -22,7 +22,7 @@ interface PropsWithChildren {
   children?: ReactNode
 }
 
-type ElementRef<E> = Ref<{ element: E | null }>
+export type ElementRef<E> = Ref<{ element: E | null }>
 
 export function createContainerComponent<E, P extends PropsWithChildren>(
   useFunc: UseLeafletFunc<E, P>,
@@ -30,19 +30,18 @@ export function createContainerComponent<E, P extends PropsWithChildren>(
   function ContainerComponent(props: P, ref: ElementRef<E>) {
     const elementRef = useFunc(props)
 
-    let el: E | null = null
+    let instance: E | null = null
     let context = null
     if (elementRef.current !== null) {
-      el = elementRef.current.el
+      instance = elementRef.current.instance
       context = elementRef.current.context
     }
 
-    useImperativeHandle(ref, () => ({ element: el }))
+    useImperativeHandle(ref, () => ({ element: instance }))
 
     if (props.children == null) {
       return null
     }
-
     return context == null ? (
       <Fragment>{props.children}</Fragment>
     ) : (
@@ -53,6 +52,18 @@ export function createContainerComponent<E, P extends PropsWithChildren>(
   return forwardRef(ContainerComponent)
 }
 
+export function createLeafComponent<E, P>(useFunc: UseLeafletFunc<E, P>) {
+  function LeafComponent(props: P, ref: ElementRef<E>) {
+    const elementRef = useFunc(props)
+
+    useImperativeHandle(ref, () => ({ element: elementRef.current?.instance }))
+
+    return null
+  }
+
+  return forwardRef(LeafComponent)
+}
+
 export function createOverlayComponent<
   E extends DivOverlay,
   P extends PropsWithChildren
@@ -60,32 +71,19 @@ export function createOverlayComponent<
   function OverlayComponent(props: P, ref: ElementRef<E>) {
     const [isOpen, setOpen] = useState(false)
     const elementRef = useFunc(props, setOpen)
-    const el = elementRef.current === null ? null : elementRef.current.el
+    const instance = elementRef.current?.instance
 
-    useImperativeHandle(ref, () => ({ element: el }))
+    useImperativeHandle(ref, () => ({ element: instance }))
     useEffect(() => {
-      if (isOpen && el !== null) {
-        el.update()
+      if (isOpen && instance !== null) {
+        instance.update()
       }
-    }, [el, isOpen, props.children])
+    }, [instance, isOpen, props.children])
 
     // @ts-ignore _contentNode missing in type definition
-    const contentNode = el && el._contentNode
+    const contentNode = instance?._contentNode
     return contentNode ? createPortal(props.children, contentNode) : null
   }
 
   return forwardRef(OverlayComponent)
-}
-
-export function createLeafComponent<E, P>(useFunc: UseLeafletFunc<E, P>) {
-  function LeafComponent(props: P, ref: ElementRef<E>) {
-    const elementRef = useFunc(props)
-    const el = elementRef.current === null ? null : elementRef.current.el
-
-    useImperativeHandle(ref, () => ({ element: el }))
-
-    return null
-  }
-
-  return forwardRef(LeafComponent)
 }

@@ -18,12 +18,8 @@ export interface TooltipProps extends TooltipOptions, EventedProps {
 }
 
 export const useTooltipElement = createUseLeafletElement<Tooltip, TooltipProps>(
-  function createTooltip(props, context) {
-    const el = new Tooltip(
-      props,
-      context === null ? undefined : context.overlayContainer,
-    )
-    return { el }
+  function createTooltip(props, ctx) {
+    return { instance: new Tooltip(props, ctx?.overlayContainer) }
   },
 )
 
@@ -36,17 +32,17 @@ export function useTooltipLifecycle(
   if (element === null || context == null) {
     return
   }
-  const { el } = element
+  const { instance } = element
 
-  const onOpen = (event: TooltipEvent) => {
-    if (event.tooltip === el) {
-      el.update()
+  const onTooltipOpen = (event: TooltipEvent) => {
+    if (event.tooltip === instance) {
+      instance.update()
       setOpen(true)
     }
   }
 
-  const onClose = (event: TooltipEvent) => {
-    if (event.tooltip === el) {
+  const onTooltipClose = (event: TooltipEvent) => {
+    if (event.tooltip === instance) {
       setOpen(false)
     }
   }
@@ -58,18 +54,18 @@ export function useTooltipLifecycle(
 
   container.on({
     // @ts-ignore emits TooltipEvent instead of LeafletEvent
-    tooltipopen: onOpen,
+    tooltipopen: onTooltipOpen,
     // @ts-ignore emits TooltipEvent instead of LeafletEvent
-    tooltipclose: onClose,
+    tooltipclose: onTooltipClose,
   })
-  container.bindTooltip(el)
+  container.bindTooltip(instance)
 
   return () => {
     container.off({
       // @ts-ignore emits TooltipEvent instead of LeafletEvent
-      tooltipopen: onOpen,
+      tooltipopen: onTooltipOpen,
       // @ts-ignore emits TooltipEvent instead of LeafletEvent
-      tooltipclose: onClose,
+      tooltipclose: onTooltipClose,
     })
     container.unbindTooltip()
   }

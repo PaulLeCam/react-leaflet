@@ -18,7 +18,12 @@
           }
         ]
       ],
-      "plugins": [["@babel/plugin-transform-runtime", { "corejs": 3, "version": "^7.9.2" }]]
+      "plugins": [
+        [
+          "@babel/plugin-transform-runtime",
+          { "corejs": 3, "version": "^7.9.2" }
+        ]
+      ]
     },
     "rollup": {
       "presets": [
@@ -36,7 +41,12 @@
           }
         ]
       ],
-      "plugins": [["@babel/plugin-transform-runtime", { "corejs": 3, "version": "^7.9.2" }]]
+      "plugins": [
+        [
+          "@babel/plugin-transform-runtime",
+          { "corejs": 3, "version": "^7.9.2" }
+        ]
+      ]
     },
     "esm": {
       "presets": [

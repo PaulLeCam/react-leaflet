@@ -15,15 +15,14 @@ export const useWMSTileLayerElement = createUseLeafletElement<
   TileLayer.WMS,
   WMSTileLayerProps
 >(
-  function createWMSTileLayer(props) {
-    const { params = {}, url, ...options } = props
-    return { el: new TileLayer.WMS(url, { ...params, ...options }) }
+  function createWMSTileLayer({ params = {}, url, ...options }) {
+    return { instance: new TileLayer.WMS(url, { ...params, ...options }) }
   },
-  function updateWMSTileLayer(el, props, prevProps) {
-    updateGridLayer(el, props, prevProps)
+  function updateWMSTileLayer(layer, props, prevProps) {
+    updateGridLayer(layer, props, prevProps)
 
     if (props.params != null && props.params !== prevProps.params) {
-      el.setParams(props.params)
+      layer.setParams(props.params)
     }
   },
 )

@@ -19,21 +19,19 @@ export const useVideoOverlayElement = createUseLeafletElement<
   VideoOverlay,
   VideoOverlayProps
 >(
-  function createVideoOverlay(props) {
-    const { bounds, url, ...options } = props
-    const el = new VideoOverlay(url, bounds, options)
+  function createVideoOverlay({ bounds, url, ...options }) {
+    const instance = new VideoOverlay(url, bounds, options)
     if (options.play === true) {
-      const video = el.getElement()
-      if (video != null) video.play()
+      instance.getElement()?.play()
     }
-    return { el }
+    return { instance }
   },
-  function updateVideoOverlay(el, props, prevProps) {
-    updateMediaOverlay(el, props, prevProps)
+  function updateVideoOverlay(overlay, props, prevProps) {
+    updateMediaOverlay(overlay, props, prevProps)
     if (typeof props.url === 'string' && props.url !== prevProps.url) {
-      el.setUrl(props.url)
+      overlay.setUrl(props.url)
     }
-    const video = el.getElement()
+    const video = overlay.getElement()
     if (video != null) {
       if (props.play === true && !prevProps.play) {
         video.play()

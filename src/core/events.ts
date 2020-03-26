@@ -20,17 +20,17 @@ export function useLeafletEvents(
 
     if (eventHandlers !== eventHandlersRef.current) {
       if (eventHandlersRef.current != null) {
-        element.el.off(eventHandlersRef.current)
+        element.instance.off(eventHandlersRef.current)
       }
       if (eventHandlers != null) {
-        element.el.on(eventHandlers)
+        element.instance.on(eventHandlers)
       }
       eventHandlersRef.current = eventHandlers
     }
 
     return () => {
       if (eventHandlersRef.current != null) {
-        element.el.off(eventHandlersRef.current)
+        element.instance.off(eventHandlersRef.current)
       }
       eventHandlersRef.current = null
     }

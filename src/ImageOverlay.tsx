@@ -3,6 +3,7 @@ import {
   LatLngBoundsExpression,
   ImageOverlay,
   ImageOverlayOptions,
+  SVGOverlay,
   VideoOverlay,
 } from 'leaflet'
 import { ReactNode } from 'react'
@@ -22,21 +23,21 @@ export interface ImageOverlayProps extends MediaOverlayOptions {
 }
 
 export function updateMediaOverlay<
-  E extends ImageOverlay | VideoOverlay,
+  E extends ImageOverlay | SVGOverlay | VideoOverlay,
   P extends MediaOverlayOptions
->(el: E, props: P, prevProps: P) {
+>(overlay: E, props: P, prevProps: P) {
   if (
     props.bounds instanceof LatLngBounds &&
     props.bounds !== prevProps.bounds
   ) {
-    el.setBounds(props.bounds)
+    overlay.setBounds(props.bounds)
   }
   if (props.opacity != null && props.opacity !== prevProps.opacity) {
-    el.setOpacity(props.opacity)
+    overlay.setOpacity(props.opacity)
   }
   if (props.zIndex != null && props.zIndex !== prevProps.zIndex) {
     // @ts-ignore missing in definition but inherited from ImageOverlay
-    el.setZIndex(props.zIndex)
+    overlay.setZIndex(props.zIndex)
   }
 }
 
@@ -44,18 +45,15 @@ export const useImageOverlayElement = createUseLeafletElement<
   ImageOverlay,
   ImageOverlayProps
 >(
-  (props, context) => {
-    const { bounds, url, ...options } = props
-    const el = new ImageOverlay(url, bounds, options)
-    return {
-      el,
-      context: context === null ? null : { ...context, overlayContainer: el },
-    }
+  function createImageOveraly({ bounds, url, ...options }, ctx) {
+    const instance = new ImageOverlay(url, bounds, options)
+    const context = ctx === null ? null : { ...ctx, overlayContainer: instance }
+    return { instance, context }
   },
-  (el, props, prevProps) => {
-    updateMediaOverlay(el, props, prevProps)
+  function updateImageOverlay(overlay, props, prevProps) {
+    updateMediaOverlay(overlay, props, prevProps)
     if (props.url !== prevProps.url) {
-      el.setUrl(props.url)
+      overlay.setUrl(props.url)
     }
   },
 )

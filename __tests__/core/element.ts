@@ -17,15 +17,15 @@ describe('core/element', () => {
 
   it('calls the element update function', () => {
     const context = { map: undefined }
-    const element = {}
-    const createElementMock = jest.fn(() => ({ el: element }))
+    const instance = {}
+    const createElementMock = jest.fn(() => ({ instance }))
     const updateElementMock = jest.fn()
     const useElement = createUseLeafletElement(
       createElementMock,
       updateElementMock,
     )
 
-    const { rerender } = renderHook(p => useElement(context, p), {
+    const { rerender } = renderHook((p) => useElement(context, p), {
       initialProps: { test: true },
     })
     expect(createElementMock).toBeCalledTimes(1)
@@ -34,7 +34,7 @@ describe('core/element', () => {
     rerender({ test: false })
     expect(updateElementMock).toBeCalledTimes(1)
     expect(updateElementMock).toBeCalledWith(
-      element,
+      instance,
       { test: false },
       { test: true },
     )
@@ -42,7 +42,7 @@ describe('core/element', () => {
     rerender({ test: false })
     expect(updateElementMock).toBeCalledTimes(2)
     expect(updateElementMock).toBeCalledWith(
-      element,
+      instance,
       { test: false },
       { test: false },
     )

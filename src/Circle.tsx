@@ -8,13 +8,10 @@ import { PathProps, createUseLeafletPath } from './core/path'
 export interface CircleProps extends CircleMarkerProps, PathProps {}
 
 export const useCircleElement = createUseLeafletElement<Circle, CircleProps>(
-  function createCircle(props, context) {
-    const { center, ...options } = props
-    const el = new Circle(center, options)
-    return {
-      el,
-      context: context === null ? null : { ...context, overlayContainer: el },
-    }
+  function createCircle({ center, children: _c, ...options }, ctx) {
+    const instance = new Circle(center, options)
+    const context = ctx === null ? null : { ...ctx, overlayContainer: instance }
+    return { instance, context }
   },
   updateCircle,
 )

@@ -5,6 +5,7 @@ import {
   MapOptions,
 } from 'leaflet'
 import React, {
+  CSSProperties,
   MutableRefObject,
   ReactNode,
   Ref,
@@ -23,6 +24,9 @@ export interface MapProps extends MapOptions, EventedProps {
   bounds?: LatLngBoundsExpression
   boundsOptions?: FitBoundsOptions
   children?: ReactNode
+  className?: string
+  id?: string
+  style?: CSSProperties
   useFlyTo?: boolean
   whenCreated?: (map: Map) => void
   whenReady?: () => void
@@ -35,23 +39,23 @@ export function useMapElement(
   const propsRef = useRef<MapProps>(props)
   const [map, setMap] = useState<Map | null>(null)
 
-  useLeafletEvents(map ? { el: map } : null, props.eventHandlers)
+  useLeafletEvents(map ? { instance: map } : null, props.eventHandlers)
   useEffect(() => {
     if (mapRef.current === null) {
       // Wait for map container to be rendered
       return
     }
     if (map === null) {
-      const el = new Map(mapRef.current, props)
+      const instance = new Map(mapRef.current, props)
       if (props.center != null && props.zoom != null) {
-        el.setView(props.center, props.zoom)
+        instance.setView(props.center, props.zoom)
       } else if (props.bounds != null) {
-        el.fitBounds(props.bounds)
+        instance.fitBounds(props.bounds)
       }
       if (props.whenReady != null) {
-        el.whenReady(props.whenReady)
+        instance.whenReady(props.whenReady)
       }
-      setMap(el)
+      setMap(instance)
     } else if (propsRef.current !== null) {
       if (
         props.center != null &&
@@ -59,7 +63,7 @@ export function useMapElement(
         (props.center !== propsRef.current.center ||
           props.zoom !== propsRef.current.zoom)
       ) {
-        const opts = { animate: props.animate || false }
+        const opts = { animate: props.animate ?? false }
         if (props.useFlyTo === true) {
           map.flyTo(props.center, props.zoom, opts)
         } else {
@@ -88,8 +92,8 @@ export function useMapElement(
   return map
 }
 
-function LeafletMapComponent(
-  { children, whenCreated, ...options }: MapProps,
+function MapComponent(
+  { children, className, id, style, whenCreated, ...options }: MapProps,
   ref: Ref<{ element: Map | null }>,
 ) {
   const mapRef = useRef<HTMLDivElement>(null)
@@ -106,7 +110,11 @@ function LeafletMapComponent(
   const contents = map ? (
     <LeafletProvider value={{ map }}>{children}</LeafletProvider>
   ) : null
-  return <div ref={mapRef}>{contents}</div>
+  return (
+    <div ref={mapRef} className={className} id={id} style={style}>
+      {contents}
+    </div>
+  )
 }
 
-export const LeafletMap = forwardRef(LeafletMapComponent)
+export const LeafletMap = forwardRef(MapComponent)

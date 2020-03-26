@@ -13,13 +13,10 @@ export interface LayerGroupProps extends LayerOptions, EventedProps {
 export const useLayerGroupElement = createUseLeafletElement<
   LayerGroup,
   LayerGroupProps
->(function createLayerGroup(props, context) {
-  const { children: _c, ...options } = props
-  const el = new LayerGroup([], options)
-  return {
-    el,
-    context: context === null ? null : { ...context, layerContainer: el },
-  }
+>(function createLayerGroup({ children: _c, ...options }, ctx) {
+  const instance = new LayerGroup([], options)
+  const context = ctx === null ? null : { ...ctx, layerContainer: instance }
+  return { instance, context }
 })
 
 export const useLeafletLayerGroup = createUseLeafletLayer(useLayerGroupElement)

@@ -14,11 +14,11 @@ export function useLeafletLayerLifecycle<E extends Layer>(
       return
     }
 
-    const container = context.layerContainer || context.map
-    container.addLayer(element.el)
+    const container = context.layerContainer ?? context.map
+    container.addLayer(element.instance)
 
     return () => {
-      container.removeLayer(element.el)
+      container.removeLayer(element.instance)
     }
   }, [context, element])
 }

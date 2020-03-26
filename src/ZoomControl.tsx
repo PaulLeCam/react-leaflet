@@ -10,7 +10,7 @@ export const useZoomControlElement = createUseLeafletElement<
   Control.Zoom,
   ZoomControlProps
 >(function createZoomControl(props) {
-  return { el: new Control.Zoom(props) }
+  return { instance: new Control.Zoom(props) }
 })
 
 export const useLeafletZoomControl = createUseLeafletControl(

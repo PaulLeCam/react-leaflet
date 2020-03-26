@@ -11,13 +11,10 @@ export interface PolygonProps extends PolylineOptions, PathProps {
 }
 
 export const usePolygonElement = createUseLeafletElement<Polygon, PolygonProps>(
-  function createPolygon(props, context) {
-    const { positions, ...options } = props
-    const el = new Polygon(positions, options)
-    return {
-      el,
-      context: context === null ? null : { ...context, overlayContainer: el },
-    }
+  function createPolygon({ positions, ...options }, ctx) {
+    const instance = new Polygon(positions, options)
+    const context = ctx === null ? null : { ...ctx, overlayContainer: instance }
+    return { instance, context }
   },
 )
 

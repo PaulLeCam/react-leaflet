@@ -62,7 +62,6 @@ describe('Map', () => {
         zoom={zoom}
         whenCreated={(map) => {
           expect(map.getCenter()).toEqual({ lat: 1.2, lng: 3.4 })
-          console.log('bounds', map.getBounds().getSouthEast())
           expect(map.getZoom()).toBe(zoom)
           done()
         }}

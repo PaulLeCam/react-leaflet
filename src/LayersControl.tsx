@@ -24,20 +24,17 @@ export const useLayersControlElement = createUseLeafletElement<
   Control.Layers,
   LayersControlProps
 >(
-  (props, context) => {
-    const { children: _c, ...options } = props
-    const el = new Control.Layers(undefined, undefined, options)
-    return {
-      el,
-      context: context === null ? null : { ...context, layersControl: el },
-    }
+  function createLayersControl({ children: _c, ...options }, ctx) {
+    const instance = new Control.Layers(undefined, undefined, options)
+    const context = ctx === null ? null : { ...ctx, layersControl: instance }
+    return { instance, context }
   },
-  (el, props, prevProps) => {
+  function updateLayersControl(control, props, prevProps) {
     if (props.collapsed !== prevProps.collapsed) {
       if (props.collapsed === true) {
-        el.collapse()
+        control.collapse()
       } else {
-        el.expand()
+        control.expand()
       }
     }
   },
@@ -122,11 +119,7 @@ export function createUseControlledLayer(addLayerToControl: AddLayerFunc) {
       }
 
       return () => {
-        if (
-          context !== null &&
-          context.layersControl != null &&
-          layer !== null
-        ) {
+        if (context?.layersControl != null && layer !== null) {
           context.layersControl.removeLayer(layer)
         }
       }
@@ -138,14 +131,18 @@ export function createUseControlledLayer(addLayerToControl: AddLayerFunc) {
   }
 }
 
-LeafletLayersControl.BaseLayer = createUseControlledLayer(
-  (layersControl: Control.Layers, layer: Layer, name: string) => {
-    layersControl.addBaseLayer(layer, name)
-  },
-)
+LeafletLayersControl.BaseLayer = createUseControlledLayer(function addBaseLayer(
+  layersControl: Control.Layers,
+  layer: Layer,
+  name: string,
+) {
+  layersControl.addBaseLayer(layer, name)
+})
 
-LeafletLayersControl.Overlay = createUseControlledLayer(
-  (layersControl: Control.Layers, layer: Layer, name: string) => {
-    layersControl.addOverlay(layer, name)
-  },
-)
+LeafletLayersControl.Overlay = createUseControlledLayer(function addOverlay(
+  layersControl: Control.Layers,
+  layer: Layer,
+  name: string,
+) {
+  layersControl.addOverlay(layer, name)
+})

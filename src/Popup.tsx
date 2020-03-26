@@ -13,12 +13,8 @@ export interface PopupProps extends PopupOptions, EventedProps {
 }
 
 export const usePopupElement = createUseLeafletElement<Popup, PopupProps>(
-  (props, context) => {
-    const el = new Popup(
-      props,
-      context === null ? undefined : context.overlayContainer,
-    )
-    return { el }
+  function createPopup(props, ctx) {
+    return { instance: new Popup(props, ctx?.overlayContainer) }
   },
 )
 
@@ -31,47 +27,47 @@ export function usePopupLifecycle(
   if (element === null || context == null) {
     return
   }
-  const { el } = element
+  const { instance } = element
 
-  const onOpen = (event: PopupEvent) => {
-    if (event.popup === el) {
-      el.update()
+  function onPopupOpen(event: PopupEvent) {
+    if (event.popup === instance) {
+      instance.update()
       setOpen(true)
     }
   }
 
-  const onClose = (event: PopupEvent) => {
-    if (event.popup === el) {
+  function onPopupClose(event: PopupEvent) {
+    if (event.popup === instance) {
       setOpen(false)
     }
   }
 
   context.map.on({
     // @ts-ignore emits PopupEvent instead of LeafletEvent
-    popupopen: onOpen,
+    popupopen: onPopupOpen,
     // @ts-ignore emits PopupEvent instead of LeafletEvent
-    popupclose: onClose,
+    popupclose: onPopupClose,
   })
 
   if (context.overlayContainer != null) {
     // Attach to container component
-    context.overlayContainer.bindPopup(el)
+    context.overlayContainer.bindPopup(instance)
   } else {
     // Attach to a Map
     if (props.position != null) {
-      el.setLatLng(props.position)
+      instance.setLatLng(props.position)
     }
-    el.openOn(context.map)
+    instance.openOn(context.map)
   }
 
   return () => {
     context.map.off({
       // @ts-ignore emits PopupEvent instead of LeafletEvent
-      popupopen: onOpen,
+      popupopen: onPopupOpen,
       // @ts-ignore emits PopupEvent instead of LeafletEvent
-      popupclose: onClose,
+      popupclose: onPopupClose,
     })
-    context.map.removeLayer(el)
+    context.map.removeLayer(instance)
   }
 }
 

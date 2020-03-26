@@ -21,11 +21,11 @@ export function createUseLeafletControl<
         return
       }
 
-      const { el } = elementRef.current
-      el.addTo(context.map)
+      const { instance } = elementRef.current
+      instance.addTo(context.map)
 
       return () => {
-        el.remove()
+        instance.remove()
       }
     }, [context, elementRef])
 
@@ -36,7 +36,7 @@ export function createUseLeafletControl<
         props.position != null &&
         props.position !== positionRef.current
       ) {
-        elementRef.current.el.setPosition(props.position)
+        elementRef.current.instance.setPosition(props.position)
         positionRef.current = props.position
       }
     }, [elementRef, props.position])

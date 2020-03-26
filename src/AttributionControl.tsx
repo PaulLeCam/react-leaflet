@@ -10,7 +10,7 @@ export const useAttributionControlElement = createUseLeafletElement<
   Control.Attribution,
   AttributionControlProps
 >(function createAttributionControl(props) {
-  return { el: new Control.Attribution(props) }
+  return { instance: new Control.Attribution(props) }
 })
 
 export const useLeafletAttributionControl = createUseLeafletControl(

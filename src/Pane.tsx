@@ -78,7 +78,7 @@ export function LeafletPane(props: PaneProps) {
       return
     }
 
-    const name = props.name || `pane-${uniqueID()}`
+    const name = props.name ?? `pane-${uniqueID()}`
     const isDefault = isLeafletPane(name)
     const existing = isDefault || context.map.getPane(name) != null
 
@@ -128,18 +128,18 @@ export function LeafletPane(props: PaneProps) {
         createPane()
       } else if (props !== propsRef.current) {
         if (props.name === paneName) {
-          const el = context.map.getPane(name)
-          if (el != null) {
+          const element = context.map.getPane(name)
+          if (element != null) {
             // Remove the previous css class name from the pane if it has changed.
             // setStyle() will take care of adding in the updated className
             if (
               propsRef.current.className &&
               props.className !== propsRef.current.className
             ) {
-              removeClassName(el, propsRef.current.className)
+              removeClassName(element, propsRef.current.className)
             }
             // Update the pane's DOM node style and class
-            setStyle(el)
+            setStyle(element)
           }
         } else {
           removePane(paneName)

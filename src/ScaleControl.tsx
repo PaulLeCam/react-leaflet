@@ -10,7 +10,7 @@ export const useScaleControlElement = createUseLeafletElement<
   Control.Scale,
   ScaleControlProps
 >(function createScaleControl(props) {
-  return { el: new Control.Scale(props) }
+  return { instance: new Control.Scale(props) }
 })
 
 export const useLeafletScaleControl = createUseLeafletControl(

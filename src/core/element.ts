@@ -6,9 +6,10 @@ function noop(): void {
   // Intentionally empty
 }
 
-export interface LeafletElement<T> {
-  el: T
+export interface LeafletElement<T, C = any> {
+  instance: T
   context?: LeafletContextInterface | null
+  container?: C | null
 }
 
 export type UseLeafletElement<E, P> = (
@@ -16,23 +17,25 @@ export type UseLeafletElement<E, P> = (
   props: P,
 ) => MutableRefObject<LeafletElement<E>>
 
-export function createUseLeafletElement<E, P>(
+export function createUseLeafletElement<E, P, C = any>(
   createElement: (
     props: P,
     context: LeafletContextInterface | null,
   ) => LeafletElement<E>,
-  updateElement: (el: E, props: P, prevProps: P) => void = noop,
+  updateElement: (instance: E, props: P, prevProps: P) => void = noop,
 ) {
   return function useLeafletElement(
     context: LeafletContextInterface | null,
     props: P,
   ): ReturnType<UseLeafletElement<E, P>> {
-    const elementRef = useRef<LeafletElement<E>>(createElement(props, context))
+    const elementRef = useRef<LeafletElement<E, C>>(
+      createElement(props, context),
+    )
     const propsRef = useRef<P>(props)
 
     useEffect(() => {
       if (elementRef.current !== null && propsRef.current !== props) {
-        updateElement(elementRef.current.el, props, propsRef.current)
+        updateElement(elementRef.current.instance, props, propsRef.current)
         propsRef.current = props
       }
     }, [props])

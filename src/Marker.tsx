@@ -12,35 +12,32 @@ export interface MarkerProps extends MarkerOptions, EventedProps {
 }
 
 export const useMarkerElement = createUseLeafletElement<Marker, MarkerProps>(
-  function createMarker(props, context) {
-    const { position, ...options } = props
-    const el = new Marker(position, options)
-    return {
-      el,
-      context: context === null ? null : { ...context, overlayContainer: el },
-    }
+  function createMarker({ position, ...options }, ctx) {
+    const instance = new Marker(position, options)
+    const context = ctx === null ? null : { ...ctx, overlayContainer: instance }
+    return { instance, context }
   },
-  function updateMarker(el, props, prevProps) {
+  function updateMarker(marker, props, prevProps) {
     if (props.position !== prevProps.position) {
-      el.setLatLng(props.position)
+      marker.setLatLng(props.position)
     }
     if (props.icon != null && props.icon !== prevProps.icon) {
-      el.setIcon(props.icon)
+      marker.setIcon(props.icon)
     }
     if (
       props.zIndexOffset != null &&
       props.zIndexOffset !== prevProps.zIndexOffset
     ) {
-      el.setZIndexOffset(props.zIndexOffset)
+      marker.setZIndexOffset(props.zIndexOffset)
     }
     if (props.opacity != null && props.opacity !== prevProps.opacity) {
-      el.setOpacity(props.opacity)
+      marker.setOpacity(props.opacity)
     }
-    if (el.dragging != null && props.draggable !== prevProps.draggable) {
+    if (marker.dragging != null && props.draggable !== prevProps.draggable) {
       if (props.draggable === true) {
-        el.dragging.enable()
+        marker.dragging.enable()
       } else {
-        el.dragging.disable()
+        marker.dragging.disable()
       }
     }
   },

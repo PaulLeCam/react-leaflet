@@ -14,17 +14,14 @@ export const useRectangleElement = createUseLeafletElement<
   Rectangle,
   RectangleProps
 >(
-  function createRectangle(props, context) {
-    const { bounds, ...options } = props
-    const el = new Rectangle(bounds, options)
-    return {
-      el,
-      context: context === null ? null : { ...context, overlayContainer: el },
-    }
+  function createRectangle({ bounds, ...options }, ctx) {
+    const instance = new Rectangle(bounds, options)
+    const context = ctx === null ? null : { ...ctx, overlayContainer: instance }
+    return { instance, context }
   },
-  function updateRectangle(el, props, prevProps) {
+  function updateRectangle(layer, props, prevProps) {
     if (props.bounds !== prevProps.bounds) {
-      el.setBounds(props.bounds)
+      layer.setBounds(props.bounds)
     }
   },
 )

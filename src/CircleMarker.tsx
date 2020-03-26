@@ -11,28 +11,25 @@ export interface CircleMarkerProps extends CircleMarkerOptions, PathProps {
 }
 
 export function updateCircle<E extends CircleMarker, P>(
-  el: E,
+  layer: E,
   props: CircleMarkerProps,
   prevProps: CircleMarkerProps,
 ) {
   if (props.center !== prevProps.center) {
-    el.setLatLng(props.center)
+    layer.setLatLng(props.center)
   }
   if (props.radius != null && props.radius !== prevProps.radius) {
-    el.setRadius(props.radius)
+    layer.setRadius(props.radius)
   }
 }
 
 export const useCircleMarkerElement = createUseLeafletElement<
   CircleMarker,
   CircleMarkerProps
->(function createCircleMarker(props, context) {
-  const { center, ...options } = props
-  const el = new CircleMarker(center, options)
-  return {
-    el,
-    context: context === null ? null : { ...context, overlayContainer: el },
-  }
+>(function createCircleMarker({ center, children: _c, ...options }, ctx) {
+  const instance = new CircleMarker(center, options)
+  const context = ctx === null ? null : { ...ctx, overlayContainer: instance }
+  return { instance, context }
 }, updateCircle)
 
 export const useLeafletCircleMarker = createUseLeafletPath(

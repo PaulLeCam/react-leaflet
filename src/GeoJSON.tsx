@@ -14,13 +14,10 @@ export interface GeoJSONProps
 }
 
 export const useGeoJSONElement = createUseLeafletElement<GeoJSON, GeoJSONProps>(
-  function createGeoJSON(props, context) {
-    const { data, ...options } = props
-    const el = new GeoJSON(data, options)
-    return {
-      el,
-      context: context === null ? null : { ...context, overlayContainer: el },
-    }
+  function createGeoJSON({ data, ...options }, ctx) {
+    const instance = new GeoJSON(data, options)
+    const context = ctx === null ? null : { ...ctx, overlayContainer: instance }
+    return { instance, context }
   },
 )
 
