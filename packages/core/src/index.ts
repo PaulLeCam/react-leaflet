@@ -1,6 +1,5 @@
 export { addClassName, removeClassName, updateClassName } from './className'
 export {
-  ElementRef,
   createContainerComponent,
   createDivOverlayComponent,
   createLeafComponent,

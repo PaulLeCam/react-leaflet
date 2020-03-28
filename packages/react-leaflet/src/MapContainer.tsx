@@ -9,10 +9,7 @@ import React, {
   CSSProperties,
   MutableRefObject,
   ReactNode,
-  Ref,
-  forwardRef,
   useEffect,
-  useImperativeHandle,
   useRef,
   useState,
 } from 'react'
@@ -53,20 +50,16 @@ export function useMapElement(
   return map
 }
 
-function MapComponent(
-  {
-    children,
-    className,
-    id,
-    style,
-    whenCreated,
-    ...options
-  }: MapContainerProps,
-  ref: Ref<{ element: LeafletMap | null }>,
-) {
+export function MapContainer({
+  children,
+  className,
+  id,
+  style,
+  whenCreated,
+  ...options
+}: MapContainerProps) {
   const mapRef = useRef<HTMLDivElement>(null)
   const map = useMapElement(mapRef, options)
-  useImperativeHandle(ref, () => ({ element: map }))
 
   const createdRef = useRef<boolean>(false)
   useEffect(() => {
@@ -84,5 +77,3 @@ function MapComponent(
     </div>
   )
 }
-
-export const MapContainer = forwardRef(MapComponent)

@@ -1,7 +1,7 @@
 import { createControlComponent } from '@react-leaflet/core'
 import { Control } from 'leaflet'
 
-export interface ScaleControlProps extends Control.ScaleOptions {}
+export type ScaleControlProps = Control.ScaleOptions
 
 export const ScaleControl = createControlComponent<
   Control.Scale,

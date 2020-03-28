@@ -1,7 +1,7 @@
 import { createControlComponent } from '@react-leaflet/core'
 import { Control } from 'leaflet'
 
-export interface AttributionControlProps extends Control.AttributionOptions {}
+export type AttributionControlProps = Control.AttributionOptions
 
 export const AttributionControl = createControlComponent<
   Control.Attribution,

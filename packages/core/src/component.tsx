@@ -20,22 +20,12 @@ export interface PropsWithChildren {
   children?: ReactNode
 }
 
-export type ElementRef<E> = Ref<{ element: E | null }>
-
 export function createContainerComponent<E, P extends PropsWithChildren>(
   useElement: ElementHook<E, P>,
 ) {
-  function ContainerComponent(props: P, ref: ElementRef<E>) {
-    const elementRef = useElement(props)
-
-    let instance: E | null = null
-    let context = null
-    if (elementRef.current !== null) {
-      instance = elementRef.current.instance
-      context = elementRef.current.context
-    }
-
-    useImperativeHandle(ref, () => ({ element: instance }))
+  function ContainerComponent(props: P, ref: Ref<E>) {
+    const { instance, context } = useElement(props).current
+    useImperativeHandle(ref, () => instance)
 
     if (props.children == null) {
       return null
@@ -54,12 +44,11 @@ export function createDivOverlayComponent<
   E extends DivOverlay,
   P extends PropsWithChildren
 >(useElement: ReturnType<DivOverlayHook<E, P>>) {
-  function OverlayComponent(props: P, ref: ElementRef<E>) {
+  function OverlayComponent(props: P, ref: Ref<E>) {
     const [isOpen, setOpen] = useState(false)
-    const elementRef = useElement(props, setOpen)
-    const instance = elementRef.current?.instance
+    const { instance } = useElement(props, setOpen).current
 
-    useImperativeHandle(ref, () => ({ element: instance }))
+    useImperativeHandle(ref, () => instance)
     useEffect(
       function updateOverlay() {
         if (isOpen && instance !== null) {
@@ -70,7 +59,7 @@ export function createDivOverlayComponent<
     )
 
     // @ts-ignore _contentNode missing in type definition
-    const contentNode = instance?._contentNode
+    const contentNode = instance._contentNode
     return contentNode ? createPortal(props.children, contentNode) : null
   }
 
@@ -78,10 +67,9 @@ export function createDivOverlayComponent<
 }
 
 export function createLeafComponent<E, P>(useElement: ElementHook<E, P>) {
-  function LeafComponent(props: P, ref: ElementRef<E>) {
-    const elementRef = useElement(props)
-
-    useImperativeHandle(ref, () => ({ element: elementRef.current?.instance }))
+  function LeafComponent(props: P, ref: Ref<E>) {
+    const { instance } = useElement(props).current
+    useImperativeHandle(ref, () => instance)
 
     return null
   }
