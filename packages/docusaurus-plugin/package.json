@@ -1,0 +1,19 @@
+{
+  "name": "@react-leaflet/docusaurus-plugin",
+  "version": "1.0.0-alpha.0",
+  "description": "Use React-Leaflet in Docusaurus v2",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PaulLeCam/react-leaflet.git"
+  },
+  "author": "Paul Le Cam <paul@ulem.net>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PaulLeCam/react-leaflet/issues"
+  },
+  "homepage": "https://github.com/PaulLeCam/react-leaflet",
+  "dependencies": {
+    "@react-leaflet/universal-leaflet": "^1.0.0-alpha.0"
+  }
+}
