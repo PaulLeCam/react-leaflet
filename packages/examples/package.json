@@ -1,0 +1,16 @@
+{
+  "name": "react-leaflet-examples",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "webpack-dev-server --config ./webpack.config.js"
+  },
+  "dependencies": {
+    "react-leaflet": "*"
+  },
+  "devDependencies": {
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  }
+}

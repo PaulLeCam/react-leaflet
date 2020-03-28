@@ -1,0 +1,65 @@
+{
+  "name": "react-leaflet",
+  "version": "3.0.0-alpha.0",
+  "description": "React components for Leaflet maps",
+  "main": "cjs/index.js",
+  "module": "esm/index.js",
+  "browser": "umd/react-leaflet.min.js",
+  "types": "types/index.d.ts",
+  "sideEffects": false,
+  "scripts": {
+    "build:clean": "del cjs esm types umd",
+    "build:cjs": "babel src --out-dir cjs --extensions .ts,.tsx",
+    "build:esm": "cross-env BABEL_ENV=esm babel src --out-dir esm --extensions .ts,.tsx",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build:umd": "cross-env BABEL_ENV=rollup NODE_ENV=development rollup -c",
+    "build:umd:min": "cross-env BABEL_ENV=rollup NODE_ENV=production rollup -c",
+    "build": "yarn run build:clean && yarn run build:cjs && yarn run build:esm && yarn run build:types && yarn run build:umd && yarn run build:umd:min",
+    "test:types": "tsc --noEmit",
+    "test:unit": "cross-env BABEL_ENV=development NODE_ENV=test jest",
+    "test": "yarn run test:types && yarn run test:unit",
+    "start": "yarn run test && yarn run build",
+    "prepublishOnly": "yarn run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PaulLeCam/react-leaflet.git"
+  },
+  "keywords": [
+    "react-component",
+    "react",
+    "leaflet",
+    "map"
+  ],
+  "author": "Paul Le Cam <paul@ulem.net>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PaulLeCam/react-leaflet/issues"
+  },
+  "homepage": "https://github.com/PaulLeCam/react-leaflet",
+  "files": [
+    "cjs/*",
+    "esm/*",
+    "types/*",
+    "umd/*"
+  ],
+  "dependencies": {
+    "@babel/runtime-corejs3": "^7.9.2",
+    "@react-leaflet/core": "^1.0.0-alpha.0",
+    "core-js": "^3.6.4",
+    "warning": "^4.0.3"
+  },
+  "peerDependencies": {
+    "leaflet": "^1.6.0",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
+  },
+  "devDependencies": {
+    "rollup": "^2.2.0",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-replace": "^2.2.0",
+    "rollup-plugin-uglify": "^6.0.4"
+  }
+}

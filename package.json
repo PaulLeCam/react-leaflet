@@ -1,58 +1,12 @@
 {
-  "name": "react-leaflet",
-  "version": "2.6.3",
-  "description": "React components for Leaflet maps",
-  "main": "cjs/index.js",
-  "module": "esm/index.js",
-  "browser": "umd/react-leaflet.min.js",
-  "types": "types/index.d.ts",
-  "sideEffects": false,
+  "name": "react-leaflet-repository",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "build:clean": "rimraf cjs esm types umd",
-    "build:cjs": "babel src --out-dir cjs --extensions .ts,.tsx",
-    "build:esm": "cross-env BABEL_ENV=esm babel src --out-dir esm --extensions .ts,.tsx",
-    "build:types": "tsc --emitDeclarationOnly",
-    "build:umd": "cross-env BABEL_ENV=rollup NODE_ENV=development rollup -c",
-    "build:umd:min": "cross-env BABEL_ENV=rollup NODE_ENV=production rollup -c",
-    "build": "yarn run build:clean && yarn run build:cjs && yarn run build:esm && yarn run build:umd && yarn run build:umd:min",
-    "test:lint": "eslint './example/**/*.tsx' './src/**/*.ts' './src/**/*.tsx'",
-    "test:types": "tsc --noEmit",
-    "test:unit": "cross-env BABEL_ENV=development NODE_ENV=test jest",
-    "test": "yarn run test:lint && yarn run test:types && yarn run test:unit",
-    "start": "yarn run test && yarn run build",
-    "prepublishOnly": "yarn run build",
-    "examples": "webpack-dev-server --config ./example/webpack.config.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/PaulLeCam/react-leaflet.git"
-  },
-  "keywords": [
-    "react-component",
-    "react",
-    "leaflet",
-    "map"
-  ],
-  "author": "Paul Le Cam <paul@ulem.net>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/PaulLeCam/react-leaflet/issues"
-  },
-  "homepage": "https://github.com/PaulLeCam/react-leaflet",
-  "files": [
-    "cjs/*",
-    "esm/*",
-    "umd/*"
-  ],
-  "dependencies": {
-    "@babel/runtime-corejs3": "^7.9.2",
-    "core-js": "^3.6.4",
-    "warning": "^4.0.3"
-  },
-  "peerDependencies": {
-    "leaflet": "^1.6.0",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0"
+    "lint": "eslint './packages/**/*.ts' './packages/**/*.tsx'"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
@@ -79,6 +33,7 @@
     "babel-loader": "^8.0.6",
     "babel-plugin-dev-expression": "^0.2.2",
     "cross-env": "^7.0.2",
+    "del-cli": "^3.0.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.1",
     "eslint-plugin-import": "^2.20.1",
@@ -94,13 +49,6 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-test-renderer": "^16.13.1",
-    "rimraf": "^3.0.2",
-    "rollup": "^2.2.0",
-    "rollup-plugin-babel": "^4.3.3",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-replace": "^2.2.0",
-    "rollup-plugin-uglify": "^6.0.4",
     "snapshot-diff": "^0.7.0",
     "ts-jest": "^25.2.1",
     "typescript": "^3.8.3",

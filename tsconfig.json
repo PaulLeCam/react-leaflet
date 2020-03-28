@@ -1,16 +1,10 @@
 {
+  "extends": "./tsconfig.build.json",
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "declaration": true,
-    "esModuleInterop": true,
-    "jsx": "react",
-    "lib": ["dom", "es2015"],
-    "moduleResolution": "node",
-    "outDir": "./types",
-    "resolveJsonModule": true,
-    "sourceMap": true,
-    "strict": true,
-    "target": "es2019"
-  },
-  "include": ["./src/**/*"]
+    "baseUrl": "./packages",
+    "paths": {
+      "@react-leaflet/core": ["core/src"],
+      "react-leaflet": ["react-leaflet/src"]
+    }
+  }
 }
