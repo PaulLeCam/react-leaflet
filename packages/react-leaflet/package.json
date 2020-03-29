@@ -4,7 +4,6 @@
   "description": "React components for Leaflet maps",
   "main": "cjs/index.js",
   "module": "esm/index.js",
-  "browser": "umd/react-leaflet.min.js",
   "types": "types/index.d.ts",
   "sideEffects": false,
   "scripts": {

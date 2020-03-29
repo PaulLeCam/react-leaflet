@@ -6,7 +6,8 @@
     "packages/*"
   ],
   "scripts": {
-    "lint": "eslint './packages/**/*.ts' './packages/**/*.tsx'"
+    "lint": "eslint './packages/**/*.ts' './packages/**/*.tsx'",
+    "website:build": "cd packages/website && yarn run build"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
