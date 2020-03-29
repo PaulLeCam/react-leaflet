@@ -4,21 +4,19 @@ export {
   createDivOverlayComponent,
   createLeafComponent,
 } from './component'
-export {
-  LeafletContextInterface,
-  LeafletContext,
-  LeafletProvider,
-  useLeafletContext,
-} from './context'
+export { LeafletContext, LeafletProvider, useLeafletContext } from './context'
+export type { LeafletContextInterface } from './context'
 export { createControlHook } from './control'
-export {
+export { createDivOverlayHook } from './div-overlay'
+export type {
   DivOverlayHook,
   DivOverlayLifecycleHook,
   SetOpenFunc,
-  createDivOverlayHook,
 } from './div-overlay'
-export { ElementHook, LeafletElement, createElementHook } from './element'
-export { EventedProps, useEventHandlers } from './events'
+export { createElementHook } from './element'
+export type { ElementHook, LeafletElement } from './element'
+export { useEventHandlers } from './events'
+export type { EventedProps } from './events'
 export {
   createControlComponent,
   createLayerComponent,
@@ -28,4 +26,5 @@ export {
 } from './generic'
 export { updateGridLayer } from './grid-layer'
 export { createLayerHook, useLayerLifecycle } from './layer'
-export { PathProps, createPathHook, usePathOptions } from './path'
+export { createPathHook, usePathOptions } from './path'
+export type { PathProps } from './path'
