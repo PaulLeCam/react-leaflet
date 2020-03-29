@@ -7,7 +7,10 @@
   ],
   "scripts": {
     "lint": "eslint './packages/**/*.ts' './packages/**/*.tsx'",
-    "website:build": "cd packages/website && yarn run build"
+    "build:core": "cd packages/core && yarn run build && cd ../..",
+    "build:react-lealfet": "cd packages/react-leaflet && yarn run build && cd ../..",
+    "build:website": "cd packages/website && yarn run build && cd ../..",
+    "build": "yarn run build:core && yarn run build:react-lealfet && yarn run build:website"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
