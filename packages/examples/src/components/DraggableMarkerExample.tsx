@@ -16,7 +16,7 @@ function DraggableMarker() {
       dragend() {
         const marker = markerRef.current
         if (marker != null) {
-          setPosition(marker.element.getLatLng())
+          setPosition(marker.getLatLng())
         }
       },
     }),

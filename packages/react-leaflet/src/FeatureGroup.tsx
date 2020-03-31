@@ -10,9 +10,10 @@ export const FeatureGroup = createPathComponent<
   FeatureGroupProps
 >(function createFeatureGroup({ children: _c, ...options }, ctx) {
   const instance = new LeafletFeatureGroup([], options)
-  const context =
-    ctx === null
-      ? null
-      : { ...ctx, layerContainer: instance, overlayContainer: instance }
+  const context = {
+    ...ctx,
+    layerContainer: instance,
+    overlayContainer: instance,
+  }
   return { instance, context }
 })

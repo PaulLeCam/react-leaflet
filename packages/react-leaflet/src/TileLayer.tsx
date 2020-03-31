@@ -12,6 +12,6 @@ export interface TileLayerProps extends TileLayerOptions, EventedProps {
 export const TileLayer = createTileLayerComponent<
   LeafletTileLayer,
   TileLayerProps
->(function createTileLayer({ url, ...options }) {
-  return { instance: new LeafletTileLayer(url, options) }
+>(function createTileLayer({ url, ...options }, context) {
+  return { instance: new LeafletTileLayer(url, options), context }
 }, updateGridLayer)

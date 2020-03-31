@@ -14,7 +14,6 @@ export interface PolygonProps extends PolylineOptions, PathProps {
 export const Polygon = createPathComponent<LeafletPolygon, PolygonProps>(
   function createPolygon({ positions, ...options }, ctx) {
     const instance = new LeafletPolygon(positions, options)
-    const context = ctx === null ? null : { ...ctx, overlayContainer: instance }
-    return { instance, context }
+    return { instance, context: { ...ctx, overlayContainer: instance } }
   },
 )

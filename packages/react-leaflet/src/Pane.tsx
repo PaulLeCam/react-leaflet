@@ -63,27 +63,22 @@ export function Pane(props: PaneProps) {
   const [paneName, setPaneName] = useState<string | null>(null)
 
   function setStyle(paneElement: HTMLElement) {
-    if (props.className != null || props.style != null) {
-      if (props.className != null) {
-        addClassName(paneElement, props.className)
-      }
-      if (props.style != null) {
-        Object.keys(props.style).forEach((key) => {
-          // @ts-ignore
-          paneElement.style[key] = props.style[key]
-        })
-      }
+    if (props.className != null) {
+      addClassName(paneElement, props.className)
+    }
+    if (props.style != null) {
+      Object.keys(props.style).forEach((key) => {
+        // @ts-ignore
+        paneElement.style[key] = props.style[key]
+      })
     }
   }
 
   function createPane() {
-    if (context === null) {
-      return
-    }
-
     const name = props.name ?? `pane-${uniqueID()}`
+    const paneElement = context.map.getPane(name)
     const isDefault = isLeafletPane(name)
-    const existing = isDefault || context.map.getPane(name) != null
+    const existing = isDefault || paneElement != null
 
     if (existing) {
       const message = isDefault
@@ -92,66 +87,61 @@ export function Pane(props: PaneProps) {
       warning(false, message)
     } else {
       const parentPaneName = props.name ?? context.pane
-      const parentPane = parentPaneName
-        ? context.map.getPane(parentPaneName)
-        : undefined
-      context.map.createPane(name, parentPane)
+      context.map.createPane(
+        name,
+        parentPaneName ? context.map.getPane(parentPaneName) : undefined,
+      )
     }
 
     setPaneName(name)
-    const el = context.map.getPane(name)
-    if (el != null) {
-      setStyle(el)
+    if (paneElement != null) {
+      setStyle(paneElement)
     }
   }
 
   function removePane(name: string) {
-    if (context !== null) {
-      const pane = context.map.getPane(name)
-      pane?.remove?.()
+    const pane = context.map.getPane(name)
+    pane?.remove?.()
 
+    // @ts-ignore map internals
+    if (context.map._panes != null) {
       // @ts-ignore map internals
-      if (context.map._panes != null) {
+      context.map._panes = omitPane(context.map._panes, paneName)
+      // @ts-ignore map internals
+      context.map._paneRenderers = omitPane(
         // @ts-ignore map internals
-        context.map._panes = omitPane(context.map._panes, paneName)
+        context.map._paneRenderers,
         // @ts-ignore map internals
-        context.map._paneRenderers = omitPane(
-          // @ts-ignore map internals
-          context.map._paneRenderers,
-          // @ts-ignore map internals
-          paneName,
-        )
-      }
+        paneName,
+      )
     }
   }
 
-  useEffect(() => {
-    if (context !== null) {
-      if (paneName === null) {
-        createPane()
-      } else if (props !== propsRef.current) {
-        if (props.name === paneName) {
-          const element = context.map.getPane(name)
-          if (element != null) {
-            // Remove the previous css class name from the pane if it has changed.
-            // setStyle() will take care of adding in the updated className
-            if (
-              propsRef.current.className &&
-              props.className !== propsRef.current.className
-            ) {
-              removeClassName(element, propsRef.current.className)
-            }
-            // Update the pane's DOM node style and class
-            setStyle(element)
+  useEffect(function handlePane() {
+    if (paneName === null) {
+      createPane()
+    } else if (props !== propsRef.current) {
+      if (props.name === paneName) {
+        const element = context.map.getPane(name)
+        if (element != null) {
+          // Remove the previous css class name from the pane if it has changed.
+          // setStyle() will take care of adding in the updated className
+          if (
+            propsRef.current.className &&
+            props.className !== propsRef.current.className
+          ) {
+            removeClassName(element, propsRef.current.className)
           }
-        } else {
-          removePane(paneName)
-          createPane()
+          // Update the pane's DOM node style and class
+          setStyle(element)
         }
+      } else {
+        removePane(paneName)
+        createPane()
       }
     }
 
-    return () => {
+    return function removeCreatedPane() {
       if (paneName !== null) {
         removePane(paneName)
       }
@@ -159,7 +149,7 @@ export function Pane(props: PaneProps) {
   })
 
   const newContext = useMemo(() => {
-    return context && paneName ? { ...context, pane: paneName } : null
+    return paneName ? { ...context, pane: paneName } : context
   }, [context, paneName])
 
   return newContext && props.children ? (

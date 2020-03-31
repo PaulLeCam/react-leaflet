@@ -5,6 +5,7 @@
   },
   "extends": [
     "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
     "plugin:@typescript-eslint/recommended",
     "prettier",
     "prettier/@typescript-eslint",
@@ -32,9 +33,7 @@
         "singleQuote": true,
         "trailingComma": "all"
       }
-    ],
-    "react-hooks/exhaustive-deps": "warn",
-    "react-hooks/rules-of-hooks": "error"
+    ]
   },
   "settings": {
     "react": {

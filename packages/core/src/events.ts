@@ -8,17 +8,13 @@ export interface EventedProps {
 }
 
 export function useEventHandlers(
-  element: LeafletElement<Evented> | null,
+  element: LeafletElement<Evented>,
   eventHandlers: LeafletEventHandlerFnMap | null | undefined,
 ) {
   const eventHandlersRef = useRef<LeafletEventHandlerFnMap | null | undefined>()
 
   useEffect(
     function addEventHandlers() {
-      if (element === null) {
-        return
-      }
-
       if (eventHandlers !== eventHandlersRef.current) {
         if (eventHandlersRef.current != null) {
           element.instance.off(eventHandlersRef.current)

@@ -14,8 +14,7 @@ export interface MarkerProps extends MarkerOptions, EventedProps {
 export const Marker = createLayerComponent<LeafletMarker, MarkerProps>(
   function createMarker({ position, ...options }, ctx) {
     const instance = new LeafletMarker(position, options)
-    const context = ctx === null ? null : { ...ctx, overlayContainer: instance }
-    return { instance, context }
+    return { instance, context: { ...ctx, overlayContainer: instance } }
   },
   function updateMarker(marker, props, prevProps) {
     if (props.position !== prevProps.position) {

@@ -10,7 +10,7 @@ export type SetOpenFunc = (open: boolean) => void
 
 export type DivOverlayLifecycleHook<E, P> = (
   element: LeafletElement<E>,
-  context: LeafletContextInterface | null,
+  context: LeafletContextInterface,
   props: P,
   setOpen: SetOpenFunc,
 ) => void

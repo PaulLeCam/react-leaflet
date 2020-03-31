@@ -28,8 +28,7 @@ export const useLayersControlElement = createElementHook<
 >(
   function createLayersControl({ children: _c, ...options }, ctx) {
     const instance = new Control.Layers(undefined, undefined, options)
-    const context = ctx === null ? null : { ...ctx, layersControl: instance }
-    return { instance, context }
+    return { instance, context: { ...ctx, layersControl: instance } }
   },
   function updateLayersControl(control, props, prevProps) {
     if (props.collapsed !== prevProps.collapsed) {
@@ -52,7 +51,7 @@ export interface ControlledLayerProps {
 
 // @ts-ignore
 export const LayersControl: ForwardRefExoticComponent<
-  LayersControlProps & RefAttributes<{ element: Control.Layers | null }>
+  LayersControlProps & RefAttributes<Control.Layers>
 > & {
   BaseLayer: StatelessComponent<ControlledLayerProps>
   Overlay: StatelessComponent<ControlledLayerProps>
@@ -72,7 +71,7 @@ export function createControlledLayer(addLayerToControl: AddLayerFunc) {
 
     const addLayer = useCallback(
       (layerToAdd: Layer) => {
-        if (context !== null && context.layersControl != null) {
+        if (context.layersControl != null) {
           if (propsRef.current.checked) {
             context.map.addLayer(layerToAdd)
           }
@@ -88,7 +87,7 @@ export function createControlledLayer(addLayerToControl: AddLayerFunc) {
     )
     const removeLayer = useCallback(
       (layerToRemove: Layer) => {
-        if (context !== null && context.layersControl != null) {
+        if (context.layersControl != null) {
           context.layersControl.removeLayer(layerToRemove)
         }
         setLayer(null)
@@ -102,7 +101,7 @@ export function createControlledLayer(addLayerToControl: AddLayerFunc) {
     }, [context, addLayer, removeLayer])
 
     useEffect(() => {
-      if (context != null && layer !== null && propsRef.current !== props) {
+      if (layer !== null && propsRef.current !== props) {
         if (
           props.checked === true &&
           (propsRef.current.checked == null ||
@@ -119,7 +118,7 @@ export function createControlledLayer(addLayerToControl: AddLayerFunc) {
       }
 
       return () => {
-        if (context?.layersControl != null && layer !== null) {
+        if (context.layersControl != null && layer !== null) {
           context.layersControl.removeLayer(layer)
         }
       }

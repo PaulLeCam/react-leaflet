@@ -7,5 +7,5 @@ export const ScaleControl = createControlComponent<
   Control.Scale,
   ScaleControlProps
 >(function createScaleControl(props) {
-  return { instance: new Control.Scale(props) }
+  return new Control.Scale(props)
 })

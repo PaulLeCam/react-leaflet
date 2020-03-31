@@ -23,7 +23,6 @@ export function updatePolyline<
 export const Polyline = createPathComponent<LeafletPolyline, PolylineProps>(
   function createPolyline({ positions, ...options }, ctx) {
     const instance = new LeafletPolyline(positions, options)
-    const context = ctx === null ? null : { ...ctx, overlayContainer: instance }
-    return { instance, context }
+    return { instance, context: { ...ctx, overlayContainer: instance } }
   },
 )

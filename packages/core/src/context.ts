@@ -20,6 +20,12 @@ export const LeafletContext = createContext<LeafletContextInterface | null>(
 
 export const LeafletProvider = LeafletContext.Provider
 
-export function useLeafletContext() {
-  return useContext(LeafletContext)
+export function useLeafletContext(): LeafletContextInterface {
+  const context = useContext(LeafletContext)
+  if (context == null) {
+    throw new Error(
+      'No context provided: useLeafletContext() can only be used in a descendant of <MapContainer>',
+    )
+  }
+  return context
 }

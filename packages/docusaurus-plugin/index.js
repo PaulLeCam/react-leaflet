@@ -1,6 +1,6 @@
 module.exports = function () {
   return {
-    name: 'alias-leaflet',
+    name: 'react-leaflet-docusaurus-plugin',
     configureWebpack(config, isServer) {
       if (isServer) {
         return {

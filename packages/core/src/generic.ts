@@ -24,12 +24,13 @@ interface PathWithChildrenProps extends PathProps, PropsWithChildren {}
 export function createControlComponent<
   E extends Control,
   P extends ControlOptions
->(
-  createElement: (
+>(createInstance: (props: P) => E) {
+  function createElement(
     props: P,
-    context: LeafletContextInterface | null,
-  ) => LeafletElement<E>,
-) {
+    context: LeafletContextInterface,
+  ): LeafletElement<E> {
+    return { instance: createInstance(props), context }
+  }
   const useElement = createElementHook(createElement)
   const useControl = createControlHook(useElement)
   return createLeafComponent(useControl)
@@ -41,7 +42,7 @@ export function createLayerComponent<
 >(
   createElement: (
     props: P,
-    context: LeafletContextInterface | null,
+    context: LeafletContextInterface,
   ) => LeafletElement<E>,
   updateElement?: (instance: E, props: P, prevProps: P) => void,
 ) {
@@ -56,7 +57,7 @@ export function createOverlayComponent<
 >(
   createElement: (
     props: P,
-    context: LeafletContextInterface | null,
+    context: LeafletContextInterface,
   ) => LeafletElement<E>,
   useLifecycle: DivOverlayLifecycleHook<E, P>,
 ) {
@@ -71,7 +72,7 @@ export function createPathComponent<
 >(
   createElement: (
     props: P,
-    context: LeafletContextInterface | null,
+    context: LeafletContextInterface,
   ) => LeafletElement<E>,
   updateElement?: (instance: E, props: P, prevProps: P) => void,
 ) {
@@ -86,7 +87,7 @@ export function createTileLayerComponent<
 >(
   createElement: (
     props: P,
-    context: LeafletContextInterface | null,
+    context: LeafletContextInterface,
   ) => LeafletElement<E>,
   updateElement?: (instance: E, props: P, prevProps: P) => void,
 ) {

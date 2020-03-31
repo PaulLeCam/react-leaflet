@@ -14,7 +14,6 @@ export interface GeoJSONProps
 export const GeoJSON = createPathComponent<LeafletGeoJSON, GeoJSONProps>(
   function createGeoJSON({ data, ...options }, ctx) {
     const instance = new LeafletGeoJSON(data, options)
-    const context = ctx === null ? null : { ...ctx, overlayContainer: instance }
-    return { instance, context }
+    return { instance, context: { ...ctx, overlayContainer: instance } }
   },
 )

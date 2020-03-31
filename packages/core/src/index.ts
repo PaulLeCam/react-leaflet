@@ -1,4 +1,5 @@
-export { addClassName, removeClassName, updateClassName } from './className'
+export { updateCircle } from './circle'
+export type { CircleMarkerProps } from './circle'
 export {
   createContainerComponent,
   createDivOverlayComponent,
@@ -13,6 +14,7 @@ export type {
   DivOverlayLifecycleHook,
   SetOpenFunc,
 } from './div-overlay'
+export { addClassName, removeClassName, updateClassName } from './dom'
 export { createElementHook } from './element'
 export type { ElementHook, LeafletElement } from './element'
 export { useEventHandlers } from './events'
@@ -26,5 +28,7 @@ export {
 } from './generic'
 export { updateGridLayer } from './grid-layer'
 export { createLayerHook, useLayerLifecycle } from './layer'
+export { updateMediaOverlay } from './media-overlay'
+export type { MediaOverlayProps } from './media-overlay'
 export { createPathHook, usePathOptions } from './path'
 export type { PathProps } from './path'

@@ -31,7 +31,7 @@
     "map"
   ],
   "author": "Paul Le Cam <paul@ulem.net>",
-  "license": "MIT",
+  "license": "SEE LICENSE IN LICENSE.md",
   "bugs": {
     "url": "https://github.com/PaulLeCam/react-leaflet/issues"
   },
@@ -54,7 +54,7 @@
     "react-dom": "^16.9.0"
   },
   "devDependencies": {
-    "rollup": "^2.2.0",
+    "rollup": "^2.3.1",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",

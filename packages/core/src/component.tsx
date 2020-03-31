@@ -1,5 +1,4 @@
 import React, {
-  Fragment,
   MutableRefObject,
   ReactNode,
   Ref,
@@ -27,12 +26,7 @@ export function createContainerComponent<E, P extends PropsWithChildren>(
     const { instance, context } = useElement(props).current
     useImperativeHandle(ref, () => instance)
 
-    if (props.children == null) {
-      return null
-    }
-    return context == null ? (
-      <Fragment>{props.children}</Fragment>
-    ) : (
+    return props.children == null ? null : (
       <LeafletProvider value={context}>{props.children}</LeafletProvider>
     )
   }
@@ -51,7 +45,7 @@ export function createDivOverlayComponent<
     useImperativeHandle(ref, () => instance)
     useEffect(
       function updateOverlay() {
-        if (isOpen && instance !== null) {
+        if (isOpen) {
           instance.update()
         }
       },

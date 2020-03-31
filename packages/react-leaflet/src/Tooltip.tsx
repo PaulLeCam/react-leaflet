@@ -11,7 +11,7 @@ import {
   TooltipEvent,
   TooltipOptions,
 } from 'leaflet'
-import { ReactNode } from 'react'
+import { ReactNode, useEffect } from 'react'
 
 export interface TooltipProps extends TooltipOptions, EventedProps {
   children?: ReactNode
@@ -19,54 +19,61 @@ export interface TooltipProps extends TooltipOptions, EventedProps {
 }
 
 export const Tooltip = createOverlayComponent<LeafletTooltip, TooltipProps>(
-  function createTooltip(props, ctx) {
-    return { instance: new LeafletTooltip(props, ctx?.overlayContainer) }
+  function createTooltip(props, context) {
+    return {
+      instance: new LeafletTooltip(props, context.overlayContainer),
+      context,
+    }
   },
   function useTooltipLifecycle(
     element: LeafletElement<LeafletTooltip>,
-    context: LeafletContextInterface | null,
+    context: LeafletContextInterface,
     props: TooltipProps,
     setOpen: SetOpenFunc,
   ) {
-    if (element === null || context == null) {
-      return
-    }
-    const { instance } = element
+    useEffect(
+      function addTooltip() {
+        const container = context.overlayContainer
+        if (container == null) {
+          return function noop() {
+            // Nothing to do
+          }
+        }
 
-    const onTooltipOpen = (event: TooltipEvent) => {
-      if (event.tooltip === instance) {
-        instance.update()
-        setOpen(true)
-      }
-    }
+        const { instance } = element
 
-    const onTooltipClose = (event: TooltipEvent) => {
-      if (event.tooltip === instance) {
-        setOpen(false)
-      }
-    }
+        const onTooltipOpen = (event: TooltipEvent) => {
+          if (event.tooltip === instance) {
+            instance.update()
+            setOpen(true)
+          }
+        }
 
-    const container = context.overlayContainer
-    if (container == null) {
-      return
-    }
+        const onTooltipClose = (event: TooltipEvent) => {
+          if (event.tooltip === instance) {
+            setOpen(false)
+          }
+        }
 
-    container.on({
-      // @ts-ignore emits TooltipEvent instead of LeafletEvent
-      tooltipopen: onTooltipOpen,
-      // @ts-ignore emits TooltipEvent instead of LeafletEvent
-      tooltipclose: onTooltipClose,
-    })
-    container.bindTooltip(instance)
+        container.on({
+          // @ts-ignore emits TooltipEvent instead of LeafletEvent
+          tooltipopen: onTooltipOpen,
+          // @ts-ignore emits TooltipEvent instead of LeafletEvent
+          tooltipclose: onTooltipClose,
+        })
+        container.bindTooltip(instance)
 
-    return () => {
-      container.off({
-        // @ts-ignore emits TooltipEvent instead of LeafletEvent
-        tooltipopen: onTooltipOpen,
-        // @ts-ignore emits TooltipEvent instead of LeafletEvent
-        tooltipclose: onTooltipClose,
-      })
-      container.unbindTooltip()
-    }
+        return function removeTooltip() {
+          container.off({
+            // @ts-ignore emits TooltipEvent instead of LeafletEvent
+            tooltipopen: onTooltipOpen,
+            // @ts-ignore emits TooltipEvent instead of LeafletEvent
+            tooltipclose: onTooltipClose,
+          })
+          container.unbindTooltip()
+        }
+      },
+      [element, context, setOpen],
+    )
   },
 )

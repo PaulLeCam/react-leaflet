@@ -7,5 +7,5 @@ export const ZoomControl = createControlComponent<
   Control.Zoom,
   ZoomControlProps
 >(function createZoomControl(props) {
-  return { instance: new Control.Zoom(props) }
+  return new Control.Zoom(props)
 })

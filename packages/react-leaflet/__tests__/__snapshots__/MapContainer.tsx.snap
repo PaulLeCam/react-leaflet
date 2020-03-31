@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MapProvider renders the containing div 1`] = `
+exports[`MapContainer renders the containing div 1`] = `
 <div>
   <div
     class="leaflet-container leaflet-grab leaflet-touch-drag"
@@ -82,24 +82,4 @@ exports[`MapProvider renders the containing div 1`] = `
     </div>
   </div>
 </div>
-`;
-
-exports[`MapProvider updates the center 1`] = `
-"Snapshot Diff:
-- First value
-+ Second value
-
-@@ -22,11 +22,11 @@
-              <img
-                alt=\\"\\"
-                class=\\"leaflet-tile\\"
-                role=\\"presentation\\"
-                src=\\"http://localhost\\"
--               style=\\"width: 256px; height: 256px; left: -172px; top: -150px;\\"
-+               style=\\"width: 256px; height: 256px; left: -48px; top: -12px;\\"
-              />
-            </div>
-          </div>
-        </div>
-        <div"
 `;

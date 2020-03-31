@@ -11,6 +11,5 @@ export const LayerGroup = createLayerComponent<
   LayerGroupProps
 >(function createLayerGroup({ children: _c, ...options }, ctx) {
   const instance = new LeafletLayerGroup([], options)
-  const context = ctx === null ? null : { ...ctx, layerContainer: instance }
-  return { instance, context }
+  return { instance, context: { ...ctx, layerContainer: instance } }
 })

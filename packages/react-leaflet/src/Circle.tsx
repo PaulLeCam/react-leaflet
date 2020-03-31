@@ -1,15 +1,16 @@
-import { PathProps, createPathComponent } from '@react-leaflet/core'
+import {
+  CircleMarkerProps,
+  createPathComponent,
+  updateCircle,
+} from '@react-leaflet/core'
 import { Circle as LeafletCircle } from 'leaflet'
 
-import { CircleMarkerProps, updateCircle } from './CircleMarker'
-
-export interface CircleProps extends CircleMarkerProps, PathProps {}
+export type CircleProps = CircleMarkerProps
 
 export const Circle = createPathComponent<LeafletCircle, CircleProps>(
   function createCircle({ center, children: _c, ...options }, ctx) {
     const instance = new LeafletCircle(center, options)
-    const context = ctx === null ? null : { ...ctx, overlayContainer: instance }
-    return { instance, context }
+    return { instance, context: { ...ctx, overlayContainer: instance } }
   },
   updateCircle,
 )

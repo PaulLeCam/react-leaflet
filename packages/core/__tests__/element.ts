@@ -3,7 +3,7 @@ import { renderHook } from '@testing-library/react-hooks'
 import { createElementHook } from '../src'
 
 describe('element', () => {
-  it('calls the element creation function', () => {
+  test('calls the element creation function', () => {
     const context = { map: undefined }
     const props = { test: true }
     const createElementMock = jest.fn()
@@ -15,10 +15,10 @@ describe('element', () => {
     expect(createElementMock).toBeCalledWith(props, context)
   })
 
-  it('calls the element update function', () => {
+  test('calls the element update function', () => {
     const context = { map: undefined }
     const instance = {}
-    const createElementMock = jest.fn(() => ({ instance }))
+    const createElementMock = jest.fn(() => ({ instance, context }))
     const updateElementMock = jest.fn()
     const useElement = createElementHook(createElementMock, updateElementMock)
 

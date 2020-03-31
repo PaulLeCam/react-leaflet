@@ -7,5 +7,5 @@ export const AttributionControl = createControlComponent<
   Control.Attribution,
   AttributionControlProps
 >(function createAttributionControl(props) {
-  return { instance: new Control.Attribution(props) }
+  return new Control.Attribution(props)
 })

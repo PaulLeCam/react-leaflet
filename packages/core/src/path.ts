@@ -11,17 +11,13 @@ export interface PathProps extends EventedProps {
 }
 
 export function usePathOptions<P extends PathProps>(
-  element: LeafletElement<FeatureGroup | Path> | null,
+  element: LeafletElement<FeatureGroup | Path>,
   props: P,
 ) {
   const optionsRef = useRef<PathOptions | void>()
 
   useEffect(
     function updatePathOptions() {
-      if (element === null) {
-        return
-      }
-
       if (props.pathOptions !== optionsRef.current) {
         const options = props.pathOptions ?? {}
         element.instance.setStyle(options)

@@ -3,15 +3,7 @@ import { LeafletEventHandlerFnMap, Map } from 'leaflet'
 import { useEffect } from 'react'
 
 export function useMap(): Map {
-  const context = useLeafletContext()
-
-  if (context == null) {
-    throw new Error(
-      'No map provided: useMap() can only be used in a child of <MapContainer>',
-    )
-  }
-
-  return context.map
+  return useLeafletContext().map
 }
 
 export function useMapEvent<T extends keyof LeafletEventHandlerFnMap>(

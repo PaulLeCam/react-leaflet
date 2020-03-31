@@ -14,8 +14,11 @@ export const WMSTileLayer = createTileLayerComponent<
   TileLayer.WMS,
   WMSTileLayerProps
 >(
-  function createWMSTileLayer({ params = {}, url, ...options }) {
-    return { instance: new TileLayer.WMS(url, { ...params, ...options }) }
+  function createWMSTileLayer({ params = {}, url, ...options }, context) {
+    return {
+      instance: new TileLayer.WMS(url, { ...params, ...options }),
+      context,
+    }
   },
   function updateWMSTileLayer(layer, props, prevProps) {
     updateGridLayer(layer, props, prevProps)

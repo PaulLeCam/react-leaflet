@@ -11,7 +11,7 @@ import {
   PopupEvent,
   PopupOptions,
 } from 'leaflet'
-import { ReactNode } from 'react'
+import { ReactNode, useEffect } from 'react'
 
 export interface PopupProps extends PopupOptions, EventedProps {
   children?: ReactNode
@@ -19,59 +19,64 @@ export interface PopupProps extends PopupOptions, EventedProps {
 }
 
 export const Popup = createOverlayComponent<LeafletPopup, PopupProps>(
-  function createPopup(props, ctx) {
-    return { instance: new LeafletPopup(props, ctx?.overlayContainer) }
+  function createPopup(props, context) {
+    return {
+      instance: new LeafletPopup(props, context.overlayContainer),
+      context,
+    }
   },
   function usePopupLifecycle(
     element: LeafletElement<LeafletPopup>,
-    context: LeafletContextInterface | null,
+    context: LeafletContextInterface,
     props: PopupProps,
     setOpen: SetOpenFunc,
   ) {
-    if (element === null || context == null) {
-      return
-    }
-    const { instance } = element
+    useEffect(
+      function addPopup() {
+        const { instance } = element
 
-    function onPopupOpen(event: PopupEvent) {
-      if (event.popup === instance) {
-        instance.update()
-        setOpen(true)
-      }
-    }
+        function onPopupOpen(event: PopupEvent) {
+          if (event.popup === instance) {
+            instance.update()
+            setOpen(true)
+          }
+        }
 
-    function onPopupClose(event: PopupEvent) {
-      if (event.popup === instance) {
-        setOpen(false)
-      }
-    }
+        function onPopupClose(event: PopupEvent) {
+          if (event.popup === instance) {
+            setOpen(false)
+          }
+        }
 
-    context.map.on({
-      // @ts-ignore emits PopupEvent instead of LeafletEvent
-      popupopen: onPopupOpen,
-      // @ts-ignore emits PopupEvent instead of LeafletEvent
-      popupclose: onPopupClose,
-    })
+        context.map.on({
+          // @ts-ignore emits PopupEvent instead of LeafletEvent
+          popupopen: onPopupOpen,
+          // @ts-ignore emits PopupEvent instead of LeafletEvent
+          popupclose: onPopupClose,
+        })
 
-    if (context.overlayContainer != null) {
-      // Attach to container component
-      context.overlayContainer.bindPopup(instance)
-    } else {
-      // Attach to a Map
-      if (props.position != null) {
-        instance.setLatLng(props.position)
-      }
-      instance.openOn(context.map)
-    }
+        if (context.overlayContainer != null) {
+          // Attach to container component
+          context.overlayContainer.bindPopup(instance)
+        } else {
+          // Attach to a Map
+          if (props.position != null) {
+            instance.setLatLng(props.position)
+          }
+          instance.openOn(context.map)
+        }
 
-    return () => {
-      context.map.off({
-        // @ts-ignore emits PopupEvent instead of LeafletEvent
-        popupopen: onPopupOpen,
-        // @ts-ignore emits PopupEvent instead of LeafletEvent
-        popupclose: onPopupClose,
-      })
-      context.map.removeLayer(instance)
-    }
+        return function removePopup() {
+          context.map.off({
+            // @ts-ignore emits PopupEvent instead of LeafletEvent
+            popupopen: onPopupOpen,
+            // @ts-ignore emits PopupEvent instead of LeafletEvent
+            popupclose: onPopupClose,
+          })
+          context.map.removeLayer(instance)
+        }
+      },
+      [element, context, props, setOpen],
+    )
   },
 )
