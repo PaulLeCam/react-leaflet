@@ -35,9 +35,7 @@ export const Tooltip = createOverlayComponent<LeafletTooltip, TooltipProps>(
       function addTooltip() {
         const container = context.overlayContainer
         if (container == null) {
-          return function noop() {
-            // Nothing to do
-          }
+          return
         }
 
         const { instance } = element

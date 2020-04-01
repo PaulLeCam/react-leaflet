@@ -55,15 +55,15 @@ export const Popup = createOverlayComponent<LeafletPopup, PopupProps>(
           popupclose: onPopupClose,
         })
 
-        if (context.overlayContainer != null) {
-          // Attach to container component
-          context.overlayContainer.bindPopup(instance)
-        } else {
+        if (context.overlayContainer == null) {
           // Attach to a Map
           if (props.position != null) {
             instance.setLatLng(props.position)
           }
           instance.openOn(context.map)
+        } else {
+          // Attach to container component
+          context.overlayContainer.bindPopup(instance)
         }
 
         return function removePopup() {
@@ -73,7 +73,12 @@ export const Popup = createOverlayComponent<LeafletPopup, PopupProps>(
             // @ts-ignore emits PopupEvent instead of LeafletEvent
             popupclose: onPopupClose,
           })
-          context.map.removeLayer(instance)
+
+          if (context.overlayContainer == null) {
+            context.map.removeLayer(instance)
+          } else {
+            context.overlayContainer.unbindPopup()
+          }
         }
       },
       [element, context, props, setOpen],
