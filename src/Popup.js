@@ -34,6 +34,9 @@ class Popup extends DivOverlay<LeafletElement, Props> {
     if (toProps.position !== fromProps.position) {
       this.leafletElement.setLatLng(toProps.position)
     }
+    if (toProps.autoPan !== fromProps.autoPan) {
+      this.leafletElement.options.autoPan = toProps.autoPan !== false
+    }
   }
 
   componentDidMount() {
