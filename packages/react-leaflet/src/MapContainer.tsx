@@ -10,12 +10,12 @@ import React, {
   MutableRefObject,
   ReactNode,
   useEffect,
+  useMemo,
   useRef,
   useState,
 } from 'react'
 
 export interface MapContainerProps extends MapOptions, EventedProps {
-  animate?: boolean
   bounds?: LatLngBoundsExpression
   boundsOptions?: FitBoundsOptions
   children?: ReactNode
@@ -64,12 +64,15 @@ export function MapContainer({
   const createdRef = useRef<boolean>(false)
   useEffect(() => {
     if (map != null && createdRef.current === false && whenCreated != null) {
+      createdRef.current = true
       whenCreated(map)
     }
   }, [map, whenCreated])
 
-  const contents = map ? (
-    <LeafletProvider value={{ map }}>{children}</LeafletProvider>
+  const context = useMemo(() => (map ? { map } : null), [map])
+
+  const contents = context ? (
+    <LeafletProvider value={context}>{children}</LeafletProvider>
   ) : null
   return (
     <div ref={mapRef} className={className} id={id} style={style}>

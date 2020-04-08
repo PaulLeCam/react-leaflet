@@ -15,6 +15,8 @@ import { ReactNode, useEffect } from 'react'
 
 export interface TooltipProps extends TooltipOptions, EventedProps {
   children?: ReactNode
+  onClose?: () => void
+  onOpen?: () => void
   position?: LatLngExpression
 }
 
@@ -44,12 +46,14 @@ export const Tooltip = createOverlayComponent<LeafletTooltip, TooltipProps>(
           if (event.tooltip === instance) {
             instance.update()
             setOpen(true)
+            props.onOpen?.()
           }
         }
 
         const onTooltipClose = (event: TooltipEvent) => {
           if (event.tooltip === instance) {
             setOpen(false)
+            props.onClose?.()
           }
         }
 
@@ -71,7 +75,7 @@ export const Tooltip = createOverlayComponent<LeafletTooltip, TooltipProps>(
           container.unbindTooltip()
         }
       },
-      [element, context, setOpen],
+      [element, context, setOpen, props.onClose, props.onOpen],
     )
   },
 )

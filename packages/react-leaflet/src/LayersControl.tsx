@@ -87,9 +87,7 @@ export function createControlledLayer(addLayerToControl: AddLayerFunc) {
     )
     const removeLayer = useCallback(
       (layerToRemove: Layer) => {
-        if (context.layersControl != null) {
-          context.layersControl.removeLayer(layerToRemove)
-        }
+        context.layersControl?.removeLayer(layerToRemove)
         setLayer(null)
       },
       [context],
@@ -118,8 +116,8 @@ export function createControlledLayer(addLayerToControl: AddLayerFunc) {
       }
 
       return () => {
-        if (context.layersControl != null && layer !== null) {
-          context.layersControl.removeLayer(layer)
+        if (layer !== null) {
+          context.layersControl?.removeLayer(layer)
         }
       }
     })

@@ -1,43 +1,49 @@
-import React from 'react'
 import classnames from 'classnames'
-import Layout from '@theme/Layout'
+import React from 'react'
 import Link from '@docusaurus/Link'
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import useBaseUrl from '@docusaurus/useBaseUrl'
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
+
+import CodeBlock from '@theme/CodeBlock'
+import Layout from '@theme/Layout'
 import styles from './styles.module.css'
 
-const features = [
-  {
-    title: <>Easy to Use</>,
-    imageUrl: 'img/undraw_docusaurus_mountain.svg',
-    description: (
-      <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
-      </>
-    ),
-  },
-  {
-    title: <>Focus on What Matters</>,
-    imageUrl: 'img/undraw_docusaurus_tree.svg',
-    description: (
-      <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
-      </>
-    ),
-  },
-  {
-    title: <>Powered by React</>,
-    imageUrl: 'img/undraw_docusaurus_react.svg',
-    description: (
-      <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
-      </>
-    ),
-  },
-]
+// const features = [
+//   {
+//     title: <>Easy to Use</>,
+//     imageUrl: 'img/undraw_docusaurus_mountain.svg',
+//     description: (
+//       <>
+//         Docusaurus was designed from the ground up to be easily installed and
+//         used to get your website up and running quickly.
+//       </>
+//     ),
+//   },
+//   {
+//     title: <>Focus on What Matters</>,
+//     imageUrl: 'img/undraw_docusaurus_tree.svg',
+//     description: (
+//       <>
+//         Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
+//         ahead and move your docs into the <code>docs</code> directory.
+//       </>
+//     ),
+//   },
+//   {
+//     title: <>Powered by React</>,
+//     imageUrl: 'img/undraw_docusaurus_react.svg',
+//     description: (
+//       <>
+//         Extend or customize your website layout by reusing React. Docusaurus can
+//         be extended while reusing the same header and footer.
+//       </>
+//     ),
+//   },
+// ]
+
+// function ExampleMap() {
+
+// }
 
 function Feature({ imageUrl, title, description }) {
   const imgUrl = useBaseUrl(imageUrl)
@@ -71,14 +77,14 @@ function Home() {
                 'button button--outline button--secondary button--lg',
                 styles.getStarted,
               )}
-              to={useBaseUrl('docs/doc1')}>
+              to={useBaseUrl('docs/map-api')}>
               Get Started
             </Link>
           </div>
         </div>
       </header>
       <main>
-        {features && features.length && (
+        {/* {features && features.length && (
           <section className={styles.features}>
             <div className="container">
               <div className="row">
@@ -88,7 +94,21 @@ function Home() {
               </div>
             </div>
           </section>
-        )}
+        )} */}
+        <CodeBlock live className="tsx">
+          {`
+<MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
+  <TileLayer
+    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+  />
+  <Marker position={[51.505, -0.09]}>
+    <Popup>
+      A pretty CSS3 popup. <br /> Easily customizable.
+    </Popup>
+  </Marker>
+</MapContainer>`}
+        </CodeBlock>
       </main>
     </Layout>
   )

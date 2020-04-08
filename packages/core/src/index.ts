@@ -27,7 +27,8 @@ export {
   createTileLayerComponent,
 } from './generic'
 export { updateGridLayer } from './grid-layer'
-export { createLayerHook, useLayerLifecycle } from './layer'
+export { createLayerHook, useAttribution, useLayerLifecycle } from './layer'
+export type { LayerProps } from './layer'
 export { updateMediaOverlay } from './media-overlay'
 export type { MediaOverlayProps } from './media-overlay'
 export { createPathHook, usePathOptions } from './path'

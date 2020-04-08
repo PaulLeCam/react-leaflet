@@ -5,26 +5,22 @@ import {
   useLeafletContext,
 } from '@react-leaflet/core'
 import React, {
+  CSSProperties,
   ReactNode,
+  useEffect,
   useMemo,
   useRef,
-  useState,
-  CSSProperties,
-  useEffect,
 } from 'react'
-import warning from 'warning'
 
-const LEAFLET_PANES = [
-  'tile',
-  'shadow',
-  'overlay',
-  'map',
-  'marker',
-  'tooltip',
-  'popup',
+const DEFAULT_PANES = [
+  'mapPane',
+  'markerPane',
+  'overlayPane',
+  'popupPane',
+  'shadowPane',
+  'tilePane',
+  'tooltipPane',
 ]
-
-const PANE_RE = /-*pane/i
 
 const PANE_STYLES: CSSProperties = {
   position: 'absolute',
@@ -34,16 +30,7 @@ const PANE_STYLES: CSSProperties = {
   left: 0,
 }
 
-let idCounter = 0
-function uniqueID() {
-  return ++idCounter
-}
-
-function isLeafletPane(name: string): boolean {
-  return LEAFLET_PANES.indexOf(name.replace(PANE_RE, '')) !== -1
-}
-
-function omitPane(obj: Record<string, any>, pane: string) {
+function omitPane(obj: Record<string, unknown>, pane: string) {
   // eslint-disable-next-line @typescript-eslint/camelcase
   const { [pane]: _p, ...others } = obj
   return others
@@ -52,17 +39,17 @@ function omitPane(obj: Record<string, any>, pane: string) {
 export interface PaneProps {
   children?: ReactNode
   className?: string
-  name?: string
+  name: string
   pane?: string
-  style?: Record<string, any>
+  style?: CSSProperties
 }
 
 export function Pane(props: PaneProps) {
   const context = useLeafletContext()
+  const paneElementRef = useRef<HTMLElement | null>(null)
   const propsRef = useRef<PaneProps>(props)
-  const [paneName, setPaneName] = useState<string | null>(null)
 
-  function setStyle(paneElement: HTMLElement) {
+  function applyStyles(paneElement: HTMLElement) {
     if (props.className != null) {
       addClassName(paneElement, props.className)
     }
@@ -75,28 +62,22 @@ export function Pane(props: PaneProps) {
   }
 
   function createPane() {
-    const name = props.name ?? `pane-${uniqueID()}`
-    const paneElement = context.map.getPane(name)
-    const isDefault = isLeafletPane(name)
-    const existing = isDefault || paneElement != null
+    const name = props.name
 
-    if (existing) {
-      const message = isDefault
-        ? `You must use a unique name for a pane that is not a default leaflet pane: ${name}`
-        : `A pane with this name already exists: ${name}`
-      warning(false, message)
-    } else {
-      const parentPaneName = props.name ?? context.pane
-      context.map.createPane(
-        name,
-        parentPaneName ? context.map.getPane(parentPaneName) : undefined,
+    if (DEFAULT_PANES.indexOf(name) !== -1) {
+      throw new Error(
+        `You must use a unique name for a pane that is not a default Leaflet pane: ${name}`,
       )
     }
-
-    setPaneName(name)
-    if (paneElement != null) {
-      setStyle(paneElement)
+    if (context.map.getPane(name) != null) {
+      throw new Error(`A pane with this name already exists: ${name}`)
     }
+
+    const parentPane = context.pane
+      ? context.map.getPane(context.pane)
+      : undefined
+    paneElementRef.current = context.map.createPane(name, parentPane)
+    applyStyles(paneElementRef.current)
   }
 
   function removePane(name: string) {
@@ -106,53 +87,49 @@ export function Pane(props: PaneProps) {
     // @ts-ignore map internals
     if (context.map._panes != null) {
       // @ts-ignore map internals
-      context.map._panes = omitPane(context.map._panes, paneName)
+      context.map._panes = omitPane(context.map._panes, name)
       // @ts-ignore map internals
       context.map._paneRenderers = omitPane(
         // @ts-ignore map internals
         context.map._paneRenderers,
         // @ts-ignore map internals
-        paneName,
+        name,
       )
     }
   }
 
   useEffect(function handlePane() {
-    if (paneName === null) {
+    if (paneElementRef.current === null) {
       createPane()
     } else if (props !== propsRef.current) {
-      if (props.name === paneName) {
-        const element = context.map.getPane(name)
-        if (element != null) {
-          // Remove the previous css class name from the pane if it has changed.
-          // setStyle() will take care of adding in the updated className
-          if (
-            propsRef.current.className &&
-            props.className !== propsRef.current.className
-          ) {
-            removeClassName(element, propsRef.current.className)
-          }
-          // Update the pane's DOM node style and class
-          setStyle(element)
+      if (props.name === propsRef.current.name) {
+        // Remove the previous css class name from the pane if it has changed.
+        // setStyle() will take care of adding in the updated className
+        if (
+          propsRef.current.className &&
+          props.className !== propsRef.current.className
+        ) {
+          removeClassName(paneElementRef.current, propsRef.current.className)
         }
+        // Update the pane's DOM node style and class
+        applyStyles(paneElementRef.current)
       } else {
-        removePane(paneName)
+        removePane(propsRef.current.name)
         createPane()
       }
     }
 
     return function removeCreatedPane() {
-      if (paneName !== null) {
-        removePane(paneName)
-      }
+      removePane(props.name)
     }
   })
 
-  const newContext = useMemo(() => {
-    return paneName ? { ...context, pane: paneName } : context
-  }, [context, paneName])
+  const newContext = useMemo(() => ({ ...context, pane: props.name }), [
+    context,
+    props.name,
+  ])
 
-  return newContext && props.children ? (
+  return props.children ? (
     <LeafletProvider value={newContext}>
       <div style={PANE_STYLES}>{props.children}</div>
     </LeafletProvider>

@@ -11,18 +11,14 @@ export interface PolylineProps extends PolylineOptions, PathProps {
   positions: LatLngExpression[] | LatLngExpression[][]
 }
 
-export function updatePolyline<
-  E extends LeafletPolyline,
-  P extends PolylineProps
->(layer: E, props: P, prevProps: P) {
-  if (props.positions !== prevProps.positions) {
-    layer.setLatLngs(props.positions)
-  }
-}
-
 export const Polyline = createPathComponent<LeafletPolyline, PolylineProps>(
   function createPolyline({ positions, ...options }, ctx) {
     const instance = new LeafletPolyline(positions, options)
     return { instance, context: { ...ctx, overlayContainer: instance } }
+  },
+  function updatePolyline(layer, props, prevProps) {
+    if (props.positions !== prevProps.positions) {
+      layer.setLatLngs(props.positions)
+    }
   },
 )
