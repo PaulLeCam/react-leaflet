@@ -21,6 +21,11 @@ module.exports = {
           position: 'left',
         },
         {
+          to: 'docs/examples',
+          label: 'Examples',
+          position: 'left',
+        },
+        {
           to: 'docs/api-map',
           activeBasePath: 'docs/api',
           label: 'API',

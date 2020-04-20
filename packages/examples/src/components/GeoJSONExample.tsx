@@ -23,7 +23,7 @@ export default function GeoJSONExample() {
   return (
     <MapContainer center={position} zoom={12}>
       <TileLayer
-        attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <GeoJSON data={london} style={style} onEachFeature={onEachFeature} />
