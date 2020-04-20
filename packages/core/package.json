@@ -40,7 +40,7 @@
   ],
   "dependencies": {
     "@babel/runtime-corejs3": "^7.9.2",
-    "core-js": "^3.6.4"
+    "core-js": "^3.6.5"
   },
   "peerDependencies": {
     "leaflet": "^1.6.0",

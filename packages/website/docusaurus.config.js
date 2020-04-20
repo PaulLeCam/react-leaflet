@@ -16,9 +16,14 @@ module.exports = {
       },
       links: [
         {
-          to: 'docs/introduction',
-          activeBasePath: 'docs',
-          label: 'Docs',
+          to: 'docs/installation',
+          label: 'Installation',
+          position: 'left',
+        },
+        {
+          to: 'docs/api-map',
+          activeBasePath: 'docs/api',
+          label: 'API',
           position: 'left',
         },
         {
@@ -84,8 +89,8 @@ module.exports = {
       {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl:
-            'https://github.com/facebook/docusaurus/edit/master/website/',
+          // editUrl:
+          //   'https://github.com/facebook/docusaurus/edit/master/website/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),

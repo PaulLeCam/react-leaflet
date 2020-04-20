@@ -60,12 +60,12 @@ function Feature({ imageUrl, title, description }) {
   )
 }
 
-function Home() {
+export default function Home() {
   const context = useDocusaurusContext()
   const { siteConfig = {} } = context
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
+      title={siteConfig.title}
       description="Description will go into a meta tag in <head />">
       <header className={classnames('hero hero--primary', styles.heroBanner)}>
         <div className="container">
@@ -77,7 +77,7 @@ function Home() {
                 'button button--outline button--secondary button--lg',
                 styles.getStarted,
               )}
-              to={useBaseUrl('docs/map-api')}>
+              to={useBaseUrl('docs/installation')}>
               Get Started
             </Link>
           </div>
@@ -113,5 +113,3 @@ function Home() {
     </Layout>
   )
 }
-
-export default Home

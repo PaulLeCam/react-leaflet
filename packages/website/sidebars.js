@@ -1,7 +1,7 @@
 module.exports = {
   docs: {
-    // 'Getting started': ['introduction', 'setup', 'installation'],
-    'Public API': ['map-api', 'child-components'],
+    'Getting started': ['installation'],
+    'Public API': ['api-map', 'api-components'],
     // Examples: [],
     // 'Core API': ['core-introduction', 'core-api'],
     // Guides: [],

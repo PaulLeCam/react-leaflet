@@ -2,8 +2,8 @@
 title: Child components
 ---
 
-:::warning MapContainer required
-Child components can only be used as decendants of a `MapContainer` component.
+:::caution MapContainer required
+Child components can only be used as decendants of a [`MapContainer` component](api-map.md#mapcontainer).
 :::
 
 ## Props
@@ -77,7 +77,7 @@ Applies to [vector layer components](#vector-layers), adding support for a [`pat
 
 ### MediaOverlay behavior
 
-Applies to components using [Leaflet's ImageOverlay class](https://leafletjs.com/reference-1.6.0.html#imageoverlay), adding support for mutable `bounds: LatLngBoundsExpression`, [`opacity`](https://leafletjs.com/reference-1.6.0.html#imageoverlay-opacity) and [`zIndex`](https://leafletjs.com/reference-1.6.0.html#imageoverlay-zindex) props.
+Applies to components using [Leaflet's ImageOverlay class](https://leafletjs.com/reference-1.6.0.html#imageoverlay), adding support for mutable `bounds: LatLngBoundsExpression`, [`opacity: number`](https://leafletjs.com/reference-1.6.0.html#imageoverlay-opacity) and [`zIndex: number`](https://leafletjs.com/reference-1.6.0.html#imageoverlay-zindex) props.
 
 ```tsx Example component with MediaOverlay behavior
 <ImageOverlay
@@ -93,7 +93,7 @@ Applies to components using [Leaflet's ImageOverlay class](https://leafletjs.com
 
 ### CircleMarker behavior
 
-Applies to components using [Leaflet's CircleMarker class](https://leafletjs.com/reference-1.6.0.html#circlemarker), adding support for mutable `center: LatLngExpression` and [`radius`](https://leafletjs.com/reference-1.6.0.html#circlemarker-radius) props.
+Applies to components using [Leaflet's CircleMarker class](https://leafletjs.com/reference-1.6.0.html#circlemarker), adding support for mutable `center: LatLngExpression` and [`radius: number`](https://leafletjs.com/reference-1.6.0.html#circlemarker-radius) props.
 
 ```tsx Example component with CircleMarker behavior
 <Circle center={[50.5, 30.5]} radius={200} />
@@ -101,7 +101,7 @@ Applies to components using [Leaflet's CircleMarker class](https://leafletjs.com
 
 ### GridLayer behavior
 
-Applies to components using [Leaflet's GridLayer class](https://leafletjs.com/reference-1.6.0.html#gridlayer), adding support for mutable [`opacity`](https://leafletjs.com/reference-1.6.0.html#gridlayer-opacity) and [`zIndex`](https://leafletjs.com/reference-1.6.0.html#gridlayer-zindex) props.
+Applies to components using [Leaflet's GridLayer class](https://leafletjs.com/reference-1.6.0.html#gridlayer), adding support for mutable [`opacity: number`](https://leafletjs.com/reference-1.6.0.html#gridlayer-opacity) and [`zIndex: number`](https://leafletjs.com/reference-1.6.0.html#gridlayer-zindex) props.
 
 ```tsx Example component with GridLayer behavior
 <TileLayer url="..." opacity={0.5} zIndex={10} />
@@ -109,7 +109,7 @@ Applies to components using [Leaflet's GridLayer class](https://leafletjs.com/re
 
 ### Control behavior
 
-Applies to [control components](#controls), making their [`position`](https://leafletjs.com/reference-1.6.0.html#control-position) prop mutable.
+Applies to [control components](#controls), making their [`position: ControlPosition`](https://leafletjs.com/reference-1.6.0.html#control-position) prop mutable.
 
 ```tsx Example component with Control behavior
 <ZoomControl position="bottomleft" />
