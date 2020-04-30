@@ -28,6 +28,13 @@ class SVGOverlay extends MapComponent<LeafletElement, Props> {
       'http://www.w3.org/2000/svg',
       'svg',
     )
+    this.container.setAttribute('xmlns', 'http://www.w3.org/2000/svg')
+    if (props.viewBox) {
+        this.container.setAttribute('viewBox', props.viewBox)
+    }
+    if (props.preserveAspectRatio) {
+        this.container.setAttribute('preserveAspectRatio', props.preserveAspectRatio)
+    }
     return new LeafletSVGOverlay(
       this.container,
       props.bounds,
@@ -41,6 +48,12 @@ class SVGOverlay extends MapComponent<LeafletElement, Props> {
     }
     if (toProps.opacity !== fromProps.opacity) {
       this.leafletElement.setOpacity(toProps.opacity)
+    }
+    if (toProps.preserveAspectRatio !== fromProps.preserveAspectRatio) {
+      this.container.setAttribute('preserveAspectRatio', toProps.preserveAspectRatio)
+    }
+    if (toProps.viewBox !== fromProps.viewBox) {
+      this.container.setAttribute('viewBox', toProps.viewBox)
     }
     if (toProps.zIndex !== fromProps.zIndex) {
       this.leafletElement.setZIndex(toProps.zIndex)
