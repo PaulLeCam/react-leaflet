@@ -41,6 +41,7 @@ open pull requests to update this list!
 | [`react-leaflet-google-layer`](https://www.npmjs.com/package/react-leaflet-google-layer)                         | **yes**            |
 | [`react-leaflet-google-v2`](https://www.npmjs.com/package/react-leaflet-google-v2)                               | **yes**            |
 | [`react-leaflet-heatmap-layer`](https://www.npmjs.com/package/react-leaflet-heatmap-layer)                       | **yes**            |
+| [`react-leaflet-kml`](https://www.npmjs.com/package/react-leaflet-kml)                                           | **yes**            |
 | [`react-leaflet-locate-control`](https://www.npmjs.com/package/react-leaflet-locate-control)                     | **no**             |
 | [`react-leaflet-magnifying-glass`](https://www.npmjs.com/package/react-leaflet-magnifying-glass)                 | **yes**            |
 | [`react-leaflet-markercluster`](https://www.npmjs.com/package/react-leaflet-markercluster)                       | **yes**          |
