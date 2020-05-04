@@ -10,6 +10,14 @@ import MapComponent from './MapComponent'
 type LeafletElement = LeafletSVGOverlay
 type Props = SVGOverlayProps
 
+function setAttribute(el: Element, name: string, value: ?string): void {
+  if (value != null) {
+    el.setAttribute(name, value)
+  } else {
+    el.removeAttribute(name)
+  }
+}
+
 class SVGOverlay extends MapComponent<LeafletElement, Props> {
   leafletElement: LeafletElement
   container: ?Element
@@ -24,19 +32,17 @@ class SVGOverlay extends MapComponent<LeafletElement, Props> {
   }
 
   createLeafletElement(props: Props): LeafletElement {
-    this.container = document.createElementNS(
+    const container = document.createElementNS(
       'http://www.w3.org/2000/svg',
       'svg',
     )
-    this.container.setAttribute('xmlns', 'http://www.w3.org/2000/svg')
-    if (props.viewBox) {
-        this.container.setAttribute('viewBox', props.viewBox)
-    }
-    if (props.preserveAspectRatio) {
-        this.container.setAttribute('preserveAspectRatio', props.preserveAspectRatio)
-    }
+    setAttribute(container, 'xmlns', 'http://www.w3.org/2000/svg')
+    setAttribute(container, 'preserveAspectRatio', props.preserveAspectRatio)
+    setAttribute(container, 'viewBox', props.viewBox)
+
+    this.container = container
     return new LeafletSVGOverlay(
-      this.container,
+      container,
       props.bounds,
       this.getOptions(props),
     )
@@ -49,11 +55,18 @@ class SVGOverlay extends MapComponent<LeafletElement, Props> {
     if (toProps.opacity !== fromProps.opacity) {
       this.leafletElement.setOpacity(toProps.opacity)
     }
-    if (toProps.preserveAspectRatio !== fromProps.preserveAspectRatio) {
-      this.container.setAttribute('preserveAspectRatio', toProps.preserveAspectRatio)
+    if (
+      this.container &&
+      toProps.preserveAspectRatio !== fromProps.preserveAspectRatio
+    ) {
+      setAttribute(
+        this.container,
+        'preserveAspectRatio',
+        toProps.preserveAspectRatio,
+      )
     }
-    if (toProps.viewBox !== fromProps.viewBox) {
-      this.container.setAttribute('viewBox', toProps.viewBox)
+    if (this.container && toProps.viewBox !== fromProps.viewBox) {
+      setAttribute(this.container, 'viewBox', toProps.viewBox)
     }
     if (toProps.zIndex !== fromProps.zIndex) {
       this.leafletElement.setZIndex(toProps.zIndex)
