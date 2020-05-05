@@ -3,7 +3,7 @@ title: Child components
 ---
 
 :::caution MapContainer required
-Child components can only be used as decendants of a [`MapContainer` component](api-map.md#mapcontainer).
+Child components can only be used as decendants of a [MapContainer component](api-map.md#mapcontainer).
 :::
 
 ## Props
@@ -121,43 +121,51 @@ Applies to [control components](#controls), making their [`position: ControlPosi
 
 [Leaflet reference](http://leafletjs.com/reference-1.6.0.html#marker)
 
-**Behaviors**: [Referenceable](#referenceable-behavior) | [ParentComponent](#parentcomponent-behavior) | [Evented](#evented-behavior) | [Attribution](#attribution-behavior)
+**Props**
 
-**Required props**
-
-- `position: LatLngExpression`
-
-**Mutable props**
-
-- `draggable?: boolean`
-- `icon?: Leaflet.Icon`
-- `opacity?: number`
-- `position: LatLngExpression`
-- `zIndexOffset?: number`
+| Prop            | Type                        | Required | Mutable | Behavior                                     |
+| --------------- | --------------------------- | -------- | ------- | -------------------------------------------- |
+| `attribution`   | `string`                    | No       | **Yes** | [Attribution](#attribution-behavior)         |
+| `children`      | `ReactNode`                 | No       | **Yes** | [ParentComponent](#parentcomponent-behavior) |
+| `draggable`     | `boolean`                   | No       | **Yes** |
+| `eventHandlers` | `LeafletEventHandlerFnMap`  | No       | **Yes** | [Evented](#evented-behavior)                 |
+| `icon`          | `Leaflet.Icon`              | No       | **Yes** |
+| `opacity`       | `number`                    | No       | **Yes** |
+| `position`      | `LatLngExpression`          | **Yes**  | **Yes** |
+| `ref`           | `RefObject<Leaflet.Marker>` | No       | **Yes** | [Referenceable](#referenceable-behavior)     |
+| `zIndexOffset`  | `number`                    | No       | **Yes** |
 
 ### Popup
 
 [Leaflet reference](http://leafletjs.com/reference-1.6.0.html#popup)
 
-**Behaviors**: [Referenceable](#referenceable-behavior) | [ParentComponent](#parentcomponent-behavior) | [Evented](#evented-behavior) | [Attribution](#attribution-behavior)
+**Props**
 
-**Mutable props**
-
-- `onClose?: () => void`
-- `onOpen?: () => void`
-- `position?: LatLngExpression`
+| Prop            | Type                       | Required | Mutable | Behavior                                     |
+| --------------- | -------------------------- | -------- | ------- | -------------------------------------------- |
+| `attribution`   | `string`                   | No       | **Yes** | [Attribution](#attribution-behavior)         |
+| `children`      | `ReactNode`                | No       | **Yes** | [ParentComponent](#parentcomponent-behavior) |
+| `eventHandlers` | `LeafletEventHandlerFnMap` | No       | **Yes** | [Evented](#evented-behavior)                 |
+| `onClose`       | `() => void`               | No       | **Yes** |
+| `onOpen`        | `() => void`               | No       | **Yes** |
+| `position`      | `LatLngExpression`         | No       | **Yes** |
+| `ref`           | `RefObject<Leaflet.Popup>` | No       | **Yes** | [Referenceable](#referenceable-behavior)     |
 
 ### Tooltip
 
 [Leaflet reference](http://leafletjs.com/reference-1.6.0.html#tooltip)
 
-**Behaviors**: [Referenceable](#referenceable-behavior) | [ParentComponent](#parentcomponent-behavior) | [Evented](#evented-behavior) | [Attribution](#attribution-behavior)
+**Props**
 
-**Mutable props**
-
-- `onClose?: () => void`
-- `onOpen?: () => void`
-- `position?: LatLngExpression`
+| Prop            | Type                         | Required | Mutable | Behavior                                     |
+| --------------- | ---------------------------- | -------- | ------- | -------------------------------------------- |
+| `attribution`   | `string`                     | No       | **Yes** | [Attribution](#attribution-behavior)         |
+| `children`      | `ReactNode`                  | No       | **Yes** | [ParentComponent](#parentcomponent-behavior) |
+| `eventHandlers` | `LeafletEventHandlerFnMap`   | No       | **Yes** | [Evented](#evented-behavior)                 |
+| `onClose`       | `() => void`                 | No       | **Yes** |
+| `onOpen`        | `() => void`                 | No       | **Yes** |
+| `position`      | `LatLngExpression`           | No       | **Yes** |
+| `ref`           | `RefObject<Leaflet.Tooltip>` | No       | **Yes** | [Referenceable](#referenceable-behavior)     |
 
 ## Raster layers
 
@@ -165,52 +173,63 @@ Applies to [control components](#controls), making their [`position: ControlPosi
 
 [Leaflet reference](https://leafletjs.com/reference-1.6.0.html#tilelayer)
 
-**Behaviors**: [Referenceable](#referenceable-behavior) | [Evented](#evented-behavior) | [GridLayer](#gridlayer-behavior)
+**Props**
 
-**Required props**
-
-- `url: string`
+| Prop            | Type                           | Required | Mutable | Behavior                                 |
+| --------------- | ------------------------------ | -------- | ------- | ---------------------------------------- |
+| `eventHandlers` | `LeafletEventHandlerFnMap`     | No       | **Yes** | [Evented](#evented-behavior)             |
+| `opacity`       | `number`                       | no       | **Yes** | [GridLayer](#gridlayer-behavior)         |
+| `ref`           | `RefObject<Leaflet.TileLayer>` | No       | **Yes** | [Referenceable](#referenceable-behavior) |
+| `url`           | `string`                       | **Yes**  | no      |
+| `zIndex`        | `number`                       | no       | **Yes** | [GridLayer](#gridlayer-behavior)         |
 
 ### WMSTileLayer
 
 [Leaflet reference](https://leafletjs.com/reference-1.6.0.html#tilelayer-wms)
 
-**Behaviors**: [Referenceable](#referenceable-behavior) | [Evented](#evented-behavior) | [GridLayer](#gridlayer-behavior)
+**Props**
 
-**Required props**
-
-- `url: string`
-
-**Mutable props**
-
-- `params?: WMSParams`
+| Prop            | Type                               | Required | Mutable | Behavior                                 |
+| --------------- | ---------------------------------- | -------- | ------- | ---------------------------------------- |
+| `eventHandlers` | `LeafletEventHandlerFnMap`         | No       | **Yes** | [Evented](#evented-behavior)             |
+| `opacity`       | `number`                           | no       | **Yes** | [GridLayer](#gridlayer-behavior)         |
+| `params`        | `WMSParams`                        | no       | **Yes** |
+| `ref`           | `RefObject<Leaflet.TileLayer.WMS>` | No       | **Yes** | [Referenceable](#referenceable-behavior) |
+| `url`           | `string`                           | **Yes**  | no      |
+| `zIndex`        | `number`                           | no       | **Yes** | [GridLayer](#gridlayer-behavior)         |
 
 ### ImageOverlay
 
 [Leaflet reference](https://leafletjs.com/reference-1.6.0.html#imageoverlay)
 
-**Behaviors**: [Referenceable](#referenceable-behavior) | [ParentComponent](#parentcomponent-behavior) | [Evented](#evented-behavior) | [Attribution](#attribution-behavior) | [MediaOverlay](#mediaoverlay-behavior)
+**Props**
 
-**Required props**
-
-- `bounds: LatLngBoundsExpression`
-- `url: string`
+| Prop            | Type                              | Required | Mutable | Behavior                                     |
+| --------------- | --------------------------------- | -------- | ------- | -------------------------------------------- |
+| `attribution`   | `string`                          | No       | **Yes** | [Attribution](#attribution-behavior)         |
+| `bounds`        | `LatLngBoundsExpression`          | **Yes**  | **Yes** | [MediaOverlay](#mediaoverlay-behavior)       |
+| `children`      | `ReactNode`                       | No       | **Yes** | [ParentComponent](#parentcomponent-behavior) |
+| `eventHandlers` | `LeafletEventHandlerFnMap`        | No       | **Yes** | [Evented](#evented-behavior)                 |
+| `opacity`       | `number`                          | no       | **Yes** | [GridLayer](#gridlayer-behavior)             |
+| `ref`           | `RefObject<Leaflet.ImageOverlay>` | No       | **Yes** | [Referenceable](#referenceable-behavior)     |
+| `url`           | `string`                          | **Yes**  | **Yes** |
+| `zIndex`        | `number`                          | no       | **Yes** | [MediaOverlay](#mediaoverlay-behavior)       |
 
 ### VideoOverlay
 
 [Leaflet reference](https://leafletjs.com/reference-1.6.0.html#videooverlay)
 
-**Behaviors**: [Referenceable](#referenceable-behavior) | [Evented](#evented-behavior) | [Attribution](#attribution-behavior) | [MediaOverlay](#mediaoverlay-behavior)
+**Props**
 
-**Required props**
-
-- `bounds: LatLngBoundsExpression`
-- `url: string | string[] | HTMLVideoElement`
-
-**Mutable props**
-
-- `play?: boolean`
-- `url: string | string[] | HTMLVideoElement`
+| Prop            | Type                                       | Required | Mutable | Behavior                                 |
+| --------------- | ------------------------------------------ | -------- | ------- | ---------------------------------------- |
+| `attribution`   | `string`                                   | No       | **Yes** | [Attribution](#attribution-behavior)     |
+| `bounds`        | `LatLngBoundsExpression`                   | **Yes**  | **Yes** | [MediaOverlay](#mediaoverlay-behavior)   |
+| `eventHandlers` | `LeafletEventHandlerFnMap`                 | No       | **Yes** | [Evented](#evented-behavior)             |
+| `play`          | `boolean`                                  | no       | **Yes** |
+| `ref`           | `RefObject<Leaflet.VideoOverlay>`          | No       | **Yes** | [Referenceable](#referenceable-behavior) |
+| `url`           | `string`, `string[]` or `HTMLVideoElement` | **Yes**  | **Yes** |
+| `zIndex`        | `number`                                   | no       | **Yes** | [MediaOverlay](#mediaoverlay-behavior)   |
 
 ## Vector layers
 
@@ -218,69 +237,89 @@ Applies to [control components](#controls), making their [`position: ControlPosi
 
 [Leaflet reference](https://leafletjs.com/reference-1.6.0.html#circle)
 
-**Behaviors**: [Referenceable](#referenceable-behavior) | [ParentComponent](#parentcomponent-behavior) | [Evented](#evented-behavior) | [Attribution](#attribution-behavior) | [CircleMarker](#circlemarker-behavior)
+**Props**
 
-**Required props**
-
-- `center: LatLngExpression`
+| Prop            | Type                        | Required | Mutable | Behavior                                     |
+| --------------- | --------------------------- | -------- | ------- | -------------------------------------------- |
+| `attribution`   | `string`                    | No       | **Yes** | [Attribution](#attribution-behavior)         |
+| `center`        | `LatLngExpression`          | **Yes**  | **Yes** |
+| `children`      | `ReactNode`                 | No       | **Yes** | [ParentComponent](#parentcomponent-behavior) |
+| `eventHandlers` | `LeafletEventHandlerFnMap`  | No       | **Yes** | [Evented](#evented-behavior)                 |
+| `pathOptions`   | `PathOptions`               | No       | **Yes** | [Path](#path-behavior)                       |
+| `radius`        | `number`                    | **Yes**  | **Yes** |
+| `ref`           | `RefObject<Leaflet.Circle>` | No       | **Yes** | [Referenceable](#referenceable-behavior)     |
 
 ### CircleMarker
 
 [Leaflet reference](https://leafletjs.com/reference-1.6.0.html#circlemarker)
 
-**Behaviors**: [Referenceable](#referenceable-behavior) | [ParentComponent](#parentcomponent-behavior) | [Evented](#evented-behavior) | [Attribution](#attribution-behavior) | [CircleMarker](#circlemarker-behavior)
+**Props**
 
-**Required props**
-
-- `center: LatLngExpression`
+| Prop            | Type                              | Required | Mutable | Behavior                                     |
+| --------------- | --------------------------------- | -------- | ------- | -------------------------------------------- |
+| `attribution`   | `string`                          | No       | **Yes** | [Attribution](#attribution-behavior)         |
+| `center`        | `LatLngExpression`                | **Yes**  | **Yes** |
+| `children`      | `ReactNode`                       | No       | **Yes** | [ParentComponent](#parentcomponent-behavior) |
+| `eventHandlers` | `LeafletEventHandlerFnMap`        | No       | **Yes** | [Evented](#evented-behavior)                 |
+| `pathOptions`   | `PathOptions`                     | No       | **Yes** | [Path](#path-behavior)                       |
+| `radius`        | `number`                          | **Yes**  | **Yes** |
+| `ref`           | `RefObject<Leaflet.CircleMarker>` | No       | **Yes** | [Referenceable](#referenceable-behavior)     |
 
 ### Polyline
 
 [Leaflet reference](https://leafletjs.com/reference-1.6.0.html#polyline)
 
-**Behaviors**: [Referenceable](#referenceable-behavior) | [ParentComponent](#parentcomponent-behavior) | [Evented](#evented-behavior) | [Attribution](#attribution-behavior)
+**Props**
 
-**Required props**
-
-- `positions: LatLngExpression[] | LatLngExpression[][]`
-
-**Mutable props**
-
-- `positions: LatLngExpression[] | LatLngExpression[][]`
+| Prop            | Type                                           | Required | Mutable | Behavior                                     |
+| --------------- | ---------------------------------------------- | -------- | ------- | -------------------------------------------- |
+| `attribution`   | `string`                                       | No       | **Yes** | [Attribution](#attribution-behavior)         |
+| `children`      | `ReactNode`                                    | No       | **Yes** | [ParentComponent](#parentcomponent-behavior) |
+| `eventHandlers` | `LeafletEventHandlerFnMap`                     | No       | **Yes** | [Evented](#evented-behavior)                 |
+| `pathOptions`   | `PathOptions`                                  | No       | **Yes** | [Path](#path-behavior)                       |
+| `positions`     | `LatLngExpression[]` or `LatLngExpression[][]` | **Yes**  | **Yes** |
+| `ref`           | `RefObject<Leaflet.Polyline>`                  | No       | **Yes** | [Referenceable](#referenceable-behavior)     |
 
 ### Polygon
 
 [Leaflet reference](https://leafletjs.com/reference-1.6.0.html#polygon)
 
-**Behaviors**: [Referenceable](#referenceable-behavior) | [ParentComponent](#parentcomponent-behavior) | [Evented](#evented-behavior) | [Attribution](#attribution-behavior)
-
-**Required props**
-
-- `positions: LatLngExpression[] | LatLngExpression[][] | LatLngExpression[][][]`
-
-**Mutable props**
-
-- `positions: LatLngExpression[] | LatLngExpression[][] | LatLngExpression[][][]`
+| Prop            | Type                                                                     | Required | Mutable | Behavior                                     |
+| --------------- | ------------------------------------------------------------------------ | -------- | ------- | -------------------------------------------- |
+| `attribution`   | `string`                                                                 | No       | **Yes** | [Attribution](#attribution-behavior)         |
+| `children`      | `ReactNode`                                                              | No       | **Yes** | [ParentComponent](#parentcomponent-behavior) |
+| `eventHandlers` | `LeafletEventHandlerFnMap`                                               | No       | **Yes** | [Evented](#evented-behavior)                 |
+| `pathOptions`   | `PathOptions`                                                            | No       | **Yes** | [Path](#path-behavior)                       |
+| `positions`     | `LatLngExpression[]`, `LatLngExpression[][]` or `LatLngExpression[][][]` | **Yes**  | **Yes** |
+| `ref`           | `RefObject<Leaflet.Polygon>`                                             | No       | **Yes** | [Referenceable](#referenceable-behavior)     |
 
 ### Rectangle
 
 [Leaflet reference](https://leafletjs.com/reference-1.6.0.html#rectangle)
 
-**Behaviors**: [Referenceable](#referenceable-behavior) | [ParentComponent](#parentcomponent-behavior) | [Evented](#evented-behavior) | [Attribution](#attribution-behavior)
+**Props**
 
-**Required props**
-
-- `bounds: LatLngBoundsExpression`
-
-**Mutable props**
-
-- `bounds: LatLngBoundsExpression`
+| Prop            | Type                           | Required | Mutable | Behavior                                     |
+| --------------- | ------------------------------ | -------- | ------- | -------------------------------------------- |
+| `attribution`   | `string`                       | No       | **Yes** | [Attribution](#attribution-behavior)         |
+| `bounds`        | `LatLngBoundsExpression`       | **Yes**  | **Yes** |
+| `children`      | `ReactNode`                    | No       | **Yes** | [ParentComponent](#parentcomponent-behavior) |
+| `eventHandlers` | `LeafletEventHandlerFnMap`     | No       | **Yes** | [Evented](#evented-behavior)                 |
+| `pathOptions`   | `PathOptions`                  | No       | **Yes** | [Path](#path-behavior)                       |
+| `ref`           | `RefObject<Leaflet.Rectangle>` | No       | **Yes** | [Referenceable](#referenceable-behavior)     |
 
 ### SVGOverlay
 
 [Leaflet reference](https://leafletjs.com/reference-1.6.0.html#svgoverlay)
 
-**Behaviors**: [Referenceable](#referenceable-behavior) | [ParentComponent](#parentcomponent-behavior) | [Evented](#evented-behavior) | [Attribution](#attribution-behavior)
+**Props**
+
+| Prop                  | Type                            | Required | Mutable | Behavior                                     |
+| --------------------- | ------------------------------- | -------- | ------- | -------------------------------------------- |
+| `children`            | `ReactNode`                     | No       | **Yes** | [ParentComponent](#parentcomponent-behavior) |
+| `preserveAspectRatio` | `string`                        | No       | No      |
+| `ref`                 | `RefObject<Leaflet.SVGOverlay>` | No       | **Yes** | [Referenceable](#referenceable-behavior)     |
+| `viewPort`            | `string`                        | No       | No      |
 
 ## Other layers
 
@@ -288,23 +327,41 @@ Applies to [control components](#controls), making their [`position: ControlPosi
 
 [Leaflet reference](https://leafletjs.com/reference-1.6.0.html#layergroup)
 
-**Behaviors**: [Referenceable](#referenceable-behavior) | [ParentComponent](#parentcomponent-behavior) | [Evented](#evented-behavior) | [Attribution](#attribution-behavior)
+**Props**
+
+| Prop            | Type                            | Required | Mutable | Behavior                                     |
+| --------------- | ------------------------------- | -------- | ------- | -------------------------------------------- |
+| `attribution`   | `string`                        | No       | **Yes** | [Attribution](#attribution-behavior)         |
+| `children`      | `ReactNode`                     | No       | **Yes** | [ParentComponent](#parentcomponent-behavior) |
+| `eventHandlers` | `LeafletEventHandlerFnMap`      | No       | **Yes** | [Evented](#evented-behavior)                 |
+| `ref`           | `RefObject<Leaflet.LayerGroup>` | No       | **Yes** | [Referenceable](#referenceable-behavior)     |
 
 ### FeatureGroup
 
 [Leaflet reference](https://leafletjs.com/reference-1.6.0.html#featuregroup)
 
-**Behaviors**: [Referenceable](#referenceable-behavior) | [ParentComponent](#parentcomponent-behavior) | [Evented](#evented-behavior) | [Attribution](#attribution-behavior)
+**Props**
+
+| Prop            | Type                              | Required | Mutable | Behavior                                     |
+| --------------- | --------------------------------- | -------- | ------- | -------------------------------------------- |
+| `attribution`   | `string`                          | No       | **Yes** | [Attribution](#attribution-behavior)         |
+| `children`      | `ReactNode`                       | No       | **Yes** | [ParentComponent](#parentcomponent-behavior) |
+| `eventHandlers` | `LeafletEventHandlerFnMap`        | No       | **Yes** | [Evented](#evented-behavior)                 |
+| `ref`           | `RefObject<Leaflet.FeatureGroup>` | No       | **Yes** | [Referenceable](#referenceable-behavior)     |
 
 ### GeoJSON
 
 [Leaflet reference](https://leafletjs.com/reference-1.6.0.html#geojson)
 
-**Behaviors**: [Referenceable](#referenceable-behavior) | [ParentComponent](#parentcomponent-behavior) | [Evented](#evented-behavior) | [Attribution](#attribution-behavior)
+**Props**
 
-**Required props**
-
-- `data: GeoJsonObject`
+| Prop            | Type                         | Required | Mutable | Behavior                                     |
+| --------------- | ---------------------------- | -------- | ------- | -------------------------------------------- |
+| `attribution`   | `string`                     | No       | **Yes** | [Attribution](#attribution-behavior)         |
+| `children`      | `ReactNode`                  | No       | **Yes** | [ParentComponent](#parentcomponent-behavior) |
+| `data`          | `GeoJsonObject`              | **Yes**  | No      |
+| `eventHandlers` | `LeafletEventHandlerFnMap`   | No       | **Yes** | [Evented](#evented-behavior)                 |
+| `ref`           | `RefObject<Leaflet.GeoJSON>` | No       | **Yes** | [Referenceable](#referenceable-behavior)     |
 
 ## Controls
 
@@ -312,53 +369,70 @@ Applies to [control components](#controls), making their [`position: ControlPosi
 
 [Leaflet reference](https://leafletjs.com/reference-1.6.0.html#control-zoom)
 
-**Behaviors**: [Referenceable](#referenceable-behavior) | [Evented](#evented-behavior) | [Control](#control-behavior)
+**Props**
+
+| Prop            | Type                              | Required | Mutable | Behavior                                 |
+| --------------- | --------------------------------- | -------- | ------- | ---------------------------------------- |
+| `eventHandlers` | `LeafletEventHandlerFnMap`        | No       | **Yes** | [Evented](#evented-behavior)             |
+| `position`      | `ControlPosition`                 | No       | **Yes** |
+| `ref`           | `RefObject<Leaflet.Control.Zoom>` | No       | **Yes** | [Referenceable](#referenceable-behavior) |
 
 ### AttributionControl
 
 [Leaflet reference](https://leafletjs.com/reference-1.6.0.html#control-attribution)
 
-**Behaviors**: [Referenceable](#referenceable-behavior) | [Evented](#evented-behavior) | [Control](#control-behavior)
+**Props**
+
+| Prop            | Type                                     | Required | Mutable | Behavior                                 |
+| --------------- | ---------------------------------------- | -------- | ------- | ---------------------------------------- |
+| `eventHandlers` | `LeafletEventHandlerFnMap`               | No       | **Yes** | [Evented](#evented-behavior)             |
+| `position`      | `ControlPosition`                        | No       | **Yes** |
+| `ref`           | `RefObject<Leaflet.Control.Attribution>` | No       | **Yes** | [Referenceable](#referenceable-behavior) |
 
 ### LayersControl
 
 [Leaflet reference](https://leafletjs.com/reference-1.6.0.html#control-layers)
 
-**Behaviors**: [Referenceable](#referenceable-behavior) | [Evented](#evented-behavior) | [Control](#control-behavior)
+**Props**
 
-**Mutable props**
-
-- `collapsed?: boolean`
+| Prop            | Type                                | Required | Mutable | Behavior                                 |
+| --------------- | ----------------------------------- | -------- | ------- | ---------------------------------------- |
+| `collapsed`     | `boolean`                           | No       | **Yes** |
+| `eventHandlers` | `LeafletEventHandlerFnMap`          | No       | **Yes** | [Evented](#evented-behavior)             |
+| `position`      | `ControlPosition`                   | No       | **Yes** |
+| `ref`           | `RefObject<Leaflet.Control.Layers>` | No       | **Yes** | [Referenceable](#referenceable-behavior) |
 
 ### LayersControl.BaseLayer
 
-**Behaviors**: [ParentComponent](#parentcomponent-behavior)
+**Props**
 
-**Required props**
-
-- `name: string`
-
-**Mutable props**
-
-- `checked?: boolean`
+| Prop       | Type        | Required | Mutable | Behavior                                     |
+| ---------- | ----------- | -------- | ------- | -------------------------------------------- |
+| `checked`  | `boolean`   | No       | **Yes** |
+| `children` | `ReactNode` | No       | **Yes** | [ParentComponent](#parentcomponent-behavior) |
+| `name`     | `string`    | **Yes**  | No      |
 
 ### LayersControl.Overlay
 
-**Behaviors**: [ParentComponent](#parentcomponent-behavior)
+**Props**
 
-**Required props**
-
-- `name: string`
-
-**Mutable props**
-
-- `checked?: boolean`
+| Prop       | Type        | Required | Mutable | Behavior                                     |
+| ---------- | ----------- | -------- | ------- | -------------------------------------------- |
+| `checked`  | `boolean`   | No       | **Yes** |
+| `children` | `ReactNode` | No       | **Yes** | [ParentComponent](#parentcomponent-behavior) |
+| `name`     | `string`    | **Yes**  | No      |
 
 ### ScaleControl
 
 [Leaflet reference](https://leafletjs.com/reference-1.6.0.html#control-scale)
 
-**Behaviors**: [Referenceable](#referenceable-behavior) | [Evented](#evented-behavior) | [Control](#control-behavior)
+**Props**
+
+| Prop            | Type                              | Required | Mutable | Behavior                                 |
+| --------------- | --------------------------------- | -------- | ------- | ---------------------------------------- |
+| `eventHandlers` | `LeafletEventHandlerFnMap`        | No       | **Yes** | [Evented](#evented-behavior)             |
+| `position`      | `ControlPosition`                 | No       | **Yes** |
+| `ref`           | `RefObject<Leaflet.Control.Scale` | No       | **Yes** | [Referenceable](#referenceable-behavior) |
 
 ## Other
 
@@ -366,13 +440,13 @@ Applies to [control components](#controls), making their [`position: ControlPosi
 
 [Leaflet reference](https://leafletjs.com/reference-1.6.0.html#map-pane)
 
-**Behaviors**: [ParentComponent](#parentcomponent-behavior)
+**Props**
 
-**Required props**
+> The `name` prop must be unique to the pane and different from the [default Leaflet pane names](https://leafletjs.com/reference-1.6.0.html#map-pane)
 
-- `name: string`: unique name for the pane, that must be different from the [default Leaflet pane names](https://leafletjs.com/reference-1.6.0.html#map-pane)
-
-**Mutable props**
-
-- `className?: string`
-- `style?: CSSProperties`
+| Prop        | Type            | Required | Mutable | Behavior                                     |
+| ----------- | --------------- | -------- | ------- | -------------------------------------------- |
+| `children`  | `ReactNode`     | No       | **Yes** | [ParentComponent](#parentcomponent-behavior) |
+| `className` | `string`        | No       | **Yes** |
+| `name`      | `string`        | **Yes**  | No      |
+| `style`     | `CSSProperties` | No       | **Yes** |

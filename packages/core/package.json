@@ -1,6 +1,6 @@
 {
   "name": "@react-leaflet/core",
-  "version": "1.0.0-alpha.0",
+  "version": "1.0.0-alpha.1",
   "description": "React Leaflet core",
   "main": "cjs/index.js",
   "module": "esm/index.js",
@@ -35,11 +35,12 @@
   },
   "homepage": "https://github.com/PaulLeCam/react-leaflet",
   "files": [
-    "lib/*",
+    "cjs/*",
+    "esm/*",
     "types/*"
   ],
   "dependencies": {
-    "@babel/runtime-corejs3": "^7.9.2",
+    "@babel/runtime-corejs3": "^7.9.6",
     "core-js": "^3.6.5"
   },
   "peerDependencies": {

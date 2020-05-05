@@ -5,7 +5,12 @@ export {
   createDivOverlayComponent,
   createLeafComponent,
 } from './component'
-export { LeafletContext, LeafletProvider, useLeafletContext } from './context'
+export {
+  CONTEXT_VERSION,
+  LeafletContext,
+  LeafletProvider,
+  useLeafletContext,
+} from './context'
 export type { LeafletContextInterface } from './context'
 export { createControlHook } from './control'
 export { createDivOverlayHook } from './div-overlay'

@@ -10,14 +10,17 @@ When creating a `MapContainer` element, its props are used as options to [create
 
 The following additional props are supported:
 
-- `bounds?: LatLngBoundsExpression`
-- `boundsOptions?: FitBoundsOptions`
-- `children?: ReactNode`
-- `className?: string`
-- `id?: string`
-- `style?: CSSProperties`
-- `whenCreated?: (map: Leaflet.Map) => void`
-- `whenReady?: () => void`
+| Prop            | Type                         |
+| --------------- | ---------------------------- |
+| `bounds`        | `LatLngBoundsExpression`     |
+| `boundsOptions` | `FitBoundsOptions`           |
+| `children`      | `ReactNode`                  |
+| `className`     | `string`                     |
+| `id`            | `string`                     |
+| `placeholder`   | `ReactNode`                  |
+| `style`         | `CSSProperties`              |
+| `whenCreated`   | `(map: Leaflet.Map) => void` |
+| `whenReady`     | `() => void`                 |
 
 Except for its `children`, `MapContainer` props are **immutable**: changing them after they have been set a first time will have no effect on the Map instance or its container.  
 The Leaflet `Map` instance created by the `MapContainer` element can be accessed by [child components](api-components.md) using one of [the provided hooks](#hooks) or the [`MapConsumer` component](#mapconsumer).
@@ -37,7 +40,7 @@ function MyComponent() {
 
 function MyMapComponent() {
   return (
-    <MapContainer>
+    <MapContainer center={[50.5, 30.5]} zoom={13}>
       <MyComponent />
     </MapContainer>
   )
@@ -63,7 +66,7 @@ function MyComponent() {
 
 function MyMapComponent() {
   return (
-    <MapContainer>
+    <MapContainer center={[50.5, 30.5]} zoom={13}>
       <MyComponent />
     </MapContainer>
   )
@@ -84,7 +87,7 @@ function MyComponent() {
 
 function MyMapComponent() {
   return (
-    <MapContainer>
+    <MapContainer center={[50.5, 30.5]} zoom={13}>
       <MyComponent />
     </MapContainer>
   )
@@ -98,7 +101,7 @@ Component using the [render prop](https://reactjs.org/docs/render-props.html) te
 ```tsx
 function MyMapComponent() {
   return (
-    <MapContainer>
+    <MapContainer center={[50.5, 30.5]} zoom={13}>
       <MapConsumer>
         {(map) => {
           console.log('map center:', map.getCenter())

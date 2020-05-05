@@ -1,12 +1,15 @@
 import { Control, Layer, LayerGroup, Map } from 'leaflet'
 import { createContext, useContext } from 'react'
 
+export const CONTEXT_VERSION = 1
+
 interface ControlledLayer {
   addLayer(layer: Layer): void
   removeLayer(layer: Layer): void
 }
 
 export interface LeafletContextInterface {
+  __version: number
   map: Map
   layerContainer?: ControlledLayer | LayerGroup
   layersControl?: Control.Layers

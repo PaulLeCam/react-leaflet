@@ -1,4 +1,8 @@
-import { EventedProps, LeafletProvider } from '@react-leaflet/core'
+import {
+  CONTEXT_VERSION,
+  EventedProps,
+  LeafletProvider,
+} from '@react-leaflet/core'
 import {
   FitBoundsOptions,
   LatLngBoundsExpression,
@@ -21,6 +25,7 @@ export interface MapContainerProps extends MapOptions, EventedProps {
   children?: ReactNode
   className?: string
   id?: string
+  placeholder?: ReactNode
   style?: CSSProperties
   whenCreated?: (map: LeafletMap) => void
   whenReady?: () => void
@@ -54,6 +59,7 @@ export function MapContainer({
   children,
   className,
   id,
+  placeholder,
   style,
   whenCreated,
   ...options
@@ -69,11 +75,16 @@ export function MapContainer({
     }
   }, [map, whenCreated])
 
-  const context = useMemo(() => (map ? { map } : null), [map])
+  const context = useMemo(
+    () => (map ? { __version: CONTEXT_VERSION, map } : null),
+    [map],
+  )
 
   const contents = context ? (
     <LeafletProvider value={context}>{children}</LeafletProvider>
-  ) : null
+  ) : (
+    placeholder ?? null
+  )
   return (
     <div ref={mapRef} className={className} id={id} style={style}>
       {contents}

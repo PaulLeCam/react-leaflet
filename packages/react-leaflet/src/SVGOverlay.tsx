@@ -10,6 +10,8 @@ import { createPortal } from 'react-dom'
 
 export interface SVGOverlayProps extends MediaOverlayProps {
   children?: ReactNode
+  preserveAspectRatio?: string
+  viewPort?: string
 }
 
 export const useSVGOverlayElement = createElementHook<
@@ -17,13 +19,25 @@ export const useSVGOverlayElement = createElementHook<
   SVGOverlayProps,
   SVGSVGElement
 >(function createSVGOverlay(props, context) {
-  const { bounds, ...options } = props
+  const { bounds, preserveAspectRatio, viewPort, ...options } = props
+
   const container = document.createElementNS(
     'http://www.w3.org/2000/svg',
     'svg',
   )
-  const instance = new LeafletSVGOverlay(container, bounds, options)
-  return { instance, container, context }
+  container.setAttribute('xmlns', 'http://www.w3.org/2000/svg')
+  if (preserveAspectRatio != null) {
+    container.setAttribute('preserveAspectRatio', preserveAspectRatio)
+  }
+  if (viewPort != null) {
+    container.setAttribute('viewPort', viewPort)
+  }
+
+  return {
+    instance: new LeafletSVGOverlay(container, bounds, options),
+    container,
+    context,
+  }
 }, updateMediaOverlay)
 
 export const useSVGOverlay = createLayerHook(useSVGOverlayElement)
