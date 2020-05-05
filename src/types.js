@@ -129,4 +129,6 @@ export type SVGOverlayProps = MapComponentProps &
   ImageOverlayOptions & {
     bounds: LatLngBounds,
     children?: Node,
+    preserveAspectRatio?: string,
+    viewBox?: string,
   }

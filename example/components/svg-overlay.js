@@ -18,7 +18,7 @@ export default class SVGOverlayExample extends Component<{}> {
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <SVGOverlay bounds={rectangle}>
+        <SVGOverlay bounds={rectangle} viewBox="0 0 80 80">
           <rect x="0" y="0" width="100%" height="100%" fill="blue" />
           <circle r="5" cx="10" cy="10" fill="red" />
           <text x="50%" y="50%" fill="white">
