@@ -354,9 +354,11 @@ properties.
 **Dynamic properties**
 
 - `bounds: bounds` (required)
-- `opacity: number` (optional)
-- `zIndex: number` (optional)
 - `attribution: string` (optional)
+- `opacity: number` (optional)
+- `preserveAspectRatio: string` (optional)
+- `viewBox: string` (optional)
+- `zIndex: number` (optional)
 
 ## Other Layers
 

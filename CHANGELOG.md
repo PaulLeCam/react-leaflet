@@ -1,6 +1,9 @@
-## master
+## v2.7.0 (2020-05-06)
 
-[website] Bump Leaflet docs links to v1.6.0 ([PR #686](https://github.com/PaulLeCam/react-leaflet/pull/686) by _moondef_).
+- Added `viewBox` and `preserveAspectRatio` props to `SVGOverlay` component ([PR #704](https://github.com/PaulLeCam/react-leaflet/pull/704) by _spectras_).
+- [website] Bump Leaflet docs links to v1.6.0 ([PR #686](https://github.com/PaulLeCam/react-leaflet/pull/686) by _moondef_).
+- [website] Set react-leaflet-markercluster v2 support ([PR #693](https://github.com/PaulLeCam/react-leaflet/pull/693) by _yuzhva_).
+- [website] Added react-leaflet-kml plugin ([PR #707](https://github.com/PaulLeCam/react-leaflet/pull/707) by _aviklai_).
 
 ## v2.6.3 (2020-03-13)
 

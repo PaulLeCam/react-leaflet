@@ -12,7 +12,7 @@
   ],
   "parser": "babel-eslint",
   "parserOptions": {
-    "ecmaVersion": 2018,
+    "ecmaVersion": 2020,
     "jsx": true,
     "sourceType": "module"
   },
@@ -35,7 +35,7 @@
   "settings": {
     "react": {
       "version": "16.8",
-      "flowVersion": "0.98"
+      "flowVersion": "0.123"
     }
   }
 }

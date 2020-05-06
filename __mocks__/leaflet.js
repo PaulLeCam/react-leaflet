@@ -1,6 +1,6 @@
 /* global jest, module, require */
 
-const L = require.requireActual('leaflet')
+const L = require('leaflet')
 const LeafletMock = jest.genMockFromModule('leaflet')
 
 class ControlMock extends LeafletMock.Control {
@@ -19,7 +19,7 @@ class ControlMock extends LeafletMock.Control {
   }
 }
 
-const controlMock = options => new ControlMock(options)
+const controlMock = (options) => new ControlMock(options)
 
 class LayersControlMock extends ControlMock {
   constructor(baseLayers = [], overlays = [], options) {
