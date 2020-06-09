@@ -127,7 +127,7 @@ const CodeSample = (props = {}) => (
       lang="javascript"
       source={`import L from 'leaflet'
 
-const position = [51.505, -0.09]
+const position = {lat:51.505, lng:-0.09}
 const map = L.map('map').setView(position, 13)
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
