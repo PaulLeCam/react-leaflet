@@ -51,7 +51,7 @@ Adds support for the `eventHandlers?: LeafletEventHandlerFnMap` prop, adding and
 ```tsx Example component with Evented behavior
 <Marker
   position={[50.5, 30.5]}
-  evenHandlers={{
+  eventHandlers={{
     click: () => {
       console.log('marker clicked')
     },
