@@ -2,16 +2,16 @@ import { MutableRefObject, useEffect, useRef } from 'react'
 
 import { LeafletContextInterface } from './context'
 
-export type ElementHook<E, P> = (
-  context: LeafletContextInterface,
-  props: P,
-) => MutableRefObject<LeafletElement<E>>
-
 export interface LeafletElement<T, C = any> {
   instance: T
   context: LeafletContextInterface
   container?: C | null
 }
+
+export type ElementHook<E, P> = (
+  props: P,
+  context: LeafletContextInterface,
+) => MutableRefObject<LeafletElement<E>>
 
 export function createElementHook<E, P, C = any>(
   createElement: (
@@ -22,16 +22,16 @@ export function createElementHook<E, P, C = any>(
 ) {
   if (updateElement == null) {
     return function useImmutableLeafletElement(
-      context: LeafletContextInterface,
       props: P,
+      context: LeafletContextInterface,
     ): ReturnType<ElementHook<E, P>> {
       return useRef<LeafletElement<E, C>>(createElement(props, context))
     }
   }
 
   return function useMutableLeafletElement(
-    context: LeafletContextInterface,
     props: P,
+    context: LeafletContextInterface,
   ): ReturnType<ElementHook<E, P>> {
     const elementRef = useRef<LeafletElement<E, C>>(
       createElement(props, context),

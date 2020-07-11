@@ -33,6 +33,8 @@ export const Popup = createOverlayComponent<LeafletPopup, PopupProps>(
     props: PopupProps,
     setOpen: SetOpenFunc,
   ) {
+    const { onClose, onOpen, position } = props
+
     useEffect(
       function addPopup() {
         const { instance } = element
@@ -41,14 +43,14 @@ export const Popup = createOverlayComponent<LeafletPopup, PopupProps>(
           if (event.popup === instance) {
             instance.update()
             setOpen(true)
-            props.onOpen?.()
+            onOpen?.()
           }
         }
 
         function onPopupClose(event: PopupEvent) {
           if (event.popup === instance) {
             setOpen(false)
-            props.onClose?.()
+            onClose?.()
           }
         }
 
@@ -61,8 +63,8 @@ export const Popup = createOverlayComponent<LeafletPopup, PopupProps>(
 
         if (context.overlayContainer == null) {
           // Attach to a Map
-          if (props.position != null) {
-            instance.setLatLng(props.position)
+          if (position != null) {
+            instance.setLatLng(position)
           }
           instance.openOn(context.map)
         } else {
@@ -85,7 +87,7 @@ export const Popup = createOverlayComponent<LeafletPopup, PopupProps>(
           }
         }
       },
-      [element, context, props, setOpen],
+      [element, context, setOpen, onClose, onOpen, position],
     )
   },
 )

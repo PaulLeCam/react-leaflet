@@ -31,8 +31,8 @@ export function useAttribution(
   )
 }
 
-export function useLayerLifecycle<E extends Layer>(
-  element: LeafletElement<E>,
+export function useLayerLifecycle(
+  element: LeafletElement<Layer>,
   context: LeafletContextInterface,
 ) {
   useEffect(
@@ -53,7 +53,7 @@ export function createLayerHook<E extends Layer, P extends LayerProps>(
 ) {
   return function useLayer(props: P): ReturnType<ElementHook<E, P>> {
     const context = useLeafletContext()
-    const elementRef = useElement(context, props)
+    const elementRef = useElement(props, context)
 
     useAttribution(context.map, props.attribution)
     useEventHandlers(elementRef.current, props.eventHandlers)

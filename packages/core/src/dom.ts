@@ -4,29 +4,29 @@ function splitClassName(className: string): string[] {
   return className.split(' ').filter(Boolean)
 }
 
-export const addClassName = (container: HTMLElement, className: string) => {
+export function addClassName(element: HTMLElement, className: string) {
   splitClassName(className).forEach((cls) => {
-    DomUtil.addClass(container, cls)
+    DomUtil.addClass(element, cls)
   })
 }
 
-export const removeClassName = (container: HTMLElement, className: string) => {
+export function removeClassName(element: HTMLElement, className: string) {
   splitClassName(className).forEach((cls) => {
-    DomUtil.removeClass(container, cls)
+    DomUtil.removeClass(element, cls)
   })
 }
 
 export function updateClassName(
-  container?: HTMLElement,
+  element?: HTMLElement,
   prevClassName?: string,
   nextClassName?: string,
 ) {
-  if (container != null && nextClassName !== prevClassName) {
+  if (element != null && nextClassName !== prevClassName) {
     if (prevClassName != null && prevClassName.length > 0) {
-      removeClassName(container, prevClassName)
+      removeClassName(element, prevClassName)
     }
     if (nextClassName != null && nextClassName.length > 0) {
-      addClassName(container, nextClassName)
+      addClassName(element, nextClassName)
     }
   }
 }

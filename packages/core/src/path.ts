@@ -10,9 +10,9 @@ export interface PathProps extends EventedProps {
   pathOptions?: PathOptions
 }
 
-export function usePathOptions<P extends PathProps>(
+export function usePathOptions(
   element: LeafletElement<FeatureGroup | Path>,
-  props: P,
+  props: PathProps,
 ) {
   const optionsRef = useRef<PathOptions | void>()
 
@@ -34,11 +34,11 @@ export function createPathHook<
 >(useElement: ElementHook<E, P>) {
   return function usePath(props: P): ReturnType<ElementHook<E, P>> {
     const context = useLeafletContext()
-    const elementRef = useElement(context, props)
+    const elementRef = useElement(props, context)
 
     useEventHandlers(elementRef.current, props.eventHandlers)
     useLayerLifecycle(elementRef.current, context)
-    usePathOptions<P>(elementRef.current, props)
+    usePathOptions(elementRef.current, props)
 
     return elementRef
   }

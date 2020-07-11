@@ -9,9 +9,9 @@
     "deploy": "docusaurus deploy"
   },
   "dependencies": {
-    "@docusaurus/core": "^2.0.0-alpha.48",
-    "@docusaurus/preset-classic": "^2.0.0-alpha.48",
-    "@docusaurus/theme-live-codeblock": "^2.0.0-alpha.39",
+    "@docusaurus/core": "2.0.0-alpha.58",
+    "@docusaurus/preset-classic": "2.0.0-alpha.58",
+    "@docusaurus/theme-live-codeblock": "2.0.0-alpha.58",
     "@react-leaflet/docusaurus-plugin": "^1.0.0-alpha.0",
     "classnames": "^2.2.6",
     "leaflet": "^1.6.0",

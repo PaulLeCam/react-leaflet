@@ -9,7 +9,7 @@ describe('element', () => {
     const createElementMock = jest.fn()
 
     const useElement = createElementHook(createElementMock)
-    renderHook(() => useElement(context, props))
+    renderHook(() => useElement(props, context))
 
     expect(createElementMock).toBeCalledTimes(1)
     expect(createElementMock).toBeCalledWith(props, context)
@@ -22,7 +22,7 @@ describe('element', () => {
     const updateElementMock = jest.fn()
     const useElement = createElementHook(createElementMock, updateElementMock)
 
-    const { rerender } = renderHook((p) => useElement(context, p), {
+    const { rerender } = renderHook((p) => useElement(p, context), {
       initialProps: { test: true },
     })
     expect(createElementMock).toBeCalledTimes(1)

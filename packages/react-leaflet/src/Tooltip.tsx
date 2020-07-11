@@ -33,6 +33,8 @@ export const Tooltip = createOverlayComponent<LeafletTooltip, TooltipProps>(
     props: TooltipProps,
     setOpen: SetOpenFunc,
   ) {
+    const { onClose, onOpen } = props
+
     useEffect(
       function addTooltip() {
         const container = context.overlayContainer
@@ -46,14 +48,14 @@ export const Tooltip = createOverlayComponent<LeafletTooltip, TooltipProps>(
           if (event.tooltip === instance) {
             instance.update()
             setOpen(true)
-            props.onOpen?.()
+            onOpen?.()
           }
         }
 
         const onTooltipClose = (event: TooltipEvent) => {
           if (event.tooltip === instance) {
             setOpen(false)
-            props.onClose?.()
+            onClose?.()
           }
         }
 
@@ -75,7 +77,7 @@ export const Tooltip = createOverlayComponent<LeafletTooltip, TooltipProps>(
           container.unbindTooltip()
         }
       },
-      [element, context, setOpen, props.onClose, props.onOpen],
+      [element, context, setOpen, onClose, onOpen],
     )
   },
 )

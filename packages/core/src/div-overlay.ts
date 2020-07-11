@@ -29,7 +29,7 @@ export function createDivOverlayHook<
     setOpen: SetOpenFunc,
   ): ReturnType<ElementHook<E, P>> {
     const context = useLeafletContext()
-    const elementRef = useElement(context, props)
+    const elementRef = useElement(props, context)
 
     useEventHandlers(elementRef.current, props.eventHandlers)
     useLifecycle(elementRef.current, context, props, setOpen)

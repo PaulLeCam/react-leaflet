@@ -31,7 +31,6 @@ const PANE_STYLES: CSSProperties = {
 }
 
 function omitPane(obj: Record<string, unknown>, pane: string) {
-  // eslint-disable-next-line @typescript-eslint/camelcase
   const { [pane]: _p, ...others } = obj
   return others
 }

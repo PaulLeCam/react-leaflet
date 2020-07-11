@@ -3,7 +3,7 @@ import { createContext, useContext } from 'react'
 
 export const CONTEXT_VERSION = 1
 
-interface ControlledLayer {
+export interface ControlledLayer {
   addLayer(layer: Layer): void
   removeLayer(layer: Layer): void
 }

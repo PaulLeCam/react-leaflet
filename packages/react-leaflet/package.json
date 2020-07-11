@@ -43,7 +43,7 @@
     "umd/*"
   ],
   "dependencies": {
-    "@babel/runtime-corejs3": "^7.9.6",
+    "@babel/runtime-corejs3": "^7.10.4",
     "@react-leaflet/core": "^1.0.0-alpha.1",
     "core-js": "^3.6.5"
   },
@@ -53,7 +53,7 @@
     "react-dom": "^16.9.0"
   },
   "devDependencies": {
-    "rollup": "^2.7.6",
+    "rollup": "^2.21.0",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",

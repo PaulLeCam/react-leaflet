@@ -1,10 +1,9 @@
 import { GridLayer, GridLayerOptions } from 'leaflet'
 
-export function updateGridLayer<E extends GridLayer>(
-  layer: E,
-  props: GridLayerOptions,
-  prevProps: GridLayerOptions,
-) {
+export function updateGridLayer<
+  E extends GridLayer,
+  P extends GridLayerOptions
+>(layer: E, props: P, prevProps: P) {
   const { opacity, zIndex } = props
   if (opacity != null && opacity !== prevProps.opacity) {
     layer.setOpacity(opacity)

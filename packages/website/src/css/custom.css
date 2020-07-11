@@ -23,3 +23,8 @@
 .leaflet-container {
   height: 400px;
 }
+
+.markdown > h2 {
+  border-bottom: 2px solid var(--ifm-font-color-base);
+  padding-bottom: 5px;
+}

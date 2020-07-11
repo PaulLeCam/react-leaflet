@@ -6,6 +6,7 @@ declare let module: any
 const MOUNT_NODE = document.getElementById('app')
 
 function render() {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
   const Examples = require('./components/Examples').default
   ReactDOM.render(<Examples />, MOUNT_NODE)
 }

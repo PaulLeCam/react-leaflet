@@ -178,10 +178,10 @@ Applies to [control components](#controls), making their [`position: ControlPosi
 | Prop            | Type                           | Required | Mutable | Behavior                                 |
 | --------------- | ------------------------------ | -------- | ------- | ---------------------------------------- |
 | `eventHandlers` | `LeafletEventHandlerFnMap`     | No       | **Yes** | [Evented](#evented-behavior)             |
-| `opacity`       | `number`                       | no       | **Yes** | [GridLayer](#gridlayer-behavior)         |
+| `opacity`       | `number`                       | No       | **Yes** | [GridLayer](#gridlayer-behavior)         |
 | `ref`           | `RefObject<Leaflet.TileLayer>` | No       | **Yes** | [Referenceable](#referenceable-behavior) |
-| `url`           | `string`                       | **Yes**  | no      |
-| `zIndex`        | `number`                       | no       | **Yes** | [GridLayer](#gridlayer-behavior)         |
+| `url`           | `string`                       | **Yes**  | No      |
+| `zIndex`        | `number`                       | No       | **Yes** | [GridLayer](#gridlayer-behavior)         |
 
 ### WMSTileLayer
 
@@ -192,11 +192,11 @@ Applies to [control components](#controls), making their [`position: ControlPosi
 | Prop            | Type                               | Required | Mutable | Behavior                                 |
 | --------------- | ---------------------------------- | -------- | ------- | ---------------------------------------- |
 | `eventHandlers` | `LeafletEventHandlerFnMap`         | No       | **Yes** | [Evented](#evented-behavior)             |
-| `opacity`       | `number`                           | no       | **Yes** | [GridLayer](#gridlayer-behavior)         |
-| `params`        | `WMSParams`                        | no       | **Yes** |
+| `opacity`       | `number`                           | No       | **Yes** | [GridLayer](#gridlayer-behavior)         |
+| `params`        | `WMSParams`                        | No       | **Yes** |
 | `ref`           | `RefObject<Leaflet.TileLayer.WMS>` | No       | **Yes** | [Referenceable](#referenceable-behavior) |
-| `url`           | `string`                           | **Yes**  | no      |
-| `zIndex`        | `number`                           | no       | **Yes** | [GridLayer](#gridlayer-behavior)         |
+| `url`           | `string`                           | **Yes**  | No      |
+| `zIndex`        | `number`                           | No       | **Yes** | [GridLayer](#gridlayer-behavior)         |
 
 ### ImageOverlay
 
@@ -210,10 +210,10 @@ Applies to [control components](#controls), making their [`position: ControlPosi
 | `bounds`        | `LatLngBoundsExpression`          | **Yes**  | **Yes** | [MediaOverlay](#mediaoverlay-behavior)       |
 | `children`      | `ReactNode`                       | No       | **Yes** | [ParentComponent](#parentcomponent-behavior) |
 | `eventHandlers` | `LeafletEventHandlerFnMap`        | No       | **Yes** | [Evented](#evented-behavior)                 |
-| `opacity`       | `number`                          | no       | **Yes** | [GridLayer](#gridlayer-behavior)             |
+| `opacity`       | `number`                          | No       | **Yes** | [MediaOverlay](#mediaoverlay-behavior)       |
 | `ref`           | `RefObject<Leaflet.ImageOverlay>` | No       | **Yes** | [Referenceable](#referenceable-behavior)     |
 | `url`           | `string`                          | **Yes**  | **Yes** |
-| `zIndex`        | `number`                          | no       | **Yes** | [MediaOverlay](#mediaoverlay-behavior)       |
+| `zIndex`        | `number`                          | No       | **Yes** | [MediaOverlay](#mediaoverlay-behavior)       |
 
 ### VideoOverlay
 
@@ -226,10 +226,10 @@ Applies to [control components](#controls), making their [`position: ControlPosi
 | `attribution`   | `string`                                   | No       | **Yes** | [Attribution](#attribution-behavior)     |
 | `bounds`        | `LatLngBoundsExpression`                   | **Yes**  | **Yes** | [MediaOverlay](#mediaoverlay-behavior)   |
 | `eventHandlers` | `LeafletEventHandlerFnMap`                 | No       | **Yes** | [Evented](#evented-behavior)             |
-| `play`          | `boolean`                                  | no       | **Yes** |
+| `play`          | `boolean`                                  | No       | **Yes** |
 | `ref`           | `RefObject<Leaflet.VideoOverlay>`          | No       | **Yes** | [Referenceable](#referenceable-behavior) |
 | `url`           | `string`, `string[]` or `HTMLVideoElement` | **Yes**  | **Yes** |
-| `zIndex`        | `number`                                   | no       | **Yes** | [MediaOverlay](#mediaoverlay-behavior)   |
+| `zIndex`        | `number`                                   | No       | **Yes** | [MediaOverlay](#mediaoverlay-behavior)   |
 
 ## Vector layers
 
@@ -442,7 +442,9 @@ Applies to [control components](#controls), making their [`position: ControlPosi
 
 **Props**
 
-> The `name` prop must be unique to the pane and different from the [default Leaflet pane names](https://leafletjs.com/reference-1.6.0.html#map-pane)
+:::caution
+The `name` prop must be unique to the pane and different from the [default Leaflet pane names](https://leafletjs.com/reference-1.6.0.html#map-pane)
+:::
 
 | Prop        | Type            | Required | Mutable | Behavior                                     |
 | ----------- | --------------- | -------- | ------- | -------------------------------------------- |

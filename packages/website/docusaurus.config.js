@@ -16,12 +16,14 @@ module.exports = {
       },
       links: [
         {
-          to: 'docs/installation',
-          label: 'Installation',
+          to: 'docs/start-introduction',
+          activeBasePath: 'docs/start',
+          label: 'Getting Started',
           position: 'left',
         },
         {
-          to: 'docs/examples',
+          to: 'docs/example-popup-marker',
+          activeBasePath: 'docs/example',
           label: 'Examples',
           position: 'left',
         },
@@ -40,52 +42,42 @@ module.exports = {
     },
     footer: {
       style: 'dark',
-      // links: [
-      //   {
-      //     title: 'Docs',
-      //     items: [
-      //       {
-      //         label: 'Style Guide',
-      //         to: 'docs/doc1',
-      //       },
-      //       {
-      //         label: 'Second Doc',
-      //         to: 'docs/doc2',
-      //       },
-      //     ],
-      //   },
-      //   {
-      //     title: 'Community',
-      //     items: [
-      //       {
-      //         label: 'Stack Overflow',
-      //         href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-      //       },
-      //       {
-      //         label: 'Discord',
-      //         href: 'https://discordapp.com/invite/docusaurus',
-      //       },
-      //     ],
-      //   },
-      //   {
-      //     title: 'Social',
-      //     items: [
-      //       {
-      //         label: 'Blog',
-      //         to: 'blog',
-      //       },
-      //       {
-      //         label: 'GitHub',
-      //         href: 'https://github.com/facebook/docusaurus',
-      //       },
-      //       {
-      //         label: 'Twitter',
-      //         href: 'https://twitter.com/docusaurus',
-      //       },
-      //     ],
-      //   },
-      // ],
+      links: [
+        {
+          title: 'Docs',
+          items: [
+            {
+              label: 'Getting Started',
+              to: 'docs/start-introduction',
+            },
+            {
+              label: 'Public API',
+              to: 'docs/api-map',
+            },
+            {
+              label: 'Core API',
+              to: 'docs/core-introduction',
+            },
+          ],
+        },
+        {
+          title: 'Community',
+          items: [
+            {
+              label: 'Stack Overflow',
+              href: 'https://stackoverflow.com/questions/tagged/react-leaflet',
+            },
+            {
+              label: 'GitHub',
+              href: 'https://github.com/PaulLeCam/react-leaflet',
+            },
+          ],
+        },
+      ],
       copyright: `Copyright © ${new Date().getFullYear()} Paul Le Cam and contributors`,
+    },
+    prism: {
+      theme: require('prism-react-renderer/themes/nightOwl'),
     },
   },
   presets: [

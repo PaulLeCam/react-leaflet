@@ -9,9 +9,10 @@ export function createControlHook<E extends Control, P extends ControlOptions>(
 ) {
   return function useLeafletControl(props: P): ReturnType<ElementHook<E, P>> {
     const context = useLeafletContext()
-    const elementRef = useElement(context, props)
+    const elementRef = useElement(props, context)
     const { instance } = elementRef.current
     const positionRef = useRef(props.position)
+    const { position } = props
 
     useEffect(
       function addControl() {
@@ -26,12 +27,12 @@ export function createControlHook<E extends Control, P extends ControlOptions>(
 
     useEffect(
       function updateControl() {
-        if (props.position != null && props.position !== positionRef.current) {
-          instance.setPosition(props.position)
-          positionRef.current = props.position
+        if (position != null && position !== positionRef.current) {
+          instance.setPosition(position)
+          positionRef.current = position
         }
       },
-      [instance, props.position],
+      [instance, position],
     )
 
     return elementRef
