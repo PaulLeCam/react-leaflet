@@ -49,6 +49,7 @@ You can check out the [event handling example](https://github.com/PaulLeCam/reac
   - [ScaleControl](#scalecontrol)
   - [ZoomControl](#zoomcontrol)
 
+- - - 
 ## Base components
 
 These components are base classes used by other components. They can be extended to create custom components but should not be used directly.
@@ -95,6 +96,7 @@ Base class extending [`MapLayer`](#maplayer) with the following methods:
 
 [🍃 Leaflet reference](http://leafletjs.com/reference-1.6.0.html#path) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/Path.js)
 
+- - -
 ## Map
 
 This is the top-level component that must be mounted for child components to be rendered. Refer to [🍃 Leaflet's documentation](http://leafletjs.com/reference-1.6.0.html#map-options) for more information about the properties.
@@ -207,6 +209,7 @@ Only children components of the `Pane` component will be added to the correspond
 - `style: Object` (optional): style property of the pane's `<div>`
 - `className: string` (optional): className property of the pane's `<div>`
 
+- - -
 ## UI Layers
 
 ### Marker
@@ -245,6 +248,7 @@ Only children components of the `Pane` component will be added to the correspond
 - `onClose: () => void` (optional)
 - `onOpen: () => void` (optional)
 
+- - -
 ## Raster Layers
 
 ### TileLayer
@@ -294,6 +298,7 @@ Only children components of the `Pane` component will be added to the correspond
 - `play: boolean` (optional): can be used to declaratively play and pause the video.
 - `zIndex: number` (optional)
 
+- - -
 ## Vector Layers
 
 All vector layers extend the [Path component](#path) and therefore accept dynamic
@@ -360,6 +365,7 @@ properties.
 - `viewBox: string` (optional)
 - `zIndex: number` (optional)
 
+- - -
 ## Other Layers
 
 ### FeatureGroup
@@ -397,6 +403,7 @@ Use the `LayerGroup` wrapper component to group children layers together.
 
 [🍃 Leaflet reference](http://leafletjs.com/reference-1.6.0.html#layergroup) • [🔍 Source](https://github.com/PaulLeCam/react-leaflet/blob/master/src/LayerGroup.js)
 
+- - -
 ## Controls
 
 ### AttributionControl
