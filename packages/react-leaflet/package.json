@@ -1,6 +1,6 @@
 {
   "name": "react-leaflet",
-  "version": "3.0.0-alpha.0",
+  "version": "3.0.0-beta.1",
   "description": "React components for Leaflet maps",
   "main": "cjs/index.js",
   "module": "esm/index.js",
@@ -44,7 +44,7 @@
   ],
   "dependencies": {
     "@babel/runtime-corejs3": "^7.10.4",
-    "@react-leaflet/core": "^1.0.0-alpha.1",
+    "@react-leaflet/core": "^1.0.0-beta.2",
     "core-js": "^3.6.5"
   },
   "peerDependencies": {
