@@ -4,6 +4,7 @@ import Leaflet from 'leaflet'
 import React, { StrictMode } from 'react'
 
 import SimpleExample from './simple'
+import ClickToMarkExample from './click-to-mark'
 import EventsExample from './events'
 import ViewportExample from './viewport'
 import VectorLayersExample from './vector-layers'
@@ -30,6 +31,9 @@ const App = () => (
     <h1>React-Leaflet examples</h1>
     <h2>Popup with Marker</h2>
     <SimpleExample />
+    <h2>Click to Mark</h2>
+    <p>Click the map to create a new marker</p>
+    <ClickToMarkExample />
     <h2>Events</h2>
     <p>Click the map to show a marker at your detected location</p>
     <EventsExample />
