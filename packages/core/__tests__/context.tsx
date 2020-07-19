@@ -3,6 +3,12 @@ import React, { ReactNode } from 'react'
 
 import { LeafletProvider, useLeafletContext } from '../src'
 
+export function createWrapper(context) {
+  return function Wrapper({ children }: { children: ReactNode }) {
+    return <LeafletProvider value={context}>{children}</LeafletProvider>
+  }
+}
+
 describe('context', () => {
   test('useLeafletContext() throws an error when there is no provider', () => {
     expect(() => {
@@ -15,9 +21,7 @@ describe('context', () => {
 
   test('useLeafletContext() provides the context', () => {
     const context = { map: true }
-    const wrapper = ({ children }: { children: ReactNode }) => (
-      <LeafletProvider value={context}>{children}</LeafletProvider>
-    )
+    const wrapper = createWrapper(context)
     const { result } = renderHook(() => useLeafletContext(), { wrapper })
     expect(result.current).toBe(context)
   })

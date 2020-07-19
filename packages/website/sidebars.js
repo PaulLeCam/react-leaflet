@@ -16,6 +16,7 @@ module.exports = {
       'example-draggable-marker',
       'example-view-bounds',
       'example-animated-panning',
+      'example-react-control',
       'example-external-state',
       'example-map-placeholder',
     ],

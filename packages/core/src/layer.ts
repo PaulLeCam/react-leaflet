@@ -26,6 +26,7 @@ export function useAttribution(
           map.attributionControl.addAttribution(attribution)
         }
       }
+      attributionRef.current = attribution
     },
     [map, attribution],
   )
