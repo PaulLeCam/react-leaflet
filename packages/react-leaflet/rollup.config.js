@@ -2,7 +2,7 @@ import babel from 'rollup-plugin-babel'
 import commonjs from 'rollup-plugin-commonjs'
 import replace from 'rollup-plugin-replace'
 import resolve from 'rollup-plugin-node-resolve'
-import { uglify } from 'rollup-plugin-uglify'
+import { terser } from 'rollup-plugin-terser'
 
 const env = process.env.NODE_ENV
 const extensions = ['.js', '.ts', '.tsx']
@@ -41,7 +41,7 @@ const config = {
 }
 
 if (env === 'production') {
-  config.plugins.push(uglify())
+  config.plugins.push(terser())
 }
 
 export default config
