@@ -1,3 +1,8 @@
+## v3.0.0-beta.2 (2020-07-25)
+
+- Fix `LayersControl` lifecycle logic causing layer removal
+- Use terser instead of uglifyjs to minify the UMD build ([PR #735](https://github.com/PaulLeCam/react-leaflet/pull/735) by [anajavi](https://github.com/anajavi))
+
 ## v3.0.0-beta.1 (2020-07-12)
 
 v3 is a full rewrite of React Leaflet and contains breaking change from v2.

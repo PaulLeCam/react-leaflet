@@ -65,38 +65,34 @@ type AddLayerFunc = (
 
 export function createControlledLayer(addLayerToControl: AddLayerFunc) {
   return function ControlledLayer(props: ControlledLayerProps) {
-    const context = useLeafletContext()
+    const parentContext = useLeafletContext()
     const propsRef = useRef<ControlledLayerProps>(props)
     const [layer, setLayer] = useState<Layer | null>(null)
 
+    const { layersControl, map } = parentContext
     const addLayer = useCallback(
       (layerToAdd: Layer) => {
-        if (context.layersControl != null) {
+        if (layersControl != null) {
           if (propsRef.current.checked) {
-            context.map.addLayer(layerToAdd)
+            map.addLayer(layerToAdd)
           }
-          addLayerToControl(
-            context.layersControl,
-            layerToAdd,
-            propsRef.current.name,
-          )
+          addLayerToControl(layersControl, layerToAdd, propsRef.current.name)
           setLayer(layerToAdd)
         }
       },
-      [context],
+      [layersControl, map],
     )
     const removeLayer = useCallback(
       (layerToRemove: Layer) => {
-        context.layersControl?.removeLayer(layerToRemove)
+        layersControl?.removeLayer(layerToRemove)
         setLayer(null)
       },
-      [context],
+      [layersControl],
     )
-    const newContext = useMemo(() => {
-      return context
-        ? { ...context, layerContainer: { addLayer, removeLayer } }
-        : null
-    }, [context, addLayer, removeLayer])
+    const context = useMemo(
+      () => ({ ...parentContext, layerContainer: { addLayer, removeLayer } }),
+      [parentContext, addLayer, removeLayer],
+    )
 
     useEffect(() => {
       if (layer !== null && propsRef.current !== props) {
@@ -105,25 +101,19 @@ export function createControlledLayer(addLayerToControl: AddLayerFunc) {
           (propsRef.current.checked == null ||
             propsRef.current.checked === false)
         ) {
-          context.map.addLayer(layer)
+          map.addLayer(layer)
         } else if (
           propsRef.current.checked === true &&
           (props.checked == null || props.checked === false)
         ) {
-          context.map.removeLayer(layer)
+          map.removeLayer(layer)
         }
         propsRef.current = props
-      }
-
-      return () => {
-        if (layer !== null) {
-          context.layersControl?.removeLayer(layer)
-        }
       }
     })
 
     return props.children ? (
-      <LeafletProvider value={newContext}>{props.children}</LeafletProvider>
+      <LeafletProvider value={context}>{props.children}</LeafletProvider>
     ) : null
   }
 }

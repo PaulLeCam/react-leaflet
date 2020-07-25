@@ -1,6 +1,6 @@
 {
   "name": "@react-leaflet/core",
-  "version": "1.0.0-beta.2",
+  "version": "1.0.0-beta.3",
   "description": "React Leaflet core",
   "main": "cjs/index.js",
   "module": "esm/index.js",
@@ -16,7 +16,7 @@
     "test:unit": "cross-env BABEL_ENV=development NODE_ENV=test jest",
     "test": "yarn run test:types && yarn run test:unit",
     "start": "yarn run test && yarn run build",
-    "prepublishOnly": "yarn run build"
+    "prepare": "yarn run build"
   },
   "repository": {
     "type": "git",

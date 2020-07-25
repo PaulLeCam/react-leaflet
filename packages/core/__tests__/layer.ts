@@ -11,15 +11,19 @@ describe('layer', () => {
     const map = { attributionControl }
 
     const { rerender } = renderHook((p) => useAttribution(map, p.attribution), {
-      initialProps: { attribution: 'foo' },
+      initialProps: {},
     })
 
     rerender({ attribution: 'foo' })
-    expect(attributionControl.addAttribution).toBeCalledTimes(0)
+    expect(attributionControl.addAttribution).toBeCalledTimes(1)
+    expect(attributionControl.removeAttribution).toBeCalledTimes(0)
+
+    rerender({ attribution: 'foo' })
+    expect(attributionControl.addAttribution).toBeCalledTimes(1)
     expect(attributionControl.removeAttribution).toBeCalledTimes(0)
 
     rerender({ attribution: 'bar' })
-    expect(attributionControl.addAttribution).toBeCalledTimes(1)
+    expect(attributionControl.addAttribution).toBeCalledTimes(2)
     expect(attributionControl.addAttribution).toBeCalledWith('bar')
     expect(attributionControl.removeAttribution).toBeCalledTimes(1)
     expect(attributionControl.removeAttribution).toBeCalledWith('foo')

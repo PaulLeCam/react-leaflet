@@ -15,15 +15,10 @@ export function useEventHandlers(
 
   useEffect(
     function addEventHandlers() {
-      if (eventHandlers !== eventHandlersRef.current) {
-        if (eventHandlersRef.current != null) {
-          element.instance.off(eventHandlersRef.current)
-        }
-        if (eventHandlers != null) {
-          element.instance.on(eventHandlers)
-        }
-        eventHandlersRef.current = eventHandlers
+      if (eventHandlers != null) {
+        element.instance.on(eventHandlers)
       }
+      eventHandlersRef.current = eventHandlers
 
       return function removeEventHandlers() {
         if (eventHandlersRef.current != null) {
