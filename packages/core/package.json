@@ -39,10 +39,6 @@
     "esm/*",
     "types/*"
   ],
-  "dependencies": {
-    "@babel/runtime-corejs3": "^7.10.5",
-    "core-js": "^3.6.5"
-  },
   "peerDependencies": {
     "leaflet": "^1.6.0",
     "react": "^16.9.0",

@@ -6,7 +6,6 @@
         [
           "@babel/preset-env",
           {
-            "corejs": 3,
             "loose": true,
             "modules": "commonjs",
             "targets": {
@@ -20,15 +19,8 @@
                 "last 2 Safari versions",
                 "last 2 Samsung versions"
               ]
-            },
-            "useBuiltIns": "usage"
+            }
           }
-        ]
-      ],
-      "plugins": [
-        [
-          "@babel/plugin-transform-runtime",
-          { "corejs": 3, "version": "^7.10.4" }
         ]
       ]
     },
@@ -37,7 +29,6 @@
         [
           "@babel/preset-env",
           {
-            "corejs": 3,
             "loose": true,
             "modules": false,
             "targets": {
@@ -51,15 +42,8 @@
                 "last 2 Safari versions",
                 "last 2 Samsung versions"
               ]
-            },
-            "useBuiltIns": "usage"
+            }
           }
-        ]
-      ],
-      "plugins": [
-        [
-          "@babel/plugin-transform-runtime",
-          { "corejs": 3, "version": "^7.10.4" }
         ]
       ]
     },
@@ -68,7 +52,6 @@
         [
           "@babel/preset-env",
           {
-            "corejs": 3,
             "loose": true,
             "modules": false,
             "targets": {
@@ -82,15 +65,8 @@
                 "last 2 Safari versions",
                 "last 2 Samsung versions"
               ]
-            },
-            "useBuiltIns": "usage"
+            }
           }
-        ]
-      ],
-      "plugins": [
-        [
-          "@babel/plugin-transform-runtime",
-          { "corejs": 3, "useESModules": true, "version": "^7.10.4" }
         ]
       ]
     }

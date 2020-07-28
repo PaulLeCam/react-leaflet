@@ -32,7 +32,6 @@ const config = {
     babel({
       exclude: '**/node_modules/**',
       extensions,
-      runtimeHelpers: true,
     }),
     replace({
       'process.env.NODE_ENV': JSON.stringify(env),
