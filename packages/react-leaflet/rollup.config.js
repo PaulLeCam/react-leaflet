@@ -1,7 +1,7 @@
-import babel from 'rollup-plugin-babel'
-import commonjs from 'rollup-plugin-commonjs'
-import replace from 'rollup-plugin-replace'
-import resolve from 'rollup-plugin-node-resolve'
+import babel from '@rollup/plugin-babel'
+import commonjs from '@rollup/plugin-commonjs'
+import replace from '@rollup/plugin-replace'
+import { nodeResolve } from '@rollup/plugin-node-resolve'
 import { terser } from 'rollup-plugin-terser'
 
 const env = process.env.NODE_ENV
@@ -24,7 +24,7 @@ const config = {
   },
   external: ['leaflet', 'react', 'react-dom'],
   plugins: [
-    resolve({
+    nodeResolve({
       browser: true,
       extensions,
     }),
@@ -32,6 +32,7 @@ const config = {
     babel({
       exclude: '**/node_modules/**',
       extensions,
+      babelHelpers: 'bundled',
     }),
     replace({
       'process.env.NODE_ENV': JSON.stringify(env),
