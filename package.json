@@ -24,7 +24,6 @@
     "@babel/plugin-proposal-class-properties": "^7.10.4",
     "@babel/plugin-proposal-export-default-from": "^7.10.4",
     "@babel/plugin-transform-proto-to-assign": "^7.10.5",
-    "@babel/plugin-transform-runtime": "^7.10.5",
     "@babel/plugin-transform-strict-mode": "^7.10.4",
     "@babel/preset-env": "^7.10.4",
     "@babel/preset-react": "^7.10.4",

@@ -43,9 +43,7 @@
     "umd/*"
   ],
   "dependencies": {
-    "@babel/runtime-corejs3": "^7.10.5",
-    "@react-leaflet/core": "^1.0.0-beta.3",
-    "core-js": "^3.6.5"
+    "@react-leaflet/core": "^1.0.0-beta.3"
   },
   "peerDependencies": {
     "leaflet": "^1.6.0",
