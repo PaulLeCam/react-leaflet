@@ -14,7 +14,7 @@ module.exports = {
         alt: 'React Leaflet Logo',
         src: 'img/logo.svg',
       },
-      links: [
+      items: [
         {
           to: 'docs/start-introduction',
           activeBasePath: 'docs/start',
