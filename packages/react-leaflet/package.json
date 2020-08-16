@@ -1,6 +1,6 @@
 {
   "name": "react-leaflet",
-  "version": "3.0.0-beta.3",
+  "version": "3.0.0-beta.4",
   "description": "React components for Leaflet maps",
   "main": "cjs/index.js",
   "module": "esm/index.js",
@@ -8,7 +8,7 @@
   "sideEffects": false,
   "scripts": {
     "build:clean": "del cjs esm types umd",
-    "build:cjs": "cross-env BABEL_ENV=cjs babel src --out-dir cjs --extensions .ts,.tsx",
+    "build:cjs": "babel src --out-dir cjs --extensions .ts,.tsx",
     "build:esm": "cross-env BABEL_ENV=esm babel src --out-dir esm --extensions .ts,.tsx",
     "build:types": "tsc --emitDeclarationOnly",
     "build:umd": "cross-env BABEL_ENV=rollup NODE_ENV=development rollup -c",
@@ -43,7 +43,7 @@
     "umd/*"
   ],
   "dependencies": {
-    "@react-leaflet/core": "^1.0.0-beta.4"
+    "@react-leaflet/core": "^1.0.0-beta.5"
   },
   "peerDependencies": {
     "leaflet": "^1.6.0",
