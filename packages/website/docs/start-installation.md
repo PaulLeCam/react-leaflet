@@ -21,7 +21,7 @@ Before using React Leaflet, you must setup your project following [Leaflet's Qui
 React, React DOM and Leaflet are required peer dependencies. You must add them to your project if they are not already installed:
 
 ```bash
-yarn add react react-dom leaflet
+yarn add react@17.0.0-rc.0 react-dom@17.0.0-rc.0 leaflet
 ```
 
 React Leaflet v3 is not released as a stable version yet. To install it, you must use the `next` tag:

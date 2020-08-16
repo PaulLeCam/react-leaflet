@@ -1,4 +1,3 @@
-import 'snapshot-diff/extend-expect'
 import { render } from '@testing-library/react'
 import { LatLngExpression, Map } from 'leaflet'
 import React from 'react'

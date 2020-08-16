@@ -8,7 +8,7 @@
   "sideEffects": false,
   "scripts": {
     "build:clean": "del cjs esm types",
-    "build:cjs": "babel src --out-dir cjs --extensions .ts,.tsx",
+    "build:cjs": "cross-env BABEL_ENV=cjs babel src --out-dir cjs --extensions .ts,.tsx",
     "build:esm": "cross-env BABEL_ENV=esm babel src --out-dir esm --extensions .ts,.tsx",
     "build:types": "tsc --emitDeclarationOnly",
     "build": "yarn run build:clean && yarn run build:cjs && yarn run build:esm && yarn run build:types",

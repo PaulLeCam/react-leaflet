@@ -1,3 +1,10 @@
+## v3.0.0-beta.3 (2020-08-16)
+
+- Specify list of supported browsers ([PR #736](https://github.com/PaulLeCam/react-leaflet/pull/736) by [anajavi](https://github.com/anajavi))
+- Drop Babel runtime polyfilling ([PR #739](https://github.com/PaulLeCam/react-leaflet/pull/739) by [anajavi](https://github.com/anajavi))
+- Upgrade rollup plugins ([PR #740](https://github.com/PaulLeCam/react-leaflet/pull/740) by [anajavi](https://github.com/anajavi))
+- Bump React dependency to v17.
+
 ## v3.0.0-beta.2 (2020-07-25)
 
 - Fix `LayersControl` lifecycle logic causing layer removal

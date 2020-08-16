@@ -223,7 +223,7 @@ render(
 )
 ```
 
-First, instead of having the Leaflet element creation and updating logic in `useEffect` callbacks, we can extract them to standalone functions implementing the [expected interface](api-core.md#createelementhook):
+First, instead of having the Leaflet element creation and updating logic in `useEffect` callbacks, we can extract them to standalone functions implementing the [expected interface](core-api.md#createelementhook):
 
 ```ts
 function createSquare(props, context) {
@@ -258,7 +258,7 @@ useEffect(() => {
 }, [])
 ```
 
-## Use layer lifecycle hook
+## Layer lifecycle hook
 
 The core APIs provide additional hooks to handle specific pieces of logic. Here, we can replace the `useEffect` hook used previously to add and remove the layer by the [`useLayerLifecycle` hook](core-api.md#uselayerlifecycle):
 

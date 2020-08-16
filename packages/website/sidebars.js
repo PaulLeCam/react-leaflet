@@ -22,7 +22,6 @@ module.exports = {
     ],
     'Public API': ['api-map', 'api-components'],
     'Core API': ['core-introduction', 'core-architecture', 'core-api'],
-    // Guides: [],
-    // Extra: ['logo-and-branding'],
+    Extra: ['extra-logo-branding'],
   },
 }
