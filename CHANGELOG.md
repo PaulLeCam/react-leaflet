@@ -1,3 +1,8 @@
+## v3.0.0-beta.5 (2020-09-20)
+
+- Remove `preserveAspectRatio` and `viewport` props from `SVGOverlay`, replaced by `attributes` prop.
+- Add third-party plugins page to documentation website.
+
 ## v3.0.0-beta.4 (2020-08-16)
 
 - Specify list of supported browsers ([PR #736](https://github.com/PaulLeCam/react-leaflet/pull/736) by [anajavi](https://github.com/anajavi))

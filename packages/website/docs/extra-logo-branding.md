@@ -45,7 +45,7 @@ For convenience, the following are packaged up in a `.zip` to download:
 - react-leaflet-logo.eps
 - react-leaflet-logo.svg
 
-[Download All Assets](assets/react-leaflet-logo.zip)
+[Download All Assets](/assets/react-leaflet-logo.zip)
 
 ## Colors
 

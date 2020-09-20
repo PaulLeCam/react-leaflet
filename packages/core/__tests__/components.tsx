@@ -82,7 +82,7 @@ describe('components', () => {
       const context = useLeafletContext()
       useEffect(() => {
         childContext = context
-      }, [])
+      })
       return null
     }
 

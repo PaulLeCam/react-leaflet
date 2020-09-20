@@ -24,7 +24,7 @@ Makes the Leaflet instance for the given component accessible with the [`useRef(
 
 ```tsx Example component with Referenceable behavior
 function MyComponent() {
-  const cicleRef = useRef()
+  const circleRef = useRef()
 
   useEffect(() => {
     const radius = circleRef.current.getRadius()
@@ -314,12 +314,13 @@ Applies to [control components](#controls), making their [`position: ControlPosi
 
 **Props**
 
-| Prop                  | Type                            | Required | Mutable | Behavior                                     |
-| --------------------- | ------------------------------- | -------- | ------- | -------------------------------------------- |
-| `children`            | `ReactNode`                     | No       | **Yes** | [ParentComponent](#parentcomponent-behavior) |
-| `preserveAspectRatio` | `string`                        | No       | No      |
-| `ref`                 | `RefObject<Leaflet.SVGOverlay>` | No       | **Yes** | [Referenceable](#referenceable-behavior)     |
-| `viewPort`            | `string`                        | No       | No      |
+The `attributes` must be valid [`SVGSVGElement` properties](https://developer.mozilla.org/en-US/docs/Web/API/SVGSVGElement).
+
+| Prop         | Type                            | Required | Mutable | Behavior                                     |
+| ------------ | ------------------------------- | -------- | ------- | -------------------------------------------- |
+| `attributes` | `Record<string, string>`        | No       | No      |
+| `children`   | `ReactNode`                     | No       | **Yes** | [ParentComponent](#parentcomponent-behavior) |
+| `ref`        | `RefObject<Leaflet.SVGOverlay>` | No       | **Yes** | [Referenceable](#referenceable-behavior)     |
 
 ## Other layers
 
