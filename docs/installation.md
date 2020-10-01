@@ -18,6 +18,11 @@ React, ReactDOM and Leaflet are peer dependencies, if you haven't already instal
 npm install leaflet react react-dom # npm
 yarn add leaflet react react-dom # Yarn
 ```
+Add the css cdn link to inside `index.html`
+
+```html
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.min.css"/>
+```
 
 You can then use the API as presented in the [example CodePen](https://codepen.io/PaulLeCam/pen/gzVmGw).
 
