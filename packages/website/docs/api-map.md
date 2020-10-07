@@ -107,7 +107,7 @@ function MyMapComponent() {
           console.log('map center:', map.getCenter())
           return null
         }}
-      <MapConsumer>
+      </MapConsumer>
     </MapContainer>
   )
 }
