@@ -137,6 +137,7 @@ export default class Map extends MapEvented<LeafletElement, Props> {
       boxZoom,
       center,
       className,
+      crs,
       doubleClickZoom,
       dragging,
       keyboard,
@@ -257,6 +258,12 @@ export default class Map extends MapEvented<LeafletElement, Props> {
       } else {
         this.leafletElement.touchZoom.disable()
       }
+    }
+
+    if (crs !== fromProps.crs) {
+      this.leafletElement.options.crs = crs
+      this.leafletElement.setView(center, zoom, {animate: false})
+      this.leafletElement._resetView(this.leafletElement.getCenter(), this.leafletElement.getZoom())
     }
 
     this._updating = false
