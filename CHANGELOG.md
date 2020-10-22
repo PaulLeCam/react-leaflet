@@ -1,3 +1,8 @@
+## v2.8.0 (2020-10-22)
+
+- Added React v17 to peer dependencies ([PR #773](https://github.com/PaulLeCam/react-leaflet/pull/773) by _anajavi_).
+- [website] Added `react-esri-leaflet` plugin ([PR #768](https://github.com/PaulLeCam/react-leaflet/pull/768) by _slutske22_).
+
 ## v2.7.0 (2020-05-06)
 
 - Added `viewBox` and `preserveAspectRatio` props to `SVGOverlay` component ([PR #704](https://github.com/PaulLeCam/react-leaflet/pull/704) by _spectras_).

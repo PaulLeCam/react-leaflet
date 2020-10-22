@@ -13,6 +13,7 @@ open pull requests to update this list!
 | ---------------------------------------------------------------------------------------------------------------- | ------------------ |
 | [`leaflet-drift-marker`](https://www.npmjs.com/package/leaflet-drift-marker)                                     | **yes**            |
 | [`leaflet-react-track-player`](https://www.npmjs.com/package/leaflet-react-track-player)                         | unknown            |
+| [`react-esri-leaflet`](https://www.npmjs.com/package/react-esri-leaflet)                                         | **yes**            |
 | [`react-leaflet-ant-path`](https://www.npmjs.com/package/react-leaflet-ant-path)                                 | unknown            |
 | [`react-leaflet-arrowheads`](https://www.npmjs.com/package/react-leaflet-arrowheads)                             | **yes**            |
 | [`react-leaflet-bing-v2`](https://www.npmjs.com/package/react-leaflet-bing-v2)                                   | **yes**            |
