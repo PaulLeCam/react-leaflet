@@ -37,7 +37,7 @@ export default function Home() {
                 'button button--outline button--primary button--lg',
                 styles.getStarted,
               )}
-              to={useBaseUrl('docs/start-installation')}>
+              to={useBaseUrl('docs/start-introduction')}>
               Get Started
             </Link>
           </div>

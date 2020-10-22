@@ -15,7 +15,7 @@ You might want to learn about the core APIs if you want to:
 - Implement new components not provided by React Leaflet
 - Simply learn more about how React Leaflet works
 
-If you're only interested in using the public APIs of React Leaflet, their usage is covered in the previous sections of this documenation, notably the [getting started](start-introduction.md) and [public API](api-map.md) pages.
+If you're only interested in using the public APIs of React Leaflet, their usage is covered in the previous sections of this documentation, notably the [getting started](start-introduction.md) and [public API](api-map.md) pages.
 
 ## Installation
 

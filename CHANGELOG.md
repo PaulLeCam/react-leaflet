@@ -1,14 +1,19 @@
+## v3.0.0-rc.0 (2020-10-22)
+
+- Use stable release of React v17
+- Fixed incorrect example in docs ([PR #767](https://github.com/PaulLeCam/react-leaflet/pull/767) by [dipiash](https://github.com/dipiash))
+
 ## v3.0.0-beta.5 (2020-09-20)
 
-- Remove `preserveAspectRatio` and `viewport` props from `SVGOverlay`, replaced by `attributes` prop.
-- Add third-party plugins page to documentation website.
+- Remove `preserveAspectRatio` and `viewport` props from `SVGOverlay`, replaced by `attributes` prop
+- Add third-party plugins page to documentation website
 
 ## v3.0.0-beta.4 (2020-08-16)
 
 - Specify list of supported browsers ([PR #736](https://github.com/PaulLeCam/react-leaflet/pull/736) by [anajavi](https://github.com/anajavi))
 - Drop Babel runtime polyfilling ([PR #739](https://github.com/PaulLeCam/react-leaflet/pull/739) by [anajavi](https://github.com/anajavi))
 - Upgrade rollup plugins ([PR #740](https://github.com/PaulLeCam/react-leaflet/pull/740) by [anajavi](https://github.com/anajavi))
-- Bump React dependency to v17.
+- Bump React dependency to v17
 
 ## v3.0.0-beta.3 (2020-08-16)
 

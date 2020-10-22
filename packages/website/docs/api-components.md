@@ -8,11 +8,9 @@ Child components can only be used as decendants of a [MapContainer component](ap
 
 ## Props
 
-Child components in React Leaflet use their props as options when creating the corresponding Leaflet instance, as described in [Leaflet's documentation](https://leafletjs.com/reference-1.6.0.html).
+Child components in React Leaflet use their props as options when creating the corresponding Leaflet instance, as described in [Leaflet's documentation](https://leafletjs.com/reference-1.7.1.html).
 
 By default these props should be treated as **immutable**, only the props explicitely documented as **mutable** in this page will affect the Leaflet element when changed.
-
-Some props used by [common behaviors](#behaviors) between components are documented in the dedicated section rather than being duplicated in the documentation of individual components.
 
 ## Behaviors
 
@@ -61,7 +59,7 @@ Adds support for the `eventHandlers?: LeafletEventHandlerFnMap` prop, adding and
 
 ### Attribution behavior
 
-Applies to layer components, making their [`attribution`](https://leafletjs.com/reference-1.6.0.html#layer-attribution) prop mutable.
+Applies to layer components, making their [`attribution`](https://leafletjs.com/reference-1.7.1.html#layer-attribution) prop mutable.
 
 ```tsx Example component with Attribution behavior
 <GeoJSON attribution="&copy; credits due..." data={...} />
@@ -69,7 +67,7 @@ Applies to layer components, making their [`attribution`](https://leafletjs.com/
 
 ### Path behavior
 
-Applies to [vector layer components](#vector-layers), adding support for a [`pathOptions: PathOptions`](https://leafletjs.com/reference-1.6.0.html#path) mutable prop.
+Applies to [vector layer components](#vector-layers), adding support for a [`pathOptions: PathOptions`](https://leafletjs.com/reference-1.7.1.html#path) mutable prop.
 
 ```tsx Example component with PathOptions behavior
 <Circle center={[50.5, 30.5]} radius={200} pathOptions={{ color: 'blue' }} />
@@ -77,7 +75,7 @@ Applies to [vector layer components](#vector-layers), adding support for a [`pat
 
 ### MediaOverlay behavior
 
-Applies to components using [Leaflet's ImageOverlay class](https://leafletjs.com/reference-1.6.0.html#imageoverlay), adding support for mutable `bounds: LatLngBoundsExpression`, [`opacity: number`](https://leafletjs.com/reference-1.6.0.html#imageoverlay-opacity) and [`zIndex: number`](https://leafletjs.com/reference-1.6.0.html#imageoverlay-zindex) props.
+Applies to components using [Leaflet's ImageOverlay class](https://leafletjs.com/reference-1.7.1.html#imageoverlay), adding support for mutable `bounds: LatLngBoundsExpression`, [`opacity: number`](https://leafletjs.com/reference-1.7.1.html#imageoverlay-opacity) and [`zIndex: number`](https://leafletjs.com/reference-1.7.1.html#imageoverlay-zindex) props.
 
 ```tsx Example component with MediaOverlay behavior
 <ImageOverlay
@@ -93,7 +91,7 @@ Applies to components using [Leaflet's ImageOverlay class](https://leafletjs.com
 
 ### CircleMarker behavior
 
-Applies to components using [Leaflet's CircleMarker class](https://leafletjs.com/reference-1.6.0.html#circlemarker), adding support for mutable `center: LatLngExpression` and [`radius: number`](https://leafletjs.com/reference-1.6.0.html#circlemarker-radius) props.
+Applies to components using [Leaflet's CircleMarker class](https://leafletjs.com/reference-1.7.1.html#circlemarker), adding support for mutable `center: LatLngExpression` and [`radius: number`](https://leafletjs.com/reference-1.7.1.html#circlemarker-radius) props.
 
 ```tsx Example component with CircleMarker behavior
 <Circle center={[50.5, 30.5]} radius={200} />
@@ -101,7 +99,7 @@ Applies to components using [Leaflet's CircleMarker class](https://leafletjs.com
 
 ### GridLayer behavior
 
-Applies to components using [Leaflet's GridLayer class](https://leafletjs.com/reference-1.6.0.html#gridlayer), adding support for mutable [`opacity: number`](https://leafletjs.com/reference-1.6.0.html#gridlayer-opacity) and [`zIndex: number`](https://leafletjs.com/reference-1.6.0.html#gridlayer-zindex) props.
+Applies to components using [Leaflet's GridLayer class](https://leafletjs.com/reference-1.7.1.html#gridlayer), adding support for mutable [`opacity: number`](https://leafletjs.com/reference-1.7.1.html#gridlayer-opacity) and [`zIndex: number`](https://leafletjs.com/reference-1.7.1.html#gridlayer-zindex) props.
 
 ```tsx Example component with GridLayer behavior
 <TileLayer url="..." opacity={0.5} zIndex={10} />
@@ -109,7 +107,7 @@ Applies to components using [Leaflet's GridLayer class](https://leafletjs.com/re
 
 ### Control behavior
 
-Applies to [control components](#controls), making their [`position: ControlPosition`](https://leafletjs.com/reference-1.6.0.html#control-position) prop mutable.
+Applies to [control components](#controls), making their [`position: ControlPosition`](https://leafletjs.com/reference-1.7.1.html#control-position) prop mutable.
 
 ```tsx Example component with Control behavior
 <ZoomControl position="bottomleft" />
@@ -171,7 +169,7 @@ Applies to [control components](#controls), making their [`position: ControlPosi
 
 ### TileLayer
 
-[Leaflet reference](https://leafletjs.com/reference-1.6.0.html#tilelayer)
+[Leaflet reference](https://leafletjs.com/reference-1.7.1.html#tilelayer)
 
 **Props**
 
@@ -185,7 +183,7 @@ Applies to [control components](#controls), making their [`position: ControlPosi
 
 ### WMSTileLayer
 
-[Leaflet reference](https://leafletjs.com/reference-1.6.0.html#tilelayer-wms)
+[Leaflet reference](https://leafletjs.com/reference-1.7.1.html#tilelayer-wms)
 
 **Props**
 
@@ -200,7 +198,7 @@ Applies to [control components](#controls), making their [`position: ControlPosi
 
 ### ImageOverlay
 
-[Leaflet reference](https://leafletjs.com/reference-1.6.0.html#imageoverlay)
+[Leaflet reference](https://leafletjs.com/reference-1.7.1.html#imageoverlay)
 
 **Props**
 
@@ -217,7 +215,7 @@ Applies to [control components](#controls), making their [`position: ControlPosi
 
 ### VideoOverlay
 
-[Leaflet reference](https://leafletjs.com/reference-1.6.0.html#videooverlay)
+[Leaflet reference](https://leafletjs.com/reference-1.7.1.html#videooverlay)
 
 **Props**
 
@@ -235,7 +233,7 @@ Applies to [control components](#controls), making their [`position: ControlPosi
 
 ### Circle
 
-[Leaflet reference](https://leafletjs.com/reference-1.6.0.html#circle)
+[Leaflet reference](https://leafletjs.com/reference-1.7.1.html#circle)
 
 **Props**
 
@@ -251,7 +249,7 @@ Applies to [control components](#controls), making their [`position: ControlPosi
 
 ### CircleMarker
 
-[Leaflet reference](https://leafletjs.com/reference-1.6.0.html#circlemarker)
+[Leaflet reference](https://leafletjs.com/reference-1.7.1.html#circlemarker)
 
 **Props**
 
@@ -267,7 +265,7 @@ Applies to [control components](#controls), making their [`position: ControlPosi
 
 ### Polyline
 
-[Leaflet reference](https://leafletjs.com/reference-1.6.0.html#polyline)
+[Leaflet reference](https://leafletjs.com/reference-1.7.1.html#polyline)
 
 **Props**
 
@@ -282,7 +280,7 @@ Applies to [control components](#controls), making their [`position: ControlPosi
 
 ### Polygon
 
-[Leaflet reference](https://leafletjs.com/reference-1.6.0.html#polygon)
+[Leaflet reference](https://leafletjs.com/reference-1.7.1.html#polygon)
 
 | Prop            | Type                                                                     | Required | Mutable | Behavior                                     |
 | --------------- | ------------------------------------------------------------------------ | -------- | ------- | -------------------------------------------- |
@@ -295,7 +293,7 @@ Applies to [control components](#controls), making their [`position: ControlPosi
 
 ### Rectangle
 
-[Leaflet reference](https://leafletjs.com/reference-1.6.0.html#rectangle)
+[Leaflet reference](https://leafletjs.com/reference-1.7.1.html#rectangle)
 
 **Props**
 
@@ -310,7 +308,7 @@ Applies to [control components](#controls), making their [`position: ControlPosi
 
 ### SVGOverlay
 
-[Leaflet reference](https://leafletjs.com/reference-1.6.0.html#svgoverlay)
+[Leaflet reference](https://leafletjs.com/reference-1.7.1.html#svgoverlay)
 
 **Props**
 
@@ -326,7 +324,7 @@ The `attributes` must be valid [`SVGSVGElement` properties](https://developer.mo
 
 ### LayerGroup
 
-[Leaflet reference](https://leafletjs.com/reference-1.6.0.html#layergroup)
+[Leaflet reference](https://leafletjs.com/reference-1.7.1.html#layergroup)
 
 **Props**
 
@@ -339,7 +337,7 @@ The `attributes` must be valid [`SVGSVGElement` properties](https://developer.mo
 
 ### FeatureGroup
 
-[Leaflet reference](https://leafletjs.com/reference-1.6.0.html#featuregroup)
+[Leaflet reference](https://leafletjs.com/reference-1.7.1.html#featuregroup)
 
 **Props**
 
@@ -352,7 +350,7 @@ The `attributes` must be valid [`SVGSVGElement` properties](https://developer.mo
 
 ### GeoJSON
 
-[Leaflet reference](https://leafletjs.com/reference-1.6.0.html#geojson)
+[Leaflet reference](https://leafletjs.com/reference-1.7.1.html#geojson)
 
 **Props**
 
@@ -368,7 +366,7 @@ The `attributes` must be valid [`SVGSVGElement` properties](https://developer.mo
 
 ### ZoomControl
 
-[Leaflet reference](https://leafletjs.com/reference-1.6.0.html#control-zoom)
+[Leaflet reference](https://leafletjs.com/reference-1.7.1.html#control-zoom)
 
 **Props**
 
@@ -380,7 +378,7 @@ The `attributes` must be valid [`SVGSVGElement` properties](https://developer.mo
 
 ### AttributionControl
 
-[Leaflet reference](https://leafletjs.com/reference-1.6.0.html#control-attribution)
+[Leaflet reference](https://leafletjs.com/reference-1.7.1.html#control-attribution)
 
 **Props**
 
@@ -392,7 +390,7 @@ The `attributes` must be valid [`SVGSVGElement` properties](https://developer.mo
 
 ### LayersControl
 
-[Leaflet reference](https://leafletjs.com/reference-1.6.0.html#control-layers)
+[Leaflet reference](https://leafletjs.com/reference-1.7.1.html#control-layers)
 
 **Props**
 
@@ -425,7 +423,7 @@ The `attributes` must be valid [`SVGSVGElement` properties](https://developer.mo
 
 ### ScaleControl
 
-[Leaflet reference](https://leafletjs.com/reference-1.6.0.html#control-scale)
+[Leaflet reference](https://leafletjs.com/reference-1.7.1.html#control-scale)
 
 **Props**
 
@@ -439,12 +437,12 @@ The `attributes` must be valid [`SVGSVGElement` properties](https://developer.mo
 
 ### Pane
 
-[Leaflet reference](https://leafletjs.com/reference-1.6.0.html#map-pane)
+[Leaflet reference](https://leafletjs.com/reference-1.7.1.html#map-pane)
 
 **Props**
 
 :::caution
-The `name` prop must be unique to the pane and different from the [default Leaflet pane names](https://leafletjs.com/reference-1.6.0.html#map-pane)
+The `name` prop must be unique to the pane and different from the [default Leaflet pane names](https://leafletjs.com/reference-1.7.1.html#map-pane)
 :::
 
 | Prop        | Type            | Required | Mutable | Behavior                                     |
