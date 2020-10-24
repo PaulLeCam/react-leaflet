@@ -40,9 +40,9 @@ class Versions extends React.Component {
             <table className="versions">
               <tbody>
                 <tr>
-                  <th>{v2}</th>
+                  <th>v3</th>
                   <td>
-                    <a href={docUrl('intro.html', language)}>Documentation</a>
+                    <a href="/">Documentation</a>
                   </td>
                   <td>
                     <a href="https://github.com/PaulLeCam/react-leaflet/releases/latest">
@@ -55,6 +55,17 @@ class Versions extends React.Component {
             <h3 id="latest">Previous major version</h3>
             <table className="versions">
               <tbody>
+                <tr>
+                  <th>{v2}</th>
+                  <td>
+                    <a href={docUrl('intro.html', language)}>Documentation</a>
+                  </td>
+                  <td>
+                    <a href="https://github.com/PaulLeCam/react-leaflet/releases/tag/v2.8.0">
+                      Release Notes
+                    </a>
+                  </td>
+                </tr>
                 <tr>
                   <th>{v1}</th>
                   <td>
@@ -107,7 +118,8 @@ class Versions extends React.Component {
               You can find past versions of this project{' '}
               <a href="https://github.com/PaulLeCam/react-leaflet/releases">
                 on GitHub
-              </a>.
+              </a>
+              .
             </p>
           </div>
         </Container>

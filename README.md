@@ -2,10 +2,10 @@
 
 ⚛️ React components for 🍃 Leaflet maps.
 
-## [Documentation](http://react-leaflet.js.org)
+## [Documentation](http://react-leaflet.js.org/legacy)
 
-- [Getting started](https://react-leaflet.js.org/docs/en/intro.html)
-- [API reference](https://react-leaflet.js.org/docs/en/context.html)
+- [Getting started](https://react-leaflet.js.org/legacy/docs/en/intro.html)
+- [API reference](https://react-leaflet.js.org/legacy/docs/en/context.html)
 
 ## Changes
 

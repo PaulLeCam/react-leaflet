@@ -45,9 +45,6 @@ class Footer extends React.Component {
           </div>
           <div>
             <h5>Community</h5>
-            <a href="https://crwd.in/react-leaflet">
-              Help translate this website
-            </a>
             <a href="https://stackoverflow.com/questions/tagged/react-leaflet">
               Stack Overflow
             </a>
@@ -72,16 +69,14 @@ class Footer extends React.Component {
             <a href="https://community.algolia.com/docsearch/">
               Algolia for search
             </a>
-            <a href="https://crowdin.com/page/open-source-project-setup-request">
-              Crowdin for translations
-            </a>
           </div>
         </section>
         <section className="copyright">
           Copyright &copy; {currentYear} Paul Le Cam and{' '}
           <a href="https://github.com/PaulLeCam/react-leaflet/graphs/contributors">
             contributors
-          </a>.
+          </a>
+          .
         </section>
       </footer>
     )
