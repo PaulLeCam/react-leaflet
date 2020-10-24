@@ -6,8 +6,15 @@ module.exports = {
   favicon: 'img/logo.svg',
   organizationName: 'PaulLeCam',
   projectName: 'react-leaflet',
-  stylesheets: ['//unpkg.com/leaflet@1.6.0/dist/leaflet.css'],
+  stylesheets: ['//unpkg.com/leaflet@1.7.1/dist/leaflet.css'],
   themeConfig: {
+    announcementBar: {
+      id: 'new_version',
+      content:
+        'This is the new documentation for React Leaflet v3, for previous versions use the <a href="/legacy">legacy documentation</a>.',
+      backgroundColor: '#49a78a',
+      textColor: '#fff',
+    },
     navbar: {
       title: 'React Leaflet',
       logo: {
