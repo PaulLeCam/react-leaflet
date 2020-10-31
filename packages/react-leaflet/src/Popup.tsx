@@ -55,9 +55,7 @@ export const Popup = createOverlayComponent<LeafletPopup, PopupProps>(
         }
 
         context.map.on({
-          // @ts-ignore emits PopupEvent instead of LeafletEvent
           popupopen: onPopupOpen,
-          // @ts-ignore emits PopupEvent instead of LeafletEvent
           popupclose: onPopupClose,
         })
 
@@ -74,9 +72,7 @@ export const Popup = createOverlayComponent<LeafletPopup, PopupProps>(
 
         return function removePopup() {
           context.map.off({
-            // @ts-ignore emits PopupEvent instead of LeafletEvent
             popupopen: onPopupOpen,
-            // @ts-ignore emits PopupEvent instead of LeafletEvent
             popupclose: onPopupClose,
           })
 

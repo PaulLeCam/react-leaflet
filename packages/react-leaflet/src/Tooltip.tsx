@@ -60,18 +60,14 @@ export const Tooltip = createOverlayComponent<LeafletTooltip, TooltipProps>(
         }
 
         container.on({
-          // @ts-ignore emits TooltipEvent instead of LeafletEvent
           tooltipopen: onTooltipOpen,
-          // @ts-ignore emits TooltipEvent instead of LeafletEvent
           tooltipclose: onTooltipClose,
         })
         container.bindTooltip(instance)
 
         return function removeTooltip() {
           container.off({
-            // @ts-ignore emits TooltipEvent instead of LeafletEvent
             tooltipopen: onTooltipOpen,
-            // @ts-ignore emits TooltipEvent instead of LeafletEvent
             tooltipclose: onTooltipClose,
           })
           container.unbindTooltip()

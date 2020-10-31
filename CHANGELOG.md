@@ -1,3 +1,16 @@
+## v3.0.0 (2020-10-31)
+
+v3 is a full rewrite of React Leaflet and contains breaking change from v2.
+
+- Full rewrite based on [React Hooks](https://reactjs.org/docs/hooks-intro.html) (no more extending `Component`)
+- Replace Flow by TypeScript for type checking
+- Drop IE support (Babel config will only target the "last 2 versions" of modern browsers)
+- Switch to the [Hippocratic License](https://firstdonoharm.dev/)
+- The `Map` component is replaced by [`MapContainer`](https://react-leaflet.js.org/docs/api-map#mapcontainer), behaving differently
+- Event handlers must be attached using the [`eventHandlers prop`](https://react-leaflet.js.org/docs/api-components#evented-behavior) rather than `on*` props, with a similar change for [path options](https://react-leaflet.js.org/docs/api-components#path-behavior) and [WMS params](https://react-leaflet.js.org/docs/api-components#wmstilelayer)
+- The `react-leaflet` package only exposes a [public API](https://react-leaflet.js.org/docs/api-map) while a new package, `@react-leaflet/core`, is used to provide the [core APIs](https://react-leaflet.js.org/docs/core-introduction)
+- A new documentation website using [Docusaurus v2](https://v2.docusaurus.io/) with live examples
+
 ## v3.0.0-rc.0 (2020-10-22)
 
 - Use stable release of React v17

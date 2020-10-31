@@ -1,6 +1,6 @@
 {
   "name": "@react-leaflet/docusaurus-plugin",
-  "version": "1.0.0-rc.0",
+  "version": "1.0.0",
   "description": "Use React Leaflet in Docusaurus v2",
   "main": "index.js",
   "repository": {
@@ -14,6 +14,6 @@
   },
   "homepage": "https://github.com/PaulLeCam/react-leaflet",
   "dependencies": {
-    "@react-leaflet/universal-leaflet": "^1.0.0-rc.0"
+    "@react-leaflet/universal-leaflet": "^1.0.0"
   }
 }

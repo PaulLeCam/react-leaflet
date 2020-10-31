@@ -91,7 +91,6 @@ export function Pane(props: PaneProps) {
       context.map._paneRenderers = omitPane(
         // @ts-ignore map internals
         context.map._paneRenderers,
-        // @ts-ignore map internals
         name,
       )
     }
