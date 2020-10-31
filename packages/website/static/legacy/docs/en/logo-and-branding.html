@@ -1,0 +1,102 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Logo &amp; Branding · React-Leaflet</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="The React Leaflet logo provides a way for the community to identify and communicate the technologies used in their mapping applications. While the library is open source, it&#x27;s encouraged to follow the best practices defined below to upload the integrity of the logo itself and what it represents."/><meta name="docsearch:version" content="v2"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Logo &amp; Branding · React-Leaflet"/><meta property="og:type" content="website"/><meta property="og:url" content="https://react-leaflet.js.org/legacy/"/><meta property="og:description" content="The React Leaflet logo provides a way for the community to identify and communicate the technologies used in their mapping applications. While the library is open source, it&#x27;s encouraged to follow the best practices defined below to upload the integrity of the logo itself and what it represents."/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/legacy/img/favicon.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/legacy/js/scrollSpy.js"></script><link rel="stylesheet" href="/legacy/css/main.css"/><script src="/legacy/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/legacy/en"><h2 class="headerTitle">React-Leaflet</h2></a><a href="/legacy/en/versions"><h3>v2</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/legacy/docs/en/intro" target="_self">Getting started</a></li><li class="siteNavGroupActive"><a href="/legacy/docs/en/components" target="_self">API</a></li><li class=""><a href="/legacy/en/help" target="_self">Help</a></li><li class=""><a href="https://github.com/PaulLeCam/react-leaflet" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Extra</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Getting started</h3><ul class=""><li class="navListItem"><a class="navItem" href="/legacy/docs/en/intro">Introduction</a></li><li class="navListItem"><a class="navItem" href="/legacy/docs/en/setup">Leaflet setup</a></li><li class="navListItem"><a class="navItem" href="/legacy/docs/en/installation">Installation</a></li><li class="navListItem"><a class="navItem" href="/legacy/docs/en/examples">Examples</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">API</h3><ul class=""><li class="navListItem"><a class="navItem" href="/legacy/docs/en/context">Context</a></li><li class="navListItem"><a class="navItem" href="/legacy/docs/en/events">Events</a></li><li class="navListItem"><a class="navItem" href="/legacy/docs/en/components">Components</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Guides</h3><ul class=""><li class="navListItem"><a class="navItem" href="/legacy/docs/en/custom-components">Creating custom components</a></li><li class="navListItem"><a class="navItem" href="/legacy/docs/en/class-hierarchy">Class hierarchy</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Extra</h3><ul class=""><li class="navListItem navListItemActive"><a class="navItem" href="/legacy/docs/en/logo-and-branding">Logo &amp; Branding</a></li><li class="navListItem"><a class="navItem" href="/legacy/docs/en/plugins">Third-party plugins</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Logo &amp; Branding</h1></header><article><div><span><p>The React Leaflet logo provides a way for the community to identify and communicate the technologies used in their mapping applications. While the library is open source, it's encouraged to follow the best practices defined below to upload the integrity of the logo itself and what it represents.</p>
+<h2><a class="anchor" aria-hidden="true" id="logo"></a><a href="#logo" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Logo</h2>
+<h3><a class="anchor" aria-hidden="true" id="icon--wordmark"></a><a href="#icon--wordmark" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Icon &amp; Wordmark</h3>
+<p>The primary use is the icon with wordmark. Given the appropriate space available and where possible, this variation should be used in most general applications to represent the full identity of the library.</p>
+<p><img src="/legacy/docs/assets/react-leaflet-logo-600x140.jpg" alt="React Leaflet Logo" width="300"/></p>
+<h3><a class="anchor" aria-hidden="true" id="icon"></a><a href="#icon" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Icon</h3>
+<p>For use cases that permit smaller space, the icon can be used as a standalone option to represent the React Leaflet library.</p>
+<p><img src="/legacy/docs/assets/react-leaflet-icon-400x400.jpg" alt="React Leaflet Icon" width="100"/></p>
+<h3><a class="anchor" aria-hidden="true" id="usage"></a><a href="#usage" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Usage</h3>
+<p>The React Leaflet logos should not be modified in any way that distorts the shape or contents of the logo, including but not limited to the following example use cases.</p>
+<p><img src="/legacy/docs/assets/react-leaflet-logo-usage.jpg" alt="React Leaflet Logo Usage" width="800"/></p>
+<h3><a class="anchor" aria-hidden="true" id="credit"></a><a href="#credit" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Credit</h3>
+<p>Logo and scheme originally created by <a href="https://www.colbyfayock.com/">Colby Fayock</a>.</p>
+<h3><a class="anchor" aria-hidden="true" id="license"></a><a href="#license" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>License</h3>
+<p>The React Leaflet logos and assets are licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
+<h3><a class="anchor" aria-hidden="true" id="download"></a><a href="#download" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Download</h3>
+<p>For convenience, the following are packaged up in a <code>.zip</code> to download:</p>
+<ul>
+<li>react-leaflet-icon-transparent-500x500.png</li>
+<li>react-leaflet-icon-white-500x500.jpg</li>
+<li>react-leaflet-icon.eps</li>
+<li>react-leaflet-icon.svg</li>
+<li>react-leaflet-logo-transparent-1000x280.png</li>
+<li>react-leaflet-logo-white-1000x280.jpg</li>
+<li>react-leaflet-logo.eps</li>
+<li>react-leaflet-logo.svg</li>
+</ul>
+<p><a href="/legacy/docs/assets/react-leaflet-logo.zip">Download All Assets</a></p>
+<h2><a class="anchor" aria-hidden="true" id="colors"></a><a href="#colors" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Colors</h2>
+<p>Color usage should follow the values below when working with React Leaflet branding or validating the integrity of the use of one of its logos.</p>
+<table>
+<thead>
+<tr><th>Color</th><th>Hex</th><th></th></tr>
+</thead>
+<tbody>
+<tr><td>primary</td><td>#61BA9E</td><td><img src="/legacy/docs/assets/swatch-61BA9E-50x50.jpg" alt="#61BA9E" width="20" /></td></tr>
+<tr><td>secondary</td><td>#2A473E</td><td><img src="/legacy/docs/assets/swatch-2A473E-50x50.jpg" alt="#2A473E" width="20" /></td></tr>
+</tbody>
+</table>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/legacy/docs/en/class-hierarchy"><span class="arrow-prev">← </span><span>Class hierarchy</span></a><a class="docs-next button" href="/legacy/docs/en/plugins"><span>Third-party plugins</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#logo">Logo</a><ul class="toc-headings"><li><a href="#icon--wordmark">Icon &amp; Wordmark</a></li><li><a href="#icon">Icon</a></li><li><a href="#usage">Usage</a></li><li><a href="#credit">Credit</a></li><li><a href="#license">License</a></li><li><a href="#download">Download</a></li></ul></li><li><a href="#colors">Colors</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/legacy/" class="nav-home"></a><div><h5>Docs</h5><a href="/legacy/docs/en/intro.html">Getting started</a><a href="/legacy/docs/en/prop-types.html">API reference</a><a href="/legacy/docs/en/custom-components.html">Guides</a></div><div><h5>Community</h5><a href="https://stackoverflow.com/questions/tagged/react-leaflet">Stack Overflow</a><a href="https://github.com/PaulLeCam/react-leaflet">GitHub</a><a class="github-button" href="https://github.com/PaulLeCam/react-leaflet" data-icon="octicon-star" data-count-href="/PaulLeCam/react-leaflet/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div><div><h5>Built with...</h5><a href="https://docusaurus.io/">Docusaurus for website generation</a><a href="https://dns.js.org/">JS.org for the domain name</a><a href="https://community.algolia.com/docsearch/">Algolia for search</a></div></section><section class="copyright">Copyright © 2020 Paul Le Cam and <a href="https://github.com/PaulLeCam/react-leaflet/graphs/contributors">contributors</a>.</section></footer></div></body></html>

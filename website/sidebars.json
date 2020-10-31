@@ -1,8 +1,0 @@
-{
-  "docs": {
-    "Getting started": ["intro", "setup", "installation", "examples"],
-    "API": ["context", "events", "components"],
-    "Guides": ["custom-components", "class-hierarchy"],
-    "Extra": ["logo-and-branding", "plugins"]
-  }
-}

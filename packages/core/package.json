@@ -1,0 +1,47 @@
+{
+  "name": "@react-leaflet/core",
+  "version": "1.0.0",
+  "description": "React Leaflet core",
+  "main": "cjs/index.js",
+  "module": "esm/index.js",
+  "types": "types/index.d.ts",
+  "sideEffects": false,
+  "scripts": {
+    "build:clean": "del cjs esm types",
+    "build:cjs": "babel src --out-dir cjs --extensions .ts,.tsx",
+    "build:esm": "cross-env BABEL_ENV=esm babel src --out-dir esm --extensions .ts,.tsx",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build": "yarn run build:clean && yarn run build:cjs && yarn run build:esm && yarn run build:types",
+    "test:types": "tsc --noEmit",
+    "test:unit": "cross-env BABEL_ENV=development NODE_ENV=test jest",
+    "test": "yarn run test:types && yarn run test:unit",
+    "start": "yarn run test && yarn run build",
+    "prepare": "yarn run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PaulLeCam/react-leaflet.git"
+  },
+  "keywords": [
+    "react-component",
+    "react",
+    "leaflet",
+    "map"
+  ],
+  "author": "Paul Le Cam <paul@ulem.net>",
+  "license": "SEE LICENSE IN LICENSE.md",
+  "bugs": {
+    "url": "https://github.com/PaulLeCam/react-leaflet/issues"
+  },
+  "homepage": "https://github.com/PaulLeCam/react-leaflet",
+  "files": [
+    "cjs/*",
+    "esm/*",
+    "types/*"
+  ],
+  "peerDependencies": {
+    "leaflet": "^1.7.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  }
+}

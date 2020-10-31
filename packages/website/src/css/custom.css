@@ -1,0 +1,30 @@
+/* stylelint-disable docusaurus/copyright-header */
+
+:root {
+  --ifm-color-primary: #61ba9e;
+  --ifm-color-primary-dark: #4db192;
+  --ifm-color-primary-darker: #49a78a;
+  --ifm-color-primary-darkest: #2a473e;
+  --ifm-color-primary-light: #75c3aa;
+  --ifm-color-primary-lighter: #7fc7b0;
+  --ifm-color-primary-lightest: #9cd4c2;
+  --ifm-code-font-size: 95%;
+  /* Leaflet uses z-index up to 1000 */
+  --ifm-z-index-fixed: 1001;
+}
+
+.docusaurus-highlight-code-line {
+  background-color: rgb(72, 77, 91);
+  display: block;
+  margin: 0 calc(-1 * var(--ifm-pre-padding));
+  padding: 0 var(--ifm-pre-padding);
+}
+
+.leaflet-container {
+  height: 400px;
+}
+
+.markdown > h2 {
+  border-bottom: 2px solid var(--ifm-font-color-base);
+  padding-bottom: 5px;
+}

@@ -1,19 +1,19 @@
-# React-Leaflet [![Build Status](https://img.shields.io/travis/PaulLeCam/react-leaflet/master.svg)](https://travis-ci.org/PaulLeCam/react-leaflet) [![npm version](https://img.shields.io/npm/v/react-leaflet.svg)](https://www.npmjs.com/package/react-leaflet) [![CDNJS version](https://img.shields.io/cdnjs/v/react-leaflet.svg)](https://cdnjs.com/libraries/react-leaflet)
+# React Leaflet [![npm version](https://img.shields.io/npm/v/react-leaflet/next.svg)](https://www.npmjs.com/package/react-leaflet)
 
-⚛️ React components for 🍃 Leaflet maps.
+React components for Leaflet maps.
 
 ## [Documentation](http://react-leaflet.js.org)
 
-- [Getting started](https://react-leaflet.js.org/docs/en/intro.html)
-- [API reference](https://react-leaflet.js.org/docs/en/context.html)
+- [Getting started](https://react-leaflet.js.org/docs/start-introduction)
+- [API reference](https://react-leaflet.js.org/docs/api-map)
 
 ## Changes
 
-See the [CHANGELOG](CHANGELOG.md) and [UPGRADING](UPGRADING.md) files.
+See the [CHANGELOG file](CHANGELOG.md).
 
 ## Contributing
 
-See [CONTRIBUTING](CONTRIBUTING.md) file.
+See the [CONTRIBUTING file](CONTRIBUTING.md).
 
 ## Support
 
@@ -21,5 +21,4 @@ Please **do not** use GitHub issues for support, but instead post your questions
 
 ## License
 
-MIT\
-See [LICENSE](LICENSE) file.
+Hippocratic License - see the [LICENSE file](LICENSE.md).
