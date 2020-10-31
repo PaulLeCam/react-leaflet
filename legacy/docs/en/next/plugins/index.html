@@ -1,0 +1,125 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Third-party plugins · React-Leaflet</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="A non-exhaustive list of plugins adding functionalities to React-Leaflet. Please"/><meta name="docsearch:version" content="next"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Third-party plugins · React-Leaflet"/><meta property="og:type" content="website"/><meta property="og:url" content="https://react-leaflet.js.org/legacy/"/><meta property="og:description" content="A non-exhaustive list of plugins adding functionalities to React-Leaflet. Please"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/legacy/img/favicon.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="https://unpkg.com/vanilla-back-to-top@7.1.14/dist/vanilla-back-to-top.min.js"></script><script>
+        document.addEventListener('DOMContentLoaded', function() {
+          addBackToTop(
+            {"zIndex":100}
+          )
+        });
+        </script><script src="/legacy/js/scrollSpy.js"></script><link rel="stylesheet" href="/legacy/css/main.css"/><script src="/legacy/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/legacy/en"><h2 class="headerTitle">React-Leaflet</h2></a><a href="/legacy/en/versions"><h3>next</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/legacy/docs/en/next/intro" target="_self">Getting started</a></li><li class="siteNavGroupActive"><a href="/legacy/docs/en/next/components" target="_self">API</a></li><li class=""><a href="/legacy/en/help" target="_self">Help</a></li><li class=""><a href="https://github.com/PaulLeCam/react-leaflet" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Extra</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Getting started</h3><ul class=""><li class="navListItem"><a class="navItem" href="/legacy/docs/en/next/intro">Introduction</a></li><li class="navListItem"><a class="navItem" href="/legacy/docs/en/next/setup">Leaflet setup</a></li><li class="navListItem"><a class="navItem" href="/legacy/docs/en/next/installation">Installation</a></li><li class="navListItem"><a class="navItem" href="/legacy/docs/en/next/examples">Examples</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">API</h3><ul class=""><li class="navListItem"><a class="navItem" href="/legacy/docs/en/next/context">Context</a></li><li class="navListItem"><a class="navItem" href="/legacy/docs/en/next/events">Events</a></li><li class="navListItem"><a class="navItem" href="/legacy/docs/en/next/components">Components</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Guides</h3><ul class=""><li class="navListItem"><a class="navItem" href="/legacy/docs/en/next/custom-components">Creating custom components</a></li><li class="navListItem"><a class="navItem" href="/legacy/docs/en/next/class-hierarchy">Class hierarchy</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Extra</h3><ul class=""><li class="navListItem"><a class="navItem" href="/legacy/docs/en/next/logo-and-branding">Logo &amp; Branding</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/legacy/docs/en/next/plugins">Third-party plugins</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Third-party plugins</h1></header><article><div><span><p>A non-exhaustive list of plugins adding functionalities to React-Leaflet. Please
+open pull requests to update this list!</p>
+<p>⚠️ These plugins may not be compatible with React-Leaflet v2, make sure to check their documentation.</p>
+<table>
+<thead>
+<tr><th>Plugin</th><th>Compatible with v2</th></tr>
+</thead>
+<tbody>
+<tr><td><a href="https://www.npmjs.com/package/leaflet-drift-marker"><code>leaflet-drift-marker</code></a></td><td><strong>yes</strong></td></tr>
+<tr><td><a href="https://www.npmjs.com/package/leaflet-react-track-player"><code>leaflet-react-track-player</code></a></td><td>unknown</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-esri-leaflet"><code>react-esri-leaflet</code></a></td><td><strong>yes</strong></td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-leaflet-ant-path"><code>react-leaflet-ant-path</code></a></td><td>unknown</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-leaflet-arrowheads"><code>react-leaflet-arrowheads</code></a></td><td><strong>yes</strong></td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-leaflet-bing-v2"><code>react-leaflet-bing-v2</code></a></td><td><strong>yes</strong></td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-leaflet-box-zoom"><code>react-leaflet-box-zoom</code></a></td><td><strong>yes</strong></td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-leaflet-choropleth"><code>react-leaflet-choropleth</code></a></td><td>unknown</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-leaflet-cluster-layer"><code>react-leaflet-cluster-layer</code></a></td><td>unknown</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-leaflet-control"><code>react-leaflet-control</code></a></td><td><strong>yes</strong></td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-leaflet-curve"><code>react-leaflet-curve</code></a></td><td><strong>yes</strong></td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-leaflet-d3"><code>react-leaflet-d3</code></a></td><td><strong>yes</strong></td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-leaflet-d3-svg-overlay"><code>react-leaflet-d3-svg-overlay</code></a></td><td><strong>yes</strong></td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-leaflet-deflate"><code>react-leaflet-deflate</code></a></td><td><strong>yes</strong></td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-leaflet-dialog"><code>react-leaflet-dialog</code></a></td><td><strong>yes</strong></td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-leaflet-distance-marker"><code>react-leaflet-distance-marker</code></a></td><td>unknown</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-leaflet-distortable-imageoverlay"><code>react-leaflet-distortable-imageoverlay</code></a></td><td><strong>yes</strong></td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-leaflet-div-icon"><code>react-leaflet-div-icon</code></a></td><td><strong>no</strong></td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-leaflet-draggable-polyline"><code>react-leaflet-draggable-polyline</code></a></td><td>unknown</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-leaflet-draw"><code>react-leaflet-draw</code></a></td><td>unknown</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-leaflet-easyprint"><code>react-leaflet-easyprint</code></a></td><td><strong>yes</strong></td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-leaflet-editable-popup"><code>react-leaflet-editable-popup</code></a></td><td><strong>yes</strong></td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-leaflet-enhanced-marker"><code>react-leaflet-enhanced-marker</code></a></td><td><strong>yes</strong></td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-leaflet-figure-editor"><code>react-leaflet-figure-editor</code></a></td><td>unknown</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-leaflet-freedraw"><code>react-leaflet-freedraw</code></a></td><td><strong>yes</strong></td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-leaflet-fullscreen-control"><code>react-leaflet-fullscreen-control</code></a></td><td>unknown</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-leaflet-geodesic"><code>react-leaflet-geodesic</code></a></td><td><strong>yes</strong></td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-leaflet-geojson-cluster"><code>react-leaflet-geojson-cluster</code></a></td><td>unknown</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-leaflet-geojson-patterns"><code>react-leaflet-geojson-patterns</code></a></td><td><strong>yes</strong></td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-leaflet-google-layer"><code>react-leaflet-google-layer</code></a></td><td><strong>yes</strong></td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-leaflet-google-v2"><code>react-leaflet-google-v2</code></a></td><td><strong>yes</strong></td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-leaflet-heatmap-layer"><code>react-leaflet-heatmap-layer</code></a></td><td><strong>yes</strong></td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-leaflet-kml"><code>react-leaflet-kml</code></a></td><td><strong>yes</strong></td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-leaflet-locate-control"><code>react-leaflet-locate-control</code></a></td><td><strong>no</strong></td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-leaflet-magnifying-glass"><code>react-leaflet-magnifying-glass</code></a></td><td><strong>yes</strong></td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-leaflet-markercluster"><code>react-leaflet-markercluster</code></a></td><td><strong>yes</strong></td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-leaflet-marker-layer"><code>react-leaflet-marker-layer</code></a></td><td>unknown</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-leaflet-measure"><code>react-leaflet-measure</code></a></td><td><strong>yes</strong></td></tr>
+<tr><td><a href="https://www.npmjs.com/package/@marfle/react-leaflet-nmscale"><code>react-leaflet-nmscale</code></a></td><td><strong>yes</strong></td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-leaflet-pane"><code>react-leaflet-pane</code></a></td><td>unknown</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-leaflet-search"><code>react-leaflet-search</code></a></td><td><strong>yes</strong></td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-leaflet-semicircle"><code>react-leaflet-semicircle</code></a></td><td><strong>yes</strong></td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-leaflet-shapefile"><code>react-leaflet-shapefile</code></a></td><td><strong>no</strong></td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-leaflet-sidebarv2"><code>react-leaflet-sidebarv2</code></a></td><td>unknown</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-leaflet-sidetabs"><code>react-leaflet-sidetabs</code></a></td><td><strong>yes</strong></td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-leaflet-street-view"><code>react-leaflet-street-view</code></a></td><td><strong>yes</strong></td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-leaflet-textpath"><code>react-leaflet-textpath</code></a></td><td><strong>yes</strong></td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-leaflet-vectorgrid"><code>react-leaflet-vectorgrid</code></a></td><td><strong>yes</strong></td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-leaflet-wmts"><code>react-leaflet-wmts</code></a></td><td><strong>yes</strong></td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-leaflet-zoom-display"><code>react-leaflet-zoom-display</code></a></td><td>unknown</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-leaflet-zoom-indicator"><code>react-leaflet-zoom-indicator</code></a></td><td>unknown</td></tr>
+<tr><td><a href="https://www.npmjs.com/package/react-mapbox-components"><code>react-mapbox-components</code></a></td><td>unknown</td></tr>
+</tbody>
+</table>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/legacy/docs/en/next/logo-and-branding"><span class="arrow-prev">← </span><span>Logo &amp; Branding</span></a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/legacy/" class="nav-home"></a><div><h5>Docs</h5><a href="/legacy/docs/en/intro.html">Getting started</a><a href="/legacy/docs/en/prop-types.html">API reference</a><a href="/legacy/docs/en/custom-components.html">Guides</a></div><div><h5>Community</h5><a href="https://stackoverflow.com/questions/tagged/react-leaflet">Stack Overflow</a><a href="https://github.com/PaulLeCam/react-leaflet">GitHub</a><a class="github-button" href="https://github.com/PaulLeCam/react-leaflet" data-icon="octicon-star" data-count-href="/PaulLeCam/react-leaflet/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a></div><div><h5>Built with...</h5><a href="https://docusaurus.io/">Docusaurus for website generation</a><a href="https://dns.js.org/">JS.org for the domain name</a><a href="https://community.algolia.com/docsearch/">Algolia for search</a></div></section><section class="copyright">Copyright © 2020 Paul Le Cam and <a href="https://github.com/PaulLeCam/react-leaflet/graphs/contributors">contributors</a>.</section></footer></div></body></html>
