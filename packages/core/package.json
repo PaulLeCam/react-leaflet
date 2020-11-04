@@ -29,7 +29,7 @@
     "map"
   ],
   "author": "Paul Le Cam <paul@ulem.net>",
-  "license": "SEE LICENSE IN LICENSE.md",
+  "license": "Hippocratic-2.1",
   "bugs": {
     "url": "https://github.com/PaulLeCam/react-leaflet/issues"
   },
