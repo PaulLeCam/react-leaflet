@@ -2,7 +2,7 @@
 title: Setup
 ---
 
-1. Follow all the steps from the [installation page](start-installation.md)
+1. Follow all the steps from the [installation page](start-installation.mdx)
 1. Add the following code to your app and check it displays correctly:
 
 ```tsx live

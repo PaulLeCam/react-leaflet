@@ -7,9 +7,11 @@ import {
   VideoOverlay as LeafletVideoOverlay,
 } from 'leaflet'
 
-import { EventedProps } from './events'
+import { InteractiveLayerProps } from './layer'
 
-export interface MediaOverlayProps extends ImageOverlayOptions, EventedProps {
+export interface MediaOverlayProps
+  extends ImageOverlayOptions,
+    InteractiveLayerProps {
   bounds: LatLngBoundsExpression
 }
 

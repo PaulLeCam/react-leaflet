@@ -1,0 +1,108 @@
+---
+title: Installation
+---
+
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
+## React prerequisites
+
+This documentation assumes you are already familiar with [React](https://reactjs.org/) and have a project setup. If it is not the case, you should read [React's Getting Started documentation](https://reactjs.org/docs/getting-started.html) first.
+
+## Leaflet prerequisites
+
+This documentation assumes you are already familiar with [Leaflet](https://leafletjs.com/). React Leaflet **does not replace Leaflet**, it only provides bindings between React and Leaflet.
+
+This documentation **is not a replacement** for [Leaflet's documentation](https://leafletjs.com/reference-1.7.1.html), it only focuses on aspects specific to React Leaflet.
+
+:::caution Read this before going further
+Before using React Leaflet, you must setup your project following [Leaflet's Quick Start Guide](https://leafletjs.com/examples/quick-start/).
+:::
+
+## Adding React Leaflet
+
+React, React DOM and Leaflet are required peer dependencies. You must add them to your project if they are not already installed:
+
+<Tabs
+  defaultValue="npm"
+  values={[
+    { label: 'npm', value: 'npm', },
+    { label: 'yarn', value: 'yarn', },
+  ]
+}>
+<TabItem value="npm">
+
+
+```bash
+npm install -s react react-dom leaflet
+```
+
+</TabItem>
+<TabItem value="yarn">
+
+
+```bash
+yarn add react react-dom leaflet
+```
+
+</TabItem>
+</Tabs>
+
+
+Then you can install React Leaflet:
+
+<Tabs
+  defaultValue="npm"
+  values={[
+    { label: 'npm', value: 'npm', },
+    { label: 'yarn', value: 'yarn', },
+  ]
+}>
+<TabItem value="npm">
+
+
+```bash
+npm install -s react-leaflet
+```
+
+</TabItem>
+<TabItem value="yarn">
+
+
+```bash
+yarn add react-leaflet
+```
+
+</TabItem>
+</Tabs>
+
+
+## Using TypeScript
+
+React Leaflet provides TypeScript definitions in the installed packages, but needs Leaflet's definitions to be present. If you have not installed them yet, you will need to add them:
+
+<Tabs
+  defaultValue="npm"
+  values={[
+    { label: 'npm', value: 'npm', },
+    { label: 'yarn', value: 'yarn', },
+  ]
+}>
+<TabItem value="npm">
+
+
+```bash
+npm install -D @types/leaflet
+```
+
+</TabItem>
+<TabItem value="yarn">
+
+
+```bash
+yarn add -D @types/leaflet
+```
+
+</TabItem>
+</Tabs>
+

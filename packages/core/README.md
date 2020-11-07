@@ -1,3 +1,3 @@
 # React Leaflet core
 
-[Documentation](https://react-leaflet-v3.now.sh/docs/core-introduction)
+[Documentation](https://react-leaflet.js.org/docs/core-introduction)

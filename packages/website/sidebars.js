@@ -13,6 +13,7 @@ module.exports = {
       'example-other-layers',
       'example-tooltips',
       'example-layers-control',
+      'example-panes',
       'example-draggable-marker',
       'example-view-bounds',
       'example-animated-panning',

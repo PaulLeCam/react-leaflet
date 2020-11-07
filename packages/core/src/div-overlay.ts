@@ -1,8 +1,11 @@
 import { Popup, Tooltip } from 'leaflet'
 
+import { useAttribution } from './attribution'
 import { useLeafletContext, LeafletContextInterface } from './context'
 import { LeafletElement, ElementHook } from './element'
-import { EventedProps, useEventHandlers } from './events'
+import { useEventHandlers } from './events'
+import { LayerProps } from './layer'
+import { withPane } from './pane'
 
 export type DivOverlay = Popup | Tooltip
 
@@ -22,15 +25,16 @@ export type DivOverlayHook<E extends DivOverlay, P> = (
 
 export function createDivOverlayHook<
   E extends DivOverlay,
-  P extends EventedProps
+  P extends LayerProps
 >(useElement: ElementHook<E, P>, useLifecycle: DivOverlayLifecycleHook<E, P>) {
   return function useDivOverlay(
     props: P,
     setOpen: SetOpenFunc,
   ): ReturnType<ElementHook<E, P>> {
     const context = useLeafletContext()
-    const elementRef = useElement(props, context)
+    const elementRef = useElement(withPane(props, context), context)
 
+    useAttribution(context.map, props.attribution)
     useEventHandlers(elementRef.current, props.eventHandlers)
     useLifecycle(elementRef.current, context, props, setOpen)
 

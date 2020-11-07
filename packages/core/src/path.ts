@@ -3,10 +3,10 @@ import { useEffect, useRef } from 'react'
 
 import { useLeafletContext } from './context'
 import { LeafletElement, ElementHook } from './element'
-import { EventedProps, useEventHandlers } from './events'
-import { useLayerLifecycle } from './layer'
+import { useEventHandlers } from './events'
+import { InteractiveLayerProps, useLayerLifecycle } from './layer'
 
-export interface PathProps extends EventedProps {
+export interface PathProps extends InteractiveLayerProps {
   pathOptions?: PathOptions
 }
 

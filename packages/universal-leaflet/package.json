@@ -1,6 +1,6 @@
 {
   "name": "@react-leaflet/universal-leaflet",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Only import Leaflet in browser",
   "main": "index.js",
   "repository": {

@@ -1,6 +1,6 @@
 {
   "name": "@react-leaflet/core",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React Leaflet core",
   "main": "cjs/index.js",
   "module": "esm/index.js",
@@ -33,7 +33,7 @@
   "bugs": {
     "url": "https://github.com/PaulLeCam/react-leaflet/issues"
   },
-  "homepage": "https://github.com/PaulLeCam/react-leaflet",
+  "homepage": "https://react-leaflet.js.org/docs/core-introduction",
   "files": [
     "cjs/*",
     "esm/*",

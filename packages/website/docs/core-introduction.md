@@ -19,7 +19,7 @@ If you're only interested in using the public APIs of React Leaflet, their usage
 
 ## Installation
 
-The `@react-leaflet/core` package is a dependency of the `react-leaflet` one. The main [installation steps](start-installation.md) from the getting started documentation should be followed to use the core APIs.
+The `@react-leaflet/core` package is a dependency of the `react-leaflet` one. The main [installation steps](start-installation.mdx) from the getting started documentation should be followed to use the core APIs.
 
 ## Usage
 

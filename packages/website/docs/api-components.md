@@ -65,6 +65,20 @@ Applies to layer components, making their [`attribution`](https://leafletjs.com/
 <GeoJSON attribution="&copy; credits due..." data={...} />
 ```
 
+### Pane behavior
+
+Applies to layer components, adding support for the [`pane`](https://leafletjs.com/reference-1.7.1.html#layer-pane) prop or context from a [`Pane` component](#pane) ancestor.
+
+```tsx Example component with pane prop
+<Circle center={[50.5, 30.5]} radius={200} pane="my-existing-pane" />
+```
+
+```tsx Example component with Pane ancestor
+<Pane name="custom" style={{ zIndex: 100 }}>
+  <Circle center={[50.5, 30.5]} radius={200} />
+</Pane>
+```
+
 ### Path behavior
 
 Applies to [vector layer components](#vector-layers), adding support for a [`pathOptions: PathOptions`](https://leafletjs.com/reference-1.7.1.html#path) mutable prop.
@@ -129,6 +143,7 @@ Applies to [control components](#controls), making their [`position: ControlPosi
 | `eventHandlers` | `LeafletEventHandlerFnMap`  | No       | **Yes** | [Evented](#evented-behavior)                 |
 | `icon`          | `Leaflet.Icon`              | No       | **Yes** |
 | `opacity`       | `number`                    | No       | **Yes** |
+| `pane`          | `string`                    | No       | No      | [Pane](#pane-behavior)                       |
 | `position`      | `LatLngExpression`          | **Yes**  | **Yes** |
 | `ref`           | `RefObject<Leaflet.Marker>` | No       | **Yes** | [Referenceable](#referenceable-behavior)     |
 | `zIndexOffset`  | `number`                    | No       | **Yes** |
@@ -146,6 +161,7 @@ Applies to [control components](#controls), making their [`position: ControlPosi
 | `eventHandlers` | `LeafletEventHandlerFnMap` | No       | **Yes** | [Evented](#evented-behavior)                 |
 | `onClose`       | `() => void`               | No       | **Yes** |
 | `onOpen`        | `() => void`               | No       | **Yes** |
+| `pane`          | `string`                   | No       | No      | [Pane](#pane-behavior)                       |
 | `position`      | `LatLngExpression`         | No       | **Yes** |
 | `ref`           | `RefObject<Leaflet.Popup>` | No       | **Yes** | [Referenceable](#referenceable-behavior)     |
 
@@ -162,6 +178,7 @@ Applies to [control components](#controls), making their [`position: ControlPosi
 | `eventHandlers` | `LeafletEventHandlerFnMap`   | No       | **Yes** | [Evented](#evented-behavior)                 |
 | `onClose`       | `() => void`                 | No       | **Yes** |
 | `onOpen`        | `() => void`                 | No       | **Yes** |
+| `pane`          | `string`                     | No       | No      | [Pane](#pane-behavior)                       |
 | `position`      | `LatLngExpression`           | No       | **Yes** |
 | `ref`           | `RefObject<Leaflet.Tooltip>` | No       | **Yes** | [Referenceable](#referenceable-behavior)     |
 
@@ -177,6 +194,7 @@ Applies to [control components](#controls), making their [`position: ControlPosi
 | --------------- | ------------------------------ | -------- | ------- | ---------------------------------------- |
 | `eventHandlers` | `LeafletEventHandlerFnMap`     | No       | **Yes** | [Evented](#evented-behavior)             |
 | `opacity`       | `number`                       | No       | **Yes** | [GridLayer](#gridlayer-behavior)         |
+| `pane`          | `string`                       | No       | No      | [Pane](#pane-behavior)                   |
 | `ref`           | `RefObject<Leaflet.TileLayer>` | No       | **Yes** | [Referenceable](#referenceable-behavior) |
 | `url`           | `string`                       | **Yes**  | No      |
 | `zIndex`        | `number`                       | No       | **Yes** | [GridLayer](#gridlayer-behavior)         |
@@ -191,6 +209,7 @@ Applies to [control components](#controls), making their [`position: ControlPosi
 | --------------- | ---------------------------------- | -------- | ------- | ---------------------------------------- |
 | `eventHandlers` | `LeafletEventHandlerFnMap`         | No       | **Yes** | [Evented](#evented-behavior)             |
 | `opacity`       | `number`                           | No       | **Yes** | [GridLayer](#gridlayer-behavior)         |
+| `pane`          | `string`                           | No       | No      | [Pane](#pane-behavior)                   |
 | `params`        | `WMSParams`                        | No       | **Yes** |
 | `ref`           | `RefObject<Leaflet.TileLayer.WMS>` | No       | **Yes** | [Referenceable](#referenceable-behavior) |
 | `url`           | `string`                           | **Yes**  | No      |
@@ -243,6 +262,7 @@ Applies to [control components](#controls), making their [`position: ControlPosi
 | `center`        | `LatLngExpression`          | **Yes**  | **Yes** |
 | `children`      | `ReactNode`                 | No       | **Yes** | [ParentComponent](#parentcomponent-behavior) |
 | `eventHandlers` | `LeafletEventHandlerFnMap`  | No       | **Yes** | [Evented](#evented-behavior)                 |
+| `pane`          | `string`                    | No       | No      | [Pane](#pane-behavior)                       |
 | `pathOptions`   | `PathOptions`               | No       | **Yes** | [Path](#path-behavior)                       |
 | `radius`        | `number`                    | **Yes**  | **Yes** |
 | `ref`           | `RefObject<Leaflet.Circle>` | No       | **Yes** | [Referenceable](#referenceable-behavior)     |
@@ -259,6 +279,7 @@ Applies to [control components](#controls), making their [`position: ControlPosi
 | `center`        | `LatLngExpression`                | **Yes**  | **Yes** |
 | `children`      | `ReactNode`                       | No       | **Yes** | [ParentComponent](#parentcomponent-behavior) |
 | `eventHandlers` | `LeafletEventHandlerFnMap`        | No       | **Yes** | [Evented](#evented-behavior)                 |
+| `pane`          | `string`                          | No       | No      | [Pane](#pane-behavior)                       |
 | `pathOptions`   | `PathOptions`                     | No       | **Yes** | [Path](#path-behavior)                       |
 | `radius`        | `number`                          | **Yes**  | **Yes** |
 | `ref`           | `RefObject<Leaflet.CircleMarker>` | No       | **Yes** | [Referenceable](#referenceable-behavior)     |
@@ -274,6 +295,7 @@ Applies to [control components](#controls), making their [`position: ControlPosi
 | `attribution`   | `string`                                       | No       | **Yes** | [Attribution](#attribution-behavior)         |
 | `children`      | `ReactNode`                                    | No       | **Yes** | [ParentComponent](#parentcomponent-behavior) |
 | `eventHandlers` | `LeafletEventHandlerFnMap`                     | No       | **Yes** | [Evented](#evented-behavior)                 |
+| `pane`          | `string`                                       | No       | No      | [Pane](#pane-behavior)                       |
 | `pathOptions`   | `PathOptions`                                  | No       | **Yes** | [Path](#path-behavior)                       |
 | `positions`     | `LatLngExpression[]` or `LatLngExpression[][]` | **Yes**  | **Yes** |
 | `ref`           | `RefObject<Leaflet.Polyline>`                  | No       | **Yes** | [Referenceable](#referenceable-behavior)     |
@@ -287,6 +309,7 @@ Applies to [control components](#controls), making their [`position: ControlPosi
 | `attribution`   | `string`                                                                 | No       | **Yes** | [Attribution](#attribution-behavior)         |
 | `children`      | `ReactNode`                                                              | No       | **Yes** | [ParentComponent](#parentcomponent-behavior) |
 | `eventHandlers` | `LeafletEventHandlerFnMap`                                               | No       | **Yes** | [Evented](#evented-behavior)                 |
+| `pane`          | `string`                                                                 | No       | No      | [Pane](#pane-behavior)                       |
 | `pathOptions`   | `PathOptions`                                                            | No       | **Yes** | [Path](#path-behavior)                       |
 | `positions`     | `LatLngExpression[]`, `LatLngExpression[][]` or `LatLngExpression[][][]` | **Yes**  | **Yes** |
 | `ref`           | `RefObject<Leaflet.Polygon>`                                             | No       | **Yes** | [Referenceable](#referenceable-behavior)     |
@@ -303,6 +326,7 @@ Applies to [control components](#controls), making their [`position: ControlPosi
 | `bounds`        | `LatLngBoundsExpression`       | **Yes**  | **Yes** |
 | `children`      | `ReactNode`                    | No       | **Yes** | [ParentComponent](#parentcomponent-behavior) |
 | `eventHandlers` | `LeafletEventHandlerFnMap`     | No       | **Yes** | [Evented](#evented-behavior)                 |
+| `pane`          | `string`                       | No       | No      | [Pane](#pane-behavior)                       |
 | `pathOptions`   | `PathOptions`                  | No       | **Yes** | [Path](#path-behavior)                       |
 | `ref`           | `RefObject<Leaflet.Rectangle>` | No       | **Yes** | [Referenceable](#referenceable-behavior)     |
 
@@ -314,11 +338,13 @@ Applies to [control components](#controls), making their [`position: ControlPosi
 
 The `attributes` must be valid [`SVGSVGElement` properties](https://developer.mozilla.org/en-US/docs/Web/API/SVGSVGElement).
 
-| Prop         | Type                            | Required | Mutable | Behavior                                     |
-| ------------ | ------------------------------- | -------- | ------- | -------------------------------------------- |
-| `attributes` | `Record<string, string>`        | No       | No      |
-| `children`   | `ReactNode`                     | No       | **Yes** | [ParentComponent](#parentcomponent-behavior) |
-| `ref`        | `RefObject<Leaflet.SVGOverlay>` | No       | **Yes** | [Referenceable](#referenceable-behavior)     |
+| Prop          | Type                            | Required | Mutable | Behavior                                     |
+| ------------- | ------------------------------- | -------- | ------- | -------------------------------------------- |
+| `attributes`  | `Record<string, string>`        | No       | No      |
+| `attribution` | `string`                        | No       | **Yes** | [Attribution](#attribution-behavior)         |
+| `children`    | `ReactNode`                     | No       | **Yes** | [ParentComponent](#parentcomponent-behavior) |
+| `pane`        | `string`                        | No       | No      | [Pane](#pane-behavior)                       |
+| `ref`         | `RefObject<Leaflet.SVGOverlay>` | No       | **Yes** | [Referenceable](#referenceable-behavior)     |
 
 ## Other layers
 
@@ -333,6 +359,7 @@ The `attributes` must be valid [`SVGSVGElement` properties](https://developer.mo
 | `attribution`   | `string`                        | No       | **Yes** | [Attribution](#attribution-behavior)         |
 | `children`      | `ReactNode`                     | No       | **Yes** | [ParentComponent](#parentcomponent-behavior) |
 | `eventHandlers` | `LeafletEventHandlerFnMap`      | No       | **Yes** | [Evented](#evented-behavior)                 |
+| `pane`          | `string`                        | No       | No      | [Pane](#pane-behavior)                       |
 | `ref`           | `RefObject<Leaflet.LayerGroup>` | No       | **Yes** | [Referenceable](#referenceable-behavior)     |
 
 ### FeatureGroup
@@ -346,6 +373,7 @@ The `attributes` must be valid [`SVGSVGElement` properties](https://developer.mo
 | `attribution`   | `string`                          | No       | **Yes** | [Attribution](#attribution-behavior)         |
 | `children`      | `ReactNode`                       | No       | **Yes** | [ParentComponent](#parentcomponent-behavior) |
 | `eventHandlers` | `LeafletEventHandlerFnMap`        | No       | **Yes** | [Evented](#evented-behavior)                 |
+| `pane`          | `string`                          | No       | No      | [Pane](#pane-behavior)                       |
 | `ref`           | `RefObject<Leaflet.FeatureGroup>` | No       | **Yes** | [Referenceable](#referenceable-behavior)     |
 
 ### GeoJSON
@@ -360,6 +388,7 @@ The `attributes` must be valid [`SVGSVGElement` properties](https://developer.mo
 | `children`      | `ReactNode`                  | No       | **Yes** | [ParentComponent](#parentcomponent-behavior) |
 | `data`          | `GeoJsonObject`              | **Yes**  | No      |
 | `eventHandlers` | `LeafletEventHandlerFnMap`   | No       | **Yes** | [Evented](#evented-behavior)                 |
+| `pane`          | `string`                     | No       | No      | [Pane](#pane-behavior)                       |
 | `ref`           | `RefObject<Leaflet.GeoJSON>` | No       | **Yes** | [Referenceable](#referenceable-behavior)     |
 
 ## Controls
@@ -450,4 +479,5 @@ The `name` prop must be unique to the pane and different from the [default Leafl
 | `children`  | `ReactNode`     | No       | **Yes** | [ParentComponent](#parentcomponent-behavior) |
 | `className` | `string`        | No       | **Yes** |
 | `name`      | `string`        | **Yes**  | No      |
+| `pane`      | `string`        | No       | No      | [Pane](#pane-behavior)                       |
 | `style`     | `CSSProperties` | No       | **Yes** |

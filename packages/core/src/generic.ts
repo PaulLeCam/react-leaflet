@@ -9,8 +9,7 @@ import {
 import { LeafletContextInterface } from './context'
 import { createControlHook } from './control'
 import { LeafletElement, createElementHook } from './element'
-import { EventedProps } from './events'
-import { createLayerHook } from './layer'
+import { LayerProps, createLayerHook } from './layer'
 import {
   DivOverlay,
   DivOverlayLifecycleHook,
@@ -18,7 +17,7 @@ import {
 } from './div-overlay'
 import { PathProps, createPathHook } from './path'
 
-interface EventedWithChildrenProps extends EventedProps, PropsWithChildren {}
+interface LayerWithChildrenProps extends LayerProps, PropsWithChildren {}
 interface PathWithChildrenProps extends PathProps, PropsWithChildren {}
 
 export function createControlComponent<
@@ -38,7 +37,7 @@ export function createControlComponent<
 
 export function createLayerComponent<
   E extends Layer,
-  P extends EventedWithChildrenProps
+  P extends LayerWithChildrenProps
 >(
   createElement: (
     props: P,
@@ -53,7 +52,7 @@ export function createLayerComponent<
 
 export function createOverlayComponent<
   E extends DivOverlay,
-  P extends EventedWithChildrenProps
+  P extends LayerWithChildrenProps
 >(
   createElement: (
     props: P,
@@ -81,10 +80,7 @@ export function createPathComponent<
   return createContainerComponent(usePath)
 }
 
-export function createTileLayerComponent<
-  E extends Layer,
-  P extends EventedProps
->(
+export function createTileLayerComponent<E extends Layer, P extends LayerProps>(
   createElement: (
     props: P,
     context: LeafletContextInterface,

@@ -1,3 +1,8 @@
+## v3.0.1 (2020-11-07)
+
+- Fixed `pane` prop support
+- Use standard SPDX license name ([PR #781](https://github.com/PaulLeCam/react-leaflet/pull/781) by [nertzy](https://github.com/nertzy))
+
 ## v3.0.0 (2020-10-31)
 
 v3 is a full rewrite of React Leaflet and contains breaking change from v2.

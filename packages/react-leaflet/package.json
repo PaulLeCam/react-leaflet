@@ -1,6 +1,6 @@
 {
   "name": "react-leaflet",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "React components for Leaflet maps",
   "main": "cjs/index.js",
   "module": "esm/index.js",
@@ -35,7 +35,7 @@
   "bugs": {
     "url": "https://github.com/PaulLeCam/react-leaflet/issues"
   },
-  "homepage": "https://github.com/PaulLeCam/react-leaflet",
+  "homepage": "https://react-leaflet.js.org",
   "files": [
     "cjs/*",
     "esm/*",

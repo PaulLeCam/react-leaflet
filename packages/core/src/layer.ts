@@ -1,36 +1,16 @@
-import { Layer, LayerOptions, Map } from 'leaflet'
-import { useEffect, useRef } from 'react'
+import { InteractiveLayerOptions, Layer, LayerOptions } from 'leaflet'
+import { useEffect } from 'react'
 
+import { useAttribution } from './attribution'
 import { LeafletContextInterface, useLeafletContext } from './context'
 import { LeafletElement, ElementHook } from './element'
 import { EventedProps, useEventHandlers } from './events'
+import { withPane } from './pane'
 
 export interface LayerProps extends EventedProps, LayerOptions {}
-
-export function useAttribution(
-  map: Map,
-  attribution: string | null | undefined,
-) {
-  const attributionRef = useRef(attribution)
-
-  useEffect(
-    function updateAttribution() {
-      if (
-        attribution !== attributionRef.current &&
-        map.attributionControl != null
-      ) {
-        if (attributionRef.current != null) {
-          map.attributionControl.removeAttribution(attributionRef.current)
-        }
-        if (attribution != null) {
-          map.attributionControl.addAttribution(attribution)
-        }
-      }
-      attributionRef.current = attribution
-    },
-    [map, attribution],
-  )
-}
+export interface InteractiveLayerProps
+  extends LayerProps,
+    InteractiveLayerOptions {}
 
 export function useLayerLifecycle(
   element: LeafletElement<Layer>,
@@ -54,7 +34,7 @@ export function createLayerHook<E extends Layer, P extends LayerProps>(
 ) {
   return function useLayer(props: P): ReturnType<ElementHook<E, P>> {
     const context = useLeafletContext()
-    const elementRef = useElement(props, context)
+    const elementRef = useElement(withPane(props, context), context)
 
     useAttribution(context.map, props.attribution)
     useEventHandlers(elementRef.current, props.eventHandlers)

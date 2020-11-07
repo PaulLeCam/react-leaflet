@@ -1,11 +1,12 @@
 import {
-  EventedProps,
+  LayerProps,
   createTileLayerComponent,
   updateGridLayer,
+  withPane,
 } from '@react-leaflet/core'
 import { TileLayer, WMSOptions, WMSParams } from 'leaflet'
 
-export interface WMSTileLayerProps extends WMSOptions, EventedProps {
+export interface WMSTileLayerProps extends WMSOptions, LayerProps {
   params?: WMSParams
   url: string
 }
@@ -16,7 +17,10 @@ export const WMSTileLayer = createTileLayerComponent<
 >(
   function createWMSTileLayer({ params = {}, url, ...options }, context) {
     return {
-      instance: new TileLayer.WMS(url, { ...params, ...options }),
+      instance: new TileLayer.WMS(url, {
+        ...params,
+        ...withPane(options, context),
+      }),
       context,
     }
   },

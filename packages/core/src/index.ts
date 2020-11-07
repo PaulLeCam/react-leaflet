@@ -1,3 +1,4 @@
+export { useAttribution } from './attribution'
 export { updateCircle } from './circle'
 export type { CircleMarkerProps } from './circle'
 export {
@@ -32,9 +33,10 @@ export {
   createTileLayerComponent,
 } from './generic'
 export { updateGridLayer } from './grid-layer'
-export { createLayerHook, useAttribution, useLayerLifecycle } from './layer'
-export type { LayerProps } from './layer'
+export { createLayerHook, useLayerLifecycle } from './layer'
+export type { InteractiveLayerProps, LayerProps } from './layer'
 export { updateMediaOverlay } from './media-overlay'
 export type { MediaOverlayProps } from './media-overlay'
+export { withPane } from './pane'
 export { createPathHook, usePathOptions } from './path'
 export type { PathProps } from './path'

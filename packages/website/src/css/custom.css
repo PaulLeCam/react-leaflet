@@ -20,6 +20,11 @@
   padding: 0 var(--ifm-pre-padding);
 }
 
+.DocSearch-Modal {
+  /* Make sure search modal is below navbar */
+  margin-top: 100px !important;
+}
+
 .leaflet-container {
   height: 400px;
 }
