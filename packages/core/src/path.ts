@@ -5,6 +5,7 @@ import { useLeafletContext } from './context'
 import { LeafletElement, ElementHook } from './element'
 import { useEventHandlers } from './events'
 import { InteractiveLayerProps, useLayerLifecycle } from './layer'
+import { withPane } from './pane'
 
 export interface PathProps extends InteractiveLayerProps {
   pathOptions?: PathOptions
@@ -34,7 +35,7 @@ export function createPathHook<
 >(useElement: ElementHook<E, P>) {
   return function usePath(props: P): ReturnType<ElementHook<E, P>> {
     const context = useLeafletContext()
-    const elementRef = useElement(props, context)
+    const elementRef = useElement(withPane(props, context), context)
 
     useEventHandlers(elementRef.current, props.eventHandlers)
     useLayerLifecycle(elementRef.current, context)

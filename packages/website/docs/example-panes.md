@@ -14,19 +14,19 @@ const inner = [
 
 function BlinkingPane() {
   const [render, setRender] = useState(true)
-  const timer = useRef()
+  const timerRef = useRef()
   useEffect(() => {
-    timer.ref = setInterval(() => {
+    timerRef.current = setInterval(() => {
       setRender((r) => !r)
     }, 5000)
     return () => {
-      clearInterval(timer.ref)
+      clearInterval(timerRef.current)
     }
   }, [])
 
   return render ? (
     <Pane name="cyan-rectangle" style={{ zIndex: 500 }}>
-      <Rectangle bounds={outer} color="cyan" />
+      <Rectangle bounds={outer} pathOptions={{ color: 'cyan' }} />
     </Pane>
   ) : null
 }
@@ -39,9 +39,9 @@ render(
     />
     <BlinkingPane />
     <Pane name="yellow-rectangle" style={{ zIndex: 499 }}>
-      <Rectangle bounds={inner} color="yellow" />
+      <Rectangle bounds={inner} pathOptions={{ color: 'yellow' }} />
       <Pane name="purple-rectangle">
-        <Rectangle bounds={outer} color="purple" />
+        <Rectangle bounds={outer} pathOptions={{ color: 'purple' }} />
       </Pane>
     </Pane>
   </MapContainer>,

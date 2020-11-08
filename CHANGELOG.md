@@ -1,3 +1,7 @@
+## v3.0.2 (2020-11-08)
+
+Further fixes for panes support
+
 ## v3.0.1 (2020-11-07)
 
 - Fixed `pane` prop support

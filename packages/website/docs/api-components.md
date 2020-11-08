@@ -477,7 +477,7 @@ The `name` prop must be unique to the pane and different from the [default Leafl
 | Prop        | Type            | Required | Mutable | Behavior                                     |
 | ----------- | --------------- | -------- | ------- | -------------------------------------------- |
 | `children`  | `ReactNode`     | No       | **Yes** | [ParentComponent](#parentcomponent-behavior) |
-| `className` | `string`        | No       | **Yes** |
+| `className` | `string`        | No       | No      |
 | `name`      | `string`        | **Yes**  | No      |
 | `pane`      | `string`        | No       | No      | [Pane](#pane-behavior)                       |
-| `style`     | `CSSProperties` | No       | **Yes** |
+| `style`     | `CSSProperties` | No       | No      |
