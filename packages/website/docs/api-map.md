@@ -20,6 +20,7 @@ The following additional props are supported:
 | `placeholder`   | `ReactNode`                  |
 | `style`         | `CSSProperties`              |
 | `whenCreated`   | `(map: Leaflet.Map) => void` |
+| `whenDestroyed` | `() => void`                 |
 | `whenReady`     | `() => void`                 |
 
 Except for its `children`, `MapContainer` props are **immutable**: changing them after they have been set a first time will have no effect on the Map instance or its container.  

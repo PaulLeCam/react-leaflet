@@ -65,6 +65,23 @@ describe('MapContainer', () => {
 
       render(<TestContainer />)
     })
+
+    test('in the whenDestroyed() callback', (done) => {
+      function TestContainer() {
+        return (
+          <MapContainer
+            center={[0, 0]}
+            zoom={10}
+            whenDestroyed={() => {
+              done()
+            }}
+          />
+        )
+      }
+
+      const { unmount } = render(<TestContainer />)
+      unmount()
+    })
   })
 
   test('sets center and zoom props', (done) => {

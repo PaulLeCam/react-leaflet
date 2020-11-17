@@ -28,6 +28,7 @@ export interface MapContainerProps extends MapOptions, EventedProps {
   placeholder?: ReactNode
   style?: CSSProperties
   whenCreated?: (map: LeafletMap) => void
+  whenDestroyed?: () => void
   whenReady?: () => void
 }
 
@@ -62,6 +63,7 @@ export function MapContainer({
   placeholder,
   style,
   whenCreated,
+  whenDestroyed,
   ...options
 }: MapContainerProps) {
   const mapRef = useRef<HTMLDivElement>(null)
@@ -73,6 +75,7 @@ export function MapContainer({
       createdRef.current = true
       whenCreated(map)
     }
+    return () => whenDestroyed?.call(undefined)
   }, [map, whenCreated])
 
   const context = useMemo(
