@@ -389,6 +389,7 @@ The `attributes` must be valid [`SVGSVGElement` properties](https://developer.mo
 | `data`          | `GeoJsonObject`              | **Yes**  | No      |
 | `eventHandlers` | `LeafletEventHandlerFnMap`   | No       | **Yes** | [Evented](#evented-behavior)                 |
 | `pane`          | `string`                     | No       | No      | [Pane](#pane-behavior)                       |
+| `pathOptions`   | `PathOptions`                | No       | **Yes** | [Path](#path-behavior)                       |
 | `ref`           | `RefObject<Leaflet.GeoJSON>` | No       | **Yes** | [Referenceable](#referenceable-behavior)     |
 
 ## Controls
