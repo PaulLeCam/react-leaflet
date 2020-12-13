@@ -1,3 +1,7 @@
+## v3.0.4 (2020-12-13)
+
+Update README
+
 ## v3.0.3 (2020-12-13)
 
 - Document pathOptions for GeoJSON ([PR #785](https://github.com/PaulLeCam/react-leaflet/pull/785) by [bb](https://github.com/bb))

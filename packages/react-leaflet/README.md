@@ -1,3 +1,3 @@
-# React Leaflet v3
+# React Leaflet
 
-Work in progress documentation is available on [react-leaflet-v3.now.sh](https://react-leaflet-v3.now.sh/).
+[Documentation](https://react-leaflet.js.org/)
