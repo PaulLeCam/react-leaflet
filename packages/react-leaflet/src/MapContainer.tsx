@@ -1,8 +1,4 @@
-import {
-  CONTEXT_VERSION,
-  EventedProps,
-  LeafletProvider,
-} from '@react-leaflet/core'
+import { CONTEXT_VERSION, LeafletProvider } from '@react-leaflet/core'
 import {
   FitBoundsOptions,
   LatLngBoundsExpression,
@@ -19,7 +15,7 @@ import React, {
   useState,
 } from 'react'
 
-export interface MapContainerProps extends MapOptions, EventedProps {
+export interface MapContainerProps extends MapOptions {
   bounds?: LatLngBoundsExpression
   boundsOptions?: FitBoundsOptions
   children?: ReactNode
@@ -75,6 +71,8 @@ export function MapContainer({
     }
   }, [map, whenCreated])
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const props = useMemo(() => ({ className, id, style }), [])
   const context = useMemo(
     () => (map ? { __version: CONTEXT_VERSION, map } : null),
     [map],
@@ -86,7 +84,7 @@ export function MapContainer({
     placeholder ?? null
   )
   return (
-    <div ref={mapRef} className={className} id={id} style={style}>
+    <div {...props} ref={mapRef}>
       {contents}
     </div>
   )

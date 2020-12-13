@@ -8,17 +8,10 @@ module.exports = {
   projectName: 'react-leaflet',
   stylesheets: ['//unpkg.com/leaflet@1.7.1/dist/leaflet.css'],
   themeConfig: {
-    algolia: {
-      apiKey: '5ec5ae3523b2e316c32bbe5e948cb48d',
-      indexName: 'react-leaflet',
-    },
-    announcementBar: {
-      id: 'new_version',
-      content:
-        'This is the new documentation for React Leaflet v3, for previous versions use the <a href="/legacy">legacy documentation</a>.',
-      backgroundColor: '#49a78a',
-      textColor: '#fff',
-    },
+    // algolia: {
+    //   apiKey: '5ec5ae3523b2e316c32bbe5e948cb48d',
+    //   indexName: 'react-leaflet',
+    // },
     navbar: {
       title: 'React Leaflet',
       logo: {
@@ -97,8 +90,6 @@ module.exports = {
       {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          // editUrl:
-          //   'https://github.com/facebook/docusaurus/edit/master/website/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),

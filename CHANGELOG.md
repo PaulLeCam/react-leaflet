@@ -1,6 +1,12 @@
+## v3.0.3 (2020-12-13)
+
+- Document pathOptions for GeoJSON ([PR #785](https://github.com/PaulLeCam/react-leaflet/pull/785) by [bb](https://github.com/bb))
+- Ensure `MapContainer` props are immutable
+- Fix TypeScript definition for `MapContainer` props
+
 ## v3.0.2 (2020-11-08)
 
-Further fixes for panes support
+Additional fixes for panes support
 
 ## v3.0.1 (2020-11-07)
 
