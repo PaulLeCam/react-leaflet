@@ -7,6 +7,8 @@ React components for Leaflet maps.
 - [Getting started](https://react-leaflet.js.org/docs/start-introduction)
 - [API reference](https://react-leaflet.js.org/docs/api-map)
 
+> The documentation for v2 can be found [here](http://react-leaflet.js.org/legacy).
+
 ## Changes
 
 See the [CHANGELOG file](CHANGELOG.md).
