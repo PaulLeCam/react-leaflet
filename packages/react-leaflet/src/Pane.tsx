@@ -37,7 +37,7 @@ export interface PaneProps {
 }
 
 function createPane(
-  props: Omit<PaneProps, 'children'>,
+  props: PaneProps,
   context: LeafletContextInterface,
 ): HTMLElement {
   const name = props.name
