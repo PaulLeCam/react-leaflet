@@ -7,17 +7,6 @@ describe('Pane', () => {
   test('renders', () => {
     const { container } = render(
       <MapContainer center={[0, 0]} zoom={10}>
-        <Pane style={{ zIndex: 1000 }}>
-          <TileLayer attribution="tiles attribution" url="http://localhost" />
-        </Pane>
-      </MapContainer>,
-    )
-    expect(container).toMatchSnapshot()
-  })
-
-  test('renders with a name', () => {
-    const { container } = render(
-      <MapContainer center={[0, 0]} zoom={10}>
         <Pane name="foo" style={{ zIndex: 1000 }}>
           <TileLayer attribution="tiles attribution" url="http://localhost" />
         </Pane>
@@ -30,9 +19,6 @@ describe('Pane', () => {
     const { container } = render(
       <React.StrictMode>
         <MapContainer center={[0, 0]} zoom={10}>
-          <Pane style={{ zIndex: 1000 }}>
-            <TileLayer attribution="tiles attribution" url="http://localhost" />
-          </Pane>
           <Pane name="foo" style={{ zIndex: 1001 }}>
             <TileLayer attribution="tiles attribution" url="http://localhost" />
           </Pane>
