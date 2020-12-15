@@ -73,8 +73,7 @@ function createPane(
 export function Pane(props: PaneProps) {
   const [paneElement, setPaneElement] = useState<HTMLElement>()
   const context = useLeafletContext()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const newContext = useMemo(() => ({ ...context, pane: props.name }), [])
+  const newContext = useMemo(() => ({ ...context, pane: props.name }), [context])
 
   useEffect(() => {
     setPaneElement(createPane(props, context))
