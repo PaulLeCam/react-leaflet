@@ -1,3 +1,7 @@
+## v3.0.5 (2020-12-20)
+
+Use `useState` hook rather than `useMemo` to store immutable values in `MapContainer` and `Pane`.
+
 ## v3.0.4 (2020-12-13)
 
 Update README

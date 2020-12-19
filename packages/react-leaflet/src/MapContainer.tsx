@@ -71,8 +71,7 @@ export function MapContainer({
     }
   }, [map, whenCreated])
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const props = useMemo(() => ({ className, id, style }), [])
+  const [props] = useState({ className, id, style })
   const context = useMemo(
     () => (map ? { __version: CONTEXT_VERSION, map } : null),
     [map],

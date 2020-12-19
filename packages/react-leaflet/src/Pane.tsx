@@ -4,7 +4,7 @@ import {
   addClassName,
   useLeafletContext,
 } from '@react-leaflet/core'
-import React, { CSSProperties, ReactNode, useEffect, useMemo } from 'react'
+import React, { CSSProperties, ReactNode, useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 
 const DEFAULT_PANES = [
@@ -66,10 +66,8 @@ function createPane(
 
 export function Pane(props: PaneProps) {
   const context = useLeafletContext()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const paneElement = useMemo(() => createPane(props, context), [])
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const newContext = useMemo(() => ({ ...context, pane: props.name }), [])
+  const [paneElement] = useState(() => createPane(props, context))
+  const [newContext] = useState(() => ({ ...context, pane: props.name }))
 
   useEffect(() => {
     return function removeCreatedPane() {
