@@ -17,7 +17,9 @@ import {Icon} from 'leaflet'
 
 // The default bundler configuration will not work with the way leaflet loads
 // its images, so doing this avoids seeing broken image icons.
-const markerIcon = new new Icon({iconUrl: markerIconPng})
+const markerIcon = new Icon({
+    iconUrl: markerIconPng, iconSize: [25, 41], iconAnchor: [12, 41]
+})
 
 <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false} style={{height: 500}}>
   <TileLayer
