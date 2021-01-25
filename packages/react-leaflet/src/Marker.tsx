@@ -3,6 +3,7 @@ import {
   LatLngExpression,
   Marker as LeafletMarker,
   MarkerOptions,
+  Util,
 } from 'leaflet'
 import { ReactNode } from 'react'
 
@@ -17,26 +18,66 @@ export const Marker = createLayerComponent<LeafletMarker, MarkerProps>(
     return { instance, context: { ...ctx, overlayContainer: instance } }
   },
   function updateMarker(marker, props, prevProps) {
-    if (props.position !== prevProps.position) {
-      marker.setLatLng(props.position)
+    const {
+      position,
+      icon,
+      zIndexOffset,
+      opacity,
+      draggable,
+      ...others
+    }: MarkerProps & { [key: string]: any } = props
+    const {
+      position: prevPosition,
+      icon: prevIcon,
+      zIndexOffset: prevZIndexOffset,
+      opacity: prevOpacity,
+      draggable: prevDraggable,
+      ...prevOthers
+    }: MarkerProps & { [key: string]: any } = prevProps
+
+    if (position !== prevPosition) {
+      marker.setLatLng(position)
     }
-    if (props.icon != null && props.icon !== prevProps.icon) {
-      marker.setIcon(props.icon)
+    if (icon != null && icon !== prevIcon) {
+      marker.setIcon(icon)
+    }
+    if (zIndexOffset != null && zIndexOffset !== prevZIndexOffset) {
+      marker.setZIndexOffset(zIndexOffset)
+    }
+    if (opacity != null && opacity !== prevOpacity) {
+      marker.setOpacity(opacity)
     }
     if (
-      props.zIndexOffset != null &&
-      props.zIndexOffset !== prevProps.zIndexOffset
+      marker.dragging != null &&
+      draggable != null &&
+      draggable !== prevDraggable
     ) {
-      marker.setZIndexOffset(props.zIndexOffset)
-    }
-    if (props.opacity != null && props.opacity !== prevProps.opacity) {
-      marker.setOpacity(props.opacity)
-    }
-    if (marker.dragging != null && props.draggable !== prevProps.draggable) {
-      if (props.draggable === true) {
+      if (draggable === true) {
         marker.dragging.enable()
       } else {
         marker.dragging.disable()
+      }
+    }
+
+    // Handle keys other than position, icon, zIndexOffset, opacity, and draggable.
+    // TODO: Optimize this?
+    if (Object.keys(others).length > 0) {
+      const diffOthers: { [key: string]: any } = {}
+      for (const key in others) {
+        if (others.hasOwnProperty(key) && !prevOthers.hasOwnProperty(key)) {
+          // Add the key to diffOthers if it has been added.
+          diffOthers[key] = others[key]
+        } else if (
+          others.hasOwnProperty(key) &&
+          prevOthers.hasOwnProperty(key) &&
+          prevOthers[key] !== others[key]
+        ) {
+          // Add the key to diffOthers if it has changed.'
+          diffOthers[key] = others[key]
+        }
+      }
+      if (Object.keys(diffOthers).length > 0) {
+        Util.setOptions(marker, diffOthers)
       }
     }
   },
