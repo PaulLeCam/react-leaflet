@@ -75,6 +75,10 @@ module.exports = {
               label: 'GitHub',
               href: 'https://github.com/PaulLeCam/react-leaflet',
             },
+            {
+              label: 'v2 (unsupported) documentation',
+              href: 'https://react-leaflet-v2-docs.netlify.app/en/',
+            },
           ],
         },
       ],
