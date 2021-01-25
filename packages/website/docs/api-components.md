@@ -3,7 +3,7 @@ title: Child components
 ---
 
 :::caution MapContainer required
-Child components can only be used as decendants of a [MapContainer component](api-map.md#mapcontainer).
+Child components can only be used as descendants of a [MapContainer component](api-map.md#mapcontainer).
 :::
 
 ## Props

@@ -18,7 +18,7 @@ However, please **do not** send pull requests to add features that are not suppo
 ## Features requests
 
 This library aims only to support the features provided by Leaflet. If any of these features is not implemented yet, please submit a feature request to add it.\
-If you are looking for implementations of features provided by plugins, they will not be provided by this library, but [can be found on npm](https://www.npmjs.com/search?q=keywords%3Areact-leaflet-v3).\
+If you are looking for implementations of features provided by plugins, they will not be provided by this library, but [can be found on npm](https://www.npmjs.com/search?q=keywords%3Areact-leaflet-v3).
 
 ## Other issues
 
