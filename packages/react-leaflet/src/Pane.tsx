@@ -73,7 +73,9 @@ function createPane(
 export function Pane(props: PaneProps) {
   const [paneElement, setPaneElement] = useState<HTMLElement>()
   const context = useLeafletContext()
-  const newContext = useMemo(() => ({ ...context, pane: props.name }), [context])
+  const newContext = useMemo(() => ({ ...context, pane: props.name }), [
+    context,
+  ])
 
   useEffect(() => {
     setPaneElement(createPane(props, context))

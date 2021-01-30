@@ -1,6 +1,11 @@
+## v3.1.0 (2021-01-30)
+
+- Make `Pane` component compatible with React's `StrictMode` ([PR #810](https://github.com/PaulLeCam/react-leaflet/pull/810) by [zmbc](https://github.com/zmbc))
+- Fix typo in API Components docs ([PR #827](https://github.com/PaulLeCam/react-leaflet/pull/827) by [arthurdenner](https://github.com/arthurdenner))
+
 ## v3.0.5 (2020-12-20)
 
-Use `useState` hook rather than `useMemo` to store immutable values in `MapContainer` and `Pane`.
+Use `useState` hook rather than `useMemo` to store immutable values in `MapContainer` and `Pane`
 
 ## v3.0.4 (2020-12-13)
 

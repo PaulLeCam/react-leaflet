@@ -34,9 +34,15 @@ describe('Pane', () => {
         <MapContainer center={[0, 0]} zoom={10}>
           <Pane name="foo" style={{ zIndex: 1001 }}>
             <Pane name="bar" style={{ zIndex: 4000 }}>
-              <TileLayer attribution="tiles attribution" url="http://localhost/nested" />
+              <TileLayer
+                attribution="tiles attribution"
+                url="http://localhost/nested"
+              />
             </Pane>
-            <TileLayer attribution="tiles attribution" url="http://localhost/not-nested" />
+            <TileLayer
+              attribution="tiles attribution"
+              url="http://localhost/not-nested"
+            />
           </Pane>
         </MapContainer>
       </React.StrictMode>,
@@ -49,29 +55,38 @@ describe('Pane', () => {
       <MapContainer center={[0, 0]} zoom={10}>
         <Pane name="foo" style={{ zIndex: 1001 }}>
           <Pane name="bar" style={{ zIndex: 4000 }}>
-            <TileLayer attribution="tiles attribution" url="http://localhost/nested" />
+            <TileLayer
+              attribution="tiles attribution"
+              url="http://localhost/nested"
+            />
           </Pane>
-          <TileLayer attribution="tiles attribution" url="http://localhost/not-nested" />
+          <TileLayer
+            attribution="tiles attribution"
+            url="http://localhost/not-nested"
+          />
         </Pane>
       </MapContainer>,
     )
     expect(container).toMatchSnapshot()
 
-    rerender(
-      <MapContainer center={[0, 0]} zoom={10}>
-      </MapContainer>,
-    )
+    rerender(<MapContainer center={[0, 0]} zoom={10}></MapContainer>)
     expect(container).toMatchSnapshot()
 
     rerender(
       <MapContainer center={[0, 0]} zoom={10}>
         <Pane name="bar" style={{ zIndex: 1001 }}>
           <Pane name="foo" style={{ zIndex: 4000 }}>
-            <TileLayer attribution="tiles attribution" url="http://localhost/new-foo-nested" />
+            <TileLayer
+              attribution="tiles attribution"
+              url="http://localhost/new-foo-nested"
+            />
           </Pane>
-          <TileLayer attribution="tiles attribution" url="http://localhost/new-bar-not-nested" />
+          <TileLayer
+            attribution="tiles attribution"
+            url="http://localhost/new-bar-not-nested"
+          />
         </Pane>
-      </MapContainer>
+      </MapContainer>,
     )
     expect(container).toMatchSnapshot()
   })
