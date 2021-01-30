@@ -1,0 +1,854 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pane can unmount and remount with the same name 1`] = `
+<div>
+  <div
+    class="leaflet-container leaflet-grab leaflet-touch-drag"
+    style="position: relative;"
+    tabindex="0"
+  >
+    <div
+      class="leaflet-pane leaflet-map-pane"
+      style="left: 0px; top: 0px;"
+    >
+      <div
+        class="leaflet-pane leaflet-tile-pane"
+      />
+      <div
+        class="leaflet-pane leaflet-shadow-pane"
+      />
+      <div
+        class="leaflet-pane leaflet-overlay-pane"
+      />
+      <div
+        class="leaflet-pane leaflet-marker-pane"
+      />
+      <div
+        class="leaflet-pane leaflet-tooltip-pane"
+      />
+      <div
+        class="leaflet-pane leaflet-popup-pane"
+      />
+      <div
+        class="leaflet-pane leaflet-foo-pane"
+        style="z-index: 1001;"
+      >
+        <div
+          class="leaflet-pane leaflet-bar-pane"
+          style="z-index: 4000;"
+        >
+          <div
+            class="leaflet-layer "
+            style="z-index: 1;"
+          >
+            <div
+              class="leaflet-tile-container leaflet-zoom-animated"
+              style="z-index: 18; left: 0px; top: 0px;"
+            >
+              <img
+                alt=""
+                class="leaflet-tile"
+                role="presentation"
+                src="http://localhost/nested"
+                style="width: 256px; height: 256px; left: -256px; top: -256px;"
+              />
+              <img
+                alt=""
+                class="leaflet-tile"
+                role="presentation"
+                src="http://localhost/nested"
+                style="width: 256px; height: 256px; left: 0px; top: -256px;"
+              />
+              <img
+                alt=""
+                class="leaflet-tile"
+                role="presentation"
+                src="http://localhost/nested"
+                style="width: 256px; height: 256px; left: -256px; top: 0px;"
+              />
+              <img
+                alt=""
+                class="leaflet-tile"
+                role="presentation"
+                src="http://localhost/nested"
+                style="width: 256px; height: 256px; left: 0px; top: 0px;"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="leaflet-layer "
+          style="z-index: 1;"
+        >
+          <div
+            class="leaflet-tile-container leaflet-zoom-animated"
+            style="z-index: 18; left: 0px; top: 0px;"
+          >
+            <img
+              alt=""
+              class="leaflet-tile"
+              role="presentation"
+              src="http://localhost/not-nested"
+              style="width: 256px; height: 256px; left: -256px; top: -256px;"
+            />
+            <img
+              alt=""
+              class="leaflet-tile"
+              role="presentation"
+              src="http://localhost/not-nested"
+              style="width: 256px; height: 256px; left: 0px; top: -256px;"
+            />
+            <img
+              alt=""
+              class="leaflet-tile"
+              role="presentation"
+              src="http://localhost/not-nested"
+              style="width: 256px; height: 256px; left: -256px; top: 0px;"
+            />
+            <img
+              alt=""
+              class="leaflet-tile"
+              role="presentation"
+              src="http://localhost/not-nested"
+              style="width: 256px; height: 256px; left: 0px; top: 0px;"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="leaflet-control-container"
+    >
+      <div
+        class="leaflet-top leaflet-left"
+      >
+        <div
+          class="leaflet-control-zoom leaflet-bar leaflet-control"
+        >
+          <a
+            aria-label="Zoom in"
+            class="leaflet-control-zoom-in"
+            href="#"
+            role="button"
+            title="Zoom in"
+          >
+            +
+          </a>
+          <a
+            aria-label="Zoom out"
+            class="leaflet-control-zoom-out"
+            href="#"
+            role="button"
+            title="Zoom out"
+          >
+            −
+          </a>
+        </div>
+      </div>
+      <div
+        class="leaflet-top leaflet-right"
+      />
+      <div
+        class="leaflet-bottom leaflet-left"
+      />
+      <div
+        class="leaflet-bottom leaflet-right"
+      >
+        <div
+          class="leaflet-control-attribution leaflet-control"
+        >
+          <a
+            href="https://leafletjs.com"
+            title="A JS library for interactive maps"
+          >
+            Leaflet
+          </a>
+           | tiles attribution
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Pane can unmount and remount with the same name 2`] = `
+<div>
+  <div
+    class="leaflet-container leaflet-grab leaflet-touch-drag"
+    style="position: relative;"
+    tabindex="0"
+  >
+    <div
+      class="leaflet-pane leaflet-map-pane"
+      style="left: 0px; top: 0px;"
+    >
+      <div
+        class="leaflet-pane leaflet-tile-pane"
+      />
+      <div
+        class="leaflet-pane leaflet-shadow-pane"
+      />
+      <div
+        class="leaflet-pane leaflet-overlay-pane"
+      />
+      <div
+        class="leaflet-pane leaflet-marker-pane"
+      />
+      <div
+        class="leaflet-pane leaflet-tooltip-pane"
+      />
+      <div
+        class="leaflet-pane leaflet-popup-pane"
+      />
+    </div>
+    <div
+      class="leaflet-control-container"
+    >
+      <div
+        class="leaflet-top leaflet-left"
+      >
+        <div
+          class="leaflet-control-zoom leaflet-bar leaflet-control"
+        >
+          <a
+            aria-label="Zoom in"
+            class="leaflet-control-zoom-in"
+            href="#"
+            role="button"
+            title="Zoom in"
+          >
+            +
+          </a>
+          <a
+            aria-label="Zoom out"
+            class="leaflet-control-zoom-out"
+            href="#"
+            role="button"
+            title="Zoom out"
+          >
+            −
+          </a>
+        </div>
+      </div>
+      <div
+        class="leaflet-top leaflet-right"
+      />
+      <div
+        class="leaflet-bottom leaflet-left"
+      />
+      <div
+        class="leaflet-bottom leaflet-right"
+      >
+        <div
+          class="leaflet-control-attribution leaflet-control"
+        >
+          <a
+            href="https://leafletjs.com"
+            title="A JS library for interactive maps"
+          >
+            Leaflet
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Pane can unmount and remount with the same name 3`] = `
+<div>
+  <div
+    class="leaflet-container leaflet-grab leaflet-touch-drag"
+    style="position: relative;"
+    tabindex="0"
+  >
+    <div
+      class="leaflet-pane leaflet-map-pane"
+      style="left: 0px; top: 0px;"
+    >
+      <div
+        class="leaflet-pane leaflet-tile-pane"
+      />
+      <div
+        class="leaflet-pane leaflet-shadow-pane"
+      />
+      <div
+        class="leaflet-pane leaflet-overlay-pane"
+      />
+      <div
+        class="leaflet-pane leaflet-marker-pane"
+      />
+      <div
+        class="leaflet-pane leaflet-tooltip-pane"
+      />
+      <div
+        class="leaflet-pane leaflet-popup-pane"
+      />
+      <div
+        class="leaflet-pane leaflet-bar-pane"
+        style="z-index: 1001;"
+      >
+        <div
+          class="leaflet-pane leaflet-foo-pane"
+          style="z-index: 4000;"
+        >
+          <div
+            class="leaflet-layer "
+            style="z-index: 1;"
+          >
+            <div
+              class="leaflet-tile-container leaflet-zoom-animated"
+              style="z-index: 18; left: 0px; top: 0px;"
+            >
+              <img
+                alt=""
+                class="leaflet-tile"
+                role="presentation"
+                src="http://localhost/new-foo-nested"
+                style="width: 256px; height: 256px; left: -256px; top: -256px;"
+              />
+              <img
+                alt=""
+                class="leaflet-tile"
+                role="presentation"
+                src="http://localhost/new-foo-nested"
+                style="width: 256px; height: 256px; left: 0px; top: -256px;"
+              />
+              <img
+                alt=""
+                class="leaflet-tile"
+                role="presentation"
+                src="http://localhost/new-foo-nested"
+                style="width: 256px; height: 256px; left: -256px; top: 0px;"
+              />
+              <img
+                alt=""
+                class="leaflet-tile"
+                role="presentation"
+                src="http://localhost/new-foo-nested"
+                style="width: 256px; height: 256px; left: 0px; top: 0px;"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="leaflet-layer "
+          style="z-index: 1;"
+        >
+          <div
+            class="leaflet-tile-container leaflet-zoom-animated"
+            style="z-index: 18; left: 0px; top: 0px;"
+          >
+            <img
+              alt=""
+              class="leaflet-tile"
+              role="presentation"
+              src="http://localhost/new-bar-not-nested"
+              style="width: 256px; height: 256px; left: -256px; top: -256px;"
+            />
+            <img
+              alt=""
+              class="leaflet-tile"
+              role="presentation"
+              src="http://localhost/new-bar-not-nested"
+              style="width: 256px; height: 256px; left: 0px; top: -256px;"
+            />
+            <img
+              alt=""
+              class="leaflet-tile"
+              role="presentation"
+              src="http://localhost/new-bar-not-nested"
+              style="width: 256px; height: 256px; left: -256px; top: 0px;"
+            />
+            <img
+              alt=""
+              class="leaflet-tile"
+              role="presentation"
+              src="http://localhost/new-bar-not-nested"
+              style="width: 256px; height: 256px; left: 0px; top: 0px;"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="leaflet-control-container"
+    >
+      <div
+        class="leaflet-top leaflet-left"
+      >
+        <div
+          class="leaflet-control-zoom leaflet-bar leaflet-control"
+        >
+          <a
+            aria-label="Zoom in"
+            class="leaflet-control-zoom-in"
+            href="#"
+            role="button"
+            title="Zoom in"
+          >
+            +
+          </a>
+          <a
+            aria-label="Zoom out"
+            class="leaflet-control-zoom-out"
+            href="#"
+            role="button"
+            title="Zoom out"
+          >
+            −
+          </a>
+        </div>
+      </div>
+      <div
+        class="leaflet-top leaflet-right"
+      />
+      <div
+        class="leaflet-bottom leaflet-left"
+      />
+      <div
+        class="leaflet-bottom leaflet-right"
+      >
+        <div
+          class="leaflet-control-attribution leaflet-control"
+        >
+          <a
+            href="https://leafletjs.com"
+            title="A JS library for interactive maps"
+          >
+            Leaflet
+          </a>
+           | tiles attribution
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Pane renders 1`] = `
+<div>
+  <div
+    class="leaflet-container leaflet-grab leaflet-touch-drag"
+    style="position: relative;"
+    tabindex="0"
+  >
+    <div
+      class="leaflet-pane leaflet-map-pane"
+      style="left: 0px; top: 0px;"
+    >
+      <div
+        class="leaflet-pane leaflet-tile-pane"
+      />
+      <div
+        class="leaflet-pane leaflet-shadow-pane"
+      />
+      <div
+        class="leaflet-pane leaflet-overlay-pane"
+      />
+      <div
+        class="leaflet-pane leaflet-marker-pane"
+      />
+      <div
+        class="leaflet-pane leaflet-tooltip-pane"
+      />
+      <div
+        class="leaflet-pane leaflet-popup-pane"
+      />
+      <div
+        class="leaflet-pane leaflet-foo-pane"
+        style="z-index: 1000;"
+      >
+        <div
+          class="leaflet-layer "
+          style="z-index: 1;"
+        >
+          <div
+            class="leaflet-tile-container leaflet-zoom-animated"
+            style="z-index: 18; left: 0px; top: 0px;"
+          >
+            <img
+              alt=""
+              class="leaflet-tile"
+              role="presentation"
+              src="http://localhost"
+              style="width: 256px; height: 256px; left: -256px; top: -256px;"
+            />
+            <img
+              alt=""
+              class="leaflet-tile"
+              role="presentation"
+              src="http://localhost"
+              style="width: 256px; height: 256px; left: 0px; top: -256px;"
+            />
+            <img
+              alt=""
+              class="leaflet-tile"
+              role="presentation"
+              src="http://localhost"
+              style="width: 256px; height: 256px; left: -256px; top: 0px;"
+            />
+            <img
+              alt=""
+              class="leaflet-tile"
+              role="presentation"
+              src="http://localhost"
+              style="width: 256px; height: 256px; left: 0px; top: 0px;"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="leaflet-control-container"
+    >
+      <div
+        class="leaflet-top leaflet-left"
+      >
+        <div
+          class="leaflet-control-zoom leaflet-bar leaflet-control"
+        >
+          <a
+            aria-label="Zoom in"
+            class="leaflet-control-zoom-in"
+            href="#"
+            role="button"
+            title="Zoom in"
+          >
+            +
+          </a>
+          <a
+            aria-label="Zoom out"
+            class="leaflet-control-zoom-out"
+            href="#"
+            role="button"
+            title="Zoom out"
+          >
+            −
+          </a>
+        </div>
+      </div>
+      <div
+        class="leaflet-top leaflet-right"
+      />
+      <div
+        class="leaflet-bottom leaflet-left"
+      />
+      <div
+        class="leaflet-bottom leaflet-right"
+      >
+        <div
+          class="leaflet-control-attribution leaflet-control"
+        >
+          <a
+            href="https://leafletjs.com"
+            title="A JS library for interactive maps"
+          >
+            Leaflet
+          </a>
+           | tiles attribution
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Pane renders in Strict Mode 1`] = `
+<div>
+  <div
+    class="leaflet-container leaflet-grab leaflet-touch-drag"
+    style="position: relative;"
+    tabindex="0"
+  >
+    <div
+      class="leaflet-pane leaflet-map-pane"
+      style="left: 0px; top: 0px;"
+    >
+      <div
+        class="leaflet-pane leaflet-tile-pane"
+      />
+      <div
+        class="leaflet-pane leaflet-shadow-pane"
+      />
+      <div
+        class="leaflet-pane leaflet-overlay-pane"
+      />
+      <div
+        class="leaflet-pane leaflet-marker-pane"
+      />
+      <div
+        class="leaflet-pane leaflet-tooltip-pane"
+      />
+      <div
+        class="leaflet-pane leaflet-popup-pane"
+      />
+      <div
+        class="leaflet-pane leaflet-foo-pane"
+        style="z-index: 1001;"
+      >
+        <div
+          class="leaflet-layer "
+          style="z-index: 1;"
+        >
+          <div
+            class="leaflet-tile-container leaflet-zoom-animated"
+            style="z-index: 18; left: 0px; top: 0px;"
+          >
+            <img
+              alt=""
+              class="leaflet-tile"
+              role="presentation"
+              src="http://localhost"
+              style="width: 256px; height: 256px; left: -256px; top: -256px;"
+            />
+            <img
+              alt=""
+              class="leaflet-tile"
+              role="presentation"
+              src="http://localhost"
+              style="width: 256px; height: 256px; left: 0px; top: -256px;"
+            />
+            <img
+              alt=""
+              class="leaflet-tile"
+              role="presentation"
+              src="http://localhost"
+              style="width: 256px; height: 256px; left: -256px; top: 0px;"
+            />
+            <img
+              alt=""
+              class="leaflet-tile"
+              role="presentation"
+              src="http://localhost"
+              style="width: 256px; height: 256px; left: 0px; top: 0px;"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="leaflet-control-container"
+    >
+      <div
+        class="leaflet-top leaflet-left"
+      >
+        <div
+          class="leaflet-control-zoom leaflet-bar leaflet-control"
+        >
+          <a
+            aria-label="Zoom in"
+            class="leaflet-control-zoom-in"
+            href="#"
+            role="button"
+            title="Zoom in"
+          >
+            +
+          </a>
+          <a
+            aria-label="Zoom out"
+            class="leaflet-control-zoom-out"
+            href="#"
+            role="button"
+            title="Zoom out"
+          >
+            −
+          </a>
+        </div>
+      </div>
+      <div
+        class="leaflet-top leaflet-right"
+      />
+      <div
+        class="leaflet-bottom leaflet-left"
+      />
+      <div
+        class="leaflet-bottom leaflet-right"
+      >
+        <div
+          class="leaflet-control-attribution leaflet-control"
+        >
+          <a
+            href="https://leafletjs.com"
+            title="A JS library for interactive maps"
+          >
+            Leaflet
+          </a>
+           | tiles attribution
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Pane renders nested panes 1`] = `
+<div>
+  <div
+    class="leaflet-container leaflet-grab leaflet-touch-drag"
+    style="position: relative;"
+    tabindex="0"
+  >
+    <div
+      class="leaflet-pane leaflet-map-pane"
+      style="left: 0px; top: 0px;"
+    >
+      <div
+        class="leaflet-pane leaflet-tile-pane"
+      />
+      <div
+        class="leaflet-pane leaflet-shadow-pane"
+      />
+      <div
+        class="leaflet-pane leaflet-overlay-pane"
+      />
+      <div
+        class="leaflet-pane leaflet-marker-pane"
+      />
+      <div
+        class="leaflet-pane leaflet-tooltip-pane"
+      />
+      <div
+        class="leaflet-pane leaflet-popup-pane"
+      />
+      <div
+        class="leaflet-pane leaflet-foo-pane"
+        style="z-index: 1001;"
+      >
+        <div
+          class="leaflet-pane leaflet-bar-pane"
+          style="z-index: 4000;"
+        >
+          <div
+            class="leaflet-layer "
+            style="z-index: 1;"
+          >
+            <div
+              class="leaflet-tile-container leaflet-zoom-animated"
+              style="z-index: 18; left: 0px; top: 0px;"
+            >
+              <img
+                alt=""
+                class="leaflet-tile"
+                role="presentation"
+                src="http://localhost/nested"
+                style="width: 256px; height: 256px; left: -256px; top: -256px;"
+              />
+              <img
+                alt=""
+                class="leaflet-tile"
+                role="presentation"
+                src="http://localhost/nested"
+                style="width: 256px; height: 256px; left: 0px; top: -256px;"
+              />
+              <img
+                alt=""
+                class="leaflet-tile"
+                role="presentation"
+                src="http://localhost/nested"
+                style="width: 256px; height: 256px; left: -256px; top: 0px;"
+              />
+              <img
+                alt=""
+                class="leaflet-tile"
+                role="presentation"
+                src="http://localhost/nested"
+                style="width: 256px; height: 256px; left: 0px; top: 0px;"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="leaflet-layer "
+          style="z-index: 1;"
+        >
+          <div
+            class="leaflet-tile-container leaflet-zoom-animated"
+            style="z-index: 18; left: 0px; top: 0px;"
+          >
+            <img
+              alt=""
+              class="leaflet-tile"
+              role="presentation"
+              src="http://localhost/not-nested"
+              style="width: 256px; height: 256px; left: -256px; top: -256px;"
+            />
+            <img
+              alt=""
+              class="leaflet-tile"
+              role="presentation"
+              src="http://localhost/not-nested"
+              style="width: 256px; height: 256px; left: 0px; top: -256px;"
+            />
+            <img
+              alt=""
+              class="leaflet-tile"
+              role="presentation"
+              src="http://localhost/not-nested"
+              style="width: 256px; height: 256px; left: -256px; top: 0px;"
+            />
+            <img
+              alt=""
+              class="leaflet-tile"
+              role="presentation"
+              src="http://localhost/not-nested"
+              style="width: 256px; height: 256px; left: 0px; top: 0px;"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="leaflet-control-container"
+    >
+      <div
+        class="leaflet-top leaflet-left"
+      >
+        <div
+          class="leaflet-control-zoom leaflet-bar leaflet-control"
+        >
+          <a
+            aria-label="Zoom in"
+            class="leaflet-control-zoom-in"
+            href="#"
+            role="button"
+            title="Zoom in"
+          >
+            +
+          </a>
+          <a
+            aria-label="Zoom out"
+            class="leaflet-control-zoom-out"
+            href="#"
+            role="button"
+            title="Zoom out"
+          >
+            −
+          </a>
+        </div>
+      </div>
+      <div
+        class="leaflet-top leaflet-right"
+      />
+      <div
+        class="leaflet-bottom leaflet-left"
+      />
+      <div
+        class="leaflet-bottom leaflet-right"
+      >
+        <div
+          class="leaflet-control-attribution leaflet-control"
+        >
+          <a
+            href="https://leafletjs.com"
+            title="A JS library for interactive maps"
+          >
+            Leaflet
+          </a>
+           | tiles attribution
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

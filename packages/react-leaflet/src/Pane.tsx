@@ -4,7 +4,13 @@ import {
   addClassName,
   useLeafletContext,
 } from '@react-leaflet/core'
-import React, { CSSProperties, ReactNode, useEffect, useState } from 'react'
+import React, {
+  CSSProperties,
+  ReactNode,
+  useState,
+  useEffect,
+  useMemo,
+} from 'react'
 import { createPortal } from 'react-dom'
 
 const DEFAULT_PANES = [
@@ -65,11 +71,13 @@ function createPane(
 }
 
 export function Pane(props: PaneProps) {
+  const [paneElement, setPaneElement] = useState<HTMLElement>()
   const context = useLeafletContext()
-  const [paneElement] = useState(() => createPane(props, context))
-  const [newContext] = useState(() => ({ ...context, pane: props.name }))
+  const newContext = useMemo(() => ({ ...context, pane: props.name }), [context])
 
   useEffect(() => {
+    setPaneElement(createPane(props, context))
+
     return function removeCreatedPane() {
       const pane = context.map.getPane(props.name)
       pane?.remove?.()
@@ -89,7 +97,7 @@ export function Pane(props: PaneProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  return props.children != null
+  return props.children != null && paneElement != null
     ? createPortal(
         <LeafletProvider value={newContext}>{props.children}</LeafletProvider>,
         paneElement,
