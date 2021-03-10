@@ -9,6 +9,7 @@ import { TileLayer, WMSOptions, WMSParams } from 'leaflet'
 export interface WMSTileLayerProps extends WMSOptions, LayerProps {
   params?: WMSParams
   url: string
+  env?: string
 }
 
 export const WMSTileLayer = createTileLayerComponent<
