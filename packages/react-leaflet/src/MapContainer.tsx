@@ -51,7 +51,7 @@ export function useMapElement(
   return map
 }
 
-export function MapContainer({
+function MapContainer({
   children,
   className,
   id,
@@ -88,3 +88,4 @@ export function MapContainer({
     </div>
   )
 }
+    export default MapContainer;
