@@ -36,7 +36,7 @@ export function createContainerComponent<E, P extends PropsWithChildren>(
 
 export function createDivOverlayComponent<
   E extends DivOverlay,
-  P extends PropsWithChildren
+  P extends PropsWithChildren,
 >(useElement: ReturnType<DivOverlayHook<E, P>>) {
   function OverlayComponent(props: P, ref: Ref<E>) {
     const [isOpen, setOpen] = useState(false)

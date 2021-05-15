@@ -2,7 +2,7 @@ import { GridLayer, GridLayerOptions } from 'leaflet'
 
 export function updateGridLayer<
   E extends GridLayer,
-  P extends GridLayerOptions
+  P extends GridLayerOptions,
 >(layer: E, props: P, prevProps: P) {
   const { opacity, zIndex } = props
   if (opacity != null && opacity !== prevProps.opacity) {

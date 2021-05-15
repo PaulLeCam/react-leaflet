@@ -8,9 +8,9 @@ import {
 import { Control, Layer } from 'leaflet'
 import React, {
   ForwardRefExoticComponent,
+  FunctionComponent,
   ReactNode,
   RefAttributes,
-  StatelessComponent,
   useCallback,
   useEffect,
   useMemo,
@@ -53,8 +53,8 @@ export interface ControlledLayerProps {
 export const LayersControl: ForwardRefExoticComponent<
   LayersControlProps & RefAttributes<Control.Layers>
 > & {
-  BaseLayer: StatelessComponent<ControlledLayerProps>
-  Overlay: StatelessComponent<ControlledLayerProps>
+  BaseLayer: FunctionComponent<ControlledLayerProps>
+  Overlay: FunctionComponent<ControlledLayerProps>
 } = createContainerComponent(useLayersControl)
 
 type AddLayerFunc = (

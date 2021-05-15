@@ -25,7 +25,7 @@ export type DivOverlayHook<E extends DivOverlay, P> = (
 
 export function createDivOverlayHook<
   E extends DivOverlay,
-  P extends LayerProps
+  P extends LayerProps,
 >(useElement: ElementHook<E, P>, useLifecycle: DivOverlayLifecycleHook<E, P>) {
   return function useDivOverlay(
     props: P,

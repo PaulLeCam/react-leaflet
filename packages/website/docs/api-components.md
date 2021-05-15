@@ -89,15 +89,14 @@ Applies to [vector layer components](#vector-layers), adding support for a [`pat
 
 ### MediaOverlay behavior
 
-Applies to components using [Leaflet's ImageOverlay class](https://leafletjs.com/reference-1.7.1.html#imageoverlay), adding support for mutable `bounds: LatLngBoundsExpression`, [`opacity: number`](https://leafletjs.com/reference-1.7.1.html#imageoverlay-opacity) and [`zIndex: number`](https://leafletjs.com/reference-1.7.1.html#imageoverlay-zindex) props.
+Applies to components using [Leaflet's ImageOverlay class](https://leafletjs.com/reference-1.7.1.html#imageoverlay), adding support for mutable [`bounds: LatLngBounds`](https://leafletjs.com/reference-1.7.1.html#latlngbounds), [`opacity: number`](https://leafletjs.com/reference-1.7.1.html#imageoverlay-opacity) and [`zIndex: number`](https://leafletjs.com/reference-1.7.1.html#imageoverlay-zindex) props.
 
 ```tsx Example component with MediaOverlay behavior
+const bounds = new LatLngBounds([40.712216, -74.22655], [40.773941, -74.12544])
+
 <ImageOverlay
   url="http://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg"
-  bounds={[
-    [40.712216, -74.22655],
-    [40.773941, -74.12544],
-  ]}
+  bounds={bounds}
   opacity={0.5}
   zIndex={10}
 />
@@ -224,7 +223,7 @@ Applies to [control components](#controls), making their [`position: ControlPosi
 | Prop            | Type                              | Required | Mutable | Behavior                                     |
 | --------------- | --------------------------------- | -------- | ------- | -------------------------------------------- |
 | `attribution`   | `string`                          | No       | **Yes** | [Attribution](#attribution-behavior)         |
-| `bounds`        | `LatLngBoundsExpression`          | **Yes**  | **Yes** | [MediaOverlay](#mediaoverlay-behavior)       |
+| `bounds`        | `LatLngBounds`                    | **Yes**  | **Yes** | [MediaOverlay](#mediaoverlay-behavior)       |
 | `children`      | `ReactNode`                       | No       | **Yes** | [ParentComponent](#parentcomponent-behavior) |
 | `eventHandlers` | `LeafletEventHandlerFnMap`        | No       | **Yes** | [Evented](#evented-behavior)                 |
 | `opacity`       | `number`                          | No       | **Yes** | [MediaOverlay](#mediaoverlay-behavior)       |
@@ -241,7 +240,7 @@ Applies to [control components](#controls), making their [`position: ControlPosi
 | Prop            | Type                                       | Required | Mutable | Behavior                                 |
 | --------------- | ------------------------------------------ | -------- | ------- | ---------------------------------------- |
 | `attribution`   | `string`                                   | No       | **Yes** | [Attribution](#attribution-behavior)     |
-| `bounds`        | `LatLngBoundsExpression`                   | **Yes**  | **Yes** | [MediaOverlay](#mediaoverlay-behavior)   |
+| `bounds`        | `LatLngBounds`                             | **Yes**  | **Yes** | [MediaOverlay](#mediaoverlay-behavior)   |
 | `eventHandlers` | `LeafletEventHandlerFnMap`                 | No       | **Yes** | [Evented](#evented-behavior)             |
 | `play`          | `boolean`                                  | No       | **Yes** |
 | `ref`           | `RefObject<Leaflet.VideoOverlay>`          | No       | **Yes** | [Referenceable](#referenceable-behavior) |
@@ -382,15 +381,15 @@ The `attributes` must be valid [`SVGSVGElement` properties](https://developer.mo
 
 **Props**
 
-| Prop            | Type                         | Required | Mutable | Behavior                                     |
-| --------------- | ---------------------------- | -------- | ------- | -------------------------------------------- |
-| `attribution`   | `string`                     | No       | **Yes** | [Attribution](#attribution-behavior)         |
-| `children`      | `ReactNode`                  | No       | **Yes** | [ParentComponent](#parentcomponent-behavior) |
-| `data`          | `GeoJsonObject`              | **Yes**  | No      |
-| `eventHandlers` | `LeafletEventHandlerFnMap`   | No       | **Yes** | [Evented](#evented-behavior)                 |
-| `pane`          | `string`                     | No       | No      | [Pane](#pane-behavior)                       |
-| `pathOptions`   | `PathOptions`                | No       | **Yes** | [Path](#path-behavior)                       |
-| `ref`           | `RefObject<Leaflet.GeoJSON>` | No       | **Yes** | [Referenceable](#referenceable-behavior)     |
+| Prop            | Type                             | Required | Mutable | Behavior                                     |
+| --------------- | -------------------------------- | -------- | ------- | -------------------------------------------- |
+| `attribution`   | `string`                         | No       | **Yes** | [Attribution](#attribution-behavior)         |
+| `children`      | `ReactNode`                      | No       | **Yes** | [ParentComponent](#parentcomponent-behavior) |
+| `data`          | `GeoJsonObject`                  | **Yes**  | No      |
+| `eventHandlers` | `LeafletEventHandlerFnMap`       | No       | **Yes** | [Evented](#evented-behavior)                 |
+| `pane`          | `string`                         | No       | No      | [Pane](#pane-behavior)                       |
+| `ref`           | `RefObject<Leaflet.GeoJSON>`     | No       | **Yes** | [Referenceable](#referenceable-behavior)     |
+| `style`         | `PathOptions` or `StyleFunction` | No       | **Yes** |                                              |
 
 ## Controls
 

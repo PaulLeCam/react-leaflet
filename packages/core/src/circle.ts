@@ -12,10 +12,10 @@ export interface CircleMarkerProps extends CircleMarkerOptions, PathProps {
   children?: ReactNode
 }
 
-export function updateCircle(
+export function updateCircle<P extends CircleMarkerProps = CircleMarkerProps>(
   layer: LeafletCircleMarker,
-  props: CircleMarkerProps,
-  prevProps: CircleMarkerProps,
+  props: P,
+  prevProps: P,
 ) {
   if (props.center !== prevProps.center) {
     layer.setLatLng(props.center)

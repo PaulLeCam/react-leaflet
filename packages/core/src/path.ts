@@ -31,7 +31,7 @@ export function usePathOptions(
 
 export function createPathHook<
   E extends FeatureGroup | Path,
-  P extends PathProps
+  P extends PathProps,
 >(useElement: ElementHook<E, P>) {
   return function usePath(props: P): ReturnType<ElementHook<E, P>> {
     const context = useLeafletContext()

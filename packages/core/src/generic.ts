@@ -22,7 +22,7 @@ interface PathWithChildrenProps extends PathProps, PropsWithChildren {}
 
 export function createControlComponent<
   E extends Control,
-  P extends ControlOptions
+  P extends ControlOptions,
 >(createInstance: (props: P) => E) {
   function createElement(
     props: P,
@@ -37,7 +37,7 @@ export function createControlComponent<
 
 export function createLayerComponent<
   E extends Layer,
-  P extends LayerWithChildrenProps
+  P extends LayerWithChildrenProps,
 >(
   createElement: (
     props: P,
@@ -52,7 +52,7 @@ export function createLayerComponent<
 
 export function createOverlayComponent<
   E extends DivOverlay,
-  P extends LayerWithChildrenProps
+  P extends LayerWithChildrenProps,
 >(
   createElement: (
     props: P,
@@ -67,7 +67,7 @@ export function createOverlayComponent<
 
 export function createPathComponent<
   E extends FeatureGroup | Path,
-  P extends PathWithChildrenProps
+  P extends PathWithChildrenProps,
 >(
   createElement: (
     props: P,

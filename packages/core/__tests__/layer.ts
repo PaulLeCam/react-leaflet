@@ -17,7 +17,7 @@ describe('layer', () => {
     expect(map.removeLayer).toBeCalledWith(element.instance)
   })
 
-  test('useLayerLifecycle() adds and removes the layer to the layerContainer when set', () => {
+  test('useLayerLifecycle() adds the layer to the layerContainer when set and removes from the map', () => {
     const map = { addLayer: jest.fn(), removeLayer: jest.fn() }
     const layerContainer = { addLayer: jest.fn(), removeLayer: jest.fn() }
     const context = { layerContainer, map }
@@ -28,10 +28,10 @@ describe('layer', () => {
     expect(layerContainer.addLayer).toBeCalledWith(element.instance)
 
     unmount()
-    expect(layerContainer.removeLayer).toBeCalledTimes(1)
-    expect(layerContainer.removeLayer).toBeCalledWith(element.instance)
+    expect(layerContainer.removeLayer).toBeCalledTimes(0)
 
     expect(map.addLayer).toBeCalledTimes(0)
-    expect(map.removeLayer).toBeCalledTimes(0)
+    expect(map.removeLayer).toBeCalledTimes(1)
+    expect(map.removeLayer).toBeCalledWith(element.instance)
   })
 })

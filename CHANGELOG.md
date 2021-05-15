@@ -1,3 +1,9 @@
+## v3.2.0 (2021-05-15)
+
+- Change unmounting logic for some layers, which should fix issues related to removing or updating elements.
+- Make the `style` prop of `GeoJSON` mutable, this prop should be used instead of `pathOptions` (`pathOptions` can still be used but should be considered deprecated).
+- Fix documentation about `bounds` prop being an instance of `LatLngBounds`.
+
 ## v3.1.0 (2021-01-30)
 
 - Make `Pane` component compatible with React's `StrictMode` ([PR #810](https://github.com/PaulLeCam/react-leaflet/pull/810) by [zmbc](https://github.com/zmbc))

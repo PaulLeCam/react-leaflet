@@ -17,7 +17,7 @@ export interface MediaOverlayProps
 
 export function updateMediaOverlay<
   E extends LeafletImageOverlay | LeafletSVGOverlay | LeafletVideoOverlay,
-  P extends MediaOverlayProps
+  P extends MediaOverlayProps,
 >(overlay: E, props: P, prevProps: P) {
   if (
     props.bounds instanceof LatLngBounds &&

@@ -51,7 +51,9 @@ export function useMapElement(
   return map
 }
 
-export function MapContainer({
+export function MapContainer<
+  Props extends MapContainerProps = MapContainerProps,
+>({
   children,
   className,
   id,
@@ -59,7 +61,7 @@ export function MapContainer({
   style,
   whenCreated,
   ...options
-}: MapContainerProps) {
+}: Props) {
   const mapRef = useRef<HTMLDivElement>(null)
   const map = useMapElement(mapRef, options)
 
