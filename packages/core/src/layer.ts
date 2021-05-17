@@ -18,7 +18,7 @@ export function useLayerLifecycle(
 ) {
   useEffect(
     function addLayer() {
-      const container = context.layerContainer ?? context.map
+      const container = context.layerContainer || context.map
       container.addLayer(element.instance)
 
       return function removeLayer() {
