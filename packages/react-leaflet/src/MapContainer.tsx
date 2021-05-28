@@ -52,7 +52,7 @@ export function useMapElement(
 }
 
 export function MapContainer<
-  Props extends MapContainerProps = MapContainerProps,
+  Props extends MapContainerProps = MapContainerProps
 >({
   children,
   className,
@@ -81,9 +81,9 @@ export function MapContainer<
 
   const contents = context ? (
     <LeafletProvider value={context}>{children}</LeafletProvider>
-  ) : (
-    placeholder ?? null
-  )
+  ) : placeholder ? (
+    placeholder
+  ) : null
   return (
     <div {...props} ref={mapRef}>
       {contents}
