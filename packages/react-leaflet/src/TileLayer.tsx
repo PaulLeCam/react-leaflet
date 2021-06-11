@@ -7,6 +7,7 @@ import {
 import { TileLayer as LeafletTileLayer, TileLayerOptions } from 'leaflet'
 
 export interface TileLayerProps extends TileLayerOptions, LayerProps {
+  attribution?: string
   url: string
 }
 
