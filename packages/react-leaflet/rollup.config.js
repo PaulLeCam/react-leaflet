@@ -22,7 +22,7 @@ const config = {
     },
     name: 'ReactLeaflet',
   },
-  external: ['leaflet', 'react', 'react-dom'],
+  external: ['leaflet', 'react', 'react-dom', '@react-leaflet/core'],
   plugins: [
     nodeResolve({
       browser: true,
