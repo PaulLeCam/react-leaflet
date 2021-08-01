@@ -3,6 +3,7 @@ module.exports = {
   tagline: 'React components for Leaflet maps',
   url: 'https://react-leaflet.js.org',
   baseUrl: '/',
+  trailingSlash: true,
   favicon: 'img/logo.svg',
   organizationName: 'PaulLeCam',
   projectName: 'react-leaflet',

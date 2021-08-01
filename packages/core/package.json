@@ -43,5 +43,8 @@
     "leaflet": "^1.7.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
+  },
+  "jest": {
+    "testEnvironment": "jsdom"
   }
 }

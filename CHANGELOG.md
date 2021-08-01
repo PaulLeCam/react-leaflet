@@ -1,3 +1,8 @@
+## v3.2.1 (2021-08-01)
+
+- Fix `Popup` unmounting logic to unbind from container.
+- Fix links to point to Leaflet 1.7.1 docs ([PR #889](https://github.com/PaulLeCam/react-leaflet/pull/889) by [zerekw](https://github.com/zerekw)).
+
 ## v3.2.0 (2021-05-15)
 
 - Change unmounting logic for some layers, which should fix issues related to removing or updating elements.

@@ -75,6 +75,7 @@ export const Popup = createOverlayComponent<LeafletPopup, PopupProps>(
             popupopen: onPopupOpen,
             popupclose: onPopupClose,
           })
+          context.overlayContainer?.unbindPopup()
           context.map.removeLayer(instance)
         }
       },

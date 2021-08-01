@@ -17,8 +17,9 @@ export interface LeafletContextInterface {
   pane?: string
 }
 
-export const LeafletContext =
-  createContext<LeafletContextInterface | null>(null)
+export const LeafletContext = createContext<LeafletContextInterface | null>(
+  null,
+)
 
 export const LeafletProvider = LeafletContext.Provider
 
