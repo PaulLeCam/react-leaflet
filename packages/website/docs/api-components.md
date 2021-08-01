@@ -130,7 +130,7 @@ Applies to [control components](#controls), making their [`position: ControlPosi
 
 ### Marker
 
-[Leaflet reference](http://leafletjs.com/reference-1.6.0.html#marker)
+[Leaflet reference](http://leafletjs.com/reference-1.7.1.html#marker)
 
 **Props**
 
@@ -149,7 +149,7 @@ Applies to [control components](#controls), making their [`position: ControlPosi
 
 ### Popup
 
-[Leaflet reference](http://leafletjs.com/reference-1.6.0.html#popup)
+[Leaflet reference](http://leafletjs.com/reference-1.7.1.html#popup)
 
 **Props**
 
@@ -166,7 +166,7 @@ Applies to [control components](#controls), making their [`position: ControlPosi
 
 ### Tooltip
 
-[Leaflet reference](http://leafletjs.com/reference-1.6.0.html#tooltip)
+[Leaflet reference](http://leafletjs.com/reference-1.7.1.html#tooltip)
 
 **Props**
 
