@@ -22,7 +22,7 @@ export function useLayerLifecycle(
       container.addLayer(element.instance)
 
       return function removeLayer() {
-        context.layersControl?.removeLayer(element.instance)
+        context.layerContainer?.removeLayer(element.instance)
         context.map.removeLayer(element.instance)
       }
     },
