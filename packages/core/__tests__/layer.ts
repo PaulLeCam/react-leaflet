@@ -28,7 +28,7 @@ describe('layer', () => {
     expect(layerContainer.addLayer).toBeCalledWith(element.instance)
 
     unmount()
-    expect(layerContainer.removeLayer).toBeCalledTimes(0)
+    expect(layerContainer.removeLayer).toBeCalledTimes(1)
 
     expect(map.addLayer).toBeCalledTimes(0)
     expect(map.removeLayer).toBeCalledTimes(1)

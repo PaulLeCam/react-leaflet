@@ -1,3 +1,7 @@
+## v3.2.2 (2021-10-09)
+
+Fix layer unmount ([PR #916](https://github.com/PaulLeCam/react-leaflet/pull/916) by [piitaya](https://github.com/piitaya)).
+
 ## v3.2.1 (2021-08-01)
 
 - Fix `Popup` unmounting logic to unbind from container.

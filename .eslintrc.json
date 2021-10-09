@@ -26,7 +26,7 @@
     "prettier/prettier": [
       "error",
       {
-        "jsxBracketSameLine": true,
+        "bracketSameLine": true,
         "semi": false,
         "singleQuote": true,
         "trailingComma": "all"

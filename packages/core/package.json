@@ -1,6 +1,6 @@
 {
   "name": "@react-leaflet/core",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "React Leaflet core",
   "main": "cjs/index.js",
   "module": "esm/index.js",
