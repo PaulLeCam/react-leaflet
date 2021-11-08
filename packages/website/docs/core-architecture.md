@@ -14,8 +14,8 @@ The first step to implement a component in React Leaflet is to identify the nece
 
 For our `Square` component, we'll support two properties: a `center` position and the square's `size`.
 
-By using [Leaflet's `Rectangle` class](https://leafletjs.com/reference-1.7.1.html#rectangle), we can add a rectangle to the map, so this is the base we'll use for our `Square`.
-Leaflet's `Rectangle` constructor needs to be provided bounds, so we'll also use the [`toBounds` method of the `LatLng` class](https://leafletjs.com/reference-1.7.1.html#latlng-tobounds) to converts our `center` and `size` props to bounds.
+By using [Leaflet's `Rectangle` class](https://leafletjs.com/reference.html#rectangle), we can add a rectangle to the map, so this is the base we'll use for our `Square`.
+Leaflet's `Rectangle` constructor needs to be provided bounds, so we'll also use the [`toBounds` method of the `LatLng` class](https://leafletjs.com/reference.html#latlng-tobounds) to converts our `center` and `size` props to bounds.
 
 ## First version
 
@@ -58,7 +58,7 @@ First, we need to access the context created by the [`MapContainer` component](a
 const context = useLeafletContext()
 ```
 
-Then, we use [React's `useEffect` hook](https://reactjs.org/docs/hooks-reference.html#useeffect) to create the square instance, using the props to calculate the bounds to provide to [Leaflet's `Rectangle` constructor](https://leafletjs.com/reference-1.7.1.html#rectangle):
+Then, we use [React's `useEffect` hook](https://reactjs.org/docs/hooks-reference.html#useeffect) to create the square instance, using the props to calculate the bounds to provide to [Leaflet's `Rectangle` constructor](https://leafletjs.com/reference.html#rectangle):
 
 ```ts
 const bounds = L.latLng(props.center).toBounds(props.size)

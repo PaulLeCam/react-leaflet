@@ -4,9 +4,9 @@ title: Map creation and interactions
 
 ## MapContainer
 
-The `MapContainer` component is responsible for creating the [Leaflet Map](https://leafletjs.com/reference-1.7.1.html#map) instance and providing it to its [child components](api-components.md), using a [React Context](https://reactjs.org/docs/context.html).
+The `MapContainer` component is responsible for creating the [Leaflet Map](https://leafletjs.com/reference.html#map) instance and providing it to its [child components](api-components.md), using a [React Context](https://reactjs.org/docs/context.html).
 
-When creating a `MapContainer` element, its props are used as options to [create the Map instance](https://leafletjs.com/reference-1.7.1.html#map-l-map).
+When creating a `MapContainer` element, its props are used as options to [create the Map instance](https://leafletjs.com/reference.html#map-l-map).
 
 The following additional props are supported:
 
