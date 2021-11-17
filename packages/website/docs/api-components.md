@@ -158,8 +158,8 @@ Applies to [control components](#controls), making their [`position: ControlPosi
 | `attribution`   | `string`                   | No       | **Yes** | [Attribution](#attribution-behavior)         |
 | `children`      | `ReactNode`                | No       | **Yes** | [ParentComponent](#parentcomponent-behavior) |
 | `eventHandlers` | `LeafletEventHandlerFnMap` | No       | **Yes** | [Evented](#evented-behavior)                 |
-| `onClose`       | `() => void`               | No       | **Yes** |
-| `onOpen`        | `() => void`               | No       | **Yes** |
+| `onClose`       | `() => void`               | No       | No      |
+| `onOpen`        | `() => void`               | No       | No      |
 | `pane`          | `string`                   | No       | No      | [Pane](#pane-behavior)                       |
 | `position`      | `LatLngExpression`         | No       | **Yes** |
 | `ref`           | `RefObject<Leaflet.Popup>` | No       | **Yes** | [Referenceable](#referenceable-behavior)     |
