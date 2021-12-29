@@ -7,6 +7,8 @@ import {
 import React, {
   type CSSProperties,
   type ReactNode,
+  type Ref,
+  forwardRef,
   useState,
   useEffect,
   useMemo,
@@ -69,14 +71,24 @@ function createPane(
   return element
 }
 
-export function Pane(props: PaneProps) {
+function PaneComponent(props: PaneProps, forwardedRef: Ref<HTMLElement>) {
   const [paneName] = useState(props.name)
   const [paneElement, setPaneElement] = useState<HTMLElement>()
   const context = useLeafletContext()
   const newContext = useMemo(() => ({ ...context, pane: paneName }), [context])
 
   useEffect(() => {
-    setPaneElement(createPane(paneName, props, context))
+    const createdPane = createPane(paneName, props, context)
+    setPaneElement(createdPane)
+
+    if (forwardedRef != null) {
+      if (typeof forwardedRef === 'function') {
+        forwardedRef(createdPane)
+      } else {
+        // @ts-ignore assignment
+        forwardedRef.current = createdPane
+      }
+    }
 
     return function removeCreatedPane() {
       const pane = context.map.getPane(paneName)
@@ -104,3 +116,5 @@ export function Pane(props: PaneProps) {
       )
     : null
 }
+
+export const Pane = forwardRef(PaneComponent)

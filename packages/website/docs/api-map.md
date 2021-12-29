@@ -10,17 +10,16 @@ When creating a `MapContainer` element, its props are used as options to [create
 
 The following additional props are supported:
 
-| Prop            | Type                         |
-| --------------- | ---------------------------- |
-| `bounds`        | `LatLngBoundsExpression`     |
-| `boundsOptions` | `FitBoundsOptions`           |
-| `children`      | `ReactNode`                  |
-| `className`     | `string`                     |
-| `id`            | `string`                     |
-| `placeholder`   | `ReactNode`                  |
-| `style`         | `CSSProperties`              |
-| `whenCreated`   | `(map: Leaflet.Map) => void` |
-| `whenReady`     | `() => void`                 |
+| Prop            | Type                     |
+| --------------- | ------------------------ |
+| `bounds`        | `LatLngBoundsExpression` |
+| `boundsOptions` | `FitBoundsOptions`       |
+| `children`      | `ReactNode`              |
+| `className`     | `string`                 |
+| `id`            | `string`                 |
+| `placeholder`   | `ReactNode`              |
+| `style`         | `CSSProperties`          |
+| `whenReady`     | `() => void`             |
 
 Except for its `children`, `MapContainer` props are **immutable**: changing them after they have been set a first time will have no effect on the Map instance or its container.  
 The Leaflet `Map` instance created by the `MapContainer` element can be accessed by [child components](api-components.md) using one of [the provided hooks](#hooks) or the [`MapConsumer` component](#mapconsumer).

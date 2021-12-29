@@ -15,8 +15,6 @@ import { type ReactNode, useEffect } from 'react'
 
 export interface PopupProps extends PopupOptions, EventedProps {
   children?: ReactNode
-  onClose?: () => void
-  onOpen?: () => void
   position?: LatLngExpression
 }
 
@@ -30,11 +28,9 @@ export const Popup = createOverlayComponent<LeafletPopup, PopupProps>(
   function usePopupLifecycle(
     element: LeafletElement<LeafletPopup>,
     context: LeafletContextInterface,
-    props: PopupProps,
+    { position }: PopupProps,
     setOpen: SetOpenFunc,
   ) {
-    const { onClose, onOpen, position } = props
-
     useEffect(
       function addPopup() {
         const { instance } = element
@@ -43,14 +39,12 @@ export const Popup = createOverlayComponent<LeafletPopup, PopupProps>(
           if (event.popup === instance) {
             instance.update()
             setOpen(true)
-            onOpen?.()
           }
         }
 
         function onPopupClose(event: PopupEvent) {
           if (event.popup === instance) {
             setOpen(false)
-            onClose?.()
           }
         }
 
@@ -79,7 +73,7 @@ export const Popup = createOverlayComponent<LeafletPopup, PopupProps>(
           context.map.removeLayer(instance)
         }
       },
-      [element, context, setOpen, onClose, onOpen, position],
+      [element, context, setOpen, position],
     )
   },
 )

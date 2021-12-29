@@ -60,6 +60,15 @@ module.exports = {
               to: 'docs/start-introduction',
             },
             {
+              label: 'Examples',
+              to: 'docs/example-popup-marker',
+            },
+          ],
+        },
+        {
+          title: 'APIs',
+          items: [
+            {
               label: 'Public API',
               to: 'docs/api-map',
             },

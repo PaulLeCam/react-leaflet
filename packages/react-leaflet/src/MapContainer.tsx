@@ -9,7 +9,14 @@ import {
   Map as LeafletMap,
   type MapOptions,
 } from 'leaflet'
-import React, { CSSProperties, ReactNode, useCallback, useState } from 'react'
+import React, {
+  type CSSProperties,
+  type ReactNode,
+  type Ref,
+  forwardRef,
+  useCallback,
+  useState,
+} from 'react'
 
 export interface MapContainerProps extends MapOptions {
   bounds?: LatLngBoundsExpression
@@ -19,26 +26,27 @@ export interface MapContainerProps extends MapOptions {
   id?: string
   placeholder?: ReactNode
   style?: CSSProperties
-  whenCreated?: (map: LeafletMap) => void
   whenReady?: () => void
 }
 
-export function MapContainer<
+function MapContainerComponent<
   Props extends MapContainerProps = MapContainerProps,
->({
-  bounds,
-  boundsOptions,
-  center,
-  children,
-  className,
-  id,
-  placeholder,
-  style,
-  whenCreated,
-  whenReady,
-  zoom,
-  ...options
-}: Props) {
+>(
+  {
+    bounds,
+    boundsOptions,
+    center,
+    children,
+    className,
+    id,
+    placeholder,
+    style,
+    whenReady,
+    zoom,
+    ...options
+  }: Props,
+  forwardedRef: Ref<LeafletMap>,
+) {
   const [props] = useState({ className, id, style })
 
   const [context, setContext] = useState<LeafletContextInterface | null>(null)
@@ -54,9 +62,15 @@ export function MapContainer<
       if (whenReady != null) {
         map.whenReady(whenReady)
       }
+
       setContext({ __version: CONTEXT_VERSION, map })
-      if (whenCreated != null) {
-        whenCreated(map)
+      if (forwardedRef != null) {
+        if (typeof forwardedRef === 'function') {
+          forwardedRef(map)
+        } else {
+          // @ts-ignore assignment
+          forwardedRef.current = map
+        }
       }
     }
   }, [])
@@ -72,3 +86,5 @@ export function MapContainer<
     </div>
   )
 }
+
+export const MapContainer = forwardRef(MapContainerComponent)

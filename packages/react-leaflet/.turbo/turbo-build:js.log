@@ -1,3 +1,0 @@
-$ swc src -d ./lib --config-file ../../swc.json
-Successfully compiled: 24 files with swc (20.54ms)
-warning package.json: License should be a valid SPDX license expression

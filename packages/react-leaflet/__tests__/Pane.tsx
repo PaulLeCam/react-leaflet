@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react'
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 
 import { MapContainer, Pane, TileLayer } from '../src'
 
@@ -89,5 +89,55 @@ describe('Pane', () => {
       </MapContainer>,
     )
     expect(container).toMatchSnapshot()
+  })
+
+  describe('supports refs', () => {
+    test('as callback function', (done) => {
+      const ref = (pane) => {
+        expect(pane).toBeInstanceOf(HTMLElement)
+        done()
+      }
+
+      function TestContainer() {
+        return (
+          <MapContainer center={[0, 0]} zoom={10}>
+            <Pane name="foo" style={{ zIndex: 1000 }} ref={ref}>
+              <TileLayer
+                attribution="tiles attribution"
+                url="http://localhost"
+              />
+            </Pane>
+          </MapContainer>
+        )
+      }
+
+      render(<TestContainer />)
+    })
+
+    test('as object', (done) => {
+      function Wrapper() {
+        const ref = useRef()
+
+        useEffect(() => {
+          setTimeout(() => {
+            expect(ref.current).toBeInstanceOf(HTMLElement)
+            done()
+          }, 50)
+        }, [])
+
+        return (
+          <MapContainer center={[0, 0]} zoom={10}>
+            <Pane name="foo" style={{ zIndex: 1000 }} ref={ref}>
+              <TileLayer
+                attribution="tiles attribution"
+                url="http://localhost"
+              />
+            </Pane>
+          </MapContainer>
+        )
+      }
+
+      render(<Wrapper />)
+    })
   })
 })
