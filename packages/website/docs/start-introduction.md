@@ -9,7 +9,7 @@ React Leaflet provides bindings between React and Leaflet. It **does not replace
 ### DOM rendering
 
 React **does not** render Leaflet layers to the DOM, this rendering is done by Leaflet itself.
-React only renders a `<div>` element when rendering the [`MapContainer` component](api-map.md#mapcontainer), the contents of [UI layers components](api-components.md#ui-layers).
+React only renders a `<div>` element when rendering the [`MapContainer` component](api-map.md#mapcontainer) and the contents of [UI layers components](api-components.md#ui-layers).
 
 ### Component properties
 

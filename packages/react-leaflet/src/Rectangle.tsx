@@ -1,10 +1,10 @@
-import { PathProps, createPathComponent } from '@react-leaflet/core'
+import { type PathProps, createPathComponent } from '@react-leaflet/core'
 import {
-  LatLngBoundsExpression,
+  type LatLngBoundsExpression,
   Rectangle as LeafletRectangle,
-  PathOptions,
+  type PathOptions,
 } from 'leaflet'
-import { ReactNode } from 'react'
+import type { ReactNode } from 'react'
 
 export interface RectangleProps extends PathOptions, PathProps {
   bounds: LatLngBoundsExpression

@@ -1,10 +1,10 @@
 import {
-  MediaOverlayProps,
+  type MediaOverlayProps,
   createLayerComponent,
   updateMediaOverlay,
 } from '@react-leaflet/core'
 import { ImageOverlay as LeafletImageOverlay } from 'leaflet'
-import { ReactNode } from 'react'
+import type { ReactNode } from 'react'
 
 export interface ImageOverlayProps extends MediaOverlayProps {
   children?: ReactNode

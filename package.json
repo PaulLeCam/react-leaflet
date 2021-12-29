@@ -7,55 +7,58 @@
   ],
   "scripts": {
     "lint": "eslint './packages/**/*.ts' './packages/**/*.tsx'",
-    "build:core": "(cd packages/core && yarn run build)",
-    "build:react-leaflet": "(cd packages/react-leaflet && yarn run build)",
-    "build:website": "(cd packages/website && yarn run build)",
-    "build": "yarn run build:core && yarn run build:react-leaflet && yarn run build:website",
-    "test:core": "(cd packages/core && yarn test)",
-    "test:react-leaflet": "(cd packages/react-leaflet && yarn test)",
-    "test": "yarn run test:core && yarn run test:react-leaflet",
-    "start:core": "(cd packages/core && yarn start)",
-    "start:react-leaflet": "(cd packages/react-leaflet && yarn start)",
-    "start": "yarn run lint && yarn run start:core && yarn run start:react-leaflet"
+    "test": "jest",
+    "types:core": "yarn workspace @react-leaflet/core run build:types",
+    "types:react-leaflet": "yarn workspace react-leaflet run build:types",
+    "build:types": "yarn run types:core && yarn run types:react-leaflet",
+    "build:website": "yarn workspace website run build",
+    "build": "yarn turbo run build:js && yarn run build:types && yarn run build:website"
   },
   "devDependencies": {
-    "@babel/cli": "^7.16.0",
-    "@babel/core": "^7.16.0",
-    "@babel/plugin-proposal-class-properties": "^7.16.0",
-    "@babel/plugin-proposal-export-default-from": "^7.16.0",
-    "@babel/plugin-transform-proto-to-assign": "^7.16.0",
-    "@babel/plugin-transform-strict-mode": "^7.16.0",
-    "@babel/preset-env": "^7.16.4",
-    "@babel/preset-react": "^7.16.0",
-    "@babel/preset-typescript": "^7.16.0",
-    "@testing-library/react": "^12.1.2",
-    "@testing-library/react-hooks": "^7.0.2",
+    "@skypack/package-check": "^0.2.2",
+    "@swc/cli": "^0.1.55",
+    "@swc/core": "^1.2.124",
+    "@swc/jest": "^0.2.15",
+    "@testing-library/react": "^13.0.0-alpha",
+    "@testing-library/react-hooks": "^8.0.0-alpha",
     "@types/jest": "^27.0.3",
     "@types/leaflet": "^1.7.6",
-    "@types/react": "^17.0.35",
-    "@types/react-dom": "^17.0.11",
     "@types/warning": "^3.0.0",
-    "@typescript-eslint/eslint-plugin": "^5.4.0",
-    "@typescript-eslint/parser": "^5.4.0",
-    "babel-eslint": "^10.0.3",
-    "babel-jest": "^27.3.1",
+    "@typescript-eslint/eslint-plugin": "^5.8.1",
+    "@typescript-eslint/parser": "^5.8.1",
     "cross-env": "^7.0.3",
     "del-cli": "^4.0.1",
-    "eslint": "^8.2.0",
+    "eslint": "^8.5.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-promise": "^5.1.1",
-    "eslint-plugin-react": "^7.27.1",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
-    "jest": "^27.3.1",
+    "jest": "^27.4.5",
     "leaflet": "^1.7.1",
-    "prettier": "^2.4.1",
+    "prettier": "^2.5.1",
     "prettier-eslint": "^13.0.0",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-test-renderer": "^17.0.1",
-    "typescript": "^4.5.2"
+    "react": "^18.0.0-rc",
+    "react-dom": "^18.0.0-rc",
+    "react-test-renderer": "^18.0.0-rc",
+    "turbo": "^1.0.23",
+    "typescript": "^4.5.4"
+  },
+  "jest": {
+    "projects": [
+      "<rootDir>/packages/*"
+    ]
+  },
+  "turbo": {
+    "pipeline": {
+      "clean": {},
+      "build:js": {
+        "dependsOn": [
+          "^clean"
+        ]
+      }
+    }
   }
 }

@@ -1,23 +1,7 @@
 {
   "name": "@react-leaflet/core",
-  "version": "1.1.1",
+  "version": "2.0.0-alpha.0",
   "description": "React Leaflet core",
-  "main": "cjs/index.js",
-  "module": "esm/index.js",
-  "types": "types/index.d.ts",
-  "sideEffects": false,
-  "scripts": {
-    "build:clean": "del cjs esm types",
-    "build:cjs": "babel src --out-dir cjs --extensions .ts,.tsx",
-    "build:esm": "cross-env BABEL_ENV=esm babel src --out-dir esm --extensions .ts,.tsx",
-    "build:types": "tsc --emitDeclarationOnly",
-    "build": "yarn run build:clean && yarn run build:cjs && yarn run build:esm && yarn run build:types",
-    "test:types": "tsc --noEmit",
-    "test:unit": "cross-env BABEL_ENV=development NODE_ENV=test jest",
-    "test": "yarn run test:types && yarn run test:unit",
-    "start": "yarn run test && yarn run build",
-    "prepare": "yarn run build"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/PaulLeCam/react-leaflet.git"
@@ -34,17 +18,47 @@
     "url": "https://github.com/PaulLeCam/react-leaflet/issues"
   },
   "homepage": "https://react-leaflet.js.org/docs/core-introduction",
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "exports": {
+    ".": "./lib/index.js"
+  },
   "files": [
-    "cjs/*",
-    "esm/*",
-    "types/*"
+    "lib/*"
   ],
+  "sideEffects": false,
+  "scripts": {
+    "build:clean": "del lib",
+    "build:js": "swc src -d ./lib --config-file ../../swc.json",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build": "yarn run build:clean && yarn run build:js && yarn run build:types",
+    "test:types": "tsc --noEmit",
+    "test:unit": "cross-env NODE_ENV=test jest",
+    "test": "yarn run test:types && yarn run test:unit",
+    "start": "yarn run test && yarn run build",
+    "prepare": "yarn run build",
+    "prepublishOnly": "package-check"
+  },
   "peerDependencies": {
     "leaflet": "^1.7.1",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react": "^18.0.0-rc",
+    "react-dom": "^18.0.0-rc"
+  },
+  "devDependencies": {
+    "@react-leaflet/jest-resolver": "^1.0.0"
   },
   "jest": {
-    "testEnvironment": "jsdom"
+    "extensionsToTreatAsEsm": [
+      ".ts",
+      ".tsx"
+    ],
+    "resolver": "@react-leaflet/jest-resolver",
+    "testEnvironment": "jsdom",
+    "transform": {
+      "^.+\\.(t|j)sx?$": [
+        "@swc/jest"
+      ]
+    }
   }
 }

@@ -1,3 +1,5 @@
+const webpack = require('webpack')
+
 module.exports = function () {
   return {
     name: 'react-leaflet-docusaurus-plugin',
@@ -9,6 +11,11 @@ module.exports = function () {
                 leaflet: '@react-leaflet/universal-leaflet',
               },
             },
+            plugins: [
+              new webpack.ProvidePlugin({
+                Buffer: ['buffer', 'Buffer'],
+              }),
+            ],
           }
         : {}
     },

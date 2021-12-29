@@ -1,8 +1,8 @@
-import { PathProps, createPathComponent } from '@react-leaflet/core'
-import { GeoJsonObject } from 'geojson'
-import { GeoJSON as LeafletGeoJSON, GeoJSONOptions } from 'leaflet'
+import { type PathProps, createPathComponent } from '@react-leaflet/core'
+import type { GeoJsonObject } from 'geojson'
+import { GeoJSON as LeafletGeoJSON, type GeoJSONOptions } from 'leaflet'
 
-import { LayerGroupProps } from './LayerGroup'
+import type { LayerGroupProps } from './LayerGroup.js'
 
 export interface GeoJSONProps
   extends GeoJSONOptions,

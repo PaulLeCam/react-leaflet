@@ -1,10 +1,10 @@
 import {
-  LayerProps,
+  type LayerProps,
   createTileLayerComponent,
   updateGridLayer,
   withPane,
 } from '@react-leaflet/core'
-import { TileLayer, WMSOptions, WMSParams } from 'leaflet'
+import { TileLayer, type WMSOptions, type WMSParams } from 'leaflet'
 
 export interface WMSTileLayerProps extends WMSOptions, LayerProps {
   params?: WMSParams

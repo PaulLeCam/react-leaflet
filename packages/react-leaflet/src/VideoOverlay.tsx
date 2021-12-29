@@ -1,13 +1,13 @@
 import {
-  MediaOverlayProps,
+  type MediaOverlayProps,
   createLayerComponent,
   updateMediaOverlay,
 } from '@react-leaflet/core'
 import {
   VideoOverlay as LeafletVideoOverlay,
-  VideoOverlayOptions,
+  type VideoOverlayOptions,
 } from 'leaflet'
-import { ReactNode } from 'react'
+import type { ReactNode } from 'react'
 
 export interface VideoOverlayProps
   extends MediaOverlayProps,

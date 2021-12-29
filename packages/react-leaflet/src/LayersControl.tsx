@@ -5,12 +5,12 @@ import {
   createElementHook,
   useLeafletContext,
 } from '@react-leaflet/core'
-import { Control, Layer } from 'leaflet'
+import { Control, type Layer } from 'leaflet'
 import React, {
-  ForwardRefExoticComponent,
-  FunctionComponent,
-  ReactNode,
-  RefAttributes,
+  type ForwardRefExoticComponent,
+  type FunctionComponent,
+  type ReactNode,
+  type RefAttributes,
   useCallback,
   useEffect,
   useMemo,

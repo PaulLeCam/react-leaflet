@@ -1,17 +1,17 @@
 import {
-  EventedProps,
-  LeafletContextInterface,
-  LeafletElement,
-  SetOpenFunc,
+  type EventedProps,
+  type LeafletContextInterface,
+  type LeafletElement,
+  type SetOpenFunc,
   createOverlayComponent,
 } from '@react-leaflet/core'
 import {
-  LatLngExpression,
+  type LatLngExpression,
   Popup as LeafletPopup,
-  PopupEvent,
-  PopupOptions,
+  type PopupEvent,
+  type PopupOptions,
 } from 'leaflet'
-import { ReactNode, useEffect } from 'react'
+import { type ReactNode, useEffect } from 'react'
 
 export interface PopupProps extends PopupOptions, EventedProps {
   children?: ReactNode

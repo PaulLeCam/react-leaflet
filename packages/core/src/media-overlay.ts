@@ -1,13 +1,13 @@
 import {
   LatLngBounds,
-  LatLngBoundsExpression,
-  ImageOverlay as LeafletImageOverlay,
-  ImageOverlayOptions,
-  SVGOverlay as LeafletSVGOverlay,
-  VideoOverlay as LeafletVideoOverlay,
+  type LatLngBoundsExpression,
+  type ImageOverlay as LeafletImageOverlay,
+  type ImageOverlayOptions,
+  type SVGOverlay as LeafletSVGOverlay,
+  type VideoOverlay as LeafletVideoOverlay,
 } from 'leaflet'
 
-import { InteractiveLayerProps } from './layer'
+import type { InteractiveLayerProps } from './layer.js'
 
 export interface MediaOverlayProps
   extends ImageOverlayOptions,

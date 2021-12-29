@@ -4,13 +4,11 @@
     "declaration": true,
     "esModuleInterop": true,
     "jsx": "react",
-    "lib": ["dom", "es2015"],
+    "lib": ["dom", "es2020"],
     "moduleResolution": "node",
-    "outDir": "./types",
-    "resolveJsonModule": true,
-    "sourceMap": true,
     "strict": true,
-    "target": "es2019"
+    "target": "es2020",
+    "types": ["react/next", "react-dom/next"]
   },
   "include": ["./src/**/*"]
 }

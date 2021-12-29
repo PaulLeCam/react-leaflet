@@ -1,12 +1,12 @@
 import {
-  LeafletContextInterface,
+  type LeafletContextInterface,
   LeafletProvider,
   addClassName,
   useLeafletContext,
 } from '@react-leaflet/core'
 import React, {
-  CSSProperties,
-  ReactNode,
+  type CSSProperties,
+  type ReactNode,
   useState,
   useEffect,
   useMemo,
@@ -37,11 +37,10 @@ export interface PaneProps {
 }
 
 function createPane(
+  name: string,
   props: PaneProps,
   context: LeafletContextInterface,
 ): HTMLElement {
-  const name = props.name
-
   if (DEFAULT_PANES.indexOf(name) !== -1) {
     throw new Error(
       `You must use a unique name for a pane that is not a default Leaflet pane: ${name}`,
@@ -71,29 +70,27 @@ function createPane(
 }
 
 export function Pane(props: PaneProps) {
+  const [paneName] = useState(props.name)
   const [paneElement, setPaneElement] = useState<HTMLElement>()
   const context = useLeafletContext()
-  const newContext = useMemo(
-    () => ({ ...context, pane: props.name }),
-    [context],
-  )
+  const newContext = useMemo(() => ({ ...context, pane: paneName }), [context])
 
   useEffect(() => {
-    setPaneElement(createPane(props, context))
+    setPaneElement(createPane(paneName, props, context))
 
     return function removeCreatedPane() {
-      const pane = context.map.getPane(props.name)
+      const pane = context.map.getPane(paneName)
       pane?.remove?.()
 
       // @ts-ignore map internals
       if (context.map._panes != null) {
         // @ts-ignore map internals
-        context.map._panes = omitPane(context.map._panes, props.name)
+        context.map._panes = omitPane(context.map._panes, paneName)
         // @ts-ignore map internals
         context.map._paneRenderers = omitPane(
           // @ts-ignore map internals
           context.map._paneRenderers,
-          props.name,
+          paneName,
         )
       }
     }

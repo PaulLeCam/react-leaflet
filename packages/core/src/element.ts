@@ -1,6 +1,6 @@
-import { MutableRefObject, useEffect, useRef } from 'react'
+import { type MutableRefObject, useEffect, useRef } from 'react'
 
-import { LeafletContextInterface } from './context'
+import type { LeafletContextInterface } from './context.js'
 
 export interface LeafletElement<T, C = any> {
   instance: T

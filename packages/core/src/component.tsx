@@ -1,7 +1,7 @@
 import React, {
-  MutableRefObject,
-  ReactNode,
-  Ref,
+  type MutableRefObject,
+  type ReactNode,
+  type Ref,
   forwardRef,
   useEffect,
   useImperativeHandle,
@@ -9,9 +9,9 @@ import React, {
 } from 'react'
 import { createPortal } from 'react-dom'
 
-import { LeafletProvider } from './context'
-import { DivOverlay, DivOverlayHook } from './div-overlay'
-import { LeafletElement } from './element'
+import { LeafletProvider } from './context.js'
+import type { DivOverlay, DivOverlayHook } from './div-overlay.js'
+import type { LeafletElement } from './element.js'
 
 type ElementHook<E, P> = (props: P) => MutableRefObject<LeafletElement<E>>
 

@@ -1,4 +1,4 @@
-import { Circle, LatLngExpression } from 'leaflet'
+import { Circle, type LatLngExpression } from 'leaflet'
 
 import { updateCircle } from '../src'
 

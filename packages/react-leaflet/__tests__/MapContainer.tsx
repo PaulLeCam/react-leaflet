@@ -1,8 +1,8 @@
 import { render } from '@testing-library/react'
-import { LatLngExpression, Map } from 'leaflet'
+import { type LatLngExpression, Map } from 'leaflet'
 import React from 'react'
 
-import { MapConsumer, MapContainer, useMap } from '../src'
+import { MapContainer, useMap } from '../src'
 
 describe('MapContainer', () => {
   test('renders the containing div', () => {
@@ -23,24 +23,6 @@ describe('MapContainer', () => {
         return (
           <MapContainer center={[0, 0]} zoom={10}>
             <TestChild />
-          </MapContainer>
-        )
-      }
-
-      render(<TestContainer />)
-    })
-
-    test('in the <MapConsumer> component', (done) => {
-      function TestContainer() {
-        return (
-          <MapContainer center={[0, 0]} zoom={10}>
-            <MapConsumer>
-              {(map) => {
-                expect(map).toBeInstanceOf(Map)
-                done()
-                return null
-              }}
-            </MapConsumer>
           </MapContainer>
         )
       }

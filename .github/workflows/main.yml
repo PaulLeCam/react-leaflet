@@ -7,7 +7,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node: ['14.x', '16.x']
+        node: ['16.x']
         os: [ubuntu-latest, macOS-latest]
 
     steps:
@@ -25,8 +25,8 @@ jobs:
       - name: Lint
         run: yarn run lint
 
-      - name: Test and build core
-        run: yarn run start:core
+      - name: Test
+        run: yarn run test --ci
 
-      - name: Test and build lib
-        run: yarn run start:react-leaflet
+      - name: Build
+        run: yarn run build

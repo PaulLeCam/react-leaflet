@@ -1,6 +1,6 @@
-import { LayerOptions } from 'leaflet'
+import type { LayerOptions } from 'leaflet'
 
-import { LeafletContextInterface } from './context'
+import type { LeafletContextInterface } from './context.js'
 
 export function withPane<P extends LayerOptions>(
   props: P,

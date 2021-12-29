@@ -1,11 +1,11 @@
-import { FeatureGroup, Path, PathOptions } from 'leaflet'
+import type { FeatureGroup, Path, PathOptions } from 'leaflet'
 import { useEffect, useRef } from 'react'
 
-import { useLeafletContext } from './context'
-import { LeafletElement, ElementHook } from './element'
-import { useEventHandlers } from './events'
-import { InteractiveLayerProps, useLayerLifecycle } from './layer'
-import { withPane } from './pane'
+import { useLeafletContext } from './context.js'
+import type { LeafletElement, ElementHook } from './element.js'
+import { useEventHandlers } from './events.js'
+import { type InteractiveLayerProps, useLayerLifecycle } from './layer.js'
+import { withPane } from './pane.js'
 
 export interface PathProps extends InteractiveLayerProps {
   pathOptions?: PathOptions

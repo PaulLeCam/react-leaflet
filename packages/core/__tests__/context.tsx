@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks'
-import React, { ReactNode } from 'react'
+import React, { type ReactNode } from 'react'
 
 import { LeafletProvider, useLeafletContext } from '../src'
 

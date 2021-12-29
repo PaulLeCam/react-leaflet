@@ -1,5 +1,2 @@
 /coverage
-/cjs
-/esm
-/types
-/umd
+/lib

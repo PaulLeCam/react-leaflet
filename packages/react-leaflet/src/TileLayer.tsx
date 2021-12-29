@@ -1,10 +1,10 @@
 import {
-  LayerProps,
+  type LayerProps,
   createTileLayerComponent,
   updateGridLayer,
   withPane,
 } from '@react-leaflet/core'
-import { TileLayer as LeafletTileLayer, TileLayerOptions } from 'leaflet'
+import { TileLayer as LeafletTileLayer, type TileLayerOptions } from 'leaflet'
 
 export interface TileLayerProps extends TileLayerOptions, LayerProps {
   url: string

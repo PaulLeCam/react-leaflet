@@ -1,17 +1,17 @@
 import {
-  EventedProps,
-  LeafletContextInterface,
-  LeafletElement,
-  SetOpenFunc,
+  type EventedProps,
+  type LeafletContextInterface,
+  type LeafletElement,
+  type SetOpenFunc,
   createOverlayComponent,
 } from '@react-leaflet/core'
 import {
-  LatLngExpression,
+  type LatLngExpression,
   Tooltip as LeafletTooltip,
-  TooltipEvent,
-  TooltipOptions,
+  type TooltipEvent,
+  type TooltipOptions,
 } from 'leaflet'
-import { ReactNode, useEffect } from 'react'
+import { type ReactNode, useEffect } from 'react'
 
 export interface TooltipProps extends TooltipOptions, EventedProps {
   children?: ReactNode

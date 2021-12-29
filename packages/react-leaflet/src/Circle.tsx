@@ -1,5 +1,5 @@
 import {
-  CircleMarkerProps,
+  type CircleMarkerProps,
   createPathComponent,
   updateCircle,
 } from '@react-leaflet/core'

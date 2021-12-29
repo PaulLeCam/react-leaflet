@@ -1,5 +1,5 @@
 import { useLeafletContext } from '@react-leaflet/core'
-import { LeafletEventHandlerFnMap, Map } from 'leaflet'
+import type { LeafletEventHandlerFnMap, Map } from 'leaflet'
 import { useEffect } from 'react'
 
 export function useMap(): Map {

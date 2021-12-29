@@ -93,22 +93,3 @@ function MyMapComponent() {
   )
 }
 ```
-
-## MapConsumer
-
-Component using the [render prop](https://reactjs.org/docs/render-props.html) technique to provide the Leaflet `Map` instance in any descendant of a [`MapContainer`](#mapcontainer).
-
-```tsx
-function MyMapComponent() {
-  return (
-    <MapContainer center={[50.5, 30.5]} zoom={13}>
-      <MapConsumer>
-        {(map) => {
-          console.log('map center:', map.getCenter())
-          return null
-        }}
-      </MapConsumer>
-    </MapContainer>
-  )
-}
-```

@@ -1,11 +1,11 @@
-import { Popup, Tooltip } from 'leaflet'
+import type { Popup, Tooltip } from 'leaflet'
 
-import { useAttribution } from './attribution'
-import { useLeafletContext, LeafletContextInterface } from './context'
-import { LeafletElement, ElementHook } from './element'
-import { useEventHandlers } from './events'
-import { LayerProps } from './layer'
-import { withPane } from './pane'
+import { useAttribution } from './attribution.js'
+import { useLeafletContext, type LeafletContextInterface } from './context.js'
+import type { LeafletElement, ElementHook } from './element.js'
+import { useEventHandlers } from './events.js'
+import type { LayerProps } from './layer.js'
+import { withPane } from './pane.js'
 
 export type DivOverlay = Popup | Tooltip
 

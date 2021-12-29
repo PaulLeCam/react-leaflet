@@ -1,0 +1,16 @@
+{
+  "name": "@react-leaflet/jest-resolver",
+  "version": "1.0.0",
+  "description": "Jest resolver for React Leaflet unit tests",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PaulLeCam/react-leaflet.git"
+  },
+  "author": "Paul Le Cam <paul@ulem.net>",
+  "license": "Hippocratic-2.1",
+  "bugs": {
+    "url": "https://github.com/PaulLeCam/react-leaflet/issues"
+  },
+  "homepage": "https://github.com/PaulLeCam/react-leaflet"
+}

@@ -39,6 +39,10 @@ module.exports = {
           position: 'left',
         },
         {
+          type: 'docsVersionDropdown',
+          position: 'right',
+        },
+        {
           href: 'https://github.com/PaulLeCam/react-leaflet',
           label: 'GitHub',
           position: 'right',
@@ -76,10 +80,6 @@ module.exports = {
               label: 'GitHub',
               href: 'https://github.com/PaulLeCam/react-leaflet',
             },
-            {
-              label: 'v2 (unsupported) documentation',
-              href: 'https://react-leaflet-v2-docs.netlify.app/en/',
-            },
           ],
         },
       ],
@@ -94,6 +94,13 @@ module.exports = {
       '@docusaurus/preset-classic',
       {
         docs: {
+          // lastVersion: 'current',
+          // versions: {
+          //   next: {
+          //     label: '4.x (alpha)',
+          //     path: '',
+          //   },
+          // },
           sidebarPath: require.resolve('./sidebars.js'),
         },
         theme: {

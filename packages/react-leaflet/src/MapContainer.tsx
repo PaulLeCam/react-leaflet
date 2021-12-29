@@ -1,19 +1,15 @@
-import { CONTEXT_VERSION, LeafletProvider } from '@react-leaflet/core'
 import {
-  FitBoundsOptions,
-  LatLngBoundsExpression,
+  CONTEXT_VERSION,
+  LeafletProvider,
+  type LeafletContextInterface,
+} from '@react-leaflet/core'
+import {
+  type FitBoundsOptions,
+  type LatLngBoundsExpression,
   Map as LeafletMap,
-  MapOptions,
+  type MapOptions,
 } from 'leaflet'
-import React, {
-  CSSProperties,
-  MutableRefObject,
-  ReactNode,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react'
+import React, { CSSProperties, ReactNode, useCallback, useState } from 'react'
 
 export interface MapContainerProps extends MapOptions {
   bounds?: LatLngBoundsExpression
@@ -27,57 +23,43 @@ export interface MapContainerProps extends MapOptions {
   whenReady?: () => void
 }
 
-export function useMapElement(
-  mapRef: MutableRefObject<HTMLElement | null>,
-  props: MapContainerProps,
-): LeafletMap | null {
-  const [map, setMap] = useState<LeafletMap | null>(null)
-
-  useEffect(() => {
-    if (mapRef.current !== null && map === null) {
-      const instance = new LeafletMap(mapRef.current, props)
-      if (props.center != null && props.zoom != null) {
-        instance.setView(props.center, props.zoom)
-      } else if (props.bounds != null) {
-        instance.fitBounds(props.bounds, props.boundsOptions)
-      }
-      if (props.whenReady != null) {
-        instance.whenReady(props.whenReady)
-      }
-      setMap(instance)
-    }
-  }, [mapRef, map, props])
-
-  return map
-}
-
 export function MapContainer<
   Props extends MapContainerProps = MapContainerProps,
 >({
+  bounds,
+  boundsOptions,
+  center,
   children,
   className,
   id,
   placeholder,
   style,
   whenCreated,
+  whenReady,
+  zoom,
   ...options
 }: Props) {
-  const mapRef = useRef<HTMLDivElement>(null)
-  const map = useMapElement(mapRef, options)
-
-  const createdRef = useRef<boolean>(false)
-  useEffect(() => {
-    if (map != null && createdRef.current === false && whenCreated != null) {
-      createdRef.current = true
-      whenCreated(map)
-    }
-  }, [map, whenCreated])
-
   const [props] = useState({ className, id, style })
-  const context = useMemo(
-    () => (map ? { __version: CONTEXT_VERSION, map } : null),
-    [map],
-  )
+
+  const [context, setContext] = useState<LeafletContextInterface | null>(null)
+
+  const mapRef = useCallback((node: HTMLDivElement | null) => {
+    if (node !== null && context === null) {
+      const map = new LeafletMap(node, options)
+      if (center != null && zoom != null) {
+        map.setView(center, zoom)
+      } else if (bounds != null) {
+        map.fitBounds(bounds, boundsOptions)
+      }
+      if (whenReady != null) {
+        map.whenReady(whenReady)
+      }
+      setContext({ __version: CONTEXT_VERSION, map })
+      if (whenCreated != null) {
+        whenCreated(map)
+      }
+    }
+  }, [])
 
   const contents = context ? (
     <LeafletProvider value={context}>{children}</LeafletProvider>
