@@ -3,6 +3,7 @@ import {
   type LeafletContextInterface,
   type LeafletElement,
   type SetOpenFunc,
+  createElementObject,
   createOverlayComponent,
 } from '@react-leaflet/core'
 import {
@@ -20,10 +21,8 @@ export interface PopupProps extends PopupOptions, EventedProps {
 
 export const Popup = createOverlayComponent<LeafletPopup, PopupProps>(
   function createPopup(props, context) {
-    return {
-      instance: new LeafletPopup(props, context.overlayContainer),
-      context,
-    }
+    const popup = new LeafletPopup(props, context.overlayContainer)
+    return createElementObject(popup, context)
   },
   function usePopupLifecycle(
     element: LeafletElement<LeafletPopup>,

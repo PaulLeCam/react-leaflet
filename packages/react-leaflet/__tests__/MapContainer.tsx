@@ -32,8 +32,10 @@ describe('MapContainer', () => {
 
     test('in the ref function', (done) => {
       const ref = (map) => {
-        expect(map).toBeInstanceOf(Map)
-        done()
+        if (map !== null) {
+          expect(map).toBeInstanceOf(Map)
+          done()
+        }
       }
 
       function TestContainer() {
@@ -48,8 +50,12 @@ describe('MapContainer', () => {
         const ref = useRef()
 
         useEffect(() => {
-          expect(ref.current).toBeInstanceOf(Map)
-          done()
+          setTimeout(() => {
+            if (ref.current !== null) {
+              expect(ref.current).toBeInstanceOf(Map)
+              done()
+            }
+          }, 50)
         }, [])
 
         return <MapContainer center={[0, 0]} zoom={10} ref={ref} />
@@ -64,9 +70,11 @@ describe('MapContainer', () => {
     const zoom = 10
 
     const ref = (map) => {
-      expect(map.getCenter()).toEqual({ lat: 1.2, lng: 3.4 })
-      expect(map.getZoom()).toBe(zoom)
-      done()
+      if (map !== null) {
+        expect(map.getCenter()).toEqual({ lat: 1.2, lng: 3.4 })
+        expect(map.getZoom()).toBe(zoom)
+        done()
+      }
     }
 
     render(<MapContainer center={center} zoom={zoom} ref={ref} />)

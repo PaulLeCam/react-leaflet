@@ -1,5 +1,6 @@
 import {
   type LayerProps,
+  createElementObject,
   createTileLayerComponent,
   updateGridLayer,
   withPane,
@@ -14,8 +15,6 @@ export const TileLayer = createTileLayerComponent<
   LeafletTileLayer,
   TileLayerProps
 >(function createTileLayer({ url, ...options }, context) {
-  return {
-    instance: new LeafletTileLayer(url, withPane(options, context)),
-    context,
-  }
+  const layer = new LeafletTileLayer(url, withPane(options, context))
+  return createElementObject(layer, context)
 }, updateGridLayer)

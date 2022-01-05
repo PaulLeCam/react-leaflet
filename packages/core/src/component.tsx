@@ -15,7 +15,7 @@ import type { LeafletElement } from './element.js'
 
 type ElementHook<E, P> = (props: P) => MutableRefObject<LeafletElement<E>>
 
-export interface PropsWithChildren {
+export type PropsWithChildren = {
   children?: ReactNode
 }
 

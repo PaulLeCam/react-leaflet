@@ -3,6 +3,7 @@ import {
   type LeafletContextInterface,
   type LeafletElement,
   type SetOpenFunc,
+  createElementObject,
   createOverlayComponent,
 } from '@react-leaflet/core'
 import {
@@ -18,10 +19,8 @@ export interface TooltipProps extends TooltipOptions, EventedProps {
 
 export const Tooltip = createOverlayComponent<LeafletTooltip, TooltipProps>(
   function createTooltip(props, context) {
-    return {
-      instance: new LeafletTooltip(props, context.overlayContainer),
-      context,
-    }
+    const tooltip = new LeafletTooltip(props, context.overlayContainer)
+    return createElementObject(tooltip, context)
   },
   function useTooltipLifecycle(
     element: LeafletElement<LeafletTooltip>,

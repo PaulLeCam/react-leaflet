@@ -104,12 +104,16 @@ module.exports = {
       {
         docs: {
           // lastVersion: 'current',
-          // versions: {
-          //   next: {
-          //     label: '4.x (alpha)',
-          //     path: '',
-          //   },
-          // },
+          versions: {
+            current: {
+              label: '4.x - alpha',
+              path: 'next',
+            },
+            '3.x': {
+              label: '3.x - stable',
+              path: '',
+            },
+          },
           sidebarPath: require.resolve('./sidebars.js'),
         },
         theme: {

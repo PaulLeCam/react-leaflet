@@ -189,8 +189,12 @@ useEffect(() => {
 
 The above code gets very repetitive as it's needed for most components in React Leaflet, this is why the core APIs provide functions such as the [`createElementHook` factory](core-api.md#createelementhook) to simplify the process:
 
-```tsx {1,9-11,13-17,19,23}
-import { createElementHook, useLeafletContext } from '@react-leaflet/core'
+```tsx {2-3,13-15,17-21,23,27}
+import {
+  createElementHook,
+  createElementObject,
+  useLeafletContext,
+} from '@react-leaflet/core'
 import L from 'leaflet'
 import { useEffect } from 'react'
 
@@ -199,7 +203,7 @@ function getBounds(props) {
 }
 
 function createSquare(props, context) {
-  return { instance: new L.Rectangle(getBounds(props)), context }
+  return createElementObject(new L.Rectangle(getBounds(props)), context)
 }
 
 function updateSquare(instance, props, prevProps) {
@@ -241,11 +245,11 @@ function MyMap() {
 }
 ```
 
-First, instead of having the Leaflet element creation and updating logic in `useEffect` callbacks, we can extract them to standalone functions implementing the [expected interface](core-api.md#createelementhook):
+First, instead of having the Leaflet element creation and updating logic in `useEffect` callbacks, we can extract them to standalone functions implementing the [expected interface](core-api.md#createelementhook) using the [`createElementObject` function](core-api.md#createelementobject):
 
 ```ts
 function createSquare(props, context) {
-  return { instance: new L.Rectangle(getBounds(props)), context }
+  return createElementObject(new L.Rectangle(getBounds(props)), context)
 }
 
 function updateSquare(instance, props, prevProps) {
@@ -280,9 +284,10 @@ useEffect(() => {
 
 The core APIs provide additional hooks to handle specific pieces of logic. Here, we can replace the `useEffect` hook used previously to add and remove the layer by the [`useLayerLifecycle` hook](core-api.md#uselayerlifecycle):
 
-```tsx {3,27}
+```tsx {4,28}
 import {
   createElementHook,
+  createElementObject,
   useLayerLifecycle,
   useLeafletContext,
 } from '@react-leaflet/core'
@@ -293,7 +298,7 @@ function getBounds(props) {
 }
 
 function createSquare(props, context) {
-  return { instance: new L.Rectangle(getBounds(props)), context }
+  return createElementObject(new L.Rectangle(getBounds(props)), context)
 }
 
 function updateSquare(instance, props, prevProps) {
@@ -330,8 +335,12 @@ render(
 The core APIs also provide higher-level factory functions implementing logic shared by different hooks, such as [`createPathHook`](core-api.md#createpathhook).
 Here we can extract the logic previously implemented in the component to a hook factory, and simply call the created hook in the component:
 
-```tsx {1,19,22}
-import { createElementHook, createPathHook } from '@react-leaflet/core'
+```tsx {4,23,26}
+import {
+  createElementHook,
+  createElementObject,
+  createPathHook,
+} from '@react-leaflet/core'
 import L from 'leaflet'
 
 function getBounds(props) {
@@ -339,7 +348,7 @@ function getBounds(props) {
 }
 
 function createSquare(props, context) {
-  return { instance: new L.Rectangle(getBounds(props)), context }
+  return createElementObject(new L.Rectangle(getBounds(props)), context)
 }
 
 function updateSquare(instance, props, prevProps) {
@@ -377,9 +386,10 @@ function MyMap() {
 
 Following the changes above, we can see that the `Square` component gets very simple as all the logic is implemented in the `useSquare` hook. We can replace it by the [`createLeafComponent` function](core-api.md#createleafcomponent) that implements similar logic:
 
-```tsx {3,24}
+```tsx {4,25}
 import {
   createElementHook,
+  createElementObject,
   createLeafComponent,
   createPathHook,
 } from '@react-leaflet/core'
@@ -390,7 +400,7 @@ function getBounds(props) {
 }
 
 function createSquare(props, context) {
-  return { instance: new L.Rectangle(getBounds(props)), context }
+  return createElementObject(new L.Rectangle(getBounds(props)), context)
 }
 
 function updateSquare(instance, props, prevProps) {
@@ -424,11 +434,13 @@ function MyMap() {
 
 All the steps above focus on displaying the `Square` element only. However, it is common for React Leaflet components to also have children when possible. Our `Square` being a Leaflet layer, overlays such as [`Popup`](api-components.md#popup) and [`Tooltip`](api-components.md#tooltip) could be attached to it:
 
-```tsx {2,13-14,25,36-38}
+```tsx {2,6,15,18,30,41-43}
 import {
   createContainerComponent,
   createElementHook,
+  createElementObject,
   createPathHook,
+  extendContext,
 } from '@react-leaflet/core'
 import L from 'leaflet'
 
@@ -437,8 +449,11 @@ function getBounds(props) {
 }
 
 function createSquare(props, context) {
-  const instance = new L.Rectangle(getBounds(props))
-  return { instance, context: { ...context, overlayContainer: instance } }
+  const square = new L.Rectangle(getBounds(props))
+  return createElementObject(
+    square,
+    extendContext(context, { overlayContainer: square }),
+  )
 }
 
 function updateSquare(instance, props, prevProps) {
@@ -468,12 +483,15 @@ function MyMap() {
 }
 ```
 
-In order to support these overlays, we need to update the `createSquare` function to set the created layer as the context's `overlayContainer`. Note that the `context` object returned **must be a copy** of the one provided in the function arguments, the function **must not mutate** the provided `context`.
+In order to support these overlays, we need to update the `createSquare` function to set the created layer as the context's `overlayContainer`. Note that we use the [`extendContext` function](core-api.md#extendcontext) here in order to make the extended context immutable.
 
 ```ts
 function createSquare(props, context) {
-  const instance = new L.Rectangle(getBounds(props))
-  return { instance, context: { ...context, overlayContainer: instance } }
+  const square = new L.Rectangle(getBounds(props))
+  return createElementObject(
+    square,
+    extendContext(context, { overlayContainer: square }),
+  )
 }
 ```
 
@@ -500,8 +518,12 @@ const Square = createContainerComponent(useSquare)
 
 This logic is similar for other types of layers and is therefore provided as a higher-level component factory, [`createPathComponent`](core-api.md#createpathcomponent), as used below:
 
-```tsx {1,19}
-import { createPathComponent } from '@react-leaflet/core'
+```tsx {3,26}
+import {
+  createElementObject,
+  createPathComponent,
+  extendContext,
+} from '@react-leaflet/core'
 import L from 'leaflet'
 
 function getBounds(props) {
@@ -509,8 +531,11 @@ function getBounds(props) {
 }
 
 function createSquare(props, context) {
-  const instance = new L.Rectangle(getBounds(props))
-  return { instance, context: { ...context, overlayContainer: instance } }
+  const square = new L.Rectangle(getBounds(props))
+  return createElementObject(
+    square,
+    extendContext(context, { overlayContainer: square }),
+  )
 }
 
 function updateSquare(instance, props, prevProps) {

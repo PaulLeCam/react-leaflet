@@ -43,7 +43,7 @@ export default function Home() {
           </div>
         </div>
       </header>
-      <main>
+      <main className={styles.example}>
         <CodeBlock live noInline className="tsx">
           {`const position = [51.505, -0.09]
         

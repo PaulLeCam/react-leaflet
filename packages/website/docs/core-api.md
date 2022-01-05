@@ -7,7 +7,7 @@ title: Core API
 ### ControlledLayer
 
 ```ts
-interface ControlledLayer {
+type ControlledLayer = {
   addLayer(layer: Layer): void
   removeLayer(layer: Layer): void
 }
@@ -16,23 +16,23 @@ interface ControlledLayer {
 ### LeafletContextInterface
 
 ```ts
-interface LeafletContextInterface {
+type LeafletContextInterface = Readonly<{
   map: Map
   layerContainer?: ControlledLayer | LayerGroup
   layersControl?: Control.Layers
   overlayContainer?: Layer
   pane?: string
-}
+}>
 ```
 
 ### LeafletElement
 
 ```ts
-interface LeafletElement<T, C = any> {
+type LeafletElement<T, C = any> = Readonly<{
   instance: T
   context: LeafletContextInterface
   container?: C | null
-}
+}>
 ```
 
 ### ElementHook
@@ -79,7 +79,7 @@ type DivOverlayHook<E extends DivOverlay, P> = (
 ### EventedProps
 
 ```ts
-interface EventedProps {
+type EventedProps = {
   eventHandlers?: LeafletEventHandlerFnMap
 }
 ```
@@ -118,7 +118,7 @@ interface MediaOverlayProps extends ImageOverlayOptions, EventedProps {
 ### PropsWithChildren
 
 ```ts
-interface PropsWithChildren {
+type PropsWithChildren = {
   children?: ReactNode
 }
 ```
@@ -134,6 +134,32 @@ interface EventedWithChildrenProps extends EventedProps, PropsWithChildren {}
 ```ts
 interface PathWithChildrenProps extends PathProps, PropsWithChildren {}
 ```
+
+## Utilities
+
+### createElementObject
+
+**Type parameters**
+
+1. `T`: Leaflet's element class type
+1. `C = any`: the element's container, if relevant
+
+**Arguments**
+
+1. `instance: t`
+1. [`context: LeafletContextInterface`](#leafletcontextinterface)
+1. `container?: C`
+
+**Returns** [`LeafletElement<T, C>`](#leafletelement)
+
+### extendContext
+
+**Arguments**
+
+1. [`source: LeafletContextInterface`](#leafletcontextinterface)
+1. [`extra: Partial<LeafletContextInterface>`](#leafletcontextinterface)
+
+**Returns** [`LeafletContextInterface`](#leafletcontextinterface)
 
 ## Context
 

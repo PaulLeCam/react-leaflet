@@ -1,4 +1,9 @@
-import { type PathProps, createPathComponent } from '@react-leaflet/core'
+import {
+  type PathProps,
+  createElementObject,
+  createPathComponent,
+  extendContext,
+} from '@react-leaflet/core'
 import {
   type LatLngExpression,
   type PolylineOptions,
@@ -13,8 +18,11 @@ export interface PolygonProps extends PolylineOptions, PathProps {
 
 export const Polygon = createPathComponent<LeafletPolygon, PolygonProps>(
   function createPolygon({ positions, ...options }, ctx) {
-    const instance = new LeafletPolygon(positions, options)
-    return { instance, context: { ...ctx, overlayContainer: instance } }
+    const polygon = new LeafletPolygon(positions, options)
+    return createElementObject(
+      polygon,
+      extendContext(ctx, { overlayContainer: polygon }),
+    )
   },
   function updatePolygon(layer, props, prevProps) {
     if (props.positions !== prevProps.positions) {

@@ -1,5 +1,6 @@
 import {
   type LayerProps,
+  createElementObject,
   createTileLayerComponent,
   updateGridLayer,
   withPane,
@@ -16,13 +17,11 @@ export const WMSTileLayer = createTileLayerComponent<
   WMSTileLayerProps
 >(
   function createWMSTileLayer({ params = {}, url, ...options }, context) {
-    return {
-      instance: new TileLayer.WMS(url, {
-        ...params,
-        ...withPane(options, context),
-      }),
-      context,
-    }
+    const layer = new TileLayer.WMS(url, {
+      ...params,
+      ...withPane(options, context),
+    })
+    return createElementObject(layer, context)
   },
   function updateWMSTileLayer(layer, props, prevProps) {
     updateGridLayer(layer, props, prevProps)

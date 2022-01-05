@@ -15,6 +15,7 @@ import React, {
   type Ref,
   forwardRef,
   useCallback,
+  useImperativeHandle,
   useState,
 } from 'react'
 
@@ -45,11 +46,11 @@ function MapContainerComponent<
     zoom,
     ...options
   }: Props,
-  forwardedRef: Ref<LeafletMap>,
+  forwardedRef: Ref<LeafletMap | null>,
 ) {
   const [props] = useState({ className, id, style })
-
   const [context, setContext] = useState<LeafletContextInterface | null>(null)
+  useImperativeHandle(forwardedRef, () => context?.map ?? null, [context])
 
   const mapRef = useCallback((node: HTMLDivElement | null) => {
     if (node !== null && context === null) {
@@ -62,16 +63,7 @@ function MapContainerComponent<
       if (whenReady != null) {
         map.whenReady(whenReady)
       }
-
-      setContext({ __version: CONTEXT_VERSION, map })
-      if (forwardedRef != null) {
-        if (typeof forwardedRef === 'function') {
-          forwardedRef(map)
-        } else {
-          // @ts-ignore assignment
-          forwardedRef.current = map
-        }
-      }
+      setContext(Object.freeze({ __version: CONTEXT_VERSION, map }))
     }
   }, [])
 

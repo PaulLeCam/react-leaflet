@@ -14,7 +14,11 @@ import {
 } from './component.js'
 import type { LeafletContextInterface } from './context.js'
 import { createControlHook } from './control.js'
-import { type LeafletElement, createElementHook } from './element.js'
+import {
+  type LeafletElement,
+  createElementHook,
+  createElementObject,
+} from './element.js'
 import { type LayerProps, createLayerHook } from './layer.js'
 import {
   type DivOverlay,
@@ -34,7 +38,7 @@ export function createControlComponent<
     props: P,
     context: LeafletContextInterface,
   ): LeafletElement<E> {
-    return { instance: createInstance(props), context }
+    return createElementObject(createInstance(props), context)
   }
   const useElement = createElementHook(createElement)
   const useControl = createControlHook(useElement)

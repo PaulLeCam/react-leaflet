@@ -1,6 +1,7 @@
 import {
   type MediaOverlayProps,
   createElementHook,
+  createElementObject,
   createLayerHook,
   updateMediaOverlay,
 } from '@react-leaflet/core'
@@ -36,11 +37,8 @@ export const useSVGOverlayElement = createElementHook<
     })
   }
 
-  return {
-    instance: new LeafletSVGOverlay(container, bounds, options),
-    container,
-    context,
-  }
+  const overlay = new LeafletSVGOverlay(container, bounds, options)
+  return createElementObject(overlay, context, container)
 }, updateMediaOverlay)
 
 export const useSVGOverlay = createLayerHook(useSVGOverlayElement)

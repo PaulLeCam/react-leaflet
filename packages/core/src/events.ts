@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react'
 
 import type { LeafletElement } from './element.js'
 
-export interface EventedProps {
+export type EventedProps = {
   eventHandlers?: LeafletEventHandlerFnMap
 }
 

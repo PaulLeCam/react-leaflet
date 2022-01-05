@@ -94,8 +94,10 @@ describe('Pane', () => {
   describe('supports refs', () => {
     test('as callback function', (done) => {
       const ref = (pane) => {
-        expect(pane).toBeInstanceOf(HTMLElement)
-        done()
+        if (pane !== null) {
+          expect(pane).toBeInstanceOf(HTMLElement)
+          done()
+        }
       }
 
       function TestContainer() {

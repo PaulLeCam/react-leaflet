@@ -11,6 +11,7 @@ import React, {
   forwardRef,
   useState,
   useEffect,
+  useImperativeHandle,
   useMemo,
 } from 'react'
 import { createPortal } from 'react-dom'
@@ -71,24 +72,18 @@ function createPane(
   return element
 }
 
-function PaneComponent(props: PaneProps, forwardedRef: Ref<HTMLElement>) {
+function PaneComponent(
+  props: PaneProps,
+  forwardedRef: Ref<HTMLElement | null>,
+) {
   const [paneName] = useState(props.name)
-  const [paneElement, setPaneElement] = useState<HTMLElement>()
+  const [paneElement, setPaneElement] = useState<HTMLElement | null>(null)
+  useImperativeHandle(forwardedRef, () => paneElement, [paneElement])
   const context = useLeafletContext()
   const newContext = useMemo(() => ({ ...context, pane: paneName }), [context])
 
   useEffect(() => {
-    const createdPane = createPane(paneName, props, context)
-    setPaneElement(createdPane)
-
-    if (forwardedRef != null) {
-      if (typeof forwardedRef === 'function') {
-        forwardedRef(createdPane)
-      } else {
-        // @ts-ignore assignment
-        forwardedRef.current = createdPane
-      }
-    }
+    setPaneElement(createPane(paneName, props, context))
 
     return function removeCreatedPane() {
       const pane = context.map.getPane(paneName)
