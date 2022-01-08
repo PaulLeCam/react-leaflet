@@ -1,3 +1,8 @@
+## v3.2.3 (2022-01-08)
+
+- Fix tooltip position ([PR #939](https://github.com/PaulLeCam/react-leaflet/pull/939) by [simonasdev](https://github.com/simonasdev)).
+- Fix attribution URLs and use HTTPS in docs ([PR #930](https://github.com/PaulLeCam/react-leaflet/pull/930) by [jpstotz](https://github.com/jpstotz)).
+
 ## v3.2.2 (2021-10-09)
 
 Fix layer unmount ([PR #916](https://github.com/PaulLeCam/react-leaflet/pull/916) by [piitaya](https://github.com/piitaya)).
