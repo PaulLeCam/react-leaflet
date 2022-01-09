@@ -71,6 +71,10 @@ export function MapContainer<
       createdRef.current = true
       whenCreated(map)
     }
+
+    return () => {
+      map?.remove()
+    }
   }, [map, whenCreated])
 
   const [props] = useState({ className, id, style })
