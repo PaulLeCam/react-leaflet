@@ -15,7 +15,7 @@ Please make sure to check the following boxes before submitting an issue.\
 - [ ] Using the supported version of Leaflet (v1.7.1 minimum) and its corresponding CSS file is loaded.
 - [ ] Using the [latest v3 version of React-Leaflet](https://github.com/PaulLeCam/react-leaflet/releases).
 - [ ] The issue has not already been reported.
-- [ ] Make sure you have followed the [quick start guide](http://leafletjs.com/examples/quick-start.html) for Leaflet.
+- [ ] Make sure you have followed the [quick start guide](https://leafletjs.com/examples/quick-start.html) for Leaflet.
 - [ ] Make sure you have fully read the [documentation](https://react-leaflet.js.org/docs/start-introduction) and that you understand the [limitations](https://react-leaflet.js.org/docs/start-introduction#limitations).
 
 ### Expected behavior

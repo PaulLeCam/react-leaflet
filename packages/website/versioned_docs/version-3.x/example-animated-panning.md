@@ -34,7 +34,7 @@ function AnimateExample() {
       </p>
       <MapContainer center={[51.505, -0.09]} zoom={13}>
         <TileLayer
-          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <SetViewOnClick animateRef={animateRef} />

@@ -15,6 +15,7 @@ import React, {
   type Ref,
   forwardRef,
   useCallback,
+  useEffect,
   useImperativeHandle,
   useState,
 } from 'react'
@@ -64,6 +65,12 @@ function MapContainerComponent<
         map.whenReady(whenReady)
       }
       setContext(Object.freeze({ __version: CONTEXT_VERSION, map }))
+    }
+  }, [])
+
+  useEffect(() => {
+    return () => {
+      context?.map.remove()
     }
   }, [])
 
