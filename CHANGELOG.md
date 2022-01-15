@@ -1,3 +1,7 @@
+## v3.2.5 (2022-01-15)
+
+Fix supporting mutable `whenCreated` with unmounting `MapContainer`.
+
 ## v3.2.4 (2022-01-09)
 
 Fix removing the map handlers when `MapContainer` is unmounted.

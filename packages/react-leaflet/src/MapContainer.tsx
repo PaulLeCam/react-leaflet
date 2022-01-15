@@ -71,11 +71,13 @@ export function MapContainer<
       createdRef.current = true
       whenCreated(map)
     }
+  }, [map, whenCreated])
 
+  useEffect(() => {
     return () => {
       map?.remove()
     }
-  }, [map, whenCreated])
+  }, [map])
 
   const [props] = useState({ className, id, style })
   const context = useMemo(
