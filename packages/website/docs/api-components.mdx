@@ -1,0 +1,958 @@
+---
+title: Child components
+---
+
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
+:::caution MapContainer required
+Child components can only be used as descendants of a [MapContainer component](api-map.mdx#mapcontainer).
+:::
+
+## Props
+
+Child components in React Leaflet use their props as options when creating the corresponding Leaflet instance, as described in [Leaflet's documentation](https://leafletjs.com/reference.html).
+
+By default these props should be treated as **immutable**, only the props explicitely documented as **mutable** in this page will affect the Leaflet element when changed.
+
+## Behaviors
+
+Child components in React Leaflet support common behaviors described below, implementing logic related to React or Leaflet.
+
+### ParentComponent behavior
+
+The component will render its mutable React children components, based on the `children?: ReactNode` prop.
+
+```tsx Example component with ParentComponent behavior
+<Marker position={[50.5, 30.5]}>
+  <Popup>Hello world</Popup>
+</Marker>
+```
+
+### Evented behavior
+
+Adds support for the `eventHandlers?: LeafletEventHandlerFnMap` prop, adding and removing event listeners.
+
+```tsx Example component with Evented behavior
+<Marker
+  position={[50.5, 30.5]}
+  eventHandlers={{
+    click: () => {
+      console.log('marker clicked')
+    },
+  }}
+/>
+```
+
+### Attribution behavior
+
+Applies to layer components, making their [`attribution`](https://leafletjs.com/reference.html#layer-attribution) prop mutable.
+
+```tsx Example component with Attribution behavior
+<GeoJSON attribution="&copy; credits due..." data={...} />
+```
+
+### Pane behavior
+
+Applies to layer components, adding support for the [`pane`](https://leafletjs.com/reference.html#layer-pane) prop or context from a [`Pane` component](#pane) ancestor.
+
+```tsx Example component with pane prop
+<Circle center={[50.5, 30.5]} radius={200} pane="my-existing-pane" />
+```
+
+```tsx Example component with Pane ancestor
+<Pane name="custom" style={{ zIndex: 100 }}>
+  <Circle center={[50.5, 30.5]} radius={200} />
+</Pane>
+```
+
+### Path behavior
+
+Applies to [vector layer components](#vector-layers), adding support for a [`pathOptions: PathOptions`](https://leafletjs.com/reference.html#path) mutable prop.
+
+```tsx Example component with PathOptions behavior
+<Circle center={[50.5, 30.5]} radius={200} pathOptions={{ color: 'blue' }} />
+```
+
+### MediaOverlay behavior
+
+Applies to components using [Leaflet's ImageOverlay class](https://leafletjs.com/reference.html#imageoverlay), adding support for mutable [`bounds: LatLngBounds`](https://leafletjs.com/reference.html#latlngbounds), [`opacity: number`](https://leafletjs.com/reference.html#imageoverlay-opacity) and [`zIndex: number`](https://leafletjs.com/reference.html#imageoverlay-zindex) props.
+
+```tsx Example component with MediaOverlay behavior
+const bounds = new LatLngBounds([40.712216, -74.22655], [40.773941, -74.12544])
+
+<ImageOverlay
+  url="http://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg"
+  bounds={bounds}
+  opacity={0.5}
+  zIndex={10}
+/>
+```
+
+### CircleMarker behavior
+
+Applies to components using [Leaflet's CircleMarker class](https://leafletjs.com/reference.html#circlemarker), adding support for mutable `center: LatLngExpression` and [`radius: number`](https://leafletjs.com/reference.html#circlemarker-radius) props.
+
+```tsx Example component with CircleMarker behavior
+<Circle center={[50.5, 30.5]} radius={200} />
+```
+
+### GridLayer behavior
+
+Applies to components using [Leaflet's GridLayer class](https://leafletjs.com/reference.html#gridlayer), adding support for mutable [`opacity: number`](https://leafletjs.com/reference.html#gridlayer-opacity) and [`zIndex: number`](https://leafletjs.com/reference.html#gridlayer-zindex) props.
+
+```tsx Example component with GridLayer behavior
+<TileLayer url="..." opacity={0.5} zIndex={10} />
+```
+
+### Control behavior
+
+Applies to [control components](#controls), making their [`position: ControlPosition`](https://leafletjs.com/reference.html#control-position) prop mutable.
+
+```tsx Example component with Control behavior
+<ZoomControl position="bottomleft" />
+```
+
+## UI layers
+
+### Marker
+
+[Leaflet reference](https://leafletjs.com/reference.html#marker)
+
+**Props**
+
+| Prop            | Type                       | Required | Mutable | Behavior                                     |
+| --------------- | -------------------------- | -------- | ------- | -------------------------------------------- |
+| `attribution`   | `string`                   | No       | **Yes** | [Attribution](#attribution-behavior)         |
+| `children`      | `ReactNode`                | No       | **Yes** | [ParentComponent](#parentcomponent-behavior) |
+| `draggable`     | `boolean`                  | No       | **Yes** |
+| `eventHandlers` | `LeafletEventHandlerFnMap` | No       | **Yes** | [Evented](#evented-behavior)                 |
+| `icon`          | `Leaflet.Icon`             | No       | **Yes** |
+| `opacity`       | `number`                   | No       | **Yes** |
+| `pane`          | `string`                   | No       | No      | [Pane](#pane-behavior)                       |
+| `position`      | `LatLngExpression`         | **Yes**  | **Yes** |
+| `zIndexOffset`  | `number`                   | No       | **Yes** |
+
+<Tabs
+  defaultValue="absolute"
+  groupId="import-specifier"
+  values={[
+    { label: 'Absolute specifier import', value: 'absolute', },
+    { label: 'Bare specifier import', value: 'bare', },
+  ]
+}>
+<TabItem value="absolute">
+
+```js
+import { Marker } from 'https://cdn.skypack.dev/react-leaflet@next/Marker.js'
+```
+
+</TabItem>
+<TabItem value="bare">
+
+```js
+import { Marker } from 'react-leaflet/Marker'
+```
+
+</TabItem>
+</Tabs>
+
+### Popup
+
+[Leaflet reference](https://leafletjs.com/reference.html#popup)
+
+**Props**
+
+| Prop            | Type                       | Required | Mutable | Behavior                                     |
+| --------------- | -------------------------- | -------- | ------- | -------------------------------------------- |
+| `attribution`   | `string`                   | No       | **Yes** | [Attribution](#attribution-behavior)         |
+| `children`      | `ReactNode`                | No       | **Yes** | [ParentComponent](#parentcomponent-behavior) |
+| `eventHandlers` | `LeafletEventHandlerFnMap` | No       | **Yes** | [Evented](#evented-behavior)                 |
+| `pane`          | `string`                   | No       | No      | [Pane](#pane-behavior)                       |
+| `position`      | `LatLngExpression`         | No       | **Yes** |
+
+<Tabs
+  defaultValue="absolute"
+  groupId="import-specifier"
+  values={[
+    { label: 'Absolute specifier import', value: 'absolute', },
+    { label: 'Bare specifier import', value: 'bare', },
+  ]
+}>
+<TabItem value="absolute">
+
+```js
+import { Popup } from 'https://cdn.skypack.dev/react-leaflet@next/Popup.js'
+```
+
+</TabItem>
+<TabItem value="bare">
+
+```js
+import { Popup } from 'react-leaflet/Popup'
+```
+
+</TabItem>
+</Tabs>
+
+### Tooltip
+
+[Leaflet reference](https://leafletjs.com/reference.html#tooltip)
+
+**Props**
+
+| Prop            | Type                       | Required | Mutable | Behavior                                     |
+| --------------- | -------------------------- | -------- | ------- | -------------------------------------------- |
+| `attribution`   | `string`                   | No       | **Yes** | [Attribution](#attribution-behavior)         |
+| `children`      | `ReactNode`                | No       | **Yes** | [ParentComponent](#parentcomponent-behavior) |
+| `eventHandlers` | `LeafletEventHandlerFnMap` | No       | **Yes** | [Evented](#evented-behavior)                 |
+| `pane`          | `string`                   | No       | No      | [Pane](#pane-behavior)                       |
+| `position`      | `LatLngExpression`         | No       | **Yes** |
+
+<Tabs
+  defaultValue="absolute"
+  groupId="import-specifier"
+  values={[
+    { label: 'Absolute specifier import', value: 'absolute', },
+    { label: 'Bare specifier import', value: 'bare', },
+  ]
+}>
+<TabItem value="absolute">
+
+```js
+import { Tooltip } from 'https://cdn.skypack.dev/react-leaflet@next/Tooltip.js'
+```
+
+</TabItem>
+<TabItem value="bare">
+
+```js
+import { Tooltip } from 'react-leaflet/Tooltip'
+```
+
+</TabItem>
+</Tabs>
+
+## Raster layers
+
+### TileLayer
+
+[Leaflet reference](https://leafletjs.com/reference.html#tilelayer)
+
+**Props**
+
+| Prop            | Type                       | Required | Mutable | Behavior                         |
+| --------------- | -------------------------- | -------- | ------- | -------------------------------- |
+| `eventHandlers` | `LeafletEventHandlerFnMap` | No       | **Yes** | [Evented](#evented-behavior)     |
+| `opacity`       | `number`                   | No       | **Yes** | [GridLayer](#gridlayer-behavior) |
+| `pane`          | `string`                   | No       | No      | [Pane](#pane-behavior)           |
+| `url`           | `string`                   | **Yes**  | No      |
+| `zIndex`        | `number`                   | No       | **Yes** | [GridLayer](#gridlayer-behavior) |
+
+<Tabs
+  defaultValue="absolute"
+  groupId="import-specifier"
+  values={[
+    { label: 'Absolute specifier import', value: 'absolute', },
+    { label: 'Bare specifier import', value: 'bare', },
+  ]
+}>
+<TabItem value="absolute">
+
+```js
+import { TileLayer } from 'https://cdn.skypack.dev/react-leaflet@next/TileLayer.js'
+```
+
+</TabItem>
+<TabItem value="bare">
+
+```js
+import { TileLayer } from 'react-leaflet/TileLayer'
+```
+
+</TabItem>
+</Tabs>
+
+### WMSTileLayer
+
+[Leaflet reference](https://leafletjs.com/reference.html#tilelayer-wms)
+
+**Props**
+
+| Prop            | Type                       | Required | Mutable | Behavior                         |
+| --------------- | -------------------------- | -------- | ------- | -------------------------------- |
+| `eventHandlers` | `LeafletEventHandlerFnMap` | No       | **Yes** | [Evented](#evented-behavior)     |
+| `opacity`       | `number`                   | No       | **Yes** | [GridLayer](#gridlayer-behavior) |
+| `pane`          | `string`                   | No       | No      | [Pane](#pane-behavior)           |
+| `params`        | `WMSParams`                | No       | **Yes** |
+| `url`           | `string`                   | **Yes**  | No      |
+| `zIndex`        | `number`                   | No       | **Yes** | [GridLayer](#gridlayer-behavior) |
+
+<Tabs
+  defaultValue="absolute"
+  groupId="import-specifier"
+  values={[
+    { label: 'Absolute specifier import', value: 'absolute', },
+    { label: 'Bare specifier import', value: 'bare', },
+  ]
+}>
+<TabItem value="absolute">
+
+```js
+import { WMSTileLayer } from 'https://cdn.skypack.dev/react-leaflet@next/WMSTileLayer.js'
+```
+
+</TabItem>
+<TabItem value="bare">
+
+```js
+import { WMSTileLayer } from 'react-leaflet/WMSTileLayer'
+```
+
+</TabItem>
+</Tabs>
+
+### ImageOverlay
+
+[Leaflet reference](https://leafletjs.com/reference.html#imageoverlay)
+
+**Props**
+
+| Prop            | Type                       | Required | Mutable | Behavior                                     |
+| --------------- | -------------------------- | -------- | ------- | -------------------------------------------- |
+| `attribution`   | `string`                   | No       | **Yes** | [Attribution](#attribution-behavior)         |
+| `bounds`        | `LatLngBounds`             | **Yes**  | **Yes** | [MediaOverlay](#mediaoverlay-behavior)       |
+| `children`      | `ReactNode`                | No       | **Yes** | [ParentComponent](#parentcomponent-behavior) |
+| `eventHandlers` | `LeafletEventHandlerFnMap` | No       | **Yes** | [Evented](#evented-behavior)                 |
+| `opacity`       | `number`                   | No       | **Yes** | [MediaOverlay](#mediaoverlay-behavior)       |
+| `url`           | `string`                   | **Yes**  | **Yes** |
+| `zIndex`        | `number`                   | No       | **Yes** | [MediaOverlay](#mediaoverlay-behavior)       |
+
+<Tabs
+  defaultValue="absolute"
+  groupId="import-specifier"
+  values={[
+    { label: 'Absolute specifier import', value: 'absolute', },
+    { label: 'Bare specifier import', value: 'bare', },
+  ]
+}>
+<TabItem value="absolute">
+
+```js
+import { ImageOverlay } from 'https://cdn.skypack.dev/react-leaflet@next/ImageOverlay.js'
+```
+
+</TabItem>
+<TabItem value="bare">
+
+```js
+import { ImageOverlay } from 'react-leaflet/ImageOverlay'
+```
+
+</TabItem>
+</Tabs>
+
+### VideoOverlay
+
+[Leaflet reference](https://leafletjs.com/reference.html#videooverlay)
+
+**Props**
+
+| Prop            | Type                                       | Required | Mutable | Behavior                               |
+| --------------- | ------------------------------------------ | -------- | ------- | -------------------------------------- |
+| `attribution`   | `string`                                   | No       | **Yes** | [Attribution](#attribution-behavior)   |
+| `bounds`        | `LatLngBounds`                             | **Yes**  | **Yes** | [MediaOverlay](#mediaoverlay-behavior) |
+| `eventHandlers` | `LeafletEventHandlerFnMap`                 | No       | **Yes** | [Evented](#evented-behavior)           |
+| `play`          | `boolean`                                  | No       | **Yes** |
+| `url`           | `string`, `string[]` or `HTMLVideoElement` | **Yes**  | **Yes** |
+| `zIndex`        | `number`                                   | No       | **Yes** | [MediaOverlay](#mediaoverlay-behavior) |
+
+<Tabs
+  defaultValue="absolute"
+  groupId="import-specifier"
+  values={[
+    { label: 'Absolute specifier import', value: 'absolute', },
+    { label: 'Bare specifier import', value: 'bare', },
+  ]
+}>
+<TabItem value="absolute">
+
+```js
+import { VideoOverlay } from 'https://cdn.skypack.dev/react-leaflet@next/VideoOverlay.js'
+```
+
+</TabItem>
+<TabItem value="bare">
+
+```js
+import { VideoOverlay } from 'react-leaflet/VideoOverlay'
+```
+
+</TabItem>
+</Tabs>
+
+## Vector layers
+
+### Circle
+
+[Leaflet reference](https://leafletjs.com/reference.html#circle)
+
+**Props**
+
+| Prop            | Type                       | Required | Mutable | Behavior                                     |
+| --------------- | -------------------------- | -------- | ------- | -------------------------------------------- |
+| `attribution`   | `string`                   | No       | **Yes** | [Attribution](#attribution-behavior)         |
+| `center`        | `LatLngExpression`         | **Yes**  | **Yes** |
+| `children`      | `ReactNode`                | No       | **Yes** | [ParentComponent](#parentcomponent-behavior) |
+| `eventHandlers` | `LeafletEventHandlerFnMap` | No       | **Yes** | [Evented](#evented-behavior)                 |
+| `pane`          | `string`                   | No       | No      | [Pane](#pane-behavior)                       |
+| `pathOptions`   | `PathOptions`              | No       | **Yes** | [Path](#path-behavior)                       |
+| `radius`        | `number`                   | **Yes**  | **Yes** |
+
+<Tabs
+  defaultValue="absolute"
+  groupId="import-specifier"
+  values={[
+    { label: 'Absolute specifier import', value: 'absolute', },
+    { label: 'Bare specifier import', value: 'bare', },
+  ]
+}>
+<TabItem value="absolute">
+
+```js
+import { Circle } from 'https://cdn.skypack.dev/react-leaflet@next/Circle.js'
+```
+
+</TabItem>
+<TabItem value="bare">
+
+```js
+import { Circle } from 'react-leaflet/Circle'
+```
+
+</TabItem>
+</Tabs>
+
+### CircleMarker
+
+[Leaflet reference](https://leafletjs.com/reference.html#circlemarker)
+
+**Props**
+
+| Prop            | Type                       | Required | Mutable | Behavior                                     |
+| --------------- | -------------------------- | -------- | ------- | -------------------------------------------- |
+| `attribution`   | `string`                   | No       | **Yes** | [Attribution](#attribution-behavior)         |
+| `center`        | `LatLngExpression`         | **Yes**  | **Yes** |
+| `children`      | `ReactNode`                | No       | **Yes** | [ParentComponent](#parentcomponent-behavior) |
+| `eventHandlers` | `LeafletEventHandlerFnMap` | No       | **Yes** | [Evented](#evented-behavior)                 |
+| `pane`          | `string`                   | No       | No      | [Pane](#pane-behavior)                       |
+| `pathOptions`   | `PathOptions`              | No       | **Yes** | [Path](#path-behavior)                       |
+| `radius`        | `number`                   | **Yes**  | **Yes** |
+
+<Tabs
+  defaultValue="absolute"
+  groupId="import-specifier"
+  values={[
+    { label: 'Absolute specifier import', value: 'absolute', },
+    { label: 'Bare specifier import', value: 'bare', },
+  ]
+}>
+<TabItem value="absolute">
+
+```js
+import { CircleMarker } from 'https://cdn.skypack.dev/react-leaflet@next/CircleMarker.js'
+```
+
+</TabItem>
+<TabItem value="bare">
+
+```js
+import { CircleMarker } from 'react-leaflet/CircleMarker'
+```
+
+</TabItem>
+</Tabs>
+
+### Polyline
+
+[Leaflet reference](https://leafletjs.com/reference.html#polyline)
+
+**Props**
+
+| Prop            | Type                                           | Required | Mutable | Behavior                                     |
+| --------------- | ---------------------------------------------- | -------- | ------- | -------------------------------------------- |
+| `attribution`   | `string`                                       | No       | **Yes** | [Attribution](#attribution-behavior)         |
+| `children`      | `ReactNode`                                    | No       | **Yes** | [ParentComponent](#parentcomponent-behavior) |
+| `eventHandlers` | `LeafletEventHandlerFnMap`                     | No       | **Yes** | [Evented](#evented-behavior)                 |
+| `pane`          | `string`                                       | No       | No      | [Pane](#pane-behavior)                       |
+| `pathOptions`   | `PathOptions`                                  | No       | **Yes** | [Path](#path-behavior)                       |
+| `positions`     | `LatLngExpression[]` or `LatLngExpression[][]` | **Yes**  | **Yes** |
+
+<Tabs
+  defaultValue="absolute"
+  groupId="import-specifier"
+  values={[
+    { label: 'Absolute specifier import', value: 'absolute', },
+    { label: 'Bare specifier import', value: 'bare', },
+  ]
+}>
+<TabItem value="absolute">
+
+```js
+import { Polyline } from 'https://cdn.skypack.dev/react-leaflet@next/Polyline.js'
+```
+
+</TabItem>
+<TabItem value="bare">
+
+```js
+import { Polyline } from 'react-leaflet/Polyline'
+```
+
+</TabItem>
+</Tabs>
+
+### Polygon
+
+[Leaflet reference](https://leafletjs.com/reference.html#polygon)
+
+| Prop            | Type                                                                     | Required | Mutable | Behavior                                     |
+| --------------- | ------------------------------------------------------------------------ | -------- | ------- | -------------------------------------------- |
+| `attribution`   | `string`                                                                 | No       | **Yes** | [Attribution](#attribution-behavior)         |
+| `children`      | `ReactNode`                                                              | No       | **Yes** | [ParentComponent](#parentcomponent-behavior) |
+| `eventHandlers` | `LeafletEventHandlerFnMap`                                               | No       | **Yes** | [Evented](#evented-behavior)                 |
+| `pane`          | `string`                                                                 | No       | No      | [Pane](#pane-behavior)                       |
+| `pathOptions`   | `PathOptions`                                                            | No       | **Yes** | [Path](#path-behavior)                       |
+| `positions`     | `LatLngExpression[]`, `LatLngExpression[][]` or `LatLngExpression[][][]` | **Yes**  | **Yes** |
+
+<Tabs
+  defaultValue="absolute"
+  groupId="import-specifier"
+  values={[
+    { label: 'Absolute specifier import', value: 'absolute', },
+    { label: 'Bare specifier import', value: 'bare', },
+  ]
+}>
+<TabItem value="absolute">
+
+```js
+import { Polygon } from 'https://cdn.skypack.dev/react-leaflet@next/Polygon.js'
+```
+
+</TabItem>
+<TabItem value="bare">
+
+```js
+import { Polygon } from 'react-leaflet/Polygon'
+```
+
+</TabItem>
+</Tabs>
+
+### Rectangle
+
+[Leaflet reference](https://leafletjs.com/reference.html#rectangle)
+
+**Props**
+
+| Prop            | Type                       | Required | Mutable | Behavior                                     |
+| --------------- | -------------------------- | -------- | ------- | -------------------------------------------- |
+| `attribution`   | `string`                   | No       | **Yes** | [Attribution](#attribution-behavior)         |
+| `bounds`        | `LatLngBoundsExpression`   | **Yes**  | **Yes** |
+| `children`      | `ReactNode`                | No       | **Yes** | [ParentComponent](#parentcomponent-behavior) |
+| `eventHandlers` | `LeafletEventHandlerFnMap` | No       | **Yes** | [Evented](#evented-behavior)                 |
+| `pane`          | `string`                   | No       | No      | [Pane](#pane-behavior)                       |
+| `pathOptions`   | `PathOptions`              | No       | **Yes** | [Path](#path-behavior)                       |
+
+<Tabs
+  defaultValue="absolute"
+  groupId="import-specifier"
+  values={[
+    { label: 'Absolute specifier import', value: 'absolute', },
+    { label: 'Bare specifier import', value: 'bare', },
+  ]
+}>
+<TabItem value="absolute">
+
+```js
+import { Rectangle } from 'https://cdn.skypack.dev/react-leaflet@next/Rectangle.js'
+```
+
+</TabItem>
+<TabItem value="bare">
+
+```js
+import { Rectangle } from 'react-leaflet/Rectangle'
+```
+
+</TabItem>
+</Tabs>
+
+### SVGOverlay
+
+[Leaflet reference](https://leafletjs.com/reference.html#svgoverlay)
+
+**Props**
+
+The `attributes` must be valid [`SVGSVGElement` properties](https://developer.mozilla.org/en-US/docs/Web/API/SVGSVGElement).
+
+| Prop          | Type                     | Required | Mutable | Behavior                                     |
+| ------------- | ------------------------ | -------- | ------- | -------------------------------------------- |
+| `attributes`  | `Record<string, string>` | No       | No      |
+| `attribution` | `string`                 | No       | **Yes** | [Attribution](#attribution-behavior)         |
+| `children`    | `ReactNode`              | No       | **Yes** | [ParentComponent](#parentcomponent-behavior) |
+| `pane`        | `string`                 | No       | No      | [Pane](#pane-behavior)                       |
+
+<Tabs
+  defaultValue="absolute"
+  groupId="import-specifier"
+  values={[
+    { label: 'Absolute specifier import', value: 'absolute', },
+    { label: 'Bare specifier import', value: 'bare', },
+  ]
+}>
+<TabItem value="absolute">
+
+```js
+import { SVGOverlay } from 'https://cdn.skypack.dev/react-leaflet@next/SVGOverlay.js'
+```
+
+</TabItem>
+<TabItem value="bare">
+
+```js
+import { SVGOverlay } from 'react-leaflet/SVGOverlay'
+```
+
+</TabItem>
+</Tabs>
+
+## Other layers
+
+### LayerGroup
+
+[Leaflet reference](https://leafletjs.com/reference.html#layergroup)
+
+**Props**
+
+| Prop            | Type                       | Required | Mutable | Behavior                                     |
+| --------------- | -------------------------- | -------- | ------- | -------------------------------------------- |
+| `attribution`   | `string`                   | No       | **Yes** | [Attribution](#attribution-behavior)         |
+| `children`      | `ReactNode`                | No       | **Yes** | [ParentComponent](#parentcomponent-behavior) |
+| `eventHandlers` | `LeafletEventHandlerFnMap` | No       | **Yes** | [Evented](#evented-behavior)                 |
+| `pane`          | `string`                   | No       | No      | [Pane](#pane-behavior)                       |
+
+<Tabs
+  defaultValue="absolute"
+  groupId="import-specifier"
+  values={[
+    { label: 'Absolute specifier import', value: 'absolute', },
+    { label: 'Bare specifier import', value: 'bare', },
+  ]
+}>
+<TabItem value="absolute">
+
+```js
+import { LayerGroup } from 'https://cdn.skypack.dev/react-leaflet@next/LayerGroup.js'
+```
+
+</TabItem>
+<TabItem value="bare">
+
+```js
+import { LayerGroup } from 'react-leaflet/LayerGroup'
+```
+
+</TabItem>
+</Tabs>
+
+### FeatureGroup
+
+[Leaflet reference](https://leafletjs.com/reference.html#featuregroup)
+
+**Props**
+
+| Prop            | Type                       | Required | Mutable | Behavior                                     |
+| --------------- | -------------------------- | -------- | ------- | -------------------------------------------- |
+| `attribution`   | `string`                   | No       | **Yes** | [Attribution](#attribution-behavior)         |
+| `children`      | `ReactNode`                | No       | **Yes** | [ParentComponent](#parentcomponent-behavior) |
+| `eventHandlers` | `LeafletEventHandlerFnMap` | No       | **Yes** | [Evented](#evented-behavior)                 |
+| `pane`          | `string`                   | No       | No      | [Pane](#pane-behavior)                       |
+
+<Tabs
+  defaultValue="absolute"
+  groupId="import-specifier"
+  values={[
+    { label: 'Absolute specifier import', value: 'absolute', },
+    { label: 'Bare specifier import', value: 'bare', },
+  ]
+}>
+<TabItem value="absolute">
+
+```js
+import { FeatureGroup } from 'https://cdn.skypack.dev/react-leaflet@next/FeatureGroup.js'
+```
+
+</TabItem>
+<TabItem value="bare">
+
+```js
+import { FeatureGroup } from 'react-leaflet/FeatureGroup'
+```
+
+</TabItem>
+</Tabs>
+
+### GeoJSON
+
+[Leaflet reference](https://leafletjs.com/reference.html#geojson)
+
+**Props**
+
+| Prop            | Type                             | Required | Mutable | Behavior                                     |
+| --------------- | -------------------------------- | -------- | ------- | -------------------------------------------- |
+| `attribution`   | `string`                         | No       | **Yes** | [Attribution](#attribution-behavior)         |
+| `children`      | `ReactNode`                      | No       | **Yes** | [ParentComponent](#parentcomponent-behavior) |
+| `data`          | `GeoJsonObject`                  | **Yes**  | No      |
+| `eventHandlers` | `LeafletEventHandlerFnMap`       | No       | **Yes** | [Evented](#evented-behavior)                 |
+| `pane`          | `string`                         | No       | No      | [Pane](#pane-behavior)                       |
+| `style`         | `PathOptions` or `StyleFunction` | No       | **Yes** |                                              |
+
+<Tabs
+  defaultValue="absolute"
+  groupId="import-specifier"
+  values={[
+    { label: 'Absolute specifier import', value: 'absolute', },
+    { label: 'Bare specifier import', value: 'bare', },
+  ]
+}>
+<TabItem value="absolute">
+
+```js
+import { GeoJSON } from 'https://cdn.skypack.dev/react-leaflet@next/GeoJSON.js'
+```
+
+</TabItem>
+<TabItem value="bare">
+
+```js
+import { GeoJSON } from 'react-leaflet/GeoJSON'
+```
+
+</TabItem>
+</Tabs>
+
+## Controls
+
+### ZoomControl
+
+[Leaflet reference](https://leafletjs.com/reference.html#control-zoom)
+
+**Props**
+
+| Prop            | Type                       | Required | Mutable | Behavior                     |
+| --------------- | -------------------------- | -------- | ------- | ---------------------------- |
+| `eventHandlers` | `LeafletEventHandlerFnMap` | No       | **Yes** | [Evented](#evented-behavior) |
+| `position`      | `ControlPosition`          | No       | **Yes** |
+
+<Tabs
+  defaultValue="absolute"
+  groupId="import-specifier"
+  values={[
+    { label: 'Absolute specifier import', value: 'absolute', },
+    { label: 'Bare specifier import', value: 'bare', },
+  ]
+}>
+<TabItem value="absolute">
+
+```js
+import { ZoomControl } from 'https://cdn.skypack.dev/react-leaflet@next/ZoomControl.js'
+```
+
+</TabItem>
+<TabItem value="bare">
+
+```js
+import { ZoomControl } from 'react-leaflet/ZoomControl'
+```
+
+</TabItem>
+</Tabs>
+
+### AttributionControl
+
+[Leaflet reference](https://leafletjs.com/reference.html#control-attribution)
+
+**Props**
+
+| Prop            | Type                       | Required | Mutable | Behavior                     |
+| --------------- | -------------------------- | -------- | ------- | ---------------------------- |
+| `eventHandlers` | `LeafletEventHandlerFnMap` | No       | **Yes** | [Evented](#evented-behavior) |
+| `position`      | `ControlPosition`          | No       | **Yes** |
+
+<Tabs
+  defaultValue="absolute"
+  groupId="import-specifier"
+  values={[
+    { label: 'Absolute specifier import', value: 'absolute', },
+    { label: 'Bare specifier import', value: 'bare', },
+  ]
+}>
+<TabItem value="absolute">
+
+```js
+import { AttributionControl } from 'https://cdn.skypack.dev/react-leaflet@next/AttributionControl.js'
+```
+
+</TabItem>
+<TabItem value="bare">
+
+```js
+import { AttributionControl } from 'react-leaflet/AttributionControl'
+```
+
+</TabItem>
+</Tabs>
+
+### LayersControl
+
+[Leaflet reference](https://leafletjs.com/reference.html#control-layers)
+
+**Props**
+
+| Prop            | Type                       | Required | Mutable | Behavior                     |
+| --------------- | -------------------------- | -------- | ------- | ---------------------------- |
+| `collapsed`     | `boolean`                  | No       | **Yes** |
+| `eventHandlers` | `LeafletEventHandlerFnMap` | No       | **Yes** | [Evented](#evented-behavior) |
+| `position`      | `ControlPosition`          | No       | **Yes** |
+
+<Tabs
+  defaultValue="absolute"
+  groupId="import-specifier"
+  values={[
+    { label: 'Absolute specifier import', value: 'absolute', },
+    { label: 'Bare specifier import', value: 'bare', },
+  ]
+}>
+<TabItem value="absolute">
+
+```js
+import { LayersControl } from 'https://cdn.skypack.dev/react-leaflet@next/LayersControl.js'
+```
+
+</TabItem>
+<TabItem value="bare">
+
+```js
+import { LayersControl } from 'react-leaflet/LayersControl'
+```
+
+</TabItem>
+</Tabs>
+
+### LayersControl.BaseLayer
+
+Attached to the [`LayersControl` component](#layerscontrol).
+
+Note: a `ref` cannot be attached to this element, it should be attached to the child element.
+
+**Props**
+
+| Prop       | Type        | Required | Mutable | Behavior                                     |
+| ---------- | ----------- | -------- | ------- | -------------------------------------------- |
+| `checked`  | `boolean`   | No       | **Yes** |
+| `children` | `ReactNode` | No       | **Yes** | [ParentComponent](#parentcomponent-behavior) |
+| `name`     | `string`    | **Yes**  | No      |
+
+### LayersControl.Overlay
+
+Attached to the [`LayersControl` component](#layerscontrol).
+
+Note: a `ref` cannot be attached to this element, it should be attached to the child element.
+
+**Props**
+
+| Prop       | Type        | Required | Mutable | Behavior                                     |
+| ---------- | ----------- | -------- | ------- | -------------------------------------------- |
+| `checked`  | `boolean`   | No       | **Yes** |
+| `children` | `ReactNode` | No       | **Yes** | [ParentComponent](#parentcomponent-behavior) |
+| `name`     | `string`    | **Yes**  | No      |
+
+### ScaleControl
+
+[Leaflet reference](https://leafletjs.com/reference.html#control-scale)
+
+**Props**
+
+| Prop            | Type                       | Required | Mutable | Behavior                     |
+| --------------- | -------------------------- | -------- | ------- | ---------------------------- |
+| `eventHandlers` | `LeafletEventHandlerFnMap` | No       | **Yes** | [Evented](#evented-behavior) |
+| `position`      | `ControlPosition`          | No       | **Yes** |
+
+<Tabs
+  defaultValue="absolute"
+  groupId="import-specifier"
+  values={[
+    { label: 'Absolute specifier import', value: 'absolute', },
+    { label: 'Bare specifier import', value: 'bare', },
+  ]
+}>
+<TabItem value="absolute">
+
+```js
+import { ScaleControl } from 'https://cdn.skypack.dev/react-leaflet@next/ScaleControl.js'
+```
+
+</TabItem>
+<TabItem value="bare">
+
+```js
+import { ScaleControl } from 'react-leaflet/ScaleControl'
+```
+
+</TabItem>
+</Tabs>
+
+## Other
+
+### Pane
+
+[Leaflet reference](https://leafletjs.com/reference.html#map-pane)
+
+**Props**
+
+:::caution
+The `name` prop must be unique to the pane and different from the [default Leaflet pane names](https://leafletjs.com/reference.html#map-pane)
+:::
+
+| Prop        | Type            | Required | Mutable | Behavior                                     |
+| ----------- | --------------- | -------- | ------- | -------------------------------------------- |
+| `children`  | `ReactNode`     | No       | **Yes** | [ParentComponent](#parentcomponent-behavior) |
+| `className` | `string`        | No       | No      |
+| `name`      | `string`        | **Yes**  | No      |
+| `pane`      | `string`        | No       | No      | [Pane](#pane-behavior)                       |
+| `style`     | `CSSProperties` | No       | No      |
+
+<Tabs
+  defaultValue="absolute"
+  groupId="import-specifier"
+  values={[
+    { label: 'Absolute specifier import', value: 'absolute', },
+    { label: 'Bare specifier import', value: 'bare', },
+  ]
+}>
+<TabItem value="absolute">
+
+```js
+import { Pane } from 'https://cdn.skypack.dev/react-leaflet@next/Pane.js'
+```
+
+</TabItem>
+<TabItem value="bare">
+
+```js
+import { Pane } from 'react-leaflet/Pane'
+```
+
+</TabItem>
+</Tabs>

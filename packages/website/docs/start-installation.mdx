@@ -21,10 +21,39 @@ Before using React Leaflet, you must setup your project following [Leaflet's Qui
 
 ## Adding React Leaflet
 
+:::caution Alpha version
+React Leaflet v4 is currently in alpha and will only officially support React v18, even if it works with React v17.
+:::
+
+### Using ESM imports
+
+React Leaflet export [ES Modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) that can be imported by URL, notably from CDNs such as [Skypack](https://www.skypack.dev/):
+
+```js
+import { MapContainer } from 'https://cdn.skypack.dev/react-leaflet@next/MapContainer.js'
+import { TileLayer } from 'https://cdn.skypack.dev/react-leaflet@next/TileLayer.js'
+import { useMap } from 'https://cdn.skypack.dev/react-leaflet@next/hooks.js'
+```
+
+Or importing the full library at once:
+
+```js
+import {
+  MapContainer,
+  TileLayer,
+  useMap,
+} from 'https://cdn.skypack.dev/react-leaflet@next/index.js'
+```
+
+### Using a package registry
+
+A package registry such as [npm](https://www.npmjs.com/) can be used to install React Leaflet and its dependencies.
+
 React, React DOM and Leaflet are required peer dependencies. You must add them to your project if they are not already installed:
 
 <Tabs
   defaultValue="npm"
+  groupId="package-manager"
   values={[
     { label: 'npm', value: 'npm', },
     { label: 'yarn', value: 'yarn', },
@@ -33,14 +62,14 @@ React, React DOM and Leaflet are required peer dependencies. You must add them t
 <TabItem value="npm">
 
 ```bash
-npm install react react-dom leaflet
+npm install react@^18.0.0-rc react-dom@^18.0.0-rc leaflet
 ```
 
 </TabItem>
 <TabItem value="yarn">
 
 ```bash
-yarn add react react-dom leaflet
+yarn add react@^18.0.0-rc react-dom@^18.0.0-rc leaflet
 ```
 
 </TabItem>
@@ -50,6 +79,7 @@ Then you can install React Leaflet:
 
 <Tabs
   defaultValue="npm"
+  groupId="package-manager"
   values={[
     { label: 'npm', value: 'npm', },
     { label: 'yarn', value: 'yarn', },
@@ -58,7 +88,7 @@ Then you can install React Leaflet:
 <TabItem value="npm">
 
 ```bash
-npm install react-leaflet
+npm install react-leaflet@next
 ```
 
 </TabItem>
@@ -71,18 +101,27 @@ yarn add react-leaflet
 </TabItem>
 </Tabs>
 
-Finally, you can import the necessary components. For example:
+Modules can then be imported using bare specifiers when supported by a bundler such as [webpack](https://webpack.js.org/).
 
 ```js
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import { MapContainer } from 'react-leaflet/MapContainer'
+import { TileLayer } from 'react-leaflet/TileLayer'
+import { useMap } from 'react-leaflet/hooks'
 ```
 
-## Using TypeScript
+Alternatively, all the components and hooks can be imported from the module entry-point:
+
+```js
+import { MapContainer, TileLayer, useMap } from 'react-leaflet'
+```
+
+## TypeScript support
 
 React Leaflet provides TypeScript definitions in the installed packages, but needs Leaflet's definitions to be present. If you have not installed them yet, you will need to add them:
 
 <Tabs
   defaultValue="npm"
+  groupId="package-manager"
   values={[
     { label: 'npm', value: 'npm', },
     { label: 'yarn', value: 'yarn', },

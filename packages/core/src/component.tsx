@@ -22,9 +22,9 @@ export type PropsWithChildren = {
 export function createContainerComponent<E, P extends PropsWithChildren>(
   useElement: ElementHook<E, P>,
 ) {
-  function ContainerComponent(props: P, ref: Ref<E>) {
+  function ContainerComponent(props: P, forwardedRef: Ref<E>) {
     const { instance, context } = useElement(props).current
-    useImperativeHandle(ref, () => instance)
+    useImperativeHandle(forwardedRef, () => instance)
 
     return props.children == null ? null : (
       <LeafletProvider value={context}>{props.children}</LeafletProvider>
@@ -38,11 +38,11 @@ export function createDivOverlayComponent<
   E extends DivOverlay,
   P extends PropsWithChildren,
 >(useElement: ReturnType<DivOverlayHook<E, P>>) {
-  function OverlayComponent(props: P, ref: Ref<E>) {
+  function OverlayComponent(props: P, forwardedRef: Ref<E>) {
     const [isOpen, setOpen] = useState(false)
     const { instance } = useElement(props, setOpen).current
 
-    useImperativeHandle(ref, () => instance)
+    useImperativeHandle(forwardedRef, () => instance)
     useEffect(
       function updateOverlay() {
         if (isOpen) {
@@ -61,9 +61,9 @@ export function createDivOverlayComponent<
 }
 
 export function createLeafComponent<E, P>(useElement: ElementHook<E, P>) {
-  function LeafComponent(props: P, ref: Ref<E>) {
+  function LeafComponent(props: P, forwardedRef: Ref<E>) {
     const { instance } = useElement(props).current
-    useImperativeHandle(ref, () => instance)
+    useImperativeHandle(forwardedRef, () => instance)
 
     return null
   }

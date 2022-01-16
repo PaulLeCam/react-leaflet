@@ -12,23 +12,23 @@
     "types:react-leaflet": "yarn workspace react-leaflet run build:types",
     "build:types": "yarn run types:core && yarn run types:react-leaflet",
     "build:website": "yarn workspace website run build",
-    "build": "yarn turbo run build:js && yarn run build:types && yarn run build:website"
+    "build": "yarn turbo run build:clean && yarn run build:types && yarn turbo run build:js && yarn run build:website"
   },
   "devDependencies": {
     "@skypack/package-check": "^0.2.2",
     "@swc/cli": "^0.1.55",
-    "@swc/core": "^1.2.126",
-    "@swc/jest": "^0.2.15",
+    "@swc/core": "^1.2.129",
+    "@swc/jest": "^0.2.17",
     "@testing-library/react": "^13.0.0-alpha",
     "@testing-library/react-hooks": "^8.0.0-alpha",
     "@types/jest": "^27.4.0",
     "@types/leaflet": "^1.7.8",
     "@types/warning": "^3.0.0",
-    "@typescript-eslint/eslint-plugin": "^5.9.0",
-    "@typescript-eslint/parser": "^5.9.0",
+    "@typescript-eslint/eslint-plugin": "^5.9.1",
+    "@typescript-eslint/parser": "^5.9.1",
     "cross-env": "^7.0.3",
     "del-cli": "^4.0.1",
-    "eslint": "^8.6.0",
+    "eslint": "^8.7.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-node": "^11.1.0",
@@ -43,7 +43,8 @@
     "react": "^18.0.0-rc",
     "react-dom": "^18.0.0-rc",
     "react-test-renderer": "^18.0.0-rc",
-    "turbo": "^1.0.24",
+    "ts-jest-resolver": "^2.0.0",
+    "turbo": "^1.0.28",
     "typescript": "^4.5.4"
   },
   "jest": {
@@ -53,12 +54,8 @@
   },
   "turbo": {
     "pipeline": {
-      "clean": {},
-      "build:js": {
-        "dependsOn": [
-          "^clean"
-        ]
-      }
+      "build:clean": {},
+      "build:js": {}
     }
   }
 }

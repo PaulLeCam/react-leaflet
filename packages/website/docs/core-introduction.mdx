@@ -2,6 +2,9 @@
 title: React Leaflet Core
 ---
 
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
 ## Introduction
 
 React Leaflet's core APIs are implemented in the `@react-leaflet/core` package to provide a separation from the public APIs.
@@ -15,7 +18,7 @@ You might want to learn about the core APIs if you want to:
 - Implement new components not provided by React Leaflet
 - Simply learn more about how React Leaflet works
 
-If you're only interested in using the public APIs of React Leaflet, their usage is covered in the previous sections of this documentation, notably the [getting started](start-introduction.md) and [public API](api-map.md) pages.
+If you're only interested in using the public APIs of React Leaflet, their usage is covered in the previous sections of this documentation, notably the [getting started](start-introduction.md) and [public API](api-map.mdx) pages.
 
 ## Installation
 
@@ -23,9 +26,31 @@ The `@react-leaflet/core` package is a dependency of the `react-leaflet` one. Th
 
 ## Usage
 
-All the [core APIs](core-api.md) can be imported from the `@react-leaflet/core` package, such as
+All the [core APIs](core-api.mdx) can be imported from the `@react-leaflet/core` package, such as
 
-```ts
+<Tabs
+defaultValue="absolute"
+groupId="import-specifier"
+values={[
+{ label: 'Absolute specifier import', value: 'absolute', },
+{ label: 'Bare specifier import', value: 'bare', },
+]
+}>
+<TabItem value="absolute">
+
+```js
+import { createControlComponent } from 'https://cdn.skypack.dev/@react-leaflet/core@next'
+import { Control } from 'https://cdn.skypack.dev/leaflet'
+
+export const ZoomControl = createControlComponent(
+  (props) => new Control.Zoom(props),
+)
+```
+
+</TabItem>
+<TabItem value="bare">
+
+```js
 import { createControlComponent } from '@react-leaflet/core'
 import { Control } from 'leaflet'
 
@@ -33,5 +58,8 @@ export const ZoomControl = createControlComponent(
   (props) => new Control.Zoom(props),
 )
 ```
+
+</TabItem>
+</Tabs>
 
 The following page presents the architecture and usage in more details.

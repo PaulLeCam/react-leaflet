@@ -31,9 +31,9 @@
   "sideEffects": false,
   "scripts": {
     "build:clean": "del lib",
-    "build:js": "swc src -d ./lib --config-file ../../swc.json",
+    "build:js": "swc src -d ./lib --config-file ../../.swcrc",
     "build:types": "tsc --emitDeclarationOnly",
-    "build": "yarn run build:clean && yarn run build:js && yarn run build:types",
+    "build": "yarn run build:clean && yarn run build:types && yarn run build:js",
     "test:types": "tsc --noEmit",
     "test:unit": "cross-env NODE_ENV=test jest",
     "test": "yarn run test:types && yarn run test:unit",
@@ -50,7 +50,6 @@
     "react-dom": "^18.0.0-rc"
   },
   "devDependencies": {
-    "@react-leaflet/jest-resolver": "^1.0.0",
     "@types/leaflet": "^1.7.8"
   },
   "jest": {
@@ -58,11 +57,14 @@
       ".ts",
       ".tsx"
     ],
-    "resolver": "@react-leaflet/jest-resolver",
+    "resolver": "ts-jest-resolver",
     "testEnvironment": "jsdom",
     "transform": {
       "^.+\\.(t|j)sx?$": [
-        "@swc/jest"
+        "@swc/jest",
+        {
+          "root": "../.."
+        }
       ]
     }
   }

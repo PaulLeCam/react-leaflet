@@ -45,10 +45,10 @@ export const useSVGOverlay = createLayerHook(useSVGOverlayElement)
 
 function SVGOverlayComponent(
   { children, ...options }: SVGOverlayProps,
-  ref: Ref<LeafletSVGOverlay>,
+  forwardedRef: Ref<LeafletSVGOverlay>,
 ) {
   const { instance, container } = useSVGOverlay(options).current
-  useImperativeHandle(ref, () => instance)
+  useImperativeHandle(forwardedRef, () => instance)
 
   return container == null || children == null
     ? null
