@@ -1,3 +1,8 @@
+## v4.0.0-alpha.1 (2022-02-05)
+
+- Merge changes from v3.
+- Update docs for v4 support.
+
 ## v4.0.0-alpha.0 (2022-01-05)
 
 ### Breaking changes
@@ -8,6 +13,7 @@
 - Removed `MapConsumer` component.
 - Removed `whenCreated` property from the `MapContainer` component.
 - Removed `onOpen` and `onClose` properties from `Popup` and `Tooltip` components.
+- Removed CommonJS distribution.
 - Removed UMD distribution.
 
 ### Other changes

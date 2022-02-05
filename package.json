@@ -2,6 +2,7 @@
   "name": "react-leaflet-repository",
   "version": "1.0.0",
   "private": true,
+  "packageManager": "yarn@1.18.0",
   "workspaces": [
     "packages/*"
   ],
@@ -17,18 +18,18 @@
   "devDependencies": {
     "@skypack/package-check": "^0.2.2",
     "@swc/cli": "^0.1.55",
-    "@swc/core": "^1.2.129",
+    "@swc/core": "^1.2.136",
     "@swc/jest": "^0.2.17",
     "@testing-library/react": "^13.0.0-alpha",
     "@testing-library/react-hooks": "^8.0.0-alpha",
     "@types/jest": "^27.4.0",
-    "@types/leaflet": "^1.7.8",
+    "@types/leaflet": "^1.7.9",
     "@types/warning": "^3.0.0",
-    "@typescript-eslint/eslint-plugin": "^5.9.1",
-    "@typescript-eslint/parser": "^5.9.1",
+    "@typescript-eslint/eslint-plugin": "^5.10.2",
+    "@typescript-eslint/parser": "^5.10.2",
     "cross-env": "^7.0.3",
     "del-cli": "^4.0.1",
-    "eslint": "^8.7.0",
+    "eslint": "^8.8.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-node": "^11.1.0",
@@ -36,7 +37,7 @@
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
-    "jest": "^27.4.6",
+    "jest": "^27.5.0",
     "leaflet": "^1.7.1",
     "prettier": "^2.5.1",
     "prettier-eslint": "^13.0.0",
@@ -44,18 +45,12 @@
     "react-dom": "^18.0.0-rc",
     "react-test-renderer": "^18.0.0-rc",
     "ts-jest-resolver": "^2.0.0",
-    "turbo": "^1.0.28",
-    "typescript": "^4.5.4"
+    "turbo": "^1.1.2",
+    "typescript": "^4.5.5"
   },
   "jest": {
     "projects": [
       "<rootDir>/packages/*"
     ]
-  },
-  "turbo": {
-    "pipeline": {
-      "build:clean": {},
-      "build:js": {}
-    }
   }
 }
