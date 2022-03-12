@@ -10,6 +10,7 @@ export {
   type LeafletContextInterface,
   LeafletContext,
   LeafletProvider,
+  createLeafletContext,
   extendContext,
   useLeafletContext,
 } from './context.js'

@@ -1,7 +1,13 @@
+## v4.0.0-alpha.2 (2022-03-12)
+
+- Added `createLeafletContext` function to core.
+- Updated React dependencies to v18 RC2.
+- Changed Leaflet dependency range to v1.7.x until tested with v1.8.x.
+
 ## v4.0.0-alpha.1 (2022-02-05)
 
-- Merge changes from v3.
-- Update docs for v4 support.
+- Merged changes from v3.
+- Updated docs for v4 support.
 
 ## v4.0.0-alpha.0 (2022-01-05)
 

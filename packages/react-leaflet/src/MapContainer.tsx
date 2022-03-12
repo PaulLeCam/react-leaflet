@@ -1,7 +1,7 @@
 import {
-  CONTEXT_VERSION,
   LeafletProvider,
   type LeafletContextInterface,
+  createLeafletContext,
 } from '@react-leaflet/core'
 import {
   type FitBoundsOptions,
@@ -64,7 +64,7 @@ function MapContainerComponent<
       if (whenReady != null) {
         map.whenReady(whenReady)
       }
-      setContext(Object.freeze({ __version: CONTEXT_VERSION, map }))
+      setContext(createLeafletContext(map))
     }
   }, [])
 

@@ -17,6 +17,10 @@ export type LeafletContextInterface = Readonly<{
   pane?: string
 }>
 
+export function createLeafletContext(map: Map): LeafletContextInterface {
+  return Object.freeze({ __version: CONTEXT_VERSION, map })
+}
+
 export function extendContext(
   source: LeafletContextInterface,
   extra: Partial<LeafletContextInterface>,

@@ -1,6 +1,6 @@
 {
   "name": "react-leaflet",
-  "version": "4.0.0-alpha.1",
+  "version": "4.0.0-alpha.2",
   "description": "React components for Leaflet maps",
   "repository": {
     "type": "git",
@@ -42,15 +42,15 @@
     "prepublishOnly": "package-check"
   },
   "dependencies": {
-    "@react-leaflet/core": "^2.0.0-alpha.0"
+    "@react-leaflet/core": "^2.0.0-alpha.1"
   },
   "peerDependencies": {
-    "leaflet": "^1.7.1",
-    "react": "^18.0.0-rc",
-    "react-dom": "^18.0.0-rc"
+    "leaflet": "~1.7.1",
+    "react": "^18.0.0-rc.2",
+    "react-dom": "^18.0.0-rc.2"
   },
   "devDependencies": {
-    "@types/leaflet": "^1.7.9"
+    "@types/leaflet": "~1.7.9"
   },
   "jest": {
     "extensionsToTreatAsEsm": [
