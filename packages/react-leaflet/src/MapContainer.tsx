@@ -32,9 +32,10 @@ export function useMapElement(
   props: MapContainerProps,
 ): LeafletMap | null {
   const [map, setMap] = useState<LeafletMap | null>(null)
+  const isRenderedRef = useRef<boolean>(false)  
 
   useEffect(() => {
-    if (mapRef.current !== null && map === null) {
+    if (mapRef.current !== null && !isRenderedRef.current) {
       const instance = new LeafletMap(mapRef.current, props)
       if (props.center != null && props.zoom != null) {
         instance.setView(props.center, props.zoom)
@@ -45,8 +46,9 @@ export function useMapElement(
         instance.whenReady(props.whenReady)
       }
       setMap(instance)
+      isRenderedRef.current = true
     }
-  }, [mapRef, map, props])
+  }, [mapRef, props])
 
   return map
 }
