@@ -1,3 +1,7 @@
+## v4.0.0-beta.0 (2022-04-02)
+
+Updated React dependencies to v18 stable.
+
 ## v4.0.0-alpha.2 (2022-03-12)
 
 - Added `createLeafletContext` function to core.
