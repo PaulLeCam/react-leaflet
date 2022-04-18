@@ -1,15 +1,33 @@
 import { renderHook } from '@testing-library/react-hooks'
-import React, { ReactNode } from 'react'
+import type { Map } from 'leaflet'
+import React, { StrictMode, type ReactNode } from 'react'
 
-import { LeafletProvider, useLeafletContext } from '../src'
+import {
+  CONTEXT_VERSION,
+  LeafletProvider,
+  createLeafletContext,
+  useLeafletContext,
+} from '../src'
 
 export function createWrapper(context) {
   return function Wrapper({ children }: { children: ReactNode }) {
-    return <LeafletProvider value={context}>{children}</LeafletProvider>
+    return (
+      <StrictMode>
+        <LeafletProvider value={context}>{children}</LeafletProvider>
+      </StrictMode>
+    )
   }
 }
 
 describe('context', () => {
+  test('createLeafletContext() creates the context object', () => {
+    const map = {} as unknown as Map
+    expect(createLeafletContext(map)).toEqual({
+      __version: CONTEXT_VERSION,
+      map,
+    })
+  })
+
   test('useLeafletContext() throws an error when there is no provider', () => {
     expect(() => {
       const { result } = renderHook(() => useLeafletContext())

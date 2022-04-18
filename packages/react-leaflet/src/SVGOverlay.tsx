@@ -1,11 +1,17 @@
 import {
-  MediaOverlayProps,
+  type MediaOverlayProps,
   createElementHook,
+  createElementObject,
   createLayerHook,
   updateMediaOverlay,
 } from '@react-leaflet/core'
 import { SVGOverlay as LeafletSVGOverlay } from 'leaflet'
-import { ReactNode, Ref, forwardRef, useImperativeHandle } from 'react'
+import {
+  type ReactNode,
+  type Ref,
+  forwardRef,
+  useImperativeHandle,
+} from 'react'
 import { createPortal } from 'react-dom'
 
 export interface SVGOverlayProps extends MediaOverlayProps {
@@ -31,21 +37,18 @@ export const useSVGOverlayElement = createElementHook<
     })
   }
 
-  return {
-    instance: new LeafletSVGOverlay(container, bounds, options),
-    container,
-    context,
-  }
+  const overlay = new LeafletSVGOverlay(container, bounds, options)
+  return createElementObject(overlay, context, container)
 }, updateMediaOverlay)
 
 export const useSVGOverlay = createLayerHook(useSVGOverlayElement)
 
 function SVGOverlayComponent(
   { children, ...options }: SVGOverlayProps,
-  ref: Ref<LeafletSVGOverlay>,
+  forwardedRef: Ref<LeafletSVGOverlay>,
 ) {
   const { instance, container } = useSVGOverlay(options).current
-  useImperativeHandle(ref, () => instance)
+  useImperativeHandle(forwardedRef, () => instance)
 
   return container == null || children == null
     ? null

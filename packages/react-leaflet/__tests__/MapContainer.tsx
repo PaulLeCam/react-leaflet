@@ -1,12 +1,16 @@
 import { render } from '@testing-library/react'
-import { LatLngExpression, Map } from 'leaflet'
-import React from 'react'
+import { type LatLngExpression, Map } from 'leaflet'
+import React, { StrictMode, useEffect, useRef } from 'react'
 
-import { MapConsumer, MapContainer, useMap } from '../src'
+import { MapContainer, useMap } from '../src'
 
 describe('MapContainer', () => {
   test('renders the containing div', () => {
-    const { container } = render(<MapContainer center={[0, 0]} zoom={10} />)
+    const { container } = render(
+      <StrictMode>
+        <MapContainer center={[0, 0]} zoom={10} />
+      </StrictMode>,
+    )
     expect(container).toMatchSnapshot()
   })
 
@@ -30,40 +34,38 @@ describe('MapContainer', () => {
       render(<TestContainer />)
     })
 
-    test('in the <MapConsumer> component', (done) => {
+    test('in the ref function', (done) => {
+      const ref = (map) => {
+        if (map !== null) {
+          expect(map).toBeInstanceOf(Map)
+          done()
+        }
+      }
+
       function TestContainer() {
-        return (
-          <MapContainer center={[0, 0]} zoom={10}>
-            <MapConsumer>
-              {(map) => {
-                expect(map).toBeInstanceOf(Map)
-                done()
-                return null
-              }}
-            </MapConsumer>
-          </MapContainer>
-        )
+        return <MapContainer center={[0, 0]} zoom={10} ref={ref} />
       }
 
       render(<TestContainer />)
     })
 
-    test('in the whenCreated() callback', (done) => {
-      function TestContainer() {
-        return (
-          <MapContainer
-            center={[0, 0]}
-            zoom={10}
-            whenCreated={(map) => {
-              // When this callback is called, the ref should contain the element
-              expect(map).toBeInstanceOf(Map)
+    test('in the ref object', (done) => {
+      function Wrapper() {
+        const ref = useRef()
+
+        useEffect(() => {
+          setTimeout(() => {
+            if (ref.current !== null) {
+              expect(ref.current).toBeInstanceOf(Map)
               done()
-            }}
-          />
-        )
+            }
+          }, 50)
+        }, [])
+
+        return <MapContainer center={[0, 0]} zoom={10} ref={ref} />
       }
 
-      render(<TestContainer />)
+      render(<Wrapper />)
     })
   })
 
@@ -71,16 +73,14 @@ describe('MapContainer', () => {
     const center: LatLngExpression = [1.2, 3.4]
     const zoom = 10
 
-    render(
-      <MapContainer
-        center={center}
-        zoom={zoom}
-        whenCreated={(map) => {
-          expect(map.getCenter()).toEqual({ lat: 1.2, lng: 3.4 })
-          expect(map.getZoom()).toBe(zoom)
-          done()
-        }}
-      />,
-    )
+    const ref = (map) => {
+      if (map !== null) {
+        expect(map.getCenter()).toEqual({ lat: 1.2, lng: 3.4 })
+        expect(map.getZoom()).toBe(zoom)
+        done()
+      }
+    }
+
+    render(<MapContainer center={center} zoom={zoom} ref={ref} />)
   })
 })

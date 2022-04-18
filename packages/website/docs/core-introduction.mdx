@@ -1,0 +1,65 @@
+---
+title: React Leaflet Core
+---
+
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
+## Introduction
+
+React Leaflet's core APIs are implemented in the `@react-leaflet/core` package to provide a separation from the public APIs.
+The goal of this package is to make most of React Leaflet's internal logic available to developers to easily implement custom behaviors, such as third-party Leaflet plugins.
+
+## Audience
+
+You might want to learn about the core APIs if you want to:
+
+- Customize how public components work, by creating an alternative implementation matching your needs
+- Implement new components not provided by React Leaflet
+- Simply learn more about how React Leaflet works
+
+If you're only interested in using the public APIs of React Leaflet, their usage is covered in the previous sections of this documentation, notably the [getting started](start-introduction.md) and [public API](api-map.mdx) pages.
+
+## Installation
+
+The `@react-leaflet/core` package is a dependency of the `react-leaflet` one. The main [installation steps](start-installation.mdx) from the getting started documentation should be followed to use the core APIs.
+
+## Usage
+
+All the [core APIs](core-api.mdx) can be imported from the `@react-leaflet/core` package, such as
+
+<Tabs
+defaultValue="absolute"
+groupId="import-specifier"
+values={[
+{ label: 'Absolute specifier import', value: 'absolute', },
+{ label: 'Bare specifier import', value: 'bare', },
+]
+}>
+<TabItem value="absolute">
+
+```js
+import { createControlComponent } from 'https://cdn.esm.sh/@react-leaflet/core'
+import { Control } from 'https://cdn.esm.sh/leaflet'
+
+export const ZoomControl = createControlComponent(
+  (props) => new Control.Zoom(props),
+)
+```
+
+</TabItem>
+<TabItem value="bare">
+
+```js
+import { createControlComponent } from '@react-leaflet/core'
+import { Control } from 'leaflet'
+
+export const ZoomControl = createControlComponent(
+  (props) => new Control.Zoom(props),
+)
+```
+
+</TabItem>
+</Tabs>
+
+The following page presents the architecture and usage in more details.

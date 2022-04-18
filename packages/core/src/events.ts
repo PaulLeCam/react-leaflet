@@ -1,9 +1,9 @@
-import { Evented, LeafletEventHandlerFnMap } from 'leaflet'
+import type { Evented, LeafletEventHandlerFnMap } from 'leaflet'
 import { useEffect, useRef } from 'react'
 
-import { LeafletElement } from './element'
+import type { LeafletElement } from './element.js'
 
-export interface EventedProps {
+export type EventedProps = {
   eventHandlers?: LeafletEventHandlerFnMap
 }
 

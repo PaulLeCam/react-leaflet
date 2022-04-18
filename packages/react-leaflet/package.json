@@ -1,25 +1,7 @@
 {
   "name": "react-leaflet",
-  "version": "3.2.5",
+  "version": "4.0.0",
   "description": "React components for Leaflet maps",
-  "main": "cjs/index.js",
-  "module": "esm/index.js",
-  "types": "types/index.d.ts",
-  "sideEffects": false,
-  "scripts": {
-    "build:clean": "del cjs esm types umd",
-    "build:cjs": "babel src --out-dir cjs --extensions .ts,.tsx",
-    "build:esm": "cross-env BABEL_ENV=esm babel src --out-dir esm --extensions .ts,.tsx",
-    "build:types": "tsc --emitDeclarationOnly",
-    "build:umd": "cross-env BABEL_ENV=rollup NODE_ENV=development rollup -c",
-    "build:umd:min": "cross-env BABEL_ENV=rollup NODE_ENV=production rollup -c",
-    "build": "yarn run build:clean && yarn run build:cjs && yarn run build:esm && yarn run build:types && yarn run build:umd && yarn run build:umd:min",
-    "test:types": "tsc --noEmit",
-    "test:unit": "cross-env BABEL_ENV=development NODE_ENV=test jest",
-    "test": "yarn run test:types && yarn run test:unit",
-    "start": "yarn run test && yarn run build",
-    "prepare": "yarn run build"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/PaulLeCam/react-leaflet.git"
@@ -36,29 +18,54 @@
     "url": "https://github.com/PaulLeCam/react-leaflet/issues"
   },
   "homepage": "https://react-leaflet.js.org",
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "exports": {
+    ".": "./lib/index.js",
+    "./*": "./lib/*.js"
+  },
   "files": [
-    "cjs/*",
-    "esm/*",
-    "types/*",
-    "umd/*"
+    "lib/*"
   ],
+  "sideEffects": false,
+  "scripts": {
+    "build:clean": "del lib",
+    "build:js": "swc src -d ./lib --config-file ../../.swcrc",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build": "yarn run build:clean && yarn run build:types && yarn run build:js",
+    "test:types": "tsc --noEmit",
+    "test:unit": "cross-env NODE_ENV=test jest",
+    "test": "yarn run test:types && yarn run test:unit",
+    "start": "yarn run test && yarn run build",
+    "prepare": "yarn run build",
+    "prepublishOnly": "package-check"
+  },
   "dependencies": {
-    "@react-leaflet/core": "^1.1.1"
+    "@react-leaflet/core": "^2.0.0"
   },
   "peerDependencies": {
-    "leaflet": "^1.7.1",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "leaflet": "^1.8.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
   },
   "devDependencies": {
-    "@rollup/plugin-babel": "^5.3.0",
-    "@rollup/plugin-commonjs": "^21.0.1",
-    "@rollup/plugin-node-resolve": "^13.1.3",
-    "@rollup/plugin-replace": "^3.0.1",
-    "rollup": "^2.63.0",
-    "rollup-plugin-terser": "^7.0.0"
+    "@types/leaflet": "^1.7.9"
   },
   "jest": {
-    "testEnvironment": "jsdom"
+    "extensionsToTreatAsEsm": [
+      ".ts",
+      ".tsx"
+    ],
+    "resolver": "ts-jest-resolver",
+    "testEnvironment": "jsdom",
+    "transform": {
+      "^.+\\.(t|j)sx?$": [
+        "@swc/jest",
+        {
+          "root": "../.."
+        }
+      ]
+    }
   }
 }

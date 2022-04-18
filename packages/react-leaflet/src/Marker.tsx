@@ -1,10 +1,15 @@
-import { EventedProps, createLayerComponent } from '@react-leaflet/core'
 import {
-  LatLngExpression,
+  type EventedProps,
+  createElementObject,
+  createLayerComponent,
+  extendContext,
+} from '@react-leaflet/core'
+import {
+  type LatLngExpression,
   Marker as LeafletMarker,
-  MarkerOptions,
+  type MarkerOptions,
 } from 'leaflet'
-import { ReactNode } from 'react'
+import type { ReactNode } from 'react'
 
 export interface MarkerProps extends MarkerOptions, EventedProps {
   children?: ReactNode
@@ -13,8 +18,11 @@ export interface MarkerProps extends MarkerOptions, EventedProps {
 
 export const Marker = createLayerComponent<LeafletMarker, MarkerProps>(
   function createMarker({ position, ...options }, ctx) {
-    const instance = new LeafletMarker(position, options)
-    return { instance, context: { ...ctx, overlayContainer: instance } }
+    const marker = new LeafletMarker(position, options)
+    return createElementObject(
+      marker,
+      extendContext(ctx, { overlayContainer: marker }),
+    )
   },
   function updateMarker(marker, props, prevProps) {
     if (props.position !== prevProps.position) {

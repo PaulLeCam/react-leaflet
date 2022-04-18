@@ -21,10 +21,35 @@ Before using React Leaflet, you must setup your project following [Leaflet's Qui
 
 ## Adding React Leaflet
 
+### Using ESM imports
+
+React Leaflet export [ES Modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) that can be imported by URL, notably from CDNs such as [esm.sh](https://esm.sh/):
+
+```js
+import { MapContainer } from 'https://cdn.esm.sh/react-leaflet/MapContainer'
+import { TileLayer } from 'https://cdn.esm.sh/react-leaflet/TileLayer'
+import { useMap } from 'https://cdn.esm.sh/react-leaflet/hooks'
+```
+
+Or importing the full library at once:
+
+```js
+import {
+  MapContainer,
+  TileLayer,
+  useMap,
+} from 'https://cdn.esm.sh/react-leaflet'
+```
+
+### Using a package registry
+
+A package registry such as [npm](https://www.npmjs.com/) can be used to install React Leaflet and its dependencies.
+
 React, React DOM and Leaflet are required peer dependencies. You must add them to your project if they are not already installed:
 
 <Tabs
   defaultValue="npm"
+  groupId="package-manager"
   values={[
     { label: 'npm', value: 'npm', },
     { label: 'yarn', value: 'yarn', },
@@ -50,6 +75,7 @@ Then you can install React Leaflet:
 
 <Tabs
   defaultValue="npm"
+  groupId="package-manager"
   values={[
     { label: 'npm', value: 'npm', },
     { label: 'yarn', value: 'yarn', },
@@ -71,18 +97,27 @@ yarn add react-leaflet
 </TabItem>
 </Tabs>
 
-Finally, you can import the necessary components. For example:
+Modules can then be imported using bare specifiers when supported by a bundler such as [webpack](https://webpack.js.org/).
 
 ```js
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import { MapContainer } from 'react-leaflet/MapContainer'
+import { TileLayer } from 'react-leaflet/TileLayer'
+import { useMap } from 'react-leaflet/hooks'
 ```
 
-## Using TypeScript
+Alternatively, all the components and hooks can be imported from the module entry-point:
+
+```js
+import { MapContainer, TileLayer, useMap } from 'react-leaflet'
+```
+
+## TypeScript support
 
 React Leaflet provides TypeScript definitions in the installed packages, but needs Leaflet's definitions to be present. If you have not installed them yet, you will need to add them:
 
 <Tabs
   defaultValue="npm"
+  groupId="package-manager"
   values={[
     { label: 'npm', value: 'npm', },
     { label: 'yarn', value: 'yarn', },

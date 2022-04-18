@@ -1,107 +1,59 @@
-## v3.2.5 (2022-01-15)
+## v4.0.0 (2022-04-18)
 
-Fix supporting mutable `whenCreated` with unmounting `MapContainer`.
+Changes from v3:
 
-## v3.2.4 (2022-01-09)
+### Breaking changes
 
-Fix removing the map handlers when `MapContainer` is unmounted.
+- React v18 and Leaflet v1.8 are now required as peer dependency.
+- ES2020 is the new compilation target version.
+- Removed `useMapElement` hook.
+- Removed `MapConsumer` component.
+- Removed `whenCreated` property from the `MapContainer` component (a `ref` callback can be used instead).
+- Removed `onOpen` and `onClose` properties from `Popup` and `Tooltip` components.
+- Removed CommonJS distribution.
+- Removed UMD distribution.
 
-## v3.2.3 (2022-01-08)
+### Other changes
 
-- Fix tooltip position ([PR #939](https://github.com/PaulLeCam/react-leaflet/pull/939) by [simonasdev](https://github.com/simonasdev)).
-- Fix attribution URLs and use HTTPS in docs ([PR #930](https://github.com/PaulLeCam/react-leaflet/pull/930) by [jpstotz](https://github.com/jpstotz)).
+- Added support for React v18 (concurrent mode).
+- Added support for `ref` in the `MapContainer` and `Pane` components.
+- Added `createLeafletContext` function to core.
+- The created element and context objects are now frozen (immutable).
 
-## v3.2.2 (2021-10-09)
+## v4.0.0-beta.1 (2022-04-18)
 
-Fix layer unmount ([PR #916](https://github.com/PaulLeCam/react-leaflet/pull/916) by [piitaya](https://github.com/piitaya)).
+Updated Leaflet dependency to v1.8 beta.
 
-## v3.2.1 (2021-08-01)
+## v4.0.0-beta.0 (2022-04-02)
 
-- Fix `Popup` unmounting logic to unbind from container.
-- Fix links to point to Leaflet 1.7.1 docs ([PR #889](https://github.com/PaulLeCam/react-leaflet/pull/889) by [zerekw](https://github.com/zerekw)).
+Updated React dependencies to v18 stable.
 
-## v3.2.0 (2021-05-15)
+## v4.0.0-alpha.2 (2022-03-12)
 
-- Change unmounting logic for some layers, which should fix issues related to removing or updating elements.
-- Make the `style` prop of `GeoJSON` mutable, this prop should be used instead of `pathOptions` (`pathOptions` can still be used but should be considered deprecated).
-- Fix documentation about `bounds` prop being an instance of `LatLngBounds`.
+- Added `createLeafletContext` function to core.
+- Updated React dependencies to v18 RC2.
+- Changed Leaflet dependency range to v1.7.x until tested with v1.8.x.
 
-## v3.1.0 (2021-01-30)
+## v4.0.0-alpha.1 (2022-02-05)
 
-- Make `Pane` component compatible with React's `StrictMode` ([PR #810](https://github.com/PaulLeCam/react-leaflet/pull/810) by [zmbc](https://github.com/zmbc))
-- Fix typo in API Components docs ([PR #827](https://github.com/PaulLeCam/react-leaflet/pull/827) by [arthurdenner](https://github.com/arthurdenner))
+- Merged changes from v3.
+- Updated docs for v4 support.
 
-## v3.0.5 (2020-12-20)
+## v4.0.0-alpha.0 (2022-01-05)
 
-Use `useState` hook rather than `useMemo` to store immutable values in `MapContainer` and `Pane`
+### Breaking changes
 
-## v3.0.4 (2020-12-13)
+- React v18 is now required as peer dependency.
+- ES2020 is the new compilation target version.
+- Removed `useMapElement` hook.
+- Removed `MapConsumer` component.
+- Removed `whenCreated` property from the `MapContainer` component.
+- Removed `onOpen` and `onClose` properties from `Popup` and `Tooltip` components.
+- Removed CommonJS distribution.
+- Removed UMD distribution.
 
-Update README
+### Other changes
 
-## v3.0.3 (2020-12-13)
-
-- Document pathOptions for GeoJSON ([PR #785](https://github.com/PaulLeCam/react-leaflet/pull/785) by [bb](https://github.com/bb))
-- Ensure `MapContainer` props are immutable
-- Fix TypeScript definition for `MapContainer` props
-
-## v3.0.2 (2020-11-08)
-
-Additional fixes for panes support
-
-## v3.0.1 (2020-11-07)
-
-- Fixed `pane` prop support
-- Use standard SPDX license name ([PR #781](https://github.com/PaulLeCam/react-leaflet/pull/781) by [nertzy](https://github.com/nertzy))
-
-## v3.0.0 (2020-10-31)
-
-v3 is a full rewrite of React Leaflet and contains breaking change from v2.
-
-- Full rewrite based on [React Hooks](https://reactjs.org/docs/hooks-intro.html) (no more extending `Component`)
-- Replace Flow by TypeScript for type checking
-- Drop IE support (Babel config will only target the "last 2 versions" of modern browsers)
-- Switch to the [Hippocratic License](https://firstdonoharm.dev/)
-- The `Map` component is replaced by [`MapContainer`](https://react-leaflet.js.org/docs/api-map#mapcontainer), behaving differently
-- Event handlers must be attached using the [`eventHandlers prop`](https://react-leaflet.js.org/docs/api-components#evented-behavior) rather than `on*` props, with a similar change for [path options](https://react-leaflet.js.org/docs/api-components#path-behavior) and [WMS params](https://react-leaflet.js.org/docs/api-components#wmstilelayer)
-- The `react-leaflet` package only exposes a [public API](https://react-leaflet.js.org/docs/api-map) while a new package, `@react-leaflet/core`, is used to provide the [core APIs](https://react-leaflet.js.org/docs/core-introduction)
-- A new documentation website using [Docusaurus v2](https://v2.docusaurus.io/) with live examples
-
-## v3.0.0-rc.0 (2020-10-22)
-
-- Use stable release of React v17
-- Fixed incorrect example in docs ([PR #767](https://github.com/PaulLeCam/react-leaflet/pull/767) by [dipiash](https://github.com/dipiash))
-
-## v3.0.0-beta.5 (2020-09-20)
-
-- Remove `preserveAspectRatio` and `viewport` props from `SVGOverlay`, replaced by `attributes` prop
-- Add third-party plugins page to documentation website
-
-## v3.0.0-beta.4 (2020-08-16)
-
-- Specify list of supported browsers ([PR #736](https://github.com/PaulLeCam/react-leaflet/pull/736) by [anajavi](https://github.com/anajavi))
-- Drop Babel runtime polyfilling ([PR #739](https://github.com/PaulLeCam/react-leaflet/pull/739) by [anajavi](https://github.com/anajavi))
-- Upgrade rollup plugins ([PR #740](https://github.com/PaulLeCam/react-leaflet/pull/740) by [anajavi](https://github.com/anajavi))
-- Bump React dependency to v17
-
-## v3.0.0-beta.3 (2020-08-16)
-
-Broken build
-
-## v3.0.0-beta.2 (2020-07-25)
-
-- Fix `LayersControl` lifecycle logic causing layer removal
-- Use terser instead of uglifyjs to minify the UMD build ([PR #735](https://github.com/PaulLeCam/react-leaflet/pull/735) by [anajavi](https://github.com/anajavi))
-
-## v3.0.0-beta.1 (2020-07-12)
-
-v3 is a full rewrite of React Leaflet and contains breaking change from v2.
-
-- Full rewrite based on [React Hooks](https://reactjs.org/docs/hooks-intro.html) (no more extending `Component`)
-- Replace Flow by TypeScript for type checking
-- Drop IE support (Babel config will only target the "last 2 versions" of browsers)
-- Switch to the [Hippocratic License](https://firstdonoharm.dev/)
-- The `Map` component is replaced by [`MapContainer`](https://react-leaflet-v3.now.sh/docs/api-map#mapcontainer), behaving differently
-- Event handlers must be attached using the [`eventHandlers prop`](https://react-leaflet-v3.now.sh/docs/api-components#evented-behavior) rather than `on*` props, with a similar change for [path options](https://react-leaflet-v3.now.sh/docs/api-components#path-behavior) and [WMS params](https://react-leaflet-v3.now.sh/docs/api-components#wmstilelayer)
-- The `react-leaflet` package only exposes a [public API](https://react-leaflet-v3.now.sh/docs/api-map) while a new package, `@react-leaflet/core`, is used to provide the [core APIs](https://react-leaflet-v3.now.sh/docs/core-introduction)
-- A new documentation website using [Docusaurus v2](https://v2.docusaurus.io/) with live examples, currently published on [react-leaflet-v3.now.sh](https://react-leaflet-v3.now.sh/)
+- Added support for React v18 (concurrent mode).
+- Added support for `ref` in the `MapContainer` and `Pane` components.
+- The created element and context objects are now frozen (immutable).

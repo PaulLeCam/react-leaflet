@@ -3,7 +3,7 @@
 exports[`ZoomControl renders and unmounts 1`] = `
 <div>
   <div
-    class="leaflet-container leaflet-grab leaflet-touch-drag"
+    class="leaflet-container leaflet-touch leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
     style="position: relative;"
     tabindex="0"
   >
@@ -15,10 +15,10 @@ exports[`ZoomControl renders and unmounts 1`] = `
         class="leaflet-pane leaflet-tile-pane"
       />
       <div
-        class="leaflet-pane leaflet-shadow-pane"
+        class="leaflet-pane leaflet-overlay-pane"
       />
       <div
-        class="leaflet-pane leaflet-overlay-pane"
+        class="leaflet-pane leaflet-shadow-pane"
       />
       <div
         class="leaflet-pane leaflet-marker-pane"
@@ -40,22 +40,32 @@ exports[`ZoomControl renders and unmounts 1`] = `
           class="leaflet-control-zoom leaflet-bar leaflet-control"
         >
           <a
+            aria-disabled="false"
             aria-label="Zoom in"
             class="leaflet-control-zoom-in"
             href="#"
             role="button"
             title="Zoom in"
           >
-            +
+            <span
+              aria-hidden="true"
+            >
+              +
+            </span>
           </a>
           <a
+            aria-disabled="false"
             aria-label="Zoom out"
             class="leaflet-control-zoom-out"
             href="#"
             role="button"
             title="Zoom out"
           >
-            −
+            <span
+              aria-hidden="true"
+            >
+              −
+            </span>
           </a>
         </div>
       </div>
@@ -69,22 +79,32 @@ exports[`ZoomControl renders and unmounts 1`] = `
           class="leaflet-control-zoom leaflet-bar leaflet-control"
         >
           <a
+            aria-disabled="false"
             aria-label="Zoom in"
             class="leaflet-control-zoom-in"
             href="#"
             role="button"
             title="Zoom in"
           >
-            +
+            <span
+              aria-hidden="true"
+            >
+              +
+            </span>
           </a>
           <a
+            aria-disabled="false"
             aria-label="Zoom out"
             class="leaflet-control-zoom-out"
             href="#"
             role="button"
             title="Zoom out"
           >
-            −
+            <span
+              aria-hidden="true"
+            >
+              −
+            </span>
           </a>
         </div>
       </div>
@@ -96,7 +116,7 @@ exports[`ZoomControl renders and unmounts 1`] = `
         >
           <a
             href="https://leafletjs.com"
-            title="A JS library for interactive maps"
+            title="A JavaScript library for interactive maps"
           >
             Leaflet
           </a>

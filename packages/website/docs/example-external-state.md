@@ -7,7 +7,7 @@ const center = [51.505, -0.09]
 const zoom = 13
 
 function DisplayPosition({ map }) {
-  const [position, setPosition] = useState(map.getCenter())
+  const [position, setPosition] = useState(() => map.getCenter())
 
   const onClick = useCallback(() => {
     map.setView(center, zoom)
@@ -41,7 +41,7 @@ function ExternalStateExample() {
         center={center}
         zoom={zoom}
         scrollWheelZoom={false}
-        whenCreated={setMap}>
+        ref={setMap}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

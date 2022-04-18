@@ -1,10 +1,12 @@
 import {
-  MediaOverlayProps,
+  type MediaOverlayProps,
+  createElementObject,
   createLayerComponent,
+  extendContext,
   updateMediaOverlay,
 } from '@react-leaflet/core'
 import { ImageOverlay as LeafletImageOverlay } from 'leaflet'
-import { ReactNode } from 'react'
+import type { ReactNode } from 'react'
 
 export interface ImageOverlayProps extends MediaOverlayProps {
   children?: ReactNode
@@ -15,8 +17,11 @@ export const ImageOverlay = createLayerComponent<
   ImageOverlayProps
 >(
   function createImageOveraly({ bounds, url, ...options }, ctx) {
-    const instance = new LeafletImageOverlay(url, bounds, options)
-    return { instance, context: { ...ctx, overlayContainer: instance } }
+    const overlay = new LeafletImageOverlay(url, bounds, options)
+    return createElementObject(
+      overlay,
+      extendContext(ctx, { overlayContainer: overlay }),
+    )
   },
   function updateImageOverlay(overlay, props, prevProps) {
     updateMediaOverlay(overlay, props, prevProps)

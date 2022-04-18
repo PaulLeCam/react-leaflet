@@ -8,6 +8,10 @@ This page describes the core architecture by presenting how to build an example 
 
 Most of React Leaflet's public APIs are using the core APIs as described in this page to provide their functionalities.
 
+:::info Bare import identifiers
+For simplicity, bare import such as `import L from 'leaflet'` are used in the following examples rather than absolute imports.
+:::
+
 ## Identifying necessary Leaflet APIs
 
 The first step to implement a component in React Leaflet is to identify the necessary APIs made available by Leaflet and potentially third-party plugins to achieve the desired functionalities.
@@ -21,7 +25,11 @@ Leaflet's `Rectangle` constructor needs to be provided bounds, so we'll also use
 
 To get started, let's simply focus on adding the square to the map, using the following code:
 
-```tsx {1-16,26}
+```tsx {1,5-20,31}
+import { useLeafletContext } from '@react-leaflet/core'
+import L from 'leaflet'
+import { useEffect } from 'react'
+
 function Square(props) {
   const context = useLeafletContext()
 
@@ -41,18 +49,20 @@ function Square(props) {
 
 const center = [51.505, -0.09]
 
-render(
-  <MapContainer center={center} zoom={13} scrollWheelZoom={false}>
-    <TileLayer
-      attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-    />
-    <Square center={center} size={1000} />
-  </MapContainer>,
-)
+function MyMap() {
+  return (
+    <MapContainer center={center} zoom={13}>
+      <TileLayer
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
+      <Square center={center} size={1000} />
+    </MapContainer>
+  )
+}
 ```
 
-First, we need to access the context created by the [`MapContainer` component](api-map.md#mapcontainer), by calling the [`useLeafletContext` hook exported by the core APIs](core-api.md#useleafletcontext):
+First, we need to access the context created by the [`MapContainer` component](api-map.mdx#mapcontainer), by calling the [`useLeafletContext` hook exported by the core APIs](core-api.mdx#useleafletcontext):
 
 ```ts
 const context = useLeafletContext()
@@ -65,7 +75,7 @@ const bounds = L.latLng(props.center).toBounds(props.size)
 const square = new L.Rectangle(bounds)
 ```
 
-The created layer needs to be added to a container provided in the context, either a parent container such as a [`LayerGroup`](api-components.md#layergroup), or the `Map` instance created with the context:
+The created layer needs to be added to a container provided in the context, either a parent container such as a [`LayerGroup`](api-components.mdx#layergroup), or the `Map` instance created with the context:
 
 ```ts
 const container = context.layerContainer || context.map
@@ -88,7 +98,11 @@ The first version of the code successfully works for simple cases, but it has a 
 
 This is usually not the expected behavior when using React, because the virtual DOM will check what updates are necessary to apply to the DOM. In React Leaflet, DOM rendering is performed by Leaflet, so we need to implement more logic to avoid unnecessary changes to the DOM, as in the following code:
 
-```tsx {1-3,7-8,10-18,20-28}
+```tsx {5-7,11-12,14-22,24-32}
+import { useLeafletContext } from '@react-leaflet/core'
+import L from 'leaflet'
+import { useEffect, useRef } from 'react'
+
 function getBounds(props) {
   return L.latLng(props.center).toBounds(props.size)
 }
@@ -123,15 +137,17 @@ function Square(props) {
 
 const center = [51.505, -0.09]
 
-render(
-  <MapContainer center={center} zoom={13} scrollWheelZoom={false}>
-    <TileLayer
-      attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-    />
-    <Square center={center} size={1000} />
-  </MapContainer>,
-)
+function MyMap() {
+  return (
+    <MapContainer center={center} zoom={13}>
+      <TileLayer
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
+      <Square center={center} size={1000} />
+    </MapContainer>
+  )
+}
 ```
 
 First, we extract the function that returns bounds from props, as this logic will be needed in two places:
@@ -175,15 +191,23 @@ useEffect(() => {
 
 ## Element hook factory
 
-The above code gets very repetitive as it's needed for most components in React Leaflet, this is why the core APIs provide functions such as the [`createElementHook` factory](core-api.md#createelementhook) to simplify the process:
+The above code gets very repetitive as it's needed for most components in React Leaflet, this is why the core APIs provide functions such as the [`createElementHook` factory](core-api.mdx#createelementhook) to simplify the process:
 
-```tsx {5-7,9-13,15,19}
+```tsx {2-3,13-15,17-21,23,27}
+import {
+  createElementHook,
+  createElementObject,
+  useLeafletContext,
+} from '@react-leaflet/core'
+import L from 'leaflet'
+import { useEffect } from 'react'
+
 function getBounds(props) {
   return L.latLng(props.center).toBounds(props.size)
 }
 
 function createSquare(props, context) {
-  return { instance: new L.Rectangle(getBounds(props)), context }
+  return createElementObject(new L.Rectangle(getBounds(props)), context)
 }
 
 function updateSquare(instance, props, prevProps) {
@@ -212,22 +236,24 @@ function Square(props) {
 
 const center = [51.505, -0.09]
 
-render(
-  <MapContainer center={center} zoom={13} scrollWheelZoom={false}>
-    <TileLayer
-      attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-    />
-    <Square center={center} size={1000} />
-  </MapContainer>,
-)
+function MyMap() {
+  return (
+    <MapContainer center={center} zoom={13}>
+      <TileLayer
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
+      <Square center={center} size={1000} />
+    </MapContainer>
+  )
+}
 ```
 
-First, instead of having the Leaflet element creation and updating logic in `useEffect` callbacks, we can extract them to standalone functions implementing the [expected interface](core-api.md#createelementhook):
+First, instead of having the Leaflet element creation and updating logic in `useEffect` callbacks, we can extract them to standalone functions implementing the [expected interface](core-api.mdx#createelementhook) using the [`createElementObject` function](core-api.mdx#createelementobject):
 
 ```ts
 function createSquare(props, context) {
-  return { instance: new L.Rectangle(getBounds(props)), context }
+  return createElementObject(new L.Rectangle(getBounds(props)), context)
 }
 
 function updateSquare(instance, props, prevProps) {
@@ -260,15 +286,23 @@ useEffect(() => {
 
 ## Layer lifecycle hook
 
-The core APIs provide additional hooks to handle specific pieces of logic. Here, we can replace the `useEffect` hook used previously to add and remove the layer by the [`useLayerLifecycle` hook](core-api.md#uselayerlifecycle):
+The core APIs provide additional hooks to handle specific pieces of logic. Here, we can replace the `useEffect` hook used previously to add and remove the layer by the [`useLayerLifecycle` hook](core-api.mdx#uselayerlifecycle):
 
-```tsx {20}
+```tsx {4,28}
+import {
+  createElementHook,
+  createElementObject,
+  useLayerLifecycle,
+  useLeafletContext,
+} from '@react-leaflet/core'
+import L from 'leaflet'
+
 function getBounds(props) {
   return L.latLng(props.center).toBounds(props.size)
 }
 
 function createSquare(props, context) {
-  return { instance: new L.Rectangle(getBounds(props)), context }
+  return createElementObject(new L.Rectangle(getBounds(props)), context)
 }
 
 function updateSquare(instance, props, prevProps) {
@@ -290,7 +324,7 @@ function Square(props) {
 const center = [51.505, -0.09]
 
 render(
-  <MapContainer center={center} zoom={13} scrollWheelZoom={false}>
+  <MapContainer center={center} zoom={13}>
     <TileLayer
       attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -302,16 +336,23 @@ render(
 
 ## Higher-level createPathHook
 
-The core APIs also provide higher-level factory functions implementing logic shared by different hooks, such as [`createPathHook`](core-api.md#createpathhook).
+The core APIs also provide higher-level factory functions implementing logic shared by different hooks, such as [`createPathHook`](core-api.mdx#createpathhook).
 Here we can extract the logic previously implemented in the component to a hook factory, and simply call the created hook in the component:
 
-```tsx {16,19}
+```tsx {4,23,26}
+import {
+  createElementHook,
+  createElementObject,
+  createPathHook,
+} from '@react-leaflet/core'
+import L from 'leaflet'
+
 function getBounds(props) {
   return L.latLng(props.center).toBounds(props.size)
 }
 
 function createSquare(props, context) {
-  return { instance: new L.Rectangle(getBounds(props)), context }
+  return createElementObject(new L.Rectangle(getBounds(props)), context)
 }
 
 function updateSquare(instance, props, prevProps) {
@@ -330,30 +371,40 @@ function Square(props) {
 
 const center = [51.505, -0.09]
 
-render(
-  <MapContainer center={center} zoom={13} scrollWheelZoom={false}>
-    <TileLayer
-      attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-    />
-    <Square center={center} size={1000} />
-  </MapContainer>,
-)
+function MyMap() {
+  return (
+    <MapContainer center={center} zoom={13}>
+      <TileLayer
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
+      <Square center={center} size={1000} />
+    </MapContainer>
+  )
+}
 ```
 
-[`createPathHook`](core-api.md#createpathhook) also implements further logic, notably calling the [`useEventHandlers`](core-api.md#useeventhandlers) and [`useLayerLifecycle`](core-api.md#uselayerlifecycle) hooks as well.
+[`createPathHook`](core-api.mdx#createpathhook) also implements further logic, notably calling the [`useEventHandlers`](core-api.mdx#useeventhandlers) and [`useLayerLifecycle`](core-api.mdx#uselayerlifecycle) hooks as well.
 
 ## Component factory
 
-Following the changes above, we can see that the `Square` component gets very simple as all the logic is implemented in the `useSquare` hook. We can replace it by the [`createLeafComponent` function](core-api.md#createleafcomponent) that implements similar logic:
+Following the changes above, we can see that the `Square` component gets very simple as all the logic is implemented in the `useSquare` hook. We can replace it by the [`createLeafComponent` function](core-api.mdx#createleafcomponent) that implements similar logic:
 
-```tsx {17}
+```tsx {4,25}
+import {
+  createElementHook,
+  createElementObject,
+  createLeafComponent,
+  createPathHook,
+} from '@react-leaflet/core'
+import L from 'leaflet'
+
 function getBounds(props) {
   return L.latLng(props.center).toBounds(props.size)
 }
 
 function createSquare(props, context) {
-  return { instance: new L.Rectangle(getBounds(props)), context }
+  return createElementObject(new L.Rectangle(getBounds(props)), context)
 }
 
 function updateSquare(instance, props, prevProps) {
@@ -368,31 +419,45 @@ const Square = createLeafComponent(useSquare)
 
 const center = [51.505, -0.09]
 
-render(
-  <MapContainer center={center} zoom={13} scrollWheelZoom={false}>
-    <TileLayer
-      attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-    />
-    <Square center={center} size={1000} />
-  </MapContainer>,
-)
+function MyMap() {
+  return (
+    <MapContainer center={center} zoom={13}>
+      <TileLayer
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
+      <Square center={center} size={1000} />
+    </MapContainer>
+  )
+}
 ```
 
-[`createLeafComponent`](core-api.md#createleafcomponent) also provides additional logic in order to make the Leaflet element instance available using React's `ref`.
+[`createLeafComponent`](core-api.mdx#createleafcomponent) also provides additional logic in order to make the Leaflet element instance available using React's `ref`.
 
 ## Supporting children elements
 
-All the steps above focus on displaying the `Square` element only. However, it is common for React Leaflet components to also have children when possible. Our `Square` being a Leaflet layer, overlays such as [`Popup`](api-components.md#popup) and [`Tooltip`](api-components.md#tooltip) could be attached to it:
+All the steps above focus on displaying the `Square` element only. However, it is common for React Leaflet components to also have children when possible. Our `Square` being a Leaflet layer, overlays such as [`Popup`](api-components.mdx#popup) and [`Tooltip`](api-components.mdx#tooltip) could be attached to it:
 
-```tsx {6-7,18,28-30}
+```tsx {2,6,15,18,30,41-43}
+import {
+  createContainerComponent,
+  createElementHook,
+  createElementObject,
+  createPathHook,
+  extendContext,
+} from '@react-leaflet/core'
+import L from 'leaflet'
+
 function getBounds(props) {
   return L.latLng(props.center).toBounds(props.size)
 }
 
 function createSquare(props, context) {
-  const instance = new L.Rectangle(getBounds(props))
-  return { instance, context: { ...context, overlayContainer: instance } }
+  const square = new L.Rectangle(getBounds(props))
+  return createElementObject(
+    square,
+    extendContext(context, { overlayContainer: square }),
+  )
 }
 
 function updateSquare(instance, props, prevProps) {
@@ -407,35 +472,40 @@ const Square = createContainerComponent(useSquare)
 
 const center = [51.505, -0.09]
 
-render(
-  <MapContainer center={center} zoom={13} scrollWheelZoom={false}>
-    <TileLayer
-      attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-    />
-    <Square center={center} size={1000}>
-      <Popup>Hello Popup</Popup>
-    </Square>
-  </MapContainer>,
-)
-```
-
-In order to support these overlays, we need to update the `createSquare` function to set the created layer as the context's `overlayContainer`. Note that the `context` object returned **must be a copy** of the one provided in the function arguments, the function **must not mutate** the provided `context`.
-
-```ts
-function createSquare(props, context) {
-  const instance = new L.Rectangle(getBounds(props))
-  return { instance, context: { ...context, overlayContainer: instance } }
+function MyMap() {
+  return (
+    <MapContainer center={center} zoom={13}>
+      <TileLayer
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
+      <Square center={center} size={1000}>
+        <Popup>Hello Popup</Popup>
+      </Square>
+    </MapContainer>
+  )
 }
 ```
 
-We also need to replace the component factory by one taking care of providing the changed context and rendering the children, [`createContainerComponent`](core-api.md#createcontainercomponent):
+In order to support these overlays, we need to update the `createSquare` function to set the created layer as the context's `overlayContainer`. Note that we use the [`extendContext` function](core-api.mdx#extendcontext) here in order to make the extended context immutable.
+
+```ts
+function createSquare(props, context) {
+  const square = new L.Rectangle(getBounds(props))
+  return createElementObject(
+    square,
+    extendContext(context, { overlayContainer: square }),
+  )
+}
+```
+
+We also need to replace the component factory by one taking care of providing the changed context and rendering the children, [`createContainerComponent`](core-api.mdx#createcontainercomponent):
 
 ```ts
 const Square = createContainerComponent(useSquare)
 ```
 
-In addition to the `createLeafComponent` and `createContainerComponent` functions, [`createOverlayComponent`](core-api.md#createoverlaycomponent) can be used to create overlays such as [`Popup`](api-components.md#popup) and [`Tooltip`](api-components.md#tooltip).
+In addition to the `createLeafComponent` and `createContainerComponent` functions, [`createOverlayComponent`](core-api.mdx#createoverlaycomponent) can be used to create overlays such as [`Popup`](api-components.mdx#popup) and [`Tooltip`](api-components.mdx#tooltip).
 
 ## Higher-level component factory
 
@@ -450,16 +520,26 @@ const useSquare = createPathHook(useSquareElement)
 const Square = createContainerComponent(useSquare)
 ```
 
-This logic is similar for other types of layers and is therefore provided as a higher-level component factory, [`createPathComponent`](core-api.md#createpathcomponent), as used below:
+This logic is similar for other types of layers and is therefore provided as a higher-level component factory, [`createPathComponent`](core-api.mdx#createpathcomponent), as used below:
 
-```tsx {16}
+```tsx {3,26}
+import {
+  createElementObject,
+  createPathComponent,
+  extendContext,
+} from '@react-leaflet/core'
+import L from 'leaflet'
+
 function getBounds(props) {
   return L.latLng(props.center).toBounds(props.size)
 }
 
 function createSquare(props, context) {
-  const instance = new L.Rectangle(getBounds(props))
-  return { instance, context: { ...context, overlayContainer: instance } }
+  const square = new L.Rectangle(getBounds(props))
+  return createElementObject(
+    square,
+    extendContext(context, { overlayContainer: square }),
+  )
 }
 
 function updateSquare(instance, props, prevProps) {
@@ -472,17 +552,19 @@ const Square = createPathComponent(createSquare, updateSquare)
 
 const center = [51.505, -0.09]
 
-render(
-  <MapContainer center={center} zoom={13} scrollWheelZoom={false}>
-    <TileLayer
-      attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-    />
-    <Square center={center} size={1000}>
-      <Popup>Hello Popup</Popup>
-    </Square>
-  </MapContainer>,
-)
+function MyMap() {
+  return (
+    <MapContainer center={center} zoom={13}>
+      <TileLayer
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
+      <Square center={center} size={1000}>
+        <Popup>Hello Popup</Popup>
+      </Square>
+    </MapContainer>
+  )
+}
 ```
 
-The core APIs export other [high-level component factories](core-api.md#high-level-component-factories) that can be used in a similar way.
+The core APIs export other [high-level component factories](core-api.mdx#high-level-component-factories) that can be used in a similar way.

@@ -3,14 +3,16 @@ import {
   createContainerComponent,
   createControlHook,
   createElementHook,
+  createElementObject,
+  extendContext,
   useLeafletContext,
 } from '@react-leaflet/core'
-import { Control, Layer } from 'leaflet'
+import { Control, type Layer } from 'leaflet'
 import React, {
-  ForwardRefExoticComponent,
-  FunctionComponent,
-  ReactNode,
-  RefAttributes,
+  type ForwardRefExoticComponent,
+  type FunctionComponent,
+  type ReactNode,
+  type RefAttributes,
   useCallback,
   useEffect,
   useMemo,
@@ -27,8 +29,11 @@ export const useLayersControlElement = createElementHook<
   LayersControlProps
 >(
   function createLayersControl({ children: _c, ...options }, ctx) {
-    const instance = new Control.Layers(undefined, undefined, options)
-    return { instance, context: { ...ctx, layersControl: instance } }
+    const control = new Control.Layers(undefined, undefined, options)
+    return createElementObject(
+      control,
+      extendContext(ctx, { layersControl: control }),
+    )
   },
   function updateLayersControl(control, props, prevProps) {
     if (props.collapsed !== prevProps.collapsed) {
@@ -89,10 +94,11 @@ export function createControlledLayer(addLayerToControl: AddLayerFunc) {
       },
       [layersControl],
     )
-    const context = useMemo(
-      () => ({ ...parentContext, layerContainer: { addLayer, removeLayer } }),
-      [parentContext, addLayer, removeLayer],
-    )
+    const context = useMemo(() => {
+      return extendContext(parentContext, {
+        layerContainer: { addLayer, removeLayer },
+      })
+    }, [parentContext, addLayer, removeLayer])
 
     useEffect(() => {
       if (layer !== null && propsRef.current !== props) {

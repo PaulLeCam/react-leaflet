@@ -9,7 +9,7 @@ React Leaflet provides bindings between React and Leaflet. It **does not replace
 ### DOM rendering
 
 React **does not** render Leaflet layers to the DOM, this rendering is done by Leaflet itself.
-React only renders a `<div>` element when rendering the [`MapContainer` component](api-map.md#mapcontainer), the contents of [UI layers components](api-components.md#ui-layers).
+React only renders a `<div>` element when rendering the [`MapContainer` component](api-map.mdx#mapcontainer) and the contents of [UI layers components](api-components.mdx#ui-layers).
 
 ### Component properties
 
@@ -19,11 +19,17 @@ During the first render, all these properties should be supported as they are by
 
 Mutable properties changes are compared by reference (unless stated otherwise) and are applied calling the relevant method on the Leaflet element instance.
 
+### Leaflet elements references
+
+Unless stated otherwise, all components exported by React Leaflet support [refs](https://reactjs.org/docs/glossary.html#refs) exposing the created Leaflet element instance or DOM element (for panes).
+
+This allows applications to access Leaflet's imperative APIs when required, but may create inconsitencies with props being set and should be used carefully.
+
 ### React context
 
 React Leaflet uses [React's context API](https://reactjs.org/docs/context.html) to make some Leaflet elements instances available to children elements that need it.
 
-Each Leaflet map instance has its own React context, created by the [`MapContainer` component](api-map.md#mapcontainer). Other components and hooks provided by React Leaflet can only be used as descendants of a `MapContainer`.
+Each Leaflet map instance has its own React context, created by the [`MapContainer` component](api-map.mdx#mapcontainer). Other components and hooks provided by React Leaflet can only be used as descendants of a `MapContainer`.
 
 ## Lifecycle process
 

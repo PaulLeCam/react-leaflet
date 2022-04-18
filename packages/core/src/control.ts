@@ -1,8 +1,8 @@
-import { Control, ControlOptions } from 'leaflet'
+import { Control, type ControlOptions } from 'leaflet'
 import { useEffect, useRef } from 'react'
 
-import { useLeafletContext } from './context'
-import { ElementHook } from './element'
+import { useLeafletContext } from './context.js'
+import type { ElementHook } from './element.js'
 
 export function createControlHook<E extends Control, P extends ControlOptions>(
   useElement: ElementHook<E, P>,

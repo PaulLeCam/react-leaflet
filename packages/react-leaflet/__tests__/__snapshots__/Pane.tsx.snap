@@ -3,7 +3,7 @@
 exports[`Pane can unmount and remount with the same name 1`] = `
 <div>
   <div
-    class="leaflet-container leaflet-grab leaflet-touch-drag"
+    class="leaflet-container leaflet-touch leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
     style="position: relative;"
     tabindex="0"
   >
@@ -15,10 +15,10 @@ exports[`Pane can unmount and remount with the same name 1`] = `
         class="leaflet-pane leaflet-tile-pane"
       />
       <div
-        class="leaflet-pane leaflet-shadow-pane"
+        class="leaflet-pane leaflet-overlay-pane"
       />
       <div
-        class="leaflet-pane leaflet-overlay-pane"
+        class="leaflet-pane leaflet-shadow-pane"
       />
       <div
         class="leaflet-pane leaflet-marker-pane"
@@ -126,22 +126,32 @@ exports[`Pane can unmount and remount with the same name 1`] = `
           class="leaflet-control-zoom leaflet-bar leaflet-control"
         >
           <a
+            aria-disabled="false"
             aria-label="Zoom in"
             class="leaflet-control-zoom-in"
             href="#"
             role="button"
             title="Zoom in"
           >
-            +
+            <span
+              aria-hidden="true"
+            >
+              +
+            </span>
           </a>
           <a
+            aria-disabled="false"
             aria-label="Zoom out"
             class="leaflet-control-zoom-out"
             href="#"
             role="button"
             title="Zoom out"
           >
-            −
+            <span
+              aria-hidden="true"
+            >
+              −
+            </span>
           </a>
         </div>
       </div>
@@ -159,11 +169,17 @@ exports[`Pane can unmount and remount with the same name 1`] = `
         >
           <a
             href="https://leafletjs.com"
-            title="A JS library for interactive maps"
+            title="A JavaScript library for interactive maps"
           >
             Leaflet
           </a>
-           | tiles attribution
+           
+          <span
+            aria-hidden="true"
+          >
+            |
+          </span>
+           tiles attribution
         </div>
       </div>
     </div>
@@ -174,7 +190,7 @@ exports[`Pane can unmount and remount with the same name 1`] = `
 exports[`Pane can unmount and remount with the same name 2`] = `
 <div>
   <div
-    class="leaflet-container leaflet-grab leaflet-touch-drag"
+    class="leaflet-container leaflet-touch leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
     style="position: relative;"
     tabindex="0"
   >
@@ -186,10 +202,10 @@ exports[`Pane can unmount and remount with the same name 2`] = `
         class="leaflet-pane leaflet-tile-pane"
       />
       <div
-        class="leaflet-pane leaflet-shadow-pane"
+        class="leaflet-pane leaflet-overlay-pane"
       />
       <div
-        class="leaflet-pane leaflet-overlay-pane"
+        class="leaflet-pane leaflet-shadow-pane"
       />
       <div
         class="leaflet-pane leaflet-marker-pane"
@@ -211,22 +227,32 @@ exports[`Pane can unmount and remount with the same name 2`] = `
           class="leaflet-control-zoom leaflet-bar leaflet-control"
         >
           <a
+            aria-disabled="false"
             aria-label="Zoom in"
             class="leaflet-control-zoom-in"
             href="#"
             role="button"
             title="Zoom in"
           >
-            +
+            <span
+              aria-hidden="true"
+            >
+              +
+            </span>
           </a>
           <a
+            aria-disabled="false"
             aria-label="Zoom out"
             class="leaflet-control-zoom-out"
             href="#"
             role="button"
             title="Zoom out"
           >
-            −
+            <span
+              aria-hidden="true"
+            >
+              −
+            </span>
           </a>
         </div>
       </div>
@@ -244,7 +270,7 @@ exports[`Pane can unmount and remount with the same name 2`] = `
         >
           <a
             href="https://leafletjs.com"
-            title="A JS library for interactive maps"
+            title="A JavaScript library for interactive maps"
           >
             Leaflet
           </a>
@@ -258,7 +284,7 @@ exports[`Pane can unmount and remount with the same name 2`] = `
 exports[`Pane can unmount and remount with the same name 3`] = `
 <div>
   <div
-    class="leaflet-container leaflet-grab leaflet-touch-drag"
+    class="leaflet-container leaflet-touch leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
     style="position: relative;"
     tabindex="0"
   >
@@ -270,10 +296,10 @@ exports[`Pane can unmount and remount with the same name 3`] = `
         class="leaflet-pane leaflet-tile-pane"
       />
       <div
-        class="leaflet-pane leaflet-shadow-pane"
+        class="leaflet-pane leaflet-overlay-pane"
       />
       <div
-        class="leaflet-pane leaflet-overlay-pane"
+        class="leaflet-pane leaflet-shadow-pane"
       />
       <div
         class="leaflet-pane leaflet-marker-pane"
@@ -381,22 +407,32 @@ exports[`Pane can unmount and remount with the same name 3`] = `
           class="leaflet-control-zoom leaflet-bar leaflet-control"
         >
           <a
+            aria-disabled="false"
             aria-label="Zoom in"
             class="leaflet-control-zoom-in"
             href="#"
             role="button"
             title="Zoom in"
           >
-            +
+            <span
+              aria-hidden="true"
+            >
+              +
+            </span>
           </a>
           <a
+            aria-disabled="false"
             aria-label="Zoom out"
             class="leaflet-control-zoom-out"
             href="#"
             role="button"
             title="Zoom out"
           >
-            −
+            <span
+              aria-hidden="true"
+            >
+              −
+            </span>
           </a>
         </div>
       </div>
@@ -414,11 +450,17 @@ exports[`Pane can unmount and remount with the same name 3`] = `
         >
           <a
             href="https://leafletjs.com"
-            title="A JS library for interactive maps"
+            title="A JavaScript library for interactive maps"
           >
             Leaflet
           </a>
-           | tiles attribution
+           
+          <span
+            aria-hidden="true"
+          >
+            |
+          </span>
+           tiles attribution
         </div>
       </div>
     </div>
@@ -429,7 +471,7 @@ exports[`Pane can unmount and remount with the same name 3`] = `
 exports[`Pane renders 1`] = `
 <div>
   <div
-    class="leaflet-container leaflet-grab leaflet-touch-drag"
+    class="leaflet-container leaflet-touch leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
     style="position: relative;"
     tabindex="0"
   >
@@ -441,10 +483,10 @@ exports[`Pane renders 1`] = `
         class="leaflet-pane leaflet-tile-pane"
       />
       <div
-        class="leaflet-pane leaflet-shadow-pane"
+        class="leaflet-pane leaflet-overlay-pane"
       />
       <div
-        class="leaflet-pane leaflet-overlay-pane"
+        class="leaflet-pane leaflet-shadow-pane"
       />
       <div
         class="leaflet-pane leaflet-marker-pane"
@@ -509,22 +551,32 @@ exports[`Pane renders 1`] = `
           class="leaflet-control-zoom leaflet-bar leaflet-control"
         >
           <a
+            aria-disabled="false"
             aria-label="Zoom in"
             class="leaflet-control-zoom-in"
             href="#"
             role="button"
             title="Zoom in"
           >
-            +
+            <span
+              aria-hidden="true"
+            >
+              +
+            </span>
           </a>
           <a
+            aria-disabled="false"
             aria-label="Zoom out"
             class="leaflet-control-zoom-out"
             href="#"
             role="button"
             title="Zoom out"
           >
-            −
+            <span
+              aria-hidden="true"
+            >
+              −
+            </span>
           </a>
         </div>
       </div>
@@ -542,11 +594,17 @@ exports[`Pane renders 1`] = `
         >
           <a
             href="https://leafletjs.com"
-            title="A JS library for interactive maps"
+            title="A JavaScript library for interactive maps"
           >
             Leaflet
           </a>
-           | tiles attribution
+           
+          <span
+            aria-hidden="true"
+          >
+            |
+          </span>
+           tiles attribution
         </div>
       </div>
     </div>
@@ -557,7 +615,7 @@ exports[`Pane renders 1`] = `
 exports[`Pane renders in Strict Mode 1`] = `
 <div>
   <div
-    class="leaflet-container leaflet-grab leaflet-touch-drag"
+    class="leaflet-container leaflet-touch leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
     style="position: relative;"
     tabindex="0"
   >
@@ -569,10 +627,10 @@ exports[`Pane renders in Strict Mode 1`] = `
         class="leaflet-pane leaflet-tile-pane"
       />
       <div
-        class="leaflet-pane leaflet-shadow-pane"
+        class="leaflet-pane leaflet-overlay-pane"
       />
       <div
-        class="leaflet-pane leaflet-overlay-pane"
+        class="leaflet-pane leaflet-shadow-pane"
       />
       <div
         class="leaflet-pane leaflet-marker-pane"
@@ -637,22 +695,32 @@ exports[`Pane renders in Strict Mode 1`] = `
           class="leaflet-control-zoom leaflet-bar leaflet-control"
         >
           <a
+            aria-disabled="false"
             aria-label="Zoom in"
             class="leaflet-control-zoom-in"
             href="#"
             role="button"
             title="Zoom in"
           >
-            +
+            <span
+              aria-hidden="true"
+            >
+              +
+            </span>
           </a>
           <a
+            aria-disabled="false"
             aria-label="Zoom out"
             class="leaflet-control-zoom-out"
             href="#"
             role="button"
             title="Zoom out"
           >
-            −
+            <span
+              aria-hidden="true"
+            >
+              −
+            </span>
           </a>
         </div>
       </div>
@@ -670,11 +738,17 @@ exports[`Pane renders in Strict Mode 1`] = `
         >
           <a
             href="https://leafletjs.com"
-            title="A JS library for interactive maps"
+            title="A JavaScript library for interactive maps"
           >
             Leaflet
           </a>
-           | tiles attribution
+           
+          <span
+            aria-hidden="true"
+          >
+            |
+          </span>
+           tiles attribution
         </div>
       </div>
     </div>
@@ -685,7 +759,7 @@ exports[`Pane renders in Strict Mode 1`] = `
 exports[`Pane renders nested panes 1`] = `
 <div>
   <div
-    class="leaflet-container leaflet-grab leaflet-touch-drag"
+    class="leaflet-container leaflet-touch leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
     style="position: relative;"
     tabindex="0"
   >
@@ -697,10 +771,10 @@ exports[`Pane renders nested panes 1`] = `
         class="leaflet-pane leaflet-tile-pane"
       />
       <div
-        class="leaflet-pane leaflet-shadow-pane"
+        class="leaflet-pane leaflet-overlay-pane"
       />
       <div
-        class="leaflet-pane leaflet-overlay-pane"
+        class="leaflet-pane leaflet-shadow-pane"
       />
       <div
         class="leaflet-pane leaflet-marker-pane"
@@ -808,22 +882,32 @@ exports[`Pane renders nested panes 1`] = `
           class="leaflet-control-zoom leaflet-bar leaflet-control"
         >
           <a
+            aria-disabled="false"
             aria-label="Zoom in"
             class="leaflet-control-zoom-in"
             href="#"
             role="button"
             title="Zoom in"
           >
-            +
+            <span
+              aria-hidden="true"
+            >
+              +
+            </span>
           </a>
           <a
+            aria-disabled="false"
             aria-label="Zoom out"
             class="leaflet-control-zoom-out"
             href="#"
             role="button"
             title="Zoom out"
           >
-            −
+            <span
+              aria-hidden="true"
+            >
+              −
+            </span>
           </a>
         </div>
       </div>
@@ -841,11 +925,17 @@ exports[`Pane renders nested panes 1`] = `
         >
           <a
             href="https://leafletjs.com"
-            title="A JS library for interactive maps"
+            title="A JavaScript library for interactive maps"
           >
             Leaflet
           </a>
-           | tiles attribution
+           
+          <span
+            aria-hidden="true"
+          >
+            |
+          </span>
+           tiles attribution
         </div>
       </div>
     </div>

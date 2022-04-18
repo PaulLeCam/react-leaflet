@@ -34,3 +34,13 @@
   height: 200px;
   width: 200px;
 }
+
+.example {
+  padding: 2rem;
+}
+
+@media screen and (max-width: 966px) {
+  .example {
+    padding: 1rem;
+  }
+}

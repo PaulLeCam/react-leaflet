@@ -1,13 +1,15 @@
 import {
-  MediaOverlayProps,
+  type MediaOverlayProps,
+  createElementObject,
   createLayerComponent,
+  extendContext,
   updateMediaOverlay,
 } from '@react-leaflet/core'
 import {
   VideoOverlay as LeafletVideoOverlay,
-  VideoOverlayOptions,
+  type VideoOverlayOptions,
 } from 'leaflet'
-import { ReactNode } from 'react'
+import type { ReactNode } from 'react'
 
 export interface VideoOverlayProps
   extends MediaOverlayProps,
@@ -22,11 +24,14 @@ export const VideoOverlay = createLayerComponent<
   VideoOverlayProps
 >(
   function createVideoOverlay({ bounds, url, ...options }, ctx) {
-    const instance = new LeafletVideoOverlay(url, bounds, options)
+    const overlay = new LeafletVideoOverlay(url, bounds, options)
     if (options.play === true) {
-      instance.getElement()?.play()
+      overlay.getElement()?.play()
     }
-    return { instance, context: { ...ctx, overlayContainer: instance } }
+    return createElementObject(
+      overlay,
+      extendContext(ctx, { overlayContainer: overlay }),
+    )
   },
   function updateVideoOverlay(overlay, props, prevProps) {
     updateMediaOverlay(overlay, props, prevProps)

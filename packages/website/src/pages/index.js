@@ -1,16 +1,16 @@
 import classnames from 'classnames'
 import React from 'react'
 import Link from '@docusaurus/Link'
+import { useColorMode } from '@docusaurus/theme-common'
 import useBaseUrl from '@docusaurus/useBaseUrl'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
-import useThemeContext from '@theme/hooks/useThemeContext'
 import CodeBlock from '@theme/CodeBlock'
 import Layout from '@theme/Layout'
 
 import styles from './styles.module.css'
 
 function Title({ text }) {
-  const { isDarkTheme } = useThemeContext()
+  const { isDarkTheme } = useColorMode()
   const logo = isDarkTheme ? 'logo-title-alt' : 'logo-title'
 
   return (
@@ -43,7 +43,7 @@ export default function Home() {
           </div>
         </div>
       </header>
-      <main>
+      <main className={styles.example}>
         <CodeBlock live noInline className="tsx">
           {`const position = [51.505, -0.09]
         

@@ -1,11 +1,11 @@
-import {
-  LatLngExpression,
+import type {
   CircleMarker as LeafletCircleMarker,
   CircleMarkerOptions,
+  LatLngExpression,
 } from 'leaflet'
-import { ReactNode } from 'react'
+import type { ReactNode } from 'react'
 
-import { PathProps } from './path'
+import type { PathProps } from './path.js'
 
 export interface CircleMarkerProps extends CircleMarkerOptions, PathProps {
   center: LatLngExpression

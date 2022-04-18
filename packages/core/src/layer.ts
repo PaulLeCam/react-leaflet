@@ -1,11 +1,11 @@
-import { InteractiveLayerOptions, Layer, LayerOptions } from 'leaflet'
+import type { InteractiveLayerOptions, Layer, LayerOptions } from 'leaflet'
 import { useEffect } from 'react'
 
-import { useAttribution } from './attribution'
-import { LeafletContextInterface, useLeafletContext } from './context'
-import { LeafletElement, ElementHook } from './element'
-import { EventedProps, useEventHandlers } from './events'
-import { withPane } from './pane'
+import { useAttribution } from './attribution.js'
+import { type LeafletContextInterface, useLeafletContext } from './context.js'
+import type { LeafletElement, ElementHook } from './element.js'
+import { type EventedProps, useEventHandlers } from './events.js'
+import { withPane } from './pane.js'
 
 export interface LayerProps extends EventedProps, LayerOptions {}
 export interface InteractiveLayerProps

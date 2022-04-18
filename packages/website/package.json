@@ -9,16 +9,16 @@
     "deploy": "docusaurus deploy"
   },
   "dependencies": {
-    "@docusaurus/core": "^2.0.0-beta.14",
-    "@docusaurus/preset-classic": "2.0.0-beta.14",
-    "@docusaurus/theme-live-codeblock": "2.0.0-beta.14",
+    "@docusaurus/core": "2.0.0-beta.18",
+    "@docusaurus/preset-classic": "2.0.0-beta.18",
+    "@docusaurus/theme-live-codeblock": "2.0.0-beta.18",
     "@react-leaflet/docusaurus-plugin": "^1.0.1",
     "classnames": "^2.2.6",
-    "leaflet": "^1.7.1",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-leaflet": "^3.2.0",
-    "typescript": "^4.5.4"
+    "leaflet": "^1.8.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-leaflet": "^4.0.0",
+    "typescript": "^4.5.5"
   },
   "browserslist": {
     "production": [

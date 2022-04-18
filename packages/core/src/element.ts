@@ -1,11 +1,19 @@
-import { MutableRefObject, useEffect, useRef } from 'react'
+import { type MutableRefObject, useEffect, useRef } from 'react'
 
-import { LeafletContextInterface } from './context'
+import type { LeafletContextInterface } from './context.js'
 
-export interface LeafletElement<T, C = any> {
+export type LeafletElement<T, C = any> = Readonly<{
   instance: T
   context: LeafletContextInterface
   container?: C | null
+}>
+
+export function createElementObject<T, C = any>(
+  instance: T,
+  context: LeafletContextInterface,
+  container?: C | null,
+): LeafletElement<T, C> {
+  return Object.freeze({ instance, context, container })
 }
 
 export type ElementHook<E, P> = (

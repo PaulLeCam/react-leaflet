@@ -1,40 +1,35 @@
 import {
-  EventedProps,
-  LeafletContextInterface,
-  LeafletElement,
-  SetOpenFunc,
+  type EventedProps,
+  type LeafletContextInterface,
+  type LeafletElement,
+  type SetOpenFunc,
+  createElementObject,
   createOverlayComponent,
 } from '@react-leaflet/core'
 import {
-  LatLngExpression,
+  type LatLngExpression,
   Tooltip as LeafletTooltip,
-  TooltipEvent,
-  TooltipOptions,
+  type TooltipEvent,
+  type TooltipOptions,
 } from 'leaflet'
-import { ReactNode, useEffect } from 'react'
+import { type ReactNode, useEffect } from 'react'
 
 export interface TooltipProps extends TooltipOptions, EventedProps {
   children?: ReactNode
-  onClose?: () => void
-  onOpen?: () => void
   position?: LatLngExpression
 }
 
 export const Tooltip = createOverlayComponent<LeafletTooltip, TooltipProps>(
   function createTooltip(props, context) {
-    return {
-      instance: new LeafletTooltip(props, context.overlayContainer),
-      context,
-    }
+    const tooltip = new LeafletTooltip(props, context.overlayContainer)
+    return createElementObject(tooltip, context)
   },
   function useTooltipLifecycle(
     element: LeafletElement<LeafletTooltip>,
     context: LeafletContextInterface,
-    props: TooltipProps,
+    { position }: TooltipProps,
     setOpen: SetOpenFunc,
   ) {
-    const { onClose, onOpen, position } = props
-
     useEffect(
       function addTooltip() {
         const container = context.overlayContainer
@@ -46,20 +41,18 @@ export const Tooltip = createOverlayComponent<LeafletTooltip, TooltipProps>(
 
         const onTooltipOpen = (event: TooltipEvent) => {
           if (event.tooltip === instance) {
-            if (position) {
+            if (position != null) {
               instance.setLatLng(position)
             }
 
             instance.update()
             setOpen(true)
-            onOpen?.()
           }
         }
 
         const onTooltipClose = (event: TooltipEvent) => {
           if (event.tooltip === instance) {
             setOpen(false)
-            onClose?.()
           }
         }
 
@@ -80,7 +73,7 @@ export const Tooltip = createOverlayComponent<LeafletTooltip, TooltipProps>(
           }
         }
       },
-      [element, context, setOpen, onClose, onOpen, position],
+      [element, context, setOpen, position],
     )
   },
 )

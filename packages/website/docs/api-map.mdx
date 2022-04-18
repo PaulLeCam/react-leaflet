@@ -1,0 +1,193 @@
+---
+title: Map creation and interactions
+---
+
+import Tabs from '@theme/Tabs'
+import TabItem from '@theme/TabItem'
+
+## MapContainer
+
+The `MapContainer` component is responsible for creating the [Leaflet Map](https://leafletjs.com/reference.html#map) instance and providing it to its [child components](api-components.mdx), using a [React Context](https://reactjs.org/docs/context.html).
+
+When creating a `MapContainer` element, its props are used as options to [create the Map instance](https://leafletjs.com/reference.html#map-l-map).
+
+The following additional props are supported:
+
+| Prop            | Type                     |
+| --------------- | ------------------------ |
+| `bounds`        | `LatLngBoundsExpression` |
+| `boundsOptions` | `FitBoundsOptions`       |
+| `children`      | `ReactNode`              |
+| `className`     | `string`                 |
+| `id`            | `string`                 |
+| `placeholder`   | `ReactNode`              |
+| `style`         | `CSSProperties`          |
+| `whenReady`     | `() => void`             |
+
+Except for its `children`, `MapContainer` props are **immutable**: changing them after they have been set a first time will have no effect on the Map instance or its container.  
+The Leaflet `Map` instance created by the `MapContainer` element can be accessed by [child components](api-components.mdx) using one of [the provided hooks](#hooks).
+
+<Tabs
+  defaultValue="absolute"
+  groupId="import-specifier"
+  values={[
+    { label: 'Absolute specifier import', value: 'absolute', },
+    { label: 'Bare specifier import', value: 'bare', },
+  ]
+}>
+<TabItem value="absolute">
+
+```js
+import { MapContainer } from 'https://cdn.esm.sh/react-leaflet/MapContainer'
+```
+
+</TabItem>
+<TabItem value="bare">
+
+```js
+import { MapContainer } from 'react-leaflet/MapContainer'
+```
+
+</TabItem>
+</Tabs>
+
+## Hooks
+
+### useMap
+
+Hook providing the Leaflet `Map` instance in any descendant of a [`MapContainer`](#mapcontainer).
+
+```tsx
+function MyComponent() {
+  const map = useMap()
+  console.log('map center:', map.getCenter())
+  return null
+}
+
+function MyMapComponent() {
+  return (
+    <MapContainer center={[50.5, 30.5]} zoom={13}>
+      <MyComponent />
+    </MapContainer>
+  )
+}
+```
+
+<Tabs
+  defaultValue="absolute"
+  groupId="import-specifier"
+  values={[
+    { label: 'Absolute specifier import', value: 'absolute', },
+    { label: 'Bare specifier import', value: 'bare', },
+  ]
+}>
+<TabItem value="absolute">
+
+```js
+import { useMap } from 'https://cdn.esm.sh/react-leaflet/hooks'
+```
+
+</TabItem>
+<TabItem value="bare">
+
+```js
+import { useMap } from 'react-leaflet/hooks'
+```
+
+</TabItem>
+</Tabs>
+
+### useMapEvents
+
+Hook attaching the provided `LeafletEventHandlerFnMap` event handlers to the map instance and returning the instance in any descendant of a [`MapContainer`](#mapcontainer).
+
+```tsx
+function MyComponent() {
+  const map = useMapEvents({
+    click: () => {
+      map.locate()
+    },
+    locationfound: (location) => {
+      console.log('location found:', location)
+    },
+  })
+  return null
+}
+
+function MyMapComponent() {
+  return (
+    <MapContainer center={[50.5, 30.5]} zoom={13}>
+      <MyComponent />
+    </MapContainer>
+  )
+}
+```
+
+<Tabs
+  defaultValue="absolute"
+  groupId="import-specifier"
+  values={[
+    { label: 'Absolute specifier import', value: 'absolute', },
+    { label: 'Bare specifier import', value: 'bare', },
+  ]
+}>
+<TabItem value="absolute">
+
+```js
+import { useMapEvents } from 'https://cdn.esm.sh/react-leaflet/hooks'
+```
+
+</TabItem>
+<TabItem value="bare">
+
+```js
+import { useMapEvents } from 'react-leaflet/hooks'
+```
+
+</TabItem>
+</Tabs>
+
+### useMapEvent
+
+Hook attaching a single event handler to the map instance and returning the instance in any descendant of a [`MapContainer`](#mapcontainer).
+
+```tsx
+function MyComponent() {
+  const map = useMapEvent('click', () => {
+    map.setCenter([50.5, 30.5])
+  })
+  return null
+}
+
+function MyMapComponent() {
+  return (
+    <MapContainer center={[50.5, 30.5]} zoom={13}>
+      <MyComponent />
+    </MapContainer>
+  )
+}
+```
+
+<Tabs
+  defaultValue="absolute"
+  groupId="import-specifier"
+  values={[
+    { label: 'Absolute specifier import', value: 'absolute', },
+    { label: 'Bare specifier import', value: 'bare', },
+  ]
+}>
+<TabItem value="absolute">
+
+```js
+import { useMapEvent } from 'https://cdn.esm.sh/react-leaflet/hooks'
+```
+
+</TabItem>
+<TabItem value="bare">
+
+```js
+import { useMapEvent } from 'react-leaflet/hooks'
+```
+
+</TabItem>
+</Tabs>
