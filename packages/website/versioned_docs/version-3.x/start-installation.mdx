@@ -25,6 +25,7 @@ React, React DOM and Leaflet are required peer dependencies. You must add them t
 
 <Tabs
   defaultValue="npm"
+  groupId="package-manager"
   values={[
     { label: 'npm', value: 'npm', },
     { label: 'yarn', value: 'yarn', },
@@ -33,23 +34,26 @@ React, React DOM and Leaflet are required peer dependencies. You must add them t
 <TabItem value="npm">
 
 ```bash
-npm install react react-dom leaflet
+npm install react@17 react-dom@17 leaflet
 ```
 
 </TabItem>
 <TabItem value="yarn">
 
 ```bash
-yarn add react react-dom leaflet
+yarn add react@17 react-dom@17 leaflet
 ```
 
 </TabItem>
 </Tabs>
 
+Note that React Leaflet v3 only supports React v17, **v18 is not supported**.
+
 Then you can install React Leaflet:
 
 <Tabs
   defaultValue="npm"
+  groupId="package-manager"
   values={[
     { label: 'npm', value: 'npm', },
     { label: 'yarn', value: 'yarn', },
@@ -83,6 +87,7 @@ React Leaflet provides TypeScript definitions in the installed packages, but nee
 
 <Tabs
   defaultValue="npm"
+  groupId="package-manager"
   values={[
     { label: 'npm', value: 'npm', },
     { label: 'yarn', value: 'yarn', },

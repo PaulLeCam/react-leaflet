@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks'
 import type { Map } from 'leaflet'
-import React, { type ReactNode } from 'react'
+import React, { StrictMode, type ReactNode } from 'react'
 
 import {
   CONTEXT_VERSION,
@@ -11,7 +11,11 @@ import {
 
 export function createWrapper(context) {
   return function Wrapper({ children }: { children: ReactNode }) {
-    return <LeafletProvider value={context}>{children}</LeafletProvider>
+    return (
+      <StrictMode>
+        <LeafletProvider value={context}>{children}</LeafletProvider>
+      </StrictMode>
+    )
   }
 }
 

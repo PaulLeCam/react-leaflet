@@ -1,5 +1,5 @@
 import { act, render, screen } from '@testing-library/react'
-import React, { useEffect, useRef } from 'react'
+import React, { StrictMode, useEffect, useRef } from 'react'
 
 import {
   createElementHook,
@@ -28,7 +28,11 @@ describe('components', () => {
         return <Component ref={ref} />
       }
 
-      render(<TestWrapper />)
+      render(
+        <StrictMode>
+          <TestWrapper />
+        </StrictMode>,
+      )
       expect(refInstance).toBe(instance)
     })
 
@@ -98,9 +102,11 @@ describe('components', () => {
       }
 
       render(
-        <Component>
-          <Child />
-        </Component>,
+        <StrictMode>
+          <Component>
+            <Child />
+          </Component>
+        </StrictMode>,
       )
       expect(rendered).toBe(true)
     })
@@ -123,9 +129,11 @@ describe('components', () => {
       }
 
       render(
-        <Component>
-          <Child />
-        </Component>,
+        <StrictMode>
+          <Component>
+            <Child />
+          </Component>
+        </StrictMode>,
       )
       expect(childContext).toBe(containerContext)
     })
@@ -146,7 +154,11 @@ describe('components', () => {
         return <Component ref={ref} />
       }
 
-      render(<TestWrapper />)
+      render(
+        <StrictMode>
+          <TestWrapper />
+        </StrictMode>,
+      )
       expect(refInstance).toBe(instance)
     })
 
@@ -173,9 +185,11 @@ describe('components', () => {
       const useOverlay = createDivOverlayHook(useElement, jest.fn())
       const Component = createDivOverlayComponent(useOverlay)
       render(
-        <Component>
-          <span>Test</span>
-        </Component>,
+        <StrictMode>
+          <Component>
+            <span>Test</span>
+          </Component>
+        </StrictMode>,
         { wrapper: createWrapper({}) },
       )
       screen.getByText('Test')
@@ -195,7 +209,12 @@ describe('components', () => {
 
       const useOverlay = createDivOverlayHook(useElement, useLifecycle)
       const Component = createDivOverlayComponent(useOverlay)
-      render(<Component />, { wrapper: createWrapper({}) })
+      render(
+        <StrictMode>
+          <Component />
+        </StrictMode>,
+        { wrapper: createWrapper({}) },
+      )
 
       expect(update).not.toHaveBeenCalled()
       act(() => {

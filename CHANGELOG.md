@@ -1,3 +1,7 @@
+## v4.0.0-beta.1 (2022-04-18)
+
+Updated Leaflet dependency to v1.8 beta.
+
 ## v4.0.0-beta.0 (2022-04-02)
 
 Updated React dependencies to v18 stable.

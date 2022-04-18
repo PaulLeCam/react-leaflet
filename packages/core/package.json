@@ -1,6 +1,6 @@
 {
   "name": "@react-leaflet/core",
-  "version": "2.0.0-beta.0",
+  "version": "2.0.0-beta.1",
   "description": "React Leaflet core",
   "repository": {
     "type": "git",
@@ -41,7 +41,7 @@
     "prepublishOnly": "package-check"
   },
   "peerDependencies": {
-    "leaflet": "^1.7.1",
+    "leaflet": "^1.8.0-beta.3",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
   },

@@ -1,12 +1,16 @@
 import { render } from '@testing-library/react'
 import { type LatLngExpression, Map } from 'leaflet'
-import React, { useEffect, useRef } from 'react'
+import React, { StrictMode, useEffect, useRef } from 'react'
 
 import { MapContainer, useMap } from '../src'
 
 describe('MapContainer', () => {
   test('renders the containing div', () => {
-    const { container } = render(<MapContainer center={[0, 0]} zoom={10} />)
+    const { container } = render(
+      <StrictMode>
+        <MapContainer center={[0, 0]} zoom={10} />
+      </StrictMode>,
+    )
     expect(container).toMatchSnapshot()
   })
 
