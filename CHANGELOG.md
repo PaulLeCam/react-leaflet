@@ -1,3 +1,25 @@
+## v4.0.0 (2022-04-18)
+
+Changes from v3:
+
+### Breaking changes
+
+- React v18 and Leaflet v1.8 are now required as peer dependency.
+- ES2020 is the new compilation target version.
+- Removed `useMapElement` hook.
+- Removed `MapConsumer` component.
+- Removed `whenCreated` property from the `MapContainer` component (a `ref` callback can be used instead).
+- Removed `onOpen` and `onClose` properties from `Popup` and `Tooltip` components.
+- Removed CommonJS distribution.
+- Removed UMD distribution.
+
+### Other changes
+
+- Added support for React v18 (concurrent mode).
+- Added support for `ref` in the `MapContainer` and `Pane` components.
+- Added `createLeafletContext` function to core.
+- The created element and context objects are now frozen (immutable).
+
 ## v4.0.0-beta.1 (2022-04-18)
 
 Updated Leaflet dependency to v1.8 beta.

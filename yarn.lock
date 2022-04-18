@@ -7023,10 +7023,10 @@ latest-version@^5.1.0:
   dependencies:
     package-json "^6.3.0"
 
-leaflet@^1.8.0-beta.3:
-  version "1.8.0-beta.3"
-  resolved "https://registry.yarnpkg.com/leaflet/-/leaflet-1.8.0-beta.3.tgz#ad4315404912b23772497408c1dcfaa9832b8ff4"
-  integrity sha512-5rp3xGRS1yxwxV2wnezsNr8pKHYjuki8fa9j2u3vJn0uzd1OaCKz5IwoFRFC6DODQ/iDtao54Bn76cRLH78XjA==
+leaflet@^1.8.0:
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/leaflet/-/leaflet-1.8.0.tgz#4615db4a22a304e8e692cae9270b983b38a2055e"
+  integrity sha512-gwhMjFCQiYs3x/Sf+d49f10ERXaEFCPr+nVTryhAW8DWbMGqJqt9G4XuIaHmFW08zYvhgdzqXGr8AlW8v8dQkA==
 
 leven@^3.1.0:
   version "3.1.0"
@@ -7517,9 +7517,9 @@ multicast-dns@^7.2.4:
     thunky "^1.0.2"
 
 nanoid@^3.3.1:
-  version "3.3.2"
-  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.3.2.tgz#c89622fafb4381cd221421c69ec58547a1eec557"
-  integrity sha512-CuHBogktKwpm5g2sRgv83jEy2ijFzBwMoYA60orPDR7ynsLijJDqgsi4RDGj3OJpy3Ieb+LYwiRmIOGyytgITA==
+  version "3.3.3"
+  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.3.3.tgz#fd8e8b7aa761fe807dba2d1b98fb7241bb724a25"
+  integrity sha512-p1sjXuopFs0xg+fPASzQ28agW1oHD7xDsd9Xkf3T15H3c/cifrFHVwrh74PdoklAPi+i7MdRsE47vm2r6JoB+w==
 
 natural-compare@^1.4.0:
   version "1.4.0"

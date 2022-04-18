@@ -103,15 +103,15 @@ module.exports = {
       '@docusaurus/preset-classic',
       {
         docs: {
-          // lastVersion: 'current',
+          lastVersion: 'current',
           versions: {
             current: {
-              label: '4.x - beta',
-              path: 'next',
+              label: 'v4.0',
+              path: '',
             },
             '3.x': {
-              label: '3.x - stable',
-              path: '',
+              label: 'v3.x',
+              path: 'v3',
             },
           },
           sidebarPath: require.resolve('./sidebars.js'),
