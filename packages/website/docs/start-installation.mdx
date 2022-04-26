@@ -97,6 +97,22 @@ yarn add react-leaflet
 </TabItem>
 </Tabs>
 
+### Adding Leaflet CSS
+Add the following CSS file to your component or to the entry JavaScript file.
+
+```js
+import 'leaflet/dist/leaflet.css';
+```
+
+Be sure to set the width and height inside the leaflet-container CSS class inside your component styling
+
+```css
+.leaflet-container {
+  height: 200px;
+  width: 100%;
+}
+```
+
 Modules can then be imported using bare specifiers when supported by a bundler such as [webpack](https://webpack.js.org/).
 
 ```js
