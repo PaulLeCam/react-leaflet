@@ -1,0 +1,6 @@
+/* This needs to be set in external stylesheet to avoid cssnano messing up with values */
+
+.navbar--fixed-top {
+  /* Leaflet uses z-index up to 1000 */
+  z-index: 1001 !important;
+}
