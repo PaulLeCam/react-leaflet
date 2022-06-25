@@ -1,3 +1,7 @@
+## v4.0.1 (2022-06-25)
+
+Fix calling `map.remove()` on `MapContainer` unmounting.
+
 ## v4.0.0 (2022-04-18)
 
 Changes from v3:
