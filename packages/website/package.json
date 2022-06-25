@@ -4,21 +4,21 @@
   "private": true,
   "scripts": {
     "start": "docusaurus start",
-    "build": "docusaurus build",
+    "build": "USE_SIMPLE_CSS_MINIFIER=true docusaurus build",
     "swizzle": "docusaurus swizzle",
-    "deploy": "docusaurus deploy"
+    "deploy": "USE_SIMPLE_CSS_MINIFIER=true docusaurus deploy"
   },
   "dependencies": {
-    "@docusaurus/core": "2.0.0-beta.20",
-    "@docusaurus/preset-classic": "2.0.0-beta.20",
-    "@docusaurus/theme-live-codeblock": "2.0.0-beta.20",
+    "@docusaurus/core": "2.0.0-beta.21",
+    "@docusaurus/preset-classic": "2.0.0-beta.21",
+    "@docusaurus/theme-live-codeblock": "2.0.0-beta.21",
     "@react-leaflet/docusaurus-plugin": "^1.0.1",
     "classnames": "^2.2.6",
     "leaflet": "^1.8.0",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-leaflet": "^4.0.0",
-    "typescript": "^4.6.4"
+    "typescript": "^4.7.4"
   },
   "browserslist": {
     "production": [

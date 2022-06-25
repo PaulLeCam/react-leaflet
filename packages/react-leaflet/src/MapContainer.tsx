@@ -72,7 +72,7 @@ function MapContainerComponent<
     return () => {
       context?.map.remove()
     }
-  }, [])
+  }, [context])
 
   const contents = context ? (
     <LeafletProvider value={context}>{children}</LeafletProvider>

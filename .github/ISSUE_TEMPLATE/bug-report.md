@@ -28,4 +28,4 @@ Please describe.
 
 ### Steps to reproduce
 
-Please provide the simplest example possible to reproduce the issue, based on [this CodePen](https://codepen.io/PaulLeCam/pen/OJxEbBW).
+Please provide the simplest example possible to reproduce the issue, based on [this StackBlitz](https://stackblitz.com/edit/react-leaflet-v4?file=src/App.js).

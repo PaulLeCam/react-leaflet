@@ -1,5 +1,99 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`MapContainer re-renders the containing div 1`] = `
+<div>
+  <div
+    class="leaflet-container leaflet-touch leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
+    style="position: relative;"
+    tabindex="0"
+  >
+    <div
+      class="leaflet-pane leaflet-map-pane"
+      style="left: 0px; top: 0px;"
+    >
+      <div
+        class="leaflet-pane leaflet-tile-pane"
+      />
+      <div
+        class="leaflet-pane leaflet-overlay-pane"
+      />
+      <div
+        class="leaflet-pane leaflet-shadow-pane"
+      />
+      <div
+        class="leaflet-pane leaflet-marker-pane"
+      />
+      <div
+        class="leaflet-pane leaflet-tooltip-pane"
+      />
+      <div
+        class="leaflet-pane leaflet-popup-pane"
+      />
+    </div>
+    <div
+      class="leaflet-control-container"
+    >
+      <div
+        class="leaflet-top leaflet-left"
+      >
+        <div
+          class="leaflet-control-zoom leaflet-bar leaflet-control"
+        >
+          <a
+            aria-disabled="false"
+            aria-label="Zoom in"
+            class="leaflet-control-zoom-in"
+            href="#"
+            role="button"
+            title="Zoom in"
+          >
+            <span
+              aria-hidden="true"
+            >
+              +
+            </span>
+          </a>
+          <a
+            aria-disabled="false"
+            aria-label="Zoom out"
+            class="leaflet-control-zoom-out"
+            href="#"
+            role="button"
+            title="Zoom out"
+          >
+            <span
+              aria-hidden="true"
+            >
+              −
+            </span>
+          </a>
+        </div>
+      </div>
+      <div
+        class="leaflet-top leaflet-right"
+      />
+      <div
+        class="leaflet-bottom leaflet-left"
+      />
+      <div
+        class="leaflet-bottom leaflet-right"
+      >
+        <div
+          class="leaflet-control-attribution leaflet-control"
+        >
+          <a
+            href="https://leafletjs.com"
+            title="A JavaScript library for interactive maps"
+          >
+            Leaflet
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`MapContainer renders the containing div 1`] = `
 <div>
   <div

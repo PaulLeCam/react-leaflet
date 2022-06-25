@@ -14,6 +14,20 @@ describe('MapContainer', () => {
     expect(container).toMatchSnapshot()
   })
 
+  test('re-renders the containing div', () => {
+    const { container, rerender } = render(
+      <StrictMode>
+        <MapContainer key="one" center={[0, 0]} zoom={10} />
+      </StrictMode>,
+    )
+    rerender(
+      <StrictMode>
+        <MapContainer key="two" center={[0, 0]} zoom={10} />
+      </StrictMode>,
+    )
+    expect(container).toMatchSnapshot()
+  })
+
   describe('provides the Map instance', () => {
     test('with the useMap() hook', (done) => {
       function TestChild() {

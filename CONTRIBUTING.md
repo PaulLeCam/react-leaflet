@@ -24,4 +24,4 @@ If you are looking for implementations of features provided by plugins, they wil
 
 Please check among existing issues (open **and** closed) if the problem you encounter has not been solved before.\
 If you have questions about React or Leaflet not directly related to this library, please ask them using their respective support platforms.\
-For any other issue, please provide a simple description, if relevant with codes examples. You can use [this CodePen](https://codepen.io/PaulLeCam/pen/OJxEbBW) as a starting example.
+For any other issue, please provide a simple description, if relevant with codes examples. You can use [this StackBlitz](https://stackblitz.com/edit/react-leaflet-v4?file=src/App.js) as a starting example.

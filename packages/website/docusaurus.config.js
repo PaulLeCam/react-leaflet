@@ -7,7 +7,7 @@ module.exports = {
   favicon: 'img/logo.svg',
   organizationName: 'PaulLeCam',
   projectName: 'react-leaflet',
-  stylesheets: ['//unpkg.com/leaflet@1.7.1/dist/leaflet.css'],
+  stylesheets: ['//unpkg.com/leaflet@1.8.0/dist/leaflet.css'],
   themeConfig: {
     // algolia: {
     //   apiKey: '5ec5ae3523b2e316c32bbe5e948cb48d',
