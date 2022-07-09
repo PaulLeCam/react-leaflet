@@ -2,10 +2,7 @@
   "name": "react-leaflet-repository",
   "version": "1.0.0",
   "private": true,
-  "packageManager": "yarn@1.18.0",
-  "workspaces": [
-    "packages/*"
-  ],
+  "packageManager": "pnpm@7.5.0",
   "scripts": {
     "lint": "eslint './packages/**/*.ts' './packages/**/*.tsx'",
     "test": "jest",

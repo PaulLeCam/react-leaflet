@@ -7,8 +7,7 @@
     "lib": ["dom", "es2020"],
     "moduleResolution": "node",
     "strict": true,
-    "target": "es2020",
-    "types": ["react/next", "react-dom/next"]
+    "target": "es2020"
   },
   "include": ["./src/**/*"]
 }

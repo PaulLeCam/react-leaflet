@@ -50,7 +50,10 @@
     "react-dom": "^18.0.0"
   },
   "devDependencies": {
-    "@types/leaflet": "^1.7.11"
+    "@types/geojson": "^7946.0.8",
+    "@types/leaflet": "^1.7.11",
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.6"
   },
   "jest": {
     "extensionsToTreatAsEsm": [
