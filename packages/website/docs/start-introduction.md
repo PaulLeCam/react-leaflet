@@ -15,7 +15,7 @@ React only renders a `<div>` element when rendering the [`MapContainer` componen
 
 The properties passed to the components are used to create the relevant Leaflet instance when the component is rendered the first time and should be treated as **immutable by default**.
 
-During the first render, all these properties should be supported as they are by Leaflet, **however they will not be updated in the UI when they change** unless they are explicitely documented as being **mutable**.
+During the first render, all these properties should be supported as they are by Leaflet, **however they will not be updated in the UI when they change** unless they are explicitly documented as being **mutable**.
 
 Mutable properties changes are compared by reference (unless stated otherwise) and are applied calling the relevant method on the Leaflet element instance.
 
@@ -23,7 +23,7 @@ Mutable properties changes are compared by reference (unless stated otherwise) a
 
 Unless stated otherwise, all components exported by React Leaflet support [refs](https://reactjs.org/docs/glossary.html#refs) exposing the created Leaflet element instance or DOM element (for panes).
 
-This allows applications to access Leaflet's imperative APIs when required, but may create inconsitencies with props being set and should be used carefully.
+This allows applications to access Leaflet's imperative APIs when required, but may create inconsistencies with props being set and should be used carefully.
 
 ### React context
 
