@@ -33,7 +33,12 @@ export function createElementHook<E, P, C = any>(
       props: P,
       context: LeafletContextInterface,
     ): ReturnType<ElementHook<E, P>> {
-      return useRef<LeafletElement<E, C>>(createElement(props, context))
+      const elementRef = useRef<LeafletElement<E, C>>() as MutableRefObject<
+        LeafletElement<E>
+      >
+      if (!elementRef.current)
+        elementRef.current = createElement(props, context)
+      return elementRef
     }
   }
 
@@ -41,9 +46,10 @@ export function createElementHook<E, P, C = any>(
     props: P,
     context: LeafletContextInterface,
   ): ReturnType<ElementHook<E, P>> {
-    const elementRef = useRef<LeafletElement<E, C>>(
-      createElement(props, context),
-    )
+    const elementRef = useRef<LeafletElement<E, C>>() as MutableRefObject<
+      LeafletElement<E>
+    >
+    if (!elementRef.current) elementRef.current = createElement(props, context)
     const propsRef = useRef<P>(props)
     const { instance } = elementRef.current
 
