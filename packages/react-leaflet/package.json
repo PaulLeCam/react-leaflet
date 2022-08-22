@@ -1,6 +1,6 @@
 {
   "name": "react-leaflet",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "React components for Leaflet maps",
   "repository": {
     "type": "git",
@@ -33,16 +33,16 @@
     "build:clean": "del lib",
     "build:js": "swc src -d ./lib --config-file ../../.swcrc",
     "build:types": "tsc --emitDeclarationOnly",
-    "build": "yarn run build:clean && yarn run build:types && yarn run build:js",
+    "build": "pnpm run build:clean && pnpm run build:types && pnpm run build:js",
     "test:types": "tsc --noEmit",
     "test:unit": "cross-env NODE_ENV=test jest",
-    "test": "yarn run test:types && yarn run test:unit",
-    "start": "yarn run test && yarn run build",
-    "prepare": "yarn run build",
+    "test": "pnpm run test:types && pnpm run test:unit",
+    "start": "pnpm run test && pnpm run build",
+    "prepare": "pnpm run build",
     "prepublishOnly": "package-check"
   },
   "dependencies": {
-    "@react-leaflet/core": "^2.0.0"
+    "@react-leaflet/core": "^2.0.1"
   },
   "peerDependencies": {
     "leaflet": "^1.8.0",
@@ -50,9 +50,9 @@
     "react-dom": "^18.0.0"
   },
   "devDependencies": {
-    "@types/geojson": "^7946.0.8",
+    "@types/geojson": "^7946.0.10",
     "@types/leaflet": "^1.7.11",
-    "@types/react": "^18.0.15",
+    "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6"
   },
   "jest": {

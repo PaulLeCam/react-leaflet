@@ -1,3 +1,13 @@
+## v4.0.2 (2022-08-22)
+
+- Fix typos in getting started docs
+  ([PR #1013](https://github.com/PaulLeCam/react-leaflet/pull/1013) by
+  [jacobtylerwalls](https://github.com/jacobtylerwalls))
+- Fixing useRef() usage in createElementHook to prevent unnecessary Leaflet
+  object creation
+  ([PR #1014](https://github.com/PaulLeCam/react-leaflet/pull/1014) by
+  [abac](https://github.com/abac))
+
 ## v4.0.1 (2022-06-25)
 
 Fix calling `map.remove()` on `MapContainer` unmounting.
@@ -12,8 +22,10 @@ Changes from v3:
 - ES2020 is the new compilation target version.
 - Removed `useMapElement` hook.
 - Removed `MapConsumer` component.
-- Removed `whenCreated` property from the `MapContainer` component (a `ref` callback can be used instead).
-- Removed `onOpen` and `onClose` properties from `Popup` and `Tooltip` components.
+- Removed `whenCreated` property from the `MapContainer` component (a `ref`
+  callback can be used instead).
+- Removed `onOpen` and `onClose` properties from `Popup` and `Tooltip`
+  components.
 - Removed CommonJS distribution.
 - Removed UMD distribution.
 
@@ -52,7 +64,8 @@ Updated React dependencies to v18 stable.
 - Removed `useMapElement` hook.
 - Removed `MapConsumer` component.
 - Removed `whenCreated` property from the `MapContainer` component.
-- Removed `onOpen` and `onClose` properties from `Popup` and `Tooltip` components.
+- Removed `onOpen` and `onClose` properties from `Popup` and `Tooltip`
+  components.
 - Removed CommonJS distribution.
 - Removed UMD distribution.
 
