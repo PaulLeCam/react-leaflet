@@ -28,5 +28,8 @@ export const ImageOverlay = createLayerComponent<
     if (props.url !== prevProps.url) {
       overlay.setUrl(props.url)
     }
+    if (props.bounds !== prevProps.bounds) {
+      overlay.setBounds(props.bounds)
+    }
   },
 )
