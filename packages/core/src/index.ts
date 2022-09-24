@@ -1,5 +1,9 @@
 export { useAttribution } from './attribution.js'
-export { type CircleMarkerProps, updateCircle } from './circle.js'
+export {
+  type CircleMarkerProps,
+  type CircleProps,
+  updateCircle,
+} from './circle.js'
 export {
   createContainerComponent,
   createDivOverlayComponent,

@@ -1,5 +1,5 @@
 import {
-  type CircleMarkerProps,
+  type CircleProps,
   createElementObject,
   createPathComponent,
   extendContext,
@@ -7,7 +7,7 @@ import {
 } from '@react-leaflet/core'
 import { Circle as LeafletCircle } from 'leaflet'
 
-export type CircleProps = CircleMarkerProps
+export type { CircleProps } from '@react-leaflet/core'
 
 export const Circle = createPathComponent<LeafletCircle, CircleProps>(
   function createCircle({ center, children: _c, ...options }, ctx) {

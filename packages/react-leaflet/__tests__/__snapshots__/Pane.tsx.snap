@@ -48,28 +48,24 @@ exports[`Pane can unmount and remount with the same name 1`] = `
               <img
                 alt=""
                 class="leaflet-tile"
-                role="presentation"
                 src="http://localhost/nested"
                 style="width: 256px; height: 256px; left: -256px; top: -256px;"
               />
               <img
                 alt=""
                 class="leaflet-tile"
-                role="presentation"
                 src="http://localhost/nested"
                 style="width: 256px; height: 256px; left: 0px; top: -256px;"
               />
               <img
                 alt=""
                 class="leaflet-tile"
-                role="presentation"
                 src="http://localhost/nested"
                 style="width: 256px; height: 256px; left: -256px; top: 0px;"
               />
               <img
                 alt=""
                 class="leaflet-tile"
-                role="presentation"
                 src="http://localhost/nested"
                 style="width: 256px; height: 256px; left: 0px; top: 0px;"
               />
@@ -87,28 +83,24 @@ exports[`Pane can unmount and remount with the same name 1`] = `
             <img
               alt=""
               class="leaflet-tile"
-              role="presentation"
               src="http://localhost/not-nested"
               style="width: 256px; height: 256px; left: -256px; top: -256px;"
             />
             <img
               alt=""
               class="leaflet-tile"
-              role="presentation"
               src="http://localhost/not-nested"
               style="width: 256px; height: 256px; left: 0px; top: -256px;"
             />
             <img
               alt=""
               class="leaflet-tile"
-              role="presentation"
               src="http://localhost/not-nested"
               style="width: 256px; height: 256px; left: -256px; top: 0px;"
             />
             <img
               alt=""
               class="leaflet-tile"
-              role="presentation"
               src="http://localhost/not-nested"
               style="width: 256px; height: 256px; left: 0px; top: 0px;"
             />
@@ -329,28 +321,24 @@ exports[`Pane can unmount and remount with the same name 3`] = `
               <img
                 alt=""
                 class="leaflet-tile"
-                role="presentation"
                 src="http://localhost/new-foo-nested"
                 style="width: 256px; height: 256px; left: -256px; top: -256px;"
               />
               <img
                 alt=""
                 class="leaflet-tile"
-                role="presentation"
                 src="http://localhost/new-foo-nested"
                 style="width: 256px; height: 256px; left: 0px; top: -256px;"
               />
               <img
                 alt=""
                 class="leaflet-tile"
-                role="presentation"
                 src="http://localhost/new-foo-nested"
                 style="width: 256px; height: 256px; left: -256px; top: 0px;"
               />
               <img
                 alt=""
                 class="leaflet-tile"
-                role="presentation"
                 src="http://localhost/new-foo-nested"
                 style="width: 256px; height: 256px; left: 0px; top: 0px;"
               />
@@ -368,28 +356,24 @@ exports[`Pane can unmount and remount with the same name 3`] = `
             <img
               alt=""
               class="leaflet-tile"
-              role="presentation"
               src="http://localhost/new-bar-not-nested"
               style="width: 256px; height: 256px; left: -256px; top: -256px;"
             />
             <img
               alt=""
               class="leaflet-tile"
-              role="presentation"
               src="http://localhost/new-bar-not-nested"
               style="width: 256px; height: 256px; left: 0px; top: -256px;"
             />
             <img
               alt=""
               class="leaflet-tile"
-              role="presentation"
               src="http://localhost/new-bar-not-nested"
               style="width: 256px; height: 256px; left: -256px; top: 0px;"
             />
             <img
               alt=""
               class="leaflet-tile"
-              role="presentation"
               src="http://localhost/new-bar-not-nested"
               style="width: 256px; height: 256px; left: 0px; top: 0px;"
             />
@@ -512,28 +496,24 @@ exports[`Pane renders 1`] = `
             <img
               alt=""
               class="leaflet-tile"
-              role="presentation"
               src="http://localhost"
               style="width: 256px; height: 256px; left: -256px; top: -256px;"
             />
             <img
               alt=""
               class="leaflet-tile"
-              role="presentation"
               src="http://localhost"
               style="width: 256px; height: 256px; left: 0px; top: -256px;"
             />
             <img
               alt=""
               class="leaflet-tile"
-              role="presentation"
               src="http://localhost"
               style="width: 256px; height: 256px; left: -256px; top: 0px;"
             />
             <img
               alt=""
               class="leaflet-tile"
-              role="presentation"
               src="http://localhost"
               style="width: 256px; height: 256px; left: 0px; top: 0px;"
             />
@@ -656,28 +636,24 @@ exports[`Pane renders in Strict Mode 1`] = `
             <img
               alt=""
               class="leaflet-tile"
-              role="presentation"
               src="http://localhost"
               style="width: 256px; height: 256px; left: -256px; top: -256px;"
             />
             <img
               alt=""
               class="leaflet-tile"
-              role="presentation"
               src="http://localhost"
               style="width: 256px; height: 256px; left: 0px; top: -256px;"
             />
             <img
               alt=""
               class="leaflet-tile"
-              role="presentation"
               src="http://localhost"
               style="width: 256px; height: 256px; left: -256px; top: 0px;"
             />
             <img
               alt=""
               class="leaflet-tile"
-              role="presentation"
               src="http://localhost"
               style="width: 256px; height: 256px; left: 0px; top: 0px;"
             />
@@ -804,28 +780,24 @@ exports[`Pane renders nested panes 1`] = `
               <img
                 alt=""
                 class="leaflet-tile"
-                role="presentation"
                 src="http://localhost/nested"
                 style="width: 256px; height: 256px; left: -256px; top: -256px;"
               />
               <img
                 alt=""
                 class="leaflet-tile"
-                role="presentation"
                 src="http://localhost/nested"
                 style="width: 256px; height: 256px; left: 0px; top: -256px;"
               />
               <img
                 alt=""
                 class="leaflet-tile"
-                role="presentation"
                 src="http://localhost/nested"
                 style="width: 256px; height: 256px; left: -256px; top: 0px;"
               />
               <img
                 alt=""
                 class="leaflet-tile"
-                role="presentation"
                 src="http://localhost/nested"
                 style="width: 256px; height: 256px; left: 0px; top: 0px;"
               />
@@ -843,28 +815,24 @@ exports[`Pane renders nested panes 1`] = `
             <img
               alt=""
               class="leaflet-tile"
-              role="presentation"
               src="http://localhost/not-nested"
               style="width: 256px; height: 256px; left: -256px; top: -256px;"
             />
             <img
               alt=""
               class="leaflet-tile"
-              role="presentation"
               src="http://localhost/not-nested"
               style="width: 256px; height: 256px; left: 0px; top: -256px;"
             />
             <img
               alt=""
               class="leaflet-tile"
-              role="presentation"
               src="http://localhost/not-nested"
               style="width: 256px; height: 256px; left: -256px; top: 0px;"
             />
             <img
               alt=""
               class="leaflet-tile"
-              role="presentation"
               src="http://localhost/not-nested"
               style="width: 256px; height: 256px; left: 0px; top: 0px;"
             />

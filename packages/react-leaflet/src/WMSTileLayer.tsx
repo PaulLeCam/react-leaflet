@@ -16,7 +16,10 @@ export const WMSTileLayer = createTileLayerComponent<
   TileLayer.WMS,
   WMSTileLayerProps
 >(
-  function createWMSTileLayer({ params = {}, url, ...options }, context) {
+  function createWMSTileLayer(
+    { eventHandlers: _eh, params = {}, url, ...options },
+    context,
+  ) {
     const layer = new TileLayer.WMS(url, {
       ...params,
       ...withPane(options, context),

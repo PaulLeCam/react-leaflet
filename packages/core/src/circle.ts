@@ -1,6 +1,8 @@
 import type {
+  Circle as LeafletCircle,
   CircleMarker as LeafletCircleMarker,
   CircleMarkerOptions,
+  CircleOptions,
   LatLngExpression,
 } from 'leaflet'
 import type { ReactNode } from 'react'
@@ -12,8 +14,13 @@ export interface CircleMarkerProps extends CircleMarkerOptions, PathProps {
   children?: ReactNode
 }
 
-export function updateCircle<P extends CircleMarkerProps = CircleMarkerProps>(
-  layer: LeafletCircleMarker,
+export interface CircleProps extends CircleOptions, PathProps {
+  center: LatLngExpression
+  children?: ReactNode
+}
+
+export function updateCircle<P extends CircleMarkerProps | CircleProps>(
+  layer: LeafletCircle<P> | LeafletCircleMarker<P>,
   props: P,
   prevProps: P,
 ) {

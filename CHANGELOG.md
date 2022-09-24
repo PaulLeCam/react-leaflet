@@ -1,3 +1,9 @@
+## v4.1.0 (2022-09-24)
+
+- Updated Leaflet dependency to v1.9.
+- Fixed `eventHandlers` object being injected in WMS request URL.
+- Added support for dynamic `bounds` props on `ImageOverlay`.
+
 ## v4.0.2 (2022-08-22)
 
 - Fix typos in getting started docs
