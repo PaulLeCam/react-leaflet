@@ -80,7 +80,7 @@ importers:
 
   packages/react-leaflet:
     specifiers:
-      '@react-leaflet/core': ^2.1.0
+      '@react-leaflet/core': workspace:^2.1.0
       '@types/geojson': ^7946.0.10
       '@types/leaflet': ^1.8.0
       '@types/react': ^18.0.21
