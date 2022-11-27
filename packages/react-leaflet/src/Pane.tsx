@@ -80,6 +80,7 @@ function PaneComponent(
   const [paneElement, setPaneElement] = useState<HTMLElement | null>(null)
   useImperativeHandle(forwardedRef, () => paneElement, [paneElement])
   const context = useLeafletContext()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const newContext = useMemo(() => ({ ...context, pane: paneName }), [context])
 
   useEffect(() => {

@@ -1,3 +1,9 @@
+## v4.2.0 (2022-11-27)
+
+Added support for mutable `url` prop on `TileLayer`
+([PR #1047](https://github.com/PaulLeCam/react-leaflet/pull/1047) by
+[goto-bus-stop](https://github.com/goto-bus-stop))
+
 ## v4.1.0 (2022-09-24)
 
 - Updated Leaflet dependency to v1.9.
