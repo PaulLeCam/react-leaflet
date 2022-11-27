@@ -6,6 +6,7 @@ import type { LeafletElement, ElementHook } from './element.js'
 import { useEventHandlers } from './events.js'
 import { type InteractiveLayerProps, useLayerLifecycle } from './layer.js'
 import { withPane } from './pane.js'
+import { DomUtil, InteractiveLayerOptions } from 'leaflet'
 
 export interface PathProps extends InteractiveLayerProps {
   pathOptions?: PathOptions
@@ -29,6 +30,33 @@ export function usePathOptions(
   )
 }
 
+export function usePathInteractive(
+  element: LeafletElement<FeatureGroup | Path>,
+  props: InteractiveLayerProps,
+) {
+  const optionsRef = useRef<InteractiveLayerOptions | void>()
+
+  useEffect(
+    function updateInteractiveOptions() {
+      if (props.interactive !== optionsRef.current) {
+        function updateInteractive(elem: HTMLElement) {
+          if (props.interactive) {
+            DomUtil.addClass(elem, 'leaflet-interactive')
+          } else {
+            DomUtil.removeClass(elem, 'leaflet-interactive')
+          }
+        }
+        if ('getElement' in element.instance) {
+          updateInteractive(element.instance.getElement() as HTMLElement)
+        } else if ('getLayers' in element.instance) {
+          // Do nothing for now.
+        }
+      }
+    },
+    [props, element],
+  )
+}
+
 export function createPathHook<
   E extends FeatureGroup | Path,
   P extends PathProps,
@@ -40,6 +68,7 @@ export function createPathHook<
     useEventHandlers(elementRef.current, props.eventHandlers)
     useLayerLifecycle(elementRef.current, context)
     usePathOptions(elementRef.current, props)
+    usePathInteractive(elementRef.current, props)
 
     return elementRef
   }
