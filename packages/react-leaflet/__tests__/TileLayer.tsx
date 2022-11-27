@@ -14,7 +14,10 @@ describe('TileLayer', () => {
 
     rerender(
       <MapContainer center={[0, 0]} zoom={10}>
-        <TileLayer attribution="tiles attribution" url="http://localhost?with_parameter=changed" />
+        <TileLayer
+          attribution="tiles attribution"
+          url="http://localhost?with_parameter=changed"
+        />
       </MapContainer>,
     )
     expect(container).toMatchSnapshot()
