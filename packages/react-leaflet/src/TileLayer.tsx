@@ -2,7 +2,7 @@ import {
   type LayerProps,
   createElementObject,
   createTileLayerComponent,
-  updateGridLayer,
+  updateTileLayer,
   withPane,
 } from '@react-leaflet/core'
 import { TileLayer as LeafletTileLayer, type TileLayerOptions } from 'leaflet'
@@ -17,4 +17,4 @@ export const TileLayer = createTileLayerComponent<
 >(function createTileLayer({ url, ...options }, context) {
   const layer = new LeafletTileLayer(url, withPane(options, context))
   return createElementObject(layer, context)
-}, updateGridLayer)
+}, updateTileLayer)

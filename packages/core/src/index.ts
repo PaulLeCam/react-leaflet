@@ -50,3 +50,4 @@ export {
 export { type MediaOverlayProps, updateMediaOverlay } from './media-overlay.js'
 export { withPane } from './pane.js'
 export { type PathProps, createPathHook, usePathOptions } from './path.js'
+export { updateTileLayer } from './tile-layer.js'
