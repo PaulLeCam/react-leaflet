@@ -40,6 +40,9 @@ export const Marker = createLayerComponent<LeafletMarker, MarkerProps>(
     if (props.opacity != null && props.opacity !== prevProps.opacity) {
       marker.setOpacity(props.opacity)
     }
+    if (props.interactive != null && props.interactive !== prevProps.interactive) {
+      marker.setInteractive(props.interactive)
+    }
     if (marker.dragging != null && props.draggable !== prevProps.draggable) {
       if (props.draggable === true) {
         marker.dragging.enable()
