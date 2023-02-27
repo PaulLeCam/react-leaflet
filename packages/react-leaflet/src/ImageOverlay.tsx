@@ -25,7 +25,7 @@ export const ImageOverlay = createLayerComponent<
   },
   function updateImageOverlay(overlay, props, prevProps) {
     updateMediaOverlay(overlay, props, prevProps)
-    if (props.bounds !== props.bounds) {
+    if (props.bounds !== prevProps.bounds) {
       const bounds =
         props.bounds instanceof LatLngBounds
           ? props.bounds
