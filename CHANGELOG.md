@@ -1,3 +1,9 @@
+## v4.2.1 (2023-02-28)
+
+Fixed bounds update in `ImageOverlay`
+([PR #1063](https://github.com/PaulLeCam/react-leaflet/pull/1063) by
+[hwonyo](https://github.com/hwonyo))
+
 ## v4.2.0 (2022-11-27)
 
 Added support for mutable `url` prop on `TileLayer`
