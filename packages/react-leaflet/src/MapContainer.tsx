@@ -67,7 +67,7 @@ function MapContainerComponent<
       setContext(createLeafletContext(map))
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [context])
 
   useEffect(() => {
     return () => {
