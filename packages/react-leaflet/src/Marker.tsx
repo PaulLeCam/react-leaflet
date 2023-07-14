@@ -47,5 +47,15 @@ export const Marker = createLayerComponent<LeafletMarker, MarkerProps>(
         marker.dragging.disable()
       }
     }
+    if (props.interactive != null && props.interactive !== prevProps.interactive) {
+      marker.options.interactive = props.interactive;
+      if (props.interactive === true) {
+        DomUtil.addClass(marker._icon, 'leaflet-interactive');
+        marker.addInteractiveTarget(marker._icon);
+      } else {
+        DomUtil.removeClass(marker._icon, 'leaflet-interactive');
+        marker.removeInteractiveTarget(marker._icon);
+      }
+    }
   },
 )
