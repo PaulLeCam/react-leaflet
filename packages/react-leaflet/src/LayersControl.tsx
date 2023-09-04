@@ -24,12 +24,13 @@ export interface LayersControlProps extends Control.LayersOptions {
   children?: ReactNode
 }
 
-export const useLayersControlElement = createElementHook<
-  Control.Layers,
-  LayersControlProps
->(
+type CustomLayersControlClassConstructor<T extends Control.Layers> = new (baseLayers?: Control.LayersObject, overlays?: Control.LayersObject, options?: Control.LayersOptions) => T
+
+export const useLayersControlElement = <T extends Control.Layers>(
+  klass: CustomLayersControlClassConstructor<T>
+) => createElementHook<T, LayersControlProps>(
   function createLayersControl({ children: _c, ...options }, ctx) {
-    const control = new Control.Layers(undefined, undefined, options)
+    const control = new klass(undefined, undefined, options)
     return createElementObject(
       control,
       extendContext(ctx, { layersControl: control }),
@@ -46,7 +47,7 @@ export const useLayersControlElement = createElementHook<
   },
 )
 
-export const useLayersControl = createControlHook(useLayersControlElement)
+export const useLayersControl = <T extends Control.Layers>(klass: CustomLayersControlClassConstructor<T>) => createControlHook(useLayersControlElement(klass))
 
 export interface ControlledLayerProps {
   checked?: boolean
@@ -54,13 +55,34 @@ export interface ControlledLayerProps {
   name: string
 }
 
-// @ts-ignore
-export const LayersControl: ForwardRefExoticComponent<
-  LayersControlProps & RefAttributes<Control.Layers>
+export function CustomizableLayersControl<T extends Control.Layers>(
+  klass: CustomLayersControlClassConstructor<T>
+): ForwardRefExoticComponent<
+  LayersControlProps & RefAttributes<T>
 > & {
   BaseLayer: FunctionComponent<ControlledLayerProps>
   Overlay: FunctionComponent<ControlledLayerProps>
-} = createContainerComponent(useLayersControl)
+} {
+  return Object.assign(createContainerComponent(useLayersControl(klass)), {
+    BaseLayer: createControlledLayer(function addBaseLayer(
+      layersControl: Control.Layers,
+      layer: Layer,
+      name: string,
+    ) {
+      layersControl.addBaseLayer(layer, name)
+    }),
+
+    Overlay: createControlledLayer(function addOverlay(
+      layersControl: Control.Layers,
+      layer: Layer,
+      name: string,
+    ) {
+      layersControl.addOverlay(layer, name)
+    }),
+  })
+}
+
+export const LayersControl = CustomizableLayersControl(Control.Layers)
 
 type AddLayerFunc = (
   layersControl: Control.Layers,
@@ -123,19 +145,3 @@ export function createControlledLayer(addLayerToControl: AddLayerFunc) {
     ) : null
   }
 }
-
-LayersControl.BaseLayer = createControlledLayer(function addBaseLayer(
-  layersControl: Control.Layers,
-  layer: Layer,
-  name: string,
-) {
-  layersControl.addBaseLayer(layer, name)
-})
-
-LayersControl.Overlay = createControlledLayer(function addOverlay(
-  layersControl: Control.Layers,
-  layer: Layer,
-  name: string,
-) {
-  layersControl.addOverlay(layer, name)
-})
