@@ -12,6 +12,7 @@ export { ImageOverlay, type ImageOverlayProps } from './ImageOverlay.js'
 export { LayerGroup, type LayerGroupProps } from './LayerGroup.js'
 export {
   LayersControl,
+  CustomizableLayersControl,
   type LayersControlProps,
   type ControlledLayerProps,
 } from './LayersControl.js'
