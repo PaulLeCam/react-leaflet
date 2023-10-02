@@ -14,6 +14,7 @@ import type { ReactNode } from 'react'
 export interface MarkerProps extends MarkerOptions, EventedProps {
   children?: ReactNode
   position: LatLngExpression
+  draggable?: Boolean
 }
 
 export const Marker = createLayerComponent<LeafletMarker, MarkerProps>(
