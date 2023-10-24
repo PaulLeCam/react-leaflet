@@ -28,5 +28,8 @@ export const Polygon = createPathComponent<LeafletPolygon, PolygonProps>(
     if (props.positions !== prevProps.positions) {
       layer.setLatLngs(props.positions)
     }
+    if(props.color !== prevProps.color){
+      layer.setColor(props.color);
+    }
   },
 )
