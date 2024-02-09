@@ -24,7 +24,7 @@ export function updateCircle<P extends CircleMarkerProps | CircleProps>(
   props: P,
   prevProps: P,
 ) {
-  if (props.center !== prevProps.center) {
+  if (props.center.toString() !== prevProps.center.toString()) {
     layer.setLatLng(props.center)
   }
   if (props.radius != null && props.radius !== prevProps.radius) {
