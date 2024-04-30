@@ -1,8 +1,12 @@
-import { withPane } from '../src'
+import { type LeafletContextInterface, withPane } from '../src'
 
 describe('pane', () => {
   test('withPane() using context', () => {
-    expect(withPane({ attribution: 'text' }, { pane: 'test' } as any)).toEqual({
+    expect(
+      withPane({ attribution: 'text' }, {
+        pane: 'test',
+      } as unknown as LeafletContextInterface),
+    ).toEqual({
       attribution: 'text',
       pane: 'test',
     })
@@ -12,7 +16,7 @@ describe('pane', () => {
     expect(
       withPane({ attribution: 'text', pane: 'prop' }, {
         pane: 'context',
-      } as any),
+      } as unknown as LeafletContextInterface),
     ).toEqual({
       attribution: 'text',
       pane: 'prop',
@@ -20,7 +24,12 @@ describe('pane', () => {
   })
 
   test('withPane() with no pane', () => {
-    expect(withPane({ attribution: 'text' }, {} as any)).toEqual({
+    expect(
+      withPane(
+        { attribution: 'text' },
+        {} as unknown as LeafletContextInterface,
+      ),
+    ).toEqual({
       attribution: 'text',
     })
   })

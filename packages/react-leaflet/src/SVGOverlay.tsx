@@ -52,7 +52,8 @@ function SVGOverlayComponent(
 
   return container == null || children == null
     ? null
-    : createPortal(children, container)
+    : // @ts-ignore container type
+      createPortal(children, container)
 }
 
 export const SVGOverlay = forwardRef(SVGOverlayComponent)

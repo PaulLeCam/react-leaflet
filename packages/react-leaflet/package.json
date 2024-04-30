@@ -31,7 +31,7 @@
   "sideEffects": false,
   "scripts": {
     "build:clean": "del lib",
-    "build:js": "swc src -d ./lib --config-file ../../.swcrc",
+    "build:js": "swc src -d ./lib --config-file ../../.swcrc --strip-leading-paths",
     "build:types": "tsc --emitDeclarationOnly",
     "build": "pnpm run build:clean && pnpm run build:types && pnpm run build:js",
     "test:types": "tsc --noEmit",
