@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 
 import { useAttribution } from './attribution.js'
 import { type LeafletContextInterface, useLeafletContext } from './context.js'
-import type { LeafletElement, ElementHook } from './element.js'
+import type { ElementHook, LeafletElement } from './element.js'
 import { type EventedProps, useEventHandlers } from './events.js'
 import { withPane } from './pane.js'
 

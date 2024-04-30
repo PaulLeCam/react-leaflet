@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react'
 import React from 'react'
 
-import { ScaleControl, MapContainer } from '../src'
+import { MapContainer, ScaleControl } from '../src'
 
 describe('ScaleControl', () => {
   test('renders and unmounts', () => {

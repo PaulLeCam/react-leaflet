@@ -1,4 +1,4 @@
-import { Control, type ControlOptions } from 'leaflet'
+import type { Control, ControlOptions } from 'leaflet'
 import { useEffect, useRef } from 'react'
 
 import { useLeafletContext } from './context.js'

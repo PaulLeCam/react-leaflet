@@ -6,8 +6,8 @@ import {
 } from '@react-leaflet/core'
 import {
   type LatLngExpression,
-  type PolylineOptions,
   Polygon as LeafletPolygon,
+  type PolylineOptions,
 } from 'leaflet'
 import type { ReactNode } from 'react'
 

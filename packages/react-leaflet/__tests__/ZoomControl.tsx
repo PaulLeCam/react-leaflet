@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react'
 import React from 'react'
 
-import { ZoomControl, MapContainer } from '../src'
+import { MapContainer, ZoomControl } from '../src'
 
 describe('ZoomControl', () => {
   test('renders and unmounts', () => {

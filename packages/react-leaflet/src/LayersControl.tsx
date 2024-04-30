@@ -85,7 +85,7 @@ export function createControlledLayer(addLayerToControl: AddLayerFunc) {
           setLayer(layerToAdd)
         }
       },
-      [layersControl, map],
+      [addLayerToControl, layersControl, map],
     )
     const removeLayer = useCallback(
       (layerToRemove: Layer) => {

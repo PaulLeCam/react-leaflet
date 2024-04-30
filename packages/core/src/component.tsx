@@ -43,6 +43,7 @@ export function createDivOverlayComponent<
     const { instance } = useElement(props, setOpen).current
 
     useImperativeHandle(forwardedRef, () => instance)
+    // biome-ignore lint/correctness/useExhaustiveDependencies: update overlay when children change
     useEffect(
       function updateOverlay() {
         if (isOpen) {

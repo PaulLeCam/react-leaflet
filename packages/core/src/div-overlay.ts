@@ -1,8 +1,8 @@
 import type { Popup, Tooltip } from 'leaflet'
 
 import { useAttribution } from './attribution.js'
-import { useLeafletContext, type LeafletContextInterface } from './context.js'
-import type { LeafletElement, ElementHook } from './element.js'
+import { type LeafletContextInterface, useLeafletContext } from './context.js'
+import type { ElementHook, LeafletElement } from './element.js'
 import { useEventHandlers } from './events.js'
 import type { LayerProps } from './layer.js'
 import { withPane } from './pane.js'

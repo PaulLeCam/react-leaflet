@@ -6,12 +6,7 @@
     "type": "git",
     "url": "https://github.com/PaulLeCam/react-leaflet.git"
   },
-  "keywords": [
-    "react-component",
-    "react",
-    "leaflet",
-    "map"
-  ],
+  "keywords": ["react-component", "react", "leaflet", "map"],
   "author": "Paul Le Cam <paul@ulem.net>",
   "license": "Hippocratic-2.1",
   "bugs": {
@@ -24,9 +19,7 @@
   "exports": {
     ".": "./lib/index.js"
   },
-  "files": [
-    "lib/*"
-  ],
+  "files": ["lib/*"],
   "sideEffects": false,
   "scripts": {
     "build:clean": "del lib",
@@ -50,10 +43,7 @@
     "@types/react-dom": "^18.0.11"
   },
   "jest": {
-    "extensionsToTreatAsEsm": [
-      ".ts",
-      ".tsx"
-    ],
+    "extensionsToTreatAsEsm": [".ts", ".tsx"],
     "resolver": "ts-jest-resolver",
     "testEnvironment": "jsdom",
     "transform": {

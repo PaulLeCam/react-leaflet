@@ -2,7 +2,7 @@ import type { FeatureGroup, Path, PathOptions } from 'leaflet'
 import { useEffect, useRef } from 'react'
 
 import { useLeafletContext } from './context.js'
-import type { LeafletElement, ElementHook } from './element.js'
+import type { ElementHook, LeafletElement } from './element.js'
 import { useEventHandlers } from './events.js'
 import { type InteractiveLayerProps, useLayerLifecycle } from './layer.js'
 import { withPane } from './pane.js'
@@ -15,7 +15,7 @@ export function usePathOptions(
   element: LeafletElement<FeatureGroup | Path>,
   props: PathProps,
 ) {
-  const optionsRef = useRef<PathOptions | void>()
+  const optionsRef = useRef<PathOptions | undefined>()
 
   useEffect(
     function updatePathOptions() {

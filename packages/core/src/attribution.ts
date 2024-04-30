@@ -1,8 +1,8 @@
-import type { Map } from 'leaflet'
+import type { Map as LeafletMap } from 'leaflet'
 import { useEffect, useRef } from 'react'
 
 export function useAttribution(
-  map: Map,
+  map: LeafletMap,
   attribution: string | null | undefined,
 ) {
   const attributionRef = useRef(attribution)

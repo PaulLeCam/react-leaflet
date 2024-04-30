@@ -5,15 +5,15 @@ function splitClassName(className: string): string[] {
 }
 
 export function addClassName(element: HTMLElement, className: string) {
-  splitClassName(className).forEach((cls) => {
+  for (const cls of splitClassName(className)) {
     DomUtil.addClass(element, cls)
-  })
+  }
 }
 
 export function removeClassName(element: HTMLElement, className: string) {
-  splitClassName(className).forEach((cls) => {
+  for (const cls of splitClassName(className)) {
     DomUtil.removeClass(element, cls)
-  })
+  }
 }
 
 export function updateClassName(

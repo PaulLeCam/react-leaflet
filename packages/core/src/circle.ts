@@ -1,9 +1,9 @@
 import type {
-  Circle as LeafletCircle,
-  CircleMarker as LeafletCircleMarker,
   CircleMarkerOptions,
   CircleOptions,
   LatLngExpression,
+  Circle as LeafletCircle,
+  CircleMarker as LeafletCircleMarker,
 } from 'leaflet'
 import type { ReactNode } from 'react'
 

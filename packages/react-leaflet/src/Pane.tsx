@@ -63,10 +63,10 @@ function createPane(
     addClassName(element, props.className)
   }
   if (props.style != null) {
-    Object.keys(props.style).forEach((key) => {
+    for (const key of Object.keys(props.style)) {
       // @ts-ignore
       element.style[key] = props.style[key]
-    })
+    }
   }
 
   return element
@@ -80,9 +80,10 @@ function PaneComponent(
   const [paneElement, setPaneElement] = useState<HTMLElement | null>(null)
   useImperativeHandle(forwardedRef, () => paneElement, [paneElement])
   const context = useLeafletContext()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // biome-ignore lint/correctness/useExhaustiveDependencies: paneName is immutable
   const newContext = useMemo(() => ({ ...context, pane: paneName }), [context])
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: lifecycle-only effect
   useEffect(() => {
     setPaneElement(createPane(paneName, props, context))
 
@@ -102,7 +103,6 @@ function PaneComponent(
         )
       }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return props.children != null && paneElement != null

@@ -1,8 +1,8 @@
 import {
+  type ImageOverlayOptions,
   LatLngBounds,
   type LatLngBoundsExpression,
   type ImageOverlay as LeafletImageOverlay,
-  type ImageOverlayOptions,
   type SVGOverlay as LeafletSVGOverlay,
   type VideoOverlay as LeafletVideoOverlay,
 } from 'leaflet'

@@ -15,16 +15,16 @@ import {
 import type { LeafletContextInterface } from './context.js'
 import { createControlHook } from './control.js'
 import {
+  type DivOverlay,
+  type DivOverlayLifecycleHook,
+  createDivOverlayHook,
+} from './div-overlay.js'
+import {
   type LeafletElement,
   createElementHook,
   createElementObject,
 } from './element.js'
 import { type LayerProps, createLayerHook } from './layer.js'
-import {
-  type DivOverlay,
-  type DivOverlayLifecycleHook,
-  createDivOverlayHook,
-} from './div-overlay.js'
 import { type PathProps, createPathHook } from './path.js'
 
 interface LayerWithChildrenProps extends LayerProps, PropsWithChildren {}

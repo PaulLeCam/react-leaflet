@@ -60,7 +60,7 @@ export function createElementHook<E, P, C = unknown>(
           propsRef.current = props
         }
       },
-      [instance, props, context],
+      [instance, props, updateElement],
     )
 
     return elementRef

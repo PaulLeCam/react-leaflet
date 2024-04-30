@@ -2,10 +2,10 @@ import { act, render, screen } from '@testing-library/react'
 import React, { StrictMode, useEffect, useRef } from 'react'
 
 import {
-  createElementHook,
   createContainerComponent,
   createDivOverlayComponent,
   createDivOverlayHook,
+  createElementHook,
   createLeafComponent,
   useLeafletContext,
 } from '../src'

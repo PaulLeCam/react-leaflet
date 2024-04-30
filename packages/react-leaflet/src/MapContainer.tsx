@@ -1,6 +1,6 @@
 import {
-  LeafletProvider,
   type LeafletContextInterface,
+  LeafletProvider,
   createLeafletContext,
 } from '@react-leaflet/core'
 import {
@@ -53,6 +53,7 @@ function MapContainerComponent<
   const [context, setContext] = useState<LeafletContextInterface | null>(null)
   useImperativeHandle(forwardedRef, () => context?.map ?? null, [context])
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: ref callback
   const mapRef = useCallback((node: HTMLDivElement | null) => {
     if (node !== null && context === null) {
       const map = new LeafletMap(node, options)
@@ -66,7 +67,6 @@ function MapContainerComponent<
       }
       setContext(createLeafletContext(map))
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {

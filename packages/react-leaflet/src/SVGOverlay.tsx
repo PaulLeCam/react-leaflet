@@ -32,9 +32,9 @@ export const useSVGOverlayElement = createElementHook<
   )
   container.setAttribute('xmlns', 'http://www.w3.org/2000/svg')
   if (attributes != null) {
-    Object.keys(attributes).forEach((name) => {
+    for (const name of Object.keys(attributes)) {
       container.setAttribute(name, attributes[name])
-    })
+    }
   }
 
   const overlay = new LeafletSVGOverlay(container, bounds, options)

@@ -1,15 +1,15 @@
 import { useLeafletContext } from '@react-leaflet/core'
-import type { LeafletEventHandlerFnMap, Map } from 'leaflet'
+import type { LeafletEventHandlerFnMap, Map as LeafletMap } from 'leaflet'
 import { useEffect } from 'react'
 
-export function useMap(): Map {
+export function useMap(): LeafletMap {
   return useLeafletContext().map
 }
 
 export function useMapEvent<T extends keyof LeafletEventHandlerFnMap>(
   type: T,
   handler: LeafletEventHandlerFnMap[T],
-): Map {
+): LeafletMap {
   const map = useMap()
 
   useEffect(
@@ -28,7 +28,7 @@ export function useMapEvent<T extends keyof LeafletEventHandlerFnMap>(
   return map
 }
 
-export function useMapEvents(handlers: LeafletEventHandlerFnMap): Map {
+export function useMapEvents(handlers: LeafletEventHandlerFnMap): LeafletMap {
   const map = useMap()
 
   useEffect(
