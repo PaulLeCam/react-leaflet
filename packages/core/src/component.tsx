@@ -1,5 +1,5 @@
 import React, {
-  type MutableRefObject,
+  type RefObject,
   type ReactNode,
   type Ref,
   forwardRef,
@@ -9,11 +9,11 @@ import React, {
 } from 'react'
 import { createPortal } from 'react-dom'
 
-import { LeafletProvider } from './context.js'
+import { LeafletContext } from './context.js'
 import type { DivOverlay, DivOverlayHook } from './div-overlay.js'
 import type { LeafletElement } from './element.js'
 
-type ElementHook<E, P> = (props: P) => MutableRefObject<LeafletElement<E>>
+type ElementHook<E, P> = (props: P) => RefObject<LeafletElement<E>>
 
 export type PropsWithChildren = {
   children?: ReactNode
@@ -27,7 +27,7 @@ export function createContainerComponent<E, P extends PropsWithChildren>(
     useImperativeHandle(forwardedRef, () => instance)
 
     return props.children == null ? null : (
-      <LeafletProvider value={context}>{props.children}</LeafletProvider>
+      <LeafletContext value={context}>{props.children}</LeafletContext>
     )
   }
 

@@ -1,6 +1,6 @@
 import {
   type LeafletContextInterface,
-  LeafletProvider,
+  LeafletContext,
   createLeafletContext,
 } from '@react-leaflet/core'
 import {
@@ -47,11 +47,11 @@ function MapContainerComponent<
     zoom,
     ...options
   }: Props,
-  forwardedRef: Ref<LeafletMap | null>,
+  forwardedRef: Ref<LeafletMap | undefined>,
 ) {
   const [props] = useState({ className, id, style })
   const [context, setContext] = useState<LeafletContextInterface | null>(null)
-  useImperativeHandle(forwardedRef, () => context?.map ?? null, [context])
+  useImperativeHandle(forwardedRef, () => context?.map ?? undefined, [context])
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: ref callback
   const mapRef = useCallback((node: HTMLDivElement | null) => {
@@ -76,7 +76,7 @@ function MapContainerComponent<
   }, [context])
 
   const contents = context ? (
-    <LeafletProvider value={context}>{children}</LeafletProvider>
+    <LeafletContext value={context}>{children}</LeafletContext>
   ) : (
     placeholder ?? null
   )

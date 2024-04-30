@@ -1,5 +1,5 @@
 import {
-  LeafletProvider,
+  LeafletContext,
   createContainerComponent,
   createControlHook,
   createElementHook,
@@ -119,7 +119,7 @@ export function createControlledLayer(addLayerToControl: AddLayerFunc) {
     })
 
     return props.children ? (
-      <LeafletProvider value={context}>{props.children}</LeafletProvider>
+      <LeafletContext value={context}>{props.children}</LeafletContext>
     ) : null
   }
 }

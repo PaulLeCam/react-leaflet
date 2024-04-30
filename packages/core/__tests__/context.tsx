@@ -1,19 +1,14 @@
-import { renderHook } from '@testing-library/react-hooks'
+import { renderHook } from '@testing-library/react'
 import type { Map } from 'leaflet'
 import React, { StrictMode, type ReactNode } from 'react'
 
-import {
-  CONTEXT_VERSION,
-  LeafletProvider,
-  createLeafletContext,
-  useLeafletContext,
-} from '../src'
+import { CONTEXT_VERSION, LeafletContext, createLeafletContext, useLeafletContext } from '../src'
 
 export function createWrapper(context) {
   return function Wrapper({ children }: { children: ReactNode }) {
     return (
       <StrictMode>
-        <LeafletProvider value={context}>{children}</LeafletProvider>
+        <LeafletContext value={context}>{children}</LeafletContext>
       </StrictMode>
     )
   }
@@ -33,7 +28,7 @@ describe('context', () => {
       const { result } = renderHook(() => useLeafletContext())
       return result.current
     }).toThrow(
-      'No context provided: useLeafletContext() can only be used in a descendant of <MapContainer>',
+      'No context provided: useLeafletContext() can only be used in a descendant of <MapContainer>'
     )
   })
 

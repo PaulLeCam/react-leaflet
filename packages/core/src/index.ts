@@ -1,9 +1,5 @@
 export { useAttribution } from './attribution.js'
-export {
-  type CircleMarkerProps,
-  type CircleProps,
-  updateCircle,
-} from './circle.js'
+export { type CircleMarkerProps, type CircleProps, updateCircle } from './circle.js'
 export {
   createContainerComponent,
   createDivOverlayComponent,
@@ -13,7 +9,6 @@ export {
   CONTEXT_VERSION,
   type LeafletContextInterface,
   LeafletContext,
-  LeafletProvider,
   createLeafletContext,
   extendContext,
   useLeafletContext,

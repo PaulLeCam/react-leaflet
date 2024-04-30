@@ -35,12 +35,12 @@
   },
   "peerDependencies": {
     "leaflet": "^1.9.0",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react": "beta",
+    "react-dom": "beta"
   },
   "devDependencies": {
-    "@types/react": "^18.0.28",
-    "@types/react-dom": "^18.0.11"
+    "@types/react": "npm:types-react@beta",
+    "@types/react-dom": "npm:types-react-dom@beta"
   },
   "jest": {
     "extensionsToTreatAsEsm": [".ts", ".tsx"],

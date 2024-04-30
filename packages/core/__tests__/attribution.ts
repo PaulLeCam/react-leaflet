@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks'
+import { renderHook } from '@testing-library/react'
 
 import { useAttribution } from '../src'
 
@@ -15,21 +15,21 @@ describe('attribution', () => {
     })
 
     rerender({ attribution: 'foo' })
-    expect(attributionControl.addAttribution).toBeCalledTimes(1)
-    expect(attributionControl.removeAttribution).toBeCalledTimes(0)
+    expect(attributionControl.addAttribution).toHaveBeenCalledTimes(1)
+    expect(attributionControl.removeAttribution).toHaveBeenCalledTimes(0)
 
     rerender({ attribution: 'foo' })
-    expect(attributionControl.addAttribution).toBeCalledTimes(1)
-    expect(attributionControl.removeAttribution).toBeCalledTimes(0)
+    expect(attributionControl.addAttribution).toHaveBeenCalledTimes(1)
+    expect(attributionControl.removeAttribution).toHaveBeenCalledTimes(0)
 
     rerender({ attribution: 'bar' })
-    expect(attributionControl.addAttribution).toBeCalledTimes(2)
-    expect(attributionControl.addAttribution).toBeCalledWith('bar')
-    expect(attributionControl.removeAttribution).toBeCalledTimes(1)
-    expect(attributionControl.removeAttribution).toBeCalledWith('foo')
+    expect(attributionControl.addAttribution).toHaveBeenCalledTimes(2)
+    expect(attributionControl.addAttribution).toHaveBeenCalledWith('bar')
+    expect(attributionControl.removeAttribution).toHaveBeenCalledTimes(1)
+    expect(attributionControl.removeAttribution).toHaveBeenCalledWith('foo')
 
     rerender({ attribution: null })
-    expect(attributionControl.removeAttribution).toBeCalledTimes(2)
+    expect(attributionControl.removeAttribution).toHaveBeenCalledTimes(2)
     expect(attributionControl.removeAttribution).toHaveBeenLastCalledWith('bar')
   })
 })

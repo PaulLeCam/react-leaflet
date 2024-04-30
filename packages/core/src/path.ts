@@ -15,7 +15,7 @@ export function usePathOptions(
   element: LeafletElement<FeatureGroup | Path>,
   props: PathProps,
 ) {
-  const optionsRef = useRef<PathOptions | undefined>()
+  const optionsRef = useRef<PathOptions | undefined>(undefined)
 
   useEffect(
     function updatePathOptions() {

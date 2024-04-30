@@ -11,16 +11,16 @@ describe('media-overlay', () => {
 
     // No change when bounds are the same
     updateMediaOverlay(overlay, { bounds }, { bounds })
-    expect(overlay.setBounds).toBeCalledTimes(0)
+    expect(overlay.setBounds).toHaveBeenCalledTimes(0)
 
     // No change when bounds are not an instance of LatLngBounds
     updateMediaOverlay(overlay, { bounds: [] }, { bounds })
-    expect(overlay.setBounds).toBeCalledTimes(0)
+    expect(overlay.setBounds).toHaveBeenCalledTimes(0)
 
     const newBounds = latLngBounds([11, 11], [20, 20])
     updateMediaOverlay(overlay, { bounds: newBounds }, { bounds })
-    expect(overlay.setBounds).toBeCalledTimes(1)
-    expect(overlay.setBounds).toBeCalledWith(newBounds)
+    expect(overlay.setBounds).toHaveBeenCalledTimes(1)
+    expect(overlay.setBounds).toHaveBeenCalledWith(newBounds)
   })
 
   test('updateMediaOverlay() updates the opacity', () => {
@@ -31,15 +31,15 @@ describe('media-overlay', () => {
 
     // No change when opacity is the same
     updateMediaOverlay(overlay, { opacity }, { opacity })
-    expect(overlay.setOpacity).toBeCalledTimes(0)
+    expect(overlay.setOpacity).toHaveBeenCalledTimes(0)
 
     // No change when opacity is nullish
     updateMediaOverlay(overlay, { opacity: undefined }, { opacity })
-    expect(overlay.setOpacity).toBeCalledTimes(0)
+    expect(overlay.setOpacity).toHaveBeenCalledTimes(0)
 
     updateMediaOverlay(overlay, { opacity: 1 }, { opacity })
-    expect(overlay.setOpacity).toBeCalledTimes(1)
-    expect(overlay.setOpacity).toBeCalledWith(1)
+    expect(overlay.setOpacity).toHaveBeenCalledTimes(1)
+    expect(overlay.setOpacity).toHaveBeenCalledWith(1)
   })
 
   test('updateMediaOverlay() updates the zIndex', () => {
@@ -50,14 +50,14 @@ describe('media-overlay', () => {
 
     // No change when zIndex is the same
     updateMediaOverlay(overlay, { zIndex }, { zIndex })
-    expect(overlay.setZIndex).toBeCalledTimes(0)
+    expect(overlay.setZIndex).toHaveBeenCalledTimes(0)
 
     // No change when zIndex is nullish
     updateMediaOverlay(overlay, { zIndex: null }, { zIndex })
-    expect(overlay.setZIndex).toBeCalledTimes(0)
+    expect(overlay.setZIndex).toHaveBeenCalledTimes(0)
 
     updateMediaOverlay(overlay, { zIndex: 20 }, { zIndex })
-    expect(overlay.setZIndex).toBeCalledTimes(1)
-    expect(overlay.setZIndex).toBeCalledWith(20)
+    expect(overlay.setZIndex).toHaveBeenCalledTimes(1)
+    expect(overlay.setZIndex).toHaveBeenCalledWith(20)
   })
 })

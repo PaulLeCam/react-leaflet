@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks'
+import { renderHook } from '@testing-library/react'
 
 import { createControlHook, createElementHook } from '../src'
 
@@ -14,11 +14,11 @@ describe('control', () => {
     const useControl = createControlHook(useElement)
 
     const { unmount } = renderHook(() => useControl({}), { wrapper })
-    expect(instance.addTo).toBeCalledTimes(1)
-    expect(instance.addTo).toBeCalledWith(context.map)
+    expect(instance.addTo).toHaveBeenCalledTimes(1)
+    expect(instance.addTo).toHaveBeenCalledWith(context.map)
 
     unmount()
-    expect(instance.remove).toBeCalledTimes(1)
+    expect(instance.remove).toHaveBeenCalledTimes(1)
   })
 
   test('useLeafletControl() updates the position', () => {
@@ -35,10 +35,10 @@ describe('control', () => {
       wrapper: createWrapper({ map: true }),
     })
     rerender({ position: 'topleft' })
-    expect(instance.setPosition).toBeCalledTimes(0)
+    expect(instance.setPosition).toHaveBeenCalledTimes(0)
 
     rerender({ position: 'topright' })
-    expect(instance.setPosition).toBeCalledTimes(1)
-    expect(instance.setPosition).toBeCalledWith('topright')
+    expect(instance.setPosition).toHaveBeenCalledTimes(1)
+    expect(instance.setPosition).toHaveBeenCalledWith('topright')
   })
 })

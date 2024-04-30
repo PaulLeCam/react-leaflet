@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks'
+import { renderHook } from '@testing-library/react'
 
 import { createElementHook } from '../src'
 
@@ -11,8 +11,8 @@ describe('element', () => {
     const useElement = createElementHook(createElementMock)
     renderHook(() => useElement(props, context))
 
-    expect(createElementMock).toBeCalledTimes(1)
-    expect(createElementMock).toBeCalledWith(props, context)
+    expect(createElementMock).toHaveBeenCalledTimes(1)
+    expect(createElementMock).toHaveBeenCalledWith(props, context)
   })
 
   test('calls the element update function', () => {
@@ -25,20 +25,20 @@ describe('element', () => {
     const { rerender } = renderHook((p) => useElement(p, context), {
       initialProps: { test: true },
     })
-    expect(createElementMock).toBeCalledTimes(1)
-    expect(updateElementMock).toBeCalledTimes(0)
+    expect(createElementMock).toHaveBeenCalledTimes(1)
+    expect(updateElementMock).toHaveBeenCalledTimes(0)
 
     rerender({ test: false })
-    expect(updateElementMock).toBeCalledTimes(1)
-    expect(updateElementMock).toBeCalledWith(
+    expect(updateElementMock).toHaveBeenCalledTimes(1)
+    expect(updateElementMock).toHaveBeenCalledWith(
       instance,
       { test: false },
       { test: true },
     )
 
     rerender({ test: false })
-    expect(updateElementMock).toBeCalledTimes(2)
-    expect(updateElementMock).toBeCalledWith(
+    expect(updateElementMock).toHaveBeenCalledTimes(2)
+    expect(updateElementMock).toHaveBeenCalledWith(
       instance,
       { test: false },
       { test: false },

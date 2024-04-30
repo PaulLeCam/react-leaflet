@@ -1,5 +1,5 @@
 import type { Control, Layer, LayerGroup, Map as LeafletMap } from 'leaflet'
-import { createContext, useContext } from 'react'
+import { createContext, use } from 'react'
 
 export const CONTEXT_VERSION = 1
 
@@ -32,10 +32,8 @@ export const LeafletContext = createContext<LeafletContextInterface | null>(
   null,
 )
 
-export const LeafletProvider = LeafletContext.Provider
-
 export function useLeafletContext(): LeafletContextInterface {
-  const context = useContext(LeafletContext)
+  const context = use(LeafletContext)
   if (context == null) {
     throw new Error(
       'No context provided: useLeafletContext() can only be used in a descendant of <MapContainer>',

@@ -11,7 +11,9 @@ export function useEventHandlers(
   element: LeafletElement<Evented>,
   eventHandlers: LeafletEventHandlerFnMap | null | undefined,
 ) {
-  const eventHandlersRef = useRef<LeafletEventHandlerFnMap | null | undefined>()
+  const eventHandlersRef = useRef<LeafletEventHandlerFnMap | null | undefined>(
+    undefined,
+  )
 
   useEffect(
     function addEventHandlers() {

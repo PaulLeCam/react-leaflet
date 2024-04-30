@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks'
+import { renderHook } from '@testing-library/react'
 
 import { useLayerLifecycle } from '../src'
 
@@ -9,12 +9,12 @@ describe('layer', () => {
 
     const element = jest.fn()
     const { unmount } = renderHook(() => useLayerLifecycle(element, context))
-    expect(map.addLayer).toBeCalledTimes(1)
-    expect(map.addLayer).toBeCalledWith(element.instance)
+    expect(map.addLayer).toHaveBeenCalledTimes(1)
+    expect(map.addLayer).toHaveBeenCalledWith(element.instance)
 
     unmount()
-    expect(map.removeLayer).toBeCalledTimes(1)
-    expect(map.removeLayer).toBeCalledWith(element.instance)
+    expect(map.removeLayer).toHaveBeenCalledTimes(1)
+    expect(map.removeLayer).toHaveBeenCalledWith(element.instance)
   })
 
   test('useLayerLifecycle() adds the layer to the layerContainer when set and removes from the map', () => {
@@ -24,14 +24,14 @@ describe('layer', () => {
 
     const element = { instance: jest.fn() }
     const { unmount } = renderHook(() => useLayerLifecycle(element, context))
-    expect(layerContainer.addLayer).toBeCalledTimes(1)
-    expect(layerContainer.addLayer).toBeCalledWith(element.instance)
+    expect(layerContainer.addLayer).toHaveBeenCalledTimes(1)
+    expect(layerContainer.addLayer).toHaveBeenCalledWith(element.instance)
 
     unmount()
-    expect(layerContainer.removeLayer).toBeCalledTimes(1)
+    expect(layerContainer.removeLayer).toHaveBeenCalledTimes(1)
 
-    expect(map.addLayer).toBeCalledTimes(0)
-    expect(map.removeLayer).toBeCalledTimes(1)
-    expect(map.removeLayer).toBeCalledWith(element.instance)
+    expect(map.addLayer).toHaveBeenCalledTimes(0)
+    expect(map.removeLayer).toHaveBeenCalledTimes(1)
+    expect(map.removeLayer).toHaveBeenCalledWith(element.instance)
   })
 })

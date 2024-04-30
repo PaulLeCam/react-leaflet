@@ -1,6 +1,6 @@
 import {
   type LeafletContextInterface,
-  LeafletProvider,
+  LeafletContext,
   addClassName,
   useLeafletContext,
 } from '@react-leaflet/core'
@@ -74,10 +74,10 @@ function createPane(
 
 function PaneComponent(
   props: PaneProps,
-  forwardedRef: Ref<HTMLElement | null>,
+  forwardedRef: Ref<HTMLElement | undefined>,
 ) {
   const [paneName] = useState(props.name)
-  const [paneElement, setPaneElement] = useState<HTMLElement | null>(null)
+  const [paneElement, setPaneElement] = useState<HTMLElement | undefined>()
   useImperativeHandle(forwardedRef, () => paneElement, [paneElement])
   const context = useLeafletContext()
   // biome-ignore lint/correctness/useExhaustiveDependencies: paneName is immutable
@@ -107,7 +107,7 @@ function PaneComponent(
 
   return props.children != null && paneElement != null
     ? createPortal(
-        <LeafletProvider value={newContext}>{props.children}</LeafletProvider>,
+        <LeafletContext value={newContext}>{props.children}</LeafletContext>,
         paneElement,
       )
     : null
