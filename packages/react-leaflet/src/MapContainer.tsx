@@ -1,6 +1,6 @@
 import {
-  type LeafletContextInterface,
   LeafletContext,
+  type LeafletContextInterface,
   createLeafletContext,
 } from '@react-leaflet/core'
 import {
@@ -14,9 +14,9 @@ import React, {
   type ReactNode,
   type Ref,
   forwardRef,
-  useCallback,
   useEffect,
   useImperativeHandle,
+  useRef,
   useState,
 } from 'react'
 
@@ -51,12 +51,13 @@ function MapContainerComponent<
 ) {
   const [props] = useState({ className, id, style })
   const [context, setContext] = useState<LeafletContextInterface | null>(null)
-  useImperativeHandle(forwardedRef, () => context?.map ?? undefined, [context])
+  const mapInstanceRef = useRef<LeafletMap>(undefined)
+  useImperativeHandle(forwardedRef, () => mapInstanceRef.current)
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: ref callback
-  const mapRef = useCallback((node: HTMLDivElement | null) => {
-    if (node !== null && context === null) {
+  const mapRef = (node?: HTMLDivElement | null) => {
+    if (node != null && !mapInstanceRef.current) {
       const map = new LeafletMap(node, options)
+      mapInstanceRef.current = map
       if (center != null && zoom != null) {
         map.setView(center, zoom)
       } else if (bounds != null) {
@@ -67,7 +68,7 @@ function MapContainerComponent<
       }
       setContext(createLeafletContext(map))
     }
-  }, [])
+  }
 
   useEffect(() => {
     return () => {

@@ -94,7 +94,7 @@ importers:
   packages/react-leaflet:
     dependencies:
       '@react-leaflet/core':
-        specifier: workspace:^2.1.0
+        specifier: workspace:^
         version: link:../core
       leaflet:
         specifier: ^1.9.0

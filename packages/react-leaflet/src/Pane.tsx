@@ -1,6 +1,6 @@
 import {
-  type LeafletContextInterface,
   LeafletContext,
+  type LeafletContextInterface,
   addClassName,
   useLeafletContext,
 } from '@react-leaflet/core'

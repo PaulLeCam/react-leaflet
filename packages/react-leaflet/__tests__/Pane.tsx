@@ -102,7 +102,7 @@ describe('Pane', () => {
   describe('supports refs', () => {
     test('as callback function', (done) => {
       const ref = (pane) => {
-        if (pane !== null) {
+        if (pane != null) {
           expect(pane).toBeInstanceOf(HTMLElement)
           done()
         }
@@ -126,7 +126,7 @@ describe('Pane', () => {
 
     test('as object', (done) => {
       function Wrapper() {
-        const ref = useRef()
+        const ref = useRef(undefined)
 
         useEffect(() => {
           setTimeout(() => {

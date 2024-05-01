@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react'
-import { type LatLngExpression, Map } from 'leaflet'
+import { type LatLngExpression, Map as LeafletMap } from 'leaflet'
 import React, { StrictMode, useEffect, useRef } from 'react'
 
 import { MapContainer, useMap } from '../src'
@@ -30,10 +30,15 @@ describe('MapContainer', () => {
 
   describe('provides the Map instance', () => {
     test('with the useMap() hook', (done) => {
+      let doneCalled = false
+
       function TestChild() {
         const map = useMap()
-        expect(map).toBeInstanceOf(Map)
-        done()
+        expect(map).toBeInstanceOf(LeafletMap)
+        if (!doneCalled) {
+          doneCalled = true
+          done()
+        }
         return null
       }
 
@@ -49,10 +54,15 @@ describe('MapContainer', () => {
     })
 
     test('in the ref function', (done) => {
+      let doneCalled = false
+
       const ref = (map) => {
-        if (map !== null) {
-          expect(map).toBeInstanceOf(Map)
-          done()
+        if (map != null) {
+          expect(map).toBeInstanceOf(LeafletMap)
+          if (!doneCalled) {
+            doneCalled = true
+            done()
+          }
         }
       }
 
@@ -64,14 +74,19 @@ describe('MapContainer', () => {
     })
 
     test('in the ref object', (done) => {
+      let doneCalled = false
+
       function Wrapper() {
-        const ref = useRef()
+        const ref = useRef(undefined)
 
         useEffect(() => {
           setTimeout(() => {
-            if (ref.current !== null) {
-              expect(ref.current).toBeInstanceOf(Map)
-              done()
+            if (ref.current != null) {
+              expect(ref.current).toBeInstanceOf(LeafletMap)
+              if (!doneCalled) {
+                doneCalled = true
+                done()
+              }
             }
           }, 50)
         }, [])
@@ -86,12 +101,16 @@ describe('MapContainer', () => {
   test('sets center and zoom props', (done) => {
     const center: LatLngExpression = [1.2, 3.4]
     const zoom = 10
+    let doneCalled = false
 
     const ref = (map) => {
-      if (map !== null) {
+      if (map != null) {
         expect(map.getCenter()).toEqual({ lat: 1.2, lng: 3.4 })
         expect(map.getZoom()).toBe(zoom)
-        done()
+        if (!doneCalled) {
+          doneCalled = true
+          done()
+        }
       }
     }
 
