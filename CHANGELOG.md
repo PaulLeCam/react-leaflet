@@ -1,3 +1,10 @@
+## v5.0.0-rc.1 (2024-05-24)
+
+### Breaking changes
+
+- React v19 is now required as peer dependency.
+- Removed `LeafletProvider` component from the core package.
+
 ## v4.2.1 (2023-02-28)
 
 Fixed bounds update in `ImageOverlay`
