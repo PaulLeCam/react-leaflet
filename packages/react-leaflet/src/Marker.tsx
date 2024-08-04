@@ -39,14 +39,14 @@ function handlePositionUpdate(
     props.position instanceof LatLng &&
     !props.position.equals(prevProps.position)
   ) {
-    marker.setLatLng(props.position)
+    return marker.setLatLng(props.position)
   }
 
   if (
     Array.isArray(props.position) &&
     !arraysEqual(props.position, prevProps.position as LatLngTuple)
   ) {
-    marker.setLatLng(props.position)
+    return marker.setLatLng(props.position)
   }
 
   // if position is not a LatLng or LatLngTuple, it must be the LatLngLiteral object
@@ -56,7 +56,7 @@ function handlePositionUpdate(
       prevProps.position as LatLngLiteral,
     )
   ) {
-    marker.setLatLng(props.position)
+    return marker.setLatLng(props.position)
   }
 }
 
