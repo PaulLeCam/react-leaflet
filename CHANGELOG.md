@@ -1,3 +1,7 @@
+## v5.0.0-rc.2 (2024-12-06)
+
+This RC uses the stable releases of React v19.
+
 ## v5.0.0-rc.1 (2024-05-24)
 
 ### Breaking changes
