@@ -39,6 +39,8 @@ export interface PaneProps {
   style?: CSSProperties
 }
 
+export type PaneRef = HTMLElement | null
+
 function createPane(
   name: string,
   props: PaneProps,
@@ -72,13 +74,12 @@ function createPane(
   return element
 }
 
-function PaneComponent(
-  props: PaneProps,
-  forwardedRef: Ref<HTMLElement | undefined>,
-) {
+function PaneComponent(props: PaneProps, forwardedRef: Ref<PaneRef>) {
   const [paneName] = useState(props.name)
-  const [paneElement, setPaneElement] = useState<HTMLElement | undefined>()
-  useImperativeHandle(forwardedRef, () => paneElement, [paneElement])
+  const [paneElement, setPaneElement] = useState<PaneRef>(null)
+  useImperativeHandle<PaneRef, PaneRef>(forwardedRef, () => paneElement, [
+    paneElement,
+  ])
   const context = useLeafletContext()
   // biome-ignore lint/correctness/useExhaustiveDependencies: paneName is immutable
   const newContext = useMemo(() => ({ ...context, pane: paneName }), [context])

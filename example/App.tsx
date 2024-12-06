@@ -1,7 +1,8 @@
+import type { LatLngTuple } from 'leaflet'
 import React from 'react'
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
 
-const position = [51.505, -0.09]
+const position: LatLngTuple = [51.505, -0.09,]
 
 export default function App() {
   return (

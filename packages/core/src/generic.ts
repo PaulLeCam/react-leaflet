@@ -5,6 +5,7 @@ import type {
   Layer,
   Path,
 } from 'leaflet'
+import type { PropsWithoutRef } from 'react'
 
 import {
   type PropsWithChildren,
@@ -33,9 +34,9 @@ interface PathWithChildrenProps extends PathProps, PropsWithChildren {}
 export function createControlComponent<
   E extends Control,
   P extends ControlOptions,
->(createInstance: (props: P) => E) {
+>(createInstance: (props: PropsWithoutRef<P>) => E) {
   function createElement(
-    props: P,
+    props: PropsWithoutRef<P>,
     context: LeafletContextInterface,
   ): LeafletElement<E> {
     return createElementObject(createInstance(props), context)
@@ -50,10 +51,14 @@ export function createLayerComponent<
   P extends LayerWithChildrenProps,
 >(
   createElement: (
-    props: P,
+    props: PropsWithoutRef<P>,
     context: LeafletContextInterface,
   ) => LeafletElement<E>,
-  updateElement?: (instance: E, props: P, prevProps: P) => void,
+  updateElement?: (
+    instance: E,
+    props: PropsWithoutRef<P>,
+    prevProps: PropsWithoutRef<P>,
+  ) => void,
 ) {
   const useElement = createElementHook(createElement, updateElement)
   const useLayer = createLayerHook(useElement)
@@ -65,10 +70,10 @@ export function createOverlayComponent<
   P extends LayerWithChildrenProps,
 >(
   createElement: (
-    props: P,
+    props: PropsWithoutRef<P>,
     context: LeafletContextInterface,
   ) => LeafletElement<E>,
-  useLifecycle: DivOverlayLifecycleHook<E, P>,
+  useLifecycle: DivOverlayLifecycleHook<E, PropsWithoutRef<P>>,
 ) {
   const useElement = createElementHook(createElement)
   const useOverlay = createDivOverlayHook(useElement, useLifecycle)
@@ -80,10 +85,14 @@ export function createPathComponent<
   P extends PathWithChildrenProps,
 >(
   createElement: (
-    props: P,
+    props: PropsWithoutRef<P>,
     context: LeafletContextInterface,
   ) => LeafletElement<E>,
-  updateElement?: (instance: E, props: P, prevProps: P) => void,
+  updateElement?: (
+    instance: E,
+    props: PropsWithoutRef<P>,
+    prevProps: PropsWithoutRef<P>,
+  ) => void,
 ) {
   const useElement = createElementHook(createElement, updateElement)
   const usePath = createPathHook(useElement)
@@ -92,10 +101,14 @@ export function createPathComponent<
 
 export function createTileLayerComponent<E extends Layer, P extends LayerProps>(
   createElement: (
-    props: P,
+    props: PropsWithoutRef<P>,
     context: LeafletContextInterface,
   ) => LeafletElement<E>,
-  updateElement?: (instance: E, props: P, prevProps: P) => void,
+  updateElement?: (
+    instance: E,
+    props: PropsWithoutRef<P>,
+    prevProps: PropsWithoutRef<P>,
+  ) => void,
 ) {
   const useElement = createElementHook(createElement, updateElement)
   const useLayer = createLayerHook(useElement)

@@ -1,4 +1,5 @@
 import React, {
+  type PropsWithoutRef,
   type RefObject,
   type ReactNode,
   type Ref,
@@ -15,19 +16,20 @@ import type { LeafletElement } from './element.js'
 
 type ElementHook<E, P> = (props: P) => RefObject<LeafletElement<E>>
 
-export type PropsWithChildren = {
+export type PropsWithChildren = PropsWithoutRef<{
   children?: ReactNode
-}
+}>
 
 export function createContainerComponent<E, P extends PropsWithChildren>(
-  useElement: ElementHook<E, P>,
+  useElement: ElementHook<E, PropsWithoutRef<P>>,
 ) {
-  function ContainerComponent(props: P, forwardedRef: Ref<E>) {
+  function ContainerComponent(props: PropsWithoutRef<P>, forwardedRef: Ref<E>) {
     const { instance, context } = useElement(props).current
     useImperativeHandle(forwardedRef, () => instance)
 
-    return props.children == null ? null : (
-      <LeafletContext value={context}>{props.children}</LeafletContext>
+    const { children } = props as PropsWithChildren
+    return children == null ? null : (
+      <LeafletContext value={context}>{children}</LeafletContext>
     )
   }
 
@@ -37,8 +39,8 @@ export function createContainerComponent<E, P extends PropsWithChildren>(
 export function createDivOverlayComponent<
   E extends DivOverlay,
   P extends PropsWithChildren,
->(useElement: ReturnType<DivOverlayHook<E, P>>) {
-  function OverlayComponent(props: P, forwardedRef: Ref<E>) {
+>(useElement: ReturnType<DivOverlayHook<E, PropsWithoutRef<P>>>) {
+  function OverlayComponent(props: PropsWithoutRef<P>, forwardedRef: Ref<E>) {
     const [isOpen, setOpen] = useState(false)
     const { instance } = useElement(props, setOpen).current
 
@@ -61,8 +63,10 @@ export function createDivOverlayComponent<
   return forwardRef(OverlayComponent)
 }
 
-export function createLeafComponent<E, P>(useElement: ElementHook<E, P>) {
-  function LeafComponent(props: P, forwardedRef: Ref<E>) {
+export function createLeafComponent<E, P>(
+  useElement: ElementHook<E, PropsWithoutRef<P>>,
+) {
+  function LeafComponent(props: PropsWithoutRef<P>, forwardedRef: Ref<E>) {
     const { instance } = useElement(props).current
     useImperativeHandle(forwardedRef, () => instance)
 

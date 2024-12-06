@@ -7,15 +7,15 @@
     "start": "vite"
   },
   "dependencies": {
-    "react": "rc",
-    "react-dom": "rc",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "react-leaflet": "workspace:^"
   },
   "devDependencies": {
-    "@types/react": "npm:types-react@rc",
-    "@types/react-dom": "npm:types-react-dom@rc",
-    "@vitejs/plugin-react": "^4.3.0",
-    "typescript": "^5.4.5",
-    "vite": "^5.2.11"
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.3"
   }
 }

@@ -14,11 +14,14 @@ import React, {
   type ReactNode,
   type Ref,
   forwardRef,
+  useCallback,
   useEffect,
   useImperativeHandle,
   useRef,
   useState,
 } from 'react'
+
+export type MapRef = LeafletMap | null
 
 export interface MapContainerProps extends MapOptions {
   bounds?: LatLngBoundsExpression
@@ -47,15 +50,20 @@ function MapContainerComponent<
     zoom,
     ...options
   }: Props,
-  forwardedRef: Ref<LeafletMap | undefined>,
+  forwardedRef: Ref<MapRef>,
 ) {
   const [props] = useState({ className, id, style })
   const [context, setContext] = useState<LeafletContextInterface | null>(null)
   const mapInstanceRef = useRef<LeafletMap>(undefined)
-  useImperativeHandle(forwardedRef, () => mapInstanceRef.current)
+  useImperativeHandle<MapRef, MapRef>(
+    forwardedRef,
+    () => context?.map ?? null,
+    [context],
+  )
 
-  const mapRef = (node?: HTMLDivElement | null) => {
-    if (node != null && !mapInstanceRef.current) {
+  // biome-ignore lint/correctness/useExhaustiveDependencies: ref callback
+  const mapRef = useCallback((node: HTMLDivElement | null) => {
+    if (node !== null && !mapInstanceRef.current) {
       const map = new LeafletMap(node, options)
       mapInstanceRef.current = map
       if (center != null && zoom != null) {
@@ -68,7 +76,7 @@ function MapContainerComponent<
       }
       setContext(createLeafletContext(map))
     }
-  }
+  }, [])
 
   useEffect(() => {
     return () => {
@@ -79,7 +87,7 @@ function MapContainerComponent<
   const contents = context ? (
     <LeafletContext value={context}>{children}</LeafletContext>
   ) : (
-    placeholder ?? null
+    (placeholder ?? null)
   )
   return (
     <div {...props} ref={mapRef}>

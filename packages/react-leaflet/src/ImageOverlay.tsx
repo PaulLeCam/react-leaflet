@@ -16,7 +16,7 @@ export const ImageOverlay = createLayerComponent<
   LeafletImageOverlay,
   ImageOverlayProps
 >(
-  function createImageOveraly({ bounds, url, ...options }, ctx) {
+  function createImageOverlay({ bounds, url, ...options }, ctx) {
     const overlay = new LeafletImageOverlay(url, bounds, options)
     return createElementObject(
       overlay,

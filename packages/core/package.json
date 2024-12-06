@@ -1,6 +1,6 @@
 {
   "name": "@react-leaflet/core",
-  "version": "3.0.0-rc.1",
+  "version": "3.0.0-rc.2",
   "description": "React Leaflet core",
   "repository": {
     "type": "git",
@@ -35,12 +35,12 @@
   },
   "peerDependencies": {
     "leaflet": "^1.9.0",
-    "react": "rc",
-    "react-dom": "rc"
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@types/react": "npm:types-react@rc",
-    "@types/react-dom": "npm:types-react-dom@rc"
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0"
   },
   "jest": {
     "extensionsToTreatAsEsm": [".ts", ".tsx"],
