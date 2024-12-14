@@ -1,4 +1,4 @@
-Copyright 2020 Paul Le Cam and contributors (“Licensor”)
+Copyright 2020-present Paul Le Cam and contributors (“Licensor”)
 
 Hippocratic License Version Number: 2.1.
 
