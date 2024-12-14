@@ -1,3 +1,10 @@
+## v5.0.0 (2024-12-14)
+
+### Breaking changes
+
+- React v19 is now required as peer dependency.
+- Removed `LeafletProvider` component from the core package.
+
 ## v5.0.0-rc.2 (2024-12-06)
 
 This RC uses the stable releases of React v19.

@@ -1,6 +1,6 @@
 {
   "name": "react-leaflet",
-  "version": "5.0.0-rc.2",
+  "version": "5.0.0",
   "description": "React components for Leaflet maps",
   "repository": {
     "type": "git",
@@ -45,8 +45,8 @@
   "devDependencies": {
     "@types/geojson": "^7946.0.15",
     "@types/leaflet": "^1.9.15",
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0"
+    "@types/react": "^19.0.1",
+    "@types/react-dom": "^19.0.2"
   },
   "jest": {
     "extensionsToTreatAsEsm": [".ts", ".tsx"],

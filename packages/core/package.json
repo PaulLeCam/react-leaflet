@@ -1,6 +1,6 @@
 {
   "name": "@react-leaflet/core",
-  "version": "3.0.0-rc.2",
+  "version": "3.0.0",
   "description": "React Leaflet core",
   "repository": {
     "type": "git",
@@ -39,8 +39,8 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0"
+    "@types/react": "^19.0.1",
+    "@types/react-dom": "^19.0.2"
   },
   "jest": {
     "extensionsToTreatAsEsm": [".ts", ".tsx"],
