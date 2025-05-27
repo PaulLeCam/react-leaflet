@@ -18,7 +18,7 @@
     "@swc/jest": "^0.2.37",
     "@testing-library/react": "^16.1.0",
     "@types/jest": "^29.5.14",
-    "@types/leaflet": "^1.9.15",
+    "@types/leaflet": "^1.9.18",
     "@types/warning": "^3.0.0",
     "cross-env": "^7.0.3",
     "del-cli": "^6.0.0",

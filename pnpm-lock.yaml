@@ -30,7 +30,7 @@ importers:
         specifier: ^29.5.14
         version: 29.5.14
       '@types/leaflet':
-        specifier: ^1.9.15
+        specifier: ^1.9.18
         version: 1.9.18
       '@types/warning':
         specifier: ^3.0.0
@@ -132,7 +132,7 @@ importers:
         specifier: ^7946.0.15
         version: 7946.0.16
       '@types/leaflet':
-        specifier: ^1.9.15
+        specifier: ^1.9.18
         version: 1.9.18
       '@types/react':
         specifier: ^19.1.5

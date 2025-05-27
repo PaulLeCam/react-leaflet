@@ -31,7 +31,7 @@ export interface MapContainerProps extends MapOptions {
   id?: string
   placeholder?: ReactNode
   style?: CSSProperties
-  whenReady?: () => void
+  whenReady?: (event: { target: LeafletMap }) => void
 }
 
 function MapContainerComponent<
