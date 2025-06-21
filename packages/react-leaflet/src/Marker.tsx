@@ -1,7 +1,7 @@
 import {
-  type EventedProps,
   createElementObject,
   createLayerComponent,
+  type EventedProps,
   extendContext,
 } from '@react-leaflet/core'
 import {

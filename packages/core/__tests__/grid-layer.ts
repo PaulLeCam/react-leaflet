@@ -1,3 +1,4 @@
+import { jest } from '@jest/globals'
 import { updateGridLayer } from '../src'
 
 describe('grid-layer', () => {

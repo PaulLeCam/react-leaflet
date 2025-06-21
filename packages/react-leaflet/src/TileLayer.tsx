@@ -1,7 +1,7 @@
 import {
-  type LayerProps,
   createElementObject,
   createTileLayerComponent,
+  type LayerProps,
   updateGridLayer,
   withPane,
 } from '@react-leaflet/core'

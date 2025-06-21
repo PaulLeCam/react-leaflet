@@ -1,5 +1,3 @@
-export { useMap, useMapEvent, useMapEvents } from './hooks.js'
-
 export {
   AttributionControl,
   type AttributionControlProps,
@@ -8,12 +6,13 @@ export { Circle, type CircleProps } from './Circle.js'
 export { CircleMarker, type CircleMarkerProps } from './CircleMarker.js'
 export { FeatureGroup, type FeatureGroupProps } from './FeatureGroup.js'
 export { GeoJSON, type GeoJSONProps } from './GeoJSON.js'
+export { useMap, useMapEvent, useMapEvents } from './hooks.js'
 export { ImageOverlay, type ImageOverlayProps } from './ImageOverlay.js'
 export { LayerGroup, type LayerGroupProps } from './LayerGroup.js'
 export {
+  type ControlledLayerProps,
   LayersControl,
   type LayersControlProps,
-  type ControlledLayerProps,
 } from './LayersControl.js'
 export { MapContainer, type MapContainerProps } from './MapContainer.js'
 export { Marker, type MarkerProps } from './Marker.js'

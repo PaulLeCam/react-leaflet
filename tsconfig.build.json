@@ -1,13 +1,14 @@
 {
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
     "declaration": true,
     "esModuleInterop": true,
-    "jsx": "react",
-    "lib": ["dom", "es2020"],
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
+    "lib": ["dom", "es2024"],
     "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
     "strict": true,
-    "target": "es2020"
+    "target": "es2024"
   },
   "include": ["./src/**/*"]
 }

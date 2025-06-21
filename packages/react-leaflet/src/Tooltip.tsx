@@ -1,10 +1,10 @@
 import {
+  createElementObject,
+  createOverlayComponent,
   type EventedProps,
   type LeafletContextInterface,
   type LeafletElement,
   type SetOpenFunc,
-  createElementObject,
-  createOverlayComponent,
 } from '@react-leaflet/core'
 import {
   type LatLngExpression,

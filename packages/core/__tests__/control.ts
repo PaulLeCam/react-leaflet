@@ -1,3 +1,4 @@
+import { jest } from '@jest/globals'
 import { renderHook } from '@testing-library/react'
 
 import { createControlHook, createElementHook } from '../src'

@@ -1,8 +1,8 @@
 import {
-  type PathProps,
   createElementObject,
   createPathComponent,
   extendContext,
+  type PathProps,
 } from '@react-leaflet/core'
 import {
   type LatLngBoundsExpression,

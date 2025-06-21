@@ -1,7 +1,7 @@
 import {
+  createLeafletContext,
   LeafletContext,
   type LeafletContextInterface,
-  createLeafletContext,
 } from '@react-leaflet/core'
 import {
   type FitBoundsOptions,
@@ -11,9 +11,9 @@ import {
 } from 'leaflet'
 import React, {
   type CSSProperties,
+  forwardRef,
   type ReactNode,
   type Ref,
-  forwardRef,
   useCallback,
   useEffect,
   useImperativeHandle,

@@ -1,18 +1,18 @@
 import {
+  addClassName,
   LeafletContext,
   type LeafletContextInterface,
-  addClassName,
   useLeafletContext,
 } from '@react-leaflet/core'
 import React, {
   type CSSProperties,
+  forwardRef,
   type ReactNode,
   type Ref,
-  forwardRef,
-  useState,
   useEffect,
   useImperativeHandle,
   useMemo,
+  useState,
 } from 'react'
 import { createPortal } from 'react-dom'
 

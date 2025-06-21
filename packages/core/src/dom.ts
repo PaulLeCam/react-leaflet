@@ -1,18 +1,16 @@
-import { DomUtil } from 'leaflet'
-
 function splitClassName(className: string): string[] {
   return className.split(' ').filter(Boolean)
 }
 
 export function addClassName(element: HTMLElement, className: string) {
   for (const cls of splitClassName(className)) {
-    DomUtil.addClass(element, cls)
+    element.classList.add(cls)
   }
 }
 
 export function removeClassName(element: HTMLElement, className: string) {
   for (const cls of splitClassName(className)) {
-    DomUtil.removeClass(element, cls)
+    element.classList.remove(cls)
   }
 }
 

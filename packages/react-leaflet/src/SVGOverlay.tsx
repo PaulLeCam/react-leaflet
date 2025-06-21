@@ -1,15 +1,15 @@
 import {
-  type MediaOverlayProps,
   createElementHook,
   createElementObject,
   createLayerHook,
+  type MediaOverlayProps,
   updateMediaOverlay,
 } from '@react-leaflet/core'
 import { SVGOverlay as LeafletSVGOverlay } from 'leaflet'
 import {
+  forwardRef,
   type ReactNode,
   type Ref,
-  forwardRef,
   useImperativeHandle,
 } from 'react'
 import { createPortal } from 'react-dom'

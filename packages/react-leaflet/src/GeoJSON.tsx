@@ -1,8 +1,8 @@
 import {
-  type PathProps,
   createElementObject,
   createPathComponent,
   extendContext,
+  type PathProps,
 } from '@react-leaflet/core'
 import type { GeoJsonObject } from 'geojson'
 import { type GeoJSONOptions, GeoJSON as LeafletGeoJSON } from 'leaflet'

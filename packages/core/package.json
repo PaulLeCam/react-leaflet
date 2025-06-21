@@ -6,7 +6,12 @@
     "type": "git",
     "url": "https://github.com/PaulLeCam/react-leaflet.git"
   },
-  "keywords": ["react-component", "react", "leaflet", "map"],
+  "keywords": [
+    "react-component",
+    "react",
+    "leaflet",
+    "map"
+  ],
   "author": "Paul Le Cam <paul@ulem.net>",
   "license": "Hippocratic-2.1",
   "bugs": {
@@ -19,7 +24,9 @@
   "exports": {
     ".": "./lib/index.js"
   },
-  "files": ["lib/*"],
+  "files": [
+    "lib/*"
+  ],
   "sideEffects": false,
   "scripts": {
     "build:clean": "del lib",
@@ -27,24 +34,29 @@
     "build:types": "tsc --emitDeclarationOnly --skipLibCheck",
     "build": "pnpm run build:clean && pnpm run build:types && pnpm run build:js",
     "test:types": "tsc --noEmit",
-    "test:unit": "cross-env NODE_ENV=test jest",
+    "test:unit": "node --experimental-vm-modules ../../node_modules/jest/bin/jest.js",
     "test": "pnpm run test:types && pnpm run test:unit",
     "start": "pnpm run test && pnpm run build",
     "prepare": "pnpm run build",
     "prepublishOnly": "package-check"
   },
   "peerDependencies": {
-    "leaflet": "^1.9.0",
+    "leaflet": "^2.0.0-alpha",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@types/react": "^19.1.5",
-    "@types/react-dom": "^19.0.2"
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6"
   },
   "jest": {
-    "extensionsToTreatAsEsm": [".ts", ".tsx"],
-    "resolver": "ts-jest-resolver",
+    "extensionsToTreatAsEsm": [
+      ".ts",
+      ".tsx"
+    ],
+    "moduleNameMapper": {
+      "^(\\.{1,2}/.*)\\.js$": "$1"
+    },
     "testEnvironment": "jsdom",
     "transform": {
       "^.+\\.(t|j)sx?$": [

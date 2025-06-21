@@ -11,25 +11,25 @@ export {
 } from './component.js'
 export {
   CONTEXT_VERSION,
-  type LeafletContextInterface,
-  LeafletContext,
   createLeafletContext,
   extendContext,
+  LeafletContext,
+  type LeafletContextInterface,
   useLeafletContext,
 } from './context.js'
 export { createControlHook } from './control.js'
 export {
+  createDivOverlayHook,
   type DivOverlayHook,
   type DivOverlayLifecycleHook,
   type SetOpenFunc,
-  createDivOverlayHook,
 } from './div-overlay.js'
 export { addClassName, removeClassName, updateClassName } from './dom.js'
 export {
-  type ElementHook,
-  type LeafletElement,
   createElementHook,
   createElementObject,
+  type ElementHook,
+  type LeafletElement,
 } from './element.js'
 export { type EventedProps, useEventHandlers } from './events.js'
 export {
@@ -41,11 +41,11 @@ export {
 } from './generic.js'
 export { updateGridLayer } from './grid-layer.js'
 export {
+  createLayerHook,
   type InteractiveLayerProps,
   type LayerProps,
-  createLayerHook,
   useLayerLifecycle,
 } from './layer.js'
 export { type MediaOverlayProps, updateMediaOverlay } from './media-overlay.js'
 export { withPane } from './pane.js'
-export { type PathProps, createPathHook, usePathOptions } from './path.js'
+export { createPathHook, type PathProps, usePathOptions } from './path.js'
