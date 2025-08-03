@@ -1,15 +1,16 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`TileLayer renders 1`] = `
 <div>
   <div
-    class="leaflet-container leaflet-touch leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
+    aria-keyshortcuts="ArrowLeft ArrowRight ArrowDown ArrowUp Equal NumpadAdd BracketRight Minus NumpadSubtract Digit6 Slash"
+    class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
     style="position: relative;"
     tabindex="0"
   >
     <div
       class="leaflet-pane leaflet-map-pane"
-      style="left: 0px; top: 0px;"
+      style="transform: translate3d(0px,0px,0);"
     >
       <div
         class="leaflet-pane leaflet-tile-pane"
@@ -20,31 +21,31 @@ exports[`TileLayer renders 1`] = `
         >
           <div
             class="leaflet-tile-container leaflet-zoom-animated"
-            style="z-index: 18; left: 0px; top: 0px;"
+            style="z-index: 18; transform: translate3d(0px,0px,0) scale(1);"
           >
             <img
               alt=""
               class="leaflet-tile"
               src="http://localhost"
-              style="width: 256px; height: 256px; left: -256px; top: -256px;"
+              style="width: 256px; height: 256px; transform: translate3d(-256px,-256px,0);"
             />
             <img
               alt=""
               class="leaflet-tile"
               src="http://localhost"
-              style="width: 256px; height: 256px; left: 0px; top: -256px;"
+              style="width: 256px; height: 256px; transform: translate3d(0px,-256px,0);"
             />
             <img
               alt=""
               class="leaflet-tile"
               src="http://localhost"
-              style="width: 256px; height: 256px; left: -256px; top: 0px;"
+              style="width: 256px; height: 256px; transform: translate3d(-256px,0px,0);"
             />
             <img
               alt=""
               class="leaflet-tile"
               src="http://localhost"
-              style="width: 256px; height: 256px; left: 0px; top: 0px;"
+              style="width: 256px; height: 256px; transform: translate3d(0px,0px,0);"
             />
           </div>
         </div>
@@ -63,6 +64,10 @@ exports[`TileLayer renders 1`] = `
       />
       <div
         class="leaflet-pane leaflet-popup-pane"
+      />
+      <div
+        class="leaflet-proxy leaflet-zoom-animated"
+        style="transform: translate3d(131072px,131072px,0) scale(512);"
       />
     </div>
     <div
@@ -118,8 +123,30 @@ exports[`TileLayer renders 1`] = `
         >
           <a
             href="https://leafletjs.com"
+            target="_blank"
             title="A JavaScript library for interactive maps"
           >
+            <svg
+              aria-hidden="true"
+              class="leaflet-attribution-flag"
+              height="8"
+              viewBox="0 0 12 8"
+              width="12"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0 0h12v4H0z"
+                fill="#4C7BE1"
+              />
+              <path
+                d="M0 4h12v3H0z"
+                fill="#FFD500"
+              />
+              <path
+                d="M0 7h12v1H0z"
+                fill="#E0BC00"
+              />
+            </svg>
             Leaflet
           </a>
            
@@ -139,13 +166,14 @@ exports[`TileLayer renders 1`] = `
 exports[`TileLayer renders 2`] = `
 <div>
   <div
-    class="leaflet-container leaflet-touch leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
+    aria-keyshortcuts="ArrowLeft ArrowRight ArrowDown ArrowUp Equal NumpadAdd BracketRight Minus NumpadSubtract Digit6 Slash"
+    class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
     style="position: relative;"
     tabindex="0"
   >
     <div
       class="leaflet-pane leaflet-map-pane"
-      style="left: 0px; top: 0px;"
+      style="transform: translate3d(0px,0px,0);"
     >
       <div
         class="leaflet-pane leaflet-tile-pane"
@@ -156,31 +184,31 @@ exports[`TileLayer renders 2`] = `
         >
           <div
             class="leaflet-tile-container leaflet-zoom-animated"
-            style="z-index: 18; left: 0px; top: 0px;"
+            style="z-index: 18; transform: translate3d(0px,0px,0) scale(1);"
           >
             <img
               alt=""
               class="leaflet-tile"
               src="http://localhost?with_parameter=changed"
-              style="width: 256px; height: 256px; left: -256px; top: -256px;"
+              style="width: 256px; height: 256px; transform: translate3d(-256px,-256px,0);"
             />
             <img
               alt=""
               class="leaflet-tile"
               src="http://localhost?with_parameter=changed"
-              style="width: 256px; height: 256px; left: 0px; top: -256px;"
+              style="width: 256px; height: 256px; transform: translate3d(0px,-256px,0);"
             />
             <img
               alt=""
               class="leaflet-tile"
               src="http://localhost?with_parameter=changed"
-              style="width: 256px; height: 256px; left: -256px; top: 0px;"
+              style="width: 256px; height: 256px; transform: translate3d(-256px,0px,0);"
             />
             <img
               alt=""
               class="leaflet-tile"
               src="http://localhost?with_parameter=changed"
-              style="width: 256px; height: 256px; left: 0px; top: 0px;"
+              style="width: 256px; height: 256px; transform: translate3d(0px,0px,0);"
             />
           </div>
         </div>
@@ -199,6 +227,10 @@ exports[`TileLayer renders 2`] = `
       />
       <div
         class="leaflet-pane leaflet-popup-pane"
+      />
+      <div
+        class="leaflet-proxy leaflet-zoom-animated"
+        style="transform: translate3d(131072px,131072px,0) scale(512);"
       />
     </div>
     <div
@@ -254,8 +286,30 @@ exports[`TileLayer renders 2`] = `
         >
           <a
             href="https://leafletjs.com"
+            target="_blank"
             title="A JavaScript library for interactive maps"
           >
+            <svg
+              aria-hidden="true"
+              class="leaflet-attribution-flag"
+              height="8"
+              viewBox="0 0 12 8"
+              width="12"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M0 0h12v4H0z"
+                fill="#4C7BE1"
+              />
+              <path
+                d="M0 4h12v3H0z"
+                fill="#FFD500"
+              />
+              <path
+                d="M0 7h12v1H0z"
+                fill="#E0BC00"
+              />
+            </svg>
             Leaflet
           </a>
            

@@ -1,4 +1,4 @@
-function splitClassName(className: string): string[] {
+function splitClassName(className: string): Array<string> {
   return className.split(' ').filter(Boolean)
 }
 

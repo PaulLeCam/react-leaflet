@@ -4,7 +4,7 @@ import {
   type LeafletContextInterface,
   useLeafletContext,
 } from '@react-leaflet/core'
-import React, {
+import {
   type CSSProperties,
   forwardRef,
   type ReactNode,

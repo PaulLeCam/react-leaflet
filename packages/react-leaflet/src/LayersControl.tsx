@@ -8,7 +8,7 @@ import {
   useLeafletContext,
 } from '@react-leaflet/core'
 import { Control, type Layer } from 'leaflet'
-import React, {
+import {
   type ForwardRefExoticComponent,
   type FunctionComponent,
   type ReactNode,

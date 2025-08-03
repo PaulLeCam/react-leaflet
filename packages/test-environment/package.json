@@ -1,0 +1,8 @@
+{
+  "name": "@react-leaflet/test-environment",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "jest-environment-jsdom": "^30.0.5"
+  }
+}

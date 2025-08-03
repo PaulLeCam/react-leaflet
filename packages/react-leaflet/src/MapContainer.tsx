@@ -9,7 +9,7 @@ import {
   Map as LeafletMap,
   type MapOptions,
 } from 'leaflet'
-import React, {
+import {
   type CSSProperties,
   forwardRef,
   type ReactNode,

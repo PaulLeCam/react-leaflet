@@ -1,7 +1,6 @@
 import { jest } from '@jest/globals'
 import { act, render, screen } from '@testing-library/react'
 import { StrictMode, useEffect, useRef } from 'react'
-import * as React from 'react'
 
 import {
   createContainerComponent,
