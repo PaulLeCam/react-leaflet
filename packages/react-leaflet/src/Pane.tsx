@@ -66,7 +66,7 @@ function createPane(
   }
   if (props.style != null) {
     for (const key of Object.keys(props.style)) {
-      // @ts-ignore
+      // @ts-expect-error
       element.style[key] = props.style[key]
     }
   }
@@ -92,13 +92,13 @@ function PaneComponent(props: PaneProps, forwardedRef: Ref<PaneRef>) {
       const pane = context.map.getPane(paneName)
       pane?.remove?.()
 
-      // @ts-ignore map internals
+      // @ts-expect-error map internals
       if (context.map._panes != null) {
-        // @ts-ignore map internals
+        // @ts-expect-error map internals
         context.map._panes = omitPane(context.map._panes, paneName)
-        // @ts-ignore map internals
+        // @ts-expect-error map internals
         context.map._paneRenderers = omitPane(
-          // @ts-ignore map internals
+          // @ts-expect-error map internals
           context.map._paneRenderers,
           paneName,
         )

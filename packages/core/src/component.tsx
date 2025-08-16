@@ -55,7 +55,7 @@ export function createDivOverlayComponent<
       [instance, isOpen, props.children],
     )
 
-    // @ts-ignore _contentNode missing in type definition
+    // @ts-expect-error _contentNode missing in type definition
     const contentNode = instance._contentNode
     return contentNode ? createPortal(props.children, contentNode) : null
   }

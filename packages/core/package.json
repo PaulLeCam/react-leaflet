@@ -41,13 +41,13 @@
     "prepublishOnly": "package-check"
   },
   "peerDependencies": {
-    "leaflet": "^2.0.0-alpha",
+    "leaflet": "catalog:",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@types/react": "^19.1.9",
-    "@types/react-dom": "^19.1.7"
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:"
   },
   "jest": {
     "extensionsToTreatAsEsm": [

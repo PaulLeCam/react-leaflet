@@ -29,7 +29,6 @@ export function updateMediaOverlay<
     overlay.setOpacity(props.opacity)
   }
   if (props.zIndex != null && props.zIndex !== prevProps.zIndex) {
-    // @ts-ignore missing in definition but inherited from ImageOverlay
     overlay.setZIndex(props.zIndex)
   }
 }

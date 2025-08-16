@@ -14,11 +14,11 @@ export function useMapEvent<T extends keyof LeafletEventHandlerFnMap>(
 
   useEffect(
     function addMapEventHandler() {
-      // @ts-ignore event type
+      // @ts-expect-error event type
       map.on(type, handler)
 
       return function removeMapEventHandler() {
-        // @ts-ignore event type
+        // @ts-expect-error event type
         map.off(type, handler)
       }
     },

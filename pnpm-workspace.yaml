@@ -2,6 +2,15 @@ packages:
   - example
   - packages/*
 
+catalog:
+  '@types/leaflet': ^1.9.20
+  '@types/react': ^19.1.10
+  '@types/react-dom': ^19.1.7
+  leaflet: 2.0.0-alpha.1
+  react: ^19.1.1
+  react-dom: ^19.1.1
+  typescript: ^5.9.2
+
 onlyBuiltDependencies:
   - '@swc/core'
   - esbuild

@@ -67,7 +67,7 @@ export const Tooltip = createOverlayComponent<LeafletTooltip, TooltipProps>(
             tooltipopen: onTooltipOpen,
             tooltipclose: onTooltipClose,
           })
-          // @ts-ignore protected property
+          // @ts-expect-error protected property
           if (container._map != null) {
             container.unbindTooltip()
           }

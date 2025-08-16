@@ -54,7 +54,7 @@ export interface ControlledLayerProps {
   name: string
 }
 
-// @ts-ignore
+// @ts-expect-error
 export const LayersControl: ForwardRefExoticComponent<
   LayersControlProps & RefAttributes<Control.Layers>
 > & {

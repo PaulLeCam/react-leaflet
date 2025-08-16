@@ -45,16 +45,16 @@
     "@react-leaflet/core": "workspace:^"
   },
   "peerDependencies": {
-    "leaflet": "^2.0.0-alpha",
+    "leaflet": "catalog:",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@react-leaflet/test-environment": "workspace:*",
     "@types/geojson": "^7946.0.15",
-    "@types/leaflet": "^1.9.20",
-    "@types/react": "^19.1.9",
-    "@types/react-dom": "^19.1.7"
+    "@types/leaflet": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:"
   },
   "jest": {
     "extensionsToTreatAsEsm": [

@@ -13,9 +13,9 @@ describe('events', () => {
     }
     renderHook(() => useEventHandlers({ instance: layer }, handlers))
 
-    layer.fireEvent('click')
-    layer.fireEvent('click')
-    layer.fireEvent('dblclick')
+    layer.fire('click')
+    layer.fire('click')
+    layer.fire('dblclick')
 
     expect(handlers.click).toHaveBeenCalledTimes(2)
     expect(handlers.dblclick).toHaveBeenCalledTimes(1)
@@ -37,12 +37,12 @@ describe('events', () => {
         },
       },
     )
-    layer.fireEvent('click')
-    layer.fireEvent('dblclick')
+    layer.fire('click')
+    layer.fire('dblclick')
 
     rerender({ handlers: { click: clickHandler, dblclick: dblclickHandler2 } })
-    layer.fireEvent('click')
-    layer.fireEvent('dblclick')
+    layer.fire('click')
+    layer.fire('dblclick')
 
     expect(clickHandler).toHaveBeenCalledTimes(2)
     expect(dblclickHandler1).toHaveBeenCalledTimes(1)
