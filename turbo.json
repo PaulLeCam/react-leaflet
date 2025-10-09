@@ -1,6 +1,7 @@
 {
   "tasks": {
     "build:clean": {},
-    "build:js": {}
+    "build:js": {},
+    "test:unit": {}
   }
 }

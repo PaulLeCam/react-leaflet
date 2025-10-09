@@ -1,11 +1,12 @@
 import { renderHook } from '@testing-library/react'
 import type { Map } from 'leaflet'
-import React, { StrictMode, type ReactNode } from 'react'
+import { type ReactNode, StrictMode } from 'react'
+import * as React from 'react'
 
 import {
   CONTEXT_VERSION,
-  LeafletContext,
   createLeafletContext,
+  LeafletContext,
   useLeafletContext,
 } from '../src'
 

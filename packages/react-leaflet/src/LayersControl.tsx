@@ -1,10 +1,10 @@
 import {
-  LeafletContext,
   createContainerComponent,
   createControlHook,
   createElementHook,
   createElementObject,
   extendContext,
+  LeafletContext,
   useLeafletContext,
 } from '@react-leaflet/core'
 import { Control, type Layer } from 'leaflet'

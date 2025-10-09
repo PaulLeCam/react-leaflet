@@ -1,8 +1,8 @@
 import {
-  type MediaOverlayProps,
   createElementObject,
   createLayerComponent,
   extendContext,
+  type MediaOverlayProps,
   updateMediaOverlay,
 } from '@react-leaflet/core'
 import {

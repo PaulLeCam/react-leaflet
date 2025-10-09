@@ -1,10 +1,11 @@
-import { latLngBounds } from 'leaflet'
+import { jest } from '@jest/globals'
+import { LatLngBounds } from 'leaflet'
 
 import { updateMediaOverlay } from '../src'
 
 describe('media-overlay', () => {
   test('updateMediaOverlay() updates the bounds', () => {
-    const bounds = latLngBounds([10, 10], [20, 20])
+    const bounds = new LatLngBounds([10, 10], [20, 20])
     const overlay = {
       setBounds: jest.fn(),
     }
@@ -17,7 +18,7 @@ describe('media-overlay', () => {
     updateMediaOverlay(overlay, { bounds: [] }, { bounds })
     expect(overlay.setBounds).toHaveBeenCalledTimes(0)
 
-    const newBounds = latLngBounds([11, 11], [20, 20])
+    const newBounds = new LatLngBounds([11, 11], [20, 20])
     updateMediaOverlay(overlay, { bounds: newBounds }, { bounds })
     expect(overlay.setBounds).toHaveBeenCalledTimes(1)
     expect(overlay.setBounds).toHaveBeenCalledWith(newBounds)
