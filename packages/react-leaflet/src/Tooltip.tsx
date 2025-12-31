@@ -12,7 +12,7 @@ import {
   type TooltipEvent,
   type TooltipOptions,
 } from 'leaflet'
-import { type ReactNode, useEffect } from 'react'
+import { type ReactNode, useLayoutEffect } from 'react'
 
 export interface TooltipProps extends TooltipOptions, EventedProps {
   children?: ReactNode
@@ -30,7 +30,7 @@ export const Tooltip = createOverlayComponent<LeafletTooltip, TooltipProps>(
     { position }: TooltipProps,
     setOpen: SetOpenFunc,
   ) {
-    useEffect(
+    useLayoutEffect(
       function addTooltip() {
         const container = context.overlayContainer
         if (container == null) {

@@ -9,8 +9,8 @@ import {
   forwardRef,
   type ReactNode,
   type Ref,
-  useEffect,
   useImperativeHandle,
+  useLayoutEffect,
   useMemo,
   useState,
 } from 'react'
@@ -85,7 +85,7 @@ function PaneComponent(props: PaneProps, forwardedRef: Ref<PaneRef>) {
   const newContext = useMemo(() => ({ ...context, pane: paneName }), [context])
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: lifecycle-only effect
-  useEffect(() => {
+  useLayoutEffect(() => {
     setPaneElement(createPane(paneName, props, context))
 
     return function removeCreatedPane() {

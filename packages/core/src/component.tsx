@@ -4,8 +4,8 @@ import {
   type ReactNode,
   type Ref,
   type RefObject,
-  useEffect,
   useImperativeHandle,
+  useLayoutEffect,
   useState,
 } from 'react'
 import { createPortal } from 'react-dom'
@@ -46,7 +46,7 @@ export function createDivOverlayComponent<
 
     useImperativeHandle(forwardedRef, () => instance)
     // biome-ignore lint/correctness/useExhaustiveDependencies: update overlay when children change
-    useEffect(
+    useLayoutEffect(
       function updateOverlay() {
         if (isOpen) {
           instance.update()

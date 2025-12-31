@@ -1,5 +1,5 @@
 import type { Map as LeafletMap } from 'leaflet'
-import { useEffect, useRef } from 'react'
+import { useLayoutEffect, useRef } from 'react'
 
 export function useAttribution(
   map: LeafletMap,
@@ -7,7 +7,7 @@ export function useAttribution(
 ) {
   const attributionRef = useRef(attribution)
 
-  useEffect(
+  useLayoutEffect(
     function updateAttribution() {
       if (
         attribution !== attributionRef.current &&

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "packageManager": "pnpm@10.14.0",
+  "packageManager": "pnpm@10.27.0",
   "devEngines": {
     "runtime": {
       "name": "node",
@@ -18,22 +18,22 @@
     "build": "turbo run build:clean && pnpm run -r build:types && turbo run build:js"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.2.0",
+    "@biomejs/biome": "^2.3.10",
     "@skypack/package-check": "^0.2.2",
-    "@swc/cli": "^0.7.8",
-    "@swc/core": "^1.13.3",
+    "@swc/cli": "^0.7.9",
+    "@swc/core": "^1.15.8",
     "@swc/jest": "^0.2.39",
-    "@testing-library/react": "^16.3.0",
+    "@testing-library/react": "^16.3.1",
     "@types/jest": "^30.0.0",
     "@types/leaflet": "catalog:",
     "@types/warning": "^3.0.3",
-    "del-cli": "^6.0.0",
-    "jest": "^30.0.5",
-    "jest-environment-jsdom": "^30.0.5",
+    "del-cli": "^7.0.0",
+    "jest": "^30.2.0",
+    "jest-environment-jsdom": "^30.2.0",
     "leaflet": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
-    "turbo": "^2.5.6",
+    "turbo": "^2.7.2",
     "typescript": "catalog:"
   },
   "jest": {

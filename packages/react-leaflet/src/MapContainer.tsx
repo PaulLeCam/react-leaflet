@@ -15,8 +15,8 @@ import {
   type ReactNode,
   type Ref,
   useCallback,
-  useEffect,
   useImperativeHandle,
+  useLayoutEffect,
   useRef,
   useState,
 } from 'react'
@@ -31,7 +31,6 @@ export interface MapContainerProps extends MapOptions {
   id?: string
   placeholder?: ReactNode
   style?: CSSProperties
-  whenReady?: () => void
 }
 
 function MapContainerComponent<
@@ -46,7 +45,6 @@ function MapContainerComponent<
     id,
     placeholder,
     style,
-    whenReady,
     zoom,
     ...options
   }: Props,
@@ -71,16 +69,24 @@ function MapContainerComponent<
       } else if (bounds != null) {
         map.fitBounds(bounds, boundsOptions)
       }
-      if (whenReady != null) {
-        map.whenReady(whenReady)
-      }
       setContext(createLeafletContext(map))
     }
   }, [])
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     return () => {
-      context?.map.remove()
+      const map = context?.map
+      // @ts-expect-error map internals
+      const containerId = map?._containerId
+      // @ts-expect-error map internals
+      const containerLeafletId = map?._container?._leaflet_id
+      if (
+        map != null &&
+        containerId != null &&
+        containerId === containerLeafletId
+      ) {
+        map.remove()
+      }
     }
   }, [context])
 

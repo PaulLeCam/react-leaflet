@@ -1,4 +1,4 @@
-import { type RefObject, useEffect, useRef } from 'react'
+import { type RefObject, useLayoutEffect, useRef } from 'react'
 
 import type { LeafletContextInterface } from './context.js'
 
@@ -53,7 +53,7 @@ export function createElementHook<E, P, C = unknown>(
     const propsRef = useRef<P>(props)
     const { instance } = elementRef.current
 
-    useEffect(
+    useLayoutEffect(
       function updateElementProps() {
         if (propsRef.current !== props) {
           updateElement(instance, props, propsRef.current)

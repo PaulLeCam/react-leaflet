@@ -1,5 +1,5 @@
 import type { InteractiveLayerOptions, Layer, LayerOptions } from 'leaflet'
-import { useEffect } from 'react'
+import { useLayoutEffect } from 'react'
 
 import { useAttribution } from './attribution.js'
 import { type LeafletContextInterface, useLeafletContext } from './context.js'
@@ -16,7 +16,7 @@ export function useLayerLifecycle(
   element: LeafletElement<Layer>,
   context: LeafletContextInterface,
 ) {
-  useEffect(
+  useLayoutEffect(
     function addLayer() {
       const container = context.layerContainer ?? context.map
       container.addLayer(element.instance)

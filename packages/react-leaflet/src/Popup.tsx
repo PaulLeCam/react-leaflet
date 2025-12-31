@@ -12,7 +12,7 @@ import {
   type PopupEvent,
   type PopupOptions,
 } from 'leaflet'
-import { type ReactNode, useEffect } from 'react'
+import { type ReactNode, useLayoutEffect } from 'react'
 
 export interface PopupProps extends PopupOptions, EventedProps {
   children?: ReactNode
@@ -30,7 +30,7 @@ export const Popup = createOverlayComponent<LeafletPopup, PopupProps>(
     { position }: PopupProps,
     setOpen: SetOpenFunc,
   ) {
-    useEffect(
+    useLayoutEffect(
       function addPopup() {
         const { instance } = element
 

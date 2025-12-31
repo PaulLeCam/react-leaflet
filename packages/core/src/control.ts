@@ -1,5 +1,5 @@
 import type { Control, ControlOptions } from 'leaflet'
-import { useEffect, useRef } from 'react'
+import { useLayoutEffect, useRef } from 'react'
 
 import { useLeafletContext } from './context.js'
 import type { ElementHook } from './element.js'
@@ -14,7 +14,7 @@ export function createControlHook<E extends Control, P extends ControlOptions>(
     const positionRef = useRef(props.position)
     const { position } = props
 
-    useEffect(
+    useLayoutEffect(
       function addControl() {
         instance.addTo(context.map)
 
@@ -25,7 +25,7 @@ export function createControlHook<E extends Control, P extends ControlOptions>(
       [context.map, instance],
     )
 
-    useEffect(
+    useLayoutEffect(
       function updateControl() {
         if (position != null && position !== positionRef.current) {
           instance.setPosition(position)

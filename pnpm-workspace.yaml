@@ -3,13 +3,13 @@ packages:
   - packages/*
 
 catalog:
-  '@types/leaflet': ^1.9.20
-  '@types/react': ^19.1.10
-  '@types/react-dom': ^19.1.7
+  '@types/leaflet': ^1.9.21
+  '@types/react': ^19.2.7
+  '@types/react-dom': ^19.2.3
   leaflet: 2.0.0-alpha.1
-  react: ^19.1.1
-  react-dom: ^19.1.1
-  typescript: ^5.9.2
+  react: ^19.2.3
+  react-dom: ^19.2.3
+  typescript: ^5.9.3
 
 onlyBuiltDependencies:
   - '@swc/core'
