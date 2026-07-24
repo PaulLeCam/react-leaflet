@@ -1,5 +1,5 @@
 name: CI
-on: [push, pull_request]
+on: [push]
 jobs:
   build:
     name: Node ${{ matrix.node }}
@@ -16,7 +16,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
-          run_install: false
+          run_install: true
 
       - name: Use Node ${{ matrix.node }}
         uses: actions/setup-node@v4
