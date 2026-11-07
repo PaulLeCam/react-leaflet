@@ -11,6 +11,7 @@ export {
 } from './component.js'
 export {
   CONTEXT_VERSION,
+  type ControlledLayer,
   createLeafletContext,
   extendContext,
   LeafletContext,

@@ -3,8 +3,9 @@
 exports[`TileLayer renders 1`] = `
 <div>
   <div
-    aria-keyshortcuts="ArrowLeft ArrowRight ArrowDown ArrowUp Equal NumpadAdd BracketRight Minus NumpadSubtract Digit6 Slash"
+    aria-label="Map"
     class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
+    role="region"
     style="position: relative;"
     tabindex="0"
   >
@@ -27,25 +28,25 @@ exports[`TileLayer renders 1`] = `
               alt=""
               class="leaflet-tile"
               src="http://localhost"
-              style="width: 256px; height: 256px; transform: translate3d(-256px,-256px,0);"
+              style="width: 256px; height: 256px; transform: translate(-256px,-256px);"
             />
             <img
               alt=""
               class="leaflet-tile"
               src="http://localhost"
-              style="width: 256px; height: 256px; transform: translate3d(0px,-256px,0);"
+              style="width: 256px; height: 256px; transform: translate(0px,-256px);"
             />
             <img
               alt=""
               class="leaflet-tile"
               src="http://localhost"
-              style="width: 256px; height: 256px; transform: translate3d(-256px,0px,0);"
+              style="width: 256px; height: 256px; transform: translate(-256px,0px);"
             />
             <img
               alt=""
               class="leaflet-tile"
               src="http://localhost"
-              style="width: 256px; height: 256px; transform: translate3d(0px,0px,0);"
+              style="width: 256px; height: 256px; transform: translate(0px,0px);"
             />
           </div>
         </div>
@@ -87,11 +88,17 @@ exports[`TileLayer renders 1`] = `
             role="button"
             title="Zoom in"
           >
-            <span
+            <svg
               aria-hidden="true"
+              height="12"
+              stroke="currentColor"
+              stroke-width="2"
+              width="12"
             >
-              +
-            </span>
+              <path
+                d="M0 6h12M6 0v12"
+              />
+            </svg>
           </a>
           <a
             aria-disabled="false"
@@ -101,11 +108,17 @@ exports[`TileLayer renders 1`] = `
             role="button"
             title="Zoom out"
           >
-            <span
+            <svg
               aria-hidden="true"
+              height="12"
+              stroke="currentColor"
+              stroke-width="2"
+              width="12"
             >
-              −
-            </span>
+              <path
+                d="M0 6h12"
+              />
+            </svg>
           </a>
         </div>
       </div>
@@ -132,7 +145,6 @@ exports[`TileLayer renders 1`] = `
               height="8"
               viewBox="0 0 12 8"
               width="12"
-              xmlns="http://www.w3.org/2000/svg"
             >
               <path
                 d="M0 0h12v4H0z"
@@ -166,8 +178,9 @@ exports[`TileLayer renders 1`] = `
 exports[`TileLayer renders 2`] = `
 <div>
   <div
-    aria-keyshortcuts="ArrowLeft ArrowRight ArrowDown ArrowUp Equal NumpadAdd BracketRight Minus NumpadSubtract Digit6 Slash"
+    aria-label="Map"
     class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
+    role="region"
     style="position: relative;"
     tabindex="0"
   >
@@ -190,25 +203,25 @@ exports[`TileLayer renders 2`] = `
               alt=""
               class="leaflet-tile"
               src="http://localhost?with_parameter=changed"
-              style="width: 256px; height: 256px; transform: translate3d(-256px,-256px,0);"
+              style="width: 256px; height: 256px; transform: translate(-256px,-256px);"
             />
             <img
               alt=""
               class="leaflet-tile"
               src="http://localhost?with_parameter=changed"
-              style="width: 256px; height: 256px; transform: translate3d(0px,-256px,0);"
+              style="width: 256px; height: 256px; transform: translate(0px,-256px);"
             />
             <img
               alt=""
               class="leaflet-tile"
               src="http://localhost?with_parameter=changed"
-              style="width: 256px; height: 256px; transform: translate3d(-256px,0px,0);"
+              style="width: 256px; height: 256px; transform: translate(-256px,0px);"
             />
             <img
               alt=""
               class="leaflet-tile"
               src="http://localhost?with_parameter=changed"
-              style="width: 256px; height: 256px; transform: translate3d(0px,0px,0);"
+              style="width: 256px; height: 256px; transform: translate(0px,0px);"
             />
           </div>
         </div>
@@ -250,11 +263,17 @@ exports[`TileLayer renders 2`] = `
             role="button"
             title="Zoom in"
           >
-            <span
+            <svg
               aria-hidden="true"
+              height="12"
+              stroke="currentColor"
+              stroke-width="2"
+              width="12"
             >
-              +
-            </span>
+              <path
+                d="M0 6h12M6 0v12"
+              />
+            </svg>
           </a>
           <a
             aria-disabled="false"
@@ -264,11 +283,17 @@ exports[`TileLayer renders 2`] = `
             role="button"
             title="Zoom out"
           >
-            <span
+            <svg
               aria-hidden="true"
+              height="12"
+              stroke="currentColor"
+              stroke-width="2"
+              width="12"
             >
-              −
-            </span>
+              <path
+                d="M0 6h12"
+              />
+            </svg>
           </a>
         </div>
       </div>
@@ -295,7 +320,6 @@ exports[`TileLayer renders 2`] = `
               height="8"
               viewBox="0 0 12 8"
               width="12"
-              xmlns="http://www.w3.org/2000/svg"
             >
               <path
                 d="M0 0h12v4H0z"

@@ -20,7 +20,7 @@ export interface CircleProps extends CircleOptions, PathProps {
 }
 
 export function updateCircle<P extends CircleMarkerProps | CircleProps>(
-  layer: LeafletCircle<P> | LeafletCircleMarker<P>,
+  layer: LeafletCircle | LeafletCircleMarker,
   props: P,
   prevProps: P,
 ) {

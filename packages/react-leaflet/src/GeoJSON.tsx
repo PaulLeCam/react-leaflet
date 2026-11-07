@@ -4,7 +4,7 @@ import {
   extendContext,
   type PathProps,
 } from '@react-leaflet/core'
-import type { GeoJsonObject } from 'geojson'
+import type { GeoJSON as GeoJSONData } from 'geojson'
 import { type GeoJSONOptions, GeoJSON as LeafletGeoJSON } from 'leaflet'
 
 import type { LayerGroupProps } from './LayerGroup.js'
@@ -13,7 +13,7 @@ export interface GeoJSONProps
   extends GeoJSONOptions,
     LayerGroupProps,
     PathProps {
-  data: GeoJsonObject
+  data: GeoJSONData
 }
 
 export const GeoJSON = createPathComponent<LeafletGeoJSON, GeoJSONProps>(

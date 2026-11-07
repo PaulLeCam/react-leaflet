@@ -3,8 +3,9 @@
 exports[`Pane can unmount and remount with the same name 1`] = `
 <div>
   <div
-    aria-keyshortcuts="ArrowLeft ArrowRight ArrowDown ArrowUp Equal NumpadAdd BracketRight Minus NumpadSubtract Digit6 Slash"
+    aria-label="Map"
     class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
+    role="region"
     style="position: relative;"
     tabindex="0"
   >
@@ -54,25 +55,25 @@ exports[`Pane can unmount and remount with the same name 1`] = `
                 alt=""
                 class="leaflet-tile"
                 src="http://localhost/nested"
-                style="width: 256px; height: 256px; transform: translate3d(-256px,-256px,0);"
+                style="width: 256px; height: 256px; transform: translate(-256px,-256px);"
               />
               <img
                 alt=""
                 class="leaflet-tile"
                 src="http://localhost/nested"
-                style="width: 256px; height: 256px; transform: translate3d(0px,-256px,0);"
+                style="width: 256px; height: 256px; transform: translate(0px,-256px);"
               />
               <img
                 alt=""
                 class="leaflet-tile"
                 src="http://localhost/nested"
-                style="width: 256px; height: 256px; transform: translate3d(-256px,0px,0);"
+                style="width: 256px; height: 256px; transform: translate(-256px,0px);"
               />
               <img
                 alt=""
                 class="leaflet-tile"
                 src="http://localhost/nested"
-                style="width: 256px; height: 256px; transform: translate3d(0px,0px,0);"
+                style="width: 256px; height: 256px; transform: translate(0px,0px);"
               />
             </div>
           </div>
@@ -89,25 +90,25 @@ exports[`Pane can unmount and remount with the same name 1`] = `
               alt=""
               class="leaflet-tile"
               src="http://localhost/not-nested"
-              style="width: 256px; height: 256px; transform: translate3d(-256px,-256px,0);"
+              style="width: 256px; height: 256px; transform: translate(-256px,-256px);"
             />
             <img
               alt=""
               class="leaflet-tile"
               src="http://localhost/not-nested"
-              style="width: 256px; height: 256px; transform: translate3d(0px,-256px,0);"
+              style="width: 256px; height: 256px; transform: translate(0px,-256px);"
             />
             <img
               alt=""
               class="leaflet-tile"
               src="http://localhost/not-nested"
-              style="width: 256px; height: 256px; transform: translate3d(-256px,0px,0);"
+              style="width: 256px; height: 256px; transform: translate(-256px,0px);"
             />
             <img
               alt=""
               class="leaflet-tile"
               src="http://localhost/not-nested"
-              style="width: 256px; height: 256px; transform: translate3d(0px,0px,0);"
+              style="width: 256px; height: 256px; transform: translate(0px,0px);"
             />
           </div>
         </div>
@@ -130,11 +131,17 @@ exports[`Pane can unmount and remount with the same name 1`] = `
             role="button"
             title="Zoom in"
           >
-            <span
+            <svg
               aria-hidden="true"
+              height="12"
+              stroke="currentColor"
+              stroke-width="2"
+              width="12"
             >
-              +
-            </span>
+              <path
+                d="M0 6h12M6 0v12"
+              />
+            </svg>
           </a>
           <a
             aria-disabled="false"
@@ -144,11 +151,17 @@ exports[`Pane can unmount and remount with the same name 1`] = `
             role="button"
             title="Zoom out"
           >
-            <span
+            <svg
               aria-hidden="true"
+              height="12"
+              stroke="currentColor"
+              stroke-width="2"
+              width="12"
             >
-              −
-            </span>
+              <path
+                d="M0 6h12"
+              />
+            </svg>
           </a>
         </div>
       </div>
@@ -175,7 +188,6 @@ exports[`Pane can unmount and remount with the same name 1`] = `
               height="8"
               viewBox="0 0 12 8"
               width="12"
-              xmlns="http://www.w3.org/2000/svg"
             >
               <path
                 d="M0 0h12v4H0z"
@@ -209,8 +221,9 @@ exports[`Pane can unmount and remount with the same name 1`] = `
 exports[`Pane can unmount and remount with the same name 2`] = `
 <div>
   <div
-    aria-keyshortcuts="ArrowLeft ArrowRight ArrowDown ArrowUp Equal NumpadAdd BracketRight Minus NumpadSubtract Digit6 Slash"
+    aria-label="Map"
     class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
+    role="region"
     style="position: relative;"
     tabindex="0"
   >
@@ -258,11 +271,17 @@ exports[`Pane can unmount and remount with the same name 2`] = `
             role="button"
             title="Zoom in"
           >
-            <span
+            <svg
               aria-hidden="true"
+              height="12"
+              stroke="currentColor"
+              stroke-width="2"
+              width="12"
             >
-              +
-            </span>
+              <path
+                d="M0 6h12M6 0v12"
+              />
+            </svg>
           </a>
           <a
             aria-disabled="false"
@@ -272,11 +291,17 @@ exports[`Pane can unmount and remount with the same name 2`] = `
             role="button"
             title="Zoom out"
           >
-            <span
+            <svg
               aria-hidden="true"
+              height="12"
+              stroke="currentColor"
+              stroke-width="2"
+              width="12"
             >
-              −
-            </span>
+              <path
+                d="M0 6h12"
+              />
+            </svg>
           </a>
         </div>
       </div>
@@ -303,7 +328,6 @@ exports[`Pane can unmount and remount with the same name 2`] = `
               height="8"
               viewBox="0 0 12 8"
               width="12"
-              xmlns="http://www.w3.org/2000/svg"
             >
               <path
                 d="M0 0h12v4H0z"
@@ -330,8 +354,9 @@ exports[`Pane can unmount and remount with the same name 2`] = `
 exports[`Pane can unmount and remount with the same name 3`] = `
 <div>
   <div
-    aria-keyshortcuts="ArrowLeft ArrowRight ArrowDown ArrowUp Equal NumpadAdd BracketRight Minus NumpadSubtract Digit6 Slash"
+    aria-label="Map"
     class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
+    role="region"
     style="position: relative;"
     tabindex="0"
   >
@@ -381,25 +406,25 @@ exports[`Pane can unmount and remount with the same name 3`] = `
                 alt=""
                 class="leaflet-tile"
                 src="http://localhost/new-foo-nested"
-                style="width: 256px; height: 256px; transform: translate3d(-256px,-256px,0);"
+                style="width: 256px; height: 256px; transform: translate(-256px,-256px);"
               />
               <img
                 alt=""
                 class="leaflet-tile"
                 src="http://localhost/new-foo-nested"
-                style="width: 256px; height: 256px; transform: translate3d(0px,-256px,0);"
+                style="width: 256px; height: 256px; transform: translate(0px,-256px);"
               />
               <img
                 alt=""
                 class="leaflet-tile"
                 src="http://localhost/new-foo-nested"
-                style="width: 256px; height: 256px; transform: translate3d(-256px,0px,0);"
+                style="width: 256px; height: 256px; transform: translate(-256px,0px);"
               />
               <img
                 alt=""
                 class="leaflet-tile"
                 src="http://localhost/new-foo-nested"
-                style="width: 256px; height: 256px; transform: translate3d(0px,0px,0);"
+                style="width: 256px; height: 256px; transform: translate(0px,0px);"
               />
             </div>
           </div>
@@ -416,25 +441,25 @@ exports[`Pane can unmount and remount with the same name 3`] = `
               alt=""
               class="leaflet-tile"
               src="http://localhost/new-bar-not-nested"
-              style="width: 256px; height: 256px; transform: translate3d(-256px,-256px,0);"
+              style="width: 256px; height: 256px; transform: translate(-256px,-256px);"
             />
             <img
               alt=""
               class="leaflet-tile"
               src="http://localhost/new-bar-not-nested"
-              style="width: 256px; height: 256px; transform: translate3d(0px,-256px,0);"
+              style="width: 256px; height: 256px; transform: translate(0px,-256px);"
             />
             <img
               alt=""
               class="leaflet-tile"
               src="http://localhost/new-bar-not-nested"
-              style="width: 256px; height: 256px; transform: translate3d(-256px,0px,0);"
+              style="width: 256px; height: 256px; transform: translate(-256px,0px);"
             />
             <img
               alt=""
               class="leaflet-tile"
               src="http://localhost/new-bar-not-nested"
-              style="width: 256px; height: 256px; transform: translate3d(0px,0px,0);"
+              style="width: 256px; height: 256px; transform: translate(0px,0px);"
             />
           </div>
         </div>
@@ -457,11 +482,17 @@ exports[`Pane can unmount and remount with the same name 3`] = `
             role="button"
             title="Zoom in"
           >
-            <span
+            <svg
               aria-hidden="true"
+              height="12"
+              stroke="currentColor"
+              stroke-width="2"
+              width="12"
             >
-              +
-            </span>
+              <path
+                d="M0 6h12M6 0v12"
+              />
+            </svg>
           </a>
           <a
             aria-disabled="false"
@@ -471,11 +502,17 @@ exports[`Pane can unmount and remount with the same name 3`] = `
             role="button"
             title="Zoom out"
           >
-            <span
+            <svg
               aria-hidden="true"
+              height="12"
+              stroke="currentColor"
+              stroke-width="2"
+              width="12"
             >
-              −
-            </span>
+              <path
+                d="M0 6h12"
+              />
+            </svg>
           </a>
         </div>
       </div>
@@ -502,7 +539,6 @@ exports[`Pane can unmount and remount with the same name 3`] = `
               height="8"
               viewBox="0 0 12 8"
               width="12"
-              xmlns="http://www.w3.org/2000/svg"
             >
               <path
                 d="M0 0h12v4H0z"
@@ -536,8 +572,9 @@ exports[`Pane can unmount and remount with the same name 3`] = `
 exports[`Pane renders 1`] = `
 <div>
   <div
-    aria-keyshortcuts="ArrowLeft ArrowRight ArrowDown ArrowUp Equal NumpadAdd BracketRight Minus NumpadSubtract Digit6 Slash"
+    aria-label="Map"
     class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
+    role="region"
     style="position: relative;"
     tabindex="0"
   >
@@ -583,25 +620,25 @@ exports[`Pane renders 1`] = `
               alt=""
               class="leaflet-tile"
               src="http://localhost"
-              style="width: 256px; height: 256px; transform: translate3d(-256px,-256px,0);"
+              style="width: 256px; height: 256px; transform: translate(-256px,-256px);"
             />
             <img
               alt=""
               class="leaflet-tile"
               src="http://localhost"
-              style="width: 256px; height: 256px; transform: translate3d(0px,-256px,0);"
+              style="width: 256px; height: 256px; transform: translate(0px,-256px);"
             />
             <img
               alt=""
               class="leaflet-tile"
               src="http://localhost"
-              style="width: 256px; height: 256px; transform: translate3d(-256px,0px,0);"
+              style="width: 256px; height: 256px; transform: translate(-256px,0px);"
             />
             <img
               alt=""
               class="leaflet-tile"
               src="http://localhost"
-              style="width: 256px; height: 256px; transform: translate3d(0px,0px,0);"
+              style="width: 256px; height: 256px; transform: translate(0px,0px);"
             />
           </div>
         </div>
@@ -624,11 +661,17 @@ exports[`Pane renders 1`] = `
             role="button"
             title="Zoom in"
           >
-            <span
+            <svg
               aria-hidden="true"
+              height="12"
+              stroke="currentColor"
+              stroke-width="2"
+              width="12"
             >
-              +
-            </span>
+              <path
+                d="M0 6h12M6 0v12"
+              />
+            </svg>
           </a>
           <a
             aria-disabled="false"
@@ -638,11 +681,17 @@ exports[`Pane renders 1`] = `
             role="button"
             title="Zoom out"
           >
-            <span
+            <svg
               aria-hidden="true"
+              height="12"
+              stroke="currentColor"
+              stroke-width="2"
+              width="12"
             >
-              −
-            </span>
+              <path
+                d="M0 6h12"
+              />
+            </svg>
           </a>
         </div>
       </div>
@@ -669,7 +718,6 @@ exports[`Pane renders 1`] = `
               height="8"
               viewBox="0 0 12 8"
               width="12"
-              xmlns="http://www.w3.org/2000/svg"
             >
               <path
                 d="M0 0h12v4H0z"
@@ -703,8 +751,9 @@ exports[`Pane renders 1`] = `
 exports[`Pane renders in Strict Mode 1`] = `
 <div>
   <div
-    aria-keyshortcuts="ArrowLeft ArrowRight ArrowDown ArrowUp Equal NumpadAdd BracketRight Minus NumpadSubtract Digit6 Slash"
+    aria-label="Map"
     class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
+    role="region"
     style="position: relative;"
     tabindex="0"
   >
@@ -750,25 +799,25 @@ exports[`Pane renders in Strict Mode 1`] = `
               alt=""
               class="leaflet-tile"
               src="http://localhost"
-              style="width: 256px; height: 256px; transform: translate3d(-256px,-256px,0);"
+              style="width: 256px; height: 256px; transform: translate(-256px,-256px);"
             />
             <img
               alt=""
               class="leaflet-tile"
               src="http://localhost"
-              style="width: 256px; height: 256px; transform: translate3d(0px,-256px,0);"
+              style="width: 256px; height: 256px; transform: translate(0px,-256px);"
             />
             <img
               alt=""
               class="leaflet-tile"
               src="http://localhost"
-              style="width: 256px; height: 256px; transform: translate3d(-256px,0px,0);"
+              style="width: 256px; height: 256px; transform: translate(-256px,0px);"
             />
             <img
               alt=""
               class="leaflet-tile"
               src="http://localhost"
-              style="width: 256px; height: 256px; transform: translate3d(0px,0px,0);"
+              style="width: 256px; height: 256px; transform: translate(0px,0px);"
             />
           </div>
         </div>
@@ -791,11 +840,17 @@ exports[`Pane renders in Strict Mode 1`] = `
             role="button"
             title="Zoom in"
           >
-            <span
+            <svg
               aria-hidden="true"
+              height="12"
+              stroke="currentColor"
+              stroke-width="2"
+              width="12"
             >
-              +
-            </span>
+              <path
+                d="M0 6h12M6 0v12"
+              />
+            </svg>
           </a>
           <a
             aria-disabled="false"
@@ -805,11 +860,17 @@ exports[`Pane renders in Strict Mode 1`] = `
             role="button"
             title="Zoom out"
           >
-            <span
+            <svg
               aria-hidden="true"
+              height="12"
+              stroke="currentColor"
+              stroke-width="2"
+              width="12"
             >
-              −
-            </span>
+              <path
+                d="M0 6h12"
+              />
+            </svg>
           </a>
         </div>
       </div>
@@ -836,7 +897,6 @@ exports[`Pane renders in Strict Mode 1`] = `
               height="8"
               viewBox="0 0 12 8"
               width="12"
-              xmlns="http://www.w3.org/2000/svg"
             >
               <path
                 d="M0 0h12v4H0z"
@@ -870,8 +930,9 @@ exports[`Pane renders in Strict Mode 1`] = `
 exports[`Pane renders nested panes 1`] = `
 <div>
   <div
-    aria-keyshortcuts="ArrowLeft ArrowRight ArrowDown ArrowUp Equal NumpadAdd BracketRight Minus NumpadSubtract Digit6 Slash"
+    aria-label="Map"
     class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
+    role="region"
     style="position: relative;"
     tabindex="0"
   >
@@ -921,25 +982,25 @@ exports[`Pane renders nested panes 1`] = `
                 alt=""
                 class="leaflet-tile"
                 src="http://localhost/nested"
-                style="width: 256px; height: 256px; transform: translate3d(-256px,-256px,0);"
+                style="width: 256px; height: 256px; transform: translate(-256px,-256px);"
               />
               <img
                 alt=""
                 class="leaflet-tile"
                 src="http://localhost/nested"
-                style="width: 256px; height: 256px; transform: translate3d(0px,-256px,0);"
+                style="width: 256px; height: 256px; transform: translate(0px,-256px);"
               />
               <img
                 alt=""
                 class="leaflet-tile"
                 src="http://localhost/nested"
-                style="width: 256px; height: 256px; transform: translate3d(-256px,0px,0);"
+                style="width: 256px; height: 256px; transform: translate(-256px,0px);"
               />
               <img
                 alt=""
                 class="leaflet-tile"
                 src="http://localhost/nested"
-                style="width: 256px; height: 256px; transform: translate3d(0px,0px,0);"
+                style="width: 256px; height: 256px; transform: translate(0px,0px);"
               />
             </div>
           </div>
@@ -956,25 +1017,25 @@ exports[`Pane renders nested panes 1`] = `
               alt=""
               class="leaflet-tile"
               src="http://localhost/not-nested"
-              style="width: 256px; height: 256px; transform: translate3d(-256px,-256px,0);"
+              style="width: 256px; height: 256px; transform: translate(-256px,-256px);"
             />
             <img
               alt=""
               class="leaflet-tile"
               src="http://localhost/not-nested"
-              style="width: 256px; height: 256px; transform: translate3d(0px,-256px,0);"
+              style="width: 256px; height: 256px; transform: translate(0px,-256px);"
             />
             <img
               alt=""
               class="leaflet-tile"
               src="http://localhost/not-nested"
-              style="width: 256px; height: 256px; transform: translate3d(-256px,0px,0);"
+              style="width: 256px; height: 256px; transform: translate(-256px,0px);"
             />
             <img
               alt=""
               class="leaflet-tile"
               src="http://localhost/not-nested"
-              style="width: 256px; height: 256px; transform: translate3d(0px,0px,0);"
+              style="width: 256px; height: 256px; transform: translate(0px,0px);"
             />
           </div>
         </div>
@@ -997,11 +1058,17 @@ exports[`Pane renders nested panes 1`] = `
             role="button"
             title="Zoom in"
           >
-            <span
+            <svg
               aria-hidden="true"
+              height="12"
+              stroke="currentColor"
+              stroke-width="2"
+              width="12"
             >
-              +
-            </span>
+              <path
+                d="M0 6h12M6 0v12"
+              />
+            </svg>
           </a>
           <a
             aria-disabled="false"
@@ -1011,11 +1078,17 @@ exports[`Pane renders nested panes 1`] = `
             role="button"
             title="Zoom out"
           >
-            <span
+            <svg
               aria-hidden="true"
+              height="12"
+              stroke="currentColor"
+              stroke-width="2"
+              width="12"
             >
-              −
-            </span>
+              <path
+                d="M0 6h12"
+              />
+            </svg>
           </a>
         </div>
       </div>
@@ -1042,7 +1115,6 @@ exports[`Pane renders nested panes 1`] = `
               height="8"
               viewBox="0 0 12 8"
               width="12"
-              xmlns="http://www.w3.org/2000/svg"
             >
               <path
                 d="M0 0h12v4H0z"

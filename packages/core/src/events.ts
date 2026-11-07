@@ -1,5 +1,7 @@
-import type { Evented, LeafletEventHandlerFnMap } from 'leaflet'
+import type { Evented, LeafletEventHandlerFn } from 'leaflet'
 import { useEffect, useRef } from 'react'
+
+export type LeafletEventHandlerFnMap = Record<string, LeafletEventHandlerFn>
 
 import type { LeafletElement } from './element.js'
 

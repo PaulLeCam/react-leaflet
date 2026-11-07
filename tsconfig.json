@@ -1,10 +1,9 @@
 {
   "extends": "./tsconfig.build.json",
   "compilerOptions": {
-    "baseUrl": "./packages",
     "paths": {
-      "@react-leaflet/core": ["core/src"],
-      "react-leaflet": ["react-leaflet/src"]
+      "@react-leaflet/core": ["./packages/core/src"],
+      "react-leaflet": ["./packages/react-leaflet/src"]
     }
   }
 }

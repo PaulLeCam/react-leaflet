@@ -2,16 +2,21 @@ packages:
   - example
   - packages/*
 
+allowBuilds:
+  "@parcel/watcher": true
+  "@swc/core": true
+  esbuild: true
+
 catalog:
-  '@types/leaflet': ^1.9.21
-  '@types/react': ^19.2.7
-  '@types/react-dom': ^19.2.3
-  leaflet: 2.0.0-alpha.1
-  react: ^19.2.3
-  react-dom: ^19.2.3
-  typescript: ^5.9.3
+  "@types/leaflet": ^1.9.22
+  "@types/react": ^19.3.0
+  "@types/react-dom": ^19.3.0
+  leaflet: 2.0.0-beta.2
+  react: ^19.3.1
+  react-dom: ^19.3.1
+  typescript: ^7.0.2
 
 onlyBuiltDependencies:
-  - '@swc/core'
+  - "@swc/core"
   - esbuild
   - unrs-resolver

@@ -53,6 +53,7 @@ export function createElementHook<E, P, C = unknown>(
     const propsRef = useRef<P>(props)
     const { instance } = elementRef.current
 
+    // biome-ignore lint/correctness/useExhaustiveDependencies: updateElement is a stable factory argument
     useLayoutEffect(
       function updateElementProps() {
         if (propsRef.current !== props) {

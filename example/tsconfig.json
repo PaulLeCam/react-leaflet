@@ -3,10 +3,10 @@
     "jsx": "react-jsx",
     "jsxImportSource": "react",
     "lib": ["dom", "es2024"],
-    "moduleResolution": "node",
+    "module": "esnext",
+    "moduleResolution": "bundler",
     "strict": true,
     "target": "es2024",
-    "baseUrl": "./",
     "paths": {
       "react-leaflet": ["../packages/react-leaflet/src"]
     }

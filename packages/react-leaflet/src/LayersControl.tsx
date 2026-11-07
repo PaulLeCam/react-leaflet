@@ -7,7 +7,11 @@ import {
   LeafletContext,
   useLeafletContext,
 } from '@react-leaflet/core'
-import { Control, type Layer } from 'leaflet'
+import {
+  type Layer,
+  type LayersControlOptions,
+  LayersControl as LeafletLayersControl,
+} from 'leaflet'
 import {
   type ForwardRefExoticComponent,
   type FunctionComponent,
@@ -20,16 +24,16 @@ import {
   useState,
 } from 'react'
 
-export interface LayersControlProps extends Control.LayersOptions {
+export interface LayersControlProps extends LayersControlOptions {
   children?: ReactNode
 }
 
 export const useLayersControlElement = createElementHook<
-  Control.Layers,
+  LeafletLayersControl,
   LayersControlProps
 >(
   function createLayersControl({ children: _c, ...options }, ctx) {
-    const control = new Control.Layers(undefined, undefined, options)
+    const control = new LeafletLayersControl(undefined, undefined, options)
     return createElementObject(
       control,
       extendContext(ctx, { layersControl: control }),
@@ -56,14 +60,14 @@ export interface ControlledLayerProps {
 
 // @ts-expect-error
 export const LayersControl: ForwardRefExoticComponent<
-  LayersControlProps & RefAttributes<Control.Layers>
+  LayersControlProps & RefAttributes<LeafletLayersControl>
 > & {
   BaseLayer: FunctionComponent<ControlledLayerProps>
   Overlay: FunctionComponent<ControlledLayerProps>
 } = createContainerComponent(useLayersControl)
 
 type AddLayerFunc = (
-  layersControl: Control.Layers,
+  layersControl: LeafletLayersControl,
   layer: Layer,
   name: string,
 ) => void
@@ -75,6 +79,7 @@ export function createControlledLayer(addLayerToControl: AddLayerFunc) {
     const [layer, setLayer] = useState<Layer | null>(null)
 
     const { layersControl, map } = parentContext
+    // biome-ignore lint/correctness/useExhaustiveDependencies: addLayerToControl is a stable factory argument
     const addLayer = useCallback(
       (layerToAdd: Layer) => {
         if (layersControl != null) {
@@ -125,7 +130,7 @@ export function createControlledLayer(addLayerToControl: AddLayerFunc) {
 }
 
 LayersControl.BaseLayer = createControlledLayer(function addBaseLayer(
-  layersControl: Control.Layers,
+  layersControl: LeafletLayersControl,
   layer: Layer,
   name: string,
 ) {
@@ -133,7 +138,7 @@ LayersControl.BaseLayer = createControlledLayer(function addBaseLayer(
 })
 
 LayersControl.Overlay = createControlledLayer(function addOverlay(
-  layersControl: Control.Layers,
+  layersControl: LeafletLayersControl,
   layer: Layer,
   name: string,
 ) {

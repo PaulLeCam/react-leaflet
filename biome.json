@@ -22,7 +22,10 @@
     "enabled": true,
     "includes": ["**", "!**/__tests__/**"],
     "rules": {
-      "recommended": true,
+      "preset": "recommended",
+      "correctness": {
+        "noComponentHookFactories": "off"
+      },
       "style": {
         "noParameterAssign": "error",
         "useAsConstAssertion": "error",

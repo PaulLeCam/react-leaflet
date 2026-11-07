@@ -92,13 +92,11 @@ function PaneComponent(props: PaneProps, forwardedRef: Ref<PaneRef>) {
       const pane = context.map.getPane(paneName)
       pane?.remove?.()
 
-      // @ts-expect-error map internals
       if (context.map._panes != null) {
         // @ts-expect-error map internals
         context.map._panes = omitPane(context.map._panes, paneName)
         // @ts-expect-error map internals
         context.map._paneRenderers = omitPane(
-          // @ts-expect-error map internals
           context.map._paneRenderers,
           paneName,
         )

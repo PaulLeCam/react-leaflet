@@ -5,7 +5,8 @@
     "jsx": "react-jsx",
     "jsxImportSource": "react",
     "lib": ["dom", "es2024"],
-    "moduleResolution": "node",
+    "module": "esnext",
+    "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "target": "es2024"

@@ -7,7 +7,11 @@ import {
 } from '@react-leaflet/core'
 import { TileLayer as LeafletTileLayer, type TileLayerOptions } from 'leaflet'
 
-export interface TileLayerProps extends TileLayerOptions, LayerProps {
+import type { WithoutIndexSignature } from './props.js'
+
+export interface TileLayerProps
+  extends WithoutIndexSignature<TileLayerOptions>,
+    LayerProps {
   url: string
 }
 

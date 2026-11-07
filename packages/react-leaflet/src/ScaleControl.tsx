@@ -1,11 +1,14 @@
 import { createControlComponent } from '@react-leaflet/core'
-import { Control } from 'leaflet'
+import {
+  ScaleControl as LeafletScaleControl,
+  type ScaleControlOptions,
+} from 'leaflet'
 
-export type ScaleControlProps = Control.ScaleOptions
+export type ScaleControlProps = ScaleControlOptions
 
 export const ScaleControl = createControlComponent<
-  Control.Scale,
+  LeafletScaleControl,
   ScaleControlProps
 >(function createScaleControl(props) {
-  return new Control.Scale(props)
+  return new LeafletScaleControl(props)
 })

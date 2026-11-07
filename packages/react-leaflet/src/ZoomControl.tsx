@@ -1,11 +1,14 @@
 import { createControlComponent } from '@react-leaflet/core'
-import { Control } from 'leaflet'
+import {
+  ZoomControl as LeafletZoomControl,
+  type ZoomControlOptions,
+} from 'leaflet'
 
-export type ZoomControlProps = Control.ZoomOptions
+export type ZoomControlProps = ZoomControlOptions
 
 export const ZoomControl = createControlComponent<
-  Control.Zoom,
+  LeafletZoomControl,
   ZoomControlProps
 >(function createZoomControl(props) {
-  return new Control.Zoom(props)
+  return new LeafletZoomControl(props)
 })

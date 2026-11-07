@@ -76,9 +76,7 @@ function MapContainerComponent<
   useLayoutEffect(() => {
     return () => {
       const map = context?.map
-      // @ts-expect-error map internals
       const containerId = map?._containerId
-      // @ts-expect-error map internals
       const containerLeafletId = map?._container?._leaflet_id
       if (
         map != null &&

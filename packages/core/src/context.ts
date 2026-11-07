@@ -1,4 +1,9 @@
-import type { Control, Layer, LayerGroup, Map as LeafletMap } from 'leaflet'
+import type {
+  Layer,
+  LayerGroup,
+  LayersControl,
+  Map as LeafletMap,
+} from 'leaflet'
 import { createContext, use } from 'react'
 
 export const CONTEXT_VERSION = 1
@@ -12,7 +17,7 @@ export type LeafletContextInterface = Readonly<{
   __version: number
   map: LeafletMap
   layerContainer?: ControlledLayer | LayerGroup
-  layersControl?: Control.Layers
+  layersControl?: LayersControl
   overlayContainer?: Layer
   pane?: string
 }>
