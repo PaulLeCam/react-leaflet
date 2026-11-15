@@ -15,7 +15,7 @@ import type { WithoutIndexSignature } from './props.js'
 
 export interface WMSTileLayerProps
   extends WithoutIndexSignature<WMSTileLayerOptions>,
-    LayerProps {
+    LayerProps<LeafletWMSTileLayer> {
   params?: WMSParams
   url: string
 }

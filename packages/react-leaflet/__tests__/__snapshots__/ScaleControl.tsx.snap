@@ -4,7 +4,7 @@ exports[`ScaleControl renders and unmounts 1`] = `
 <div>
   <div
     aria-label="Map"
-    class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
+    class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-box-zoom leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
     role="region"
     style="position: relative;"
     tabindex="0"

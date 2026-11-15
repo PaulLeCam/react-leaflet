@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "packageManager": "pnpm@12.18.0",
+  "packageManager": "pnpm@12.21.0",
   "scripts": {
     "lint": "biome check --write ./example ./packages",
     "lint:ci": "biome ci ./example ./packages",
@@ -11,7 +11,7 @@
     "build": "turbo run build:clean && pnpm run -r build:types && turbo run build:js"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.6.6",
+    "@biomejs/biome": "^2.6.7",
     "@skypack/package-check": "^0.2.2",
     "@swc/cli": "^0.8.2",
     "@swc/core": "^1.16.22",
@@ -25,7 +25,7 @@
     "leaflet": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
-    "turbo": "^2.11.10",
+    "turbo": "^2.11.11",
     "typescript": "catalog:"
   },
   "jest": {

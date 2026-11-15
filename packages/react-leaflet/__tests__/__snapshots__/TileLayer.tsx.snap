@@ -4,7 +4,7 @@ exports[`TileLayer renders 1`] = `
 <div>
   <div
     aria-label="Map"
-    class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
+    class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-box-zoom leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
     role="region"
     style="position: relative;"
     tabindex="0"
@@ -17,7 +17,7 @@ exports[`TileLayer renders 1`] = `
         class="leaflet-pane leaflet-tile-pane"
       >
         <div
-          class="leaflet-layer "
+          class="leaflet-layer leaflet-zoom-animated "
           style="z-index: 1;"
         >
           <div
@@ -179,7 +179,7 @@ exports[`TileLayer renders 2`] = `
 <div>
   <div
     aria-label="Map"
-    class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
+    class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-box-zoom leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
     role="region"
     style="position: relative;"
     tabindex="0"
@@ -192,7 +192,7 @@ exports[`TileLayer renders 2`] = `
         class="leaflet-pane leaflet-tile-pane"
       >
         <div
-          class="leaflet-layer "
+          class="leaflet-layer leaflet-zoom-animated "
           style="z-index: 1;"
         >
           <div

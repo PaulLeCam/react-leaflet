@@ -4,7 +4,7 @@ exports[`Pane can unmount and remount with the same name 1`] = `
 <div>
   <div
     aria-label="Map"
-    class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
+    class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-box-zoom leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
     role="region"
     style="position: relative;"
     tabindex="0"
@@ -44,7 +44,7 @@ exports[`Pane can unmount and remount with the same name 1`] = `
           style="z-index: 4000;"
         >
           <div
-            class="leaflet-layer "
+            class="leaflet-layer leaflet-zoom-animated "
             style="z-index: 1;"
           >
             <div
@@ -79,7 +79,7 @@ exports[`Pane can unmount and remount with the same name 1`] = `
           </div>
         </div>
         <div
-          class="leaflet-layer "
+          class="leaflet-layer leaflet-zoom-animated "
           style="z-index: 1;"
         >
           <div
@@ -222,7 +222,7 @@ exports[`Pane can unmount and remount with the same name 2`] = `
 <div>
   <div
     aria-label="Map"
-    class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
+    class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-box-zoom leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
     role="region"
     style="position: relative;"
     tabindex="0"
@@ -355,7 +355,7 @@ exports[`Pane can unmount and remount with the same name 3`] = `
 <div>
   <div
     aria-label="Map"
-    class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
+    class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-box-zoom leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
     role="region"
     style="position: relative;"
     tabindex="0"
@@ -395,7 +395,7 @@ exports[`Pane can unmount and remount with the same name 3`] = `
           style="z-index: 4000;"
         >
           <div
-            class="leaflet-layer "
+            class="leaflet-layer leaflet-zoom-animated "
             style="z-index: 1;"
           >
             <div
@@ -430,7 +430,7 @@ exports[`Pane can unmount and remount with the same name 3`] = `
           </div>
         </div>
         <div
-          class="leaflet-layer "
+          class="leaflet-layer leaflet-zoom-animated "
           style="z-index: 1;"
         >
           <div
@@ -573,7 +573,7 @@ exports[`Pane renders 1`] = `
 <div>
   <div
     aria-label="Map"
-    class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
+    class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-box-zoom leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
     role="region"
     style="position: relative;"
     tabindex="0"
@@ -609,7 +609,7 @@ exports[`Pane renders 1`] = `
         style="z-index: 1000;"
       >
         <div
-          class="leaflet-layer "
+          class="leaflet-layer leaflet-zoom-animated "
           style="z-index: 1;"
         >
           <div
@@ -752,7 +752,7 @@ exports[`Pane renders in Strict Mode 1`] = `
 <div>
   <div
     aria-label="Map"
-    class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
+    class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-box-zoom leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
     role="region"
     style="position: relative;"
     tabindex="0"
@@ -788,7 +788,7 @@ exports[`Pane renders in Strict Mode 1`] = `
         style="z-index: 1001;"
       >
         <div
-          class="leaflet-layer "
+          class="leaflet-layer leaflet-zoom-animated "
           style="z-index: 1;"
         >
           <div
@@ -931,7 +931,7 @@ exports[`Pane renders nested panes 1`] = `
 <div>
   <div
     aria-label="Map"
-    class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
+    class="leaflet-container leaflet-touch leaflet-fade-anim leaflet-box-zoom leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
     role="region"
     style="position: relative;"
     tabindex="0"
@@ -971,7 +971,7 @@ exports[`Pane renders nested panes 1`] = `
           style="z-index: 4000;"
         >
           <div
-            class="leaflet-layer "
+            class="leaflet-layer leaflet-zoom-animated "
             style="z-index: 1;"
           >
             <div
@@ -1006,7 +1006,7 @@ exports[`Pane renders nested panes 1`] = `
           </div>
         </div>
         <div
-          class="leaflet-layer "
+          class="leaflet-layer leaflet-zoom-animated "
           style="z-index: 1;"
         >
           <div

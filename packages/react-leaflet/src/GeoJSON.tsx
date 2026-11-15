@@ -11,8 +11,8 @@ import type { LayerGroupProps } from './LayerGroup.js'
 
 export interface GeoJSONProps
   extends GeoJSONOptions,
-    LayerGroupProps,
-    PathProps {
+    LayerGroupProps<LeafletGeoJSON>,
+    PathProps<LeafletGeoJSON> {
   data: GeoJSONData
 }
 

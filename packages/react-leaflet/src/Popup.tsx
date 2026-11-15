@@ -14,7 +14,7 @@ import {
 } from 'leaflet'
 import { type ReactNode, useLayoutEffect } from 'react'
 
-export interface PopupProps extends PopupOptions, EventedProps {
+export interface PopupProps extends PopupOptions, EventedProps<LeafletPopup> {
   children?: ReactNode
   position?: LatLngExpression
 }

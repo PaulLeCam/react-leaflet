@@ -4,16 +4,23 @@ import { useEffect, useRef } from 'react'
 import { useLeafletContext } from './context.js'
 import type { ElementHook, LeafletElement } from './element.js'
 import { useEventHandlers } from './events.js'
-import { type InteractiveLayerProps, useLayerLifecycle } from './layer.js'
+import {
+  type AnyLayerProps,
+  type InteractiveLayerProps,
+  useLayerLifecycle,
+} from './layer.js'
 import { withPane } from './pane.js'
 
-export interface PathProps extends InteractiveLayerProps {
+export interface PathProps<T extends FeatureGroup | Path = Path>
+  extends InteractiveLayerProps<T> {
   pathOptions?: PathOptions
 }
 
+export type AnyPathProps = Omit<PathProps, 'eventHandlers'> & AnyLayerProps
+
 export function usePathOptions(
   element: LeafletElement<FeatureGroup | Path>,
-  props: PathProps,
+  props: Pick<PathProps, 'pathOptions'>,
 ) {
   const optionsRef = useRef<PathOptions | undefined>(undefined)
 
@@ -31,7 +38,7 @@ export function usePathOptions(
 
 export function createPathHook<
   E extends FeatureGroup | Path,
-  P extends PathProps,
+  P extends AnyPathProps,
 >(useElement: ElementHook<E, P>) {
   return function usePath(props: P): ReturnType<ElementHook<E, P>> {
     const context = useLeafletContext()

@@ -14,7 +14,9 @@ import {
 } from 'leaflet'
 import { type ReactNode, useLayoutEffect } from 'react'
 
-export interface TooltipProps extends TooltipOptions, EventedProps {
+export interface TooltipProps
+  extends TooltipOptions,
+    EventedProps<LeafletTooltip> {
   children?: ReactNode
   position?: LatLngExpression
 }

@@ -32,7 +32,12 @@ export {
   type ElementHook,
   type LeafletElement,
 } from './element.js'
-export { type EventedProps, useEventHandlers } from './events.js'
+export {
+  type EventedProps,
+  type EventHandlers,
+  type EventMapOf,
+  useEventHandlers,
+} from './events.js'
 export {
   createControlComponent,
   createLayerComponent,
@@ -42,11 +47,21 @@ export {
 } from './generic.js'
 export { updateGridLayer } from './grid-layer.js'
 export {
+  type AnyLayerProps,
   createLayerHook,
   type InteractiveLayerProps,
   type LayerProps,
   useLayerLifecycle,
 } from './layer.js'
-export { type MediaOverlayProps, updateMediaOverlay } from './media-overlay.js'
+export {
+  type MediaOverlay,
+  type MediaOverlayProps,
+  updateMediaOverlay,
+} from './media-overlay.js'
 export { withPane } from './pane.js'
-export { createPathHook, type PathProps, usePathOptions } from './path.js'
+export {
+  type AnyPathProps,
+  createPathHook,
+  type PathProps,
+  usePathOptions,
+} from './path.js'

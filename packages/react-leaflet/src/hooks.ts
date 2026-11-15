@@ -1,5 +1,5 @@
 import { useLeafletContext } from '@react-leaflet/core'
-import type { Map as LeafletMap, MapListeners } from 'leaflet'
+import type { LeafletMap, MapListeners } from 'leaflet'
 import { useEffect } from 'react'
 
 export function useMap(): LeafletMap {

@@ -11,7 +11,9 @@ import {
 } from 'leaflet'
 import type { ReactNode } from 'react'
 
-export interface PolylineProps extends PolylineOptions, PathProps {
+export interface PolylineProps
+  extends PolylineOptions,
+    PathProps<LeafletPolyline> {
   children?: ReactNode
   positions: LatLngExpression[] | LatLngExpression[][]
 }

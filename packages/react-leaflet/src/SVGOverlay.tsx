@@ -14,7 +14,7 @@ import {
 } from 'react'
 import { createPortal } from 'react-dom'
 
-export interface SVGOverlayProps extends MediaOverlayProps {
+export interface SVGOverlayProps extends MediaOverlayProps<LeafletSVGOverlay> {
   attributes?: Record<string, string>
   children?: ReactNode
 }

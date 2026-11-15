@@ -4,12 +4,24 @@ import { useLayoutEffect } from 'react'
 import { useAttribution } from './attribution.js'
 import { type LeafletContextInterface, useLeafletContext } from './context.js'
 import type { ElementHook, LeafletElement } from './element.js'
-import { type EventedProps, useEventHandlers } from './events.js'
+import {
+  type EventedProps,
+  type EventHandlers,
+  useEventHandlers,
+} from './events.js'
 import { withPane } from './pane.js'
 
-export interface LayerProps extends EventedProps, LayerOptions {}
-export interface InteractiveLayerProps
-  extends LayerProps,
+export interface LayerProps<T extends Layer = Layer>
+  extends EventedProps<T>,
+    LayerOptions {}
+
+export type AnyLayerProps = Omit<LayerProps, 'eventHandlers'> & {
+  // biome-ignore lint/suspicious/noExplicitAny: variance of handler params requires any
+  eventHandlers?: EventHandlers<any, any>
+}
+
+export interface InteractiveLayerProps<T extends Layer = Layer>
+  extends LayerProps<T>,
     InteractiveLayerOptions {}
 
 export function useLayerLifecycle(
@@ -30,7 +42,7 @@ export function useLayerLifecycle(
   )
 }
 
-export function createLayerHook<E extends Layer, P extends LayerProps>(
+export function createLayerHook<E extends Layer, P extends AnyLayerProps>(
   useElement: ElementHook<E, P>,
 ) {
   return function useLayer(props: P): ReturnType<ElementHook<E, P>> {

@@ -11,7 +11,7 @@ import type { WithoutIndexSignature } from './props.js'
 
 export interface TileLayerProps
   extends WithoutIndexSignature<TileLayerOptions>,
-    LayerProps {
+    LayerProps<LeafletTileLayer> {
   url: string
 }
 

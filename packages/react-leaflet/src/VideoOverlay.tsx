@@ -12,7 +12,7 @@ import {
 import type { ReactNode } from 'react'
 
 export interface VideoOverlayProps
-  extends MediaOverlayProps,
+  extends MediaOverlayProps<LeafletVideoOverlay>,
     VideoOverlayOptions {
   children?: ReactNode
   play?: boolean

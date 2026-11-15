@@ -9,12 +9,14 @@ import type { ReactNode } from 'react'
 
 import type { PathProps } from './path.js'
 
-export interface CircleMarkerProps extends CircleMarkerOptions, PathProps {
+export interface CircleMarkerProps
+  extends CircleMarkerOptions,
+    PathProps<LeafletCircleMarker> {
   center: LatLngExpression
   children?: ReactNode
 }
 
-export interface CircleProps extends CircleOptions, PathProps {
+export interface CircleProps extends CircleOptions, PathProps<LeafletCircle> {
   center: LatLngExpression
   children?: ReactNode
 }

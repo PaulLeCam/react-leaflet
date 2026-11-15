@@ -1,19 +1,27 @@
-import type { Evented, LeafletEventHandlerFn } from 'leaflet'
+import type { Evented, Listener } from 'leaflet'
 import { useEffect, useRef } from 'react'
-
-export type LeafletEventHandlerFnMap = Record<string, LeafletEventHandlerFn>
 
 import type { LeafletElement } from './element.js'
 
-export type EventedProps = {
-  eventHandlers?: LeafletEventHandlerFnMap
+export type EventMapOf<T> =
+  T extends Evented<infer _O, infer E extends object> ? E : never
+
+export type EventHandlers<E extends object, T = Evented> = {
+  [K in keyof E & string]?: Listener<K, E, T>
 }
 
-export function useEventHandlers(
-  element: LeafletElement<Evented>,
-  eventHandlers: LeafletEventHandlerFnMap | null | undefined,
+export type EventedProps<T extends Evented> = {
+  eventHandlers?: EventHandlers<EventMapOf<T>, T>
+}
+
+export function useEventHandlers<
+  T extends Evented<object, E>,
+  E extends object = EventMapOf<T>,
+>(
+  element: LeafletElement<T>,
+  eventHandlers: EventHandlers<NoInfer<E>, T> | null | undefined,
 ) {
-  const eventHandlersRef = useRef<LeafletEventHandlerFnMap | null | undefined>(
+  const eventHandlersRef = useRef<EventHandlers<E, T> | null | undefined>(
     undefined,
   )
 

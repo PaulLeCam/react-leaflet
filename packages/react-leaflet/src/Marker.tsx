@@ -11,7 +11,9 @@ import {
 } from 'leaflet'
 import type { ReactNode } from 'react'
 
-export interface MarkerProps extends MarkerOptions, EventedProps {
+export interface MarkerProps
+  extends MarkerOptions,
+    EventedProps<LeafletMarker> {
   children?: ReactNode
   position: LatLngExpression
 }

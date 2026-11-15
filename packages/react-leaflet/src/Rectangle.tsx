@@ -11,7 +11,9 @@ import {
 } from 'leaflet'
 import type { ReactNode } from 'react'
 
-export interface RectangleProps extends PathOptions, PathProps {
+export interface RectangleProps
+  extends PathOptions,
+    PathProps<LeafletRectangle> {
   bounds: LatLngBoundsExpression
   children?: ReactNode
 }

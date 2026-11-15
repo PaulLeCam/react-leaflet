@@ -1,4 +1,4 @@
-import type { Map as LeafletMap } from 'leaflet'
+import type { LeafletMap } from 'leaflet'
 import { useLayoutEffect, useRef } from 'react'
 
 export function useAttribution(

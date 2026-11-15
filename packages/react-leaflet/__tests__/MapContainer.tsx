@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react'
-import { type LatLngExpression, Map as LeafletMap } from 'leaflet'
+import { type LatLngExpression, LeafletMap } from 'leaflet'
 import { StrictMode, useEffect, useRef } from 'react'
 
 import { MapContainer, useMap } from '../src'

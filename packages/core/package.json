@@ -1,6 +1,6 @@
 {
   "name": "@react-leaflet/core",
-  "version": "4.0.0-alpha.0",
+  "version": "4.0.0-beta.1",
   "description": "React Leaflet core",
   "repository": {
     "type": "git",
@@ -33,7 +33,7 @@
     "build:js": "swc src -d ./lib --config-file  ../../.swcrc --strip-leading-paths",
     "build:types": "tsc --emitDeclarationOnly --skipLibCheck",
     "build": "pnpm run build:clean && pnpm run build:types && pnpm run build:js",
-    "test:types": "tsc --noEmit",
+    "test:types": "tsc --noEmit && tsc -p tsconfig.type-tests.json",
     "test:unit": "node --experimental-vm-modules ../../node_modules/jest/bin/jest.js",
     "test": "pnpm run test:types && pnpm run test:unit",
     "start": "pnpm run test && pnpm run build",

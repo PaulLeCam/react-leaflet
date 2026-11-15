@@ -7,7 +7,10 @@ import {
 import { type LayerOptions, LayerGroup as LeafletLayerGroup } from 'leaflet'
 import type { ReactNode } from 'react'
 
-export interface LayerGroupProps extends LayerOptions, EventedProps {
+export interface LayerGroupProps<
+  T extends LeafletLayerGroup = LeafletLayerGroup,
+> extends LayerOptions,
+    EventedProps<T> {
   children?: ReactNode
 }
 

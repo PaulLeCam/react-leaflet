@@ -9,15 +9,20 @@ import {
 
 import type { InteractiveLayerProps } from './layer.js'
 
-export interface MediaOverlayProps
+export type MediaOverlay =
+  | LeafletImageOverlay
+  | LeafletSVGOverlay
+  | LeafletVideoOverlay
+
+export interface MediaOverlayProps<T extends MediaOverlay = LeafletImageOverlay>
   extends ImageOverlayOptions,
-    InteractiveLayerProps {
+    InteractiveLayerProps<T> {
   bounds: LatLngBoundsExpression
 }
 
 export function updateMediaOverlay<
-  E extends LeafletImageOverlay | LeafletSVGOverlay | LeafletVideoOverlay,
-  P extends MediaOverlayProps,
+  E extends MediaOverlay,
+  P extends MediaOverlayProps<E>,
 >(overlay: E, props: P, prevProps: P) {
   if (
     props.bounds instanceof LatLngBounds &&

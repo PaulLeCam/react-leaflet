@@ -8,7 +8,9 @@ import { FeatureGroup as LeafletFeatureGroup } from 'leaflet'
 
 import type { LayerGroupProps } from './LayerGroup.js'
 
-export interface FeatureGroupProps extends LayerGroupProps, PathProps {}
+export interface FeatureGroupProps
+  extends LayerGroupProps<LeafletFeatureGroup>,
+    PathProps<LeafletFeatureGroup> {}
 
 export const FeatureGroup = createPathComponent<
   LeafletFeatureGroup,

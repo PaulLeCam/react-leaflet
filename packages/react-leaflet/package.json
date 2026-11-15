@@ -1,7 +1,7 @@
 {
   "name": "react-leaflet",
-  "version": "6.0.0-alpha.0",
-  "description": "React components for Leaflet maps",
+  "version": "6.0.0-beta.1",
+  "description": "React components and hooks for Leaflet maps",
   "repository": {
     "type": "git",
     "url": "https://github.com/PaulLeCam/react-leaflet.git"
@@ -34,7 +34,7 @@
     "build:js": "swc src -d ./lib --config-file ../../.swcrc --strip-leading-paths",
     "build:types": "tsc --emitDeclarationOnly --skipLibCheck",
     "build": "pnpm run build:clean && pnpm run build:types && pnpm run build:js",
-    "test:types": "tsc --noEmit",
+    "test:types": "tsc --noEmit && tsc -p tsconfig.type-tests.json",
     "test:unit": "node --experimental-vm-modules ../../node_modules/jest/bin/jest.js",
     "test": "pnpm run test:types && pnpm run test:unit",
     "start": "pnpm run test && pnpm run build",
@@ -52,7 +52,6 @@
   "devDependencies": {
     "@react-leaflet/test-environment": "workspace:*",
     "@types/geojson": "^7946.0.15",
-    "@types/leaflet": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:"
   },

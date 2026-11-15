@@ -8,7 +8,8 @@ import {
 import { LatLngBounds, ImageOverlay as LeafletImageOverlay } from 'leaflet'
 import type { ReactNode } from 'react'
 
-export interface ImageOverlayProps extends MediaOverlayProps {
+export interface ImageOverlayProps
+  extends MediaOverlayProps<LeafletImageOverlay> {
   children?: ReactNode
   url: string
 }

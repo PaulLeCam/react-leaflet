@@ -6,7 +6,7 @@ import {
 import {
   type FitBoundsOptions,
   type LatLngBoundsExpression,
-  Map as LeafletMap,
+  LeafletMap,
   type MapOptions,
 } from 'leaflet'
 import {

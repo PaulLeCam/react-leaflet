@@ -1,9 +1,4 @@
-import type {
-  Layer,
-  LayerGroup,
-  LayersControl,
-  Map as LeafletMap,
-} from 'leaflet'
+import type { Layer, LayerGroup, LayersControl, LeafletMap } from 'leaflet'
 import { createContext, use } from 'react'
 
 export const CONTEXT_VERSION = 1

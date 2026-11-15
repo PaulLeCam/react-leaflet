@@ -25,11 +25,11 @@ import {
   createElementObject,
   type LeafletElement,
 } from './element.js'
-import { createLayerHook, type LayerProps } from './layer.js'
-import { createPathHook, type PathProps } from './path.js'
+import { type AnyLayerProps, createLayerHook } from './layer.js'
+import { type AnyPathProps, createPathHook } from './path.js'
 
-interface LayerWithChildrenProps extends LayerProps, PropsWithChildren {}
-interface PathWithChildrenProps extends PathProps, PropsWithChildren {}
+interface LayerWithChildrenProps extends AnyLayerProps, PropsWithChildren {}
+type PathWithChildrenProps = AnyPathProps & PropsWithChildren
 
 export function createControlComponent<
   E extends Control,
@@ -99,7 +99,10 @@ export function createPathComponent<
   return createContainerComponent(usePath)
 }
 
-export function createTileLayerComponent<E extends Layer, P extends LayerProps>(
+export function createTileLayerComponent<
+  E extends Layer,
+  P extends AnyLayerProps,
+>(
   createElement: (
     props: PropsWithoutRef<P>,
     context: LeafletContextInterface,
