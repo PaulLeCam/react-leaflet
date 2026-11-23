@@ -13,19 +13,19 @@ export interface PathProps extends InteractiveLayerProps {
 
 export function usePathOptions(
   element: LeafletElement<FeatureGroup | Path>,
-  props: PathProps,
+  { pathOptions }: PathProps,
 ) {
   const optionsRef = useRef<PathOptions | undefined>(undefined)
 
   useEffect(
     function updatePathOptions() {
-      if (props.pathOptions !== optionsRef.current) {
-        const options = props.pathOptions ?? {}
-        element.instance.setStyle(options)
+      const options = pathOptions ?? undefined
+      if (options !== optionsRef.current) {
+        element.instance.setStyle(options ?? {})
         optionsRef.current = options
       }
     },
-    [element, props],
+    [element, pathOptions],
   )
 }
 
